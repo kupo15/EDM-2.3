@@ -20,3 +20,4 @@ function scr_blinds_cleanup() {
 
 
 }
+
