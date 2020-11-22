@@ -246,10 +246,7 @@
     {"isScaled":false,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":9223372036854775807,"resourceVersion":"1.0","name":"Backgrounds","resourceType":"GMTextureGroup",},
     {"isScaled":false,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":9223372036854775807,"resourceVersion":"1.0","name":"Other","resourceType":"GMTextureGroup",},
   ],
-  "IncludedFiles": [
-    {"CopyToMask":9223372036854775807,"filePath":"datafiles","resourceVersion":"1.0","name":"member_list.ini","resourceType":"GMIncludedFile",},
-    {"CopyToMask":9223372036854775807,"filePath":"datafiles","resourceVersion":"1.0","name":"payout.ini","resourceType":"GMIncludedFile",},
-  ],
+  "IncludedFiles": [],
   "MetaData": {
     "IDEVersion": "23.1.1.230",
   },
