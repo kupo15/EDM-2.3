@@ -177,7 +177,7 @@ function draw_breakdown_event_date() {
 
 		xx += 300;
 
-		var delete = scr_mouse_position_room_released(xx+150,yy+hh-110,220,100,mb_left,true);    
+		var delete_ = scr_mouse_position_room_released(xx+150,yy+hh-110,220,100,mb_left,true);    
 
 		draw_rectangle(xx+150,yy+hh-110,xx+150+220,yy+hh-10,true);
 
@@ -203,7 +203,7 @@ function draw_breakdown_event_date() {
 		else if cancel
 		season_breakdown_date_x = noone;
 		else
-		if delete
+		if delete_
 		   {
 		   // adjust header	
 		   var grid_ww = ds_grid_width(season_ranking_header_grid);

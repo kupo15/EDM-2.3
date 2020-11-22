@@ -119,8 +119,8 @@
     "name": "Default",
     "children": [],
   },
-  "RoomOrder": [
-    {"name":"room0","path":"rooms/room0/room0.yy",},
+  "RoomOrderNodes": [
+    {"roomId":{"name":"room0","path":"rooms/room0/room0.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":0,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
@@ -145,18 +145,18 @@
     {"targets":461609314234257646,"resourceVersion":"1.0","name":"audiogroup_default","resourceType":"GMAudioGroup",},
   ],
   "TextureGroups": [
-    {"isScaled":false,"autocrop":true,"border":2,"mipsToGenerate":0,"targets":461609314234257646,"resourceVersion":"1.0","name":"Default","resourceType":"GMTextureGroup",},
-    {"isScaled":false,"autocrop":true,"border":2,"mipsToGenerate":0,"targets":9223372036854775807,"resourceVersion":"1.0","name":"Backgrounds","resourceType":"GMTextureGroup",},
-    {"isScaled":false,"autocrop":true,"border":2,"mipsToGenerate":0,"targets":9223372036854775807,"resourceVersion":"1.0","name":"Other","resourceType":"GMTextureGroup",},
+    {"isScaled":false,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":461609314234257646,"resourceVersion":"1.0","name":"Default","resourceType":"GMTextureGroup",},
+    {"isScaled":false,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":9223372036854775807,"resourceVersion":"1.0","name":"Backgrounds","resourceType":"GMTextureGroup",},
+    {"isScaled":false,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":9223372036854775807,"resourceVersion":"1.0","name":"Other","resourceType":"GMTextureGroup",},
   ],
   "IncludedFiles": [
     {"CopyToMask":9223372036854775807,"filePath":"datafiles","resourceVersion":"1.0","name":"member_list.ini","resourceType":"GMIncludedFile",},
     {"CopyToMask":9223372036854775807,"filePath":"datafiles","resourceVersion":"1.0","name":"payout.ini","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2.3.0.529",
+    "IDEVersion": "23.1.1.230",
   },
-  "resourceVersion": "1.3",
+  "resourceVersion": "1.4",
   "name": "EDM 2.3",
   "tags": [],
   "resourceType": "GMProject",
