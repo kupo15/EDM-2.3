@@ -7,7 +7,7 @@ function scr_inputs() {
 	else
 	android_back = keyboard_check_released(vk_backspace);
 
-	if mouse_check_button_pressed(mb_left)
+	if mouse_check_button_pressed(mb_middle)
 	   {
 	   mouse_xstart = mouse_x;
 	   mouse_ystart = mouse_y;

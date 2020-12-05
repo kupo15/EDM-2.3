@@ -23,6 +23,8 @@ if mouse_check_button_released(mb_left)
     results_scrolling = false;
     deleting_member = false;
     }
+	
+
     
     /*
 var xx = 10;
