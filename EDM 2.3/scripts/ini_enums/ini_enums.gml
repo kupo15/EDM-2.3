@@ -55,9 +55,9 @@ main = -2,
 hidden = -1,
 
 sidebar,
-
-year_select,
 numpad,
+
+profileChange,
 popupEntry,
 }
 

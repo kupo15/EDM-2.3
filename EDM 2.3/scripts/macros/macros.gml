@@ -5,13 +5,14 @@
 #macro app_save json_save_array(save_data,ROOT_data_struct)
 #macro app_load json_load_array(save_data)
 
+#macro PROFILE_data ROOT_data_struct.profile
 #macro META_data ROOT_data_struct.meta
 
 // header
-#macro header_color make_color_rgb(0,145,206)
+#macro header_color make_color_rgb(0,145,206) // make_color_rgb(42,104,53) //
 #macro header_height 100
 #macro header_submenu_height 80
-#macro header_font_height 70
+#macro header_font_height 60
 
 // background colors
 #macro c_lt_gray make_color_rgb(228,228,228)

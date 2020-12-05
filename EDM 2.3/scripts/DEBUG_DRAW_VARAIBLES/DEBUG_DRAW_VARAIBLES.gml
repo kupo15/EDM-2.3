@@ -8,7 +8,6 @@ enum_name_submenu[-navbar.enumstart+1+navbar.sidebar] = "sidebar";
 enum_name_submenu[-navbar.enumstart+1+navbar.main] = "main";
 enum_name_submenu[-navbar.enumstart+1+navbar.hidden] = "hidden";
 enum_name_submenu[-navbar.enumstart+1+navbar.popupEntry] = "entryPopup";
-enum_name_submenu[-navbar.enumstart+1+navbar.year_select] = "year_select";
 enum_name_submenu[-navbar.enumstart+1+navbar.numpad] = "numpad";
 enum_name_submenu[-navbar.enumstart+1+navbar.calendar] = "calendar";
 enum_name_submenu[-navbar.enumstart+1+navbar.calendarYearSelect] = "calendarYearSelect";

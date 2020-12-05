@@ -185,7 +185,6 @@ var col = c_white;
 draw_sprite_ext(spr,index,xx+xoff,yy+yoff,sca,sca,0,col,alpha);
 }
 
-
 function draw_icon_height_centered_color(spr,index,xx,yy,ww,hh,height,col,alpha) {
 	
 var spr_hh = sprite_get_height(spr);
@@ -197,3 +196,19 @@ var yoff = abs(hh-height)*0.5;
 draw_sprite_ext(spr,index,xx+xoff,yy+yoff,sca,sca,0,col,alpha);
 }
 
+function draw_image_width_cropped(spr,ind,xx,yy,width,region_ww,region_hh,alpha) {
+	
+if argument[7] == undefined
+alpha = draw_get_alpha();
+	
+var spr_ww = sprite_get_width(spr);
+var spr_hh = sprite_get_height(spr);
+var sca = width/spr_ww;
+var col = c_white;
+
+draw_sprite_part_ext(spr,ind,0,0,region_ww,region_hh,xx,yy,sca,sca,col,alpha);
+
+return spr_hh*sca;	
+	
+	
+}

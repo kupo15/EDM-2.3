@@ -1,6 +1,6 @@
 function scr_inputs() {
 	
-androidBack = input_android_back(vk_down,noone,noone) && (submenu != navbar.sidebar);
+androidBack = input_android_back(vk_down,noone,noone); //  && (submenu != navbar.sidebar);
 androidBackSidebar = input_android_back(vk_down,noone,noone);
 
 //if androidBack

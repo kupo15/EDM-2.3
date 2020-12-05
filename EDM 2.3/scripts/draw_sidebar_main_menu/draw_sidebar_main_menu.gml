@@ -4,62 +4,56 @@ draw_set_halign(fa_left);
 draw_set_color(c_black);
 
 var offset = 1-offsetArray[offsetScroll.sidebarXoff];
-var new_submenu = false;
-var xx_off =  offset*(-side_menu_width-30);
+var xx_off = offset*(-side_menu_width-30);
 var xx = 0;
 var yy = 0;
 var ww = side_menu_width;
 var hh = room_height;
-var profile_hh = 220;
-var col = c_white;
+var profile_hh = 200;
 var profile_col = make_color_rgb(76,102,145);
 
 #region profile section
+var col = c_white;
 draw_rectangle_color(xx+xx_off,yy,xx+xx_off+ww,yy+hh,col,col,col,col,false); // menu background
 
-/*// if click outside of menu
-if click_region_released(xx+xx_off+ww,yy,ww,hh,noone,navbar.sidebar) // make_color_rgb(0,255,255)
-androidBackSidebar = true;
-else if click_button(xx_off,0,"",0,c_black,140,140,undefined,false,undefined,submenu)
+// if click outside of menu
+if clickout_region(xx+xx_off,yy,side_menu_width,hh,false,navbar.sidebar)
+androidBack = true;
+
+if click_button(xx_off,0,"",0,c_black,140,140,undefined,false,undefined,submenu)
 	{
-	submenu = navbar.hidden;
-	screen_change(screen.profileView);
+	//submenu = navbar.hidden;
+	//screen_change(screen.profileView);
 	}
 else if click_button(xx_off,yy,"",0,c_black,ww,profile_hh,profile_col,false,false,submenu)
 	{
-	if submenu == navbar.profileChange
+	/*if submenu == navbar.profileChange
 	androidBack = true;
 	else
 		{
 		submenu = navbar.profileChange;
 		screenDarkenIndex = darkenIndex.profileChange;
-		}
+		}*/
 	}
+
 
 var xx = 25;
 var yy = 25;
 
-draw_icon_height(spr_icon_blank_profile,0,xx+xx_off,yy,100,1); // profile picture
+draw_image_width_cropped(spr_estrella_shot,0,xx_off,0,side_menu_width+1,side_menu_width,profile_hh);
+draw_icon_height(spr_estrella_logo,0,xx+xx_off,yy,100,1); // profile picture
 
-var height = 30;
+var height = 45;
 var yy = profile_hh-height-10;
 
-if ghin_index == undefined
-var str_index = "N/A";
-else
-str_index = string_format(ghin_index,1,1);
+draw_text_height_color(xx+xx_off,yy,"Estrella del Mar",c_white,height,fn_bold); // draw location name
+//draw_text_height_color(xx+xx_off,yy,PROFILE_data.dispName,c_white,height,fn_bold); // draw location name
 
-draw_text_height_color(xx+xx_off,yy,PROFILE_data.dispName,c_white,height,fn_bold); // draw user name
-draw_text_height_color(xx+xx_off+200,yy,str_index,c_white,height); // draw handicap
-//draw_text_height(xx+xx_off,yy+25,"@"+user_username,25); // draw user id
-
-draw_menu_triangle(xx_off+400,yy+15,10,submenu != navbar.profileChange);
-*/
-
+draw_menu_triangle(xx_off+(side_menu_width*0.85),yy+15,10,submenu != navbar.profileChange);
 #endregion
 
 #region draw menu items
-var xx = 100;
+var xx = 145;
 var yy = profile_hh;
 var sep = 120;
 var height = 50;
@@ -102,11 +96,8 @@ for(var i=0;i<screen.enumcount;i++)
 
 //draw_sidebar_profile_switch(xx_off,profile_hh,sep);
 
-if androidBackSidebar
-	{	
-	if !new_submenu && (submenu == navbar.sidebar)
-	submenu = submenuPrevious;
-	}
+if androidBack
+submenu = navbar.hidden;
 }
 
 function draw_sidebar_profile_switch(xx_off,yy,sep) {
@@ -166,8 +157,7 @@ for(var i=0;i<size;i++)
 		
 	if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.profileChange,i,undefined)
 		{
-		scr_profile_set(i);
-		scr_handicap_calculate();
+		//scr_profile_set(i);
 		app_save;
 
 		submenu = navbar.main;

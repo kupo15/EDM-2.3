@@ -85,6 +85,11 @@ offsetArray = array_create(offsetScroll.enumcount,0);
 offsetArrayStart = array_create(offsetScroll.enumcount,0);
 offsetArrayEnd = array_create(offsetScroll.enumcount,0);
 
+// set default
+scrollbar_set(offsetScroll.navbarYoff,submenu==navbar.hidden,true);
+
+
+// scrollbars
 scrollbarDisp = array_create(offsetScroll.enumcount,0);
 scrollbarDispEnd = array_create(offsetScroll.enumcount,0);
 

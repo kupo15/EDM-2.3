@@ -32,8 +32,8 @@ repeat 2
 	if header_type == headerType.bars
 		{
 		// draw the 3 bars
-		var ww = 30;
-		var hh = 24;
+		var ww = header_height*0.33;
+		var hh = header_height*0.27;
 		var xx = (region-ww)*0.5;
 		
 		draw_menu_bars(xpos+xx,header_height*0.5,ww,hh,2,c_white);
