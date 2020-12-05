@@ -102,7 +102,12 @@ var clickout = width_reached && !mouse_check_button(mb_left);
 
 // fade away when released OR not inside of box
 if clickout || (clickMoved && width_reached)
-click_highlight_alpha_end = 0; // fade away	
+	{
+	click_highlight_alpha_end = 0; // fade away	
+	
+	// reset
+	canClickPressed = true;
+	}
 	
 if width_reached && transitionReady
 transitionReady = 2;

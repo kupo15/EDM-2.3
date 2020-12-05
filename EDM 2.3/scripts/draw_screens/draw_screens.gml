@@ -14,7 +14,7 @@ if androidBack
 		game_end();
 
 		scr_handicap_calculate();
-		screen_change(screen.home,true);
+		screen_change(screen.home,undefined,true);
 		}
 	}
 	
@@ -22,10 +22,11 @@ draw_set_halign(fa_left);
 
 // draw screens
 draw_background_screen();
+
 script_execute(drawScreen[screenIndex]);
 		
 // draw numpad
-//numpad_value = draw_numpad(numpad_value);
+numpad_value = draw_numpad_golf(numpad_value);
 		
 // draw_footer_button();
 
@@ -35,7 +36,8 @@ draw_sidebar_main_menu();
 
 // popup overlays
 draw_overlay_calendar();
-//draw_overlay_circle_button();
+draw_playing_score_enter();
+draw_overlay_circle_button();
 	
 draw_highlight_click_static(submenu != navbar.sidebar);
 

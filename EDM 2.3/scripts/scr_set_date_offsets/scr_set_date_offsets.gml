@@ -35,6 +35,11 @@ monthOffset = month;
 monthOffsetStart = month;
 monthOffsetEnd = month;
 
+var scrollbar_index = offsetScroll.calendarOffset;
+offsetArray[scrollbar_index] = month;
+offsetArrayStart[scrollbar_index] = month;
+offsetArrayEnd[scrollbar_index] = month;
+
 calendarDateEntry = undefined;
 screenDarkenIndex = darkenIndex.calendar;
 }

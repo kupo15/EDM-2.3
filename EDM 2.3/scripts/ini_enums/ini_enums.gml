@@ -8,9 +8,8 @@ playing,
 score_list,
 course_list,
 score_card,
-index,
-blank7,
-blank8,
+indexTrend,
+handicapSeason,
 
 help_info,
 settings,
@@ -21,11 +20,67 @@ score_create,
 score_view,
 score_details,
 
-add_course,
+score_card_details,
+
+profileCreate,
+profileView,
+
+playing_score_enter,
+
+create_course,
 edit_course,
 
 edit_tees,
+edit_tees_from_teebar,
 edit_date,
+}
+
+enum offsetScroll {
+navbarYoff,
+numpadYoff,
+coursebarYoff,
+teebarYoff,
+locationYoff,
+roundtypeYoff,
+entryYoff,
+
+sidebarXoff,
+
+scoreSortUnderline,
+courseSortUnderline,
+
+scorelistOffset,
+courselistOffset,
+seasonOffset,
+statsOffset,
+indexOffset,
+calendarOffset,
+
+enumcount,
+}
+
+enum trendType {
+indexYearly,
+indexMax,
+	
+}
+
+enum score_sort {
+currentYear,
+lastYear,
+allScores
+}
+
+enum course_sort {
+abc,
+frequency,
+favorite
+}
+
+enum round_Type {
+practice,
+normal,
+tournament	
 }
 
 enum highlightAction {
@@ -33,43 +88,40 @@ courseSelect,
 navbarSwitch
 }
 
-enum course_data {
-name,
-yardage,
-slope,
-rating,
-par,
+enum textboxEntry {
+dispName,	
+	
+courseName,
+courseYardage,
+courseSlope,
+courseRating,
+coursePar,
 
-enumcount
+grossScore,
+strokes,	
+	
+popupEntryText,
 }
-
-enum score_data {
-course,
-score_,
-strokes,
-
-tee,
-
-}
-
-enum tee_data {
-yardage,
-slope,
-rating,
-par
-}
-
-
 
 enum navbar {
-sidebar = -5,
-main = -4,
+enumstart = -5,
+calendar = -4,
+calendarYearSelect = -3,
+main = -2,
 hidden = -1,
-numpad,
-calendar,
-calendarYearSelect,
-year_select,
 
+profileChange,
+sidebar,
+
+coursebar,
+locationbar,
+teebar,
+year_select,
+parbar,
+roundtype,
+scorebar,
+numpad,
+popupEntry,
 }
 
 enum tee_marker {

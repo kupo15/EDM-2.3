@@ -24,6 +24,8 @@ function click_textbox_set(str,textbox_ind,kvInit,kvGo) {
 
 var int = argument[3];
 
+str = string(str); // convert to string
+
 keyboard_string = str;
 kvLastString = str;
 textboxIndex = textbox_ind; // set the textbox index
@@ -133,7 +135,7 @@ if within_region
 		}
 		
 	if test_failed
-	exit;
+	return -1;
 	
 	// clicked highlight
 	if mouse_check_button_pressed(button) && highlight
@@ -166,7 +168,7 @@ function click_region_released(x_left,y_top,ww,hh,highlight,sub,alpha) {
 	
 var button = mb_left;	
 var condition = mouse_check_button_released(button);
-	
+
 return click_region_home(x_left,y_top,ww,hh,button,highlight,condition,sub,undefined,alpha);
 }
 
@@ -175,7 +177,7 @@ function click_region_pressed(x_left,y_top,ww,hh,highlight,sub) {
 var button = mb_left;	
 var condition = mouse_check_button_pressed(button);
 
-return click_region_home(x_left,y_top,ww,hh,button,highlight,condition,sub,undefined);
+return click_region_home(x_left,y_top,ww,hh,button,highlight,condition,sub,undefined)
 }
 
 function click_region(x_left,y_top,ww,hh,highlight,button,sub) {

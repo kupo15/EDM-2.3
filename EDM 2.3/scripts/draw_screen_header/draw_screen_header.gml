@@ -1,31 +1,32 @@
 
-function draw_screen_header(header_left,header_right,header_string,height) {
+function draw_screen_header(header_left,header_right,header_string,height,bg_col) {
 /// @param header_left
 /// @param header_right
 /// @param header_string
-/// @param [stringHeight]
-
+/// @param [stringHeight
+/// @param [header_color]
 
 if argument[3] == undefined
 height = header_font_height;
+
+if argument[4] == undefined
+bg_col = header_color;
 
 var xx = room_width*0.5;
 var yy = (header_height-height)*0.5;
 var ww = app_width;
 var hh = header_height;
 
-draw_rectangle_color(0,0,ww,hh,header_color,header_color,header_color,header_color,false);
+draw_rectangle_color(0,0,ww,hh,bg_col,bg_col,bg_col,bg_col,false);
 
-if header_string != ""
-	{
-	draw_set_halign(fa_center);	
-	draw_text_height_color(xx,yy,header_string,c_white,height);
-	draw_set_halign(fa_left);
-	}
+draw_set_halign(fa_center);
+draw_text_height_color(xx,yy,header_string,c_white,height);
+draw_set_halign(fa_left);
 
 var xpos = 0;
 var region = header_height;
 var header_type = header_left;
+
 repeat 2
 	{
 	if header_type == headerType.bars
@@ -38,13 +39,12 @@ repeat 2
 		draw_menu_bars(xpos+xx,header_height*0.5,ww,hh,2,c_white);
 
 		// clicked on bars
-		if (submenu < 0) && !mode_delete
+		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,region,region,true,submenu)
 			{
 			submenuPrevious = submenu;
 			submenu = navbar.sidebar;
 	
-			submenu_menu_xpos = 0;
 			screenDarkenIndex = darkenIndex.sidebar;
 			}
 		}
@@ -53,15 +53,15 @@ repeat 2
 		// draw the 3 dots
 		draw_menu_dots(xpos+(region*0.5),header_height*0.5,3,7,c_white);
 		
-		if (submenu < 0) && !mode_delete
+		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,region,region,true,submenu)
 			{}
 		}
 	else if header_type == headerType.back
 		{
-		draw_menu_arrow(xpos+20,header_height*0.5,40,30,4,1,c_white);
+		draw_menu_arrow(xpos+30,header_height*0.5,40,30,4,1,c_white);
 
-		if (submenu < 0) && !mode_delete
+		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,region,region,true,submenu)
 		screen_goto_prev();
 		}
@@ -71,7 +71,18 @@ repeat 2
 		
 		var xpos = app_width-hh-20;
 
-		if (submenu < 0) && !mode_delete
+		if !mode_delete && (submenu < 0)
+		if click_region_released(xpos,0,region,region,true,submenu)
+		return true;
+		}
+	else if header_type == headerType.plus
+		{
+		var pos_off = region*0.5;
+		draw_plus_button(xpos-20+pos_off,pos_off,region,false,c_white); // plus button
+		
+		var xpos = app_width-hh-20;
+
+		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,region,region,true,submenu)
 		return true;
 		}
@@ -84,6 +95,42 @@ repeat 2
 draw_header_delete(0,ww,hh);
 
 return false;
+}
+
+function draw_screen_header_submenu(offset,sort_index) {
+/// param offset
+/// param sort_index
+/// param header_string
+
+var xx = 0;
+var yy = header_height;
+var hh = header_height+header_submenu_height;
+var col = header_color;
+
+draw_rectangle_color(xx,yy,app_width,hh,col,col,col,col,false);
+	
+var header_num = argument_count-2;
+var header_sep = app_width/header_num;
+var height = 40;
+var val = undefined;
+
+for(var i=0;i<header_num;i++)
+	{		
+	var str_col = pick(c_lt_gray,c_white,i==sort_index);
+	
+	if click_button(i*header_sep,yy,argument[i+2],height,str_col,header_sep,header_submenu_height,undefined,false,false,submenu)
+	val = i;
+	}
+
+// draw highlight underline
+var xx = offset*header_sep;
+var width = 4;
+var col = c_white;
+
+draw_line_pixel(xx,yy+header_submenu_height-width+2,header_sep,width,col,1); 
+draw_line_pixel(xx,yy+header_submenu_height,header_sep,1,c_lt_gray,1); 
+
+return val;
 }
 
 function draw_header_delete(yy,ww,hh){

@@ -85,15 +85,19 @@ if click_region_released(room_width-hh,yy,hh,hh,true,submenu)
 	
 }
 
-function draw_plus_button(xx,yy,d,enclosed,col) {
+function draw_plus_button(xx,yy,d,enclosed,str_col,col) {
 // centered
 /// @param xx
 /// @param yy
 /// @param diameter
 /// @param enclosed
-/// @param [buttonColor]
+/// @param [strColor
+/// @param buttonColor]
 
 if argument[4] == undefined
+str_col = c_black;
+
+if argument[5] == undefined
 col = c_white;
 
 var r = d*0.5;
@@ -104,23 +108,18 @@ if enclosed
 draw_circle_color(xx,yy,r,col,col,false);
 
 // draw plus
-draw_line_width_color(xx-line_ll,yy,xx+line_ll,yy,ww,c_black,1);
-draw_line_width_color(xx,yy-line_ll,xx,yy+line_ll,ww,c_black,1);
+draw_line_width_color(xx-line_ll,yy,xx+line_ll,yy,ww,str_col,str_col);
+draw_line_width_color(xx,yy-line_ll,xx,yy+line_ll,ww,str_col,str_col);
 }
 
-function draw_switch_tab(xx,yy,box_hh,diameter,ind,variable) {
+function draw_switch_tab(xx,yy,box_hh,switch_hh,ind,variable,enclosed) {
 /// @param xx
 /// @param yy
 /// @param box_hh
-/// @param diameter
+/// @param switch_hh
 /// @param lerp_index
 /// @param variable
-
-var scale = diameter/7*0.5;
-
-var ww = 25*scale;
-var hh = 10*scale;
-var r = 7*scale;
+/// @param enclosed
 
 var bar_col = c_gray;
 var button_col = make_color_rgb(200,200,200);
@@ -138,13 +137,36 @@ switchTabDispEnd[ind] = variable;
 if switchTabDisp[ind] != switchTabDispEnd[ind]
 switchTabDisp[ind] = lerp(switchTabDisp[ind],switchTabDispEnd[ind],0.35);
 
-yy += (box_hh*0.5);
+var scale = switch_hh/72;
+var rect_ww = 72*2.02*scale;
+var rect_hh = switch_hh;
+var radx = rect_ww*0.5;
+var rady = rect_hh;
+var yoff = (box_hh-rect_hh)*0.5;
+var rect_ypos = yy+yoff;
 
-var yoff = hh*0.5;
-var button_xoff = ww*switchTabDisp[ind];
+// if enclosed
+draw_roundrect_color_ext(xx,rect_ypos,xx+rect_ww,rect_ypos+rect_hh,radx,rady,bar_col,bar_col,false); // draw underbar
 
-draw_roundrect_color(xx,yy-yoff,xx+ww,yy+yoff,bar_col,bar_col,false); // draw underbar
-draw_circle_color(xx+button_xoff,yy,r,button_col,button_col,false); // draw button
+var r = switch_hh*0.5*0.83;
+var d = r*2;
+var button_xoff = rect_ww*switchTabDisp[ind]*0.5;
+var button_xpos = xx+(rect_ww*0.25);
+var button_ypos = rect_ypos+(rect_hh*0.5);
 
+draw_circle_color(button_xpos+button_xoff,button_ypos,r,button_col,button_col,false); // draw button
+}
 
+function draw_radio_button(xx,yy,box_hh,diameter,variable,col) {
+	
+var r = diameter*0.5;
+yy += box_hh*0.5;
+col = pick(col,c_black,!variable);	
+	
+draw_circle_color(xx,yy,r,col,col,false); // full circle
+draw_circle_color(xx,yy,r*0.8,c_white,c_white,false); // white cutout
+
+if variable
+draw_circle_color(xx,yy,r*0.4,col,col,false); // selected center
+	
 }

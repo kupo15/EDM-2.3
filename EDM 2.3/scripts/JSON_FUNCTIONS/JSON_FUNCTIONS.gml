@@ -20,7 +20,7 @@ buffer_write(_buffer,buffer_string,_string);
 buffer_save(_buffer,_filename);
 buffer_delete(_buffer);
 
-db(_string);
+//db(_string);
 }
 
 
@@ -31,27 +31,27 @@ if file_exists(_filename)
 	{
 	ROOT_data_struct = LoadJSONFromFile(_filename); 
 
-	var saveVersion = variable_struct_get(ROOT_data_struct,"version");
-
-	if saveVersion != json_version
-		{
+	var saveVersion = variable_struct_get(META_data,"version");
+	if (json_version == -4) || (saveVersion != json_version)
+		{// transition to new version			
 		scr_json_version_transition(saveVersion);
-		ROOT_data_struct.version = json_version;
+		META_data.version = json_version;
 		
 		app_save;
+		db("transitioned saved data");
 		}
 	else // load 
 		{
-		// create data arrays
-		courselist_array = ROOT_data_struct.courselist;
-		scorelist_array = ROOT_data_struct.scorelist;
-
+		scr_profile_set(META_data.profileIndex);
+		handicap_season_array = SEASON_data;
+		
 		db(string(_filename)+" loaded");
 		}
 	}
 else
 	{
 	json_conversion_missing();
+	
 	db(string(_filename)+" not found > creating data structures");
 	}
 }

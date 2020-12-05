@@ -1,5 +1,5 @@
 
-function funct_screen_scrolling_hor(xx,yy,ww,hh,sep,list_size,list_disp,offset_start_pointer,offset_pointer,scrollbar_index,sub) {
+function funct_screen_scrolling_hor(xx,yy,ww,hh,sep,list_size,list_disp,scrollbar_index,sub) {
 
 if (list_size < list_disp) || (sub != submenu)
 exit;    
@@ -13,8 +13,8 @@ scrollbar_speed[scrollbar_index] = 0;
 // scrolling
 if click_region_pressed(xx,yy,ww,hh,false,submenu)
 	{
-	var offset_value = ref_get(offset_pointer); // get the value of the original offset variable
-	ref_set(offset_start_pointer,offset_value); // set pointer variable of offset start
+	var offset_value = offsetArray[scrollbar_index]; // get the value of the original offset variable
+	offsetArrayStart[scrollbar_index] = offset_value; // set pointer variable of offset start
 	
 	scrollbarIndexScrolling = scrollbar_index;
 	}
@@ -45,10 +45,10 @@ if scrollbar_index == scrollbarIndexScrolling
 		timer[timerIndex.flick] = flick_window;
 		}
 	
-	offset_var = ref_get(offset_start_pointer)-amt;
+	offset_var = offsetArrayStart[scrollbar_index]-amt;
 	}
 else
-offset_var = ref_get(offset_pointer)-(scrollbar_speed[scrollbar_index])*canFlick;
+offset_var = offsetArray[scrollbar_index]-(scrollbar_speed[scrollbar_index])*canFlick;
 	
 // keep the offset variable in bounds
 var offset_test = offset_var;
@@ -69,10 +69,10 @@ if offset_test != offset_var
 	}
 	
 // set the original offset vars
-ref_set(offset_pointer,offset_var);
+offsetArray[scrollbar_index] = offset_var;
 	
 // draw scrollbar
-var offset_var = ref_get(offset_pointer); // get the value of offset pointer
+var offset_var = offsetArray[scrollbar_index]; // get the value of offset pointer
 
 // funct_draw_scrollbar(res_bleed_xx+5,yy,list_disp,0,list_size,6,offset_var,sep,-5,c_gray,scrollbar_index);
 }

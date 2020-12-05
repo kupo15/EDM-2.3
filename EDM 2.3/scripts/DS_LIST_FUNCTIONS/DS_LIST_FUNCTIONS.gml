@@ -87,8 +87,47 @@ for(var i=0;i<size;i++)
 ds_grid_destroy(sorting_grid);
 }
 
+function ds_list_sort_nested_struct_priority(source_list,key,priorityKey,priorityValue,ascending) {
+/// @description sorts nested lists within structs
+/// @param source_list
+/// @param sort_key
+/// @param priority_key
+/// @param priority_value
+/// @param ascending
+
+ds_list_sort_nested_struct(source_list,key,ascending); // initial sort
+
+// create temp sorting grid
+var sorting_grid = ds_grid_create(2,0); 
+
+// add all data to grid
+var size = ds_list_size(source_list); // size of the reference list
+for(var i=0;i<size;i++) // loop through list
+	{
+	var pointer = source_list[| i]; // get the pointer
+	var key_value = variable_struct_get(pointer,priorityKey); // get the sort value
+	var sort_value = pick(i,i-size,key_value == priorityValue);	
+
+	grid_row_add(sorting_grid); // add a row to the temp sorting grid
+	sorting_grid[# 0,i] = pointer; // add list pointer to grid
+	sorting_grid[# 1,i] = sort_value; // add value to sort to grid
+	}
+	
+// sort grid
+ds_grid_sort(sorting_grid,1,ascending); 
+
+// re add pointers back to the source list
+for(var i=0;i<size;i++)
+	{
+	source_list[| i] = sorting_grid[# 0,i];
+	//ds_list_mark_as_list(source_list,i);
+	}
+
+// destroy temp sorting grid
+ds_grid_destroy(sorting_grid);
+}
+
 function array_sort_nested_struct(source_array,key,ascending) {
-/// @description sorts nested structs within arrays
 /// @param source_array
 /// @param sort_key
 /// @param ascending
@@ -126,6 +165,41 @@ source_array[@ i] = sorting_grid[# 0,i];
 ds_grid_destroy(sorting_grid);
 }
 
+function array_sort_nested_struct_priority(source_array,key,priorityKey,priorityValue,ascending) {
+/// @param source_array
+/// @param sort_key
+/// @param priority_key
+/// @param priority_value
+/// @param ascending
+
+array_sort_nested_struct(source_array,key,ascending); // initial sort
+
+// create temp sorting grid
+var sorting_grid = ds_grid_create(2,0);
+
+var size = array_length(source_array);
+for(var i=0;i<size;i++)
+	{
+	var pointer = source_array[i]; // get the pointer
+	var key_value = variable_struct_get(pointer,priorityKey); // get the sort value
+	var sort_value = pick(i,i-size,key_value == priorityValue);	
+	
+	grid_row_add(sorting_grid); // add a row to the temp sorting grid
+	sorting_grid[# 0,i] = pointer; // add list pointer to grid
+	sorting_grid[# 1,i] = sort_value; // add value to sort to grid
+	}
+	
+// sort grid
+ds_grid_sort(sorting_grid,1,ascending); 
+
+// re add pointers back to the source array
+for(var i=0;i<size;i++)
+source_array[@ i] = sorting_grid[# 0,i];
+
+// destroy temp sorting grid
+ds_grid_destroy(sorting_grid);
+}
+
 
 // Addition GM functions
 function ds_list_push(id,val) {
@@ -135,10 +209,18 @@ ds_list_add(id,val);
 
 function ds_list_pop(id) {
 	
+var return_val = ds_list_peek(id);
 var size = ds_list_size(id);
-var return_val = ds_list_find_value(id,size-1);
 
 ds_list_delete(id,size-1);
+
+return return_val;
+}
+
+function ds_list_peek(id) {
+	
+var size = ds_list_size(id);
+var return_val = ds_list_find_value(id,size-1);
 
 return return_val;
 }

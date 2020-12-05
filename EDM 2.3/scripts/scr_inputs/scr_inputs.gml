@@ -1,6 +1,6 @@
 function scr_inputs() {
 	
-androidBack = input_android_back(vk_down,noone,noone) && submenu != navbar.sidebar;
+androidBack = input_android_back(vk_down,noone,noone) && (submenu != navbar.sidebar);
 androidBackSidebar = input_android_back(vk_down,noone,noone);
 
 //if androidBack
@@ -25,7 +25,18 @@ if mouse_check_button_pressed(mb_left)
 	mouse_xstart = mouse_x;
 	mouse_ystart = mouse_y;
 	}
+	
+// multi touch
+var touch = 0;
+for(var i=0;i<4;i++)
+touch += device_mouse_check_button(i,mb_left);
 
+multiTouch[0] = (touch==0);
+multiTouch[1] = (touch==1);
+multiTouch[2] = (touch==2);
+multiTouch[3] = (touch==3);
+
+// mouse
 mouse_xdist = mouse_x-mouse_xstart;
 mouse_ydist = mouse_y-mouse_ystart;
 
@@ -45,22 +56,6 @@ scr_debug_inputs();
 
 scr_cursor_position_set(keyboard_string,textboxStringScale); // set cursor position
 
-
-// figure out
-
-	game_time ++;
-
-	if timer > -1
-	timer --;
-
-	if timer < -1
-	timer = -1;
-
-	if (close_enough_pause != 1) && close_enough_timer > -1
-	close_enough_timer -= 1+(5*close_enough_skip);
-
-	if close_enough_timer < -1
-	close_enough_timer = -1;
 }
 
 function scr_debug_inputs() {
@@ -70,8 +65,12 @@ exit;
 	
 debug_reset = keyboard_check_pressed(vk_delete);
 
-if debug_reset 
-debug_data_reset();
+if debug_reset
+	{
+	debug_data_reset();
+	scr_handicap_calculate();
+	app_save;
+	}
 
 if keyboard_check(vk_control)
 	{
@@ -96,3 +95,4 @@ if mouse_check_button_pressed(mb_middle)
 }
 	
 	
+

@@ -6,6 +6,7 @@ keyboard_virtual_hide(); // hide keyboard
 if argument[0] != undefined
 submenu = sub;
 
+textboxIndex = undefined;
 numpad_value = "";
 kvActive = false;
 androidBack = false;

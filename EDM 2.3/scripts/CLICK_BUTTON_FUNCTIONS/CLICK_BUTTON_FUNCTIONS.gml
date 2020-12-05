@@ -1,5 +1,5 @@
 
-function click_button(xx,yy,str,height,str_col,ww,hh,col,rounded,outline,sub,alpha) {
+function click_button(xx,yy,str,height,str_col,ww,hh,col,rounded,outline,sub,font,alpha) {
 /// @param xx
 /// @param yy
 /// @param buttonString
@@ -11,9 +11,13 @@ function click_button(xx,yy,str,height,str_col,ww,hh,col,rounded,outline,sub,alp
 /// @param rounded
 /// @param outline
 /// @param submenu
-/// @param [alpha]
+/// @param [font
+/// @param alpha]
 
-var int = argument[11];
+if argument[11] == undefined
+font = fn_normal;
+
+var int = argument[12];
 
 var yoff = (hh-height)*0.5;
 
@@ -33,8 +37,11 @@ else
 	draw_rectangle_color(xx,yy,xx+ww,yy+hh,c_black,c_black,c_black,c_black,true);
 	}
 
+var prev_halign = draw_get_halign();
+
 draw_set_halign(fa_center);
-draw_text_height_color(xx+(ww*0.5),yy+yoff,str,str_col,height);
+draw_text_height_color(xx+(ww*0.5),yy+yoff,str,str_col,height,font);
+draw_set_halign(prev_halign);
 
 return click_region_released(xx,yy,ww,hh,true,sub,alpha);
 }

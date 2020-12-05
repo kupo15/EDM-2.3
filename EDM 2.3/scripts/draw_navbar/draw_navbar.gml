@@ -1,19 +1,19 @@
 function draw_navbar() {
 
-var alph = 1-(navbar_yoff_start/1);
+var alph = 1-(offsetArray[offsetScroll.navbarYoff]/1);
 draw_set_alpha(alph);
 
 // draw highlight
+var offset = offsetArray[offsetScroll.navbarYoff];
 var ico_num = nav_ico_num;
 var xsep = app_width/ico_num;
 var hh = nav_height;
 var xx = xsep*screenIndex;
-var yy_nav = app_height-hh+(hh*navbar_yoff_start);
+var yy_nav = app_height-hh+(hh*offset);
 var col = header_color;
 
 draw_rectangle_color(0,yy_nav,app_width,yy_nav+hh,c_white,c_white,c_white,c_white,false);
-
-draw_rectangle_colour(xx,yy_nav,xx+xsep,yy_nav+hh,col,col,col,col,false);
+draw_rectangle_colour(xx,yy_nav,xx+xsep,yy_nav+hh,col,col,col,col,false); // draw highlight
 
 // draw navbar
 var ww = app_width;
@@ -25,17 +25,10 @@ draw_line_pixel(-1,yy_nav,app_width+1,1,c_gray,alph*0.7); // horizontal line
 draw_set_halign(fa_center);
 for(var i=0;i<ico_num;i++)
 	{
+	name_arr =["Home","Stats","Playing","Score","Courses"];
+
 	var xpos = i*xsep;
-	
-	switch i
-		{
-		case 0: var str = "Home"; break;
-		case 1: var str = "Stats"; break;
-		case 2: var str = "Playing"; break;
-		case 3: var str = "Scores"; break;
-		case 4: var str = "Courses"; break;
-		}
-		
+	var str = name_arr[i];
 	var col = header_color;
 	
 	if i == screenIndex

@@ -162,9 +162,16 @@ if (os_type == os_windows) && click_region(xx-xoff-20,yy-2,ww+40,height+4,false,
 	draw_line_color(xx-ww,yy,xx+ww,yy,col,col);
 	draw_line_color(xx,yy-ww,xx,yy+ww,col,col);
 	
-	debugStringXpos = xx;
-	debugStringYpos = yy;
-	debugStringHeight = height;
+	var within_app = point_in_rectangle(mouse_x,mouse_y,0,0,app_width,app_height);
+
+	// update
+	if within_app
+		{
+		debugStringText = str;
+		debugStringXpos = xx;
+		debugStringYpos = yy;
+		debugStringHeight = height;
+		}
 	}
 
 return scale;	

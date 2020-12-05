@@ -36,7 +36,7 @@ if asset_num > row
 	draw_set_alpha(0.5);
 	draw_roundrect_color(xx+ww-scroll_ww,yy,xx+ww,yy+hh,col,col,false); // draw scroll background
 	
-	draw_set_alpha(scrollbar_disp[scrollbar_index]);
+	draw_set_alpha(scrollbarDisp[scrollbar_index]);
 	draw_roundrect_color(xx+ww-scroll_ww,scroll_yy,xx+ww,scroll_yy+scroll_hh,col,col,false); // draw scroll bar
 	}
 	
@@ -72,7 +72,7 @@ if scrollbar_ystart != noone
 	var drag_ratio = (scrollbar_ystart+mouse_ydist_gui)/(hh-yyoff);
 	}*/
     
-draw_set_alpha(scrollbar_disp);
+draw_set_alpha(scrollbarDisp);
 
 if asset_num > row    
 draw_rectangle(scroll_yy,yy+ww,scroll_yy+scroll_hh,yy+scroll_ww+ww,false); // draw scroll bar
@@ -80,3 +80,14 @@ draw_rectangle(scroll_yy,yy+ww,scroll_yy+scroll_hh,yy+scroll_ww+ww,false); // dr
 draw_set_alpha(1);
 }
 
+function scrollbar_set(ind,val,instant) {
+/// @param scrollindex
+/// @param value
+/// @param [instant]
+
+offsetArray[ind] = val;
+
+if instant
+offsetArrayEnd[ind] = val;
+	
+}

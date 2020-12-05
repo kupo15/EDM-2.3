@@ -3,7 +3,8 @@ none,
 bars,
 dots,
 back,
-trash
+trash,
+plus
 
 }
 
@@ -21,14 +22,13 @@ scroll_end,
 flick,
 press_hold,
 
-closeEnough,
-
 enumcount
 }
 
 enum darkenIndex {
 none,
 sidebar,
+profileChange,
 calendar,
 calendarYear
 }

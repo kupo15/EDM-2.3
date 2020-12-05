@@ -28,18 +28,50 @@ function draw_menu_arrow(xx,yy,ww,hh,thickness,dir,col) {
 	
 var half = hh*0.5;
 var diag_ll = ww*0.3;
+var shift = ww*0.2;
 
-draw_line_width_color(xx,yy,xx+diag_ll,yy-half,thickness,col,col); // diagonal up
-draw_line_width_color(xx,yy,xx+ww,yy,thickness,col,col); // horizontal line
-draw_line_width_color(xx,yy,xx+diag_ll,yy+half,thickness,col,col); // diagonal down line
+draw_primitive_begin(pr_trianglestrip);
+draw_vertex_color(xx,yy,col,1);
+draw_vertex_color(xx+shift,yy,col,1);
+draw_vertex_color(xx+diag_ll,yy-half,col,1);
+draw_vertex_color(xx+diag_ll+shift,yy-half,col,1);
+draw_primitive_end();
+
+draw_primitive_begin(pr_trianglestrip);
+draw_vertex_color(xx,yy,col,1);
+draw_vertex_color(xx+shift,yy,col,1);
+draw_vertex_color(xx+diag_ll,yy+half,col,1);
+draw_vertex_color(xx+diag_ll+shift,yy+half,col,1);
+draw_primitive_end();
+
+thickness = shift*0.25;
+
+draw_rectangle_color(xx+(shift*0.5),yy-thickness,xx+ww,yy+thickness,col,col,col,col,false); // horizontal line	
+}
 	
+function draw_menu_triangle(xx,yy,hh,condition,col) {
+/// @param xx
+/// @param yy
+/// @param hh
+/// @param condition
+/// @param [color]
+
+if argument[4] == undefined
+col = c_white;
+
+var scale = hh/10;
+var ww = hh*1.87*scale;
+var flip = pick(-1,1,condition);
+var yoff = pick(hh*0.8,0,condition);
+
+draw_triangle_color(xx,yy+yoff,xx+ww,yy+yoff,xx+(ww*0.5),yy+yoff+(hh*flip),col,col,col,false);
 }
 	
 function draw_calendar_icon(xx,yy,sq_yoff,sq_size,date) {
 	
 var day = date_get_day(date);
 var weekday = date_get_weekday(date);
-var day_str = funct_convert_day(weekday,false);
+var day_str = funct_convert_weekday(weekday,false);
 
 // draw calendar icon
 draw_roundrect_color(xx+1,yy+sq_yoff,xx+sq_size,yy+sq_size-1+sq_yoff,c_gray,c_gray,true);
@@ -50,6 +82,16 @@ draw_text_height_color(xx+(sq_size*0.5),yy+10+sq_yoff,day_str,c_red,25);
 draw_text_height_color(xx+(sq_size*0.5),yy+40+sq_yoff,day,c_black,46);
 
 draw_set_halign(fa_left);
+}
+	
+function draw_icon_member_initial(xx,yy,str,sep,col,height) {
+	
+var initial = string_char_at(str,1);
+	
+draw_set_halign(fa_center);
+draw_circle_color(xx,yy+(sep*0.5),height,col,col,false);
+draw_text_height_middled(xx,yy,initial,sep,height);	
+	
 }
 	
 function draw_icon_enclosed(spr,ind,xx,yy,ww,hh,ysep,col,shape) {
@@ -95,26 +137,28 @@ draw_sprite_ext(spr,0,xx,yy,sca,sca,0,col,alpha);
 
 }
 
-function draw_icon_width(spr,xx,yy,width,alpha) {
+function draw_icon_width(spr,ind,xx,yy,width,alpha) {
 	
 var spr_ww = sprite_get_width(spr);
+var spr_hh = sprite_get_height(spr);
 var sca = width/spr_ww;
 var col = c_white;
 
-draw_sprite_ext(spr,0,xx,yy,sca,sca,0,col,alpha);
+draw_sprite_ext(spr,ind,xx,yy,sca,sca,0,col,alpha);
 
-return width;
+return spr_hh*sca;
 }
 
-function draw_icon_height(spr,xx,yy,height,alpha) {
+function draw_icon_height(spr,ind,xx,yy,height,alpha) {
 	
+var spr_ww = sprite_get_width(spr);
 var spr_hh = sprite_get_height(spr);
 var sca = height/spr_hh;
 var col = c_white;
 
-draw_sprite_ext(spr,0,xx,yy,sca,sca,0,col,alpha);
+draw_sprite_ext(spr,ind,xx,yy,sca,sca,0,col,alpha);
 
-return height;
+return spr_ww*sca;
 }
 
 function draw_icon_width_centered(spr,index,xx,yy,ww,hh,width,alpha) {

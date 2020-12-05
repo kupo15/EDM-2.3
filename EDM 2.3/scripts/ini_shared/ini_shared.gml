@@ -12,6 +12,9 @@ ini_cursor_vars();
 // custom vk
 numpad_value = "";
 
+// inputs
+multiTouch = array_create(4,false);
+
 // searching lists
 searching = false;
 searched = false;
@@ -77,7 +80,25 @@ switchTabNum = 5;
 switchTabDisp = array_create(switchTabNum,0);
 switchTabDispEnd = array_create(switchTabNum,0);
 
+#region scrolling offset
+offsetArray = array_create(offsetScroll.enumcount,0);
+offsetArrayStart = array_create(offsetScroll.enumcount,0);
+offsetArrayEnd = array_create(offsetScroll.enumcount,0);
+
+scrollbarDisp = array_create(offsetScroll.enumcount,0);
+scrollbarDispEnd = array_create(offsetScroll.enumcount,0);
+
+scrollbar_speed = array_create(offsetScroll.enumcount,0);
+
+scrollbarIndex = noone;
+scrollbarIndexScrolling = noone;
+
+canFlick = true;
+debugFlickSpeed = 0;
+#endregion
+
 // debug
+debugStringText = "''";
 debugStringXpos = 0;
 debugStringYpos = 0;
 debugStringHeight = 0;
@@ -103,18 +124,12 @@ alpha_lerp_end = 0;
 
 debug_reset = false;
 
-// submenus
-submenu_menu_xpos = -side_menu_width-30;
-submenu_menu_xpos_disp = submenu_menu_xpos;
-	
+// submenus	
 darken_screen = false;
 screenDarkenAlpha = 0;
 screenDarkenIndex = 0;
 
 // offsets
-navbar_yoff = 1;
-navbar_yoff_start = 1;
-
 monthOffset = 0;
 monthOffsetStart = 0;
 monthOffsetEnd = 0;
@@ -132,20 +147,4 @@ year_offset_end = 0;
 	
 headerDeleteOffsetDisp = 0;
 headerDeleteOffset = 0;
-
-// variables
-scrollbar_num = 3;
-scrollbar_disp = array_create(scrollbar_num,0);
-scrollbar_disp_end = array_create(scrollbar_num,0);
-scrollbar_speed = array_create(scrollbar_num,0);
-
-scrollbarIndex = noone;
-scrollbarIndexScrolling = noone;
-
-canFlick = true;
-debugFlickSpeed = 0;
-
-
-
-
 }

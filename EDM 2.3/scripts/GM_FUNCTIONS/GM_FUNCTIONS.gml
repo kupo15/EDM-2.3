@@ -88,44 +88,90 @@ return val1;
 	
 }
 	
+function frac_whole(num) {
+
+var str = string(frac(num));
+var new_str = string_replace(str,"0.","");
+
+return real(new_str);	
+}
 	
 // Android display
 function pct_x(percent) {
 
-var xx = app_width*percent;
+var xx = canvas_width*percent;
 
 return xx;
 }
 
 function pct_y(percent) {
 
-var yy = app_height*percent;
+var yy = canvas_height*percent;
 
 return yy;
 }
 
-function pct_x_convert(ww) {
+function pct_x_convert(room_xx) {
 
-var pct = ww/room_width;
+var pct = room_xx/room_width;
+
+return pct;
+}
+
+function pct_y_convert(room_yy) {
+
+var pct = room_yy/room_height;
 
 return pct;
 }
 
-function pct_y_convert(hh) {
+function x_pct_x(xx) {
 
-var pct = hh/room_height;
+var val = pct_x_convert(xx); // convert to percent
 
-return pct;
-}
-	
-function point_x(xx) {
-	
-return xx*global.DPI_X_CONVERT;
-
+return pct_x(val); // return new x coor
 }
 
-function point_y(yy) {
-	
-return yy*global.DPI_Y_CONVERT;
+function y_pct_y(yy) {
 
+var val = pct_y_convert(yy); // convert to percent
+
+return pct_y(val); // return new y coor
+}
+	
+function point_x(xvalue) {
+	
+return xvalue*DPI_X_CONVERT;
+
+}
+
+function point_y(yvalue) {
+	
+return yvalue*DPI_Y_CONVERT;
+
+}
+	
+function fit_item_to_area(_x, _y, _width, _height, _item_width, _item_height) {
+	
+var _new_x, _new_y, _new_width, _new_height;
+var _scale_x = _width/_item_width;
+var _scale_y = _height/_item_height;
+	
+if (_scale_x < _scale_y)
+	{
+    _new_y = _y + (_height - (_item_height * _scale_x)) / 2;
+    _new_x = _x;
+    _new_width = _item_width * _scale_x;
+    _new_height = _item_height * _scale_x;
+	}
+else
+	{
+    _new_y = _y;
+    _new_x = _x + (_width - (_item_width * _scale_y)) / 2;
+    _new_width = _item_width * _scale_y;
+    _new_height = _item_height * _scale_y;
+	}
+		
+var struct = {xx: _new_x,yy: _new_y,ww: _new_width,hh: _new_height};
+return struct;
 }

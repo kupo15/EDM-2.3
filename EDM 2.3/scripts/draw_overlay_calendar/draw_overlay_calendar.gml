@@ -1,8 +1,16 @@
 function draw_overlay_calendar() {
 	
+// set offsets
+var scrollbar_index = offsetScroll.calendarOffset;
+monthOffsetEnd = offsetArray[scrollbar_index];
+monthOffsetStart = offsetArrayStart[scrollbar_index];		
+
 // set alpha	
 var alpha = (screenDarkenIndex == darkenIndex.calendar) || (screenDarkenIndex == darkenIndex.calendarYear);
 calendarAlpha = lerp(calendarAlpha,alpha,0.2);
+
+if calendarAlpha < 0.01
+exit;
 
 draw_set_alpha(calendarAlpha);
 draw_set_color(c_black);
@@ -114,34 +122,31 @@ for(var ii=pos_start;ii<pos_end;ii++) // draw three months
 		}
 	}
 
-monthOffsetEnd += funct_mouse_wheel(1);
+offsetArray[scrollbar_index] += funct_mouse_wheel(1);
 
 #region scrolling
-var offset_start_pointer = [self,"monthOffsetStart"];
-var offset_pointer = [self,"monthOffsetEnd"];
-var scrollbar_index = 1;
 var list_size = 3600;
 
-funct_screen_scrolling_hor(xx,yy+ysep,7*xsep,6*ysep,7*xsep,list_size,1,offset_start_pointer,offset_pointer,scrollbar_index,navbar.calendar);
+funct_screen_scrolling_hor(xx,yy+ysep,7*xsep,6*ysep,7*xsep,list_size,1,scrollbar_index,navbar.calendar);
 #endregion
 
-if monthOffsetEnd < 0
-monthOffsetEnd = 0;
+if offsetArray[scrollbar_index] < 0
+offsetArray[scrollbar_index] = 0;
 
 // scrollbar_speed[scrollbar_index] = 0;
 
 if mouse_check_button_released(mb_left)
 	{	
 	if scrollbar_speed[scrollbar_index] == 0
-	monthOffsetEnd = round(monthOffset);
+	offsetArray[scrollbar_index] = round(monthOffset);
 	else
 		{
 		var dir = sign(monthOffset-monthOffsetStart);
 	
 		if dir == 1
-		monthOffsetEnd = ceil(monthOffset);
+		offsetArray[scrollbar_index] = ceil(monthOffset);
 		else if dir == -1
-		monthOffsetEnd = floor(monthOffset);		
+		offsetArray[scrollbar_index] = floor(monthOffset);	
 		}
 		
 	// stop scrollbar
@@ -170,7 +175,7 @@ var ww = 200;
 var xoff = -ww*0.5;
 
 // draw Submit button
-if click_button(xx+xoff,yy+(yoff*ysep),"Cancel",50,c_black,ww,hh,undefined,false,false,navbar.calendar,calendarAlpha)
+if click_button(xx+xoff,yy+(yoff*ysep),"Cancel",50,c_black,ww,hh,undefined,false,false,navbar.calendar,undefined,calendarAlpha)
 androidBack = true;
 	
 #endregion
@@ -181,7 +186,7 @@ var xx = room_width*0.8;
 var xoff = -ww*0.5;
 
 // draw Submit button
-if click_button(xx+xoff,yy+(yoff*ysep),"OK",50,header_color,ww,hh,undefined,false,false,navbar.calendar,calendarAlpha)
+if click_button(xx+xoff,yy+(yoff*ysep),"OK",50,header_color,ww,hh,undefined,false,false,navbar.calendar,undefined,calendarAlpha)
 	{
 	calendarDateEntry = date_create_datetime(dateSelectYear,dateSelectMonth,dateSelectDay,1,1,1);
 	androidBack = true;

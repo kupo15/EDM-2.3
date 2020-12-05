@@ -107,28 +107,53 @@ function clone_deep(thing) {
     return theClone;
 }	
 
-function struct_undo_push(activeStruct,nextStruct,name) {
-	
-var new_struct = variable_struct_get(nextStruct,name);	
-	
-// add to stack	
-ds_list_push(structUndoStack,activeStruct);
+function struct_undo_push(workingStruct) {
 
-return new_struct;
+// add the current pointer to stack
+ds_list_push(structUndoStack,workingStruct);
+	
+// create a copy the current struct
+var new_working = struct_copy(workingStruct);	
+	
+//activeStruct = variable_struct_get(new_working,name);
+	
+// return the new copy of the root struct
+return new_working;
 }
 
-function struct_undo_pop(struct,originalStruct,overwrite) {
+function struct_undo_pop(struct,overwrite) {
 /// @param workingStruct
-/// @param original_struct
-/// @param [overwrite]
+/// @param overwrite
 
-if argument[2] == undefined
-overwrite = false;
+var pop = ds_list_pop(structUndoStack); // retrieve previous root copy
 
-var pop = ds_list_pop(structUndoStack); // retrieve next active struct level
+if overwrite
+pop = struct_copy(struct); // overwrite previous root copy with new changes
 
-if !overwrite
-copy_deep(struct,originalStruct); // revert back to original
+return pop; // return previous root copy
+}
 
-return pop;
+function struct_undo_peek(showDebug) {
+/// @param [showDebug]	
+		
+var return_val = ds_list_peek(structUndoStack);
+
+if argument[0] == true
+	{
+	cs(js(return_val));
+	sm("");
+	}
+
+return return_val;
+}
+	
+function struct_debug_show(struct,message) {
+/// @param struct
+/// @param [message]
+
+if argument[1] == undefined
+message = "";
+
+cs(js(struct));
+sm(message);	
 }

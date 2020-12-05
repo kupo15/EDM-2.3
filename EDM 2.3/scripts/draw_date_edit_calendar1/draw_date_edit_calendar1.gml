@@ -6,7 +6,7 @@ function draw_date_edit_calendar1() {
 	var height = 80;
 
 	draw_text_height(xx,yy,"Round Date",height);
-	draw_text_height_ext(xx,yy+80,date_pointer[| score_data.course],0,-1,500,50,false);
+	//draw_text_height_ext(xx,yy+80,date_pointer[| textboxEntry.course],0,-1,500,50,false);
 
 	var datetime = date_create_datetime(year_offset_end,floor(month_offset_end),1,0,0,0);
 	var day_num = date_days_in_month(datetime);
@@ -106,7 +106,7 @@ function draw_date_edit_calendar1() {
 	if androidBack
 	    {
 		if submit
-		date_pointer[| score_data.date] = date_create_datetime(year_offset_end,month_offset_end,day_offset_end,1,1,1); // save date
+		date_pointer[| textboxEntry.date] = date_create_datetime(year_offset_end,month_offset_end,day_offset_end,1,1,1); // save date
 	
 	    screen_goto_prev(navbar.main);
 		date_pointer = noone;

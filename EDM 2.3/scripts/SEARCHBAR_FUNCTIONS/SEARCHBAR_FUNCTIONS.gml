@@ -13,9 +13,8 @@ switch textboxIndex
 if (searched_name == kvLastString)
 exit;
 
-// convert to using strings to set variables
-course_list_offset = 0;
-course_list_offset_start = 0;
+offsetArray[offsetScroll.courselistOffset] = 0;
+offsetArrayStart[offsetScroll.courselistOffset] = 0;
 searched = true;
 
 // clear search results
