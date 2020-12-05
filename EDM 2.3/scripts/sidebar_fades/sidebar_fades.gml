@@ -8,7 +8,7 @@ scr_sidebar_lerp(offsetScroll.entryYoff,submenu == navbar.popupEntry,fade_spd); 
 //scr_sidebar_lerp(offsetScroll.courseSortUnderline,META_data.courseSort,0.5); // underline
 scr_sidebar_lerp(offsetScroll.numpadYoff,submenu == navbar.numpad,1); // numpad
 
-var sidebar_condition = (submenu == navbar.sidebar);
+var sidebar_condition = (submenu == navbar.sidebar) || (submenu == navbar.profileChange);
 scr_sidebar_lerp(offsetScroll.sidebarXoff,sidebar_condition,SIDEBAR_LERP); // sidebar position
 
 

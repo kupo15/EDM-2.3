@@ -33,7 +33,8 @@ if file_exists(_filename)
 
 	var saveVersion = variable_struct_get(META_data,"version");
 	if (json_version == -4) || (saveVersion != json_version)
-		{// transition to new version			
+		{// transition to new version	
+			
 		scr_json_version_transition(saveVersion);
 		META_data.version = json_version;
 		
@@ -43,7 +44,6 @@ if file_exists(_filename)
 	else // load 
 		{
 		scr_profile_set(META_data.profileIndex);
-		handicap_season_array = SEASON_data;
 		
 		db(string(_filename)+" loaded");
 		}

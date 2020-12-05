@@ -5,7 +5,8 @@
 #macro app_save json_save_array(save_data,ROOT_data_struct)
 #macro app_load json_load_array(save_data)
 
-#macro PROFILE_data ROOT_data_struct.profile
+#macro MEMBER_database ROOT_data_struct.memberDatabase
+#macro PROFILE_data ROOT_data_struct.profiles[profile_index]
 #macro META_data ROOT_data_struct.meta
 
 // header

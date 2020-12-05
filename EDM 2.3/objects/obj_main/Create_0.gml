@@ -5,7 +5,7 @@ debug_submenu_names();
 ini_config();
 ini_shared();
 
-//app_load;
+app_load;
 ini_create();
 
 

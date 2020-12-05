@@ -61,3 +61,10 @@ profileChange,
 popupEntry,
 }
 
+enum listSort {
+firstName,
+lastName,
+favorite,
+active,
+}
+
