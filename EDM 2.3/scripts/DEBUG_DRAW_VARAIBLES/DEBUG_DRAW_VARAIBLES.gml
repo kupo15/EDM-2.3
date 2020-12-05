@@ -161,14 +161,16 @@ draw_text_height(xx,yy+((ind+2)*sep),"clickMoved: "+string(clickMoved),height); 
 draw_text_height(xx,yy+((ind+3)*sep),"MouseStart: "+string(mouse_xstart)+" , "+string(mouse_ystart),height); // mouse ystart
 draw_text_height(xx,yy+((ind+4)*sep),"Mouse Distance: "+string(mouse_xdist)+" , "+string(mouse_ydist),height); // mouse distances
 draw_text_height(xx,yy+((ind+5)*sep),"Mouse Coor: "+string(mouse_x)+" , "+string(mouse_y),height); // mouse coor
+draw_text_height(xx,yy+((ind+7)*sep),"Mouse Coor%: "+string(mouse_x/room_width*100)+" , "+string(mouse_y/room_height*100),height); // mouse coor
 	
 if mouse_check_button(mb_middle)
 	{
 	draw_rectangle_color(mouse_xpos,mouse_ypos,mouse_x,mouse_y,c_black,c_black,c_black,c_black,true);
 	draw_text_height(xx,yy+((ind+6)*sep),"Region Size: ["+string(abs(mouse_xpos-mouse_x))+" , "+string(abs(mouse_ypos-mouse_y))+"]",height); // mouse coor
+	draw_text_height(xx,yy+((ind+8)*sep),"Region Size %: ["+string(abs(mouse_xpos-mouse_x)/room_width*100)+" , "+string(abs(mouse_ypos-mouse_y)/room_height*100)+"]",height); // mouse coor
 	}
 
-debugyoff += 5;
+debugyoff += 10;
 }
 
 function debug_device_info(xx,yy,ind,sep,height) {

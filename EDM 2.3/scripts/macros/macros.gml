@@ -11,7 +11,7 @@
 
 // header
 #macro header_color make_color_rgb(0,145,206) // make_color_rgb(42,104,53) //
-#macro header_height 170
+#macro header_height y_pct_y(160)
 #macro header_submenu_height header_height*0.8
 #macro header_font_height header_height*0.6
 
@@ -36,7 +36,7 @@
 #macro cursor_width 3
 
 // sidebar
-#macro side_menu_width 870
+#macro side_menu_width x_pct_x(870)
 #macro SIDEBAR_LERP 0.16
 
 // clicking

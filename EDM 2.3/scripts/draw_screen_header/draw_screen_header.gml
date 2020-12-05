@@ -32,11 +32,11 @@ repeat 2
 	if header_type == headerType.bars
 		{
 		// draw the 3 bars
-		var ww = x_pct_x(header_height*0.33);
-		var hh = y_pct_y(header_height*0.27);
-		var xx = x_pct_x((region-ww)*0.5);
-		var yy = y_pct_y(header_height*0.5);
-		var thick = y_pct_y(3);
+		var ww = header_height*0.33;
+		var hh = header_height*0.27;
+		var xx = (region-ww)*0.5;
+		var yy = header_height*0.5;
+		var thick = y_pct_y(4);
 		
 		draw_menu_bars(xpos+xx,yy,ww,hh,thick,c_white);
 
@@ -53,8 +53,12 @@ repeat 2
 	else if header_type == headerType.dots
 		{
 		// draw the 3 dots
-		var xx = x_pct_x(region*0.5);
-		draw_menu_dots(xpos+xx,header_height*0.5,header_height*0.035,header_height*0.07,c_white);
+		var xx = region*0.5;
+		var yy = header_height*0.5;
+		var rr = header_height*0.035;
+		var sep = header_height*0.067;
+		
+		draw_menu_dots(xpos+xx,yy,rr,sep,c_white);
 		
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,region,region,true,submenu)
@@ -63,7 +67,11 @@ repeat 2
 	else if header_type == headerType.back
 		{
 		var xx = pct_x(3);
-		draw_menu_arrow(xpos+xx,header_height*0.5,header_height*0.33*1.33,header_height*0.33,4,1,c_white);
+		var yy = header_height*0.5;
+		var ww = header_height*0.33*1.33;
+		var hh = header_height*0.33;
+		
+		draw_menu_arrow(xpos+xx,yy,ww,hh,4,1,c_white);
 
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,region,region,true,submenu)
@@ -83,7 +91,7 @@ repeat 2
 	else if header_type == headerType.plus
 		{
 		var xx = x_pct_x(20);
-		var pos_off = x_pct_x(region*0.5);
+		var pos_off = region*0.5;
 		draw_plus_button(xpos-xx+pos_off,pos_off,region,false,c_white); // plus button
 		
 		//var xpos = app_width-hh-20;
@@ -94,7 +102,7 @@ repeat 2
 		}
 		
 	var header_type = header_right;
-	var xpos = app_width-x_pct_x(region);
+	var xpos = app_width-region;
 	}
 	
 // other header overwrite
