@@ -58,7 +58,7 @@ else
 
 function json_save_array(_filename,arrayId) {
 /// @param filename
-
+exit;
 // save all
 var _string = json_stringify(arrayId);
 SaveStringToFile(_filename,_string);

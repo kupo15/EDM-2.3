@@ -42,7 +42,7 @@ mode_new_member = false;
 transitionReady = 0;
 androidBack = false;
 
-submenu = navbar.main;
+submenu = starting_submenu;
 submenuPrevious = submenu;
 activeSubmenu = submenu;
 
@@ -80,7 +80,7 @@ switchTabNum = 5;
 switchTabDisp = array_create(switchTabNum,0);
 switchTabDispEnd = array_create(switchTabNum,0);
 
-#region scrolling offset
+// scrolling offset
 offsetArray = array_create(offsetScroll.enumcount,0);
 offsetArrayStart = array_create(offsetScroll.enumcount,0);
 offsetArrayEnd = array_create(offsetScroll.enumcount,0);
@@ -95,7 +95,6 @@ scrollbarIndexScrolling = noone;
 
 canFlick = true;
 debugFlickSpeed = 0;
-#endregion
 
 // debug
 debugStringText = "''";

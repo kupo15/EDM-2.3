@@ -109,16 +109,16 @@ draw_rectangle_color(xx,yy,xx+(3*hsep2),yy+hh,col,col,col,col,false);
 
 // draw dark button background
 var col = make_color_rgb(240,240,240);
-draw_rectangle_color(xx+(3*hsep2),yy,app_width,yy+hh,col,col,col,col,false);
+draw_rectangle_color(xx+(3*hsep2),yy,room_width,yy+hh,col,col,col,col,false);
 
 //draw_rectangle_color(xx,yy+(3*vsep),xx+105+(1*hsep2),yy+hh,col,col,col,col,false);
-//draw_rectangle_color(xx+hsep1+(2*hsep2),yy+(3*vsep),app_width,yy+hh,col,col,col,col,false);
+//draw_rectangle_color(xx+hsep1+(2*hsep2),yy+(3*vsep),room_width,yy+hh,col,col,col,col,false);
 
 // draw lines
 var col = make_color_rgb(230,230,230);
 for(var i=0;i<3;i++)
 	{
-	draw_line_color(0,yy+((i+1)*vsep),app_width,yy+((i+1)*vsep),col,col); // hor lines
+	draw_line_color(0,yy+((i+1)*vsep),room_width,yy+((i+1)*vsep),col,col); // hor lines
 	draw_line_color(((i+1)*hsep2),yy,((i+1)*hsep2),yy+hh,col,col); // vert lines
 	}
 	

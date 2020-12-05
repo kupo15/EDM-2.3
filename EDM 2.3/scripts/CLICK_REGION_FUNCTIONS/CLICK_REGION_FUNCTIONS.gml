@@ -35,16 +35,16 @@ vk_initiate(kvInit,kvGo); // popup keyboard
 
 function ini_cursor_vars() {
 
-	textboxStringScale = noone;
-	textboxStringLength = 0;
-	textboxStringWidth = 0;
+textboxStringScale = noone;
+textboxStringLength = 0;
+textboxStringWidth = 0;
 
-	cursorSet = false;
-	cursorSetIndex = 0;
-	cursorPos = 0; // the actual cursor position in string
-	cursorPosStart = 0; // the starting position
-	cursorXposOff = 0; // the cursor xpos in pixels
-	cursorHoverPos = 0;
+cursorSet = false;
+cursorSetIndex = 0;
+cursorPos = 0; // the actual cursor position in string
+cursorPosStart = 0; // the starting position
+cursorXposOff = 0; // the cursor xpos in pixels
+cursorHoverPos = 0;
 
 }
 
@@ -164,7 +164,7 @@ if within_region
 return false;
 }
 
-function click_region_released(x_left,y_top,ww,hh,highlight,sub,alpha) {
+function click_region_released(x_left,y_top,ww,hh,highlight,sub,alpha) {	
 	
 var button = mb_left;	
 var condition = mouse_check_button_released(button);

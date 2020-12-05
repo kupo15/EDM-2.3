@@ -13,7 +13,6 @@ if androidBack
 		if (screenIndex == screen.home) && (os_type == os_android)
 		game_end();
 
-		scr_handicap_calculate();
 		screen_change(screen.home,undefined,true);
 		}
 	}
@@ -36,7 +35,6 @@ draw_sidebar_main_menu();
 
 // popup overlays
 draw_overlay_calendar();
-draw_playing_score_enter();
 draw_overlay_circle_button();
 	
 draw_highlight_click_static(submenu != navbar.sidebar);

@@ -34,8 +34,8 @@ else
 	// apply settings
 	var ww = app_width;
 	var hh = app_height;
-	var scale = 1.5;
-	var debug_ww = 2.5;
+	var scale = 1;
+	var debug_ww = 1.75;
 		
 	var disp_ww = display_get_width();
 	var disp_hh = display_get_height();

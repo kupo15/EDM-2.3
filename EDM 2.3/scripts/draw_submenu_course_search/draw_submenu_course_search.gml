@@ -8,14 +8,14 @@ var searchbar_hh = ysep*0.75;
 var xx = 120;
 var height = 30;
 
-var yy = ypos+(app_height*coursebar_yoff_start);
+var yy = ypos+(room_height*coursebar_yoff_start);
 yy += searchbar_hh;
 
-var hh = app_height-yy;
+var hh = room_height-yy;
 var rows = hh/ysep;
 
 var col = c_white;
-draw_rectangle_color(0,yy,app_width,yy+app_height,col,col,col,col,false);
+draw_rectangle_color(0,yy,room_width,yy+room_height,col,col,col,col,false);
 
 scr_searchbar_array(ref_array);
 
@@ -25,7 +25,7 @@ ref_array = searchedList;
 
 var list_size = array_length(ref_array);
 var kvoff = kvHeight/ysep;
-var test_passed = yy+(list_size*ysep)+kvHeight > app_height;
+var test_passed = yy+(list_size*ysep)+kvHeight > room_height;
 var list_ext = list_size+(kvoff*test_passed);
 
 /*

@@ -3,17 +3,12 @@ goto_draw_debug();
 
 function debug_submenu_names() {
 
-enum_name_submenu[-navbar.enumstart+1+navbar.profileChange] = "profile_change";         
+//enum_name_submenu[-navbar.enumstart+1+navbar.profileChange] = "profile_change";         
 enum_name_submenu[-navbar.enumstart+1+navbar.sidebar] = "sidebar";         
 enum_name_submenu[-navbar.enumstart+1+navbar.main] = "main";
 enum_name_submenu[-navbar.enumstart+1+navbar.hidden] = "hidden";
-enum_name_submenu[-navbar.enumstart+1+navbar.coursebar] = "coursebar";
-enum_name_submenu[-navbar.enumstart+1+navbar.locationbar] = "locationbar";
 enum_name_submenu[-navbar.enumstart+1+navbar.popupEntry] = "entryPopup";
-enum_name_submenu[-navbar.enumstart+1+navbar.teebar] = "teebar";
 enum_name_submenu[-navbar.enumstart+1+navbar.year_select] = "year_select";
-enum_name_submenu[-navbar.enumstart+1+navbar.parbar] = "parbar";
-enum_name_submenu[-navbar.enumstart+1+navbar.scorebar] = "scorebar";
 enum_name_submenu[-navbar.enumstart+1+navbar.numpad] = "numpad";
 enum_name_submenu[-navbar.enumstart+1+navbar.calendar] = "calendar";
 enum_name_submenu[-navbar.enumstart+1+navbar.calendarYearSelect] = "calendarYearSelect";
@@ -76,8 +71,10 @@ function debug_draw_strings(xx,yy,ind,sep,height) {
 draw_text_height(xx,yy+((ind+0)*sep),"kvLastString:",height);
 draw_text_height(xx,yy+((ind+1)*sep),string(kvLastString),height);
 
-draw_text_height(xx,yy+((ind+2.5)*sep),"stringText:",height);
-draw_text_height_middled(xx+130,yy+((ind+2.5)*sep),string(debugStringText),sep,text_reduce(debugStringText,230,height),1);
+draw_text_height(xx,yy+((ind+2.5)*sep),"stringText: ",height);
+
+var xoff = string_width_height("stringText: ",height);
+draw_text_height_middled(xx+xoff,yy+((ind+2.5)*sep),string(debugStringText),sep,text_reduce(debugStringText,230,height),1);
 draw_text_height(xx,yy+((ind+3.5)*sep),"stringxpos: "+string(debugStringXpos),height);
 draw_text_height(xx,yy+((ind+4.5)*sep),"stringypos: "+string(debugStringYpos),height);
 draw_text_height(xx,yy+((ind+5.5)*sep),"stringHeight: "+string(debugStringHeight),height);

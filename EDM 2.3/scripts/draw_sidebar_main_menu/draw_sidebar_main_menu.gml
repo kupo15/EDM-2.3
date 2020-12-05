@@ -9,7 +9,7 @@ var xx_off =  offset*(-side_menu_width-30);
 var xx = 0;
 var yy = 0;
 var ww = side_menu_width;
-var hh = app_height;
+var hh = room_height;
 var profile_hh = 220;
 var col = c_white;
 var profile_col = make_color_rgb(76,102,145);
@@ -17,7 +17,7 @@ var profile_col = make_color_rgb(76,102,145);
 #region profile section
 draw_rectangle_color(xx+xx_off,yy,xx+xx_off+ww,yy+hh,col,col,col,col,false); // menu background
 
-// if click outside of menu
+/*// if click outside of menu
 if click_region_released(xx+xx_off+ww,yy,ww,hh,noone,navbar.sidebar) // make_color_rgb(0,255,255)
 androidBackSidebar = true;
 else if click_button(xx_off,0,"",0,c_black,140,140,undefined,false,undefined,submenu)
@@ -54,24 +54,21 @@ draw_text_height_color(xx+xx_off+200,yy,str_index,c_white,height); // draw handi
 //draw_text_height(xx+xx_off,yy+25,"@"+user_username,25); // draw user id
 
 draw_menu_triangle(xx_off+400,yy+15,10,submenu != navbar.profileChange);
-
+*/
 
 #endregion
 
+#region draw menu items
 var xx = 100;
 var yy = profile_hh;
-var sep = 75;
-var height = 30;
-#region draw menu items
+var sep = 120;
+var height = 50;
+
 draw_set_halign(fa_left);
 draw_text_height_middled(xx+xx_off,yy+(screen.home*sep),"Home",sep,height);
-draw_text_height_middled(xx+xx_off,yy+(screen.stats*sep),"Course Stats",sep,height);
-draw_text_height_middled(xx+xx_off,yy+(screen.playing*sep),"Active Round",sep,height);
-draw_text_height_middled(xx+xx_off,yy+(screen.score_list*sep),"Score History",sep,height);
-draw_text_height_middled(xx+xx_off,yy+(screen.course_list*sep),"Courses",sep,height);
-draw_text_height_middled(xx+xx_off,yy+(screen.score_card*sep),"My Card",sep,height);
-draw_text_height_middled(xx+xx_off,yy+(screen.indexTrend*sep),"Handicap Trends",sep,height);
-draw_text_height_middled(xx+xx_off,yy+(screen.handicapSeason*sep),"Handicap Season",sep,height);
+draw_text_height_middled(xx+xx_off,yy+(screen.members*sep),"Members",sep,height);
+draw_text_height_middled(xx+xx_off,yy+(screen.stats*sep),"Stats",sep,height);
+
 
 draw_text_height_middled(xx+xx_off,yy+(screen.help_info*sep),"Help and Info",sep,height);
 draw_text_height_middled(xx+xx_off,yy+(screen.settings*sep),"Settings",sep,height);
@@ -80,7 +77,7 @@ draw_text_height(xx_off+15,room_height-40,"Vers. "+string(GM_version),30);
 
 for(var i=0;i<screen.enumcount;i++)
 	{
-	if (i>screen.handicapSeason) && (i<screen.help_info)
+	if (i>screen.stats) && (i<screen.help_info)
 	continue;
 		
 	draw_icon_height_centered_color(spr_footer_icon,i,res_bleed_xx+xx_off,yy+(i*sep),sep*0.7,sep,sep*0.7,header_color,1); // draw menu icons
@@ -96,14 +93,14 @@ for(var i=0;i<screen.enumcount;i++)
 		submenu = navbar.main;
 		androidBackSidebar = true;
 
-		scr_navbar_click(i);
+		screen_change(i,undefined,true);
 		new_submenu = true;
 		}
 	}
 
 #endregion
 
-draw_sidebar_profile_switch(xx_off,profile_hh,sep);
+//draw_sidebar_profile_switch(xx_off,profile_hh,sep);
 
 if androidBackSidebar
 	{	
@@ -122,7 +119,7 @@ var ww = side_menu_width;
 var hh = 530;
 var col = c_white;
 
-draw_rectangle_color(xx,yy,xx+ww,app_height-70,col,col,col,col,false);
+draw_rectangle_color(xx,yy,xx+ww,room_height-70,col,col,col,col,false);
 	
 var xoff = 30;
 var text_xoff = 110;

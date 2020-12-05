@@ -8,10 +8,10 @@ exit;
 var win_ww = window_get_width();
 var win_hh = window_get_height();
 	
-var xx = -375;
+var xx = 0-((win_ww-room_width)*0.5)+30;
 var yy = 10;
-var sep = 30;
-var height = 30;
+var sep = 45;
+var height = sep;
 
 debugyoff = 0;
 
@@ -21,18 +21,6 @@ draw_set_halign(fa_left);
 debug_draw_screens(xx,yy,debugyoff,sep,height);
 //debug_draw_screen_darken(xx,yy,debugyoff,sep,height);
 
-draw_text_height(xx,yy+((debugyoff+0)*sep),"courseStruct: "+string(pick("active","undefined",course_struct == undefined)),height);
-draw_text_height(xx,yy+((debugyoff+1)*sep),"scoreStruct: "+string(pick("active","undefined",score_struct == undefined)),height);
-
-draw_text_height(xx,yy+((debugyoff+3)*sep),"workingStruct: "+string(pick("active","undefined",workingStruct == undefined)),height);
-draw_text_height(xx,yy+((debugyoff+4)*sep),"activeStruct: "+string(pick("active","undefined",activeStruct == undefined)),height);
-
-draw_text_height(xx,yy+((debugyoff+6)*sep),"course_index: "+string(course_index),height);
-draw_text_height(xx,yy+((debugyoff+7)*sep),"score_index: "+string(score_index),height);
-//draw_text_height(xx,yy+((debugyoff+8)*sep),"stat_index: "+string(stat_index),height);
-//draw_text_height(xx,yy+((debugyoff+9)*sep),"stat_tee_index: "+string(stat_tee_index),height);
-
-//draw_text_height(xx,yy+((debugyoff+10)*sep),"index_trend_offset: "+string(offsetArray[offsetScroll.indexOffset]),height);
 
 debugyoff = 14;
 //debug_draw_click_highlight(xx,yy,debugyoff,sep,height);
@@ -53,9 +41,9 @@ debug_draw_strings(xx,yy,debugyoff,sep,height);
 	
 
 // right side
-var xx = 550;
+var xx = room_width+30;
 
-debug_draw_mouse(xx,yy,25,sep,height);
+debug_draw_mouse(xx,yy,15,sep,height);
 
 // draw elements
 /*var size = ds_list_size(deleteList);

@@ -1,37 +1,25 @@
 
 // json saving
-#macro save_data "ghin_sav.dat"
-#macro json_version 0.32
+#macro save_data "edm_sav.dat"
+#macro json_version -4
 #macro app_save json_save_array(save_data,ROOT_data_struct)
 #macro app_load json_load_array(save_data)
 
-#macro COURSE_database ROOT_data_struct.courselistDatabase
-#macro SEASON_data ROOT_data_struct.seasonList
-
-#macro PROFILE_data ROOT_data_struct.profiles[profile_index]
 #macro META_data ROOT_data_struct.meta
-#macro COURSE_data ROOT_data_struct.profiles[profile_index].courselist
-#macro SCORE_data ROOT_data_struct.profiles[profile_index].scorelist
-#macro ACTIVE_data ROOT_data_struct.profiles[profile_index].activeRound
-
-#macro create_score scr_score_create("","","","","","","","",date_current_datetime(),"0",false)
-
-#macro scoresort scr_score_sort(scorelist_array,false) // array_sort_nested_struct(scorelist_array,"roundDate",false)
-#macro coursesort scr_course_sort_abc(courselist_array,true)
 
 // header
 #macro header_color make_color_rgb(0,145,206)
-#macro header_height 90
-#macro header_submenu_height 60
-#macro header_font_height 50
+#macro header_height 100
+#macro header_submenu_height 80
+#macro header_font_height 70
 
 // background colors
 #macro c_lt_gray make_color_rgb(228,228,228)
 #macro c_click_color make_color_rgb(245,245,245)
 
 // layout
-#macro res_bleed_xx 20
-#macro res_bleed_yy 10
+#macro res_bleed_xx 30
+#macro res_bleed_yy 20
 #macro DPI_POINT 72
 
 // textbox scrolling
@@ -46,7 +34,7 @@
 #macro cursor_width 3
 
 // sidebar
-#macro side_menu_width 460
+#macro side_menu_width 870
 #macro SIDEBAR_LERP 0.16
 
 // clicking
@@ -56,8 +44,8 @@
 // navbar
 #macro nav_sca_off 0.85
 #macro nav_height 100
-#macro nav_ico_num 5
 #macro navbar_color make_color_rgb(0,122,173)
+#macro starting_submenu navbar.hidden
 
 // calendar
 #macro start_date date_create_datetime(1970,1,1,0,0,0)

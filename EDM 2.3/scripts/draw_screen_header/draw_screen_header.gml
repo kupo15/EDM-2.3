@@ -14,7 +14,7 @@ bg_col = header_color;
 
 var xx = room_width*0.5;
 var yy = (header_height-height)*0.5;
-var ww = app_width;
+var ww = room_width;
 var hh = header_height;
 
 draw_rectangle_color(0,0,ww,hh,bg_col,bg_col,bg_col,bg_col,false);
@@ -69,7 +69,7 @@ repeat 2
 		{
 		draw_icon_height_centered(ico_trash3,0,xpos-20,0,region,region,40,1); // trash icon
 		
-		var xpos = app_width-hh-20;
+		var xpos = room_width-hh-20;
 
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,region,region,true,submenu)
@@ -80,7 +80,7 @@ repeat 2
 		var pos_off = region*0.5;
 		draw_plus_button(xpos-20+pos_off,pos_off,region,false,c_white); // plus button
 		
-		var xpos = app_width-hh-20;
+		var xpos = room_width-hh-20;
 
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,region,region,true,submenu)
@@ -107,10 +107,10 @@ var yy = header_height;
 var hh = header_height+header_submenu_height;
 var col = header_color;
 
-draw_rectangle_color(xx,yy,app_width,hh,col,col,col,col,false);
+draw_rectangle_color(xx,yy,room_width,hh,col,col,col,col,false);
 	
 var header_num = argument_count-2;
-var header_sep = app_width/header_num;
+var header_sep = room_width/header_num;
 var height = 40;
 var val = undefined;
 
@@ -165,7 +165,7 @@ draw_set_color(c_white);
 draw_text_height(xx,yy+yoff,string(count)+" selected",height); // draw number of items to delete
 
 // clicked on trash
-var xx = app_width-hh-20;
+var xx = room_width-hh-20;
 draw_icon_height_centered(ico_trash3,0,xx,yy,hh,hh,40,headerDeleteOffsetDisp); // trash icon
 
 if mode_delete && click_region_released(xx,0,hh,hh,true,submenu)

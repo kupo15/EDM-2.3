@@ -68,7 +68,6 @@ debug_reset = keyboard_check_pressed(vk_delete);
 if debug_reset
 	{
 	debug_data_reset();
-	scr_handicap_calculate();
 	app_save;
 	}
 

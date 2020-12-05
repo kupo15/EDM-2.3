@@ -1,7 +1,7 @@
 function draw_undefScreen() {
 draw_home();
 
-draw_text_height(20,app_height-50,"Undefined Screen",40);
+draw_text_height(20,room_height-50,"Undefined Screen",40);
 }
 
 

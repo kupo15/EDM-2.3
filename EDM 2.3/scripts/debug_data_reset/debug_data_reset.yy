@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "zReplace These",
-    "path": "folders/zReplace These.yy",
+    "name": "EDM 2.3",
+    "path": "EDM 2.3.yyp",
   },
   "resourceVersion": "1.0",
-  "name": "scr_mouse_position_room_pressed",
+  "name": "debug_data_reset",
   "tags": [],
   "resourceType": "GMScript",
 }

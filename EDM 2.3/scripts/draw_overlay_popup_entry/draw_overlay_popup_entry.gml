@@ -6,7 +6,7 @@ var alph = (entry_yoff/1);
 var col = c_black;
 
 draw_set_alpha(alph*0.6);
-draw_rectangle_color(0,0,app_width,app_height,col,col,col,col,false);
+draw_rectangle_color(0,0,room_width,room_height,col,col,col,col,false);
 
 draw_set_alpha(alph);
 
@@ -17,10 +17,10 @@ switch textboxIndex
 	case textboxEntry.popupEntryText: variable = string_capitalize(keyboard_string,stringLimit); break;
 	}
 	
-var ww = app_width;
+var ww = room_width;
 var hh = 300;
 var xx = 0;
-var yy = app_height-kvHeight-(hh*entry_yoffEnd);
+var yy = room_height-kvHeight-(hh*entry_yoffEnd);
 var height = 40;
 
 var col = c_white;
@@ -33,7 +33,7 @@ androidBack = true;
 
 // draw
 var xx = 30;
-var ww = app_width-xx-xx;
+var ww = room_width-xx-xx;
 var yoff = 30;
 var height = 30;
 
@@ -41,7 +41,7 @@ draw_text_height(xx,yy+yoff,label_str,height); // draw label
 draw_text_height_ext_cursor(xx,yy+yoff+80,variable,"",-1,-1,0,40,textboxEntry.popupEntryText);
 draw_line_pixel(xx,yy+yoff+80+35,ww,3,header_color,1);
 
-if click_region_released(0,yy+yoff+80-10,app_width,50,true,navbar.popupEntry)
+if click_region_released(0,yy+yoff+80-10,room_width,50,true,navbar.popupEntry)
 click_textbox_set(variable,0,kbv_type_default);
 	
 // draw cancel
