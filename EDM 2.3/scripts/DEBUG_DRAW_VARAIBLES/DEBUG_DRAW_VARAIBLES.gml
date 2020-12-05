@@ -201,10 +201,10 @@ draw_text_height(xx,yy+((ind+4)*sep),"app_width/height: "+string(app_width)+" x 
 draw_text_height(xx,yy+((ind+5)*sep),"window xpos: "+string(window_get_x),height);
 draw_text_height(xx,yy+((ind+6)*sep),"window ypos: "+string(window_get_y),height);
 
-draw_text_height(xx,yy+((ind+8)*sep),"DPI_X: "+string(DPI_X),height);
-draw_text_height(xx,yy+((ind+9)*sep),"DPI_Y: "+string(DPI_Y),height);
-draw_text_height(xx,yy+((ind+10)*sep),"DPI_X_CONVERT: "+string(DPI_X_CONVERT),height);
-draw_text_height(xx,yy+((ind+11)*sep),"DPI_Y_CONVERT: "+string(DPI_Y_CONVERT),height);
+//draw_text_height(xx,yy+((ind+8)*sep),"DPI_X: "+string(DPI_X),height);
+//draw_text_height(xx,yy+((ind+9)*sep),"DPI_Y: "+string(DPI_Y),height);
+//draw_text_height(xx,yy+((ind+10)*sep),"DPI_X_CONVERT: "+string(DPI_X_CONVERT),height);
+//draw_text_height(xx,yy+((ind+11)*sep),"DPI_Y_CONVERT: "+string(DPI_Y_CONVERT),height);
 
 //draw_text_height(xx,yy+((ind+10)*sep),"canvas_width: "+string(canvas_width),height);
 //draw_text_height(xx,yy+((ind+11)*sep),"canvas_height: "+string(canvas_height),height);
