@@ -111,6 +111,7 @@
     {"name":"tvOS","path":"options/tvos/options_tvos.yy",},
     {"name":"Main","path":"options/main/options_main.yy",},
     {"name":"Amazon Fire","path":"options/amazonfire/options_amazonfire.yy",},
+    {"name":"HTML5","path":"options/html5/options_html5.yy",},
   ],
   "isDnDProject": false,
   "isEcma": false,
@@ -154,7 +155,7 @@
     {"CopyToMask":9223372036854775807,"filePath":"datafiles","resourceVersion":"1.0","name":"payout.ini","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "23.1.1.230",
+    "IDEVersion": "2.3.1.536",
   },
   "resourceVersion": "1.4",
   "name": "EDM 2.3",
