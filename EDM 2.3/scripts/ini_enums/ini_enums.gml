@@ -2,6 +2,7 @@ function enumGOTO() {}
 ini_screen_changeGOTO();
 
 enum screen {
+appStartup = -1,
 home,
 members,
 stats,
@@ -29,6 +30,7 @@ sidebarXoff,
 
 memberSortUnderline,
 
+membersOffset,
 calendarOffset,
 
 enumcount,

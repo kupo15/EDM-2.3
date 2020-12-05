@@ -15,8 +15,13 @@ enum_name_submenu[-navbar.enumstart+1+navbar.calendarYearSelect] = "calendarYear
 
 function debug_draw_screens(xx,yy,ind,sep,height) {
 	
-var str = script_get_name(drawScreen[screenIndex]);
-str = string_replace(str,"draw_","");
+if screenIndex == screen.appStartup
+var str = "startup screen"
+else
+	{
+	var str = script_get_name(drawScreen[screenIndex]);
+	str = string_replace(str,"draw_","");
+	}
 
 draw_text_height(xx,yy+((debugyoff+0)*sep),"screenIndex: "+string(str),height);
 draw_text_height(xx,yy+((debugyoff+1)*sep),"submenu: "+string(enum_name_submenu[submenu+(-navbar.enumstart)+1]),height);
@@ -190,18 +195,17 @@ var ww = display_get_gui_width();
 var hh = display_get_gui_height();
 
 draw_text_height(xx,yy+((ind+3)*sep),"gui window: "+string(ww)+" x "+string(hh),height);
+draw_text_height(xx,yy+((ind+4)*sep),"app_width/height: "+string(app_width)+" x "+string(app_height),height);
+draw_text_height(xx,yy+((ind+5)*sep),"window xpos: "+string(window_get_x),height);
+draw_text_height(xx,yy+((ind+6)*sep),"window ypos: "+string(window_get_y),height);
 
-draw_text_height(xx,yy+((ind+4)*sep),"window xpos: "+string(window_get_x),height);
-draw_text_height(xx,yy+((ind+5)*sep),"window ypos: "+string(window_get_y),height);
-
-draw_text_height(xx,yy+((ind+6)*sep),"app width: "+string(app_width),height);
-draw_text_height(xx,yy+((ind+7)*sep),"app height: "+string(app_height),height);
 draw_text_height(xx,yy+((ind+8)*sep),"DPI_X: "+string(DPI_X),height);
 draw_text_height(xx,yy+((ind+9)*sep),"DPI_Y: "+string(DPI_Y),height);
-draw_text_height(xx,yy+((ind+10)*sep),"canvas_width: "+string(canvas_width),height);
-draw_text_height(xx,yy+((ind+11)*sep),"canvas_height: "+string(canvas_height),height);
-//draw_text_height(xx,yy+((ind+10)*sep),"DPI_X_CONVERT: "+string(DPI_X_CONVERT),height);
-//draw_text_height(xx,yy+((ind+11)*sep),"DPI_Y_CONVERT: "+string(DPI_Y_CONVERT),height);
+draw_text_height(xx,yy+((ind+10)*sep),"DPI_X_CONVERT: "+string(DPI_X_CONVERT),height);
+draw_text_height(xx,yy+((ind+11)*sep),"DPI_Y_CONVERT: "+string(DPI_Y_CONVERT),height);
+
+//draw_text_height(xx,yy+((ind+10)*sep),"canvas_width: "+string(canvas_width),height);
+//draw_text_height(xx,yy+((ind+11)*sep),"canvas_height: "+string(canvas_height),height);
 
 debugyoff += 13;
 }

@@ -99,14 +99,14 @@ return real(new_str);
 // Android display
 function pct_x(percent) {
 
-var xx = canvas_width*percent;
+var xx = app_width*percent;
 
 return xx;
 }
 
 function pct_y(percent) {
 
-var yy = canvas_height*percent;
+var yy = app_height*percent;
 
 return yy;
 }

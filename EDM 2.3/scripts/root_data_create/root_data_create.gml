@@ -8,6 +8,7 @@ ROOT_data_struct = {
 	
 	memberDatabase: debug_data_members_list(),
 	profiles: [],
+	eventHistory: [],
 	
 	meta: {
 		profileIndex: 0,

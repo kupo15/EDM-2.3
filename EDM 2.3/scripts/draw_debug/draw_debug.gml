@@ -56,8 +56,13 @@ yy += (size+1)*sep;*/
 var size = ds_list_size(prevScreenStack);
 
 // draw current screen
-var str = script_get_name(drawScreen[screenIndex]);
-str = string_replace(str,"draw_","");
+if screenIndex == screen.appStartup
+var str = "appStartup";
+else
+	{
+	var str = script_get_name(drawScreen[screenIndex]);
+	str = string_replace(str,"draw_","");
+	}
 
 draw_text_height(xx,yy+(0*sep),string(str),height);
 

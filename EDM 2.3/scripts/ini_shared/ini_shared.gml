@@ -46,7 +46,7 @@ submenu = starting_submenu;
 submenuPrevious = submenu;
 activeSubmenu = submenu;
 
-screenIndex = screen.home;
+screenIndex = screen.appStartup;
 
 textboxIndex = noone;
 datePointer = noone;

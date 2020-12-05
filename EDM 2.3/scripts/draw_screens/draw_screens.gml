@@ -22,6 +22,9 @@ draw_set_halign(fa_left);
 // draw screens
 draw_background_screen();
 
+if screenIndex == screen.appStartup
+draw_appStartup();
+else
 script_execute(drawScreen[screenIndex]);
 		
 // draw numpad

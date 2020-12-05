@@ -1,6 +1,17 @@
 
 function draw_members_list() {
 
+// set offsets
+var scrollbar_index = offsetScroll.membersOffset;
+var courselist_offset = offsetArray[scrollbar_index];
+var courselist_offset_start = offsetArrayStart[scrollbar_index];
+
+
+
+
+
+
+
 
 
 draw_screen_header(headerType.back,headerType.none,"Members");
