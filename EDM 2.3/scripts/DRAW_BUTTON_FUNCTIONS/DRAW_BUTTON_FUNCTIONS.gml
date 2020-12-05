@@ -102,7 +102,7 @@ col = c_white;
 
 var r = d*0.5;
 var line_ll = r*0.4;
-var ww = 2;
+var ww = 3;
 
 if enclosed
 draw_circle_color(xx,yy,r,col,col,false);

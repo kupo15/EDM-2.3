@@ -99,14 +99,14 @@ return real(new_str);
 // Android display
 function pct_x(percent) {
 
-var xx = app_width*percent;
+var xx = app_width*percent*0.01;
 
 return xx;
 }
 
 function pct_y(percent) {
 
-var yy = app_height*percent;
+var yy = app_height*percent*0.01;
 
 return yy;
 }
@@ -129,14 +129,14 @@ function x_pct_x(xx) {
 
 var val = pct_x_convert(xx); // convert to percent
 
-return pct_x(val); // return new x coor
+return pct_x(val*100); // return new x coor
 }
 
 function y_pct_y(yy) {
 
 var val = pct_y_convert(yy); // convert to percent
 
-return pct_y(val); // return new y coor
+return pct_y(val*100); // return new y coor
 }
 	
 function point_x(xvalue) {

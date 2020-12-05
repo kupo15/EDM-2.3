@@ -13,14 +13,14 @@ if argument[4] == undefined
 bg_col = header_color;
 
 var xx = app_width*0.5;
-var yy = (header_height-height)*0.5;
-var ww = app_height;
+var yy = 0;
+var ww = app_width;
 var hh = header_height;
 
 draw_rectangle_color(0,0,ww,hh,bg_col,bg_col,bg_col,bg_col,false);
 
 draw_set_halign(fa_center);
-draw_text_height_color(xx,yy,header_string,c_white,height);
+draw_text_height_middled_color(xx,yy,header_string,header_height,c_white,height);
 draw_set_halign(fa_left);
 
 var xpos = 0;
@@ -32,11 +32,13 @@ repeat 2
 	if header_type == headerType.bars
 		{
 		// draw the 3 bars
-		var ww = header_height*0.33;
-		var hh = header_height*0.27;
-		var xx = (region-ww)*0.5;
+		var ww = x_pct_x(header_height*0.33);
+		var hh = y_pct_y(header_height*0.27);
+		var xx = x_pct_x((region-ww)*0.5);
+		var yy = y_pct_y(header_height*0.5);
+		var thick = y_pct_y(3);
 		
-		draw_menu_bars(xpos+xx,header_height*0.5,ww,hh,2,c_white);
+		draw_menu_bars(xpos+xx,yy,ww,hh,thick,c_white);
 
 		// clicked on bars
 		if !mode_delete && (submenu < 0)
@@ -51,7 +53,8 @@ repeat 2
 	else if header_type == headerType.dots
 		{
 		// draw the 3 dots
-		draw_menu_dots(xpos+(region*0.5),header_height*0.5,3,7,c_white);
+		var xx = x_pct_x(region*0.5);
+		draw_menu_dots(xpos+xx,header_height*0.5,header_height*0.035,header_height*0.07,c_white);
 		
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,region,region,true,submenu)
@@ -59,7 +62,8 @@ repeat 2
 		}
 	else if header_type == headerType.back
 		{
-		draw_menu_arrow(xpos+30,header_height*0.5,40,30,4,1,c_white);
+		var xx = pct_x(3);
+		draw_menu_arrow(xpos+xx,header_height*0.5,header_height*0.33*1.33,header_height*0.33,4,1,c_white);
 
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,region,region,true,submenu)
@@ -67,9 +71,10 @@ repeat 2
 		}
 	else if header_type == headerType.trash
 		{
-		draw_icon_height_centered(ico_trash3,0,xpos-20,0,region,region,40,1); // trash icon
+		var xx = x_pct_x(20);
+		draw_icon_height_centered(ico_trash3,0,xpos-xx,0,region,region,header_height*0.44,1); // trash icon
 		
-		var xpos = app_width-hh-20;
+		//var xpos = app_width-hh-20;
 
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,region,region,true,submenu)
@@ -77,10 +82,11 @@ repeat 2
 		}
 	else if header_type == headerType.plus
 		{
-		var pos_off = region*0.5;
-		draw_plus_button(xpos-20+pos_off,pos_off,region,false,c_white); // plus button
+		var xx = x_pct_x(20);
+		var pos_off = x_pct_x(region*0.5);
+		draw_plus_button(xpos-xx+pos_off,pos_off,region,false,c_white); // plus button
 		
-		var xpos = app_width-hh-20;
+		//var xpos = app_width-hh-20;
 
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,region,region,true,submenu)
@@ -88,7 +94,7 @@ repeat 2
 		}
 		
 	var header_type = header_right;
-	var xpos = app_width-region;
+	var xpos = app_width-x_pct_x(region);
 	}
 	
 // other header overwrite
