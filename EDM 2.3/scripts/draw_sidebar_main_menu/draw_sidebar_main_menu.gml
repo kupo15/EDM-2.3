@@ -94,13 +94,13 @@ for(var i=0;i<screen.enumcount;i++)
 
 #endregion
 
-draw_sidebar_profile_switch(xx_off,profile_hh,sep);
+draw_sidebar_profile_switch(xx_off,profile_hh,sep,height);
 
 if androidBack
 submenu = navbar.hidden;
 }
 
-function draw_sidebar_profile_switch(xx_off,yy,sep) {
+function draw_sidebar_profile_switch(xx_off,yy,sep,height) {
 	
 if submenu != navbar.profileChange
 exit;
@@ -112,9 +112,8 @@ var col = c_white;
 
 draw_rectangle_color(xx,yy,xx+ww,room_height-70,col,col,col,col,false);
 	
-var xoff = 30;
-var text_xoff = 110;
-var height = 30;
+var xoff = 55;
+var text_xoff = 135;
 var pos = 0;
 
 var size = array_length(ROOT_data_struct.profiles)+1;
@@ -126,16 +125,16 @@ for(var i=0;i<size;i++)
 	continue;
 	else if (i+1 == size) // last index
 		{
-		draw_plus_button(xoff,yy+off_pos+(sep*0.5),50,false);
-		draw_text_height_middled(xx+text_xoff,yy+off_pos,"Add User",sep,height,1);
+		draw_plus_button(xoff,yy+off_pos+(sep*0.5),sep*0.66,false);
+		draw_text_height_middled(xx+text_xoff,yy+off_pos,"Add Venue",sep,height,1);
 		
 		if click_region_released(0,yy+off_pos,ww,sep,true,navbar.profileChange,1)
 			{
-			activeStruct = scr_profile_create();
-			scr_profile_set(i);
-			
-			screen_change(screen.profileCreate,navbar.popupEntry);
-			click_textbox_set("",textboxEntry.popupEntryText,kbv_type_default);
+			//activeStruct = scr_profile_create();
+			//scr_profile_set(i);
+			//
+			//screen_change(screen.profileCreate,navbar.popupEntry);
+			//click_textbox_set("",textboxEntry.popupEntryText,kbv_type_default);
 			}
 		
 		break;	
@@ -143,21 +142,15 @@ for(var i=0;i<size;i++)
 		
 	var profile_pointer = ROOT_data_struct.profiles[i];
 	var disp_name = profile_pointer.dispName;
-	
-	if profile_pointer.index == undefined
-	var handicap_index = "N/A";
-	else
-	var handicap_index = string_format(profile_pointer.index,1,1);
-		
+			
 	draw_icon_height(spr_icon_blank_profile,0,xx+25,yy+((sep-(sep*0.8))*0.5)+off_pos,sep*0.8,1); // profile picture
 	draw_text_height_middled(xx+text_xoff,yy+off_pos,disp_name,sep,height,1); // profile name
-	draw_text_height_middled(xx+text_xoff+200,yy+off_pos,handicap_index,sep,height,1); // index
 		
 	draw_line_pixel(xx+text_xoff,yy+off_pos+sep,ww-text_xoff,1,c_lt_gray,1);	
 		
 	if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.profileChange,i,undefined)
 		{
-		//scr_profile_set(i);
+		scr_profile_set(i);
 		app_save;
 
 		submenu = navbar.main;

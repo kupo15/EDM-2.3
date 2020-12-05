@@ -41,6 +41,13 @@ courseSelect,
 navbarSwitch
 }
 
+enum currencySymbol {
+
+dollar,
+euro,
+peso,
+}
+
 enum textboxEntry {
 dispName,	
 	

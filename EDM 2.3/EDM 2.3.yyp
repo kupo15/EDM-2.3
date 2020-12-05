@@ -1,6 +1,5 @@
 {
   "resources": [
-    {"id":{"name":"scr_navbar_click","path":"scripts/scr_navbar_click/scr_navbar_click.yy",},"order":3,},
     {"id":{"name":"vk_initiate","path":"scripts/vk_initiate/vk_initiate.yy",},"order":1,},
     {"id":{"name":"spr_add_button","path":"sprites/spr_add_button/spr_add_button.yy",},"order":0,},
     {"id":{"name":"DEBUG_DRAW_VARAIBLES","path":"scripts/DEBUG_DRAW_VARAIBLES/DEBUG_DRAW_VARAIBLES.yy",},"order":0,},
@@ -27,7 +26,7 @@
     {"id":{"name":"project_macros","path":"scripts/project_macros/project_macros.yy",},"order":3,},
     {"id":{"name":"scr_set_date_offsets","path":"scripts/scr_set_date_offsets/scr_set_date_offsets.yy",},"order":5,},
     {"id":{"name":"snd_tap1","path":"sounds/snd_tap1/snd_tap1.yy",},"order":1,},
-    {"id":{"name":"scr_members_create","path":"scripts/scr_members_create/scr_members_create.yy",},"order":15,},
+    {"id":{"name":"scr_members_create","path":"scripts/scr_members_create/scr_members_create.yy",},"order":0,},
     {"id":{"name":"GM_FUNCTIONS","path":"scripts/GM_FUNCTIONS/GM_FUNCTIONS.yy",},"order":0,},
     {"id":{"name":"snd_tap2","path":"sounds/snd_tap2/snd_tap2.yy",},"order":2,},
     {"id":{"name":"ico_backspace","path":"sprites/ico_backspace/ico_backspace.yy",},"order":0,},
@@ -140,6 +139,7 @@
     {"id":{"name":"async_virtual_keyboard","path":"scripts/async_virtual_keyboard/async_virtual_keyboard.yy",},"order":0,},
     {"id":{"name":"STRING_INPUT_FUNCTIONS","path":"scripts/STRING_INPUT_FUNCTIONS/STRING_INPUT_FUNCTIONS.yy",},"order":1,},
     {"id":{"name":"draw_results_low_net","path":"scripts/draw_results_low_net/draw_results_low_net.yy",},"order":2,},
+    {"id":{"name":"CURRENCY_scripts","path":"scripts/CURRENCY_scripts/CURRENCY_scripts.yy",},"order":1,},
     {"id":{"name":"draw_results_final","path":"scripts/draw_results_final/draw_results_final.yy",},"order":3,},
     {"id":{"name":"draw_season_ranking","path":"scripts/draw_season_ranking/draw_season_ranking.yy",},"order":0,},
     {"id":{"name":"draw_season_ranking_simple","path":"scripts/draw_season_ranking_simple/draw_season_ranking_simple.yy",},"order":1,},
@@ -244,6 +244,7 @@
     {"folderPath":"folders/Android Project Scripts/Navbar.yy","order":0,"resourceVersion":"1.0","name":"Navbar","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Android App Library/Rooms.yy","order":11,"resourceVersion":"1.0","name":"Rooms","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Android Project Scripts/Profiles.yy","order":3,"resourceVersion":"1.0","name":"Profiles","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/zScripts.yy","order":17,"resourceVersion":"1.0","name":"zScripts","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":461609314234257646,"resourceVersion":"1.0","name":"audiogroup_default","resourceType":"GMAudioGroup",},

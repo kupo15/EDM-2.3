@@ -1,12 +1,19 @@
-function scr_profile_create(name) {
-/// @param [name]	
+function scr_profile_create(name,currencyInd) {
+/// @param [name
+/// @param currencyInd]
 	
 if argument[0] == undefined
 name = "";
 
+if argument[1] == undefined
+currencyInd = -1;
+
 var profileData = {
 		
 		dispName: name,
+		location: -1,
+		currencyId: -1,
+		
 		logoId: -1,
 		bannerId: -1,
 		
