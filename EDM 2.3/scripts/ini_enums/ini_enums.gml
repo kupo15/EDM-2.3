@@ -27,8 +27,7 @@ entryYoff,
 
 sidebarXoff,
 
-scoreSortUnderline,
-courseSortUnderline,
+memberSortUnderline,
 
 calendarOffset,
 
@@ -68,10 +67,11 @@ profileChange,
 popupEntry,
 }
 
-enum listSort {
+enum member_sort {
+abc,
+favorite,
 firstName,
 lastName,
-favorite,
 active,
 }
 

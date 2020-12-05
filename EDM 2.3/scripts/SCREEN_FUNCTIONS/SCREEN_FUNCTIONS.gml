@@ -7,6 +7,7 @@ function ini_screen_change() {
 prevScreenStack = ds_list_create();
 	
 drawScreen[screen.home] = draw_home;
+drawScreen[screen.members] = draw_members_list;
 //drawScreen[screen.stats] = draw_stats;
 //drawScreen[screen.blank8] = undefined
 

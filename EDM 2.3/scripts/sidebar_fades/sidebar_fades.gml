@@ -4,7 +4,7 @@ var fade_spd = 0.14;
 
 scr_sidebar_lerp(offsetScroll.navbarYoff,submenu != navbar.main,fade_spd); // navbar
 scr_sidebar_lerp(offsetScroll.entryYoff,submenu == navbar.popupEntry,fade_spd); // entry
-//scr_sidebar_lerp(offsetScroll.scoreSortUnderline,META_data.scoreSort,0.5); // underline
+scr_sidebar_lerp(offsetScroll.memberSortUnderline,META_data.memberSort,0.5); // underline
 //scr_sidebar_lerp(offsetScroll.courseSortUnderline,META_data.courseSort,0.5); // underline
 scr_sidebar_lerp(offsetScroll.numpadYoff,submenu == navbar.numpad,1); // numpad
 

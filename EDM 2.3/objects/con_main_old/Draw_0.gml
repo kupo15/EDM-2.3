@@ -1,10 +1,4 @@
 
-if locked
-   {
-   draw_app_locked();	
-   exit;
-   }
-
 draw_screens();
 //draw_menu();
 

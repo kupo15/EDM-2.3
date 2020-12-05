@@ -11,7 +11,7 @@ ROOT_data_struct = {
 	
 	meta: {
 		profileIndex: 0,
-		memberSort: listSort.lastName,
+		memberSort: member_sort.abc,
 		version: json_version,
 		},
 	}

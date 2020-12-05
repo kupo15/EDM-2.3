@@ -6,7 +6,7 @@
     "path": "folders/Screens.yy",
   },
   "resourceVersion": "1.0",
-  "name": "draw_app_locked",
+  "name": "draw_home",
   "tags": [],
   "resourceType": "GMScript",
 }

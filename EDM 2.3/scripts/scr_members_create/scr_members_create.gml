@@ -27,3 +27,16 @@ array_push(arr,member_struct)
 
 return member_struct;
 }
+
+function scr_memberlist_sort(ind) {
+	
+META_data.memberSort = ind;
+
+switch ind
+	{
+	case member_sort.abc: break;	
+		
+	}
+	
+	
+}

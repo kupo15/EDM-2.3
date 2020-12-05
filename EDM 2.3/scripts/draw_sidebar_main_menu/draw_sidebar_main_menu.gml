@@ -84,11 +84,10 @@ for(var i=0;i<screen.enumcount;i++)
 		click_highlight_alpha = 0;
 		click_highlight_alpha_start = 0;
 		
-		submenu = navbar.main;
-		androidBackSidebar = true;
+		submenu = navbar.hidden;
+		//androidBackSidebar = true;
 
 		screen_change(i,undefined,true);
-		new_submenu = true;
 		}
 	}
 
