@@ -8,16 +8,16 @@ draw_roundrect_color(xcal,ycal,xcal+wcal,ycal+hcal,col,col,false);
 draw_set_alpha(1);
 
 var xx = 10;
-var ww = room_width-xx-xx;
+var ww = app_width-xx-xx;
 var hh = 400;
-var yy = room_height-(alpha_lerp*(hh+30));
+var yy = app_height-(alpha_lerp*(hh+30));
 var col = c_white; 
 var year_sel_parse = 1970+floor(yearSelectOffset/12);
 var header_hh = 80;
 
 draw_roundrect_color(xx,yy,xx+ww,yy+hh,col,col,false); // draw dialogue
 
-draw_text_height_middled(room_width*0.5,yy,year_sel_parse,header_hh,50); // draw year
+draw_text_height_middled(app_width*0.5,yy,year_sel_parse,header_hh,50); // draw year
 
 // draw left arrow
 if click_button(xx,yy,"<",50,c_black,header_hh+40,header_hh,undefined,false,false,submenu)

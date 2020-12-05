@@ -1,7 +1,7 @@
 function draw_undefScreen() {
 draw_home();
 
-draw_text_height(20,room_height-50,"Undefined Screen",40);
+draw_text_height(20,app_height-50,"Undefined Screen",40);
 }
 
 
@@ -10,8 +10,8 @@ function draw_home() {
 // draw the 3 bars
 draw_screen_header(headerType.bars,headerType.none,"Home");
 
-var xx = x_pct_x(room_width*0.5);
-var yy = y_pct_y(room_height*0.5);
+var xx = x_pct_x(app_width*0.5);
+var yy = y_pct_y(app_height*0.5);
 var ww = point_x(36);
 
 draw_rectangle(xx-ww,yy-ww,xx+ww,yy+ww,true);

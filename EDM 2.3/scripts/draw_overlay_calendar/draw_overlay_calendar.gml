@@ -20,7 +20,7 @@ var ycal = 200;
 var ysep = 70;
 var rows = 9;
 
-var wcal = room_width-xcal-xcal;
+var wcal = app_width-xcal-xcal;
 var hcal = rows*ysep;
 var col = c_white;
 
@@ -33,7 +33,7 @@ var xsep = 70;
 
 draw_set_halign(fa_center);
 
-if click_region_released(0,yy,room_width,ysep,true,navbar.calendar,calendarAlpha)
+if click_region_released(0,yy,app_width,ysep,true,navbar.calendar,calendarAlpha)
 	{
 	screenDarkenIndex = darkenIndex.calendarYear;
 	submenu = navbar.calendarYearSelect;
@@ -71,14 +71,14 @@ var pos_end = pos_start+3;
 for(var ii=pos_start;ii<pos_end;ii++) // draw three months
 	{
 	var off_ind = (ii-monthOffset);
-	var off_pos = off_ind*room_width;
+	var off_pos = off_ind*app_width;
 	
 	// draw calendar month
 	var month_disp = funct_convert_date(monthParse,true,-1,-1);
 	var year_disp = yearParse;
 
 	if ii == pos_start
-	draw_text_height_middled(room_width*0.5,yy,string(month_disp)+" "+string(year_disp),ysep,60); // draw month AND year
+	draw_text_height_middled(app_width*0.5,yy,string(month_disp)+" "+string(year_disp),ysep,60); // draw month AND year
 	
 	// draw calendar days
 	var curr_month = (ii mod 12)+1;
@@ -170,7 +170,7 @@ if abs(scrollbar_speed[scrollbar_index]) == 0
 var hh = ysep;
 var yoff = 8;
 
-var xx = room_width*0.5;
+var xx = app_width*0.5;
 var ww = 200;
 var xoff = -ww*0.5;
 
@@ -182,7 +182,7 @@ androidBack = true;
 
 #region OK button
 var ww = 120;
-var xx = room_width*0.8;
+var xx = app_width*0.8;
 var xoff = -ww*0.5;
 
 // draw Submit button

@@ -1,7 +1,7 @@
 function draw_date_edit_calendar() {
 	draw_set_halign(fa_center);
 
-	var xx = room_width/2;
+	var xx = app_width/2;
 	var yy = 20;
 	var height = 80;
 
@@ -13,7 +13,7 @@ function draw_date_edit_calendar() {
 	var xsep = 72;
 	var ysep = 85;
 
-	if click_region_released(0,yy-20,room_width,ysep,true,navbar.hidden)
+	if click_region_released(0,yy-20,app_width,ysep,true,navbar.hidden)
 		{
 		submenu = navbar.year_select;
 		alpha_lerp_end = 1;
@@ -43,7 +43,7 @@ function draw_date_edit_calendar() {
 	var pos_end = month_offset+1;
 	for(var ii=pos_start;ii<pos_end;ii++) // draw three months
 		{
-		var off_pos = (ii-month_offset)*room_width;
+		var off_pos = (ii-month_offset)*app_width;
 	
 		// update month when not holding down
 		if !mouse_check_button(mb_left) 
@@ -61,7 +61,7 @@ function draw_date_edit_calendar() {
 		var year_disp = year_parse;
 
 		if ii = pos_start
-		draw_text_height(room_width*0.5,yy-15,string(month_disp)+" "+string(year_disp),70); // draw month AND year
+		draw_text_height(app_width*0.5,yy-15,string(month_disp)+" "+string(year_disp),70); // draw month AND year
 		
 		// draw calendar days
 		for(var i=start_day;i<day_num+start_day;i++)
@@ -134,28 +134,29 @@ function draw_date_edit_calendar() {
 	month_offset = month_offset_end;
 
 #region SUBMIT button
-	var ww = 300;
-	var hh = 130;
-	var xx = room_width*0.5-(ww*0.5);
-	var yy = room_height-hh;
-	var xoff = ww*0.5;
-	var yoff = 7;
-	var col = c_white;
 
-	draw_roundrect_color(xx,yy,xx+ww,yy+hh,col,col,false); // draw button
+var ww = 300;
+var hh = 130;
+var xx = app_width*0.5-(ww*0.5);
+var yy = app_height-hh;
+var xoff = ww*0.5;
+var yoff = 7;
+var col = c_white;
 
-	// draw Submit button
-	draw_set_halign(fa_center);
+draw_roundrect_color(xx,yy,xx+ww,yy+hh,col,col,false); // draw button
 
-	var str = "Submit";
-	draw_text_height(xx+xoff,yy+yoff,str,90);
+// draw Submit button
+draw_set_halign(fa_center);
 
-	var submit = false;
-	if click_region_released(0,yy,room_width,hh,true,navbar.hidden)
-		{
-		submit = true;
-		androidBack = true;
-		}
+var str = "Submit";
+draw_text_height(xx+xoff,yy+yoff,str,90);
+
+var submit = false;
+if click_region_released(0,yy,app_width,hh,true,navbar.hidden)
+	{
+	submit = true;
+	androidBack = true;
+	}
 
 #endregion
 

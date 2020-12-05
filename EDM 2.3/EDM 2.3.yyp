@@ -43,6 +43,7 @@
     {"id":{"name":"ini_season_ranking_save","path":"scripts/ini_season_ranking_save/ini_season_ranking_save.yy",},"order":4,},
     {"id":{"name":"ini_shared","path":"scripts/ini_shared/ini_shared.yy",},"order":3,},
     {"id":{"name":"draw_members_list","path":"scripts/draw_members_list/draw_members_list.yy",},"order":1,},
+    {"id":{"name":"con_startup","path":"objects/con_startup/con_startup.yy",},"order":3,},
     {"id":{"name":"ini_entry_fee_load","path":"scripts/ini_entry_fee_load/ini_entry_fee_load.yy",},"order":5,},
     {"id":{"name":"ini_entry_fee_save","path":"scripts/ini_entry_fee_save/ini_entry_fee_save.yy",},"order":6,},
     {"id":{"name":"JSON_FUNCTIONS","path":"scripts/JSON_FUNCTIONS/JSON_FUNCTIONS.yy",},"order":1,},

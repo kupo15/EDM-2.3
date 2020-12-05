@@ -72,9 +72,9 @@ var xWidth = 25;
 var xoff = (hh-xWidth)*0.5;
 var yoff = xoff;
 
-draw_menu_xout(room_width-hh+xoff,yy+yoff,xWidth,xWidth,3,c_black);
+draw_menu_xout(app_width-hh+xoff,yy+yoff,xWidth,xWidth,3,c_black);
 
-if click_region_released(room_width-hh,yy,hh,hh,true,submenu)
+if click_region_released(app_width-hh,yy,hh,hh,true,submenu)
 	{
 	kvLastString = "";
 	keyboard_string = "";

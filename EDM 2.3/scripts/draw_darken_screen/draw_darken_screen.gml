@@ -1,8 +1,7 @@
 function draw_background_screen() {
 
 // draw background
-var col = c_white;
-draw_rectangle_color(0,0,room_width,room_height,col,col,col,col,false); // darken background
+draw_clear(c_white);
 
 }
 
@@ -35,8 +34,9 @@ switch screenDarkenIndex
 
 // draw darken screen
 var col = c_black;
+
 draw_set_alpha(screenDarkenAlpha*0.5);	
-draw_rectangle_color(0,0,room_width,room_height,col,col,col,col,false); // darken background
+draw_rectangle_color(0,0,app_width,app_height,col,col,col,col,false); // darken background
 draw_set_alpha(1);
 }
 

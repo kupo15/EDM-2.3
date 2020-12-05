@@ -1,7 +1,7 @@
 function draw_date_edit() {
 	draw_set_halign(fa_center);
 
-	var xx = room_width/2;
+	var xx = app_width/2;
 	var yy = 20;
 	var height = 80;
 
@@ -225,8 +225,8 @@ draw_rectangle_color(25,yy+(3*sep),xx+ww,yy+(4*sep),col,col,col,col,false);
 #region SUBMIT button
 var ww = 300;
 var hh = 130;
-var xx = room_width*0.5-(ww*0.5);
-var yy = room_height-hh;
+var xx = app_width*0.5-(ww*0.5);
+var yy = app_height-hh;
 var xoff = ww*0.5;
 var yoff = 7;
 var col = c_white;
@@ -240,7 +240,7 @@ var str = "Submit";
 draw_text_height(xx+xoff,yy+yoff,str,90);
 
 var submit = false;
-if click_region_released(0,yy,room_width,hh,true,navbar.hidden)
+if click_region_released(0,yy,app_width,hh,true,navbar.hidden)
 	{
 	submit = true;
 	androidBack = true;

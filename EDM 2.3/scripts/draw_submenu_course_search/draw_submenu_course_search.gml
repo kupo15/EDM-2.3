@@ -8,14 +8,14 @@ var searchbar_hh = ysep*0.75;
 var xx = 120;
 var height = 30;
 
-var yy = ypos+(room_height*coursebar_yoff_start);
+var yy = ypos+(app_height*coursebar_yoff_start);
 yy += searchbar_hh;
 
-var hh = room_height-yy;
+var hh = app_height-yy;
 var rows = hh/ysep;
 
 var col = c_white;
-draw_rectangle_color(0,yy,room_width,yy+room_height,col,col,col,col,false);
+draw_rectangle_color(0,yy,app_width,yy+app_height,col,col,col,col,false);
 
 scr_searchbar_array(ref_array);
 
@@ -25,7 +25,7 @@ ref_array = searchedList;
 
 var list_size = array_length(ref_array);
 var kvoff = kvHeight/ysep;
-var test_passed = yy+(list_size*ysep)+kvHeight > room_height;
+var test_passed = yy+(list_size*ysep)+kvHeight > app_height;
 var list_ext = list_size+(kvoff*test_passed);
 
 /*
@@ -36,7 +36,7 @@ if action
 	click_textbox_set(friend_name_entry,0,kbv_type_default,kbv_returnkey_next);
 	mode_new_member = true;
 	
-	var test_passed = yy+(list_size*ysep)+kvHeight > room_height;
+	var test_passed = yy+(list_size*ysep)+kvHeight > app_height;
 	var list_ext = list_size+(kvoff*test_passed);
 	}*/
 
@@ -66,7 +66,7 @@ for(var i=pos_start;i<pos_end;i++)
 		else
 		draw_text_height_middled(xx,yy+off_pos,"New friend",ysep,height); // draw name
 
-		draw_line_pixel(xx,yy+off_pos+ysep,room_width,1,c_black,0.7);
+		draw_line_pixel(xx,yy+off_pos+ysep,app_width,1,c_black,0.7);
 
 		if !mode_new_member && !mode_delete
 		if click_region_released_clamp_array(0,yy,off_pos,ww,ysep,hh,mb_left,true,submenu,i,undefined,undefined)
@@ -87,7 +87,7 @@ for(var i=pos_start;i<pos_end;i++)
 	draw_set_halign(fa_left);
 	draw_text_height_middled(xx,yy+off_pos,name,ysep,height); // draw name
 	
-	draw_line_pixel(xx,yy+off_pos+ysep,room_width,1,c_black,0.7);
+	draw_line_pixel(xx,yy+off_pos+ysep,app_width,1,c_black,0.7);
 								
 	// click released on friend
 	if click_region_released_clamp_array(0,yy,off_pos,ww,ysep,hh,mb_left,true,submenu,i,ref_array,undefined)

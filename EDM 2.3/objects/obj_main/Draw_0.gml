@@ -12,5 +12,5 @@ kvHeight = 400*kvActive*(submenu != navbar.numpad);
 var col = c_blue;
 
 draw_set_alpha(0.4);
-draw_rectangle_color(0,room_height+1,room_width,room_height+1-kvHeight,col,col,col,col,false);
+draw_rectangle_color(0,app_height+1,app_width,app_height+1-kvHeight,col,col,col,col,false);
 draw_set_alpha(1);

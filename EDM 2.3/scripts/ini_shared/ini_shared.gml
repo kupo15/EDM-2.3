@@ -9,6 +9,9 @@ ini_timers();
 ini_highlight_vars();
 ini_cursor_vars();
 
+app_width = room_width;
+app_height = room_height;
+
 // custom vk
 numpad_value = "";
 

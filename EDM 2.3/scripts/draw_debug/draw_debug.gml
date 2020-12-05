@@ -8,7 +8,7 @@ exit;
 var win_ww = window_get_width();
 var win_hh = window_get_height();
 	
-var xx = 0-((win_ww-room_width)*0.5)+30;
+var xx = 0-((win_ww-app_width)*0.5)+30;
 var yy = 10;
 var sep = 45;
 var height = sep;
@@ -41,7 +41,7 @@ debug_draw_strings(xx,yy,debugyoff,sep,height);
 	
 
 // right side
-var xx = room_width+30;
+var xx = app_width+30;
 
 debug_draw_mouse(xx,yy,15,sep,height);
 

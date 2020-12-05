@@ -7,20 +7,20 @@ draw_set_alpha(alph);
 var offset = offsetArray[offsetScroll.navbarYoff];
 var name_arr = ["Home","Stats","Playing","Score","Courses"];
 var ico_num = array_length(name_arr);
-var xsep = room_width/ico_num;
+var xsep = app_width/ico_num;
 var hh = nav_height;
 var xx = xsep*screenIndex;
-var yy_nav = room_height-hh+(hh*offset);
+var yy_nav = app_height-hh+(hh*offset);
 var col = header_color;
 
-draw_rectangle_color(0,yy_nav,room_width,yy_nav+hh,c_white,c_white,c_white,c_white,false);
+draw_rectangle_color(0,yy_nav,app_width,yy_nav+hh,c_white,c_white,c_white,c_white,false);
 draw_rectangle_colour(xx,yy_nav,xx+xsep,yy_nav+hh,col,col,col,col,false); // draw highlight
 
 // draw navbar
-var ww = room_width;
+var ww = app_width;
 var col = make_colour_rgb(2,121,172);
 
-draw_line_pixel(-1,yy_nav,room_width+1,1,c_gray,alph*0.7); // horizontal line
+draw_line_pixel(-1,yy_nav,app_width+1,1,c_gray,alph*0.7); // horizontal line
 //draw_rectangle_colour(xx_nav,yy_nav,xx_nav+ww,yy_nav+hh,col,col,col,col,false);
 
 draw_set_halign(fa_center);

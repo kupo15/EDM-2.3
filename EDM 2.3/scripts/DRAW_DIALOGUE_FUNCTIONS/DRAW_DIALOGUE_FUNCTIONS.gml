@@ -39,22 +39,22 @@ var hsep1 = element_numpad.hsep1;
 
 // draw number button background
 var col = c_white;
-draw_rectangle_color(xx,yy,room_width,room_height,col,col,col,col,false);
+draw_rectangle_color(xx,yy,app_width,app_height,col,col,col,col,false);
 
 // draw dark button background
 var col = make_color_rgb(247,247,247);
-draw_rectangle_color(xx,yy,xx+(1*hsep1),room_height,col,col,col,col,false);
+draw_rectangle_color(xx,yy,xx+(1*hsep1),app_height,col,col,col,col,false);
 
 var hsep2 = element_numpad.hsep2;
-draw_rectangle_color(xx,yy+(3*vsep),xx+105+(1*hsep2),room_height,col,col,col,col,false);
-draw_rectangle_color(xx+hsep1+(2*hsep2),yy+(3*vsep),room_width,room_height,col,col,col,col,false);
+draw_rectangle_color(xx,yy+(3*vsep),xx+105+(1*hsep2),app_height,col,col,col,col,false);
+draw_rectangle_color(xx+hsep1+(2*hsep2),yy+(3*vsep),app_width,app_height,col,col,col,col,false);
 
 // draw lines
 var col = make_color_rgb(237,237,237);
 for(var i=0;i<3;i++)
 	{
-	draw_line_color(0,yy+((i+1)*vsep),room_width,yy+((i+1)*vsep),col,col); // hor lines
-	draw_line_color(hsep1+(i*hsep2),yy,hsep1+(i*hsep2),room_height,col,col); // vert lines
+	draw_line_color(0,yy+((i+1)*vsep),app_width,yy+((i+1)*vsep),col,col); // hor lines
+	draw_line_color(hsep1+(i*hsep2),yy,hsep1+(i*hsep2),app_height,col,col); // vert lines
 	}
 	
 var height = element_numpad.height;
@@ -109,16 +109,16 @@ draw_rectangle_color(xx,yy,xx+(3*hsep2),yy+hh,col,col,col,col,false);
 
 // draw dark button background
 var col = make_color_rgb(240,240,240);
-draw_rectangle_color(xx+(3*hsep2),yy,room_width,yy+hh,col,col,col,col,false);
+draw_rectangle_color(xx+(3*hsep2),yy,app_width,yy+hh,col,col,col,col,false);
 
 //draw_rectangle_color(xx,yy+(3*vsep),xx+105+(1*hsep2),yy+hh,col,col,col,col,false);
-//draw_rectangle_color(xx+hsep1+(2*hsep2),yy+(3*vsep),room_width,yy+hh,col,col,col,col,false);
+//draw_rectangle_color(xx+hsep1+(2*hsep2),yy+(3*vsep),app_width,yy+hh,col,col,col,col,false);
 
 // draw lines
 var col = make_color_rgb(230,230,230);
 for(var i=0;i<3;i++)
 	{
-	draw_line_color(0,yy+((i+1)*vsep),room_width,yy+((i+1)*vsep),col,col); // hor lines
+	draw_line_color(0,yy+((i+1)*vsep),app_width,yy+((i+1)*vsep),col,col); // hor lines
 	draw_line_color(((i+1)*hsep2),yy,((i+1)*hsep2),yy+hh,col,col); // vert lines
 	}
 	

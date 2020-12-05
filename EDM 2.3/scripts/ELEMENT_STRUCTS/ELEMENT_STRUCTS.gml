@@ -5,7 +5,7 @@ function layout_normal() {
 element_numpad = {
 	
 xx: 0,
-yy: room_height-470,
+yy: app_height-470,
 
 vsep: 95,
 hsep1: 105,

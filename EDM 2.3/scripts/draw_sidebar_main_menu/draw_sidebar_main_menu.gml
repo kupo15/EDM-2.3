@@ -8,7 +8,7 @@ var xx_off = offset*(-side_menu_width-30);
 var xx = 0;
 var yy = 0;
 var ww = side_menu_width;
-var hh = room_height;
+var hh = app_height;
 var profile_hh = 200;
 var profile_col = make_color_rgb(76,102,145);
 
@@ -67,7 +67,7 @@ draw_text_height_middled(xx+xx_off,yy+(screen.stats*sep),"Stats",sep,height);
 draw_text_height_middled(xx+xx_off,yy+(screen.help_info*sep),"Help and Info",sep,height);
 draw_text_height_middled(xx+xx_off,yy+(screen.settings*sep),"Settings",sep,height);
 
-draw_text_height(xx_off+15,room_height-40,"Vers. "+string(GM_version),30);
+draw_text_height(xx_off+15,app_height-40,"Vers. "+string(GM_version),30);
 
 for(var i=0;i<screen.enumcount;i++)
 	{
@@ -109,7 +109,7 @@ var ww = side_menu_width;
 var hh = 530;
 var col = c_white;
 
-draw_rectangle_color(xx,yy,xx+ww,room_height-70,col,col,col,col,false);
+draw_rectangle_color(xx,yy,xx+ww,app_height-70,col,col,col,col,false);
 	
 var xoff = 55;
 var text_xoff = 135;

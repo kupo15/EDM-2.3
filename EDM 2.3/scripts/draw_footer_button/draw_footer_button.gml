@@ -2,7 +2,7 @@ function draw_footer_button() {
 
 // footer button
 var xx = 375;
-var yy = room_height-hh+25;
+var yy = app_height-hh+25;
 draw_sprite_ext(spr_footer_icon,screenIndex,xx,yy,0.5,0.5,0,header_color,1);
 
 if click_region_released(xx,yy,150,150,true,submenu,1)
