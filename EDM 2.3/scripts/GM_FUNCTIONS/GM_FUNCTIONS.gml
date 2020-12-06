@@ -111,30 +111,44 @@ var yy = app_height*percent*0.01;
 return yy;
 }
 
-function pct_x_convert(room_xx) {
+function pct_x_convert(room_xx,GM_room_ww) {
 
-var pct = room_xx/room_width;
+if argument[1] == undefined
+GM_room_ww = room_width;
 
-return pct;
-}
-
-function pct_y_convert(room_yy) {
-
-var pct = room_yy/room_height;
+var pct = room_xx/GM_room_ww;
 
 return pct;
 }
 
-function x_pct_x(room_xx) {
+function pct_y_convert(room_yy,GM_room_hh) {
 
-var val = pct_x_convert(room_xx); // convert to percent
+if argument[1] == undefined
+GM_room_hh = room_height;
+
+var pct = room_yy/GM_room_hh;
+
+return pct;
+}
+
+function x_pct_x(room_xx,GM_room_ww) {
+/// @param room_xx
+/// @param [GM_room_width]
+
+var ins = argument[1];
+
+var val = pct_x_convert(room_xx,GM_room_ww); // convert to percent
 
 return pct_x(val*100); // return new x coor
 }
 
-function y_pct_y(room_yy) {
+function y_pct_y(room_yy,GM_room_hh) {
+/// @param room_yy
+/// @param [GM_room_height]
 
-var val = pct_y_convert(room_yy); // convert to percent
+var ins = argument[1];
+
+var val = pct_y_convert(room_yy,GM_room_hh); // convert to percent
 
 return pct_y(val*100); // return new y coor
 }

@@ -179,6 +179,7 @@ var device_pointer = deviceTest.devices[deviceTestIndex];
 	
 draw_text_height(xx,yy+((ind+0)*sep),"Device Testing: ["+string(deviceTestIndex)+"]",height);
 draw_text_height(xx,yy+((ind+1)*sep),device_pointer.deviceName+": "+string(device_pointer.resWidth)+" x "+string(device_pointer.resHeight),height);
+draw_text_height(xx,yy+((ind+2)*sep),"DPI: "+string(device_pointer.dpiX),height);
 
 debugyoff += 3;
 }
@@ -211,8 +212,8 @@ draw_text_height(xx,yy+((ind+4)*sep),"app_width/height: "+string(app_width)+" x 
 draw_text_height(xx,yy+((ind+5)*sep),"window xpos: "+string(window_get_x),height);
 draw_text_height(xx,yy+((ind+6)*sep),"window ypos: "+string(window_get_y),height);
 
-//draw_text_height(xx,yy+((ind+8)*sep),"DPI_X: "+string(DPI_X),height);
-//draw_text_height(xx,yy+((ind+9)*sep),"DPI_Y: "+string(DPI_Y),height);
+draw_text_height(xx,yy+((ind+8)*sep),"DPI_X: "+string(DPI_X),height);
+draw_text_height(xx,yy+((ind+9)*sep),"DPI_Y: "+string(DPI_Y),height);
 //draw_text_height(xx,yy+((ind+10)*sep),"DPI_X_CONVERT: "+string(DPI_X_CONVERT),height);
 //draw_text_height(xx,yy+((ind+11)*sep),"DPI_Y_CONVERT: "+string(DPI_Y_CONVERT),height);
 

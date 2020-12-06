@@ -57,6 +57,9 @@ else
 
 draw_text_height(xx,yy+(0*sep),string(str),height);
 
+
+draw_text_height(xx+350,yy+(0*sep),string(fps_real),height);
+
 // draw dividing line
 draw_line(xx,yy+sep,xx+200,yy+sep);
 

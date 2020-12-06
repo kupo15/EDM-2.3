@@ -11,7 +11,7 @@
 
 // header
 #macro header_color make_color_rgb(0,145,206) // make_color_rgb(42,104,53) //
-#macro header_height y_pct_y(160)
+#macro header_height y_pct_y(160,1200)
 #macro header_submenu_height header_height*0.8
 #macro header_font_height header_height*0.6
 
