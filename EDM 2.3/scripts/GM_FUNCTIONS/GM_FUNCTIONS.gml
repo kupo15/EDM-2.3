@@ -172,6 +172,6 @@ else
     _new_height = _item_height * _scale_y;
 	}
 		
-var struct = {xx: _new_x,yy: _new_y,ww: _new_width,hh: _new_height};
+var struct = {xx: _new_x,yy: _new_y,ww: _new_width,hh: _new_height,xsca: _scale_x,ysca: _scale_y};
 return struct;
 }

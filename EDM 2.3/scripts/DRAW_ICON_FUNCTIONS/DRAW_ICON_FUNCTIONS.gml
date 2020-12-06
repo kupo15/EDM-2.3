@@ -212,3 +212,19 @@ return spr_hh*sca;
 	
 	
 }
+
+function draw_image_width_cropped_pct(spr,ind,xx,yy,region_ww,region_hh,alpha) {
+	
+if argument[6] == undefined
+alpha = draw_get_alpha();	
+	
+		
+var spr_ww = sprite_get_width(spr);
+var spr_hh = sprite_get_height(spr);
+var sca = x_pct_x((region_ww+3)/spr_ww);
+var col = c_white;
+
+draw_sprite_part_ext(spr,ind,0,0,x_pct_x(region_ww)/sca,y_pct_y(region_hh)/sca,x_pct_x(xx),y_pct_y(yy),sca,sca,col,alpha);
+
+return y_pct_y(region_hh);
+}
