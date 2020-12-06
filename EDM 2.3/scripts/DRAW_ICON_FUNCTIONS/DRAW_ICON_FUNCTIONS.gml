@@ -49,14 +49,15 @@ thickness = shift*0.25;
 draw_rectangle_color(xx+(shift*0.5),yy-thickness,xx+ww,yy+thickness,col,col,col,col,false); // horizontal line	
 }
 	
-function draw_menu_triangle(xx,yy,hh,condition,col) {
+function draw_menu_triangle(xx,yy,hh,condition,pct,col) {
 /// @param xx
 /// @param yy
 /// @param hh
 /// @param condition
-/// @param [color]
+/// @param [pct
+/// @param color]
 
-if argument[4] == undefined
+if argument[5] == undefined
 col = c_white;
 
 var scale = hh/10;
@@ -64,7 +65,28 @@ var ww = hh*1.87*scale;
 var flip = pick(-1,1,condition);
 var yoff = pick(hh*0.8,0,condition);
 
-draw_triangle_color(xx,yy+yoff,xx+ww,yy+yoff,xx+(ww*0.5),yy+yoff+(hh*flip),col,col,col,false);
+x1 = xx;
+y1 = yy+yoff;
+
+x2 = xx+ww;
+y2 = yy+yoff;
+
+x3 = xx+(ww*0.5);
+y3 = yy+yoff+(hh*flip);
+
+if argument[4] == true
+	{
+	x1 = x_pct_x(x1);	
+	y1 = y_pct_y(y1);
+	
+	x2 = x_pct_x(x2);	
+	y2 = y_pct_y(y2);
+	
+	x3 = x_pct_x(x3);	
+	y3 = y_pct_y(y3);
+	}
+
+draw_triangle_color(x1,y1,x2,y2,x3,y3,col,col,col,false);
 }
 	
 function draw_calendar_icon(xx,yy,sq_yoff,sq_size,date) {

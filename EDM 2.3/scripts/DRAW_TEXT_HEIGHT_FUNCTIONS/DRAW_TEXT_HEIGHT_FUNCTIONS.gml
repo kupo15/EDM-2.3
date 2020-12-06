@@ -86,21 +86,14 @@ var alpha = draw_get_alpha();
 return draw_text_height_color(xx,yy+yoff,str,col,height,font);
 }
 
-function draw_text_height_color(xx,yy,str,col,height,percBased,font) {
+function draw_text_height_color(xx,yy,str,col,height,pct,font) {
 /// @param xx
 /// @param yy
 /// @param str
 /// @param color
 /// @param height
-/// @param [percBased?
+/// @param [pct?
 /// @param font]
-
-if argument[5] == true
-	{
-	xx = x_pct_x(xx);
-	yy = y_pct_y(yy);
-	height = y_pct_y(height);
-	}
 
 var int = argument[6];
 
@@ -109,7 +102,7 @@ var w = -1;
 var angle = 0;
 var alpha = draw_get_alpha();
 
-return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,font);
+return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,pct,font);
 }
 
 function draw_text_height_ext(xx,yy,str,sep,w,angle,height,font) {
@@ -130,7 +123,7 @@ var alpha = draw_get_alpha();
 return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,font);
 }
 
-function draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,font) {
+function draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,pct,font) {
 /// @param xx
 /// @param yy
 /// @param str
@@ -140,9 +133,10 @@ function draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,font)
 /// @param color
 /// @param alpha
 /// @param height
-/// @param [font]	
+/// @param [pct?	
+/// @param font]	
 
-if argument[9] == undefined
+if argument[10] == undefined
 font = fn_normal;
 	
 draw_set_font(font);
@@ -157,6 +151,13 @@ var sep_scale = sep/scale;
 
 if w != -1
 w /= scale;
+
+if argument[9] == true
+	{
+	xx = x_pct_x(xx);
+	yy = y_pct_y(yy);
+	scale = y_pct_y(scale);
+	}
 
 draw_text_ext_transformed_color(xx,yy,str,sep_scale,w,scale,scale,angle,col,col,col,col,alpha);
 
