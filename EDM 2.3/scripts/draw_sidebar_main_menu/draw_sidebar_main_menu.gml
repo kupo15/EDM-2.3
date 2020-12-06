@@ -45,7 +45,7 @@ var xx = 25;
 var yy = 25;
 
 draw_image_width_cropped_pct(spr_estrella_banner,0,xx_off,0,side_menu_width,profile_hh,1,dev_width);
-draw_icon_height_pct(spr_estrella_logo,0,xx+xx_off,yy,100,1); // profile picture
+draw_icon_height_pct(spr_estrella_logo,0,xx+xx_off,yy,100,1,true,header_color); // profile picture
 
 var height = 45;
 var yy = profile_hh-height-10;

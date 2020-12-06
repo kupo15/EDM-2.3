@@ -196,14 +196,36 @@ draw_sprite_ext(spr,ind,xx,yy,sca,sca,0,col,alpha);
 return spr_ww*sca;
 }
 
-function draw_icon_height_pct(spr,ind,xx,yy,height,alpha,dev_hh) {
+function draw_icon_height_pct(spr,ind,xx,yy,height,alpha,enclosed,enclosedCol,dev_hh) {
+/// @param spr
+/// @param ind
+/// @param xx
+/// @param yy
+/// @param height
+/// @param alpha
+/// @param [enclosed
+/// @param enclosedCol
+/// @param dev_hh]
+	
 	
 var spr_ww = sprite_get_width(spr);
 var spr_hh = sprite_get_height(spr);
 var sca = y_pct_y(height/spr_hh,dev_hh);
 var col = c_white;
 
-draw_sprite_ext(spr,ind,x_pct_x(xx),y_pct_y(yy),sca,sca,0,col,alpha);
+xx = x_pct_x(xx)
+yy = y_pct_y(yy);
+
+if enclosed
+	{
+	var r = y_pct_y(height)*0.5;
+	var off = r;
+	
+	draw_circle_color(xx+off,yy+off,r*1.25,enclosedCol,enclosedCol,false); // draw circle
+	}
+
+
+draw_sprite_ext(spr,ind,xx,yy,sca,sca,0,col,alpha);
 
 return x_pct_x(spr_ww*height/spr_hh);
 }
