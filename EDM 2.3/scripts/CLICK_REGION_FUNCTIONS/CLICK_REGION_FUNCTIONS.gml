@@ -198,6 +198,18 @@ var condition = mouse_check_button_pressed(button);
 return click_region_clamp_set(x_left,y_top,yoff,ww,hh,box_hh,button,highlight,condition,sub,array_pos);
 }
 
+function click_region_released_clamp_pct(x_left,y_top,yoff,ww,hh,box_hh,button,highlight,sub,array_pos,ref_list,active_sub) {
+	
+x_left = x_pct_x(x_left);
+y_top = y_pct_y(y_top);
+yoff = y_pct_y(yoff);
+ww = x_pct_x(ww);
+hh = y_pct_y(hh);
+box_hh = y_pct_y(box_hh);
+	
+return click_region_released_clamp(x_left,y_top,yoff,ww,hh,box_hh,button,highlight,sub,array_pos,ref_list,active_sub);
+}
+
 function click_region_released_clamp(x_left,y_top,yoff,ww,hh,box_hh,button,highlight,sub,array_pos,ref_list,active_sub) {
 	
 var condition = mouse_check_button_released(button);
