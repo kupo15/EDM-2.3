@@ -61,6 +61,10 @@ function click_button_pct(xx,yy,str,height,str_col,ww,hh,col,rounded,outline,sub
 /// @param [font
 /// @param alpha]
 
+if argument[11] == undefined
+font = fn_normal;
+
+var int = argument[12];
 
 xx = x_pct_x(xx);
 yy = y_pct_y(yy);

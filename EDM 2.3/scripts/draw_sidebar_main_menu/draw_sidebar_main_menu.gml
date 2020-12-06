@@ -25,7 +25,7 @@ draw_rectangle_color(xx_pct,yy,xx_pct+ww_pct,yy+hh,col,col,col,col,false); // me
 if clickout_region(xx+xx_off,yy,ww,hh,false,navbar.sidebar)
 androidBack = true;
 
-if click_button(xx_off,0,"",0,c_black,140,140,undefined,false,undefined,submenu)
+if click_button_pct(xx_off,0,"",0,c_black,140,140,undefined,false,undefined,submenu)
 	{
 	//submenu = navbar.hidden;
 	//screen_change(screen.profileView);
@@ -45,12 +45,14 @@ var xx = 25;
 var yy = 25;
 
 draw_image_width_cropped_pct(spr_estrella_banner,0,xx_off,0,side_menu_width,profile_hh);
-draw_icon_height(spr_estrella_logo,0,xx+xx_off,yy,100,1); // profile picture
+var dd = draw_icon_height_pct(spr_estrella_logo,0,xx+xx_off,yy,100,1); // profile picture
+
+if keyboard_check_pressed(vk_control)
+sm(dd)
 
 var height = 45;
 var yy = profile_hh-height-10;
 
-//draw_text_height_color(xx+xx_off,yy,"Estrella del Mar",c_white,height,fn_bold); // draw location name
 draw_text_height_color(xx+xx_off,yy,PROFILE_data.dispName,c_white,height,fn_bold); // draw location name
 
 draw_menu_triangle(xx_pct+(ww_pct*0.85),yy+15,10,submenu != navbar.profileChange);
