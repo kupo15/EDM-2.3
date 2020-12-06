@@ -22,6 +22,7 @@ deviceTest = {
 		
 debug_device_add("Dev Computer",room_width,room_height);
 debug_device_add("Galaxy Phone",2024,1080);
+debug_device_add("Nextbook Tablet",800,400);
 debug_device_add("Fire Tablet",1024,552);
 }
 
@@ -46,5 +47,6 @@ if keyboard_check_pressed(vk_space) || (ind != undefined)
 enum deviceTesting {
 devComputer,
 galaxyPhone,
+nextbook,
 fireTablet,
 }
