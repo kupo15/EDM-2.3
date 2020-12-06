@@ -12,7 +12,7 @@ var hh = app_height;
 var profile_hh = 200;
 
 var xx_pct = x_pct_x(xx_off);
-var ww_pct = x_pct_x(side_menu_width);
+var ww_pct = x_pct_x(side_menu_width,dev_width);
 var profile_hh_pct = y_pct_y(200);
 
 var profile_col = make_color_rgb(76,102,145);
@@ -25,12 +25,12 @@ draw_rectangle_color(xx_pct,yy,xx_pct+ww_pct,yy+hh,col,col,col,col,false); // me
 if clickout_region(xx+xx_off,yy,ww,hh,false,navbar.sidebar)
 androidBack = true;
 
-if click_button_pct(xx_off,0,"",0,c_black,150,150,undefined,false,undefined,submenu)
+if click_button_pct(xx_off,0,"",0,c_black,150,150,undefined,false,undefined,submenu,dev_width)
 	{
 	submenu = navbar.hidden;
 	screen_change(screen.profileView);
 	}
-else if click_button_pct(xx_off,yy,"",0,c_black,side_menu_width,profile_hh,profile_col,false,false,submenu)
+else if click_button_pct(xx_off,yy,"",0,c_black,side_menu_width,profile_hh,profile_col,false,false,submenu,dev_width,dev_height)
 	{
 	if submenu == navbar.profileChange
 	androidBack = true;
@@ -44,7 +44,7 @@ else if click_button_pct(xx_off,yy,"",0,c_black,side_menu_width,profile_hh,profi
 var xx = 25;
 var yy = 25;
 
-draw_image_width_cropped_pct(spr_estrella_banner,0,xx_off,0,side_menu_width,profile_hh);
+draw_image_width_cropped_pct(spr_estrella_banner,0,xx_off,0,side_menu_width,profile_hh,1,dev_width);
 draw_icon_height_pct(spr_estrella_logo,0,xx+xx_off,yy,100,1); // profile picture
 
 var height = 45;

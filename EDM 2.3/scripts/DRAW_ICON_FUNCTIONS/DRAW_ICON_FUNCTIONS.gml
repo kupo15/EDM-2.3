@@ -60,8 +60,9 @@ function draw_menu_triangle(xx,yy,hh,condition,pct,col) {
 if argument[5] == undefined
 col = c_white;
 
+
 var scale = hh/10;
-var ww = hh*1.87*scale;
+var ww = hh*2*scale;
 var flip = pick(-1,1,condition);
 var yoff = pick(hh*0.8,0,condition);
 
@@ -76,14 +77,14 @@ y3 = yy+yoff+(hh*flip);
 
 if argument[4] == true
 	{
-	x1 = x_pct_x(x1);	
-	y1 = y_pct_y(y1);
+	x1 = x_pct_x(x1,dev_width);
+	y1 = y_pct_y(y1,dev_height);
 	
-	x2 = x_pct_x(x2);	
-	y2 = y_pct_y(y2);
+	x2 = x_pct_x(x2,dev_width);
+	y2 = y_pct_y(y2,dev_height);
 	
-	x3 = x_pct_x(x3);	
-	y3 = y_pct_y(y3);
+	x3 = x_pct_x(x3,dev_width);
+	y3 = y_pct_y(y3,dev_height);
 	}
 
 draw_triangle_color(x1,y1,x2,y2,x3,y3,col,col,col,false);
@@ -195,11 +196,11 @@ draw_sprite_ext(spr,ind,xx,yy,sca,sca,0,col,alpha);
 return spr_ww*sca;
 }
 
-function draw_icon_height_pct(spr,ind,xx,yy,height,alpha) {
+function draw_icon_height_pct(spr,ind,xx,yy,height,alpha,dev_hh) {
 	
 var spr_ww = sprite_get_width(spr);
 var spr_hh = sprite_get_height(spr);
-var sca = y_pct_y(height/spr_hh);
+var sca = y_pct_y(height/spr_hh,dev_hh);
 var col = c_white;
 
 draw_sprite_ext(spr,ind,x_pct_x(xx),y_pct_y(yy),sca,sca,0,col,alpha);
@@ -255,22 +256,19 @@ var col = c_white;
 draw_sprite_part_ext(spr,ind,0,0,region_ww,region_hh,xx,yy,sca,sca,col,alpha);
 
 return spr_hh*sca;	
-	
-	
 }
 
-function draw_image_width_cropped_pct(spr,ind,xx,yy,region_ww,region_hh,alpha) {
+function draw_image_width_cropped_pct(spr,ind,xx,yy,region_ww,region_hh,alpha,dev_ww) {
 	
 if argument[6] == undefined
-alpha = draw_get_alpha();	
-	
+alpha = draw_get_alpha();
 		
 var spr_ww = sprite_get_width(spr);
 var spr_hh = sprite_get_height(spr);
-var sca = x_pct_x((region_ww+3)/spr_ww);
+var sca = x_pct_x((region_ww+1)/spr_ww,dev_ww);
 var col = c_white;
 
-draw_sprite_part_ext(spr,ind,0,0,x_pct_x(region_ww)/sca,y_pct_y(region_hh)/sca,x_pct_x(xx),y_pct_y(yy),sca,sca,col,alpha);
+draw_sprite_part_ext(spr,ind,0,0,x_pct_x(region_ww+1)/sca,y_pct_y(region_hh)/sca,x_pct_x(xx),y_pct_y(yy),sca,sca,col,alpha);
 
 return y_pct_y(region_hh);
 }

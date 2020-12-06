@@ -43,47 +43,43 @@ if str == ""
 return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,font);
 }
 
-function draw_text_height_middled(xx,yy,str,hh,height,alpha,font) {
+function draw_text_height_middled(xx,yy,str,hh,height,alpha,pct,font) {
 /// @param xx
 /// @param yy
 /// @param str
 /// @param region_height
 /// @param height
 /// @param alpha
-/// @param [font]
+/// @param [pct?
+/// @param font]
 
 var int = argument[6];
-
-var yoff = abs(height-hh)*0.5;
-var sep = -1;
-var w = -1;
-var angle = 0;
 var col = draw_get_color();
 
-if argument[5] == undefined
-alpha = draw_get_alpha();
-
-return draw_text_height_ext_color(xx,yy+yoff,str,sep,w,angle,col,alpha,height,font);
+return draw_text_height_middled_color(xx,yy,str,hh,col,height,alpha,pct,font);
 }
 
-function draw_text_height_middled_color(xx,yy,str,hh,col,height,font) {
+function draw_text_height_middled_color(xx,yy,str,hh,col,height,alpha,pct,font) {
 /// @param xx
 /// @param yy
 /// @param str
 /// @param region_height
 /// @param color
 /// @param height
-/// @param [font]
+/// @param [pct?
+/// @param font]
 
-var int = argument[6];
+if argument[6] == undefined
+alpha = draw_get_alpha();
+
+var int = argument[8];
 
 var yoff = abs(height-hh)*0.5;
 var sep = -1;
 var w = -1;
 var angle = 0;
-var alpha = draw_get_alpha();
 
-return draw_text_height_color(xx,yy+yoff,str,col,height,font);
+return draw_text_height_ext_color(xx,yy+yoff,str,sep,w,angle,col,alpha,height,pct,font);
 }
 
 function draw_text_height_color(xx,yy,str,col,height,pct,font) {
@@ -143,7 +139,17 @@ draw_set_font(font);
 	
 var currSize = string_height(str); // current height of string
 var scale = height/currSize;
-	
+
+// debug
+var ww = string_width(str)*scale; 	
+var xoff = (draw_get_halign() == fa_center)*ww*0.5;
+var d_xpos = xx-xoff-20;
+var d_ypos = yy-2;
+var d_wpos = ww+40;
+var d_hpos = height+4;
+var cross_ww = 3;
+var cross_hh = 3;
+
 if sep == -1
 var sep_scale = -1;
 else
@@ -156,20 +162,24 @@ if argument[9] == true
 	{
 	xx = x_pct_x(xx);
 	yy = y_pct_y(yy);
-	scale = y_pct_y(scale);
+	scale = y_pct_y(scale,dev_height);
+	
+	// debug
+	d_xpos = x_pct_x(d_xpos);
+	d_ypos = y_pct_y(d_ypos);
+	d_wpos = x_pct_x(d_wpos);
+	d_hpos = y_pct_y(d_hpos);
+	cross_ww = x_pct_x(cross_ww);
+	cross_hh = y_pct_y(cross_hh);
 	}
 
 draw_text_ext_transformed_color(xx,yy,str,sep_scale,w,scale,scale,angle,col,col,col,col,alpha);
 
 // debug position
-var ww = string_width(str)*scale;
-var xoff = (draw_get_halign() == fa_center)*ww*0.5;
-
-if (os_type == os_windows) && click_region(xx-xoff-20,yy-2,ww+40,height+4,false,noone,submenu)
+if (os_type == os_windows) && point_in_rectangle(mouse_x,mouse_y,d_xpos,d_ypos,d_xpos+d_wpos,d_ypos+d_hpos)
 	{
-	var ww = 3;
-	draw_line_color(xx-ww,yy,xx+ww,yy,col,col);
-	draw_line_color(xx,yy-ww,xx,yy+ww,col,col);
+	draw_line_color(xx-cross_ww,yy,xx+cross_ww,yy,col,col);
+	draw_line_color(xx,yy-cross_hh,xx,yy+cross_hh,col,col);
 	
 	var within_app = point_in_rectangle(mouse_x,mouse_y,0,0,app_width,app_height);
 

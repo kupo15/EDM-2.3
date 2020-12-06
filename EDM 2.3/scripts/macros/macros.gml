@@ -9,9 +9,13 @@
 #macro PROFILE_data ROOT_data_struct.profiles[profile_index]
 #macro META_data ROOT_data_struct.meta
 
+// dev
+#macro dev_width 1920
+#macro dev_height 1200
+
 // header
 #macro header_color make_color_rgb(0,145,206) // make_color_rgb(42,104,53) //
-#macro header_height y_pct_y(160,1200)
+#macro header_height y_pct_y(160,dev_height)
 #macro header_submenu_height header_height*0.8
 #macro header_font_height header_height*0.6
 

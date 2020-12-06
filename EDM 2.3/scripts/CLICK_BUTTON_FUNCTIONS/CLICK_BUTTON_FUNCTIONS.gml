@@ -46,7 +46,7 @@ draw_set_halign(prev_halign);
 return click_region_released(xx,yy,ww,hh,true,sub,alpha);
 }
 
-function click_button_pct(xx,yy,str,height,str_col,ww,hh,col,rounded,outline,sub,font,alpha) {
+function click_button_pct(xx,yy,str,height,str_col,ww,hh,col,rounded,outline,sub,dev_ww,dev_hh,font,alpha) {
 /// @param xx
 /// @param yy
 /// @param buttonString
@@ -58,19 +58,21 @@ function click_button_pct(xx,yy,str,height,str_col,ww,hh,col,rounded,outline,sub
 /// @param rounded
 /// @param outline
 /// @param submenu
-/// @param [font
+/// @param [dev_ww
+/// @param dev_hh
+/// @param font
 /// @param alpha]
 
-if argument[11] == undefined
+if argument[13] == undefined
 font = fn_normal;
 
-var int = argument[12];
+var int = argument[14];
 
 xx = x_pct_x(xx);
 yy = y_pct_y(yy);
-ww = x_pct_x(ww);
-hh = y_pct_y(hh);
-height = y_pct_y(height);
+ww = x_pct_x(ww,dev_ww);
+hh = y_pct_y(hh,dev_hh);
+height = y_pct_y(height,dev_hh);
 
 click_button(xx,yy,str,height,str_col,ww,hh,col,rounded,outline,sub,font,alpha);
 }

@@ -28,7 +28,7 @@ else
 script_execute(drawScreen[screenIndex]);
 		
 // draw numpad
-numpad_value = draw_numpad_golf(numpad_value);
+//numpad_value = draw_numpad_golf(numpad_value);
 		
 // draw_footer_button();
 
@@ -37,8 +37,8 @@ draw_navbar();
 draw_sidebar_main_menu();
 
 // popup overlays
-draw_overlay_calendar();
-draw_overlay_circle_button();
+//draw_overlay_calendar();
+//draw_overlay_circle_button();
 	
 draw_highlight_click_static(submenu != navbar.sidebar);
 
