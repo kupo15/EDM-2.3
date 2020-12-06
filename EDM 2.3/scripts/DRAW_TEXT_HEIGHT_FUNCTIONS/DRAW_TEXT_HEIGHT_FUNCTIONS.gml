@@ -1,10 +1,11 @@
 // text draws
-function draw_text_height(xx,yy,str,height,font) {
+function draw_text_height(xx,yy,str,height,pct,font) {
 /// @param xx
 /// @param yy
 /// @param str
 /// @param height
-/// @param [font]
+/// @param [pct?
+/// @param font]
 
 var int = argument[4];
 
@@ -14,7 +15,7 @@ var angle = 0;
 var col = draw_get_color();
 var alpha = draw_get_alpha();
 
-return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,font);
+return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,pct,font);
 }
 
 function draw_text_height_label(xx,yy,str,str_label,height,font) {

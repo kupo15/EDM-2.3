@@ -45,7 +45,7 @@ var xx = 25;
 var yy = 25;
 
 draw_image_width_cropped_pct(spr_estrella_banner,0,xx_off,0,side_menu_width,profile_hh,1,dev_width);
-draw_icon_height_pct(spr_estrella_logo,0,xx+xx_off,yy,100,1,true,header_color); // profile picture
+draw_icon_height_pct(spr_estrella_logo,0,xx+xx_off,yy,100,1); // profile picture
 
 var height = 45;
 var yy = profile_hh-height-10;
@@ -62,22 +62,22 @@ var sep = 120;
 var height = 50;
 
 draw_set_halign(fa_left);
-draw_text_height_middled(xx+xx_off,yy+(screen.home*sep),"Home",sep,height);
-draw_text_height_middled(xx+xx_off,yy+(screen.members*sep),"Members",sep,height);
-draw_text_height_middled(xx+xx_off,yy+(screen.stats*sep),"Stats",sep,height);
+draw_text_height_middled(xx+xx_off,yy+(screen.home*sep),"Home",sep,height,undefined,true);
+draw_text_height_middled(xx+xx_off,yy+(screen.members*sep),"Members",sep,height,undefined,true);
+draw_text_height_middled(xx+xx_off,yy+(screen.stats*sep),"Stats",sep,height,undefined,true);
 
 
-draw_text_height_middled(xx+xx_off,yy+(screen.help_info*sep),"Help and Info",sep,height);
-draw_text_height_middled(xx+xx_off,yy+(screen.settings*sep),"Settings",sep,height);
+draw_text_height_middled(xx+xx_off,yy+(screen.help_info*sep),"Help and Info",sep,height,undefined,true);
+draw_text_height_middled(xx+xx_off,yy+(screen.settings*sep),"Settings",sep,height,undefined,true);
 
-draw_text_height(xx_off+15,app_height-40,"Vers. "+string(GM_version),30);
+draw_text_height(x_pct_x(xx_off+15),app_height-y_pct_y(40),"Vers. "+string(GM_version),y_pct_y(30));
 
 for(var i=0;i<screen.enumcount;i++)
 	{
 	if (i>screen.stats) && (i<screen.help_info)
 	continue;
 		
-	draw_icon_height_centered_color(spr_footer_icon,i,res_bleed_xx+xx_off,yy+(i*sep),sep*0.7,sep,sep*0.7,header_color,1); // draw menu icons
+	draw_icon_height_centered_color_pct(spr_footer_icon,i,res_bleed_xx+xx_off,yy+(i*sep),sep*0.7,sep,sep*0.7,header_color,1); // draw menu icons
 	
 	if i == screen.help_info
 	draw_line(xx_off,yy+(i*sep),xx_off+ww,yy+(i*sep)); // separating line
