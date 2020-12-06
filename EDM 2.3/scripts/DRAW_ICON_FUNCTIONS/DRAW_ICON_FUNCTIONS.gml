@@ -244,7 +244,7 @@ draw_sprite_ext(spr,index,xx+xoff,yy+yoff,sca,sca,0,col,alpha);
 
 function draw_icon_height_centered(spr,index,xx,yy,ww,hh,height,alpha) {
 	
-var col = c_white;	
+var col = draw_get_color();	
 draw_icon_height_centered_color(spr,index,xx,yy,ww,hh,height,col,alpha);	
 }
 

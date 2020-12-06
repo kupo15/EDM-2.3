@@ -23,15 +23,31 @@ return val;
 
 }
 
-function draw_line_pixel(xx,yy,ww,hh,col,alpha) {
+function draw_line_pixel(xx,yy,ww,hh,col,alpha,pct) {
 /// @param xx
 /// @param yy
 /// @param width
 /// @param height
 /// @param col
 /// @param alpha
+/// @param [pct?]
 
-draw_sprite_ext(spr_pixel,0,xx,yy,ww,hh,0,col,alpha);
+if argument[6] == true
+	{
+	xx = x_pct_x(xx);
+	yy = y_pct_y(yy);
+	ww = x_pct_x(ww);
+	hh = y_pct_y(hh);
+	}
+	
+if ww < 1
+ww = 1
+
+if hh < 1
+hh = 1;
+
+draw_sprite_stretched_ext(spr_pixel,0,xx,yy,ww,hh,col,alpha);
+//draw_sprite_ext(spr_pixel,0,xx,yy,ww,hh,0,col,alpha);
 }
 	
 function draw_rectangle_pixel(xx,yy,ww,hh,outline) {
