@@ -29,11 +29,17 @@ DPI_X_CONVERT = display_get_dpi_x()/DPI_POINT;
 DPI_Y_CONVERT = display_get_dpi_y()/DPI_POINT;
 
 // set resolution
-RESOLUTION_WIDTH = window_get_width();
-RESOLUTION_HEIGHT = window_get_height();
+RESOLUTION_WIDTH = win_width;
+RESOLUTION_HEIGHT = win_height;
 	
 // apply resolution
 camera_set_view_size(MAIN_CAMERA,RESOLUTION_WIDTH,RESOLUTION_HEIGHT);
 surface_resize(application_surface,RESOLUTION_WIDTH,RESOLUTION_HEIGHT);
 display_set_gui_size(RESOLUTION_WIDTH,RESOLUTION_HEIGHT); // set GUI
 }
+
+
+
+
+
+

@@ -8,9 +8,9 @@ exit;
 var win_ww = window_get_width();
 var win_hh = window_get_height();
 	
-var xx = 0-((win_ww-app_width)*0.5)+30;
+var xx = (-app_width*0.25);
 var yy = 10;
-var sep = 45;
+var sep = y_pct_y(45);
 var height = sep;
 
 debugyoff = 0;
@@ -41,16 +41,7 @@ debug_draw_strings(xx,yy,debugyoff,sep,height);
 	
 
 // right side
-var xx = app_width+30;
-
-debug_draw_mouse(xx,yy,15,sep,height);
-
-// draw elements
-/*var size = ds_list_size(deleteList);
-for(var i=0;i<size;i++)
-draw_text_height(xx,yy+(i*sep),deleteList[| i],height);
-	
-yy += (size+1)*sep;*/
+var xx = app_width+10;
 
 // draw prev screen stack
 var size = ds_list_size(prevScreenStack);
@@ -81,6 +72,11 @@ for(var i=0;i<size;i++)
 	draw_text_height(xx,yy+((i+1)*sep),str+" - "+string(enum_name_submenu[-navbar.enumstart+1+_sub]),height);
 	}
 		
-draw_set_colour(c_black);
+debugyoff = 10;		
+debug_draw_mouse(xx,yy,debugyoff,sep,height);
+debug_draw_device_testing(xx,yy,debugyoff,sep,height);
+
+		
+draw_set_color(c_black);
 }
 

@@ -91,6 +91,8 @@ if mouse_check_button_pressed(mb_middle)
 	mouse_xpos = mouse_x;
 	mouse_ypos = mouse_y;
 	}
+
+device_testing_select();
 }
 	
 	

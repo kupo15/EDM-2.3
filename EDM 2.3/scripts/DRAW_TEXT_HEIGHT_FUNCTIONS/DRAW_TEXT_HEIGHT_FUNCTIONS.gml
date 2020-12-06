@@ -86,15 +86,23 @@ var alpha = draw_get_alpha();
 return draw_text_height_color(xx,yy+yoff,str,col,height,font);
 }
 
-function draw_text_height_color(xx,yy,str,col,height,font) {
+function draw_text_height_color(xx,yy,str,col,height,percBased,font) {
 /// @param xx
 /// @param yy
 /// @param str
 /// @param color
 /// @param height
-/// @param [font]
+/// @param [percBased?
+/// @param font]
 
-var int = argument[5];
+if argument[5] == true
+	{
+	xx = x_pct_x(xx);
+	yy = y_pct_y(yy);
+	height = y_pct_y(height);
+	}
+
+var int = argument[6];
 
 var sep = -1;
 var w = -1;

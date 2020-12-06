@@ -36,7 +36,7 @@
 #macro cursor_width 3
 
 // sidebar
-#macro side_menu_width x_pct_x(870)
+#macro side_menu_width 870
 #macro SIDEBAR_LERP 0.16
 
 // clicking

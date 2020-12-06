@@ -123,6 +123,7 @@
     {"id":{"name":"draw_numpad_entry","path":"scripts/draw_numpad_entry/draw_numpad_entry.yy",},"order":7,},
     {"id":{"name":"json_data_load","path":"scripts/json_data_load/json_data_load.yy",},"order":0,},
     {"id":{"name":"DS_GRID_FUNCTIONS","path":"scripts/DS_GRID_FUNCTIONS/DS_GRID_FUNCTIONS.yy",},"order":0,},
+    {"id":{"name":"device_testing","path":"scripts/device_testing/device_testing.yy",},"order":1,},
     {"id":{"name":"draw_preferences","path":"scripts/draw_preferences/draw_preferences.yy",},"order":8,},
     {"id":{"name":"scr_json_version_transition","path":"scripts/scr_json_version_transition/scr_json_version_transition.yy",},"order":2,},
     {"id":{"name":"draw_slider","path":"scripts/draw_slider/draw_slider.yy",},"order":9,},

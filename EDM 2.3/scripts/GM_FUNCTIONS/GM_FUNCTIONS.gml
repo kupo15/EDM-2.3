@@ -125,16 +125,16 @@ var pct = room_yy/room_height;
 return pct;
 }
 
-function x_pct_x(xx) {
+function x_pct_x(room_xx) {
 
-var val = pct_x_convert(xx); // convert to percent
+var val = pct_x_convert(room_xx); // convert to percent
 
 return pct_x(val*100); // return new x coor
 }
 
-function y_pct_y(yy) {
+function y_pct_y(room_yy) {
 
-var val = pct_y_convert(yy); // convert to percent
+var val = pct_y_convert(room_yy); // convert to percent
 
 return pct_y(val*100); // return new y coor
 }

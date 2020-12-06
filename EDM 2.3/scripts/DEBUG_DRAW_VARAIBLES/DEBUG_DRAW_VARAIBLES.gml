@@ -78,7 +78,7 @@ draw_text_height(xx,yy+((ind+1)*sep),string(kvLastString),height);
 draw_text_height(xx,yy+((ind+2.5)*sep),"stringText: ",height);
 
 var xoff = string_width_height("stringText: ",height);
-draw_text_height_middled(xx+xoff,yy+((ind+2.5)*sep),string(debugStringText),sep,text_reduce(debugStringText,230,height),1);
+draw_text_height_middled(xx+xoff,yy+((ind+2.5)*sep),string(debugStringText),sep,text_reduce(debugStringText,x_pct_x(230),height),1);
 draw_text_height(xx,yy+((ind+3.5)*sep),"stringxpos: "+string(debugStringXpos),height);
 draw_text_height(xx,yy+((ind+4.5)*sep),"stringypos: "+string(debugStringYpos),height);
 draw_text_height(xx,yy+((ind+5.5)*sep),"stringHeight: "+string(debugStringHeight),height);
@@ -155,9 +155,9 @@ debugyoff += 16;
 
 function debug_draw_mouse(xx,yy,ind,sep,height) {
 	
-draw_text_height(xx,yy+((ind+0)*sep),"canClickPressed: "+string(canClickPressed),height); // can click
-draw_text_height(xx,yy+((ind+1)*sep),"canClick: "+string(canClick),height); // can click
-draw_text_height(xx,yy+((ind+2)*sep),"clickMoved: "+string(clickMoved),height); // can click
+//draw_text_height(xx,yy+((ind+0)*sep),"canClickPressed: "+string(canClickPressed),height); // can click
+//draw_text_height(xx,yy+((ind+1)*sep),"canClick: "+string(canClick),height); // can click
+//draw_text_height(xx,yy+((ind+2)*sep),"clickMoved: "+string(clickMoved),height); // can click
 draw_text_height(xx,yy+((ind+3)*sep),"MouseStart: "+string(mouse_xstart)+" , "+string(mouse_ystart),height); // mouse ystart
 draw_text_height(xx,yy+((ind+4)*sep),"Mouse Distance: "+string(mouse_xdist)+" , "+string(mouse_ydist),height); // mouse distances
 draw_text_height(xx,yy+((ind+5)*sep),"Mouse Coor: "+string(mouse_x)+" , "+string(mouse_y),height); // mouse coor
@@ -171,6 +171,16 @@ if mouse_check_button(mb_middle)
 	}
 
 debugyoff += 10;
+}
+
+function debug_draw_device_testing(xx,yy,ind,sep,height) {
+	
+var device_pointer = deviceTest.devices[deviceTestIndex];	
+	
+draw_text_height(xx,yy+((ind+0)*sep),"Device Testing: ["+string(deviceTestIndex)+"]",height);
+draw_text_height(xx,yy+((ind+1)*sep),device_pointer.deviceName+": "+string(device_pointer.resWidth)+" x "+string(device_pointer.resHeight),height);
+
+debugyoff += 3;
 }
 
 function debug_device_info(xx,yy,ind,sep,height) {

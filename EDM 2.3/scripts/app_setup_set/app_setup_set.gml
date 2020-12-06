@@ -5,13 +5,15 @@ function app_setup_set() {
 if os_type == os_android
 	{
 	app_width = display_get_width();
-	app_height = display_get_height();			
+	app_height = display_get_height();
+
+	update_resolution(app_width,app_height);
 	}
 else
-	{
+	{	
 	app_width = window_get_width();
 	app_height = window_get_height();
-			
+	
 	// adjust window size and position for debugging
 	var scale = 1;
 	var debug_ww = 1.75;
@@ -20,8 +22,8 @@ else
 	var disp_hh = display_get_height();
 	
 	// set window size
-	var window_ww = app_width*scale;
-	var window_hh = app_height*scale;
+	var window_ww = window_get_width()*scale;
+	var window_hh = window_get_height()*scale;
 	
 	if disp_hh < window_hh
 		{
@@ -38,7 +40,8 @@ else
 	var window_yy = (disp_hh-window_hh)*0.5; // disp_center_hh-(window_hh*0.5);
 	
 	window_set_position(window_xx,window_yy);
+	
+	device_testing_select(deviceTesting.fireTablet);
 	}
 
-update_resolution(app_width,app_height);
 }
