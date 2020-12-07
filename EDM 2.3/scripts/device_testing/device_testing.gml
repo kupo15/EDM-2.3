@@ -51,12 +51,12 @@ if keyboard_check_pressed(vk_space) || (ind != undefined)
 	
 	
 // adjust window size and position for debugging
-var scale = dev_width/app_width;
+testingScale = 1//dev_width/app_width;
 var debug_ww = 1.75;
 	
 // set window size
-var window_ww = app_width*scale;
-var window_hh = app_height*scale;
+var window_ww = app_width*testingScale;
+var window_hh = app_height*testingScale;
 	
 var disp_ww = display_get_width();
 var disp_hh = display_get_height();

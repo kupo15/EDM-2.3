@@ -5,10 +5,10 @@ function draw_debug() {
 if os_type == os_android
 exit;
 
-var win_ww = app_width*1.5;
+var win_ww = window_get_width();
 var win_hh = window_get_height();
 	
-var xx = -app_width*0.25;
+var xx = (app_width-(win_ww/testingScale)+20)*0.5;
 var yy = 10;
 var sep = y_pct_y(45);
 var height = sep;
@@ -58,7 +58,7 @@ else
 draw_text_height(xx,yy+(0*sep),string(str),height);
 
 
-draw_text_height(xx+350,yy+(0*sep),string(fps_real),height);
+draw_text_height(xx+x_pct_x(320),yy+(0*sep),string(fps_real),height);
 
 // draw dividing line
 draw_line(xx,yy+sep,xx+200,yy+sep);

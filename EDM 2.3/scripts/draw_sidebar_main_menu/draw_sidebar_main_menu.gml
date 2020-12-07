@@ -123,9 +123,9 @@ for(var i=0;i<size;i++)
 	{
 	var off_pos = pos*sep;
 	
-	/*if i == profile_index
+	if i == profile_index
 	continue;
-	else */if (i+1 == size) // last index
+	else if (i+1 == size) // last index
 		{
 		draw_plus_button_pct(xoff,yy+off_pos+(sep*0.5),sep*0.66,false);
 		draw_text_height_middled(xx+text_xoff,yy+off_pos,"Add Venue",sep,height,1,true);
@@ -134,7 +134,7 @@ for(var i=0;i<size;i++)
 			{
 			//activeStruct = scr_profile_create();
 			//scr_profile_set(i);
-			//
+			
 			//screen_change(screen.profileCreate,navbar.popupEntry);
 			//click_textbox_set("",textboxEntry.popupEntryText,kbv_type_default);
 			}

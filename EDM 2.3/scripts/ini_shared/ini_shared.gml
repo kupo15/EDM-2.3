@@ -11,6 +11,7 @@ ini_cursor_vars();
 ini_resolution_device_tests();
 
 deviceTestIndex = 0;
+testingScale = 1;
 
 app_width = room_width;
 app_height = room_height;
