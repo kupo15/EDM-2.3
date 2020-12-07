@@ -9,5 +9,10 @@ DPI_Y_CONVERT = display_get_dpi_y()/DPI_POINT;
 
 // set up
 setup_room_view();
-alarm[0] = 5;
+
+if os_type == os_windows
+device_testing_select(deviceTesting.fireTablet);	
+
+// app start
+timer[timerIndex.app_start] = 12;
 }

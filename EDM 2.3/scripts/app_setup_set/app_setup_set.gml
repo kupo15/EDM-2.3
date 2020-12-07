@@ -1,4 +1,4 @@
-// alarm[0]
+// timer
 
 function app_setup_set() {
 	
@@ -12,7 +12,4 @@ if os_type == os_android
 
 	update_resolution(app_width,app_height,DPI_X,DPI_Y);
 	}
-else
-device_testing_select(deviceTesting.fireTablet);	
-
 }

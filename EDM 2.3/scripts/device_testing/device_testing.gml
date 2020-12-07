@@ -51,7 +51,7 @@ if keyboard_check_pressed(vk_space) || (ind != undefined)
 	
 	
 // adjust window size and position for debugging
-testingScale = 1//dev_width/app_width;
+testingScale = 1//app_width;
 var debug_ww = 1.75;
 	
 // set window size

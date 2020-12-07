@@ -10,6 +10,9 @@ ini_highlight_vars();
 ini_cursor_vars();
 ini_resolution_device_tests();
 
+// surfaces
+surf = -1;
+
 deviceTestIndex = 0;
 testingScale = 1;
 

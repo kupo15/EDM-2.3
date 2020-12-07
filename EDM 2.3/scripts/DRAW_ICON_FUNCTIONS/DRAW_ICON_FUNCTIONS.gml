@@ -229,7 +229,7 @@ draw_sprite_ext(spr,ind,xx,yy,sca,sca,0,col,alpha);
 return spr_ww*sca;
 }
 
-function draw_icon_height_pct(spr,ind,xx,yy,height,alpha,enclosed,enclosedCol,dev_hh) {
+function draw_icon_height_pct(spr,ind,xx,yy,height,alpha,enclosed,enclosedCol) {
 /// @param spr
 /// @param ind
 /// @param xx
@@ -237,8 +237,7 @@ function draw_icon_height_pct(spr,ind,xx,yy,height,alpha,enclosed,enclosedCol,de
 /// @param height
 /// @param alpha
 /// @param [enclosed
-/// @param enclosedCol
-/// @param dev_hh]
+/// @param enclosedCol]
 	
 	
 var spr_ww = sprite_get_width(spr);
@@ -319,23 +318,46 @@ if pct
 draw_sprite_ext(spr,index,xpos,ypos,sca,sca,0,col,alpha);
 }
 
-function draw_image_width_cropped(spr,ind,xx,yy,width,region_ww,region_hh,alpha) {
+function draw_image_width_cropped(spr,ind,xx,yy,region_ww,region_hh,bleed,pct,alpha) {
 	
-if argument[7] == undefined
+if argument[8] == undefined
 alpha = draw_get_alpha();
 	
+// get sprite dimensions
 var spr_ww = sprite_get_width(spr);
 var spr_hh = sprite_get_height(spr);
-var sca = width/spr_ww;
+
+if argument[7] == true
+	{
+	xx = x_pct_x(xx);
+	yy = y_pct_y(yy);
+	
+	region_ww = x_pct_x(region_ww);	// region width to fit in
+	region_hh = y_pct_y(region_hh);
+	bleed = x_pct_x(bleed);
+	}
+
+var sca = (region_ww+bleed)/spr_ww;
 var col = c_white;
 
-draw_sprite_part_ext(spr,ind,0,0,region_ww,region_hh,xx,yy,sca,sca,col,alpha);
+if !surface_exists(surf)
+surf = surface_create(region_ww,region_ww);
 
-return spr_hh*sca;	
+surface_set_target(surf);
+draw_sprite_ext(spr,ind,0,0,sca,sca,0,col,alpha);
+surface_reset_target();
+
+draw_surface_part(surf,0,0,region_ww,region_hh,xx,yy);
+
+return region_ww/spr_ww*spr_hh;
 }
 
-function draw_image_width_cropped_pct(spr,ind,xx,yy,region_ww,region_hh,alpha,dev_ww) {
+function draw_image_width_cropped_pct(spr,ind,xx,yy,region_ww,region_hh,bleed,alpha) {
 	
+return draw_image_width_cropped(spr,ind,xx,yy,region_ww,region_hh,bleed,true,alpha);
+
+
+	exit;
 if argument[6] == undefined
 alpha = draw_get_alpha();
 		
@@ -344,7 +366,8 @@ var spr_hh = sprite_get_height(spr);
 var sca = x_pct_x((region_ww+1)/spr_ww,false);
 var col = c_white;
 
-draw_sprite_part_ext(spr,ind,0,0,x_pct_x(region_ww+1)/sca,y_pct_y(region_hh)/sca,x_pct_x(xx),y_pct_y(yy),sca,sca,col,alpha);
+draw_sprite_part_ext(spr,ind,0,0,region_ww+1,region_hh/sca,x_pct_x(xx),y_pct_y(yy),sca,sca,col,alpha);
+//draw_sprite_part_ext(spr,ind,0,0,x_pct_x(region_ww+1)/sca,y_pct_y(region_hh)/sca,x_pct_x(xx),y_pct_y(yy),sca,sca,col,alpha);
 
 return y_pct_y(region_hh);
 }

@@ -21,6 +21,7 @@ vk_switch,
 scroll_end,
 flick,
 press_hold,
+app_start,
 
 enumcount
 }
