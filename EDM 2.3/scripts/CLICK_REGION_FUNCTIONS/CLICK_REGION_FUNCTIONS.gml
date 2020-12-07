@@ -22,8 +22,8 @@ function clickout_region(xx,yy,ww,hh,highlight,sub,pct) {
 
 var tolerance = 5;
 xx -= tolerance;
-yy -=tolerance;
-ww +=tolerance*2;
+yy -= tolerance;
+ww += tolerance*2;
 hh += tolerance*2;
 
 if submenu != sub
@@ -33,8 +33,8 @@ if pct == true
 	{
 	xx = x_pct_x(xx);
 	yy = y_pct_y(yy);
-	ww = x_pct_x(xx);
-	hh = y_pct_y(yy);	
+	ww = x_pct_x(ww);
+	hh = y_pct_y(hh);	
 	}
 
 if androidBack || (canClick && !click_region(xx,yy,ww,hh,noone,highlight,sub) && mouse_check_button_released(mb_left))

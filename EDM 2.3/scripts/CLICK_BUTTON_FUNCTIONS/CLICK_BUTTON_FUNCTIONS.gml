@@ -74,5 +74,5 @@ ww = x_pct_x(ww,dev_ww);
 hh = y_pct_y(hh,dev_hh);
 height = y_pct_y(height,dev_hh);
 
-click_button(xx,yy,str,height,str_col,ww,hh,col,rounded,outline,sub,font,alpha);
+return click_button(xx,yy,str,height,str_col,ww,hh,col,rounded,outline,sub,font,alpha);
 }
