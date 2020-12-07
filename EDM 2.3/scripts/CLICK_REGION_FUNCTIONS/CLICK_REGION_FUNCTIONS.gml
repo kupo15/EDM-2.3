@@ -1,5 +1,24 @@
 
-function clickout_region(xx,yy,ww,hh,highlight,_sub) {
+function clickout_region_pct(xx,yy,ww,hh,highlight,sub,pct) {
+/// @param xx
+/// @param yy
+/// @param ww
+/// @param hh
+/// @param highlight
+/// @param sub	
+
+var ins = argument[6];
+	
+return clickout_region(xx,yy,ww,hh,highlight,sub,true);
+}	
+	
+function clickout_region(xx,yy,ww,hh,highlight,sub,pct) {
+/// @param xx
+/// @param yy
+/// @param ww
+/// @param hh
+/// @param highlight
+/// @param sub
 
 var tolerance = 5;
 xx -= tolerance;
@@ -7,10 +26,18 @@ yy -=tolerance;
 ww +=tolerance*2;
 hh += tolerance*2;
 
-if submenu != _sub
+if submenu != sub
 exit;
 
-if androidBack || (canClick && !click_region(xx,yy,ww,hh,noone,highlight,_sub) && mouse_check_button_released(mb_left))
+if pct == true
+	{
+	xx = x_pct_x(xx);
+	yy = y_pct_y(yy);
+	ww = x_pct_x(xx);
+	hh = y_pct_y(yy);	
+	}
+
+if androidBack || (canClick && !click_region(xx,yy,ww,hh,noone,highlight,sub) && mouse_check_button_released(mb_left))
 return true;
 else
 return false;

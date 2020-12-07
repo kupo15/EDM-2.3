@@ -22,7 +22,7 @@ var col = c_white;
 draw_rectangle_color(xx_pct,yy,xx_pct+ww_pct,yy+hh,col,col,col,col,false); // menu background
 
 // if click outside of menu
-if clickout_region(xx+xx_off,yy,ww,hh,false,navbar.sidebar)
+if clickout_region_pct(xx+xx_off,yy,ww,hh,false,navbar.sidebar)
 androidBack = true;
 
 if click_button_pct(xx_off,0,"",0,c_black,150,150,undefined,false,undefined,submenu,dev_width)
