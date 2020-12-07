@@ -190,11 +190,20 @@ if within_region
 
 return false;
 }
-
-function click_region_released(x_left,y_top,ww,hh,highlight,sub,alpha) {	
+	
+	
+function click_region_released(x_left,y_top,ww,hh,highlight,sub,alpha,pct) {
 	
 var button = mb_left;	
 var condition = mouse_check_button_released(button);
+
+if pct == true
+	{
+	x_left = x_pct_x(x_left);
+	y_top = y_pct_y(y_top);
+	ww = x_pct_x(ww);
+	hh = y_pct_y(hh);
+	}
 
 return click_region_home(x_left,y_top,ww,hh,button,highlight,condition,sub,undefined,alpha);
 }
@@ -255,7 +264,15 @@ delete_list_set(ref_list,array_pos);
 return click_region_clamp_set(x_left,y_top,yoff,ww,hh,box_hh,button,highlight,condition,sub,array_pos)
 }
 
-function click_region_released_clamp_array(x_left,y_top,yoff,ww,hh,box_hh,button,highlight,sub,array_pos,ref_array,active_sub) {
+function click_region_released_clamp_array(x_left,y_top,yoff,ww,hh,box_hh,button,highlight,sub,array_pos,ref_array,active_sub,pct) {
+	
+if pct == true
+	{
+	x_left = x_pct_x(x_left);
+	y_top = y_pct_y(y_top);
+	ww = x_pct_x(ww);
+	hh = y_pct_y(hh);
+	}	
 	
 var condition = mouse_check_button_released(button);
 
