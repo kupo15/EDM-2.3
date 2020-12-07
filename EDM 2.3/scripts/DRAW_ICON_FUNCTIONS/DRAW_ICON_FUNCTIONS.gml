@@ -67,34 +67,60 @@ function draw_menu_triangle(xx,yy,hh,condition,pct,col) {
 if argument[5] == undefined
 col = c_white;
 
-
-var scale = hh/10;
-var ww = hh*2*scale;
 var flip = pick(-1,1,condition);
 var yoff = pick(hh*0.9,0,condition);
 
-x1 = xx;
-y1 = yy+yoff;
+yy = yy+yoff;
 
-x2 = xx+ww;
-y2 = yy+yoff;
+var x1 = xx;
+var y1 = yy;
 
-x3 = xx+(ww*0.5);
-y3 = yy+yoff+(hh*flip);
+var x2 = x1+hh;
+var y2 = y1+(hh*flip);
+
+var x3 = x2;
+var y3 = yy;
+
+var x4 = x3+1;
+var y4 = y2;
+
+var x5 = x4;
+var y5 = yy;
+
+var x6 = x5+hh;
+var y6 = yy;
 
 if argument[4] == true
 	{
-	x1 = x_pct_x(x1,dev_width);
-	y1 = y_pct_y(y1,dev_height);
+	x1 = x_pct_x(x1);
+	y1 = y_pct_y(y1);
 	
-	x2 = x_pct_x(x2,dev_width);
-	y2 = y_pct_y(y2,dev_height);
+	x2 = x_pct_x(x2);
+	y2 = y_pct_y(y2);
 	
-	x3 = x_pct_x(x3,dev_width);
-	y3 = y_pct_y(y3,dev_height);
+	x3 = x_pct_x(x3);
+	y3 = y_pct_y(y3);
+	
+	x4 = x_pct_x(x4);
+	y4 = y_pct_y(y4);
+		 
+	x5 = x_pct_x(x5);
+	y5 = y_pct_y(y5);
+		 
+	x6 = x_pct_x(x6);
+	y6 = y_pct_y(y6);
 	}
 
-draw_triangle_color(x1,y1,x2,y2,x3,y3,col,col,col,false);
+draw_primitive_begin(pr_trianglestrip);
+draw_vertex_color(x1,y1,col,1);
+draw_vertex_color(x2,y2,col,1);
+draw_vertex_color(x3,y3,col,1);
+
+draw_vertex_color(x4,y4,col,1);
+draw_vertex_color(x5,y5,col,1);
+
+draw_vertex_color(x6,y6,col,1);
+draw_primitive_end();
 }
 	
 function draw_calendar_icon(xx,yy,sq_yoff,sq_size,date) {
