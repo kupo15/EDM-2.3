@@ -47,21 +47,28 @@ if hh < 1
 hh = 1;
 
 draw_sprite_stretched_ext(spr_pixel,0,xx,yy,ww,hh,col,alpha);
-//draw_sprite_ext(spr_pixel,0,xx,yy,ww,hh,0,col,alpha);
 }
 	
-function draw_rectangle_pixel(xx,yy,ww,hh,outline) {
+function draw_rectangle_pixel(xx,yy,ww,hh,col,outline,pct) {
+
+if argument[6] == true
+	{
+	xx = x_pct_x(xx);
+	yy = y_pct_y(yy);
+	ww = x_pct_x(ww);
+	hh = y_pct_y(hh);
+	
+	}
 
 if outline
 	{
-	draw_sprite_ext(spr_pixel,0,xx,yy,ww,1,0,c_black,1); // top line
-	draw_sprite_ext(spr_pixel,0,xx,yy,1,hh,0,c_black,1); // left line
-	draw_sprite_ext(spr_pixel,0,xx,yy+hh,ww,1,0,c_black,1); // bottom line
-	draw_sprite_ext(spr_pixel,0,xx+ww,yy,1,hh,0,c_black,1); // right line
+	draw_sprite_ext(spr_pixel,0,xx,yy,ww,1,0,col,1); // top line
+	draw_sprite_ext(spr_pixel,0,xx,yy,1,hh,0,col,1); // left line
+	draw_sprite_ext(spr_pixel,0,xx,yy+hh,ww,1,0,col,1); // bottom line
+	draw_sprite_ext(spr_pixel,0,xx+ww,yy,1,hh,0,col,1); // right line
 	}
 else
-draw_sprite_ext(spr_pixel,0,xx,yy,ww,hh,0,c_black,1);
-
+draw_sprite_stretched_ext(spr_pixel,0,xx,yy,ww,hh,col,1);
 }	
 	
 function funct_mouse_wheel(scale) {
@@ -117,8 +124,8 @@ function pct_x(percent,rounding) {
 
 var xx = app_width*percent*0.01;
 
-if rounding != false
-xx = floor(xx);
+if argument[1] != false
+xx = ceil(xx);
 
 return xx;
 }
@@ -127,8 +134,8 @@ function pct_y(percent,rounding) {
 
 var yy = app_height*percent*0.01;
 
-if rounding != false
-yy = floor(yy);
+if argument[1] != false
+yy = ceil(yy);
 
 return yy;
 }

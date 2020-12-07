@@ -257,6 +257,10 @@ if enclosed
 	}
 
 
+var new_ww = floor(spr_ww*sca);
+var new_hh = floor(spr_hh*sca);
+
+//draw_sprite_stretched_ext(spr,ind,xx,yy,new_ww,new_hh,col,alpha);
 draw_sprite_ext(spr,ind,xx,yy,sca,sca,0,col,alpha);
 
 return x_pct_x(spr_ww*height/spr_hh);

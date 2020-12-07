@@ -156,9 +156,7 @@ if within_region
 		else if !canClick && mouse_check_button(mb_left)
 		var col = c_orange;
 			
-		draw_set_alpha(alpha);
-		draw_rectangle_colour(x_left,y_top,x_left+ww,y_top+hh,col,col,col,col,false);
-		draw_set_alpha(alphaValue);
+		draw_sprite_stretched_ext(spr_pixel,0,x_left,y_top,ww,hh,col,alpha);
 		}
 		
 	if test_failed

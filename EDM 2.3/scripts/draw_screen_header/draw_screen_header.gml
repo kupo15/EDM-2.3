@@ -118,10 +118,10 @@ function draw_screen_header_submenu(offset,sort_index) {
 
 var xx = 0;
 var yy = header_height;
-var hh = header_height+header_submenu_height;
+var hh = header_submenu_height;
 var col = header_color;
 
-draw_rectangle_color(xx,yy,app_width,hh,col,col,col,col,false);
+draw_sprite_stretched_ext(spr_pixel,0,xx,yy,app_width,hh,col,1);
 	
 var header_num = argument_count-2;
 var header_sep = app_width/header_num;
@@ -138,11 +138,11 @@ for(var i=0;i<header_num;i++)
 
 // draw highlight underline
 var xx = offset*header_sep;
-var width = 4;
+var hh = 4;
 var col = c_white;
 
-draw_line_pixel(xx,yy+header_submenu_height-width+2,header_sep,width,col,1); 
-draw_line_pixel(xx,yy+header_submenu_height,header_sep,1,c_lt_gray,1); 
+draw_rectangle_pixel(xx,yy+header_submenu_height-y_pct_y(hh),header_sep,y_pct_y(hh),col,false);
+draw_line_pixel(xx,yy+header_submenu_height-1,header_sep,1,c_lt_gray,1);
 
 return val;
 }
