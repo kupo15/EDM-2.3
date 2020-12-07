@@ -183,7 +183,7 @@ function draw_icon_width_pct(spr,ind,xx,yy,width,alpha) {
 	
 var spr_ww = sprite_get_width(spr);
 var spr_hh = sprite_get_height(spr);
-var sca = x_pct_x(width/spr_ww);
+var sca = x_pct_x(width/spr_ww,false);
 var col = c_white;
 
 draw_sprite_ext(spr,ind,x_pct_x(xx),y_pct_y(yy),sca,sca,0,col,alpha);
@@ -217,7 +217,7 @@ function draw_icon_height_pct(spr,ind,xx,yy,height,alpha,enclosed,enclosedCol,de
 	
 var spr_ww = sprite_get_width(spr);
 var spr_hh = sprite_get_height(spr);
-var sca = y_pct_y(height/spr_hh,dev_hh);
+var sca = y_pct_y(height/spr_hh,false);
 var col = c_white;
 
 xx = x_pct_x(xx)
@@ -287,7 +287,7 @@ if pct
 	{
 	xpos = x_pct_x(xpos);
 	ypos = y_pct_y(ypos);
-	sca = y_pct_y(sca);
+	sca = y_pct_y(sca,false);
 	}
 
 draw_sprite_ext(spr,index,xpos,ypos,sca,sca,0,col,alpha);
@@ -315,7 +315,7 @@ alpha = draw_get_alpha();
 		
 var spr_ww = sprite_get_width(spr);
 var spr_hh = sprite_get_height(spr);
-var sca = x_pct_x((region_ww+1)/spr_ww,dev_ww);
+var sca = x_pct_x((region_ww+1)/spr_ww,false);
 var col = c_white;
 
 draw_sprite_part_ext(spr,ind,0,0,x_pct_x(region_ww+1)/sca,y_pct_y(region_hh)/sca,x_pct_x(xx),y_pct_y(yy),sca,sca,col,alpha);

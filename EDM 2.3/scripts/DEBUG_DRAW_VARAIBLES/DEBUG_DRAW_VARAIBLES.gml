@@ -82,6 +82,7 @@ draw_text_height_middled(xx+xoff,yy+((ind+2.5)*sep),string(debugStringText),sep,
 draw_text_height(xx,yy+((ind+3.5)*sep),"stringxpos: "+string(debugStringXpos),height);
 draw_text_height(xx,yy+((ind+4.5)*sep),"stringypos: "+string(debugStringYpos),height);
 draw_text_height(xx,yy+((ind+5.5)*sep),"stringHeight: "+string(debugStringHeight),height);
+draw_text_height(xx,yy+((ind+6.5)*sep),"stringScale: "+string(debugStringScale),height);
 
 debugyoff += 8;
 }

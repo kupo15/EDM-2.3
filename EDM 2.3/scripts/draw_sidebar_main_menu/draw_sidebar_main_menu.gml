@@ -4,7 +4,7 @@ draw_set_halign(fa_left);
 draw_set_color(c_black);
 
 var offset = 1-offsetArray[offsetScroll.sidebarXoff];
-var xx_off = round(offset*(-side_menu_width-30));
+var xx_off = fade_offset_set(offset,-side_menu_width-30);
 var xx = 0;
 var yy = 0;
 var ww = side_menu_width;

@@ -113,21 +113,28 @@ return real(new_str);
 }
 	
 // Android display
-function pct_x(percent) {
+function pct_x(percent,rounding) {
 
 var xx = app_width*percent*0.01;
 
-return round(xx);
+if rounding != false
+xx = floor(xx);
+
+return xx;
 }
 
-function pct_y(percent) {
+function pct_y(percent,rounding) {
 
 var yy = app_height*percent*0.01;
 
-return round(yy);
+if rounding != false
+yy = floor(yy);
+
+return yy;
 }
 
 function pct_x_convert(room_xx,GM_room_ww) {
+// convert room coor to percent of the room width
 
 if argument[1] == undefined
 GM_room_ww = room_width;
@@ -138,6 +145,7 @@ return pct;
 }
 
 function pct_y_convert(room_yy,GM_room_hh) {
+// convert room coor to percent of the room height
 
 if argument[1] == undefined
 GM_room_hh = room_height;
@@ -147,26 +155,28 @@ var pct = room_yy/GM_room_hh;
 return pct;
 }
 
-function x_pct_x(room_xx,GM_room_ww) {
+function x_pct_x(room_xx,rounding,GM_room_ww) {
 /// @param room_xx
-/// @param [GM_room_width]
+/// @param [rounding
+/// @param GM_room_width]
 
 var ins = argument[1];
 
 var val = pct_x_convert(room_xx,GM_room_ww); // convert to percent
 
-return pct_x(val*100); // return new x coor
+return pct_x(val*100,rounding); // return new x coor
 }
 
-function y_pct_y(room_yy,GM_room_hh) {
+function y_pct_y(room_yy,rounding,GM_room_hh) {
 /// @param room_yy
-/// @param [GM_room_height]
+/// @param [rounding
+/// @param GM_room_height]
 
 var ins = argument[1];
 
 var val = pct_y_convert(room_yy,GM_room_hh); // convert to percent
 
-return pct_y(val*100); // return new y coor
+return pct_y(val*100,rounding); // return new y coor
 }
 	
 function point_x(xvalue) {

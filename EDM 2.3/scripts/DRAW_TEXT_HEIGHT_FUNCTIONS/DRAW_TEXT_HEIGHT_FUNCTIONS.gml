@@ -162,9 +162,9 @@ w /= scale;
 if argument[9] == true
 	{
 	xx = x_pct_x(xx);
-	yy = y_pct_y(yy);
-	scale = y_pct_y(scale,dev_height);
-	
+	yy = y_pct_y(yy);	
+	scale = y_pct_y(scale,false);
+
 	// debug
 	d_xpos = x_pct_x(d_xpos);
 	d_ypos = y_pct_y(d_ypos);
@@ -191,6 +191,7 @@ if (os_type == os_windows) && point_in_rectangle(mouse_x,mouse_y,d_xpos,d_ypos,d
 		debugStringXpos = xx;
 		debugStringYpos = yy;
 		debugStringHeight = height;
+		debugStringScale = scale;
 		}
 	}
 

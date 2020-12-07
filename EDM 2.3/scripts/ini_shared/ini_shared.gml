@@ -113,6 +113,7 @@ debugStringText = "''";
 debugStringXpos = 0;
 debugStringYpos = 0;
 debugStringHeight = 0;
+debugStringScale = 0;
 
 dateSelectDay = 0;
 dateSelectMonth = 0;

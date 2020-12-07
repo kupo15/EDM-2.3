@@ -32,3 +32,9 @@ offsetArrayEnd[ind] = condition;
 if offsetArray[ind] != offsetArrayEnd[ind]
 offsetArray[ind] = lerp(offsetArray[ind],offsetArrayEnd[ind],lerp_spd);	
 }
+
+function fade_offset_set(offset,pos) {
+	
+return round(offset*pos);
+
+}
