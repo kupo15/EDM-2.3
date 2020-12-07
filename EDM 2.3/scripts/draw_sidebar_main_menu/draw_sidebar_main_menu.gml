@@ -46,8 +46,6 @@ var yy = 25;
 draw_image_width_cropped_pct(spr_estrella_banner,0,xx_off,0,side_menu_width,profile_hh,5,1);
 draw_icon_height_pct(spr_estrella_logo,0,xx+xx_off,yy,100,1); // profile picture
 
-draw_line_pixel(xx_pct,profile_hh_pct,ww_pct,1,c_red,1)
-
 var height = 45;
 var yy = profile_hh-height-10;
 
@@ -95,7 +93,7 @@ for(var i=0;i<screen.enumcount;i++)
 
 #endregion
 
-draw_sidebar_profile_switch(xx_off,profile_hh,ww,sep,height);
+draw_sidebar_profile_switch(xx_off,profile_hh,ww,hh-profile_hh_pct,sep,height);
 
 draw_text_height(x_pct_x(xx_off+15),app_height-y_pct_y(40),"Vers. "+string(GM_version),y_pct_y(30));
 
@@ -104,16 +102,14 @@ if androidBack
 submenu = navbar.hidden;
 }
 
-function draw_sidebar_profile_switch(xx_off,yy,ww,sep,height) {
+function draw_sidebar_profile_switch(xx_off,yy,ww,hh,sep,height) {
 	
 if submenu != navbar.profileChange
 exit;
 
 var xx = 0+xx_off;
-var hh = 530;
-var col = c_white;
 
-draw_rectangle_color(x_pct_x(xx),y_pct_y(yy),x_pct_x(xx+ww),app_height,col,col,col,col,false);
+draw_sprite_stretched_ext(spr_pixel,0,x_pct_x(xx),y_pct_y(yy),x_pct_x(ww),hh+1,c_white,1);
 	
 var xoff = 55;
 var text_xoff = 135;
