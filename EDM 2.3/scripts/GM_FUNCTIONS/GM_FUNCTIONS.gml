@@ -117,14 +117,14 @@ function pct_x(percent) {
 
 var xx = app_width*percent*0.01;
 
-return xx;
+return round(xx);
 }
 
 function pct_y(percent) {
 
 var yy = app_height*percent*0.01;
 
-return yy;
+return round(yy);
 }
 
 function pct_x_convert(room_xx,GM_room_ww) {

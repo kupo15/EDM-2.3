@@ -3,7 +3,9 @@
 function draw_menu_bars(xx,yy,ww,hh,thick,col) {
 // centered vertically
 
-var sep = hh/3;
+thick = ceil(thick);
+
+var sep = ceil(hh/3);
 
 for(var i=-1;i<2;i++)
 draw_line_width_color(xx,yy+(i*(sep+thick)),xx+ww,yy+(i*(sep+thick)),thick,col,col);
@@ -18,6 +20,11 @@ draw_line_width_color(xx,yy+hh,xx+ww,yy,thick,col,col); // line bot left to top 
 	
 function draw_menu_dots(xx,yy,rr,sep,col) {
 // centered vertically
+
+rr = floor(rr);
+rr = clamp(rr,3,5);
+
+sep = rr*2;
 
 for(var i=-1;i<2;i++)
 draw_circle_color(xx,yy+(i*(sep+rr)),rr,col,col,false);
@@ -64,7 +71,7 @@ col = c_white;
 var scale = hh/10;
 var ww = hh*2*scale;
 var flip = pick(-1,1,condition);
-var yoff = pick(hh*0.8,0,condition);
+var yoff = pick(hh*0.9,0,condition);
 
 x1 = xx;
 y1 = yy+yoff;
