@@ -93,6 +93,8 @@ if mouse_check_button_pressed(mb_middle)
 	}
 
 device_testing_select();
+
+
 }
 	
 	
