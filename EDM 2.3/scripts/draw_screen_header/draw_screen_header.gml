@@ -150,7 +150,7 @@ return val;
 
 function draw_header_delete(yy,ww,hh){
 
-draw_set_alpha(1)//headerDeleteOffsetDisp);
+draw_set_alpha(headerDeleteOffsetDisp);
 
 var col = make_color_rgb(0,137,123);
 draw_rectangle_color(0,0,ww,hh,col,col,col,col,false);
@@ -176,7 +176,7 @@ for(var i=0;i<size;i++)
 count += deleteList[| i];
 
 draw_set_color(c_white);
-draw_text_height_middled(pct_x(13),yy,string(count)+" selected",hh,header_height*0.44,1); // draw number of items to delete
+draw_text_height_middled(pct_x(13),yy,string(count)+" selected",hh,header_height*0.44,headerDeleteOffsetDisp); // draw number of items to delete
 
 // clicked on trash
 var xx = pct_x(91);
