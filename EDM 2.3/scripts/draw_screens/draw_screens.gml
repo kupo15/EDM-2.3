@@ -27,6 +27,15 @@ var xx = (region-ww)*0.5;
 var yy = header_height*0.5;
 var thick = y_pct_y(4);
 		
+		var xx = pct_x(3);
+		var yy = header_height*0.5;
+		var ww = header_height*0.33*1.33;
+		var hh = header_height*0.33;
+		
+		draw_menu_arrow(xx,yy,ww,hh,4,1,c_white);
+		
+	exit	
+		
 draw_menu_bars(xx,yy,ww,hh,thick,c_white);
 
 exit;

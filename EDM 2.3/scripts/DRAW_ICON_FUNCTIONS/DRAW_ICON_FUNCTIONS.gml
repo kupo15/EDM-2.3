@@ -36,17 +36,15 @@ var diag_ll = ww*0.3;
 var shift = ww*0.2;
 
 draw_primitive_begin(pr_trianglestrip);
-draw_vertex_color(xx,yy,col,1);
-draw_vertex_color(xx+shift,yy,col,1);
-draw_vertex_color(xx+diag_ll,yy-half,col,1);
-draw_vertex_color(xx+diag_ll+shift,yy-half,col,1);
-draw_primitive_end();
 
-draw_primitive_begin(pr_trianglestrip);
+draw_vertex_color(xx+diag_ll+shift,yy+half,col,1);
+draw_vertex_color(xx+diag_ll,yy+half,col,1);
+draw_vertex_color(xx+shift,yy,col,1);
 draw_vertex_color(xx,yy,col,1);
 draw_vertex_color(xx+shift,yy,col,1);
-draw_vertex_color(xx+diag_ll,yy+half,col,1);
-draw_vertex_color(xx+diag_ll+shift,yy+half,col,1);
+draw_vertex_color(xx+diag_ll,yy-half,col,1); 
+draw_vertex_color(xx+diag_ll+shift,yy-half,col,1); 
+
 draw_primitive_end();
 
 thickness = shift*0.25;
