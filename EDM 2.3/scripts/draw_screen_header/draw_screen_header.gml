@@ -61,7 +61,7 @@ repeat 2
 		draw_menu_dots(xpos+xx,yy,rr,sep,c_white);
 		
 		if !mode_delete && (submenu < 0)
-		if click_region_released(xpos,0,region,region,true,submenu)
+		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
 			{}
 		}
 	else if header_type == headerType.back
@@ -74,7 +74,7 @@ repeat 2
 		draw_menu_arrow(xpos+xx,yy,ww,hh,4,1,c_white);
 
 		if !mode_delete && (submenu < 0)
-		if click_region_released(xpos,0,region,region,true,submenu)
+		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
 		screen_goto_prev();
 		}
 	else if header_type == headerType.trash
@@ -85,24 +85,20 @@ repeat 2
 		//var xpos = app_width-hh-20;
 
 		if !mode_delete && (submenu < 0)
-		if click_region_released(xpos,0,region,region,true,submenu)
+		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
 		return true;
 		}
 	else if header_type == headerType.plus
 		{
-		var xx = x_pct_x(20);
-		var pos_off = region*0.5;
-		draw_plus_button(xpos-xx+pos_off,pos_off,region,false,c_white); // plus button
+		draw_plus_button(xpos+pct_x(5),pct_y(6.5),region,false,c_white); // plus button
 		
-		//var xpos = app_width-hh-20;
-
 		if !mode_delete && (submenu < 0)
-		if click_region_released(xpos,0,region,region,true,submenu)
+		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
 		return true;
 		}
 		
 	var header_type = header_right;
-	var xpos = app_width-region;
+	var xpos = pct_x(90);
 	}
 	
 // other header overwrite
