@@ -21,6 +21,7 @@ draw_rectangle_color(0,0,ww,hh,bg_col,bg_col,bg_col,bg_col,false);
 
 draw_set_halign(fa_center);
 draw_text_height_middled_color(xx,yy,header_string,header_height,c_white,height);
+//draw_text_height_middled_color((ww*0.25),yy,header_string,header_height,c_white,height);
 draw_set_halign(fa_left);
 
 var xpos = 0;
@@ -122,19 +123,21 @@ var hh = header_submenu_height;
 var col = header_color;
 
 draw_sprite_stretched_ext(spr_pixel,0,xx,yy,app_width,hh,col,1);
-	
+
 var header_num = argument_count-2;
 var header_sep = app_width/header_num;
-var height = 40;
 var val = undefined;
 
 for(var i=0;i<header_num;i++)
 	{		
+	var pos = i*header_sep;
 	var str_col = pick(c_lt_gray,c_white,i==sort_index);
-	
-	if click_button(i*header_sep,yy,argument[i+2],height,str_col,header_sep,header_submenu_height,undefined,false,false,submenu)
+
+	if click_button(pos,yy,argument[i+2],header_submenu_font_height,str_col,header_sep,header_submenu_height,undefined,false,false,submenu)
 	val = i;
 	}
+	
+
 
 // draw highlight underline
 var xx = offset*header_sep;
@@ -148,7 +151,7 @@ return val;
 }
 
 function draw_header_delete(yy,ww,hh){
-	
+	exit
 draw_set_alpha(headerDeleteOffsetDisp);
 
 var col = make_color_rgb(0,137,123);

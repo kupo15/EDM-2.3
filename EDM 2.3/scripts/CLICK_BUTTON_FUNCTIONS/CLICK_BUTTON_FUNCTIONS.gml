@@ -19,9 +19,6 @@ font = fn_normal;
 
 var ins = argument[12];
 
-
-var yoff = (hh-height)*0.5;
-
 if col != undefined
 if rounded
 	{
@@ -41,7 +38,7 @@ else
 var prev_halign = draw_get_halign();
 
 draw_set_halign(fa_center);
-draw_text_height_color(xx+(ww*0.5),yy+yoff,str,str_col,height,font);
+draw_text_height_middled_color(xx+(ww*0.5),yy,str,hh,str_col,height,alpha,false,font);
 draw_set_halign(prev_halign);
 
 return click_region_released(xx,yy,ww,hh,true,sub,alpha);

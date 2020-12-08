@@ -67,6 +67,7 @@ function draw_text_height_middled_color(xx,yy,str,hh,col,height,alpha,pct,font) 
 /// @param region_height
 /// @param color
 /// @param height
+/// @param alpha
 /// @param [pct?
 /// @param font]
 
