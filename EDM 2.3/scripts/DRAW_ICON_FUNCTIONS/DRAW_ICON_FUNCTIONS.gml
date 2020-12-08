@@ -4,12 +4,10 @@ function draw_menu_bars(xx,yy,ww,hh,thick,col) {
 // centered vertically
 
 thick = ceil(thick);
-
 var sep = ceil(hh/3);
 
 for(var i=-1;i<2;i++)
-draw_line_width_color(xx,yy+(i*(sep+thick)),xx+ww,yy+(i*(sep+thick)),thick,col,col);
-
+draw_line_hor(xx,yy+(i*sep),ww,thick,c_white,1);
 }
 
 function draw_menu_xout(xx,yy,ww,hh,thick,col) {

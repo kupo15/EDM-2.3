@@ -115,6 +115,7 @@ debugFlickSpeed = 0;
 debugStringText = "''";
 debugStringXpos = 0;
 debugStringYpos = 0;
+debugStringWidth = 0;
 debugStringHeight = 0;
 debugStringScale = 0;
 

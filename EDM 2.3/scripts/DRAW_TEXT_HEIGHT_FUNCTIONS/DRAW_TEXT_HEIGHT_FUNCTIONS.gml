@@ -174,12 +174,18 @@ if argument[9] == true
 	cross_ww = x_pct_x(cross_ww);
 	cross_hh = y_pct_y(cross_hh);
 	}
+	
+//var ll = string_width_height(str,height);
+//xx -= ll*0.5;
 
 draw_text_ext_transformed_color(xx,yy,str,sep_scale,w,scale,scale,angle,col,col,col,col,alpha);
 
+//draw_line(app_width*0.5,0,app_width*0.5,app_height);
+
 // debug position
 if (os_type == os_windows) && point_in_rectangle(mouse_x,mouse_y,d_xpos,d_ypos,d_xpos+d_wpos,d_ypos+d_hpos)
-	{
+	{	
+	//xx += ll*0.5;			
 	draw_line_color(xx-cross_ww,yy,xx+cross_ww,yy,col,col);
 	draw_line_color(xx,yy-cross_hh,xx,yy+cross_hh,col,col);
 	
@@ -191,6 +197,7 @@ if (os_type == os_windows) && point_in_rectangle(mouse_x,mouse_y,d_xpos,d_ypos,d
 		debugStringText = str;
 		debugStringXpos = xx;
 		debugStringYpos = yy;
+		debugStringWidth = string_width_height(str,height);
 		debugStringHeight = height;
 		debugStringScale = scale;
 		}

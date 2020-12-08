@@ -17,6 +17,20 @@ if androidBack
 		}
 	}
 	
+
+	
+// draw the 3 dots
+var region = header_height;
+var ww = header_height*0.33;
+var hh = header_height*0.27;
+var xx = (region-ww)*0.5;
+var yy = header_height*0.5;
+var thick = y_pct_y(4);
+		
+draw_menu_bars(xx,yy,ww,hh,thick,c_white);
+
+exit;
+	
 // draw screens
 draw_background_screen();
 
@@ -26,19 +40,19 @@ else
 script_execute(drawScreen[screenIndex]);
 		
 // draw numpad
-numpad_value = draw_numpad_golf(numpad_value);
+//numpad_value = draw_numpad_golf(numpad_value);
 	
 //draw_footer_button();
 
-draw_darken_screen();
-draw_navbar();
-draw_sidebar_main_menu();
-
-// popup overlays
-draw_overlay_calendar();
-//draw_overlay_circle_button();
-	
-draw_highlight_click_static(submenu != navbar.sidebar);
+//draw_darken_screen();
+//draw_navbar();
+//draw_sidebar_main_menu();
+//
+//// popup overlays
+//draw_overlay_calendar();
+////draw_overlay_circle_button();
+//	
+//draw_highlight_click_static(submenu != navbar.sidebar);
 
 
 // update the virtual keyboard

@@ -10,5 +10,4 @@ app_load;
 ini_create();
 ini_config(room_width,room_height);
 
-//room_speed = 1
 

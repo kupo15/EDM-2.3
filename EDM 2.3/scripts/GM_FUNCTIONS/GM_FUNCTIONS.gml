@@ -23,6 +23,16 @@ return val;
 
 }
 
+function draw_line_hor(xx,yy,length,thick,col,alpha) {
+	
+for(var i=0;i<thick;i++)
+	{
+	var ypos = yy+i;
+
+	draw_line_color(xx,ypos,xx+length,ypos,col,col);
+	}
+}
+
 function draw_line_pixel(xx,yy,ww,hh,col,alpha,pct) {
 /// @param xx
 /// @param yy
