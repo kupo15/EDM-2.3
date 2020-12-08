@@ -33,6 +33,16 @@ for(var i=0;i<thick;i++)
 	}
 }
 
+function draw_line_vert(xx,yy,length,thick,col,alpha) {
+	
+for(var i=0;i<thick;i++)
+	{
+	var xpos = xx+i;
+
+	draw_line_color(xpos,yy,xpos,yy+length,col,col);
+	}
+}
+
 function draw_line_pixel(xx,yy,ww,hh,col,alpha,pct) {
 /// @param xx
 /// @param yy

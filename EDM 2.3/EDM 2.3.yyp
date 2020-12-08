@@ -33,6 +33,7 @@
     {"id":{"name":"snd_tap2","path":"sounds/snd_tap2/snd_tap2.yy",},"order":2,},
     {"id":{"name":"ico_backspace","path":"sprites/ico_backspace/ico_backspace.yy",},"order":0,},
     {"id":{"name":"STRUCT_FUNCTIONS","path":"scripts/STRUCT_FUNCTIONS/STRUCT_FUNCTIONS.yy",},"order":3,},
+    {"id":{"name":"ini_menu_icon_vertex_buffers","path":"scripts/ini_menu_icon_vertex_buffers/ini_menu_icon_vertex_buffers.yy",},"order":2,},
     {"id":{"name":"ini_settings_open","path":"scripts/ini_settings_open/ini_settings_open.yy",},"order":0,},
     {"id":{"name":"ini_settings_save","path":"scripts/ini_settings_save/ini_settings_save.yy",},"order":1,},
     {"id":{"name":"draw_debug","path":"scripts/draw_debug/draw_debug.yy",},"order":1,},

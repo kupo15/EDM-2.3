@@ -32,11 +32,16 @@ var thick = y_pct_y(4);
 		var ww = header_height*0.33*1.33;
 		var hh = header_height*0.33;
 		
-		draw_menu_arrow(xx,yy,ww,hh,4,1,c_white);
-		
-	exit	
-		
-draw_menu_bars(xx,yy,ww,hh,thick,c_white);
+		draw_plus_button(pct_x(5),pct_y(6.5),region,false,c_white); // plus button
+
+		//draw_menu_arrow(xx,yy,ww,hh,4,1,c_white);
+	//	
+	//exit	
+						//draw_menu_arrow(xx,yy,ww,hh,4,1,c_white);
+
+//exit
+//draw_menu_bars(xx,yy,ww,hh,thick,c_white);
+						//draw_icon_height_centered_color(ico_trash3,0,xx,0,region,region,header_height*0.44,c_white,1); // trash icon
 
 exit;
 	

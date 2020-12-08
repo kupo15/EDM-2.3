@@ -127,8 +127,8 @@ if enclosed
 draw_circle_color(xx,yy,r,col,col,false);
 
 // draw plus
-draw_line_width_color(xx-line_ww,yy,xx+line_ww,yy,ww,str_col,str_col);
-draw_line_width_color(xx,yy-line_hh,xx,yy+line_hh,ww,str_col,str_col);
+draw_line_hor(xx-line_ww,yy,line_ww*2,ww,str_col,1);
+draw_line_vert(xx,yy-line_hh,line_hh*2,ww,str_col,1);
 }
 
 function draw_switch_tab(xx,yy,box_hh,switch_hh,ind,variable,enclosed) {
