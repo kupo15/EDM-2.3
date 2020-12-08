@@ -101,6 +101,9 @@ repeat 2
 	var xpos = pct_x(90);
 	}
 	
+draw_text_height_middled(pct_x(25),0,fps,header_height,header_height*0.4,1);
+draw_text_height_middled(pct_x(35),0,fps_real,header_height,header_height*0.4,1);
+	
 // other header overwrite
 draw_header_delete(0,app_width,header_height);
 
