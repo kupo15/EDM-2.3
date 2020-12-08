@@ -168,6 +168,7 @@
     {"id":{"name":"scr_set_orientation","path":"scripts/scr_set_orientation/scr_set_orientation.yy",},"order":4,},
     {"id":{"name":"CLICK_REGION_FUNCTIONS","path":"scripts/CLICK_REGION_FUNCTIONS/CLICK_REGION_FUNCTIONS.yy",},"order":1,},
     {"id":{"name":"fn_keyboard_entry","path":"fonts/fn_keyboard_entry/fn_keyboard_entry.yy",},"order":1,},
+    {"id":{"name":"PROJECT_SORTING","path":"scripts/PROJECT_SORTING/PROJECT_SORTING.yy",},"order":19,},
     {"id":{"name":"SEARCHBAR_FUNCTIONS","path":"scripts/SEARCHBAR_FUNCTIONS/SEARCHBAR_FUNCTIONS.yy",},"order":1,},
     {"id":{"name":"spr_icon_blank_profile","path":"sprites/spr_icon_blank_profile/spr_icon_blank_profile.yy",},"order":8,},
     {"id":{"name":"fn_name","path":"fonts/fn_name/fn_name.yy",},"order":2,},

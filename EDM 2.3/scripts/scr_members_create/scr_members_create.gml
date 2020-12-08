@@ -57,8 +57,9 @@ META_data.memberSort = ind;
 
 switch ind
 	{
-	case member_sort.abc: array_sort_nested_struct(MEMBER_database,"firstName",true); break;	
+	case member_sort.abc: membersort; break;	
 		
+	case member_sort.favorite: scr_member_sort_favorite(MEMBER_list,true); break; // sort list
 	}
 	
 	

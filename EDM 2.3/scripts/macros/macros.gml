@@ -10,6 +10,8 @@
 #macro PROFILE_data ROOT_data_struct.profiles[profile_index]
 #macro META_data ROOT_data_struct.meta
 
+#macro membersort scr_member_sort_abc(MEMBER_list,true)
+
 // header
 #macro header_color make_color_rgb(0,145,206) // make_color_rgb(42,104,53) //
 
