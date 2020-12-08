@@ -17,8 +17,6 @@ if androidBack
 		}
 	}
 	
-draw_set_halign(fa_left);
-
 // draw screens
 draw_background_screen();
 
@@ -28,16 +26,16 @@ else
 script_execute(drawScreen[screenIndex]);
 		
 // draw numpad
-//numpad_value = draw_numpad_golf(numpad_value);
-		
-// draw_footer_button();
+numpad_value = draw_numpad_golf(numpad_value);
+	
+//draw_footer_button();
 
-//draw_darken_screen();
-//draw_navbar();
-//draw_sidebar_main_menu();
+draw_darken_screen();
+draw_navbar();
+draw_sidebar_main_menu();
 
 // popup overlays
-//draw_overlay_calendar();
+draw_overlay_calendar();
 //draw_overlay_circle_button();
 	
 draw_highlight_click_static(submenu != navbar.sidebar);

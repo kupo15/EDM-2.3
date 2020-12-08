@@ -7,7 +7,7 @@ draw_text_height(20,app_height-50,"Undefined Screen",40);
 
 function draw_home() {
 
-draw_screen_header(headerType.bars,headerType.none,"Home");
+draw_screen_header(headerType.bars,headerType.dots,"Home");
 
 
 exit;

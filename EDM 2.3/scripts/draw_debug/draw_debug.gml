@@ -13,6 +13,9 @@ var yy = 10;
 var sep = y_pct_y(45);
 var height = sep;
 
+draw_rectangle_color(xx-50,0,0,app_height,c_black,c_black,c_black,c_black,false);
+draw_rectangle_color(app_width,0,app_width+760,app_height,c_black,c_black,c_black,c_black,false);
+
 debugyoff = 0;
 
 draw_set_colour(c_white);
