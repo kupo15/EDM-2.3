@@ -3,8 +3,8 @@ ini_screen_changeGOTO();
 
 enum screen {
 appStartup = -1,
-home,
-members,
+eventSetup,
+membersList,
 stats,
 blank3,
 blank4,
@@ -14,6 +14,8 @@ blank5,
 help_info,
 settings,
 enumcount,
+
+home,
 
 profileCreate,
 profileView,

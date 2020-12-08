@@ -6,8 +6,9 @@ function ini_screen_change() {
 
 prevScreenStack = ds_list_create();
 	
+drawScreen[screen.eventSetup] = draw_event_setup;
 drawScreen[screen.home] = draw_home;
-drawScreen[screen.members] = draw_members_list;
+drawScreen[screen.membersList] = draw_members_list;
 //drawScreen[screen.stats] = draw_stats;
 //drawScreen[screen.blank8] = undefined
 
@@ -85,6 +86,8 @@ switch screenIndex
 	case screen.enumcount:
 	case screen.home: submenu = navbar.hidden; break;
 					
+	// member list
+	case screen.membersList: scr_memberlist_sort(META_data.memberSort); break;				
 	}	
 	
 searched_name = "";

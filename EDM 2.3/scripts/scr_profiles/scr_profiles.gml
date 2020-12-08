@@ -32,4 +32,5 @@ profile_index = ind;
 META_data.profileIndex = profile_index; // save profile index to startup
 	
 // set local lists
+memberslist_array = MEMBER_list;
 }

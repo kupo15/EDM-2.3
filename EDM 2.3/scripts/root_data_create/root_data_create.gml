@@ -1,12 +1,14 @@
 function root_data_create() {
 	
 profile_index = 0;
+memberId_generator = 0;
 		
 memberlist_array = array_create(0); // local courses added
 
 ROOT_data_struct = {
 	
-	memberDatabase: debug_data_members_list(),
+	memberDatabase: -1,
+		
 	profiles: [],
 	eventHistory: [],
 	
@@ -14,8 +16,12 @@ ROOT_data_struct = {
 		profileIndex: 0,
 		memberSort: member_sort.abc,
 		version: json_version,
+		memberIdGenerator: 0,
 		},
 	}
+	
+// add lists
+MEMBER_database = debug_data_members_list();	
 }
 
 
@@ -27,7 +33,7 @@ scr_member_create_database("Ron","Pogue",arr);
 scr_member_create_database("Gerry","Young",arr);
 scr_member_create_database("Frank","Enns",arr);
 scr_member_create_database("Clark","Hall",arr);
-scr_member_create_database("Dave Sagan",arr);
+scr_member_create_database("Dave","Sagan",arr);
 scr_member_create_database("Pat","Krommendyk",arr);
 scr_member_create_database("Ron","Crawford",arr);
 scr_member_create_database("Gene","Lombardo",arr);

@@ -43,7 +43,7 @@ if file_exists(_filename)
 		}
 	else // load 
 		{
-		scr_profile_set(META_data.profileIndex);
+		json_data_load();
 		
 		db(string(_filename)+" loaded");
 		}

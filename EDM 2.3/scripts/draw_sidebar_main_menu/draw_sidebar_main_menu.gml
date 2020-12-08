@@ -61,8 +61,8 @@ var sep = 120;
 var height = 50;
 
 draw_set_halign(fa_left);
-draw_text_height_middled(xx+xx_off,yy+(screen.home*sep),"Home",sep,height,undefined,true);
-draw_text_height_middled(xx+xx_off,yy+(screen.members*sep),"Members",sep,height,undefined,true);
+draw_text_height_middled(xx+xx_off,yy+(screen.eventSetup*sep),"Start Event",sep,height,undefined,true);
+draw_text_height_middled(xx+xx_off,yy+(screen.membersList*sep),"Members",sep,height,undefined,true);
 draw_text_height_middled(xx+xx_off,yy+(screen.stats*sep),"Stats",sep,height,undefined,true);
 
 
@@ -74,7 +74,7 @@ for(var i=0;i<screen.enumcount;i++)
 	if (i>screen.stats) && (i<screen.help_info)
 	continue;
 		
-	draw_icon_height_centered_color_pct(spr_footer_icon,i,res_bleed_xx+xx_off,yy+(i*sep),sep*0.7,sep,sep*0.7,header_color,1); // draw menu icons
+	draw_icon_height_centered_color_pct(spr_footer_icon,i,bleed_left+xx_off,yy+(i*sep),sep*0.7,sep,sep*0.7,header_color,1); // draw menu icons
 	
 	if i == screen.help_info
 	draw_line_pixel(xx_off,yy+(i*sep),ww+1,1,c_black,1,true); // separating line

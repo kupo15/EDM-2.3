@@ -1,29 +1,52 @@
-function scr_member_create() {
-	
-	
-member_struct = {
+function scr_member_add_local(member_id,array) {
+/// add to local memberlist_array
+/// @param memberID
+/// @param [destinationArray]
 
-	memberID: -1,
+if argument[1] == undefined
+array = memberlist_array;
+
+var local_struct = {
+
+	memberID: member_id,
 	favorite: false,
 	active: true,
 	
 	groups: [],
 	}
+	
+array_push(array,local_struct);
 
-return member_struct;
+return local_struct;
 }
 
 function scr_member_create_database(first_name,last_name,arr) {
-	
+/// @param [first_name
+/// @param last_name
+/// @param array]
+
+if argument[0] == undefined
+first_name = "";
+
+if argument[1] == undefined
+last_name = "";
+
+if argument[2] == undefined
+arr = MEMBER_database;
+
+var ind = array_length(arr);
+
 member_struct = {
 	
+	memberID: ind,
 	firstName: first_name,
 	lastName: last_name,
-	
 	}
 	
 if argument[2] != undefined
 array_push(arr,member_struct)
+
+META_data.memberIdGenerator ++;
 
 return member_struct;
 }
@@ -34,7 +57,7 @@ META_data.memberSort = ind;
 
 switch ind
 	{
-	case member_sort.abc: break;	
+	case member_sort.abc: array_sort_nested_struct(MEMBER_database,"firstName",true); break;	
 		
 	}
 	

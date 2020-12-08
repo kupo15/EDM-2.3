@@ -1,4 +1,5 @@
 function json_data_load() {
 		
-//json_load_array(save_data)
+scr_profile_set(META_data.profileIndex);
+
 }

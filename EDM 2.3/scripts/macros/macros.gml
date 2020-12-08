@@ -6,6 +6,7 @@
 #macro app_load json_load_array(save_data)
 
 #macro MEMBER_database ROOT_data_struct.memberDatabase
+#macro MEMBER_list ROOT_data_struct.profiles[profile_index].memberlist
 #macro PROFILE_data ROOT_data_struct.profiles[profile_index]
 #macro META_data ROOT_data_struct.meta
 
@@ -23,8 +24,8 @@
 #macro c_click_color make_color_rgb(245,245,245)
 
 // layout
-#macro res_bleed_xx 30
-#macro res_bleed_yy 20
+#macro bleed_left pct_x(1.5)
+#macro bleed_yy 20
 #macro DPI_POINT 72
 
 // textbox scrolling
