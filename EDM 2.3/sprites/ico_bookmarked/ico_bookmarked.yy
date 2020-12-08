@@ -24,9 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"064398a4-917f-4211-aa20-0624e0b9f113","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"064398a4-917f-4211-aa20-0624e0b9f113","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"LayerId":{"name":"8e1ae2e3-b5c8-4216-9f08-8f710fbefd5e","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"ico_bookmarked","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"resourceVersion":"1.0","name":"064398a4-917f-4211-aa20-0624e0b9f113","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"cfb3af74-9224-4b17-bd70-907befc12da0","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"cfb3af74-9224-4b17-bd70-907befc12da0","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"LayerId":{"name":"6b6325e1-ab54-41f4-b590-a0897f901413","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"ico_bookmarked","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"resourceVersion":"1.0","name":"cfb3af74-9224-4b17-bd70-907befc12da0","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"c38f964d-8792-4734-8461-01459d5d2fd9","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"c38f964d-8792-4734-8461-01459d5d2fd9","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"LayerId":{"name":"6b6325e1-ab54-41f4-b590-a0897f901413","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"ico_bookmarked","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"resourceVersion":"1.0","name":"c38f964d-8792-4734-8461-01459d5d2fd9","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"ico_bookmarked","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},
@@ -36,12 +39,13 @@
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,
-    "length": 1.0,
+    "length": 2.0,
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"0096fa48-7365-4c9a-a44c-8bc66ffa016d","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"064398a4-917f-4211-aa20-0624e0b9f113","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"7f0a1d16-d10c-415b-afad-1ecbe53357cc","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"cfb3af74-9224-4b17-bd70-907befc12da0","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"d85d4048-c72c-4c09-884c-6213ad7c4e0f","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"c38f964d-8792-4734-8461-01459d5d2fd9","path":"sprites/ico_bookmarked/ico_bookmarked.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -65,7 +69,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"8e1ae2e3-b5c8-4216-9f08-8f710fbefd5e","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"6b6325e1-ab54-41f4-b590-a0897f901413","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
     "name": "Icons",

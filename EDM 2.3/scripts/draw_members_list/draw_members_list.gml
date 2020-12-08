@@ -46,11 +46,22 @@ for(var i=pos_start;i<pos_end;i++)
 	draw_icon_member_initial(bleed_left,yy+off_pos,first_initial+last_initial,c_white,sep,header_color,height);	
 	draw_text_height_middled(pct_x(14),yy+off_pos,member_str,sep,height,1,false,fn_bold); // draw member name
 	
-	draw_icon_height(ico_bookmarked,member_favorite,pct_x(90),yy+off_pos,sep*0.3,1); // draw favorites
+	var ico_alpha = pick(0.5,1,member_favorite);
+	draw_icon_height_centered_color(ico_bookmarked,member_favorite,pct_x(87),yy+off_pos,sep,sep,sep*0.7,c_white,ico_alpha); // draw favorites
 	
 	draw_line_pixel(pct_x(14),yy+off_pos+sep,app_width,1,c_gray,0.7); // draw line
 	
-	if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.hidden,i,source_array,undefined)
+	if click_region_clamp_set(pct_x(83),yy,off_pos,pct_x(17),sep,hh,noone,false,undefined,navbar.hidden,i)
+	&& click_region_pressed(pct_x(83),yy+off_pos,pct_x(17),sep,false,navbar.hidden)
+		{
+		canClick = false;
+		canClickPressed = true;
+		clickMoved = true;
+
+		source_array[i].favorite = !source_array[i].favorite; // toggle favorite
+		app_save;
+		}
+	else if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.hidden,i,source_array,undefined)
 		{
 		if mode_delete
 			{
