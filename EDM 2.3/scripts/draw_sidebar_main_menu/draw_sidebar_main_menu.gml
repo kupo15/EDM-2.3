@@ -79,7 +79,7 @@ for(var i=0;i<screen.enumcount;i++)
 	if i == screen.help_info
 	draw_line_pixel(xx_off,yy+(i*sep),ww+1,1,c_black,1,true); // separating line
 
-	if click_region_released_clamp_pct(xx_off,yy,(i*sep),ww,sep,screen.enumcount*sep,mb_left,true,navbar.sidebar,i,undefined,navbar.sidebar)
+	if click_region_released_clamp_array(xx_off,yy,(i*sep),ww,sep,screen.enumcount*sep,mb_left,true,navbar.sidebar,i,offsetArray,navbar.sidebar,true)
 		{
 		click_highlight_alpha = 0;
 		click_highlight_alpha_start = 0;

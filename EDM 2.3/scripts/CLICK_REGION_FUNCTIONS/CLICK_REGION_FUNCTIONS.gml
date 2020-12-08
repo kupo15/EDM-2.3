@@ -195,7 +195,7 @@ function click_region_released(x_left,y_top,ww,hh,highlight,sub,alpha,pct) {
 var button = mb_left;	
 var condition = mouse_check_button_released(button);
 
-if pct == true
+if argument[7] == true
 	{
 	x_left = x_pct_x(x_left);
 	y_top = y_pct_y(y_top);

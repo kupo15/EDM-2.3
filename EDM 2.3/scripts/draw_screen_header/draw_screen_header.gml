@@ -21,7 +21,6 @@ draw_rectangle_color(0,0,ww,hh,bg_col,bg_col,bg_col,bg_col,false);
 
 draw_set_halign(fa_center);
 draw_text_height_middled_color(xx,yy,header_string,header_height,c_white,height);
-//draw_text_height_middled_color((ww*0.25),yy,header_string,header_height,c_white,height);
 draw_set_halign(fa_left);
 
 var xpos = 0;
@@ -107,7 +106,7 @@ repeat 2
 	}
 	
 // other header overwrite
-draw_header_delete(0,ww,hh);
+draw_header_delete(0,app_width,header_height);
 
 return false;
 }
@@ -138,7 +137,6 @@ for(var i=0;i<header_num;i++)
 	}
 	
 
-
 // draw highlight underline
 var xx = offset*header_sep;
 var hh = 4;
@@ -151,19 +149,19 @@ return val;
 }
 
 function draw_header_delete(yy,ww,hh){
-	exit
-draw_set_alpha(headerDeleteOffsetDisp);
+
+draw_set_alpha(1)//headerDeleteOffsetDisp);
 
 var col = make_color_rgb(0,137,123);
 draw_rectangle_color(0,0,ww,hh,col,col,col,col,false);
 
 var xx = 0;
-var size = 23;
+var size = header_height*0.3;
 var xoff = (hh-size)*0.5;
 
-draw_menu_xout(xx+xoff,yy+xoff,size,size,3,c_white); // draw xout
+draw_menu_xout(xx+xoff,yy+xoff,size,size,x_pct_x(5),c_white); // draw xout
 
-if mode_delete && click_region_released(0,0,hh,hh,true,submenu)
+if mode_delete && click_region_released(0,0,hh,hh,true,submenu,1)
 	{
 	mode_delete = false;
 	androidBack = false;
@@ -171,7 +169,6 @@ if mode_delete && click_region_released(0,0,hh,hh,true,submenu)
 
 var xx = 120;
 var height = 40;
-var yoff = (hh-height)*0.5;
 var count = 0;
 var size = ds_list_size(deleteList);
 
@@ -179,13 +176,13 @@ for(var i=0;i<size;i++)
 count += deleteList[| i];
 
 draw_set_color(c_white);
-draw_text_height(xx,yy+yoff,string(count)+" selected",height); // draw number of items to delete
+draw_text_height_middled(pct_x(13),yy,string(count)+" selected",hh,header_height*0.44,1); // draw number of items to delete
 
 // clicked on trash
-var xx = app_width-hh-20;
-draw_icon_height_centered(ico_trash3,0,xx,yy,hh,hh,40,headerDeleteOffsetDisp); // trash icon
+var xx = pct_x(91);
+draw_icon_height_centered(ico_trash3,0,xx,yy,hh,hh,header_height*0.44,headerDeleteOffsetDisp); // trash icon
 
-if mode_delete && click_region_released(xx,0,hh,hh,true,submenu)
+if mode_delete && click_region_released(xx,0,hh,hh,true,submenu,1)
 delete_list_delete_array(deleteList,mode_delete_list_id);
 
 draw_set_color(c_black);
