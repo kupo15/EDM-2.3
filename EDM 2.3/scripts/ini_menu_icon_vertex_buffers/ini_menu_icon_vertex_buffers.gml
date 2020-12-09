@@ -539,6 +539,7 @@ var uv_uscale = (region_width+right_bleed)/spr_ww;
 
 var scaled_region_height = uv_uscale*spr_hh; // perfect pixel scale
 var new_region_height = min(region_height,scaled_region_height);
+
 var uv_vscale = new_region_height/scaled_region_height;
 
 vertex_buffer_draw_cropped(sprite,index,xx,yy,1,uv_vscale,region_width,new_region_height,col,alpha);
@@ -573,9 +574,16 @@ var uv_left = spr_uvs[0];
 var uv_top = spr_uvs[1];
 var uv_right = spr_uvs[2];
 var uv_bottom = spr_uvs[3];
+var uv_shaved_left = spr_uvs[4];
+var uv_shaved_top = spr_uvs[5];
+var uv_normalized_width = spr_uvs[6];
+var uv_normalized_height = spr_uvs[7];
 
-uv_right *= uscale;
-uv_bottom *= vscale;
+var uv_width = abs(uv_left-uv_right);
+var uv_height = abs(uv_top-uv_bottom);
+
+uv_right = uv_left+(uv_width*uscale);
+uv_bottom = uv_top+(uv_height*vscale);
 
 vertex_position(vbuff,xx,yy);
 vertex_color(vbuff,col,alpha);

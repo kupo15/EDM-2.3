@@ -38,11 +38,11 @@ else if click_region(xx_pct,0,ww_pct,profile_hh_pct,true,mb_left,submenu)
 var xx = 25;
 var yy = 25;
 
-vertex_buffer_draw_width_cropped(spr_estrella_banner,0,xx_pct,0,ww_pct,profile_hh_pct,5,c_white,1);
-
-exit;
+vertex_buffer_draw_width_cropped(spr_estrella_banner,0,xx_pct,0,ww_pct,profile_hh_pct,0,c_white,1);
 
 draw_icon_height_pct(spr_estrella_logo,0,xx+xx_off,yy,100,1); // profile picture
+
+exit;
 
 var height = 45;
 var yy = profile_hh-height-10;
