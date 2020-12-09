@@ -27,7 +27,6 @@ var list_size = array_length(source_array);
 var pos_start = floor(memberslist_offset);
 var pos_end = min(list_size,ceil(memberslist_offset)+rows);
 
-//pos_end = 0;
 var element_num = 5;
 for(var e=0;e<element_num;e++)
 for(var i=pos_start;i<pos_end;i++)
@@ -45,28 +44,24 @@ for(var i=pos_start;i<pos_end;i++)
 	var member_str = member_first_name+" "+member_last_name;
 
 	var first_initial = string_char_at(member_first_name,1);	
-	var last_initial = string_char_at(member_last_name,1);	
+	var last_initial = string_char_at(member_last_name,1);
+	var member_initial = first_initial+last_initial;
 
 	switch e
 		{
-		//case 0: draw_icon_member_initial(bleed_left,yy+off_pos,first_initial+last_initial,c_white,sep,header_color,height);
-		//
-		//var r = sep*0.8*0.5;	
-		//
-		//draw_circle_color(xx+(sep*0.5),yy+(sep*0.5),r,bg_col,bg_col,false);
-
-		//case 1:
-		//draw_set_halign(fa_center);
-		//draw_text_height_middled_color(xx+(sep*0.5),yy,capitalize(str),sep,string_col,height,1);	
-		//draw_set_halign(fa_left);
+		case 0: var r = sep*0.8*0.5;	
+				draw_circle_color(bleed_left+(sep*0.5),yy+off_pos+(sep*0.5),r,header_color,header_color,false);
+				break;
 		
-		case 2:	draw_text_height_middled(pct_x(14),yy+off_pos,member_str,sep,height,1,false,fn_bold); break; // draw member name
-		//
-		//case 3:	draw_line_pixel(pct_x(14),yy+off_pos+sep,app_width,1,c_gray,0.7); break; // draw line
-		//
-		//case 4:	var ico_alpha = pick(0.5,1,member_favorite);
-		//		draw_icon_height_centered_color(ico_bookmarked,member_favorite,pct_x(87),yy+off_pos,sep,sep,sep*0.7,c_white,ico_alpha); // draw favorites
-		//		break;
+		case 1: draw_text_height_middled_color(bleed_left+(sep*0.5),yy+off_pos,capitalize(member_initial),sep,c_white,height,1,undefined,undefined,fa_center);	
+
+		case 2:	draw_text_height_middled_color(pct_x(14),yy+off_pos,member_str,sep,c_black,height*1.2,1); break; // draw member name
+		
+		case 3:	draw_line_pixel(pct_x(14),yy+off_pos+sep,app_width,1,c_gray,0.7); break; // draw line
+		
+		case 4:	var ico_alpha = pick(0.5,1,member_favorite);
+				draw_icon_height_centered_color(ico_bookmarked,member_favorite,pct_x(87),yy+off_pos,sep,sep,sep*0.7,c_white,ico_alpha); // draw favorites
+				break;
 		}
 	
 	if (e+1) != element_num
@@ -108,7 +103,6 @@ var sub = navbar.hidden;
 funct_screen_scrolling(xx,yy,ww,hh,sep,list_size,rows,scrollbar_index,sub);
 #endregion
 
-exit
 draw_screen_header(headerType.back,headerType.plus,"Members");
 
 var sort_index = META_data.memberSort;

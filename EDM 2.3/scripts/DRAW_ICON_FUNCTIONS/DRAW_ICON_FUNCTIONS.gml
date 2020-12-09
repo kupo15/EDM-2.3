@@ -68,15 +68,14 @@ draw_set_halign(fa_left);
 }
 	
 function draw_icon_member_initial(xx,yy,str,string_col,sep,bg_col,height) {
-	
+/* OUT OF USE
 //var initial = string_char_at(str,1);
 var r = sep*0.8*0.5;	
 	
 draw_circle_color(xx+(sep*0.5),yy+(sep*0.5),r,bg_col,bg_col,false);
 
-draw_set_halign(fa_center);
-draw_text_height_middled_color(xx+(sep*0.5),yy,capitalize(str),sep,string_col,height,1);	
-draw_set_halign(fa_left);	
+draw_text_height_middled_color(xx+(sep*0.5),yy,capitalize(str),sep,string_col,height,1,undefined,undefined,fa_center);	
+*/
 }
 	
 function draw_icon_enclosed(spr,ind,xx,yy,ww,hh,ysep,col,shape) {

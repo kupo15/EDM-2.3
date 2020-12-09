@@ -53,7 +53,7 @@
 #macro nav_sca_off 0.85
 #macro nav_height 100
 #macro navbar_color make_color_rgb(0,122,173)
-#macro starting_submenu navbar.hidden
+#macro starting_submenu navbar.sidebar
 
 // calendar
 #macro start_date date_create_datetime(1970,1,1,0,0,0)

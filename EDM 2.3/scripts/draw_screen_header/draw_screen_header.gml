@@ -99,19 +99,11 @@ repeat 2
 	var xpos = pct_x(90);
 	}
 	
-if keyboard_check(vk_numpad0)
-	{
-	draw_text_height_middled(pct_x(25),0,fps,header_height,header_height*0.4,1);
-	draw_text_height_middled(pct_x(35),0,fps_real,header_height,header_height*0.4,1);
-	}
-
 
 // other header overwrite
 draw_header_delete(0,app_width,header_height);
 
-draw_set_halign(fa_center);
-draw_text_height_middled_color(app_width*0.5,0,header_string,header_height,c_white,height,1-headerDeleteOffsetDisp);
-draw_set_halign(fa_left);
+draw_text_height_middled_color(app_width*0.5,0,header_string,header_height,c_white,height,1-headerDeleteOffsetDisp,undefined,undefined,fa_center);
 
 return false;
 }
@@ -188,8 +180,7 @@ var size = ds_list_size(deleteList);
 for(var i=0;i<size;i++)
 count += deleteList[| i];
 
-draw_set_color(c_white);
-draw_text_height_middled(pct_x(13),yy,string(count)+" selected",hh,header_height*0.44,headerDeleteOffsetDisp); // draw number of items to delete
+draw_text_height_middled_color(pct_x(13),yy,string(count)+" selected",hh,c_white,header_height*0.44,headerDeleteOffsetDisp); // draw number of items to delete
 
 draw_set_alpha(1);
 }

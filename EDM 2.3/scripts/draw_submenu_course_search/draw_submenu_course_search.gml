@@ -79,12 +79,10 @@ for(var i=pos_start;i<pos_end;i++)
 			
 	// draw the circle icon
 	var col = c_lt_gray;
-	draw_set_halign(fa_center);
 	draw_circle_color(65,yy+off_pos+(ysep*0.5),30,col,col,false);
-	draw_text_height_middled(65,yy+off_pos,initial,ysep,height);
+	draw_text_height_middled(65,yy+off_pos,initial,ysep,height,1,undefined,undefined,fa_center);
 		
 	// draw full name
-	draw_set_halign(fa_left);
 	draw_text_height_middled(xx,yy+off_pos,name,ysep,height); // draw name
 	
 	draw_line_pixel(xx,yy+off_pos+ysep,app_width,1,c_black,0.7);
