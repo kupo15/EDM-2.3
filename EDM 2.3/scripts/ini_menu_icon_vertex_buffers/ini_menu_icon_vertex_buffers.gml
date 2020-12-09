@@ -207,3 +207,65 @@ vertex_end(vbuff);
 /// draw
 vertex_submit(vbuff,pr_trianglestrip,-1); 
 }
+
+function vertex_buffer_menu_xout(xx,yy,ww,hh,thick,col,alpha) {
+
+#region create buffer
+var vbuff = global.vbuffer;
+vertex_begin(vbuff,global.vertex_format_pos_col);
+
+if argument[5] == undefined
+col = draw_get_color();
+
+var xshift = thick*0.5;
+var yshift = thick*0.5;
+
+vertex_position(vbuff,xx-xshift,yy+yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx+xshift,yy-yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx+ww+xshift,yy+hh-yshift);
+vertex_color(vbuff,col,alpha);
+
+//
+
+vertex_position(vbuff,xx+ww+xshift,yy+hh-yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx-xshift,yy+yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx+ww-xshift,yy+hh+yshift);
+vertex_color(vbuff,col,alpha);
+
+//
+
+vertex_position(vbuff,xx+ww-xshift,yy-yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx+ww+xshift,yy+yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx+xshift,yy+hh+yshift);
+vertex_color(vbuff,col,alpha);
+
+//
+
+vertex_position(vbuff,xx+xshift,yy+hh+yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx+ww-xshift,yy-yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx-xshift,yy+hh-yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_end(vbuff);
+
+#endregion
+
+/// draw
+vertex_submit(vbuff,pr_trianglelist,-1); 
+}
