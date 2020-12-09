@@ -17,11 +17,15 @@ var yy = 0;
 var ww = app_width;
 var hh = header_height;
 
-draw_rectangle_color(0,0,ww,hh,bg_col,bg_col,bg_col,bg_col,false);
+var del_col = make_color_rgb(0,137,123); // delete header color
+var col = merge_color(bg_col,del_col,headerDeleteOffsetDisp);
 
-draw_set_halign(fa_center);
-draw_text_height_middled_color(xx,yy,header_string,header_height,c_white,height);
-draw_set_halign(fa_left);
+//draw_rectangle_pixel(0,0,ww,hh,col,false);
+draw_rectangle_color(0,0,ww,hh,col,col,col,col,false);
+
+//draw_set_halign(fa_center);
+//draw_text_height_middled_color(xx,yy,header_string,header_height,c_white,height);
+//draw_set_halign(fa_left);
 
 var xpos = 0;
 var region = header_height;
@@ -104,10 +108,14 @@ if keyboard_check(vk_numpad0)
 	draw_text_height_middled(pct_x(25),0,fps,header_height,header_height*0.4,1);
 	draw_text_height_middled(pct_x(35),0,fps_real,header_height,header_height*0.4,1);
 	}
-	
+
 
 // other header overwrite
-//draw_header_delete(0,app_width,header_height);
+draw_header_delete(0,app_width,header_height);
+
+draw_set_halign(fa_center);
+draw_text_height_middled_color(xx,yy,header_string,header_height,c_white,height);
+draw_set_halign(fa_left);
 
 return false;
 }
@@ -151,10 +159,9 @@ return val;
 
 function draw_header_delete(yy,ww,hh){
 
-draw_set_alpha(1)//headerDeleteOffsetDisp);
+headerDeleteOffsetDisp = 1;
 
-var col = make_color_rgb(0,137,123);
-draw_rectangle_color(0,0,ww,hh,col,col,col,col,false);
+draw_set_alpha(headerDeleteOffsetDisp);
 
 var xx = 0;
 var size = header_height*0.3;
@@ -168,6 +175,14 @@ if mode_delete && click_region_released(0,0,hh,hh,true,submenu,1)
 	androidBack = false;
 	}
 
+// clicked on trash
+var xx = pct_x(91);
+draw_icon_height_centered(ico_trash3,0,xx,yy,hh,hh,header_height*0.44,headerDeleteOffsetDisp); // trash icon
+
+if mode_delete && click_region_released(xx,0,hh,hh,true,submenu,1)
+delete_list_delete_array(deleteList,mode_delete_list_id);
+
+// number of items selected
 var xx = 120;
 var height = 40;
 var count = 0;
@@ -179,14 +194,6 @@ count += deleteList[| i];
 draw_set_color(c_white);
 draw_text_height_middled(pct_x(13),yy,string(count)+" selected",hh,header_height*0.44,headerDeleteOffsetDisp); // draw number of items to delete
 
-// clicked on trash
-var xx = pct_x(91);
-draw_icon_height_centered(ico_trash3,0,xx,yy,hh,hh,header_height*0.44,headerDeleteOffsetDisp); // trash icon
-
-if mode_delete && click_region_released(xx,0,hh,hh,true,submenu,1)
-delete_list_delete_array(deleteList,mode_delete_list_id);
-
-draw_set_color(c_black);
 draw_set_alpha(1);
 }
 
