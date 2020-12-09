@@ -35,6 +35,8 @@ memberSortUnderline,
 membersOffset,
 calendarOffset,
 
+sidebarDarken,
+
 enumcount,
 }
 

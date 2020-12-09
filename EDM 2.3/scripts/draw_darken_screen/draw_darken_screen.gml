@@ -13,7 +13,6 @@ switch screenDarkenIndex
 	case darkenIndex.calendarYear: screenDarkenIndex = darkenIndex.calendar; break;
 		
 	case darkenIndex.calendar:
-	case darkenIndex.sidebar:
 		
 	screenDarkenIndex = darkenIndex.none; break;
 	}
@@ -25,10 +24,7 @@ var lerp_spd = 0.15;
 switch screenDarkenIndex
 	{
 	case darkenIndex.none: screenDarkenAlpha = lerp(screenDarkenAlpha,0,lerp_spd); break;
-	
-	case darkenIndex.profileChange:
-	case darkenIndex.sidebar: screenDarkenAlpha = offsetArray[offsetScroll.sidebarXoff]; break;
-	
+		
 	case darkenIndex.calendar: screenDarkenAlpha = lerp(screenDarkenAlpha,1,lerp_spd); break;
 	}
 

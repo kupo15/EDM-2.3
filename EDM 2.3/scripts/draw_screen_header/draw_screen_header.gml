@@ -46,8 +46,6 @@ repeat 2
 			{
 			submenuPrevious = submenu;
 			submenu = navbar.sidebar;
-	
-			screenDarkenIndex = darkenIndex.sidebar;
 			}
 		}
 	else if header_type == headerType.dots

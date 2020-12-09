@@ -14,35 +14,33 @@ var profile_hh_pct = y_pct_y(200);
 
 var profile_col = make_color_rgb(76,102,145);
 
+// draw background
+vertex_buffer_sidebar_rect(xx_pct,0,ww_pct,profile_hh_pct,app_height,profile_col,c_white,1,1-offset);
 
 #region profile section
-draw_rectangle_pixel(xx_pct,yy,ww_pct,hh,c_white,false,false);
-
 // if click outside of menu
 if clickout_region_pct(xx+xx_off,yy,ww,hh,false,navbar.sidebar)
 androidBack = true;
 
-if click_button_pct(xx_off,0,"",0,c_black,150,150,undefined,false,undefined,submenu)
+if click_region(xx_off,0,x_pct_x(150),y_pct_y(150),true,mb_left,submenu)
 	{
 	submenu = navbar.hidden;
 	screen_change(screen.profileView);
 	}
-else if click_button_pct(xx_off,yy,"",0,c_black,side_menu_width,profile_hh,profile_col,false,false,submenu)
+else if click_region(xx_pct,0,ww_pct,profile_hh_pct,true,mb_left,submenu)
 	{
 	if submenu == navbar.profileChange
 	androidBack = true;
 	else
-		{
-		submenu = navbar.profileChange;
-		screenDarkenIndex = darkenIndex.profileChange;
-		}
+	submenu = navbar.profileChange;
 	}
 
 var xx = 25;
 var yy = 25;
 
-draw_image_width_cropped_pct(spr_estrella_banner,0,xx_off,0,side_menu_width,profile_hh,5,1);
-exit
+vertex_buffer_draw_width_cropped(spr_estrella_banner,0,xx_pct,0,ww_pct,profile_hh_pct,5,c_white,1);
+
+exit;
 
 draw_icon_height_pct(spr_estrella_logo,0,xx+xx_off,yy,100,1); // profile picture
 
@@ -50,6 +48,8 @@ var height = 45;
 var yy = profile_hh-height-10;
 
 draw_text_height_color(xx+xx_off,yy,PROFILE_data.dispName,c_white,height,true,fn_bold); // draw location name
+
+
 
 draw_menu_triangle(xx_off+(ww*0.85),yy+15,14,submenu != navbar.profileChange,true,c_white,1);
 #endregion
@@ -60,24 +60,38 @@ var yy = profile_hh;
 var sep = 120;
 var height = 50;
 
-draw_set_halign(fa_left);
-draw_text_height_middled(xx+xx_off,yy+(screen.eventSetup*sep),"Start Event",sep,height,undefined,true);
-draw_text_height_middled(xx+xx_off,yy+(screen.membersList*sep),"Members",sep,height,undefined,true);
-draw_text_height_middled(xx+xx_off,yy+(screen.stats*sep),"Stats",sep,height,undefined,true);
+var labels = [];
+labels[| screen.eventSetup] = "Start Event";
+labels[| screen.membersList] = "Members";
+labels[| screen.stats] = "Stats";
+labels[| screen.help_info] = "Help and Info";
+labels[| screen.settings] = "Settings";
 
-
-draw_text_height_middled(xx+xx_off,yy+(screen.help_info*sep),"Help and Info",sep,height,undefined,true);
-draw_text_height_middled(xx+xx_off,yy+(screen.settings*sep),"Settings",sep,height,undefined,true);
-
+var element_num = 3;
+for(var e=0;e<element_num;e++)
 for(var i=0;i<screen.enumcount;i++)
 	{
+	var ypos = yy+(i*sep);
+		
 	if (i>screen.stats) && (i<screen.help_info)
 	continue;
 		
-	draw_icon_height_centered_color_pct(spr_footer_icon,i,bleed_left+xx_off,yy+(i*sep),sep*0.7,sep,sep*0.7,header_color,1); // draw menu icons
+	switch e
+		{
+		// draw headers
+		case 2: draw_text_height_middled(xx+xx_off,ypos,label[| i],sep,height,undefined,true); break;
+		
+		// draw menu icons
+		case 0: draw_icon_height_centered_color_pct(spr_footer_icon,i,bleed_left+xx_off,ypos,sep*0.7,sep,sep*0.7,header_color,1); break;
 	
-	if i == screen.help_info
-	draw_line_pixel(xx_off,yy+(i*sep),ww+1,1,c_black,1,true); // separating line
+		// separating line
+		case 1: if i == screen.help_info
+				draw_line_pixel(xx_off,ypos,ww+1,1,c_black,1,true);
+				break;
+		}
+		
+	if (e+1) < element_num
+	continue;
 
 	if click_region_released_clamp_pct(xx_off,yy,(i*sep),ww,sep,screen.enumcount*sep,mb_left,true,navbar.sidebar,i,undefined,navbar.sidebar)
 		{
@@ -165,7 +179,6 @@ if name_entry != undefined
 	
 if androidBack
 	{
-	screenDarkenIndex = darkenIndex.sidebar;
 	submenu = navbar.sidebar;
 	androidBack = false;
 	androidBackSidebar = false;

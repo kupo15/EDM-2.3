@@ -11,6 +11,10 @@ scr_sidebar_lerp(offsetScroll.numpadYoff,submenu == navbar.numpad,1); // numpad
 var sidebar_condition = (submenu == navbar.sidebar) || (submenu == navbar.profileChange);
 scr_sidebar_lerp(offsetScroll.sidebarXoff,sidebar_condition,SIDEBAR_LERP); // sidebar position
 
+// darken screen
+var condition = (submenu == navbar.sidebar) || (submenu == navbar.profileChange)
+scr_sidebar_lerp(offsetScroll.sidebarDarken,condition,SIDEBAR_LERP); // sidebar darken screen
+
 
 // alpha
 if alpha_lerp != alpha_lerp_end
