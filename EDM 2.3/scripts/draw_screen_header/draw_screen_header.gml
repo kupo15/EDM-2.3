@@ -58,7 +58,7 @@ repeat 2
 		var rr = header_height*0.035;
 		var sep = header_height*0.067;
 		
-		draw_menu_dots(xpos+xx,yy,rr,sep,c_white);
+		draw_menu_dots(xpos+xx,yy,rr,sep,c_white,1-headerDeleteOffsetDisp);
 		
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,pct_x(10),region,true,submenu)

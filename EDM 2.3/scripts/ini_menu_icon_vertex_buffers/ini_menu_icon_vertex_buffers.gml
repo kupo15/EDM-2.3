@@ -336,3 +336,43 @@ vertex_end(vbuff);
 /// draw
 vertex_submit(vbuff,pr_trianglelist,-1); 
 }
+
+function vertex_buffer_dots(xx,yy,rr,sep,col,alpha) {
+
+var vbuff = global.vbuffer;
+vertex_begin(vbuff,global.vertex_format_pos_col);
+
+// draw circle
+for(var n=-1;n<2;n++)
+vertex_buffer_circle(vbuff,xx,yy+(n*sep),rr,col,alpha);
+
+vertex_end(vbuff);
+
+/// draw
+vertex_submit(vbuff,pr_trianglelist,-1); 
+}
+
+function vertex_buffer_circle(vbuffer,xx,yy,rr,col,alpha) {
+
+// create circle buffer
+var precision = 60;
+var inc = 360/precision
+for(var i=0;i<360;i+=inc)
+	{
+	var dir = i;
+	var pos_xx1 = lengthdir_x(rr,dir);
+	var pos_yy1 = lengthdir_y(rr,dir);
+	
+	var pos_xx2 = lengthdir_x(rr,dir+inc);
+	var pos_yy2 = lengthdir_y(rr,dir+inc);
+		
+	vertex_position(vbuffer,xx,yy); // center
+	vertex_color(vbuffer,col,alpha);
+
+	vertex_position(vbuffer,xx+pos_xx1,yy+pos_yy1);
+	vertex_color(vbuffer,col,alpha);
+
+	vertex_position(vbuffer,xx+pos_xx2,yy+pos_yy2);
+	vertex_color(vbuffer,col,alpha);
+	}
+}

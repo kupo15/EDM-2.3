@@ -19,17 +19,15 @@ function draw_menu_xout(xx,yy,ww,hh,thick,col,alpha) {
 vertex_buffer_menu_xout(xx,yy,ww,hh,thick,col,alpha);
 }
 	
-function draw_menu_dots(xx,yy,rr,sep,col) {
+function draw_menu_dots(xx,yy,rr,sep,col,alpha) {
 // centered vertically
 
 rr = floor(rr);
 rr = clamp(rr,3,5);
 
-sep = rr*2;
+sep = floor(rr*3.75);
 
-for(var i=-1;i<2;i++)
-draw_circle_color(xx,yy+(i*(sep+rr)),rr,col,col,false);
-
+vertex_buffer_dots(xx,yy,rr,sep,col,alpha);
 }
 
 function draw_menu_arrow(xx,yy,ww,hh,thickness,dir,col,alpha) {
