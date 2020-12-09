@@ -1,12 +1,12 @@
 
 // draw 3 bar icon
-function draw_menu_bars(xx,yy,ww,hh,thick,col) {
+function draw_menu_bars(xx,yy,ww,hh,thick,col,alpha) {
 // centered vertically
 
 thick = ceil(thick);
 var sep = ceil(hh/3);
 
-vertex_buffer_bars(xx,yy,ww,thick,sep,col);
+vertex_buffer_bars(xx,yy,ww,thick,sep,col,alpha);
 
 
 //for(var i=-1;i<2;i++)
@@ -14,9 +14,9 @@ vertex_buffer_bars(xx,yy,ww,thick,sep,col);
 
 }
 
-function draw_menu_xout(xx,yy,ww,hh,thick,col) {
+function draw_menu_xout(xx,yy,ww,hh,thick,col,alpha) {
 
-vertex_buffer_menu_xout(xx,yy,ww,hh,thick,col,1);
+vertex_buffer_menu_xout(xx,yy,ww,hh,thick,col,alpha);
 }
 	
 function draw_menu_dots(xx,yy,rr,sep,col) {
@@ -32,13 +32,13 @@ draw_circle_color(xx,yy+(i*(sep+rr)),rr,col,col,false);
 
 }
 
-function draw_menu_arrow(xx,yy,ww,hh,thickness,dir,col) {
+function draw_menu_arrow(xx,yy,ww,hh,thickness,dir,col,alpha) {
 	
 var half = hh*0.5;
 var diag_ll = ww*0.3;
 var shift = ww*0.2;
 
-vertex_buffer_back_arrow(xx,yy,ww,diag_ll,shift,half,col,1);
+vertex_buffer_back_arrow(xx,yy,ww,diag_ll,shift,half,col,alpha);
 }
 	
 function draw_menu_triangle(xx,yy,hh,condition,pct,col) {

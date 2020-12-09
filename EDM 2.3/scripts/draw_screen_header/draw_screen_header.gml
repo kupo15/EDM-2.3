@@ -23,10 +23,6 @@ var col = merge_color(bg_col,del_col,headerDeleteOffsetDisp);
 //draw_rectangle_pixel(0,0,ww,hh,col,false);
 draw_rectangle_color(0,0,ww,hh,col,col,col,col,false);
 
-//draw_set_halign(fa_center);
-//draw_text_height_middled_color(xx,yy,header_string,header_height,c_white,height);
-//draw_set_halign(fa_left);
-
 var xpos = 0;
 var region = header_height;
 var header_type = header_left;
@@ -42,7 +38,7 @@ repeat 2
 		var yy = header_height*0.5;
 		var thick = y_pct_y(4);
 		
-		draw_menu_bars(xpos+xx,yy,ww,hh,thick,c_white);
+		draw_menu_bars(xpos+xx,yy,ww,hh,thick,c_white,1-headerDeleteOffsetDisp);
 
 		// clicked on bars
 		if !mode_delete && (submenu < 0)
@@ -75,7 +71,7 @@ repeat 2
 		var ww = header_height*0.33*1.25;
 		var hh = header_height*0.33;
 		
-		draw_menu_arrow(xpos+xx,yy,ww,hh,4,1,c_white);
+		draw_menu_arrow(xpos+xx,yy,ww,hh,4,1,c_white,1-headerDeleteOffsetDisp);
 
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
@@ -84,7 +80,7 @@ repeat 2
 	else if header_type == headerType.trash
 		{
 		var xx = x_pct_x(20);
-		draw_icon_height_centered_color(ico_trash3,0,xpos-xx,0,region,region,header_height*0.44,c_white,1); // trash icon
+		draw_icon_height_centered_color(ico_trash3,0,xpos-xx,0,region,region,header_height*0.44,c_white,1-headerDeleteOffsetDisp); // trash icon
 
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
@@ -92,7 +88,7 @@ repeat 2
 		}
 	else if header_type == headerType.plus
 		{
-		draw_plus_button(xpos+pct_x(5),pct_y(6.5),region,false,c_white); // plus button
+		draw_plus_button(xpos+pct_x(5),pct_y(6.5),region,c_white,undefined,undefined,1-headerDeleteOffsetDisp); // plus button
 		
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
@@ -114,7 +110,7 @@ if keyboard_check(vk_numpad0)
 draw_header_delete(0,app_width,header_height);
 
 draw_set_halign(fa_center);
-draw_text_height_middled_color(xx,yy,header_string,header_height,c_white,height);
+draw_text_height_middled_color(xx,yy,header_string,header_height,c_white,height,1-headerDeleteOffsetDisp);
 draw_set_halign(fa_left);
 
 return false;
@@ -159,7 +155,7 @@ return val;
 
 function draw_header_delete(yy,ww,hh){
 
-headerDeleteOffsetDisp = 1;
+//headerDeleteOffsetDisp = 1;
 
 draw_set_alpha(headerDeleteOffsetDisp);
 
@@ -167,7 +163,7 @@ var xx = 0;
 var size = header_height*0.3;
 var xoff = (hh-size)*0.5;
 
-draw_menu_xout(xx+xoff,yy+xoff,size,size,x_pct_x(5),c_white); // draw xout
+draw_menu_xout(xx+xoff,yy+xoff,size,size,x_pct_x(5),c_white,headerDeleteOffsetDisp); // draw xout
 
 if mode_delete && click_region_released(0,0,hh,hh,true,submenu,1)
 	{

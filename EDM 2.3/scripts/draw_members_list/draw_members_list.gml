@@ -26,6 +26,8 @@ var box_hh_end = app_height;
 var list_size = array_length(source_array);
 var pos_start = floor(memberslist_offset);
 var pos_end = min(list_size,ceil(memberslist_offset)+rows);
+
+pos_end = 0;
 for(var i=pos_start;i<pos_end;i++)
 	{
 	var off_ind = i-memberslist_offset;

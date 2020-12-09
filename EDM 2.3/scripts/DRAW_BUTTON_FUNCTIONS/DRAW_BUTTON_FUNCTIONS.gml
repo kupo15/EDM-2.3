@@ -90,26 +90,16 @@ function draw_plus_button_pct(xx,yy,d,enclosed,str_col,col) {
 draw_plus_button(xx,yy,d,enclosed,str_col,col,true);
 }
 	
-function draw_plus_button(xx,yy,d,enclosed,str_col,col,pct) {
+function draw_plus_button(xx,yy,d,plus_col,enclosed_col,pct,alpha) {
 // centered
 /// @param xx
 /// @param yy
 /// @param diameter
-/// @param enclosed
-/// @param [strColor
-/// @param buttonColor]
+/// @param plusColor
+/// @param [enclosedColor
+/// @param pct?
+/// @param alpha]
 
-var ins = argument[6];
-
-if argument[4] == undefined
-str_col = c_black;
-
-if argument[5] == undefined
-col = c_white;
-
-var r = d*0.5;
-var line_ww = r*0.4;
-var line_hh = r*0.4;
 var ww = 3;
 
 if pct == true
@@ -117,18 +107,9 @@ if pct == true
 	xx = x_pct_x(xx);
 	yy = y_pct_y(yy);
 	ww = x_pct_x(ww);
-	r = x_pct_x(r);
-	line_ww = x_pct_x(line_ww);
-	line_hh = y_pct_y(line_hh);
 	}
 
-
-if enclosed
-draw_circle_color(xx,yy,r,col,col,false);
-
-// draw plus
-draw_line_hor(xx-line_ww,yy,line_ww*2,ww,str_col,1);
-draw_line_vert(xx,yy-line_hh,line_hh*2,ww,str_col,1);
+vertex_buffer_menu_plus(xx,yy,d,ww,plus_col,enclosed_col,alpha);
 }
 
 function draw_switch_tab(xx,yy,box_hh,switch_hh,ind,variable,enclosed) {
