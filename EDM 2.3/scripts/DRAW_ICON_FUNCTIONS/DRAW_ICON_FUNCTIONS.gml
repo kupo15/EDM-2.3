@@ -39,7 +39,7 @@ var shift = ww*0.2;
 vertex_buffer_back_arrow(xx,yy,ww,diag_ll,shift,half,col,alpha);
 }
 	
-function draw_menu_triangle(xx,yy,hh,condition,pct,col) {
+function draw_menu_triangle(xx,yy,hh,condition,pct,col,alpha) {
 /// @param xx
 /// @param yy
 /// @param hh
@@ -47,7 +47,7 @@ function draw_menu_triangle(xx,yy,hh,condition,pct,col) {
 /// @param [pct
 /// @param color]
 
-vertex_buffer_menu_arrow(xx,yy,hh,condition,pct,col);
+vertex_buffer_menu_arrow(xx,yy,hh,condition,pct,col,alpha);
 }
 	
 function draw_calendar_icon(xx,yy,sq_yoff,sq_size,date) {

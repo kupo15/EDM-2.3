@@ -1,8 +1,5 @@
 function draw_sidebar_main_menu() {
 	
-draw_set_halign(fa_left);
-draw_set_color(c_black);
-
 var offset = 1-offsetArray[offsetScroll.sidebarXoff];
 var xx_off = fade_offset_set(offset,-side_menu_width-30);
 var xx = 0;
@@ -17,8 +14,9 @@ var profile_hh_pct = y_pct_y(200);
 
 var profile_col = make_color_rgb(76,102,145);
 
+
 #region profile section
-draw_sprite_stretched_ext(spr_pixel,0,xx_pct,yy,ww_pct,hh,c_white,1);
+draw_rectangle_pixel(xx_pct,yy,ww_pct,hh,c_white,false,false);
 
 // if click outside of menu
 if clickout_region_pct(xx+xx_off,yy,ww,hh,false,navbar.sidebar)
@@ -44,6 +42,8 @@ var xx = 25;
 var yy = 25;
 
 draw_image_width_cropped_pct(spr_estrella_banner,0,xx_off,0,side_menu_width,profile_hh,5,1);
+exit
+
 draw_icon_height_pct(spr_estrella_logo,0,xx+xx_off,yy,100,1); // profile picture
 
 var height = 45;
@@ -51,7 +51,7 @@ var yy = profile_hh-height-10;
 
 draw_text_height_color(xx+xx_off,yy,PROFILE_data.dispName,c_white,height,true,fn_bold); // draw location name
 
-draw_menu_triangle(xx_off+(ww*0.85),yy+15,14,submenu != navbar.profileChange,true,c_white);
+draw_menu_triangle(xx_off+(ww*0.85),yy+15,14,submenu != navbar.profileChange,true,c_white,1);
 #endregion
 
 #region draw menu items

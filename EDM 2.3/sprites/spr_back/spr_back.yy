@@ -17,8 +17,8 @@
   "width": 51,
   "height": 60,
   "textureGroupId": {
-    "name": "Other",
-    "path": "texturegroups/Other",
+    "name": "unused",
+    "path": "texturegroups/unused",
   },
   "swatchColours": null,
   "gridX": 0,

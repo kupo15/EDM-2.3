@@ -32,7 +32,7 @@ script_execute(drawScreen[screenIndex]);
 
 //draw_darken_screen();
 //draw_navbar();
-//draw_sidebar_main_menu();
+draw_sidebar_main_menu();
 //
 //// popup overlays
 //draw_overlay_calendar();
