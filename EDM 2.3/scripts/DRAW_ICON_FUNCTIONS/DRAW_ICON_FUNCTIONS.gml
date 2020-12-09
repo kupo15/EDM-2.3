@@ -66,63 +66,7 @@ function draw_menu_triangle(xx,yy,hh,condition,pct,col) {
 /// @param [pct
 /// @param color]
 
-if argument[5] == undefined
-col = c_white;
-
-var flip = pick(-1,1,condition);
-var yoff = pick(hh*0.9,0,condition);
-
-yy = yy+yoff;
-
-var x1 = xx;
-var y1 = yy;
-
-var x2 = x1+hh;
-var y2 = y1+(hh*flip);
-
-var x3 = x2;
-var y3 = yy;
-
-var x4 = x3+1;
-var y4 = y2;
-
-var x5 = x4;
-var y5 = yy;
-
-var x6 = x5+hh;
-var y6 = yy;
-
-if argument[4] == true
-	{
-	x1 = x_pct_x(x1);
-	y1 = y_pct_y(y1);
-	
-	x2 = x_pct_x(x2);
-	y2 = y_pct_y(y2);
-	
-	x3 = x_pct_x(x3);
-	y3 = y_pct_y(y3);
-	
-	x4 = x_pct_x(x4);
-	y4 = y_pct_y(y4);
-		 
-	x5 = x_pct_x(x5);
-	y5 = y_pct_y(y5);
-		 
-	x6 = x_pct_x(x6);
-	y6 = y_pct_y(y6);
-	}
-
-draw_primitive_begin(pr_trianglestrip);
-draw_vertex_color(x1,y1,col,1);
-draw_vertex_color(x2,y2,col,1);
-draw_vertex_color(x3,y3,col,1);
-
-draw_vertex_color(x4,y4,col,1);
-draw_vertex_color(x5,y5,col,1);
-
-draw_vertex_color(x6,y6,col,1);
-draw_primitive_end();
+vertex_buffer_menu_arrow(xx,yy,hh,condition,pct,col);
 }
 	
 function draw_calendar_icon(xx,yy,sq_yoff,sq_size,date) {

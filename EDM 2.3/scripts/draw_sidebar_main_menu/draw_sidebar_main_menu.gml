@@ -51,7 +51,7 @@ var yy = profile_hh-height-10;
 
 draw_text_height_color(xx+xx_off,yy,PROFILE_data.dispName,c_white,height,true,fn_bold); // draw location name
 
-draw_menu_triangle(xx_off+(ww*0.85),yy+15,14,submenu != navbar.profileChange,true);
+draw_menu_triangle(xx_off+(ww*0.85),yy+15,14,submenu != navbar.profileChange,true,c_white);
 #endregion
 
 #region draw menu items
