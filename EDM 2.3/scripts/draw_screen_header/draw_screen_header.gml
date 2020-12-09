@@ -110,7 +110,7 @@ if keyboard_check(vk_numpad0)
 draw_header_delete(0,app_width,header_height);
 
 draw_set_halign(fa_center);
-draw_text_height_middled_color(xx,yy,header_string,header_height,c_white,height,1-headerDeleteOffsetDisp);
+draw_text_height_middled_color(app_width*0.5,0,header_string,header_height,c_white,height,1-headerDeleteOffsetDisp);
 draw_set_halign(fa_left);
 
 return false;
@@ -126,12 +126,22 @@ var yy = header_height;
 var hh = header_submenu_height;
 var col = header_color;
 
+//draw_rectangle_color(xx,yy,app_width,hh,col,col,col,col,false);
 draw_sprite_stretched_ext(spr_pixel,0,xx,yy,app_width,hh,col,1);
-
+	
+// draw highlight underline
 var header_num = argument_count-2;
 var header_sep = app_width/header_num;
 var val = undefined;
 
+var xx = offset*header_sep;
+var hh = 4;
+var col = c_white;
+
+draw_rectangle_pixel(xx,yy+header_submenu_height-y_pct_y(hh),header_sep,y_pct_y(hh),col,false);
+draw_line_pixel(xx,yy+header_submenu_height-1,header_sep,1,c_lt_gray,1);
+
+// draw headers
 for(var i=0;i<header_num;i++)
 	{		
 	var pos = i*header_sep;
@@ -140,15 +150,6 @@ for(var i=0;i<header_num;i++)
 	if click_button(pos,yy,argument[i+2],header_submenu_font_height,str_col,header_sep,header_submenu_height,undefined,false,false,submenu)
 	val = i;
 	}
-	
-
-// draw highlight underline
-var xx = offset*header_sep;
-var hh = 4;
-var col = c_white;
-
-draw_rectangle_pixel(xx,yy+header_submenu_height-y_pct_y(hh),header_sep,y_pct_y(hh),col,false);
-draw_line_pixel(xx,yy+header_submenu_height-1,header_sep,1,c_lt_gray,1);
 
 return val;
 }

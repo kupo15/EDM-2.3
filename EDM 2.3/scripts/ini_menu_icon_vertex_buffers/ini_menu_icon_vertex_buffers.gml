@@ -337,6 +337,73 @@ vertex_end(vbuff);
 vertex_submit(vbuff,pr_trianglelist,-1); 
 }
 
+function vertex_buffer_submenu_underline(xx,yy,d,thick,col,enclosed_col,alpha) {
+
+#region create buffer
+var vbuff = global.vbuffer;
+vertex_begin(vbuff,global.vertex_format_pos_col);
+
+var r = d*0.5;
+var line_ww = r*0.4;
+var line_hh = r*0.4;
+
+var xshift = thick*0.5;
+var yshift = thick*0.5;
+
+//if enclosed_col != undefined
+//draw_circle_color(xx,yy,r,col,col,false);
+
+// draw plus
+vertex_position(vbuff,xx-xshift,yy-line_hh);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx+xshift,yy-line_hh);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx+xshift,yy+line_hh);
+vertex_color(vbuff,col,alpha);
+
+//
+
+vertex_position(vbuff,xx+xshift,yy+line_hh);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx-xshift,yy+line_hh);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx-xshift,yy-line_hh);
+vertex_color(vbuff,col,alpha);
+
+//--//
+
+vertex_position(vbuff,xx-line_ww,yy-yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx+line_ww,yy-yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx+line_ww,yy+yshift);
+vertex_color(vbuff,col,alpha);
+
+//
+
+vertex_position(vbuff,xx+line_ww,yy+yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx-line_ww,yy+yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_position(vbuff,xx-line_ww,yy-yshift);
+vertex_color(vbuff,col,alpha);
+
+vertex_end(vbuff);
+
+#endregion
+
+/// draw
+vertex_submit(vbuff,pr_trianglelist,-1); 
+}
+
 function vertex_buffer_dots(xx,yy,rr,sep,col,alpha) {
 
 var vbuff = global.vbuffer;

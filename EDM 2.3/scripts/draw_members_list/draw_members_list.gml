@@ -27,7 +27,9 @@ var list_size = array_length(source_array);
 var pos_start = floor(memberslist_offset);
 var pos_end = min(list_size,ceil(memberslist_offset)+rows);
 
-pos_end = 0;
+//pos_end = 0;
+var element_num = 5;
+for(var e=0;e<element_num;e++)
 for(var i=pos_start;i<pos_end;i++)
 	{
 	var off_ind = i-memberslist_offset;
@@ -45,13 +47,30 @@ for(var i=pos_start;i<pos_end;i++)
 	var first_initial = string_char_at(member_first_name,1);	
 	var last_initial = string_char_at(member_last_name,1);	
 
-	draw_icon_member_initial(bleed_left,yy+off_pos,first_initial+last_initial,c_white,sep,header_color,height);	
-	draw_text_height_middled(pct_x(14),yy+off_pos,member_str,sep,height,1,false,fn_bold); // draw member name
+	switch e
+		{
+		//case 0: draw_icon_member_initial(bleed_left,yy+off_pos,first_initial+last_initial,c_white,sep,header_color,height);
+		//
+		//var r = sep*0.8*0.5;	
+		//
+		//draw_circle_color(xx+(sep*0.5),yy+(sep*0.5),r,bg_col,bg_col,false);
+
+		//case 1:
+		//draw_set_halign(fa_center);
+		//draw_text_height_middled_color(xx+(sep*0.5),yy,capitalize(str),sep,string_col,height,1);	
+		//draw_set_halign(fa_left);
+		
+		case 2:	draw_text_height_middled(pct_x(14),yy+off_pos,member_str,sep,height,1,false,fn_bold); break; // draw member name
+		//
+		//case 3:	draw_line_pixel(pct_x(14),yy+off_pos+sep,app_width,1,c_gray,0.7); break; // draw line
+		//
+		//case 4:	var ico_alpha = pick(0.5,1,member_favorite);
+		//		draw_icon_height_centered_color(ico_bookmarked,member_favorite,pct_x(87),yy+off_pos,sep,sep,sep*0.7,c_white,ico_alpha); // draw favorites
+		//		break;
+		}
 	
-	var ico_alpha = pick(0.5,1,member_favorite);
-	draw_icon_height_centered_color(ico_bookmarked,member_favorite,pct_x(87),yy+off_pos,sep,sep,sep*0.7,c_white,ico_alpha); // draw favorites
-	
-	draw_line_pixel(pct_x(14),yy+off_pos+sep,app_width,1,c_gray,0.7); // draw line
+	if (e+1) != element_num
+	continue;
 	
 	if click_region_clamp_set(pct_x(83),yy,off_pos,pct_x(17),sep,hh,noone,false,undefined,navbar.hidden,i)
 	&& click_region_pressed(pct_x(83),yy+off_pos,pct_x(17),sep,false,navbar.hidden)
@@ -89,7 +108,7 @@ var sub = navbar.hidden;
 funct_screen_scrolling(xx,yy,ww,hh,sep,list_size,rows,scrollbar_index,sub);
 #endregion
 
-
+exit
 draw_screen_header(headerType.back,headerType.plus,"Members");
 
 var sort_index = META_data.memberSort;

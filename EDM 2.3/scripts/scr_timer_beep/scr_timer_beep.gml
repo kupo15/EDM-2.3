@@ -9,7 +9,7 @@ if timer[timerIndex.app_start] == 5
 app_setup_set();
 
 if timer[timerIndex.app_start] == 0
-screenIndex = screen.home//membersList;
+screenIndex = screen.membersList;
 	
 }
 

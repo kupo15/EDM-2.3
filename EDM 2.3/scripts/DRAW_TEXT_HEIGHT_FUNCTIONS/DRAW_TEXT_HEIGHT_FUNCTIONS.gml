@@ -1,11 +1,12 @@
 // text draws
-function draw_text_height(xx,yy,str,height,pct,font) {
+function draw_text_height(xx,yy,str,height,pct,font,halign) {
 /// @param xx
 /// @param yy
 /// @param str
 /// @param height
 /// @param [pct?
-/// @param font]
+/// @param font
+/// @param halign]
 
 var int = argument[4];
 
@@ -15,16 +16,17 @@ var angle = 0;
 var col = draw_get_color();
 var alpha = draw_get_alpha();
 
-return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,pct,font);
+return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,pct,font,halign);
 }
 
-function draw_text_height_label(xx,yy,str,str_label,height,font) {
+function draw_text_height_label(xx,yy,str,str_label,height,font,halign) {
 /// @param xx
 /// @param yy
 /// @param str
 /// @param str_label
 /// @param height
-/// @param [font]
+/// @param [font
+/// @param halign]
 
 var int = argument[5];
 
@@ -41,10 +43,10 @@ if str == ""
 	font = fn_italic
 	}
 
-return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,font);
+return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,font,halign);
 }
 
-function draw_text_height_middled(xx,yy,str,hh,height,alpha,pct,font) {
+function draw_text_height_middled(xx,yy,str,hh,height,alpha,pct,font,halign) {
 /// @param xx
 /// @param yy
 /// @param str
@@ -52,7 +54,8 @@ function draw_text_height_middled(xx,yy,str,hh,height,alpha,pct,font) {
 /// @param height
 /// @param alpha
 /// @param [pct?
-/// @param font]
+/// @param font
+/// @param halign]
 
 var int = argument[6];
 var col = draw_get_color();
@@ -60,7 +63,7 @@ var col = draw_get_color();
 return draw_text_height_middled_color(xx,yy,str,hh,col,height,alpha,pct,font);
 }
 
-function draw_text_height_middled_color(xx,yy,str,hh,col,height,alpha,pct,font) {
+function draw_text_height_middled_color(xx,yy,str,hh,col,height,alpha,pct,font,halign) {
 /// @param xx
 /// @param yy
 /// @param str
@@ -69,7 +72,8 @@ function draw_text_height_middled_color(xx,yy,str,hh,col,height,alpha,pct,font) 
 /// @param height
 /// @param alpha
 /// @param [pct?
-/// @param font]
+/// @param font
+/// @param halign]
 
 if argument[6] == undefined
 alpha = draw_get_alpha();
@@ -81,17 +85,18 @@ var sep = -1;
 var w = -1;
 var angle = 0;
 
-return draw_text_height_ext_color(xx,yy+yoff,str,sep,w,angle,col,alpha,height,pct,font);
+return draw_text_height_ext_color(xx,yy+yoff,str,sep,w,angle,col,alpha,height,pct,font,halign);
 }
 
-function draw_text_height_color(xx,yy,str,col,height,pct,font) {
+function draw_text_height_color(xx,yy,str,col,height,pct,font,halign) {
 /// @param xx
 /// @param yy
 /// @param str
 /// @param color
 /// @param height
 /// @param [pct?
-/// @param font]
+/// @param font
+/// @param halign]
 
 var int = argument[6];
 
@@ -100,10 +105,10 @@ var w = -1;
 var angle = 0;
 var alpha = draw_get_alpha();
 
-return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,pct,font);
+return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,pct,font,halign);
 }
 
-function draw_text_height_ext(xx,yy,str,sep,w,angle,height,font) {
+function draw_text_height_ext(xx,yy,str,sep,w,angle,height,font,halign) {
 /// @param xx
 /// @param yy
 /// @param str
@@ -111,17 +116,18 @@ function draw_text_height_ext(xx,yy,str,sep,w,angle,height,font) {
 /// @param w
 /// @param angle
 /// @param height
-/// @param [font]
+/// @param [font
+/// @param halign]
 
 var int = argument[7];
 
 var col = draw_get_color();
 var alpha = draw_get_alpha();
 
-return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,font);
+return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,font,halign);
 }
 
-function draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,pct,font) {
+function draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,pct,font,halign) {
 /// @param xx
 /// @param yy
 /// @param str
@@ -131,12 +137,20 @@ function draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,pct,f
 /// @param color
 /// @param alpha
 /// @param height
-/// @param [pct?	
-/// @param font]	
+/// @param [pct?
+/// @param font
+/// @param halign]
+
+if argument[7] == undefined
+alpha = draw_get_alpha();
 
 if argument[10] == undefined
 font = fn_normal;
 	
+if argument[11] == undefined
+halign = fa_left;
+
+draw_set_halign(halign);
 draw_set_font(font);
 	
 var currSize = string_height(str); // current height of string
@@ -207,7 +221,7 @@ return scale;
 }
 
 // text draw with cursor
-function draw_text_height_ext_cursor(xx,yy,str,str_disp,sep,str_ww,angle,height,ind,cursor_ww,cursor_col,font) {
+function draw_text_height_ext_cursor(xx,yy,str,str_disp,sep,str_ww,angle,height,ind,cursor_ww,cursor_col,font,halign) {
 /// @param xx
 /// @param yy
 /// @param string
@@ -219,7 +233,8 @@ function draw_text_height_ext_cursor(xx,yy,str,str_disp,sep,str_ww,angle,height,
 /// @param textboxIndex
 /// @param [cursor_width
 /// @param cursor_color
-/// @param font]
+/// @param font
+/// @param halign]
 
 // [optional arguments]
 if is_undefined(argument[9])
@@ -233,13 +248,13 @@ if str == ""
 	{
 	var col = c_gray;
 	var alpha = draw_get_alpha();
-	var scale = draw_text_height_ext_color(xx,yy,str_disp,sep,str_ww,angle,col,alpha,height,fn_italic); // draw string
+	var scale = draw_text_height_ext_color(xx,yy,str_disp,sep,str_ww,angle,col,alpha,height,fn_italic,halign); // draw string
 	}
 else
 	{
 	var col = draw_get_color();
 	var alpha = draw_get_alpha();
-	var scale = draw_text_height_ext_color(xx,yy,str,sep,str_ww,angle,col,alpha,height,font); // draw string
+	var scale = draw_text_height_ext_color(xx,yy,str,sep,str_ww,angle,col,alpha,height,font,halign); // draw string
 	}
 	
 #region draw cursor
