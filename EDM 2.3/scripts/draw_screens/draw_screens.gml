@@ -27,12 +27,21 @@ var xx = (region-ww)*0.5;
 var yy = header_height*0.5;
 var thick = y_pct_y(4);
 		
-		var xx = pct_x(3);
-		var yy = header_height*0.5;
-		var ww = header_height*0.33*1.33;
-		var hh = header_height*0.33;
+//		var xx = pct_x(3);
+//		var yy = header_height*0.5;
+//		var ww = header_height*0.33*1.33;
+//		var hh = header_height*0.33;
+//		
+//		var xx = 0;
+//var size = header_height*0.3;
+//var xoff = (hh-size)*0.5;
+
+//if !keyboard_check(vk_numpad7)
+//draw_menu_xout(xx+xoff,yy+xoff,size,size,x_pct_x(5),c_white); // draw xout
+
+//exit;
 		
-		draw_plus_button(pct_x(5),pct_y(6.5),region,false,c_white); // plus button
+		//draw_plus_button(pct_x(5),pct_y(6.5),region,false,c_white); // plus button
 
 		//draw_menu_arrow(xx,yy,ww,hh,4,1,c_white);
 	//	
@@ -40,10 +49,10 @@ var thick = y_pct_y(4);
 						//draw_menu_arrow(xx,yy,ww,hh,4,1,c_white);
 
 //exit
-//draw_menu_bars(xx,yy,ww,hh,thick,c_white);
+//draw_menu_bars(xx,yy,ww,hh,thick,c_black);
 						//draw_icon_height_centered_color(ico_trash3,0,xx,0,region,region,header_height*0.44,c_white,1); // trash icon
 
-exit;
+//exit;
 	
 // draw screens
 draw_background_screen();

@@ -28,7 +28,6 @@ draw_set_halign(fa_left);
 debug_draw_screens(xx,yy,debugyoff,sep,height);
 //debug_draw_screen_darken(xx,yy,debugyoff,sep,height);
 
-
 debugyoff = 14;
 //debug_draw_click_highlight(xx,yy,debugyoff,sep,height);
 //debug_draw_vk(xx,yy,debugyoff,sep,height);
@@ -64,8 +63,7 @@ else
 
 draw_text_height(xx,yy+(0*sep),string(str),height);
 
-
-draw_text_height(xx+x_pct_x(320),yy+(0*sep),string(fps_real),height);
+//draw_text_height(xx+x_pct_x(320),yy+(0*sep),string(fps_real),height);
 
 // draw dividing line
 draw_line(xx,yy+sep,xx+200,yy+sep);

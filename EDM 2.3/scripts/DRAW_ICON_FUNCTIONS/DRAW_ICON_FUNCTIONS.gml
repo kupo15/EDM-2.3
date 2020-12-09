@@ -6,15 +6,18 @@ function draw_menu_bars(xx,yy,ww,hh,thick,col) {
 thick = ceil(thick);
 var sep = ceil(hh/3);
 
-for(var i=-1;i<2;i++)
-draw_line_hor(xx,yy+(i*sep),ww,thick,c_white,1);
+vertex_buffer_bars(xx,yy,ww,thick,sep,col);
+
+
+//for(var i=-1;i<2;i++)
+//draw_line_hor(xx,yy+(i*sep),ww,thick,c_white,1);
 
 }
 
 function draw_menu_xout(xx,yy,ww,hh,thick,col) {
 
-draw_line_width_color(xx,yy,xx+ww,yy+hh,thick,col,col); // line top left to bottom right
-draw_line_width_color(xx,yy+hh,xx+ww,yy,thick,col,col); // line bot left to top right
+//draw_line_color(xx,yy,xx+ww,yy+hh,thick,col,col); // line top left to bottom right
+//draw_line_color(xx,yy+hh,xx+ww,yy,thick,col,col); // line bot left to top right
 }
 	
 function draw_menu_dots(xx,yy,rr,sep,col) {
@@ -36,21 +39,23 @@ var half = hh*0.5;
 var diag_ll = ww*0.3;
 var shift = ww*0.2;
 
-draw_primitive_begin(pr_trianglestrip);
+vertex_buffer_back_arrow(xx,yy,ww,diag_ll,shift,half,col,1);
 
-draw_vertex_color(xx+diag_ll+shift,yy+half,col,1);
-draw_vertex_color(xx+diag_ll,yy+half,col,1);
-draw_vertex_color(xx+shift,yy,col,1);
-draw_vertex_color(xx,yy,col,1);
-draw_vertex_color(xx+shift,yy,col,1);
-draw_vertex_color(xx+diag_ll,yy-half,col,1); 
-draw_vertex_color(xx+diag_ll+shift,yy-half,col,1); 
-
-draw_primitive_end();
+//draw_primitive_begin(pr_trianglestrip);
+//
+//draw_vertex_color(xx+diag_ll+shift,yy+half,col,1);
+//draw_vertex_color(xx+diag_ll,yy+half,col,1);
+//draw_vertex_color(xx+shift,yy,col,1);
+//draw_vertex_color(xx,yy,col,1);
+//draw_vertex_color(xx+shift,yy,col,1);
+//draw_vertex_color(xx+diag_ll,yy-half,col,1); 
+//draw_vertex_color(xx+diag_ll+shift,yy-half,col,1); 
+//
+//draw_primitive_end();
 
 thickness = shift*0.25;
 
-draw_rectangle_color(xx+(shift*0.5),yy-thickness,xx+ww,yy+thickness,col,col,col,col,false); // horizontal line	
+//draw_rectangle_color(xx+(shift*0.5),yy-thickness,xx+ww,yy+thickness,col,col,col,col,false); // horizontal line	
 }
 	
 function draw_menu_triangle(xx,yy,hh,condition,pct,col) {

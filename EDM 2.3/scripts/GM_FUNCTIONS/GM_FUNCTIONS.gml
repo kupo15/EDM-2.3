@@ -33,6 +33,11 @@ for(var i=0;i<thick;i++)
 	}
 }
 
+function draw_line_vector(x1,y1,x2,y2,thick,col,alpha) {
+	
+	
+}
+
 function draw_line_vert(xx,yy,length,thick,col,alpha) {
 	
 for(var i=0;i<thick;i++)

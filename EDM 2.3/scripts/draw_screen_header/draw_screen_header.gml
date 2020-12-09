@@ -19,9 +19,6 @@ var hh = header_height;
 
 draw_rectangle_color(0,0,ww,hh,bg_col,bg_col,bg_col,bg_col,false);
 
-
-//draw_text_height_middled_color(xx,yy,header_string,header_height,c_white,height,1);
-
 draw_set_halign(fa_center);
 draw_text_height_middled_color(xx,yy,header_string,header_height,c_white,height);
 draw_set_halign(fa_left);
@@ -32,7 +29,7 @@ var header_type = header_left;
 
 repeat 2
 	{
-	//if header_type == headerType.bars
+	if header_type == headerType.bars
 		{
 		// draw the 3 bars
 		var ww = header_height*0.33;
@@ -52,8 +49,8 @@ repeat 2
 	
 			screenDarkenIndex = darkenIndex.sidebar;
 			}
-		}exit
-	//else if header_type == headerType.dots
+		}
+	else if header_type == headerType.dots
 		{
 		// draw the 3 dots
 		var xx = region*0.5;
@@ -67,11 +64,11 @@ repeat 2
 		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
 			{}
 		}
-	//else if header_type == headerType.back
+	else if header_type == headerType.back
 		{
 		var xx = pct_x(3);
 		var yy = header_height*0.5;
-		var ww = header_height*0.33*1.33;
+		var ww = header_height*0.33*1.25;
 		var hh = header_height*0.33;
 		
 		draw_menu_arrow(xpos+xx,yy,ww,hh,4,1,c_white);
@@ -80,7 +77,7 @@ repeat 2
 		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
 		screen_goto_prev();
 		}
-	//else if header_type == headerType.trash
+	else if header_type == headerType.trash
 		{
 		var xx = x_pct_x(20);
 		draw_icon_height_centered_color(ico_trash3,0,xpos-xx,0,region,region,header_height*0.44,c_white,1); // trash icon
@@ -89,7 +86,7 @@ repeat 2
 		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
 		return true;
 		}
-	//else if header_type == headerType.plus
+	else if header_type == headerType.plus
 		{
 		draw_plus_button(xpos+pct_x(5),pct_y(6.5),region,false,c_white); // plus button
 		
@@ -108,9 +105,9 @@ if keyboard_check(vk_numpad0)
 	draw_text_height_middled(pct_x(35),0,fps_real,header_height,header_height*0.4,1);
 	}
 	
-exit
+
 // other header overwrite
-draw_header_delete(0,app_width,header_height);
+//draw_header_delete(0,app_width,header_height);
 
 return false;
 }
@@ -154,7 +151,7 @@ return val;
 
 function draw_header_delete(yy,ww,hh){
 
-draw_set_alpha(headerDeleteOffsetDisp);
+draw_set_alpha(1)//headerDeleteOffsetDisp);
 
 var col = make_color_rgb(0,137,123);
 draw_rectangle_color(0,0,ww,hh,col,col,col,col,false);
