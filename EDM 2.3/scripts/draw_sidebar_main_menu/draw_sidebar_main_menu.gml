@@ -16,43 +16,39 @@ var profile_col = make_color_rgb(76,102,145);
 
 // draw background
 vertex_buffer_sidebar_rect(xx_pct,0,ww_pct,profile_hh_pct,app_height,profile_col,c_white,1,1-offset);
+vertex_buffer_draw_width_cropped(spr_estrella_banner,0,xx_pct,0,ww_pct,profile_hh_pct,0,c_white,1);
 
 #region profile section
+var xx = x_pct_x(25);
+var yy = y_pct_y(25);
+var height = pct_y(8.33);
+
+draw_icon_height(spr_estrella_logo,0,xx_pct+xx,yy,height,1); // profile picture
+
+
+var height = pct_y(3.75);
+var yy = profile_hh_pct-height-y_pct_y(10);
+
+draw_text_height_color(xx+xx_pct,yy,PROFILE_data.dispName,c_white,height,false,fn_bold); // draw location name
+
+draw_menu_triangle(xx_pct+(ww_pct*0.85),yy,y_pct_y(14),submenu != navbar.profileChange,false,c_white,1);
+
+
 // if click outside of menu
-if clickout_region_pct(xx+xx_off,yy,ww,hh,false,navbar.sidebar)
+if clickout_region_pct(xx_off,0,ww,hh,false,navbar.sidebar)
 androidBack = true;
 
-if click_region(xx_off,0,x_pct_x(150),y_pct_y(150),true,mb_left,submenu)
+if click_region_released(xx_off,0,x_pct_x(150),y_pct_y(150),true,submenu,1)
 	{
 	submenu = navbar.hidden;
 	screen_change(screen.profileView);
 	}
-else if click_region(xx_pct,0,ww_pct,profile_hh_pct,true,mb_left,submenu)
-	{
-	if submenu == navbar.profileChange
-	androidBack = true;
-	else
-	submenu = navbar.profileChange;
-	}
+else 
+if click_region_released(xx_pct,0,ww_pct,profile_hh_pct,true,submenu,1)
+submenu = pick(navbar.profileChange,navbar.sidebar,submenu == navbar.profileChange);
 
-var xx = 25;
-var yy = 25;
-
-vertex_buffer_draw_width_cropped(spr_estrella_banner,0,xx_pct,0,ww_pct,profile_hh_pct,0,c_white,1);
-
-draw_icon_height_pct(spr_estrella_logo,0,xx+xx_off,yy,100,1); // profile picture
-
-exit;
-
-var height = 45;
-var yy = profile_hh-height-10;
-
-draw_text_height_color(xx+xx_off,yy,PROFILE_data.dispName,c_white,height,true,fn_bold); // draw location name
-
-
-
-draw_menu_triangle(xx_off+(ww*0.85),yy+15,14,submenu != navbar.profileChange,true,c_white,1);
 #endregion
+
 
 #region draw menu items
 var xx = 145;
@@ -61,11 +57,11 @@ var sep = 120;
 var height = 50;
 
 var labels = [];
-labels[| screen.eventSetup] = "Start Event";
-labels[| screen.membersList] = "Members";
-labels[| screen.stats] = "Stats";
-labels[| screen.help_info] = "Help and Info";
-labels[| screen.settings] = "Settings";
+labels[screen.eventSetup] = "Start Event";
+labels[screen.membersList] = "Members";
+labels[screen.stats] = "Stats";
+labels[screen.help_info] = "Help and Info";
+labels[screen.settings] = "Settings";
 
 var element_num = 3;
 for(var e=0;e<element_num;e++)
@@ -77,10 +73,7 @@ for(var i=0;i<screen.enumcount;i++)
 	continue;
 		
 	switch e
-		{
-		// draw headers
-		case 2: draw_text_height_middled(xx+xx_off,ypos,label[| i],sep,height,undefined,true); break;
-		
+		{	
 		// draw menu icons
 		case 0: draw_icon_height_centered_color_pct(spr_footer_icon,i,bleed_left+xx_off,ypos,sep*0.7,sep,sep*0.7,header_color,1); break;
 	
@@ -88,6 +81,9 @@ for(var i=0;i<screen.enumcount;i++)
 		case 1: if i == screen.help_info
 				draw_line_pixel(xx_off,ypos,ww+1,1,c_black,1,true);
 				break;
+				
+		// draw headers
+		case 2: draw_text_height_middled(xx+xx_off,ypos,labels[i],sep,height,undefined,true); break;
 		}
 		
 	if (e+1) < element_num
@@ -98,18 +94,15 @@ for(var i=0;i<screen.enumcount;i++)
 		click_highlight_alpha = 0;
 		click_highlight_alpha_start = 0;
 		
-		submenu = navbar.hidden;
-		//androidBackSidebar = true;
-
-		screen_change(i,undefined,true);
+		screen_change(i,navbar.hidden,true);
 		}
 	}
 
 #endregion
 
-draw_sidebar_profile_switch(xx_off,profile_hh,ww,hh-profile_hh_pct,sep,height);
+draw_sidebar_profile_switch(xx_pct,profile_hh_pct,ww_pct,app_height-profile_hh_pct,y_pct_y(sep),y_pct_y(height));
 
-draw_text_height(x_pct_x(xx_off+15),app_height-y_pct_y(40),"Vers. "+string(GM_version),y_pct_y(30));
+//draw_text_height(pct_x(1.5),pct_y(97),"Vers. "+string(GM_version),pct_y(2.5));
 
 
 if androidBack
@@ -121,57 +114,108 @@ function draw_sidebar_profile_switch(xx_off,yy,ww,hh,sep,height) {
 if submenu != navbar.profileChange
 exit;
 
-var xx = 0+xx_off;
+var xx = xx_off;
 
-draw_sprite_stretched_ext(spr_pixel,0,x_pct_x(xx),y_pct_y(yy),x_pct_x(ww),hh+1,c_white,1);
-	
-var xoff = 55;
-var text_xoff = 135;
-var pos = 0;
+draw_rectangle_pixel(xx,yy,ww,hh+1,c_white,false);
 
+var xoff = x_pct_x(55);
+var text_xpos = pct_x(10);
+
+// drawing loop
+var element_num = 3;
 var size = array_length(ROOT_data_struct.profiles)+1;
+for(var e=0;e<element_num;e++)
+	{
+	var pos = 0;
+	
+	for(var i=0;i<size;i++)
+		{
+		var last_index = (i+1 == size)
+		var on_profile = (i == profile_index);
+		var off_pos = pos*sep;
+				
+		//if e == 2 && !on_profile
+		//	{
+		//	draw_text_height_middled_color(text_xpos+260,yy+off_pos,pos,sep,c_black,height,1);						
+		//	draw_text_height_middled_color(text_xpos+300,yy+off_pos,on_profile,sep,c_black,height,1);	
+		//	draw_text_height_middled_color(text_xpos+330,yy+off_pos,i+1==size,sep,c_black,height,1);	
+		//	}
+				
+		if last_index
+			{
+			switch e
+				{
+				case 1: draw_plus_button(pct_x(4.6),yy+off_pos+(sep*0.5),sep*0.66,c_black,undefined,undefined,1); break; // draw plus sign
+
+				case 2: draw_text_height_middled_color(text_xpos,yy+off_pos,"Create Venue",sep,c_black,height,1); break;	
+				}				
+			}
+		else
+		if !on_profile
+			{		
+			switch e
+				{
+				case 0: draw_line_pixel(text_xpos,yy+off_pos+sep,ww-text_xpos,1,c_gray,1); break;
+								
+				// profile picture
+				case 1: draw_icon_height_centered_color(spr_icon_blank_profile,0,pct_x(1.5),yy+off_pos,sep,sep,sep*0.8,c_white,1); break;
+
+				// profile name
+				case 2:	var profile_pointer = ROOT_data_struct.profiles[i];
+						var str = profile_pointer.dispName;
+					
+						// draw text
+						draw_text_height_middled_color(text_xpos,yy+off_pos,str,sep,c_black,height,1);
+						break;
+				}
+			
+			pos ++;
+			}
+		}
+	}
+
+// clicking in loop
+var pos = 0;
 for(var i=0;i<size;i++)
 	{
+	var last_index = (i+1 == size);
+	var on_profile = (i == profile_index);	
 	var off_pos = pos*sep;
-	
-	if i == profile_index
+
+	if on_profile
 	continue;
-	else if (i+1 == size) // last index
-		{
-		draw_plus_button_pct(xoff,yy+off_pos+(sep*0.5),sep*0.66,false);
-		draw_text_height_middled(xx+text_xoff,yy+off_pos,"Add Venue",sep,height,1,true);
-		
-		if click_region_released(0,yy+off_pos,ww,sep,true,navbar.profileChange,1,true)
+	
+	if last_index
+		{		
+		if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.profileChange,i,undefined,undefined)
 			{
 			//activeStruct = scr_profile_create();
 			//scr_profile_set(i);
 			
 			//screen_change(screen.profileCreate,navbar.popupEntry);
 			//click_textbox_set("",textboxEntry.popupEntryText,kbv_type_default);
+			
+
 			}
-		
-		break;	
+			
+		break;
 		}
 		
-	var profile_pointer = ROOT_data_struct.profiles[i];
-	var disp_name = profile_pointer.dispName;		
-	
-	draw_icon_height_pct(spr_icon_blank_profile,0,xx+25,yy+((sep-(sep*0.8))*0.5)+off_pos,sep*0.8,1); // profile picture
-	draw_text_height_middled(xx+text_xoff,yy+off_pos,disp_name,sep,height,1,true); // profile name
 		
-	draw_line_pixel(xx+text_xoff,yy+off_pos+sep,ww-text_xoff,1,c_lt_gray,1,true);	
-		
-	if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.profileChange,i,undefined,undefined,true)
+	if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.profileChange,i,undefined,undefined)
 		{
 		scr_profile_set(i);
-		app_save;
-
-		submenu = navbar.main;
+		//app_save;
+		//
+		//submenu = navbar.main;
+		break;
 		}
-	
+		
 	pos ++;
 	}
 	
+exit;
+
 var name_entry = draw_overlay_popup_entry("Enter your name",kvLastString,-1);
 if name_entry != undefined
 	{
@@ -181,6 +225,5 @@ if androidBack
 	{
 	submenu = navbar.sidebar;
 	androidBack = false;
-	androidBackSidebar = false;
 	}
 }
