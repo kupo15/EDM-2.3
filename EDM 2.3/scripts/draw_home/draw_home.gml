@@ -10,6 +10,10 @@ function draw_home() {
 //draw_screen_header(headerType.none,headerType.none,"Home");
 
 
+
+var name_entry = draw_overlay_popup_entry("Enter your name",kvLastString,-1);
+
+
 exit;
 debugyoff = 0;
 debug_device_info(20,200,0,30,30);

@@ -3,9 +3,9 @@ db("***debug reset***");
 
 root_data_create();
 scr_profile_create("Estrella Del Mar");
-scr_profile_create("River");
-scr_profile_create("Test");
-scr_profile_create("Yes");
+//scr_profile_create("River");
+//scr_profile_create("Test");
+//scr_profile_create("Yes");
 
 // TEMPORARY add member pointers to local list
 var source_arr = MEMBER_database;

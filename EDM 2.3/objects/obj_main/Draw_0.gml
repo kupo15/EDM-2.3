@@ -8,7 +8,7 @@ if os_type == os_android
 exit;
 
 // draw kv popup overlay
-kvHeight = 400*kvActive*(submenu != navbar.numpad);
+kvHeight = y_pct_y(400*kvActive*(submenu != navbar.numpad));
 var col = c_blue;
 
 draw_set_alpha(0.4);

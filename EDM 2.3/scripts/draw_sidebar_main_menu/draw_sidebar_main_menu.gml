@@ -1,6 +1,7 @@
 function draw_sidebar_main_menu() {
 	
 var offset = 1-offsetArray[offsetScroll.sidebarXoff];
+var alpha = (1-offset)*0.5;
 var xx_off = fade_offset_set(offset,-side_menu_width-30);
 var xx = 0;
 var yy = 0;
@@ -12,10 +13,13 @@ var xx_pct = x_pct_x(xx_off);
 var ww_pct = x_pct_x(side_menu_width);
 var profile_hh_pct = y_pct_y(200);
 
+if xx_pct+ww_pct < 0
+exit;
+
 var profile_col = make_color_rgb(76,102,145);
 
 // draw background
-vertex_buffer_sidebar_rect(xx_pct,0,ww_pct,profile_hh_pct,app_height,profile_col,c_white,1,1-offset);
+vertex_buffer_sidebar_rect(xx_pct,0,ww_pct,profile_hh_pct,app_height,profile_col,c_white,1,alpha);
 vertex_buffer_draw_width_cropped(spr_estrella_banner,0,xx_pct,0,ww_pct,profile_hh_pct,0,c_white,1);
 
 #region profile section
@@ -214,7 +218,7 @@ for(var i=0;i<size;i++)
 	pos ++;
 	}
 	
-exit;
+//exit;
 
 var name_entry = draw_overlay_popup_entry("Enter your name",kvLastString,-1);
 if name_entry != undefined

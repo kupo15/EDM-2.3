@@ -39,7 +39,7 @@
 // cursor
 #macro cursor_blink 500
 #macro cursor_color c_aqua
-#macro cursor_width 3
+#macro cursor_width pct_x(0.15)
 
 // sidebar
 #macro side_menu_width 870
@@ -53,7 +53,7 @@
 #macro nav_sca_off 0.85
 #macro nav_height 100
 #macro navbar_color make_color_rgb(0,122,173)
-#macro starting_submenu navbar.sidebar
+#macro starting_submenu navbar.popupEntry
 
 // calendar
 #macro start_date date_create_datetime(1970,1,1,0,0,0)

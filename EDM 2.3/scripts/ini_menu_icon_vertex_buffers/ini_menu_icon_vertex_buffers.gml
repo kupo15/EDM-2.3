@@ -458,27 +458,8 @@ var vbuff = global.vbuffer;
 vertex_begin(vbuff,global.vformat_pos_col);	
 	
 // darkened screen
-var strength = 0.5;
+vbuffer_darkened_screen(vbuff,darken_alpha);
 
-vertex_position(vbuff,0,0);
-vertex_color(vbuff,c_black,darken_alpha*strength);
-	
-vertex_position(vbuff,app_width,0);
-vertex_color(vbuff,c_black,darken_alpha*strength);
-	
-vertex_position(vbuff,0,app_height);
-vertex_color(vbuff,c_black,darken_alpha*strength);
-
-//
-
-vertex_position(vbuff,app_width,0);
-vertex_color(vbuff,c_black,darken_alpha*strength);
-	
-vertex_position(vbuff,0,app_height);
-vertex_color(vbuff,c_black,darken_alpha*strength);
-	
-vertex_position(vbuff,app_width,app_height);
-vertex_color(vbuff,c_black,darken_alpha*strength);
 	
 // profile portion	
 vertex_position(vbuff,xx,yy);
@@ -605,4 +586,63 @@ vertex_end(vbuff);
 
 // draw
 vertex_submit(vbuff,pr_trianglestrip,spr_tex); 
+}
+	
+function vertex_buffer_entry_overlay_rect(xx,yy,ww,hh,col,menu_alpha,darken_alpha) {
+	
+var vbuff = global.vbuffer;
+vertex_begin(vbuff,global.vformat_pos_col);	
+	
+// darkened screen
+vbuffer_darkened_screen(vbuff,darken_alpha);
+	
+// profile portion	
+vertex_position(vbuff,xx,yy);
+vertex_color(vbuff,col,menu_alpha);
+	
+vertex_position(vbuff,xx+ww,yy);
+vertex_color(vbuff,col,menu_alpha);
+	
+vertex_position(vbuff,xx,yy+hh);
+vertex_color(vbuff,col,menu_alpha);
+
+//
+
+vertex_position(vbuff,xx+ww,yy);
+vertex_color(vbuff,col,menu_alpha);
+	
+vertex_position(vbuff,xx,yy+hh);
+vertex_color(vbuff,col,menu_alpha);
+	
+vertex_position(vbuff,xx+ww,yy+hh);
+vertex_color(vbuff,col,menu_alpha);
+
+vertex_end(vbuff);
+
+/// draw
+vertex_submit(vbuff,pr_trianglelist,-1); 
+}
+
+function vbuffer_darkened_screen(vbuffer,alpha) {
+	
+vertex_position(vbuffer,0,0);
+vertex_color(vbuffer,c_black,alpha);
+	
+vertex_position(vbuffer,app_width,0);
+vertex_color(vbuffer,c_black,alpha);
+	
+vertex_position(vbuffer,0,app_height);
+vertex_color(vbuffer,c_black,alpha);
+
+//
+
+vertex_position(vbuffer,app_width,0);
+vertex_color(vbuffer,c_black,alpha);
+	
+vertex_position(vbuffer,0,app_height);
+vertex_color(vbuffer,c_black,alpha);
+	
+vertex_position(vbuffer,app_width,app_height);
+vertex_color(vbuffer,c_black,alpha);	
+	
 }

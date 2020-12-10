@@ -19,8 +19,8 @@ cursorSet = true;
 kvActive = true;
 
 if os_type == os_windows
-kvHeight = 400*kvActive*(submenu != navbar.numpad);
+kvHeight = y_pct_y(400*kvActive*(submenu != navbar.numpad));
 else
-kvHeight = keyboard_virtual_height();
+kvHeight = y_pct_y(keyboard_virtual_height());
 }
 
