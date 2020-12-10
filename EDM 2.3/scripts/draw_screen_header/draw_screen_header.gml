@@ -99,12 +99,12 @@ repeat 2
 		}
 		
 	var header_type = header_right;
-	var xpos = pct_x(90);
+	var xpos = pct_x(88);
 	}
 	
 
 // other header overwrite
-draw_header_delete(0,app_width,header_height);
+draw_header_delete(bleed_top,app_width,header_height);
 
 // draw header text
 draw_text_height_middled_color(app_width*0.5,bleed_top,header_string,header_height,c_white,height,1-headerDeleteOffsetDisp,undefined,undefined,fa_center);
@@ -158,23 +158,24 @@ exit;
 
 var xx = 0;
 var size = header_height*0.3;
-var xoff = (hh-size)*0.5;
+var xoff = (hh-size)*0.8;
+var yoff = (hh-size)*0.5;
 
-draw_menu_xout(xx+xoff,yy+xoff,size,size,x_pct_x(5),c_white,headerDeleteOffsetDisp); // draw xout
+draw_menu_xout(xx+xoff,yy+yoff,size,size,x_pct_x(5),c_white,headerDeleteOffsetDisp); // draw xout
 
-if mode_delete && click_region_released(0,0,hh,hh,true,submenu,1)
+if mode_delete && click_region_released(0,yy,pct_x(10),hh,true,submenu,1)
 	{
 	mode_delete = false;
 	androidBack = false;
 	}
 
 // clicked on trash
-var xx = pct_x(91);
-draw_icon_height_centered(ico_trash3,0,xx,yy,hh,hh,header_height*0.44,headerDeleteOffsetDisp); // trash icon
+var xx = pct_x(88);
+draw_icon_height_centered_color(ico_trash3,0,xx,yy,hh,hh,header_height*0.55,c_white,headerDeleteOffsetDisp); // trash icon
 
 draw_set_alpha(headerDeleteOffsetDisp);
 
-if mode_delete && click_region_released(xx,0,hh,hh,true,submenu,1)
+if mode_delete && click_region_released(xx,yy,hh,hh,true,submenu,1)
 delete_list_delete_array(deleteList,mode_delete_list_id);
 
 // number of items selected
