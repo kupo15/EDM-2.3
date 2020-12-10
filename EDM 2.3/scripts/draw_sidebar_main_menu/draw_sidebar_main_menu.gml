@@ -162,7 +162,7 @@ for(var e=0;e<element_num;e++)
 				case 0: draw_line_pixel(text_xpos,yy+off_pos+sep,ww-text_xpos,1,c_gray,1); break;
 								
 				// profile picture
-				case 1: draw_icon_height_centered_color(spr_icon_blank_profile,0,pct_x(1.5),yy+off_pos,sep,sep,sep*0.8,c_white,1); break;
+				//case 1: draw_icon_height_centered_color(spr_icon_blank_profile,0,pct_x(1.5),yy+off_pos,sep,sep,sep*0.8,c_white,1); break;
 
 				// profile name
 				case 2:	var profile_pointer = ROOT_data_struct.profiles[i];
@@ -217,8 +217,6 @@ for(var i=0;i<size;i++)
 		
 	pos ++;
 	}
-	
-//exit;
 
 var name_entry = draw_overlay_popup_entry("Enter your name",kvLastString,-1);
 if name_entry != undefined

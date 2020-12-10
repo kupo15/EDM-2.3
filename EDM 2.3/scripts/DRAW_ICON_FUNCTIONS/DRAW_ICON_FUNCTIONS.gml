@@ -33,8 +33,8 @@ vertex_buffer_dots(xx,yy,rr,sep,col,alpha);
 function draw_menu_arrow(xx,yy,ww,hh,thickness,dir,col,alpha) {
 	
 var half = hh*0.5;
-var diag_ll = ww*0.3;
-var shift = ww*0.2;
+var diag_ll = ww*0.5;
+var shift = ww*0.34;
 
 vertex_buffer_back_arrow(xx,yy,ww,diag_ll,shift,half,col,alpha);
 }

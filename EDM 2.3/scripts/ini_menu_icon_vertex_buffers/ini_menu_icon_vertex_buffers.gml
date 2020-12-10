@@ -108,7 +108,7 @@ vertex_position(vbuff,xx+diag_ll+shift,yy-half);
 vertex_color(vbuff,col,alpha);
 
 // horizontal line
-thickness = shift*0.4;
+thickness = shift*0.3;
 
 vertex_position(vbuff,xx+shift,yy-thickness);
 vertex_color(vbuff,col,alpha);
@@ -508,6 +508,60 @@ vertex_end(vbuff);
 /// draw
 vertex_submit(vbuff,pr_trianglelist,-1); 
 }
+
+function vertex_buffer_header_rect(xx,yy,ww,hh,yy2,col1,col2,menu_alpha) {
+	
+var vbuff = global.vbuffer;
+vertex_begin(vbuff,global.vformat_pos_col);	
+	
+	
+// buffer portion	
+vertex_position(vbuff,xx,yy);
+vertex_color(vbuff,col1,menu_alpha);
+	
+vertex_position(vbuff,xx+ww,yy);
+vertex_color(vbuff,col1,menu_alpha);
+	
+vertex_position(vbuff,xx,yy+hh);
+vertex_color(vbuff,col1,menu_alpha);
+
+//
+
+vertex_position(vbuff,xx+ww,yy);
+vertex_color(vbuff,col1,menu_alpha);
+	
+vertex_position(vbuff,xx,yy+hh);
+vertex_color(vbuff,col1,menu_alpha);
+	
+vertex_position(vbuff,xx+ww,yy+hh);
+vertex_color(vbuff,col1,menu_alpha);
+
+//-// header portion
+vertex_position(vbuff,xx,yy+hh);
+vertex_color(vbuff,col2,menu_alpha);
+
+vertex_position(vbuff,xx+ww,yy+hh);
+vertex_color(vbuff,col2,menu_alpha);
+	
+vertex_position(vbuff,xx,yy2);
+vertex_color(vbuff,col2,menu_alpha);
+
+//
+	
+vertex_position(vbuff,xx+ww,yy+hh);
+vertex_color(vbuff,col2,menu_alpha);
+	
+vertex_position(vbuff,xx,yy2);
+vertex_color(vbuff,col2,menu_alpha);
+
+vertex_position(vbuff,xx+ww,yy2);
+vertex_color(vbuff,col2,menu_alpha);
+
+vertex_end(vbuff);
+
+/// draw
+vertex_submit(vbuff,pr_trianglelist,-1); 
+}		
 	
 function vertex_buffer_draw_width_cropped(sprite,index,xx,yy,region_width,region_height,right_bleed,col,alpha) {
 
@@ -646,3 +700,4 @@ vertex_position(vbuffer,app_width,app_height);
 vertex_color(vbuffer,c_black,alpha);	
 	
 }
+	

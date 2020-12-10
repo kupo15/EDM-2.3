@@ -38,7 +38,7 @@ draw_sidebar_main_menu();
 //draw_overlay_calendar();
 ////draw_overlay_circle_button();
 //	
-//draw_highlight_click_static(submenu != navbar.sidebar);
+draw_highlight_click_static(submenu != navbar.sidebar);
 
 
 // update the virtual keyboard

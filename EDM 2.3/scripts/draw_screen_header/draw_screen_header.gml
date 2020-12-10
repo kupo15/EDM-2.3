@@ -20,29 +20,30 @@ var hh = header_height;
 var del_col = make_color_rgb(0,137,123); // delete header color
 var col = merge_color(bg_col,del_col,headerDeleteOffsetDisp);
 
-//draw_rectangle_pixel(0,0,ww,hh,col,false);
-draw_rectangle_color(0,0,ww,hh,col,col,col,col,false);
+vertex_buffer_header_rect(0,0,ww,bleed_top,hh+bleed_top,header_buffer_color,col,1);
+//draw_rectangle_color(0,0,ww,hh,col,col,col,col,false);
 
 var xpos = 0;
 var region = header_height;
 var header_type = header_left;
+var return_val = false;
 
 repeat 2
 	{
 	if header_type == headerType.bars
 		{
 		// draw the 3 bars
-		var ww = header_height*0.33;
-		var hh = header_height*0.27;
-		var xx = (region-ww)*0.5;
-		var yy = header_height*0.5;
-		var thick = y_pct_y(4);
+		var ww = header_height*0.4;
+		var hh = header_height*0.35;
+		var xx = (region-ww)*0.6;
+		var yy = header_ypos_end*0.5;
+		var thick = y_pct_y(6);
 		
 		draw_menu_bars(xpos+xx,yy,ww,hh,thick,c_white,1-headerDeleteOffsetDisp);
 
 		// clicked on bars
 		if !mode_delete && (submenu < 0)
-		if click_region_released(xpos,0,region,region,true,submenu)
+		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
 			{
 			submenuPrevious = submenu;
 			submenu = navbar.sidebar;
@@ -52,45 +53,49 @@ repeat 2
 		{
 		// draw the 3 dots
 		var xx = region*0.5;
-		var yy = header_height*0.5;
+		var yy = header_ypos_end*0.5;
 		var rr = header_height*0.035;
 		var sep = header_height*0.067;
 		
 		draw_menu_dots(xpos+xx,yy,rr,sep,c_white,1-headerDeleteOffsetDisp);
 		
 		if !mode_delete && (submenu < 0)
-		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
+		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
 			{}
 		}
 	else if header_type == headerType.back
 		{
 		var xx = pct_x(3);
-		var yy = header_height*0.5;
-		var ww = header_height*0.33*1.25;
-		var hh = header_height*0.33;
+		var yy = header_ypos_end*0.5;
+		var ww = header_height*0.43;
+		var hh = header_height*0.44;
 		
 		draw_menu_arrow(xpos+xx,yy,ww,hh,4,1,c_white,1-headerDeleteOffsetDisp);
 
 		if !mode_delete && (submenu < 0)
-		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
+		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
 		screen_goto_prev();
 		}
 	else if header_type == headerType.trash
 		{
 		var xx = x_pct_x(20);
-		draw_icon_height_centered_color(ico_trash3,0,xpos-xx,0,region,region,header_height*0.44,c_white,1-headerDeleteOffsetDisp); // trash icon
+		var yy = bleed_top;
+		
+		draw_icon_height_centered_color(ico_trash3,yy,xpos-xx,0,region,region,header_height*0.44,c_white,1-headerDeleteOffsetDisp); // trash icon
 
 		if !mode_delete && (submenu < 0)
-		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
-		return true;
+		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
+		return_val = true;
 		}
 	else if header_type == headerType.plus
 		{
-		draw_plus_button(xpos+pct_x(5),pct_y(6.5),region,c_white,undefined,undefined,1-headerDeleteOffsetDisp); // plus button
+		var yy = bleed_top+pct_y(6.5);
+		
+		draw_plus_button(xpos+pct_x(5),yy,region,c_white,undefined,undefined,1-headerDeleteOffsetDisp); // plus button
 		
 		if !mode_delete && (submenu < 0)
-		if click_region_released(xpos,0,pct_x(10),region,true,submenu)
-		return true;
+		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
+		return_val = true;
 		}
 		
 	var header_type = header_right;
@@ -101,9 +106,10 @@ repeat 2
 // other header overwrite
 draw_header_delete(0,app_width,header_height);
 
-draw_text_height_middled_color(app_width*0.5,0,header_string,header_height,c_white,height,1-headerDeleteOffsetDisp,undefined,undefined,fa_center);
+// draw header text
+draw_text_height_middled_color(app_width*0.5,bleed_top,header_string,header_height,c_white,height,1-headerDeleteOffsetDisp,undefined,undefined,fa_center);
 
-return false;
+return return_val;
 }
 
 function draw_screen_header_submenu(offset,sort_index) {
@@ -112,7 +118,7 @@ function draw_screen_header_submenu(offset,sort_index) {
 /// param header_string
 
 var xx = 0;
-var yy = header_height;
+var yy = header_ypos_end;
 var hh = header_submenu_height;
 var col = header_color;
 
@@ -146,9 +152,9 @@ return val;
 
 function draw_header_delete(yy,ww,hh){
 
-//headerDeleteOffsetDisp = 1;
 
-draw_set_alpha(headerDeleteOffsetDisp);
+if headerDeleteOffsetDisp < 0.1
+exit;
 
 var xx = 0;
 var size = header_height*0.3;
@@ -165,6 +171,8 @@ if mode_delete && click_region_released(0,0,hh,hh,true,submenu,1)
 // clicked on trash
 var xx = pct_x(91);
 draw_icon_height_centered(ico_trash3,0,xx,yy,hh,hh,header_height*0.44,headerDeleteOffsetDisp); // trash icon
+
+draw_set_alpha(headerDeleteOffsetDisp);
 
 if mode_delete && click_region_released(xx,0,hh,hh,true,submenu,1)
 delete_list_delete_array(deleteList,mode_delete_list_id);

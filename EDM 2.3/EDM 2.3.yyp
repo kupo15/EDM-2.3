@@ -255,10 +255,7 @@
   "TextureGroups": [
     {"isScaled":false,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":461609314234257646,"resourceVersion":"1.0","name":"Default","resourceType":"GMTextureGroup",},
     {"isScaled":false,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":9223372036854775807,"resourceVersion":"1.0","name":"Backgrounds","resourceType":"GMTextureGroup",},
-    {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":461609314234257646,"resourceVersion":"1.0","name":"font_bold","resourceType":"GMTextureGroup",},
-    {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":461609314234257646,"resourceVersion":"1.0","name":"font_italic","resourceType":"GMTextureGroup",},
     {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":461609314234257646,"resourceVersion":"1.0","name":"icons","resourceType":"GMTextureGroup",},
-    {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":461609314234257646,"resourceVersion":"1.0","name":"font_normal","resourceType":"GMTextureGroup",},
     {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":461609314234257646,"resourceVersion":"1.0","name":"fonts","resourceType":"GMTextureGroup",},
     {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":461609314234257646,"resourceVersion":"1.0","name":"unused","resourceType":"GMTextureGroup",},
   ],

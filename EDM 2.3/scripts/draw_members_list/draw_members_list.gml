@@ -8,12 +8,8 @@ var memberslist_offset = offsetArray[scrollbar_index];
 var memberslist_offset_start = offsetArrayStart[scrollbar_index];
 var source_array = MEMBER_list;
 
-
-//cs(js(source_array));
-//sm("")
-
 var xx = bleed_left;
-var yy = header_height+header_submenu_height;
+var yy = header_ypos_end+header_submenu_height;
 var height = y_pct_y(75);
 var sep = y_pct_y(200);
 var ww = app_width;

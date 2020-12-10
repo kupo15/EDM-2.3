@@ -12,10 +12,17 @@
 
 #macro membersort scr_member_sort_abc(MEMBER_list,true)
 
+// layout
+#macro bleed_left pct_x(1.5)
+#macro bleed_top pct_y(6.6)
+#macro DPI_POINT 72
+
 // header
 #macro header_color make_color_rgb(0,145,206) // make_color_rgb(42,104,53) //
+#macro header_buffer_color make_color_rgb(0,145*0.8,206*0.8)
 
-#macro header_height pct_y(13)
+#macro header_height pct_y(13.33)
+#macro header_ypos_end bleed_top+header_height
 #macro header_submenu_height header_height*0.8
 
 #macro header_font_height header_height*0.6
@@ -24,11 +31,6 @@
 // background colors
 #macro c_lt_gray make_color_rgb(228,228,228)
 #macro c_click_color make_color_rgb(245,245,245)
-
-// layout
-#macro bleed_left pct_x(1.5)
-#macro bleed_yy 20
-#macro DPI_POINT 72
 
 // textbox scrolling
 #macro fric 0.009
@@ -53,7 +55,7 @@
 #macro nav_sca_off 0.85
 #macro nav_height 100
 #macro navbar_color make_color_rgb(0,122,173)
-#macro starting_submenu navbar.popupEntry
+#macro starting_submenu navbar.hidden
 
 // calendar
 #macro start_date date_create_datetime(1970,1,1,0,0,0)
