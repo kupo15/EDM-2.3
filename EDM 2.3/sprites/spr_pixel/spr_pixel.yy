@@ -17,8 +17,8 @@
   "width": 1,
   "height": 1,
   "textureGroupId": {
-    "name": "icons",
-    "path": "texturegroups/icons",
+    "name": "fonts",
+    "path": "texturegroups/fonts",
   },
   "swatchColours": null,
   "gridX": 0,

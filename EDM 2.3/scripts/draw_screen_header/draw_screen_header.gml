@@ -21,7 +21,6 @@ var del_col = make_color_rgb(0,137,123); // delete header color
 var col = merge_color(bg_col,del_col,headerDeleteOffsetDisp);
 
 vertex_buffer_header_rect(0,0,ww,bleed_top,hh+bleed_top,header_buffer_color,col,1);
-//draw_rectangle_color(0,0,ww,hh,col,col,col,col,false);
 
 var xpos = 0;
 var region = header_height;
@@ -123,7 +122,7 @@ var hh = header_submenu_height;
 var col = header_color;
 
 //draw_rectangle_color(xx,yy,app_width,hh,col,col,col,col,false);
-draw_sprite_stretched_ext(spr_pixel,0,xx,yy,app_width,hh,col,1);
+draw_rectangle_pixel(xx,yy,app_width,hh,col,false);
 	
 // draw highlight underline
 var header_num = argument_count-2;

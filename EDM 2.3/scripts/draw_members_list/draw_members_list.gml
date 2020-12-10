@@ -45,19 +45,24 @@ for(var i=pos_start;i<pos_end;i++)
 
 	switch e
 		{
-		case 0: var r = sep*0.8*0.5;	
+		// draw favorites icon
+		case 0:	var ico_alpha = pick(0.5,1,member_favorite);
+				draw_icon_height_centered_color(ico_bookmarked,member_favorite,pct_x(87),yy+off_pos,sep,sep,sep*0.7,c_white,ico_alpha);
+				break;
+				
+		// draw circle for initial
+		case 1: var r = sep*0.8*0.5;	
 				draw_circle_color(bleed_left+(sep*0.5),yy+off_pos+(sep*0.5),r,header_color,header_color,false);
 				break;
 		
-		case 1: draw_text_height_middled_color(bleed_left+(sep*0.5),yy+off_pos,capitalize(member_initial),sep,c_white,height,1,undefined,undefined,fa_center);	
+		// draw initial in circle
+		case 2: draw_text_height_middled_color(bleed_left+(sep*0.5),yy+off_pos,capitalize(member_initial),sep,c_white,height,1,undefined,undefined,fa_center);	
 
-		case 2:	draw_text_height_middled_color(pct_x(14),yy+off_pos,member_str,sep,c_black,height*1.2,1); break; // draw member name
+		// draw member name
+		case 3:	draw_text_height_middled_color(pct_x(14),yy+off_pos,member_str,sep,c_black,height*1.2,1); break;
 		
-		case 3:	draw_line_pixel(pct_x(14),yy+off_pos+sep,app_width,1,c_gray,0.7); break; // draw line
-		
-		case 4:	var ico_alpha = pick(0.5,1,member_favorite);
-				draw_icon_height_centered_color(ico_bookmarked,member_favorite,pct_x(87),yy+off_pos,sep,sep,sep*0.7,c_white,ico_alpha); // draw favorites
-				break;
+		// draw line
+		case 4:	draw_line_pixel(pct_x(14),yy+off_pos+sep,app_width,1,c_gray,0.7); break;
 		}
 	
 	if (e+1) != element_num

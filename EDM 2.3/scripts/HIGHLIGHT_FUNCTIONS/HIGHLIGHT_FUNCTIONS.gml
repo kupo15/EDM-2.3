@@ -131,9 +131,12 @@ click_highlight_alpha = lerp(click_highlight_alpha,click_highlight_alpha_end,cli
 var ww = click_highlight_width*0.5;
 var alpha = click_highlight_alpha*(click_highlight_screen == screenIndex);
 
-draw_set_alpha(0.4*alpha);
-draw_roundrect_color(xx-ww,yy,xx+ww,yy+hh,col,col,false); // draw highlight
-draw_set_alpha(1);
+if alpha > 0.001
+	{
+	draw_set_alpha(0.4*alpha);
+	draw_roundrect_color(xx-ww,yy,xx+ww,yy+hh,col,col,false); // draw highlight
+	draw_set_alpha(1);
+	}
 
 // when to fade away
 highlight_fadeout(xx);

@@ -28,7 +28,6 @@ draw_set_halign(fa_left);
 debug_draw_screens(xx,yy,debugyoff,sep,height);
 //debug_draw_screen_darken(xx,yy,debugyoff,sep,height);
 
-debugyoff = 14;
 debug_draw_click_highlight(xx,yy,debugyoff,sep,height);
 //debug_draw_vk(xx,yy,debugyoff,sep,height);
 debug_draw_strings(xx,yy,debugyoff,sep,height);

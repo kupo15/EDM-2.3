@@ -33,9 +33,9 @@ draw_icon_height(spr_estrella_logo,0,xx_pct+xx,yy,height,1); // profile picture
 var height = pct_y(3.75);
 var yy = profile_hh_pct-height-y_pct_y(10);
 
-draw_text_height_color(xx+xx_pct,yy,PROFILE_data.dispName,c_white,height,false,fn_bold); // draw location name
-
 draw_menu_triangle(xx_pct+(ww_pct*0.85),yy,y_pct_y(14),submenu != navbar.profileChange,false,c_white,1);
+
+draw_text_height_color(xx+xx_pct,yy,PROFILE_data.dispName,c_white,height,false,fn_bold); // draw location name
 
 
 // if click outside of menu
@@ -67,6 +67,8 @@ labels[screen.stats] = "Stats";
 labels[screen.help_info] = "Help and Info";
 labels[screen.settings] = "Settings";
 
+draw_text_height(xx_pct+pct_x(1.5),pct_y(97),"Vers. "+string(GM_version),pct_y(2.5));
+
 var element_num = 3;
 for(var e=0;e<element_num;e++)
 for(var i=0;i<screen.enumcount;i++)
@@ -78,16 +80,16 @@ for(var i=0;i<screen.enumcount;i++)
 		
 	switch e
 		{	
-		// draw menu icons
-		case 0: draw_icon_height_centered_color_pct(spr_footer_icon,i,bleed_left+xx_off,ypos,sep*0.7,sep,sep*0.7,header_color,1); break;
-	
+		// draw headers
+		case 0: draw_text_height_middled(xx+xx_off,ypos,labels[i],sep,height,undefined,true); break;
+		
 		// separating line
 		case 1: if i == screen.help_info
 				draw_line_pixel(xx_off,ypos,ww+1,1,c_black,1,true);
 				break;
 				
-		// draw headers
-		case 2: draw_text_height_middled(xx+xx_off,ypos,labels[i],sep,height,undefined,true); break;
+		// draw menu icons
+		case 2: draw_icon_height_centered_color_pct(spr_footer_icon,i,bleed_left+xx_off,ypos,sep*0.7,sep,sep*0.7,header_color,1); break;			
 		}
 		
 	if (e+1) < element_num
@@ -104,10 +106,7 @@ for(var i=0;i<screen.enumcount;i++)
 
 #endregion
 
-draw_sidebar_profile_switch(xx_pct,profile_hh_pct,ww_pct,app_height-profile_hh_pct,y_pct_y(sep),y_pct_y(height));
-
-//draw_text_height(pct_x(1.5),pct_y(97),"Vers. "+string(GM_version),pct_y(2.5));
-
+draw_sidebar_profile_switch(xx_pct,profile_hh_pct,ww_pct,app_height-profile_hh_pct-pct_y(3),y_pct_y(sep),y_pct_y(height));
 
 if androidBack
 submenu = navbar.hidden;
@@ -120,7 +119,7 @@ exit;
 
 var xx = xx_off;
 
-draw_rectangle_pixel(xx,yy,ww,hh+1,c_white,false);
+draw_rectangle_pixel(xx,yy,ww,hh,c_white,false);
 
 var xoff = x_pct_x(55);
 var text_xpos = pct_x(10);
@@ -149,9 +148,9 @@ for(var e=0;e<element_num;e++)
 			{
 			switch e
 				{
-				case 1: draw_plus_button(pct_x(4.6),yy+off_pos+(sep*0.5),sep*0.66,c_black,undefined,undefined,1); break; // draw plus sign
+				case 1: draw_text_height_middled_color(text_xpos,yy+off_pos,"Create Venue",sep,c_black,height,1); break;	
 
-				case 2: draw_text_height_middled_color(text_xpos,yy+off_pos,"Create Venue",sep,c_black,height,1); break;	
+				case 2: draw_plus_button(pct_x(4.6),yy+off_pos+(sep*0.5),sep*0.66,c_black,undefined,undefined,1); break; // draw plus sign
 				}				
 			}
 		else
@@ -160,17 +159,17 @@ for(var e=0;e<element_num;e++)
 			switch e
 				{
 				case 0: draw_line_pixel(text_xpos,yy+off_pos+sep,ww-text_xpos,1,c_gray,1); break;
-								
-				// profile picture
-				//case 1: draw_icon_height_centered_color(spr_icon_blank_profile,0,pct_x(1.5),yy+off_pos,sep,sep,sep*0.8,c_white,1); break;
 
 				// profile name
-				case 2:	var profile_pointer = ROOT_data_struct.profiles[i];
+				case 1:	var profile_pointer = ROOT_data_struct.profiles[i];
 						var str = profile_pointer.dispName;
 					
 						// draw text
 						draw_text_height_middled_color(text_xpos,yy+off_pos,str,sep,c_black,height,1);
 						break;
+																
+				// profile picture
+				//case 2: draw_icon_height_centered_color(spr_icon_blank_profile,0,pct_x(1.5),yy+off_pos,sep,sep,sep*0.8,c_white,1); break;
 				}
 			
 			pos ++;
