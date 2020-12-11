@@ -5,6 +5,7 @@ highlight_struct = {
 	
 	xpos: 0,
 	ypos: 0,
+	
 	width: 0,
 	width_end: 0,
 	height: 0,
@@ -13,26 +14,13 @@ highlight_struct = {
 	alpha_end: 0,
 	color: c_click_color,
 
-	index: -1,
-	action: -1,
+	index: undefined,
+	action: undefined,
 
-	activeScreen: -1,
-	activeSubmenu: -1,
+	activeScreen: noone,
+	activeSubmenu: navbar.main,
 	}
 	
-click_highlight_xpos = 0;
-click_highlight_ypos = 0;
-click_highlight_width = 0;
-click_highlight_width_end = 0;
-click_highlight_height = 0;
-
-click_highlight_alpha = 0;
-click_highlight_alpha_end = 0;
-click_highlight_color = c_click_color;
-click_highlight_screen = noone;
-click_highlight_index = undefined;
-
-click_highlight_action = undefined;
 
 activeSubmenu = navbar.main;
 }
@@ -42,18 +30,20 @@ function scr_click_highlight_set(xx,yy,ww,hh,col,screen_ind,array_pos){
 if col == c_yellow
 col = c_gray;
 
-click_highlight_xpos = xx+(ww*0.5); // middle of region
-click_highlight_ypos = yy;
+highlight_struct.xpos = xx+(ww*0.5); // middle of region
+highlight_struct.ypos = yy;
 
-click_highlight_width = ww*0.2; // starting width
-click_highlight_width_end = ww;
+highlight_struct.width = ww*0.2; // starting width
+highlight_struct.width_end = ww;
+highlight_struct.height = hh;
 
-click_highlight_height = hh;
-click_highlight_alpha = 0;
-click_highlight_alpha_end = 1;
-click_highlight_color = col;
-click_highlight_screen = screen_ind;
-click_highlight_index = array_pos;
+highlight_struct.alpha = 0;
+highlight_struct.alpha_end = 1;
+highlight_struct.color = col;
+
+highlight_struct.index = array_pos;
+
+highlight_struct.activeScreen = screen_ind;
 
 activeSubmenu = submenu;
 }
@@ -64,7 +54,7 @@ function draw_highlight_click_clamp(y_top,yoff,ysep,box_hh,array_pos,active_sub)
 if active_sub == undefined
 active_sub = activeSubmenu;
 
-if (click_highlight_index != array_pos) || (activeSubmenu != active_sub)
+if (highlight_struct.index != array_pos) || (activeSubmenu != active_sub)
 exit;
 
 // change yy and sep/hh
@@ -79,24 +69,24 @@ if ypos+sep > y_top+box_hh
 var sep = y_top+box_hh-ypos;
 
 // set drawing variables
-var xx = click_highlight_xpos;
+var xx = highlight_struct.xpos;
 var yy = ypos_clamp;
 var hh = sep;
-var col = click_highlight_color;
+var col = highlight_struct.color;
 
 highlight_draw(xx,yy,hh,col);
 }
 	
 function draw_highlight_click_static(sub) {
 	
-if click_highlight_index != undefined || !sub
+if highlight_struct.index != undefined || !sub
 exit;
 
 // set drawing variables
-var xx = click_highlight_xpos;
-var yy = click_highlight_ypos;
-var hh = click_highlight_height;
-var col = click_highlight_color;
+var xx = highlight_struct.xpos;
+var yy = highlight_struct.ypos;
+var hh = highlight_struct.height;
+var col = highlight_struct.color;
 
 highlight_draw(xx,yy,hh,col);
 }
@@ -105,24 +95,24 @@ function highlight_animation() {
 // unused
 
 // lerp position
-if click_highlight_width != click_highlight_width_end
-click_highlight_width = lerp(click_highlight_width,click_highlight_width_end,click_highlight_lerp);
+if highlight_struct.width != highlight_struct.width_end
+highlight_struct.width = lerp(highlight_struct.width,highlight_struct.width_end,click_highlight_lerp);
 
 // lerp alpha
-if click_highlight_alpha != click_highlight_alpha_end
-click_highlight_alpha = lerp(click_highlight_alpha,click_highlight_alpha_end,click_highlight_lerp*0.9);
+if highlight_struct.alpha != highlight_struct.alpha_end
+highlight_struct.alpha = lerp(highlight_struct.alpha,highlight_struct.alpha_end,click_highlight_lerp*0.9);
 	
 }
 
 function highlight_fadeout(xx) {
 	
-var width_reached = (click_highlight_width/click_highlight_width_end) > 0.99;
+var width_reached = (highlight_struct.width/highlight_struct.width_end) > 0.99;
 var clickout = width_reached && !mouse_check_button(mb_left);
 
 // fade away when released OR not inside of box
 if clickout || (clickMoved && width_reached)
 	{
-	click_highlight_alpha_end = 0; // fade away	
+	highlight_struct.alpha_end = 0; // fade away	
 	
 	// reset
 	canClickPressed = true;
@@ -135,20 +125,20 @@ transitionReady = 2;
 function highlight_draw(xx,yy,hh,col) {
 	
 // debug
-if (click_highlight_index == undefined) && (os_type == os_windows)
+if (highlight_struct.index == undefined) && (os_type == os_windows)
 col = c_lt_gray;	
 	
 // lerp position
-if click_highlight_width != click_highlight_width_end
-click_highlight_width = lerp(click_highlight_width,click_highlight_width_end,click_highlight_lerp);
+if highlight_struct.width != highlight_struct.width_end
+highlight_struct.width = lerp(highlight_struct.width,highlight_struct.width_end,click_highlight_lerp);
 
 // lerp alpha
-if click_highlight_alpha != click_highlight_alpha_end
-click_highlight_alpha = lerp(click_highlight_alpha,click_highlight_alpha_end,click_highlight_lerp*0.9);
+if highlight_struct.alpha != highlight_struct.alpha_end
+highlight_struct.alpha = lerp(highlight_struct.alpha,highlight_struct.alpha_end,click_highlight_lerp*0.9);
 
 // set values
-var ww = click_highlight_width*0.5;
-var alpha = click_highlight_alpha*(click_highlight_screen == screenIndex);
+var ww = highlight_struct.width*0.5;
+var alpha = highlight_struct.alpha*(highlight_struct.activeScreen == screenIndex);
 
 if alpha > 0.001
 	{

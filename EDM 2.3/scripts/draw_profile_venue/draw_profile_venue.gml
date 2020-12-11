@@ -82,7 +82,7 @@ if androidBack
 		scr_profile_set(0);
 		}
 
-	screen_change(screen.home,navbar.profileChange,true);
+	screen_change(screen.home,navbar.sidebar,true);
 	}
 
 var name_entry = draw_overlay_popup_entry("Enter venue name",activeStruct.dispName,-1);

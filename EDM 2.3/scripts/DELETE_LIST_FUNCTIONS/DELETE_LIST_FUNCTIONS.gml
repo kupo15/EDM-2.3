@@ -28,8 +28,8 @@ ds_list_add(deleteList,first_pos); // add that index slot to the delete list
 function delete_list_enable() {
 
 // turn off click highlight
-click_highlight_alpha_end = 0;
-click_highlight_alpha = 0;
+highlight_struct.alpha_end = 0;
+highlight_struct.alpha = 0;
 
 // enable delete mode
 mode_delete = true;

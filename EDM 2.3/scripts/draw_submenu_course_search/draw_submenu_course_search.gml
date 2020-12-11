@@ -71,7 +71,7 @@ for(var i=pos_start;i<pos_end;i++)
 		if !mode_new_member && !mode_delete
 		if click_region_released_clamp_array(0,yy,off_pos,ww,ysep,hh,mb_left,true,submenu,i,undefined,undefined)
 			{
-			click_highlight_action = highlightAction.courseSelect;
+			highlight_struct.action = highlightAction.courseSelect;
 			}
 				
 		continue;

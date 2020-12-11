@@ -61,7 +61,7 @@ function screen_goto_prev(subIndex) {
 if argument[0] != undefined
 submenu = subIndex;
 
-click_highlight_screen = screenIndex;
+highlight_struct.activeScreen = screenIndex;
 
 if ds_list_empty(prevScreenStack)
 	{

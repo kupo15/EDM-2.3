@@ -60,11 +60,11 @@ debugyoff += 5;
 
 function debug_draw_click_highlight(xx,yy,ind,sep,height) {
 	
-draw_text_height(xx,yy+((ind+0)*sep),"highlight_width: "+string(click_highlight_width)+" ["+string(click_highlight_width_end)+"]",height);
-draw_text_height(xx,yy+((ind+1)*sep),"highlight_height: "+string(click_highlight_height),height);
-draw_text_height(xx,yy+((ind+2)*sep),"highlight_alpha: "+string(click_highlight_alpha)+" ["+string(click_highlight_alpha_end)+"]",height);
-draw_text_height(xx,yy+((ind+3)*sep),"highlight_index: "+string(click_highlight_index),height);
-draw_text_height(xx,yy+((ind+4)*sep),"highlight_screen: "+string(click_highlight_screen),height);
+draw_text_height(xx,yy+((ind+0)*sep),"highlight_width: "+string(highlight_struct.width)+" ["+string(highlight_struct.width_end)+"]",height);
+draw_text_height(xx,yy+((ind+1)*sep),"highlight_height: "+string(highlight_struct.height),height);
+draw_text_height(xx,yy+((ind+2)*sep),"highlight_alpha: "+string(highlight_struct.alpha)+" ["+string(highlight_struct.alpha_end)+"]",height);
+draw_text_height(xx,yy+((ind+3)*sep),"highlight_index: "+string(highlight_struct.index),height);
+draw_text_height(xx,yy+((ind+4)*sep),"highlight_screen: "+string(highlight_struct.activeScreen),height);
 draw_text_height(xx,yy+((ind+5)*sep),"activeSubmenu: "+string(activeSubmenu),height);
 
 debugyoff += 7;

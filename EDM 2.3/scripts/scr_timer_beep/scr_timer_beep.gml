@@ -18,11 +18,11 @@ function scr_timer_highlight_action(ind) {
 if transitionReady != 2
 exit;
 
-var active_ind = click_highlight_action;
+var active_ind = highlight_struct.action;
 
-click_highlight_alpha = 0;
-click_highlight_alpha_end = 0;
-click_highlight_action = undefined;	
+highlight_struct.alpha = 0;
+highlight_struct.alpha_end = 0;
+highlight_struct.action = undefined;	
 transitionReady = 0;
 
 return active_ind == ind;

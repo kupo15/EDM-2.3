@@ -102,8 +102,8 @@ for(var i=0;i<screen.enumcount;i++)
 
 	if click_region_released_clamp(xx_pct,yy,(i*sep),ww_pct,sep,screen.enumcount*sep,mb_left,true,navbar.sidebar,i,undefined,navbar.sidebar)
 		{
-		click_highlight_alpha = 0;
-		click_highlight_alpha_start = 0;
+		highlight_struct.alpha = 0;
+		highlight_struct.alpha_start = 0;
 		
 		screen_change(i,navbar.hidden,true);
 		}
