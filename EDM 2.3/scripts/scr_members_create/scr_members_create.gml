@@ -18,10 +18,11 @@ array_push(array,local_struct);
 return local_struct;
 }
 
-function scr_member_create_database(first_name,last_name,arr) {
+function scr_member_create_database(first_name,last_name,arr,group_arr) {
 /// @param [first_name
 /// @param last_name
-/// @param array]
+/// @param array
+/// @param group_arr]
 
 if argument[0] == undefined
 first_name = "";
@@ -32,6 +33,8 @@ last_name = "";
 if argument[2] == undefined
 arr = MEMBER_database;
 
+if argument[3] == undefined
+group_arr = [];
 
 member_struct = {
 	
@@ -47,7 +50,7 @@ member_struct = {
 		state: -1,		
 		},
 		
-	groups: [],
+	groups: group_arr,
 	
 	stat: [],
 	}

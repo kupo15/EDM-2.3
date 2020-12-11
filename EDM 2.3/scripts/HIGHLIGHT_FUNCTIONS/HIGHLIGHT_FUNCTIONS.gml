@@ -1,6 +1,25 @@
 // HIGHLIGHT FUNCTIONS
 function ini_highlight_vars() {
 	
+highlight_struct = {
+	
+	xpos: 0,
+	ypos: 0,
+	width: 0,
+	width_end: 0,
+	height: 0,
+
+	alpha: 0,
+	alpha_end: 0,
+	color: c_click_color,
+
+	index: -1,
+	action: -1,
+
+	activeScreen: -1,
+	activeSubmenu: -1,
+	}
+	
 click_highlight_xpos = 0;
 click_highlight_ypos = 0;
 click_highlight_width = 0;

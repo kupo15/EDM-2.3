@@ -21,14 +21,18 @@ var profile_col = header_buffer_color; // make_color_rgb(76,102,145);
 
 // draw background
 vertex_buffer_sidebar_rect(xx_pct,0,ww_pct,profile_ypos_end,app_height,profile_col,c_white,1,alpha);
-vertex_buffer_draw_width_cropped(spr_estrella_banner,0,xx_pct,bleed_top,ww_pct,profile_hh_pct,0,c_white,1);
+
+var venue_images = [PROFILE_data.bannerID,PROFILE_data.logoID];
+if sprite_exists(venue_images[0])
+vertex_buffer_draw_width_cropped(venue_images[0],0,xx_pct,bleed_top,ww_pct,profile_hh_pct,0,c_white,1);
 
 #region profile section
 var xx = x_pct_x(25);
 var yy = bleed_top+y_pct_y(25);
 var height = pct_y(8.33);
 
-draw_icon_height(spr_estrella_logo,0,xx_pct+xx,yy,height,1); // profile picture
+if sprite_exists(venue_images[1])
+draw_icon_height(venue_images[1],0,xx_pct+xx,yy,height,1); // profile picture
 
 
 var height = pct_y(3.75);
@@ -138,6 +142,7 @@ for(var e=0;e<element_num;e++)
 		var last_index = (i+1 == size)
 		var on_profile = (i == activeProfile);
 		var off_pos = pos*sep;
+		var profile_pointer = ROOT_data_struct.profiles[i];
 				
 		//if e == 2 && !on_profile
 		//	{
@@ -163,15 +168,16 @@ for(var e=0;e<element_num;e++)
 				case 0: draw_line_pixel(xx+text_xpos,yy+off_pos+sep,ww-text_xpos,1,c_gray,1); break;
 
 				// profile name
-				case 1:	var profile_pointer = ROOT_data_struct.profiles[i];
-						var str = profile_pointer.dispName;
+				case 1:	var str = profile_pointer.dispName;
 					
 						// draw text
 						draw_text_height_middled_color(xx+text_xpos,yy+off_pos,str,sep,c_black,height,1);
 						break;
 																
 				// profile picture
-				//case 2: draw_icon_height_centered_color(spr_icon_blank_profile,0,pct_x(1.5),yy+off_pos,sep,sep,sep*0.8,c_white,1); break;
+				case 2: if sprite_exists(profile_pointer.logoID)
+						draw_icon_height_centered_color(profile_pointer.logoID,0,pct_x(1.5),yy+off_pos,sep,sep,sep*0.8,c_white,1);
+						break;
 				}
 			
 			pos ++;

@@ -16,10 +16,16 @@ ROOT_data_struct = {
 		profileIndex: 0,
 		memberSort: member_sort.abc,
 		version: json_version,
-		memberIdGenerator: 0,
+		memberIdGenerator: -1,
 		},
 	}
 	
+// add venues
+scr_profile_create("Estrella Del Mar",currencySymbol.peso,spr_estrella_logo,spr_estrella_banner);
+scr_profile_create("River");
+//scr_profile_create("Test");
+//scr_profile_create("Yes");	
+
 // add lists
 MEMBER_database = debug_data_members_list();	
 }

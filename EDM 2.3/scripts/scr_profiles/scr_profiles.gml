@@ -1,4 +1,4 @@
-function scr_profile_create(name,currencyInd) {
+function scr_profile_create(name,currencyInd,logo,banner) {
 /// @param [name
 /// @param currencyInd]
 	
@@ -8,6 +8,12 @@ name = "";
 if argument[1] == undefined
 currencyInd = -1;
 
+if argument[2] == undefined
+logo = -1;
+
+if argument[3] == undefined
+banner = -1;
+
 var ind = array_length(ROOT_data_struct.profiles);
 
 var profileData = {
@@ -15,10 +21,10 @@ var profileData = {
 		venueID: ind,
 		dispName: name,
 		location: -1,
-		currencyId: -1,
+		currencyID: currencyInd,
 		
-		logoId: -1,
-		bannerId: -1,
+		logoID: logo,
+		bannerID: banner,
 		
 		memberlist: [],
 		}
