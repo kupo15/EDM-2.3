@@ -4,6 +4,7 @@ function scr_member_sort_abc(source_array,ascending) {
 // create temp sorting grid
 var sorting_grid = ds_grid_create(2,0);
 
+
 // add data to grid
 var size = array_length(source_array);
 for(var i=0;i<size;i++)
@@ -15,8 +16,14 @@ for(var i=0;i<size;i++)
 	// debug
 	if sort_value == undefined
 		{
-		sma("member key undefined >> not sorted");
-		exit;
+		if os_type == os_windows
+		sma(string(i)+"- member key undefined >> deleting entry");
+		
+		array_delete(source_array,i,1);
+		
+		i--;
+		size --;
+		continue;
 		}
 
 	grid_row_add(sorting_grid); // add a row to the temp sorting grid
@@ -45,8 +52,14 @@ for(var i=0;i<size;i++)
 	// debug
 	if sort_value == undefined
 		{
-		sma("member key undefined >> not sorted");
-		exit;
+		if os_type == os_windows
+		sma(string(i)+"- member key undefined >> deleting entry");
+		
+		array_delete(source_array,i,1);
+		
+		i--;
+		size --;
+		continue;
 		}
 
 	grid_row_add(sorting_grid); // add a row to the temp sorting grid

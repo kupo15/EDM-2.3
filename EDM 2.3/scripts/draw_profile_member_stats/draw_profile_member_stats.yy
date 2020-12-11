@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Screens",
-    "path": "folders/Screens.yy",
+    "name": "Member Profile",
+    "path": "folders/Screens/Member Profile.yy",
   },
   "resourceVersion": "1.0",
-  "name": "draw_profile_member",
+  "name": "draw_profile_member_stats",
   "tags": [],
   "resourceType": "GMScript",
 }

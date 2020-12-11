@@ -11,7 +11,7 @@ DPI_Y_CONVERT = display_get_dpi_y()/DPI_POINT;
 setup_room_view();
 
 if os_type == os_windows
-device_testing_select(deviceTesting.fireTablet);	
+device_testing_select(deviceTesting.devComputer);	
 
 // app start
 timer[timerIndex.app_start] = 12;

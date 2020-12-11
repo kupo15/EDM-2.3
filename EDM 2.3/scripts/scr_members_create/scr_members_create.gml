@@ -41,6 +41,8 @@ member_struct = {
 	memberID: ind,
 	firstName: first_name,
 	lastName: last_name,
+	phone: -1,
+	dateJoined: date_current_datetime(),
 	
 	location: {
 		

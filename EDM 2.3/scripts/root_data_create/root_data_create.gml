@@ -29,6 +29,8 @@ function debug_data_members_list() {
 // debug
 
 var arr = [];
+scr_member_create_database("Jim","Baillon",arr);
+scr_member_create_database("Greg","Stratoti",arr);
 scr_member_create_database("Ron","Pogue",arr);
 scr_member_create_database("Gerry","Young",arr);
 scr_member_create_database("Frank","Enns",arr);
@@ -56,13 +58,11 @@ scr_member_create_database("Jack","Gilman",arr);
 scr_member_create_database("Dave","Temple",arr);
 scr_member_create_database("Joe","Oviatt",arr);
 scr_member_create_database("Bill","Schoen",arr);
-scr_member_create_database("Greg","Stratoti",arr);
 scr_member_create_database("Brent","Cunliffe",arr);
 scr_member_create_database("Ron","Ohmes",arr);
 scr_member_create_database("Ron","Vagle",arr);
 scr_member_create_database("Giles","P",arr);
 scr_member_create_database("John","Watson",arr);
-scr_member_create_database("Jim","Baillon",arr);
 scr_member_create_database("Dave","Greiner",arr);
 scr_member_create_database("Jim","Middlemiss",arr);
 scr_member_create_database("Ron","VanVleet",arr);

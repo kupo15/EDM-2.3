@@ -34,7 +34,7 @@ for(var i=pos_start;i<pos_end;i++)
 	var memberID = ref_pointer.memberID;
 	var member_favorite = ref_pointer.favorite;
 
-	var member_pointer = MEMBER_database[memberID];
+	var member_pointer = database_member_get_pointer(memberID);
 	var member_first_name = member_pointer.firstName;
 	var member_last_name = member_pointer.lastName;
 	var member_str = member_first_name+" "+member_last_name;

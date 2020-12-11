@@ -83,7 +83,9 @@ draw_text_height(xx,yy+((ind+3.5)*sep),"stringxpos: "+string(debugStringXpos),he
 draw_text_height(xx,yy+((ind+4.5)*sep),"stringypos: "+string(debugStringYpos),height);
 draw_text_height(xx,yy+((ind+5.5)*sep),"stringWidth: "+string(debugStringWidth),height);
 draw_text_height(xx,yy+((ind+6.5)*sep),"stringHeight: "+string(debugStringHeight),height);
-draw_text_height(xx,yy+((ind+7.5)*sep),"stringScale: "+string(debugStringScale),height);
+
+var col = pick(c_white,c_red,debugStringScale > 1)
+draw_text_height_color(xx,yy+((ind+7.5)*sep),"stringScale: "+string(debugStringScale),col,height);
 
 debugyoff += 8;
 }

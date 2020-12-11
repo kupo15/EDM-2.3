@@ -61,6 +61,7 @@ memberFirstName,
 memberLastName,
 memberAddress,
 memberState,
+memberPhone,
 	
 popupEntryText,
 }

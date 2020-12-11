@@ -1,4 +1,4 @@
-function draw_overlay_popup_entry(label_str,variable,stringLimit) {
+function draw_overlay_popup_entry(label_str,label_arr,first_entry,variable,stringLimit) {
 	
 var entry_yoff = offsetArray[offsetScroll.entryYoff];
 var entry_yoffEnd = pick(entry_yoff,offsetArrayEnd[offsetScroll.entryYoff],offsetArrayEnd[offsetScroll.entryYoff]==1);
@@ -11,7 +11,12 @@ exit;
 if kvActive
 switch textboxIndex
 	{
-	case textboxEntry.popupEntryText: variable = string_capitalize(keyboard_string,stringLimit); break;
+	case textboxEntry.memberState:
+	case textboxEntry.memberAddress:
+	case textboxEntry.memberLastName:
+	case textboxEntry.memberFirstName: variable = string_capitalize(keyboard_string,stringLimit); break;
+	
+	case textboxEntry.memberPhone: break;
 	}
 	
 var ww = app_width;
@@ -30,6 +35,8 @@ var xx = pct_x(4);
 var ww = app_width-(xx*2);
 var yoff = pct_y(13);
 var height = pct_y(10);
+
+label_str += label_arr[textboxIndex-first_entry];
 
 draw_line_pixel(xx,yy+yoff+(height*1),ww,3,header_color,1); // underline
 

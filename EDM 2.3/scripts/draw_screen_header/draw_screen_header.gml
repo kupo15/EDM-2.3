@@ -106,7 +106,7 @@ repeat 2
 draw_header_delete(bleed_top,app_width,header_height);
 
 // draw header text
-draw_text_height_middled_color(app_width*0.5,bleed_top,header_string,header_height,c_white,height,1-headerDeleteOffsetDisp,undefined,undefined,fa_center);
+draw_text_height_middled_color(pct_x(15),bleed_top,header_string,header_height,c_white,height,1-headerDeleteOffsetDisp,undefined,undefined);
 
 return return_val;
 }
