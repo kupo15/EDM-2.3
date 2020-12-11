@@ -14,7 +14,7 @@ var text_xoff = pct_x(1);
 var text_yy = yy+pct_y(6);
 var sep = pct_y(15);
 var label_height = pct_y(4);
-var height = pct_y(9);
+var height = pct_y(8);
 
 var xx = pct_x(3.125);
 

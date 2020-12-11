@@ -92,6 +92,8 @@ for(var i=pos_start;i<pos_end;i++)
 			subheader_member = 0; // info
 			member_index = database_member_get_index(memberID);			
 						
+			scr_member_groups_sort(member_pointer.groups,true);
+						
 			// assign struct
 			member_struct = member_pointer;
 			workingStruct = struct_copy(member_struct);			

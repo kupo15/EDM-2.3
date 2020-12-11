@@ -6,6 +6,7 @@
 #macro app_load json_load_array(save_data)
 
 #macro MEMBER_database ROOT_data_struct.memberDatabase
+#macro VENUE_database ROOT_data_struct.profiles
 #macro MEMBER_list ROOT_data_struct.profiles[activeProfile].memberlist
 #macro PROFILE_data ROOT_data_struct.profiles[activeProfile]
 #macro META_data ROOT_data_struct.meta

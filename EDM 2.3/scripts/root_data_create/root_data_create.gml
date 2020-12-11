@@ -24,7 +24,7 @@ ROOT_data_struct = {
 scr_profile_create("Estrella Del Mar",currencySymbol.peso,spr_estrella_logo,spr_estrella_banner);
 //scr_profile_create("River");
 //scr_profile_create("Test");
-//scr_profile_create("Yes");	
+scr_profile_create("At");	
 
 // add lists
 MEMBER_database = debug_data_members_list();	
@@ -34,7 +34,7 @@ MEMBER_database = debug_data_members_list();
 function debug_data_members_list() {
 // debug
 
-var group_id = [0];
+var group_id = [0,1];
 var arr = [];
 scr_member_create_database("Jim","Baillon",arr,group_id);
 scr_member_create_database("Greg","Stratoti",arr,group_id);

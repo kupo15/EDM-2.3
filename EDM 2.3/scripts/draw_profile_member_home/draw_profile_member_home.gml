@@ -65,7 +65,7 @@ if androidBack
 //		}
 
 	// go back a header screen
-	subheader_member --;
+	subheader_member = pick(0,-1,subheader_member == 0);
 	
 	if subheader_member >= 0
 	exit;
