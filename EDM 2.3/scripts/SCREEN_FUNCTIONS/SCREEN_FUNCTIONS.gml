@@ -97,7 +97,9 @@ switch screenIndex
 							 break;	
 	
 	// member profile
-	case screen.memberProfileView: subheader_member = 0; break;	
+	case screen.memberProfileView: subheader_member = 0;
+								   scrollbar_set(offsetScroll.memberProfileUnderline,0,true);
+								   break;	
 	}	
 	
 searched_name = "";

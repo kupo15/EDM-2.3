@@ -35,6 +35,7 @@ memberProfileUnderline,
 
 membersOffset,
 groupsOffset,
+currencyOffset,
 calendarOffset,
 
 sidebarDarken,
@@ -48,12 +49,6 @@ courseSelect,
 navbarSwitch
 }
 
-enum currencySymbol {
-
-dollar,
-euro,
-peso,
-}
 
 enum textboxEntry {
 dispName,
@@ -78,6 +73,7 @@ sidebar,
 numpad,
 
 profileChange,
+currencyList,
 popupEntry,
 }
 

@@ -15,7 +15,6 @@ debug_data_reset();
 else
 	{
 	root_data_create();	
-	scr_profile_create("Estrella Del Mar",currencySymbol.peso);
 	scr_profile_set(0);
 	}
 }

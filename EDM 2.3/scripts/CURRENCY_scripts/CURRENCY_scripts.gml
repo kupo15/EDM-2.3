@@ -1,15 +1,22 @@
 
-function currency_index_create(index,name,symbol) {
+function currency_index_create(name,iso) {
 	
-currency_name[index] = name;
-currency_symbol[index] = symbol;	
+var currency_data = {
+	
+	dispName: name,
+	isoCode: iso,
+	}
+	
+array_push(currency_array,currency_data);
 }
 
 function ini_currency_symbols() {
 	
-currency_index_create(currencySymbol.dollar,"USD","$");
-currency_index_create(currencySymbol.euro,"EUR","E");
-currency_index_create(currencySymbol.peso,"MXN","P");
+currency_array = [];	
 	
+currency_index_create("United States dollar","USD");
+currency_index_create("Euro","EUR");
+currency_index_create("Mexican peso","MXN");
 
+array_sort_nested_struct(currency_array,"isoCode",true); // sort ascending
 }

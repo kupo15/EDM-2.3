@@ -21,10 +21,9 @@ ROOT_data_struct = {
 	}
 	
 // add venues
-scr_profile_create("Estrella Del Mar",currencySymbol.peso,spr_estrella_logo,spr_estrella_banner);
+scr_profile_create("Estrella Del Mar","MXN",spr_estrella_logo,spr_estrella_banner);
 //scr_profile_create("River");
-//scr_profile_create("Test");
-scr_profile_create("At");	
+//scr_profile_create("Test");	
 
 // add lists
 MEMBER_database = debug_data_members_list();	

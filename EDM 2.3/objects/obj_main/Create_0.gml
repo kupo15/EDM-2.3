@@ -9,6 +9,7 @@ texture_prefetch("icons");
 debug_submenu_names();
 ini_shared();
 
+ini_currency_symbols();
 app_load;
 ini_create();
 ini_config(room_width,room_height);
