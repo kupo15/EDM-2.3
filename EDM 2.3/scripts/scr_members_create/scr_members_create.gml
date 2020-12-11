@@ -11,8 +11,6 @@ var local_struct = {
 	memberID: member_id,
 	favorite: false,
 	active: true,
-	
-	groups: [],
 	}
 	
 array_push(array,local_struct);
@@ -34,11 +32,10 @@ last_name = "";
 if argument[2] == undefined
 arr = MEMBER_database;
 
-var ind = array_length(arr);
 
 member_struct = {
 	
-	memberID: ind,
+	memberID: database_member_id_generate(),
 	firstName: first_name,
 	lastName: last_name,
 	phone: -1,

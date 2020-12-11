@@ -8,8 +8,11 @@ name = "";
 if argument[1] == undefined
 currencyInd = -1;
 
+var ind = array_length(ROOT_data_struct.profiles);
+
 var profileData = {
 		
+		venueID: ind,
 		dispName: name,
 		location: -1,
 		currencyId: -1,

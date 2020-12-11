@@ -1,10 +1,11 @@
 function database_member_id_generate() {
 	
+var last_given_id = META_data.memberIdGenerator;
+var _id = last_given_id ++;
 	
-	
+META_data.memberIdGenerator = _id;
 	
 return _id;
-
 }
 
 function database_member_get_pointer(memberId,key,source) {

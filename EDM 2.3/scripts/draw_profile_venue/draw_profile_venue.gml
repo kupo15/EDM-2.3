@@ -2,16 +2,17 @@ function draw_profile_create() {
 	
 draw_profile_view();	
 
-//{
-//dispName: name,
-//location: -1,
-//currencyId: -1,
-//		
-//logoId: -1,
-//bannerId: -1,
-//		
-//memberlist: [],
-//}
+//	{
+//	venueID: ind,
+//	dispName: name,
+//	location: -1,
+//	currencyId: -1,
+//	
+//	logoId: -1,
+//	bannerId: -1,
+//	
+//	memberlist: [],
+//	}		
 
 }
 
