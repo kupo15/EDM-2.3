@@ -6,14 +6,14 @@
 #macro app_load json_load_array(save_data)
 
 #macro MEMBER_database ROOT_data_struct.memberDatabase
-#macro MEMBER_list ROOT_data_struct.profiles[profile_index].memberlist
-#macro PROFILE_data ROOT_data_struct.profiles[profile_index]
+#macro MEMBER_list ROOT_data_struct.profiles[activeProfile].memberlist
+#macro PROFILE_data ROOT_data_struct.profiles[activeProfile]
 #macro META_data ROOT_data_struct.meta
 
 #macro membersort scr_member_sort_abc(MEMBER_list,true)
 
 // layout
-#macro bleed_left pct_x(1.5)
+#macro bleed_left pct_x(3)
 #macro bleed_top pct_y(6.6)
 #macro DPI_POINT 72
 
@@ -22,8 +22,10 @@
 #macro header_buffer_color make_color_rgb(0,145*0.8,206*0.8)
 
 #macro header_height pct_y(13.33)
-#macro header_ypos_end bleed_top+header_height
 #macro header_submenu_height header_height*0.8
+
+#macro header_ypos_end bleed_top+header_height
+#macro subheader_ypos_end bleed_top+header_height+header_submenu_height
 
 #macro header_font_height header_height*0.6
 #macro header_submenu_font_height header_font_height*0.8

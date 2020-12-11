@@ -1,6 +1,6 @@
 function root_data_create() {
 	
-profile_index = 0;
+activeProfile = 0;
 memberId_generator = 0;
 		
 memberlist_array = array_create(0); // local courses added

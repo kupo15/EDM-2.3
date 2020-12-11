@@ -28,8 +28,8 @@ return profileData;
 function scr_profile_set(ind) {
 /// @param index
 
-profile_index = ind;
-META_data.profileIndex = profile_index; // save profile index to startup
+activeProfile = ind;
+META_data.profileIndex = activeProfile; // save profile index to startup
 	
 // set local lists
 memberslist_array = MEMBER_list;

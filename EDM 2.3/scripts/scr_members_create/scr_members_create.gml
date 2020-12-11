@@ -41,6 +41,16 @@ member_struct = {
 	memberID: ind,
 	firstName: first_name,
 	lastName: last_name,
+	
+	location: {
+		
+		address: -1,
+		state: -1,		
+		},
+		
+	groups: [],
+	
+	stat: [],
 	}
 	
 if argument[2] != undefined

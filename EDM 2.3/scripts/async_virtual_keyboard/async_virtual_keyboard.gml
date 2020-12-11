@@ -14,10 +14,12 @@ switch status
 	
 if (timer[timerIndex.vk_switch] == -1) && (kvStatus <= 1) // not switching
 vk_hide();
+
+kvHeight = async_load[? "screen_height"];
 	
 // debug showing
 show_debug_message("****"+string(kvStatus))
-show_debug_message(async_load[? "screen_height"]);
+show_debug_message(kvHeight);
 
 
 }

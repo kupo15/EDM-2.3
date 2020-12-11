@@ -13,7 +13,7 @@ var yy = 10;
 var sep = y_pct_y(45);
 var height = sep;
 
-if !keyboard_check(vk_numpad0)
+if keyboard_check(vk_numpad0)
 exit; 
 
 draw_rectangle_color(xx-50,0,0,app_height,c_black,c_black,c_black,c_black,false);

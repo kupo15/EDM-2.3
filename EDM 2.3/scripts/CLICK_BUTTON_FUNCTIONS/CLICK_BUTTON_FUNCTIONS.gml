@@ -29,13 +29,14 @@ if rounded
 	}
 else
 	{
-	draw_sprite_stretched_ext(spr_pixel,0,xx,yy,ww,hh,col,1);
+	draw_rectangle_pixel(xx,yy,ww,hh,col,false);
 	
 	if outline
 	draw_rectangle_color(xx,yy,xx+ww,yy+hh,c_black,c_black,c_black,c_black,true);
 	}
 
 var prev_halign = draw_get_halign();
+
 
 draw_text_height_middled_color(xx+(ww*0.5),yy,str,hh,str_col,height,alpha,false,font,fa_center);
 draw_set_halign(prev_halign);

@@ -18,7 +18,7 @@
   "option_android_orient_portrait": false,
   "option_android_orient_portrait_flipped": false,
   "option_android_orient_landscape": true,
-  "option_android_orient_landscape_flipped": true,
+  "option_android_orient_landscape_flipped": false,
   "option_android_gamepad_support": true,
   "option_android_lint": false,
   "option_android_install_location": 0,

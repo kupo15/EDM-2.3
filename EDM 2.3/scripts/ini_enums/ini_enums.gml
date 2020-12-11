@@ -7,9 +7,6 @@ eventSetup,
 membersList,
 stats,
 blank3,
-blank4,
-blank5,
-
 
 help_info,
 settings,
@@ -19,6 +16,9 @@ home,
 
 profileCreate,
 profileView,
+
+memberProfileEdit,
+memberProfileView,
 
 edit_date,
 }
@@ -31,6 +31,7 @@ entryYoff,
 sidebarXoff,
 
 memberSortUnderline,
+memberProfileUnderline,
 
 membersOffset,
 calendarOffset,
@@ -54,7 +55,12 @@ peso,
 }
 
 enum textboxEntry {
-dispName,	
+dispName,
+
+memberFirstName,
+memberLastName,
+memberAddress,
+memberState,
 	
 popupEntryText,
 }

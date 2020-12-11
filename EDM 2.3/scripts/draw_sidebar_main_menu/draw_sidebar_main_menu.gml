@@ -7,31 +7,32 @@ var xx = 0;
 var yy = 0;
 var ww = side_menu_width;
 var hh = app_height;
-var profile_hh = 200;
+var profile_hh = 355;
 
 var xx_pct = x_pct_x(xx_off);
 var ww_pct = x_pct_x(side_menu_width);
-var profile_hh_pct = y_pct_y(200);
+var profile_ypos_end = pct_y(30);
+var profile_hh_pct = profile_ypos_end-bleed_top;
 
 if xx_pct+ww_pct < 0
 exit;
 
-var profile_col = make_color_rgb(76,102,145);
+var profile_col = header_buffer_color; // make_color_rgb(76,102,145);
 
 // draw background
-vertex_buffer_sidebar_rect(xx_pct,0,ww_pct,profile_hh_pct,app_height,profile_col,c_white,1,alpha);
-vertex_buffer_draw_width_cropped(spr_estrella_banner,0,xx_pct,0,ww_pct,profile_hh_pct,0,c_white,1);
+vertex_buffer_sidebar_rect(xx_pct,0,ww_pct,profile_ypos_end,app_height,profile_col,c_white,1,alpha);
+vertex_buffer_draw_width_cropped(spr_estrella_banner,0,xx_pct,bleed_top,ww_pct,profile_hh_pct,0,c_white,1);
 
 #region profile section
 var xx = x_pct_x(25);
-var yy = y_pct_y(25);
+var yy = bleed_top+y_pct_y(25);
 var height = pct_y(8.33);
 
 draw_icon_height(spr_estrella_logo,0,xx_pct+xx,yy,height,1); // profile picture
 
 
 var height = pct_y(3.75);
-var yy = profile_hh_pct-height-y_pct_y(10);
+var yy = profile_ypos_end-height-y_pct_y(10);
 
 draw_menu_triangle(xx_pct+(ww_pct*0.85),yy,y_pct_y(14),submenu != navbar.profileChange,false,c_white,1);
 
@@ -42,23 +43,23 @@ draw_text_height_color(xx+xx_pct,yy,PROFILE_data.dispName,c_white,height,false,f
 if clickout_region_pct(xx_off,0,ww,hh,false,navbar.sidebar)
 androidBack = true;
 
-if click_region_released(xx_off,0,x_pct_x(150),y_pct_y(150),true,submenu,1)
+if click_region_released(xx_off,bleed_top,x_pct_x(150),y_pct_y(150),true,submenu,1)
 	{
 	submenu = navbar.hidden;
 	screen_change(screen.profileView);
 	}
 else 
-if click_region_released(xx_pct,0,ww_pct,profile_hh_pct,true,submenu,1)
+if click_region_released(xx_pct,bleed_top,ww_pct,profile_hh_pct-1,true,submenu,1)
 submenu = pick(navbar.profileChange,navbar.sidebar,submenu == navbar.profileChange);
 
 #endregion
 
 
 #region draw menu items
-var xx = 145;
-var yy = profile_hh;
-var sep = 120;
-var height = 50;
+var xx = pct_x(13);
+var yy = profile_ypos_end;
+var sep = pct_y(11);
+var height = pct_y(4.5);
 
 var labels = [];
 labels[screen.eventSetup] = "Start Event";
@@ -81,21 +82,21 @@ for(var i=0;i<screen.enumcount;i++)
 	switch e
 		{	
 		// draw headers
-		case 0: draw_text_height_middled(xx+xx_off,ypos,labels[i],sep,height,undefined,true); break;
+		case 0: draw_text_height_middled(xx+xx_pct,ypos,labels[i],sep,height,undefined); break;
 		
 		// separating line
 		case 1: if i == screen.help_info
-				draw_line_pixel(xx_off,ypos,ww+1,1,c_black,1,true);
+				draw_line_pixel(xx_pct,ypos,ww_pct,1,c_black,1);
 				break;
 				
 		// draw menu icons
-		case 2: draw_icon_height_centered_color_pct(spr_footer_icon,i,bleed_left+xx_off,ypos,sep*0.7,sep,sep*0.7,header_color,1); break;			
+		case 2: draw_icon_height_centered_color(spr_footer_icon,i,bleed_left+xx_pct,ypos,sep*0.7,sep,sep*0.7,header_color,1); break;			
 		}
 		
 	if (e+1) < element_num
 	continue;
 
-	if click_region_released_clamp_pct(xx_off,yy,(i*sep),ww,sep,screen.enumcount*sep,mb_left,true,navbar.sidebar,i,undefined,navbar.sidebar)
+	if click_region_released_clamp(xx_pct,yy,(i*sep),ww_pct,sep,screen.enumcount*sep,mb_left,true,navbar.sidebar,i,undefined,navbar.sidebar)
 		{
 		click_highlight_alpha = 0;
 		click_highlight_alpha_start = 0;
@@ -106,7 +107,7 @@ for(var i=0;i<screen.enumcount;i++)
 
 #endregion
 
-draw_sidebar_profile_switch(xx_pct,profile_hh_pct,ww_pct,app_height-profile_hh_pct-pct_y(3),y_pct_y(sep),y_pct_y(height));
+draw_sidebar_profile_switch(xx_pct,profile_ypos_end,ww_pct,app_height-profile_ypos_end-pct_y(3),sep,height);
 
 if androidBack
 submenu = navbar.hidden;
@@ -119,6 +120,7 @@ exit;
 
 var xx = xx_off;
 
+// draw background
 draw_rectangle_pixel(xx,yy,ww,hh,c_white,false);
 
 var xoff = x_pct_x(55);
@@ -134,7 +136,7 @@ for(var e=0;e<element_num;e++)
 	for(var i=0;i<size;i++)
 		{
 		var last_index = (i+1 == size)
-		var on_profile = (i == profile_index);
+		var on_profile = (i == activeProfile);
 		var off_pos = pos*sep;
 				
 		//if e == 2 && !on_profile
@@ -148,9 +150,9 @@ for(var e=0;e<element_num;e++)
 			{
 			switch e
 				{
-				case 1: draw_text_height_middled_color(text_xpos,yy+off_pos,"Create Venue",sep,c_black,height,1); break;	
+				case 1: draw_text_height_middled_color(xx+text_xpos,yy+off_pos,"Create Venue",sep,c_black,height,1); break;	
 
-				case 2: draw_plus_button(pct_x(4.6),yy+off_pos+(sep*0.5),sep*0.66,c_black,undefined,undefined,1); break; // draw plus sign
+				case 2: draw_plus_button(xx+pct_x(4.6),yy+off_pos+(sep*0.5),sep*0.66,c_black,undefined,undefined,1); break; // draw plus sign
 				}				
 			}
 		else
@@ -158,14 +160,14 @@ for(var e=0;e<element_num;e++)
 			{		
 			switch e
 				{
-				case 0: draw_line_pixel(text_xpos,yy+off_pos+sep,ww-text_xpos,1,c_gray,1); break;
+				case 0: draw_line_pixel(xx+text_xpos,yy+off_pos+sep,ww-text_xpos,1,c_gray,1); break;
 
 				// profile name
 				case 1:	var profile_pointer = ROOT_data_struct.profiles[i];
 						var str = profile_pointer.dispName;
 					
 						// draw text
-						draw_text_height_middled_color(text_xpos,yy+off_pos,str,sep,c_black,height,1);
+						draw_text_height_middled_color(xx+text_xpos,yy+off_pos,str,sep,c_black,height,1);
 						break;
 																
 				// profile picture
@@ -182,7 +184,7 @@ var pos = 0;
 for(var i=0;i<size;i++)
 	{
 	var last_index = (i+1 == size);
-	var on_profile = (i == profile_index);	
+	var on_profile = (i == activeProfile);	
 	var off_pos = pos*sep;
 
 	if on_profile
@@ -190,27 +192,25 @@ for(var i=0;i<size;i++)
 	
 	if last_index
 		{		
-		if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.profileChange,i,undefined,undefined)
+		if click_region_released_clamp_array(xx,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.profileChange,i,undefined,undefined)
 			{
-			//activeStruct = scr_profile_create();
-			//scr_profile_set(i);
+			activeStruct = scr_profile_create();
+			scr_profile_set(i);
 			
-			//screen_change(screen.profileCreate,navbar.popupEntry);
-			//click_textbox_set("",textboxEntry.popupEntryText,kbv_type_default);
-			
-
+			screen_change(screen.profileCreate,navbar.popupEntry);
+			click_textbox_set("",textboxEntry.popupEntryText,kbv_type_default);
 			}
 			
 		break;
 		}
 		
 		
-	if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.profileChange,i,undefined,undefined)
+	if click_region_released_clamp_array(xx,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.profileChange,i,undefined,undefined)
 		{
 		scr_profile_set(i);
-		//app_save;
-		//
-		//submenu = navbar.main;
+		app_save;
+		
+		submenu = navbar.main;
 		break;
 		}
 		

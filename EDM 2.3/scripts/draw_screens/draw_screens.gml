@@ -16,7 +16,7 @@ if androidBack
 		screen_change(screen.home,undefined,true);
 		}
 	}
-		
+
 // draw screens
 draw_background_screen();
 

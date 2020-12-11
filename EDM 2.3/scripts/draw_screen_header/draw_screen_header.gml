@@ -77,10 +77,10 @@ repeat 2
 		}
 	else if header_type == headerType.trash
 		{
-		var xx = x_pct_x(20);
+		var xx = x_pct_x(15);
 		var yy = bleed_top;
 		
-		draw_icon_height_centered_color(ico_trash3,yy,xpos-xx,0,region,region,header_height*0.44,c_white,1-headerDeleteOffsetDisp); // trash icon
+		draw_icon_height_centered_color(ico_trash3,yy,xpos,yy,pct_x(10),region,header_height*0.44,c_white,1-headerDeleteOffsetDisp); // trash icon
 
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
@@ -151,7 +151,7 @@ return val;
 
 function draw_header_delete(yy,ww,hh){
 
-
+// don't draw
 if headerDeleteOffsetDisp < 0.1
 exit;
 

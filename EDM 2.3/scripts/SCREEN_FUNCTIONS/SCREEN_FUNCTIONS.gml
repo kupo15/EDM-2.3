@@ -16,8 +16,11 @@ drawScreen[screen.membersList] = draw_members_list;
 drawScreen[screen.settings] = undefined;
 drawScreen[screen.enumcount] = draw_undefScreen;
 
-//drawScreen[screen.profileCreate] = draw_profile_create;
-//drawScreen[screen.profileView] = draw_profile_view;
+drawScreen[screen.profileCreate] = draw_profile_create;
+drawScreen[screen.profileView] = draw_profile_view;
+
+drawScreen[screen.memberProfileEdit] = draw_profile_member_create;
+drawScreen[screen.memberProfileView] = draw_profile_member_view;
 
 drawScreen[screen.edit_date] = draw_date_edit_calendar;	
 }
@@ -83,11 +86,18 @@ vk_hide();
 
 switch screenIndex
 	{
-	case screen.enumcount:
-	case screen.home: submenu = navbar.hidden; break;
+	case screen.enumcount: submenu = navbar.hidden; break;
 					
 	// member list
-	case screen.membersList: scr_memberlist_sort(META_data.memberSort); break;				
+	case screen.membersList: scr_memberlist_sort(META_data.memberSort); break;		
+	
+	// venue profile
+	case screen.profileView: workingStruct = struct_copy(PROFILE_data);
+							 activeStruct = workingStruct;
+							 break;	
+	
+	// member profile
+	case screen.memberProfileView: subheader_member = 0; break;	
 	}	
 	
 searched_name = "";

@@ -88,10 +88,15 @@ for(var i=pos_start;i<pos_end;i++)
 			can_delete = true;
 			}
 		else // select member
-		    {
-				
-			// change screen
-//			screen_change(screen.score_view,navbar.hidden);		
+		    {				
+			subheader_member = 0; // info
+			member_index = database_member_get_index(memberID);			
+						
+			// assign struct
+			member_struct = member_pointer;
+			workingStruct = struct_copy(member_struct);			
+						
+			screen_change(screen.memberProfileView,navbar.hidden);		
 			}
 		}
 	}

@@ -18,16 +18,16 @@ height: 50,
 element_circle_button = {
 	
 active: false,
-xx: 450,
-yy: 850,
+xx: pct_x(83.33),
+yy: pct_y(80.9),
 rr: 50
 	
 }
 
 element_finished = {
 
-hh: 90,
-stringHeight: 45,
+hh: pct_y(7.5),
+stringHeight: pct_y(3.75),
 	
 }
 
