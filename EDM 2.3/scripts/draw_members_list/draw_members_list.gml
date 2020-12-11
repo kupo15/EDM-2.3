@@ -16,7 +16,7 @@ var ww = app_width;
 var hh = app_height-yy;
 
 var rows = hh/sep;
-var col = make_color_rgb(232,237,255);
+//var col = make_color_rgb(232,237,255);
 var box_hh_end = app_height;
 
 var list_size = array_length(source_array);
@@ -34,7 +34,7 @@ for(var i=pos_start;i<pos_end;i++)
 	var memberID = ref_pointer.memberID;
 	var member_favorite = ref_pointer.favorite;
 
-	var member_pointer = database_member_get_pointer(memberID);
+	var member_pointer = database_get_pointer(MEMBER_database,memberID,"memberID");
 	var member_first_name = member_pointer.firstName;
 	var member_last_name = member_pointer.lastName;
 	var member_str = member_first_name+" "+member_last_name;

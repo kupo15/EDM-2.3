@@ -8,19 +8,17 @@ META_data.memberIdGenerator = _id;
 return _id;
 }
 
-function database_member_get_pointer(memberId,key,source) {
+function database_get_pointer(source,memberId,idKeyString,key) {
+/// @param source
 /// @param memberId
-/// @param [key
-/// @param source]	
+/// @param idKeyString
+/// @param [key]
 	
-if argument[2] == undefined
-source = MEMBER_database;
-
 var size = array_length(source);
 for(var i=0;i<size;i++)
 	{
 	var pointer = source[i];
-	var test_memberId = pointer.memberID;
+	var test_memberId = variable_struct_get(pointer,idKeyString);
 	
 	if memberId == test_memberId
 		{

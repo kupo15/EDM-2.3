@@ -11,7 +11,7 @@ for(var i=0;i<size;i++)
 	{
 	var pointer = source_array[i];
 	var memberId = pointer.memberID;
-	var sort_value = database_member_get_pointer(memberId,"firstName");
+	var sort_value = database_get_pointer(MEMBER_database,memberId,"memberID","firstName");
 
 	// debug
 	if sort_value == undefined

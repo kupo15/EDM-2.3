@@ -34,6 +34,7 @@ memberSortUnderline,
 memberProfileUnderline,
 
 membersOffset,
+groupsOffset,
 calendarOffset,
 
 sidebarDarken,
