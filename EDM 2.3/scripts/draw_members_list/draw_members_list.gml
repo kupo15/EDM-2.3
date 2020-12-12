@@ -10,13 +10,11 @@ var source_array = MEMBER_list;
 
 var xx = bleed_left;
 var yy = header_ypos_end+header_submenu_height;
-var height = y_pct_y(75);
-var sep = y_pct_y(200);
-var ww = app_width;
+var height = pct_y(5.2);
+var sep = pct_y(16);
+var ww = app_width*0.5;
 var hh = app_height-yy;
-
 var rows = hh/sep;
-//var col = make_color_rgb(232,237,255);
 var box_hh_end = app_height;
 
 var list_size = array_length(source_array);
@@ -59,10 +57,13 @@ for(var i=pos_start;i<pos_end;i++)
 		case 2: draw_text_height_middled_color(bleed_left+(sep*0.5),yy+off_pos,capitalize(member_initial),sep,c_white,height,1,undefined,undefined,fa_center);	
 
 		// draw member name
-		case 3:	draw_text_height_middled_color(pct_x(14),yy+off_pos,member_str,sep,c_black,height*1.2,1); break;
+		case 3:	draw_text_height_middled_color(pct_x(14.5),yy+off_pos,member_str,sep,c_black,height*1.2,1); break;
 		
 		// draw line
-		case 4:	draw_line_pixel(pct_x(14),yy+off_pos+sep,app_width,1,c_gray,0.7); break;
+		case 4:	var xx = pct_x(14);
+		
+				draw_line_pixel(xx,yy+off_pos+sep,ww-xx,1,c_gray,0.7);
+				break;
 		}
 	
 	if (e+1) != element_num
@@ -115,7 +116,7 @@ draw_screen_header(headerType.back,headerType.plus,"Members");
 
 var sort_index = META_data.memberSort;
 var offset = offsetArray[offsetScroll.memberSortUnderline];
-var header = draw_screen_header_submenu(offset,sort_index,"A-Z","Favorites");
+var header = draw_screen_header_submenu(offset,sort_index,ww,"A-Z","Favorites");
 if (header != undefined)
 	{
 	scr_memberlist_sort(header);

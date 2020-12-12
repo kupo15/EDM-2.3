@@ -88,6 +88,8 @@ switch screenIndex
 	{
 	case screen.enumcount: submenu = navbar.hidden; break;
 					
+	case screen.eventSetup: scr_event_create(); break;					
+					
 	// member list
 	case screen.membersList: scr_memberlist_sort(META_data.memberSort); break;		
 	

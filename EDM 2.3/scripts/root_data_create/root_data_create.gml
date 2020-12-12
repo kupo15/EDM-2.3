@@ -7,12 +7,14 @@ memberlist_array = array_create(0); // local courses added
 
 ROOT_data_struct = {
 	
-	memberDatabase: -1,
+	memberDatabase: [],
 		
 	profiles: [],
+	
 	eventHistory: [],
 	
 	meta: {
+		closeEnough: true,
 		profileIndex: 0,
 		memberSort: member_sort.abc,
 		version: json_version,
@@ -33,7 +35,7 @@ MEMBER_database = debug_data_members_list();
 function debug_data_members_list() {
 // debug
 
-var group_id = [0,1];
+var group_id = [0];
 var arr = [];
 scr_member_create_database("Jim","Baillon",arr,group_id);
 scr_member_create_database("Greg","Stratoti",arr,group_id);
