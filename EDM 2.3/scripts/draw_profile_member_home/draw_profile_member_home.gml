@@ -23,14 +23,6 @@ draw_profile_view();
 }
 
 function draw_profile_member_view() {
-
-switch subheader_member
-	{
-	case 0: draw_profile_member_details(); break;
-	case 1: draw_profile_member_stats(); break;
-	case 2: draw_profile_member_groups(); break;
-	}
-
 #region header
 var show_trash = pick(headerType.none,headerType.trash,subheader_member == 0);
 var trash = draw_screen_header(headerType.back,show_trash,"Member Details");
@@ -52,6 +44,13 @@ if (header != undefined)
 subheader_member = header;
 
 #endregion
+
+switch subheader_member
+	{
+	case 0: draw_profile_member_details(); break;
+	case 1: draw_profile_member_stats(); break;
+	case 2: draw_profile_member_groups(); break;
+	}
 
 	
 	

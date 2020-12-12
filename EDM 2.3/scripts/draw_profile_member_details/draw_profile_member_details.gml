@@ -50,7 +50,7 @@ draw_icon_height(ico_edit,0,(2*ww)-pct_x(5),text_yy+pct_y(2),pct_y(4),1); // edi
 #endregion
 
 var label_arr = ["first name","last name","phone number","address","state"];
-var name_entry = draw_overlay_popup_entry("Enter ",label_arr,textboxEntry.memberFirstName,activeStruct.firstName,-1);
+var name_entry = draw_overlay_popup_entry("Enter ",label_arr,textboxEntry.memberFirstName,activeStruct.firstName,25);
 if name_entry != undefined
 switch textboxIndex
 	{

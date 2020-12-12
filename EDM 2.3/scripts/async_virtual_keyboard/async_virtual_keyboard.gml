@@ -11,11 +11,11 @@ switch status
 	case "visible": kvStatus = vk.visible; break; 
 	}
 	
+kvHeight = async_load[? "screen_height"];
 	
 if (timer[timerIndex.vk_switch] == -1) && (kvStatus <= 1) // not switching
 vk_hide();
 
-kvHeight = async_load[? "screen_height"];
 	
 // debug showing
 show_debug_message("****"+string(kvStatus))
