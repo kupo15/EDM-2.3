@@ -13,6 +13,8 @@ ROOT_data_struct = {
 	
 	eventHistory: [],
 	
+	memberGroups: [],
+	
 	meta: {
 		closeEnough: true,
 		profileIndex: 0,

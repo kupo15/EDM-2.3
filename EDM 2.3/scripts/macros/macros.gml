@@ -35,7 +35,7 @@
 
 // background colors
 #macro c_lt_gray make_color_rgb(228,228,228)
-#macro c_click_color make_color_rgb(245,245,245)
+#macro c_click_color make_color_rgb(240,240,240)
 
 // textbox scrolling
 #macro fric 0.009

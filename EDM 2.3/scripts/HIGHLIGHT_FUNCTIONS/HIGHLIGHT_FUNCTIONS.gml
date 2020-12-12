@@ -27,8 +27,7 @@ activeSubmenu = navbar.main;
 
 function scr_click_highlight_set(xx,yy,ww,hh,col,screen_ind,array_pos){
 
-if col == c_yellow
-col = c_gray;
+col = c_click_color;
 
 highlight_struct.xpos = xx+(ww*0.5); // middle of region
 highlight_struct.ypos = yy;
@@ -125,8 +124,8 @@ transitionReady = 2;
 function highlight_draw(xx,yy,hh,col) {
 	
 // debug
-if (highlight_struct.index == undefined) && (os_type == os_windows)
-col = c_lt_gray;	
+//if (highlight_struct.index == undefined) && (os_type == os_windows)
+//col = c_lt_gray;	
 	
 // lerp position
 if highlight_struct.width != highlight_struct.width_end
