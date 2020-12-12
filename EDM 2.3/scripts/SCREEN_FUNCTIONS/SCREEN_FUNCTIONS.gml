@@ -8,7 +8,7 @@ prevScreenStack = ds_list_create();
 	
 drawScreen[screen.eventSetup] = draw_event_setup;
 drawScreen[screen.home] = draw_home;
-drawScreen[screen.membersList] = draw_members_list;
+drawScreen[screen.membersList] = draw_members_list_screen;
 //drawScreen[screen.stats] = draw_stats;
 //drawScreen[screen.blank8] = undefined
 
@@ -88,7 +88,10 @@ switch screenIndex
 	{
 	case screen.enumcount: submenu = navbar.hidden; break;
 					
-	case screen.eventSetup: scr_event_create(); break;					
+	case screen.eventSetup: event_entrant_array = MEMBER_list;
+							scr_memberlist_sort(member_sort.favorite);
+							scr_event_create();
+							break;
 					
 	// member list
 	case screen.membersList: scr_memberlist_sort(META_data.memberSort); break;		

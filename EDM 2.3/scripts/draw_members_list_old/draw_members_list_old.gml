@@ -1,5 +1,5 @@
 
-function draw_members_list() {
+function draw_members_list_old() {
 	
 
 // set offsets
@@ -115,8 +115,9 @@ funct_screen_scrolling(xx,yy,ww,hh,sep,list_size,rows,scrollbar_index,sub);
 draw_screen_header(headerType.back,headerType.plus,"Members");
 
 var sort_index = META_data.memberSort;
+var header_arr = ["A-Z","Favorites"];
 var offset = offsetArray[offsetScroll.memberSortUnderline];
-var header = draw_screen_header_submenu(offset,sort_index,ww,"A-Z","Favorites");
+var header = draw_screen_header_submenu(offset,sort_index,0,ww,1,header_arr);
 if (header != undefined)
 	{
 	scr_memberlist_sort(header);

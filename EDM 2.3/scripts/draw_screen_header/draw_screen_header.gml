@@ -1,21 +1,23 @@
 
-function draw_screen_header(header_left,header_right,header_string,height,bg_col) {
+function draw_screen_header(header_left,header_right,header_string,headerHeightScale,bg_col) {
 /// @param header_left
 /// @param header_right
 /// @param header_string
-/// @param [stringHeight
+/// @param [headerHeightScale
 /// @param [header_color]
 
 if argument[3] == undefined
-height = header_font_height;
+headerHeight = header_height;
 
 if argument[4] == undefined
 bg_col = header_color;
+
 
 var xx = app_width*0.5;
 var yy = 0;
 var ww = app_width;
 var hh = header_height;
+var height = header_font_height;
 
 var del_col = make_color_rgb(0,137,123); // delete header color
 var col = merge_color(bg_col,del_col,headerDeleteOffsetDisp);
@@ -111,13 +113,15 @@ draw_text_height_middled_color(pct_x(15),bleed_top,header_string,header_height,c
 return return_val;
 }
 
-function draw_screen_header_submenu(offset,sort_index,width) {
+function draw_screen_header_submenu(offset,sort_index,xpos,width,scale,header_arr) {
 /// param offset
 /// param sort_index
+/// param xx
 /// param width
+/// param stringScale
 /// param header_string
 
-var xx = 0;
+var xx = xpos;
 var yy = header_ypos_end;
 var hh = header_submenu_height;
 var col = header_color;
@@ -126,13 +130,14 @@ var col = header_color;
 draw_rectangle_pixel(xx,yy,width,hh,col,false);
 	
 // draw highlight underline
-var header_num = argument_count-3;
+var header_num = array_length(header_arr);
 var header_sep = width/header_num;
 var val = undefined;
 
-var xx = offset*header_sep;
+var xx = xpos+(offset*header_sep);
 var hh = 4;
 var col = c_white;
+var height = header_submenu_font_height*scale;
 
 draw_rectangle_pixel(xx,yy+header_submenu_height-y_pct_y(hh),header_sep,y_pct_y(hh),col,false);
 draw_line_pixel(xx,yy+header_submenu_height-1,header_sep,1,c_lt_gray,1);
@@ -140,11 +145,11 @@ draw_line_pixel(xx,yy+header_submenu_height-1,header_sep,1,c_lt_gray,1);
 // draw headers
 for(var i=0;i<header_num;i++)
 	{		
-	var pos = i*header_sep;
+	var pos = xpos+(i*header_sep);
 	var str_col = pick(c_white,c_white,i==sort_index);
 	var text_alpha = pick(0.75,1,i==sort_index);
 
-	if click_button(pos,yy,argument[i+3],header_submenu_font_height,str_col,header_sep,header_submenu_height,undefined,false,false,submenu,undefined,text_alpha)
+	if click_button(pos,yy,header_arr[i],height,str_col,header_sep,header_submenu_height,undefined,false,false,submenu,undefined,text_alpha)
 	val = i;
 	}
 

@@ -6,7 +6,7 @@
     "path": "folders/Screens.yy",
   },
   "resourceVersion": "1.0",
-  "name": "draw_members_list",
+  "name": "draw_event_setup",
   "tags": [],
   "resourceType": "GMScript",
 }

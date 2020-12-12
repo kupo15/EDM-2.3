@@ -60,7 +60,7 @@ function draw_text_height_middled(xx,yy,str,hh,height,alpha,pct,font,halign) {
 var int = argument[6];
 var col = draw_get_color();
 
-return draw_text_height_middled_color(xx,yy,str,hh,col,height,alpha,pct,font);
+return draw_text_height_middled_color(xx,yy,str,hh,col,height,alpha,pct,font,halign);
 }
 
 function draw_text_height_middled_color(xx,yy,str,hh,col,height,alpha,pct,font,halign) {

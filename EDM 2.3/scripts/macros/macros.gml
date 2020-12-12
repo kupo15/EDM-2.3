@@ -11,6 +11,8 @@
 #macro PROFILE_data ROOT_data_struct.profiles[activeProfile]
 #macro META_data ROOT_data_struct.meta
 
+#macro TEAM_array active_event.teams[teamlist_index]
+
 #macro membersort scr_member_sort_abc(MEMBER_list,true)
 
 // layout
@@ -22,13 +24,13 @@
 #macro header_color make_color_rgb(0,145,206) // make_color_rgb(42,104,53) //
 #macro header_buffer_color make_color_rgb(0,145*0.8,206*0.8)
 
-#macro header_height pct_y(13.33)
+#macro header_height pct_y(13)
 #macro header_submenu_height header_height*0.8
 
 #macro header_ypos_end bleed_top+header_height
 #macro subheader_ypos_end bleed_top+header_height+header_submenu_height
 
-#macro header_font_height header_height*0.6
+#macro header_font_height header_height*0.55
 #macro header_submenu_font_height header_font_height*0.8
 
 // background colors

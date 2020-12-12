@@ -30,6 +30,7 @@ entryYoff,
 
 sidebarXoff,
 
+teamsUnderline,
 memberSortUnderline,
 memberProfileUnderline,
 
