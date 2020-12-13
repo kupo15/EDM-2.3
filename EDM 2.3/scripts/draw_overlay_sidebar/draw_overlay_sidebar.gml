@@ -36,5 +36,4 @@ if offset < 0.99
 element_sidebar_step(xx);
 element_sidebar_profile_step(xx);
 element_sidebar_shared_step(xx);
-
 }
