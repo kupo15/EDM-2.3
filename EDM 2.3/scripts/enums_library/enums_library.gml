@@ -38,7 +38,8 @@ sidebar,
 sidebarProfile,
 clean,
 dirty,
-scroll,
+
+scroll, // has to be last
 	
 enumcount,
 }

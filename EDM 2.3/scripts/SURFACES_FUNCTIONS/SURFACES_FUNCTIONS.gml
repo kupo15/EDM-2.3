@@ -1,35 +1,38 @@
+function ini_surfaces() {
+		
+surface_array = array_create(surfaces.enumcount,-1);
+surfaceCanBuild_array = array_create(surfaces.enumcount,false);
+surfaceTarget = -1;
+}
+
+function scr_surface_create() {
+
+// get last index of current array
+var num = array_length(surface_array);
+
+// create a new surface
+array_push(surface_array,-1);
+array_push(surfaceCanBuild_array,true);
+
+// set the new target
+surface_set(num);	
+}
 
 function scr_surface_rebuild(surface_ind) {
 /// @param [surface_ind]
 
 if argument[0] == undefined // rebuild all
 	{
-	var size = surfaces.enumcount;
+	// free all surfaces
+	var size = array_length(surface_array);
 	for(var	i=0;i<size;i++)
 	surface_free(surface_array[i]);
+	
+	// cull any extra arrays back to original length
+	ini_surfaces();
 	}
 else
 surfaceCanBuild_array[surface_ind] = true; // can rebuild
-}
-
-function surface_draw(surface_id,xx,yy,alpha,xscale,yscale) {
-/// @param surface_enum
-/// @param xx
-/// @param yy
-/// @param alpha
-/// @param [xscale
-/// @param yscale]
-
-if argument[4] == undefined
-xscale = 1;
-
-if argument[5] == undefined
-yscale = 1;
-	
-if surface_exists(surface_array[surface_id])
-draw_surface_ext(surface_array[surface_id],xx,yy,xscale,yscale,0,c_white,alpha);
-
-return surface_array[surface_id];
 }
 
 function surface_set(surface_ind) {
@@ -44,7 +47,7 @@ if !surface_exists(surface_array[surface_ind])
 		
 		case surfaces.sidebar:
 		case surfaces.sidebarProfile: surface_array[surface_ind] = surface_create(side_menu_width,app_height); break;
-		
+				
 		default: surface_array[surface_ind] = surface_create(app_width,app_height); break;	
 		}
 	}
@@ -53,8 +56,8 @@ if !surface_exists(surface_array[surface_ind])
 // if you can rebuild the surface
 if surfaceCanBuild_array[surface_ind]
 	{
+	surfaceTarget = surface_ind; // the surface that is active for drawing
 	surfaceCanBuild_array[surface_ind] = false; // can't rebuild again
-	//surfaceActive_array[surface_ind] = true; // set to active
 	
 	surface_set_target(surface_array[surface_ind]); // set the surface target
 	draw_clear_alpha(c_white,0); // clear the surface
@@ -63,4 +66,39 @@ if surfaceCanBuild_array[surface_ind]
 	}
 else
 return false;
+}
+	
+function surface_draw(surface_id,xx,yy,alpha,xscale,yscale) {
+/// @param surface_enum
+/// @param xx
+/// @param yy
+/// @param alpha
+/// @param [xscale
+/// @param yscale]
+
+if argument[4] == undefined
+xscale = 1;
+
+if argument[5] == undefined
+yscale = 1;
+	
+var surf_hh = surface_get_height(surface_array[surface_id]); // the height of the surface
+var scroll_count = array_length(surface_array)-surfaces.scroll; // number of scrolling pages
+
+//draw_line_pixel(0,yy,app_width,1,c_red,1);
+
+
+var num = pick(1,scroll_count,surface_id == surfaces.scroll);
+for(var i=0;i<num;i++)
+	{
+	var surf = surface_array[surface_id+i];
+	var off_pos = i*surf_hh;
+	
+	if surface_exists(surf)
+	draw_surface_ext(surf,xx,yy+off_pos,xscale,yscale,0,c_white,alpha);
+	
+	//draw_line_pixel(0,yy+surf_hh,app_width,1,c_red,1);
+	}
+
+return surf;
 }

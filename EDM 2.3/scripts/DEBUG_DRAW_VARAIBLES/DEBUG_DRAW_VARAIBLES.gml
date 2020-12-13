@@ -230,15 +230,20 @@ debugyoff += 13;
 
 function debug_draw_active_surfaces(xx,yy,ind,sep,height) {
 	
-var num = surfaces.enumcount
+var num = array_length(surface_array);
 for(var i=0;i<num;i++)
 	{
 	var off_pos = (ind+i);
 	var surf_active = surface_exists(surface_array[i]);
 	var str = pick("Active","Disabled",!surf_active);
-	var label = ["header","sidebar","sideProfile","clean","dirty","scroll"];
+	var label_arr = ["header","sidebar","sideProfile","clean","dirty","scroll"];
 	
-	draw_text_height(xx,yy+(off_pos*sep),"Surface["+string(label[i])+"]: "+string(str),height);
+	if i >= array_length(label_arr)
+	var label = "scroll"+string(i-surfaces.scroll);
+	else
+	label = label_arr[i];
+	
+	draw_text_height(xx,yy+(off_pos*sep),"Surface["+string(label)+"]: "+string(str),height);
 	
 	if surf_active
 		{

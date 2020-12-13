@@ -15,9 +15,7 @@ headerLeft = 0;
 headerRight = 0;
 
 // surfaces
-surface_array = array_create(surfaces.enumcount,-1);
-surfaceCanBuild_array = array_create(surfaces.enumcount,false);
-surfaceActive_array = array_create(surfaces.enumcount,false);
+ini_surfaces();
 
 deviceTestIndex = 0;
 testingScale = 1;

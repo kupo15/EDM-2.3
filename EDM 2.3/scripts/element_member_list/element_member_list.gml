@@ -1,11 +1,32 @@
 function element_overlay_memberlist_draw(xx,yy,ww,hh,sep,height,source_array) {
 	
+var surf_hh = surface_get_height(surface_array[surfaces.scroll]);	
+var size = array_length(source_array);
+var rows = surf_hh/sep;
+
+var pos_start = 0;
+var pos_end = size;
+var surf_count = 0;
+
 var element_num = 5;
-for(var e=0;e<element_num;e++)
-for(var i=0;i<array_length(source_array);i++)
+for(var i=pos_start;i<pos_end;i++)
 	{
-	var off_ind = i-memberslist_offset;
-	var off_pos = off_ind*sep;
+	var neg_pos = 0;	
+		
+	// if wrapped around
+	if floor(i*sep/surf_hh) > surf_count
+		{
+		surf_count ++;
+		i --; // redraw last entry
+		
+		var neg_pos = surf_hh;
+
+		surface_reset_target();
+		scr_surface_create(); // create a new surface
+		}
+
+	var off_ind = i mod rows;
+	var off_pos = (off_ind*sep)-neg_pos;
 	
 	var ref_pointer = source_array[i];
 	var memberID = ref_pointer.memberID;
@@ -20,6 +41,7 @@ for(var i=0;i<array_length(source_array);i++)
 	var last_initial = string_char_at(member_last_name,1);
 	var member_initial = first_initial+last_initial;
 
+	for(var e=0;e<element_num;e++)
 	switch e
 		{
 		// draw favorites icon
@@ -44,7 +66,6 @@ for(var i=0;i<array_length(source_array);i++)
 				draw_line_pixel(xpos,yy+off_pos+sep,ww-xpos,1,c_gray,0.7);
 				break;
 		}
-		
 	}
 }
 

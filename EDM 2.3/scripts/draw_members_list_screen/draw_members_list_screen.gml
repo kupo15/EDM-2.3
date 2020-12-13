@@ -1,15 +1,16 @@
 function draw_members_list_screen() {
 	
 var scrollbar_index = offsetScroll.membersOffset;
+var memberslist_offset = offsetArray[scrollbar_index];
 var xx = bleed_left;
 var yy = header_ypos_end+header_submenu_height;
 var ww = app_width;
 var hh = app_height-yy;
 var sep = pct_y(16);
 var height = pct_y(5.2);
+var ypos = yy-(memberslist_offset*sep);
 
 // build surface
-//element_overlay_memberlist_draw(xx,yy,ww,hh,sep,height,MEMBER_list);
 
 // header
 if surface_set(surfaces.header)
@@ -18,44 +19,17 @@ if surface_set(surfaces.header)
 	element_header_delete_draw();
 	surface_reset_target();
 	}
+
+// body
+if surface_set(surfaces.scroll)
+	{
+	element_overlay_memberlist_draw(xx,0,ww,hh,sep,height,MEMBER_list);
+	surface_reset_target();
+	}
+
 	
 // draw surface
 surface_draw(surfaces.header,0,0,1);
-
-
-// click //
-
-// header
-element_header_step();
-element_header_delete_step();
-
-// body
-//element_overlay_memberlist_step(xx,yy,ww,hh,sep,MEMBER_list,MEMBER_list,scrollbar_index);
-
-
-if androidBack
-screen_goto_prev();
-
-exit
-	
-var selection = draw_members_list_overlay(xx,yy,ww,hh,sep,height,MEMBER_list,MEMBER_list,scrollbar_index);
-if selection != undefined
-		{
-		var member_pointer = selection[0];
-		var memberID = member_pointer.memberID;
-		
-		subheader_member = 0; // info
-		member_index = database_member_get_index(memberID);			
-						
-		scr_member_groups_sort(member_pointer.groups,true);
-						
-		// assign struct
-		member_struct = member_pointer;
-		workingStruct = struct_copy(member_struct);			
-						
-		screen_change(screen.memberProfileView,navbar.hidden);
-		}
-
 
 var sort_index = META_data.memberSort;
 var header_arr = ["A-Z","Favorites"];
@@ -73,8 +47,35 @@ if (header != undefined)
 			offsetArrayStart[scrollbar_index] = 0;
 			}
 		}
+		
+surface_draw(surfaces.scroll,0,ypos,1);
 
 
-	
+// click //
 
+// header
+element_header_step();
+element_header_delete_step();
+
+// body
+var selection = element_overlay_memberlist_step(xx,yy,ww,hh,sep,MEMBER_list,MEMBER_list,scrollbar_index);
+if selection != undefined
+		{
+		var member_pointer = selection[0];
+		var memberID = member_pointer.memberID;
+		
+		subheader_member = 0; // info
+		member_index = database_member_get_index(memberID);			
+						
+		scr_member_groups_sort(member_pointer.groups,true);
+						
+		// assign struct
+		member_struct = member_pointer;
+		workingStruct = struct_copy(member_struct);			
+						
+		screen_change(screen.memberProfileView,navbar.hidden);
+		}
+
+if androidBack
+screen_goto_prev();
 }
