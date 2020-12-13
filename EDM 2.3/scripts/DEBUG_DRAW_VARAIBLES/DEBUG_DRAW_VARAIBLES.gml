@@ -227,4 +227,30 @@ draw_text_height(xx,yy+((ind+9)*sep),"DPI_Y: "+string(DPI_Y),height);
 debugyoff += 13;
 }
 
+
+function debug_draw_active_surfaces(xx,yy,ind,sep,height) {
+	
+var num = surfaces.enumcount
+for(var i=0;i<num;i++)
+	{
+	var off_pos = (ind+i);
+	var surf_active = surface_exists(surface_array[i]);
+	var str = pick("Active","Disabled",!surf_active);
+	
+	draw_text_height(xx,yy+(off_pos*sep),"Surface["+string(i)+"]: "+string(str),height);
+	
+	if surf_active
+		{
+		var surf = surface_array[i];
+		var ww = surface_get_width(surf);
+		var hh = surface_get_height(surf);
+		
+		draw_text_height(xx+px(20),yy+(off_pos*sep),string(ww)+" x "+string(height),height);
+		}
+	}
+
+debugyoff += num+2;	
+}
+
+
 goto_draw_debug();
