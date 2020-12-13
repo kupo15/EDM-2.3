@@ -18,7 +18,7 @@ if surface_set(surfaces.header)
 	}
 
 // body
-if surface_set(surfaces.scroll0)
+if surface_set(surfaces.clean)
 	{
 	element_home_active_event_draw();
 	element_home_create_event_draw();
@@ -27,7 +27,7 @@ if surface_set(surfaces.scroll0)
 
 // draw surfaces
 surface_draw(surfaces.header,0,0,1);
-surface_draw(surfaces.scroll0,0,0,1);
+surface_draw(surfaces.clean,0,0,1);
 
 
 // click //

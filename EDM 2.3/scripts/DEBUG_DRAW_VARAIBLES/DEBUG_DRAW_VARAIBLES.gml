@@ -236,8 +236,9 @@ for(var i=0;i<num;i++)
 	var off_pos = (ind+i);
 	var surf_active = surface_exists(surface_array[i]);
 	var str = pick("Active","Disabled",!surf_active);
+	var label = ["header","sidebar","sideProfile","clean","dirty","scroll"];
 	
-	draw_text_height(xx,yy+(off_pos*sep),"Surface["+string(i)+"]: "+string(str),height);
+	draw_text_height(xx,yy+(off_pos*sep),"Surface["+string(label[i])+"]: "+string(str),height);
 	
 	if surf_active
 		{
@@ -245,7 +246,7 @@ for(var i=0;i<num;i++)
 		var ww = surface_get_width(surf);
 		var hh = surface_get_height(surf);
 		
-		draw_text_height(xx+px(20),yy+(off_pos*sep),string(ww)+" x "+string(height),height);
+		draw_text_height(xx+px(26),yy+(off_pos*sep),string(ww)+" x "+string(height),height);
 		}
 	}
 

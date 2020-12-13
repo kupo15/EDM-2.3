@@ -26,6 +26,7 @@ xscale = 1;
 if argument[5] == undefined
 yscale = 1;
 	
+if surface_exists(surface_array[surface_id])
 draw_surface_ext(surface_array[surface_id],xx,yy,xscale,yscale,0,c_white,alpha);
 
 return surface_array[surface_id];
@@ -53,7 +54,7 @@ if !surface_exists(surface_array[surface_ind])
 if surfaceCanBuild_array[surface_ind]
 	{
 	surfaceCanBuild_array[surface_ind] = false; // can't rebuild again
-	surfaceActive_array[surface_ind] = true; // set to active
+	//surfaceActive_array[surface_ind] = true; // set to active
 	
 	surface_set_target(surface_array[surface_ind]); // set the surface target
 	draw_clear_alpha(c_white,0); // clear the surface

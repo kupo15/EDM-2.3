@@ -38,9 +38,7 @@ sidebar,
 sidebarProfile,
 clean,
 dirty,
-scroll0,
-scroll1,
-scroll2,
+scroll,
 	
 enumcount,
 }
