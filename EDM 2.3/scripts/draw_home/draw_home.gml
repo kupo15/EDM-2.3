@@ -33,7 +33,7 @@ surface_draw(surfaces.scroll0,0,0,1);
 // click //
 
 // header
-element_header_step(headerType.bars,headerType.none);
+element_header_step();
 element_header_delete_step();
 
 // body

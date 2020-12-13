@@ -82,6 +82,7 @@ return screenIndex; // return previous screen
 
 function screen_goto_actions() {
 
+scr_surface_rebuild(surfaces.header);
 vk_hide();
 
 switch screenIndex

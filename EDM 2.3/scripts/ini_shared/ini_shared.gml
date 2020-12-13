@@ -10,6 +10,10 @@ ini_highlight_vars();
 ini_cursor_vars();
 ini_resolution_device_tests();
 
+// header
+headerLeft = 0;
+headerRight = 0;
+
 // surfaces
 surface_array = array_create(surfaces.enumcount,-1);
 surfaceCanBuild_array = array_create(surfaces.enumcount,false);

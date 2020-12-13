@@ -5,6 +5,9 @@ function element_header_draw(header_left,header_right,header_string,headerHeight
 /// @param [headerHeightScale
 /// @param [header_color]
 
+headerLeft = header_left;
+headerRight = header_right;
+
 if argument[3] == undefined
 headerHeight = header_height;
 
@@ -32,7 +35,7 @@ var region = header_height;
 
 for(var i=0;i<2;i++)
 	{
-	var header_type = pick(header_left,header_right,i==1);
+	var header_type = pick(headerLeft,headerRight,i==1);
 	var xpos = pick(0,pct_x(88),i==1);
 	
 	switch header_type 
@@ -91,12 +94,12 @@ for(var i=0;i<2;i++)
 	}
 }
 
-function element_header_step(header_left,header_right) {
+function element_header_step() {
 	
 if !mode_delete && (submenu < 0)
 for(var i=0;i<2;i++)
 	{
-	var header_type = pick(header_left,header_right,i==1);
+	var header_type = pick(headerLeft,headerRight,i==1);
 	var xpos = pick(0,pct_x(88),i==1);
 		
 	if header_type == headerType.bars && click_region_released(xpos,bleed_top,pct_x(10),header_height,true,submenu)

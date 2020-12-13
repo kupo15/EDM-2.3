@@ -7,15 +7,39 @@ var ww = app_width;
 var hh = app_height-yy;
 var sep = pct_y(16);
 var height = pct_y(5.2);
-	
-if !surface_exists(textSurf)
+
+// build surface
+//element_overlay_memberlist_draw(xx,yy,ww,hh,sep,height,MEMBER_list);
+
+// header
+if surface_set(surfaces.header)
 	{
-	textSurf = surface_create(app_width,app_height);	
+	element_header_draw(headerType.back,headerType.plus,"Members");
+	element_header_delete_draw();
+	surface_reset_target();
+	}
 	
-	surface_set_target(textSurf);
+// draw surface
+surface_draw(surfaces.header,0,0,1);
+
+
+// click //
+
+// header
+element_header_step();
+element_header_delete_step();
+
+// body
+//element_overlay_memberlist_step(xx,yy,ww,hh,sep,MEMBER_list,MEMBER_list,scrollbar_index);
+
+
+if androidBack
+screen_goto_prev();
+
+exit
 	
-	var selection = draw_members_list_overlay(xx,yy,ww,hh,sep,height,MEMBER_list,MEMBER_list,scrollbar_index);
-	if selection != undefined
+var selection = draw_members_list_overlay(xx,yy,ww,hh,sep,height,MEMBER_list,MEMBER_list,scrollbar_index);
+if selection != undefined
 		{
 		var member_pointer = selection[0];
 		var memberID = member_pointer.memberID;
@@ -32,8 +56,6 @@ if !surface_exists(textSurf)
 		screen_change(screen.memberProfileView,navbar.hidden);
 		}
 
-
-draw_screen_header(headerType.back,headerType.plus,"Members");
 
 var sort_index = META_data.memberSort;
 var header_arr = ["A-Z","Favorites"];
@@ -52,19 +74,7 @@ if (header != undefined)
 			}
 		}
 
-	surface_reset_target();
-	}
-	
-	
-	
-var ppos = 0;
-
-if mouse_check_button(mb_left)
-ppos = mouse_ydist;
-	
-draw_surface(textSurf,0,ppos);
 
 	
-if androidBack
-screen_goto_prev();
+
 }
