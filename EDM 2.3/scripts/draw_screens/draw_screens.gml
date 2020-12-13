@@ -19,11 +19,6 @@ if androidBack
 
 // draw screens
 draw_background_screen();
-
-if screenIndex == screen.appStartup
-draw_appStartup();
-else
-script_execute(drawScreen[screenIndex]);
 		
 // draw numpad
 //numpad_value = draw_numpad_golf(numpad_value);
@@ -32,9 +27,12 @@ script_execute(drawScreen[screenIndex]);
 
 //draw_darken_screen();
 //draw_navbar();
-draw_sidebar_main_menu();
 //
 //// popup overlays
+//draw_sidebar_main_menu();
+
+draw_overlay_sidebar();
+
 //draw_overlay_calendar();
 ////draw_overlay_circle_button();
 //	

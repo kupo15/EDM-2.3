@@ -46,6 +46,10 @@ RESOLUTION_HEIGHT = win_height;
 camera_set_view_size(MAIN_CAMERA,RESOLUTION_WIDTH,RESOLUTION_HEIGHT);
 surface_resize(application_surface,RESOLUTION_WIDTH,RESOLUTION_HEIGHT);
 display_set_gui_size(RESOLUTION_WIDTH,RESOLUTION_HEIGHT); // set GUI
+
+
+// update layout
+layout_normal();
 }
 
 

@@ -9,40 +9,40 @@ function draw_home() {
 
 draw_clear(c_lt_gray);
 
-// ongoing events
-var xx = pct_x(1);
-var yy = pct_y(22);
-var ww = app_width-xx-xx;
-var hh = pct_y(40);
+// header
+if surface_set(surfaces.header)
+	{
+	element_header_draw(headerType.bars,headerType.none,"Hustle");
+	element_header_delete_draw();
+	surface_reset_target();
+	}
 
-var col = c_white;
+// body
+if surface_set(surfaces.scroll0)
+	{
+	element_home_active_event_draw();
+	element_home_create_event_draw();
+	surface_reset_target();
+	}
 
-draw_roundrect_color(xx,yy,xx+ww,yy+hh,col,col,false);
+// draw surfaces
+surface_draw(surfaces.header,0,0,1);
+surface_draw(surfaces.scroll0,0,0,1);
 
-if click_region_released(xx,yy,ww,hh,true,navbar.hidden,1)
-{}
+
+// click //
 
 // header
-draw_screen_header(headerType.bars,headerType.none,"Hustle");
+element_header_step(headerType.bars,headerType.none);
+element_header_delete_step();
 
-var xx = app_width*0.5;
-var yy = pct_y(22);
-var height = pct_y(7);
+// body
+element_home_active_event_step();
 
-draw_text_height(xx,yy,"Active Events",height,undefined,undefined,fa_center);
-
-#region create even button
-var hh = pct_y(15);
-var height = pct_y(7);
-var xx = pct_x(1);
-var yy = app_height-hh-pct_y(1);
-var ww = app_width-xx-xx;
-var col = header_color;
-
-if click_button(xx,yy,"Create an Event",height,c_white,ww,hh,col,true,false,navbar.hidden)
+if element_home_create_event_step()
 screen_change(screen.eventSetup);
 
-#endregion
+
 
 exit;
 debugyoff = 0;

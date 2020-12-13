@@ -31,3 +31,22 @@ none,
 calendar,
 calendarYear
 }
+
+enum surfaces {
+header,
+sidebar,
+sidebarProfile,
+clean,
+dirty,
+scroll0,
+scroll1,
+scroll2,
+	
+enumcount,
+}
+
+enum headerMode {
+main,
+trash,
+	
+}

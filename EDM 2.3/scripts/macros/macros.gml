@@ -49,7 +49,7 @@
 #macro cursor_width pct_x(0.15)
 
 // sidebar
-#macro side_menu_width 870
+#macro side_menu_width px(45.3)
 #macro SIDEBAR_LERP 0.16
 
 // clicking
@@ -67,6 +67,8 @@
 
 // misc
 #macro dialogue draw_dialogue_box(xx,yy,ww,hh,col,sub)
+#macro px pct_x
+#macro py pct_y
 
 // debug
 #macro db show_debug_message

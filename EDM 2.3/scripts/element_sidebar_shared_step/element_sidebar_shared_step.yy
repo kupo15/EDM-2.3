@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "zUnused Scripts",
-    "path": "folders/zUnused Scripts.yy",
+    "name": "Sidebar",
+    "path": "folders/Elements/Overlays/Sidebar.yy",
   },
   "resourceVersion": "1.0",
-  "name": "draw_sidebar_main_menu",
+  "name": "element_sidebar_shared_step",
   "tags": [],
   "resourceType": "GMScript",
 }

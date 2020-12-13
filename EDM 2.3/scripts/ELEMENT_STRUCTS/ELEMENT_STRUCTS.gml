@@ -1,36 +1,15 @@
 
 function layout_normal() {
 
+// home screen
+element_home_active_event();
+element_home_create_event();
 
-element_numpad = {
-	
-xx: 0,
-yy: app_height-470,
+// overlays
+element_overlay_numpad();
+element_overlay_circle_button();
 
-vsep: 95,
-hsep1: 105,
-hsep2: 145,
-
-height: 50,
-	
-}
-
-element_circle_button = {
-	
-active: false,
-xx: pct_x(83.33),
-yy: pct_y(80.9),
-rr: 50
-	
-}
-
-element_finished = {
-
-hh: pct_y(7.5),
-stringHeight: pct_y(3.75),
-	
-}
-
-
+// shared
+element_shared_finished();
 }
 

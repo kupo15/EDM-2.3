@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "zUnused Scripts",
-    "path": "folders/zUnused Scripts.yy",
+    "name": "EDM 2.3",
+    "path": "EDM 2.3.yyp",
   },
   "resourceVersion": "1.0",
-  "name": "draw_sidebar_main_menu",
+  "name": "element_home_active_event",
   "tags": [],
   "resourceType": "GMScript",
 }

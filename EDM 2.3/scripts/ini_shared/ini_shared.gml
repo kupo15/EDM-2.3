@@ -11,7 +11,9 @@ ini_cursor_vars();
 ini_resolution_device_tests();
 
 // surfaces
-surf = -1;
+surface_array = array_create(surfaces.enumcount,-1);
+surfaceCanBuild_array = array_create(surfaces.enumcount,false);
+surfaceActive_array = array_create(surfaces.enumcount,false);
 
 deviceTestIndex = 0;
 testingScale = 1;

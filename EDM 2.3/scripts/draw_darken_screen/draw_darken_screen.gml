@@ -3,6 +3,10 @@ function draw_background_screen() {
 // draw background
 draw_clear(c_white);
 
+if screenIndex == screen.appStartup
+draw_appStartup();
+else
+script_execute(drawScreen[screenIndex]);
 }
 
 function draw_darken_screen() {

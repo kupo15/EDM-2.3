@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "zUnused Scripts",
-    "path": "folders/zUnused Scripts.yy",
+    "name": "Numpad",
+    "path": "folders/Elements/Overlays/Numpad.yy",
   },
   "resourceVersion": "1.0",
-  "name": "draw_sidebar_main_menu",
+  "name": "element_overlay_numpad",
   "tags": [],
   "resourceType": "GMScript",
 }

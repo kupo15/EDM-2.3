@@ -8,23 +8,29 @@ var hh = app_height-yy;
 var sep = pct_y(16);
 var height = pct_y(5.2);
 	
-var selection = draw_members_list_overlay(xx,yy,ww,hh,sep,height,MEMBER_list,MEMBER_list,scrollbar_index);
-if selection != undefined
+if !surface_exists(textSurf)
 	{
-	var member_pointer = selection[0];
-	var memberID = member_pointer.memberID;
+	textSurf = surface_create(app_width,app_height);	
+	
+	surface_set_target(textSurf);
+	
+	var selection = draw_members_list_overlay(xx,yy,ww,hh,sep,height,MEMBER_list,MEMBER_list,scrollbar_index);
+	if selection != undefined
+		{
+		var member_pointer = selection[0];
+		var memberID = member_pointer.memberID;
 		
-	subheader_member = 0; // info
-	member_index = database_member_get_index(memberID);			
+		subheader_member = 0; // info
+		member_index = database_member_get_index(memberID);			
 						
-	scr_member_groups_sort(member_pointer.groups,true);
+		scr_member_groups_sort(member_pointer.groups,true);
 						
-	// assign struct
-	member_struct = member_pointer;
-	workingStruct = struct_copy(member_struct);			
+		// assign struct
+		member_struct = member_pointer;
+		workingStruct = struct_copy(member_struct);			
 						
-	screen_change(screen.memberProfileView,navbar.hidden);
-	}
+		screen_change(screen.memberProfileView,navbar.hidden);
+		}
 
 
 draw_screen_header(headerType.back,headerType.plus,"Members");
@@ -34,18 +40,31 @@ var header_arr = ["A-Z","Favorites"];
 var offset = offsetArray[offsetScroll.memberSortUnderline];
 var header = draw_screen_header_submenu(offset,sort_index,0,ww,1,header_arr);
 if (header != undefined)
-	{
-	scr_memberlist_sort(header);
-	app_save;
-	
-	// jump to top
-	if META_data.memberSort == member_sort.favorite
 		{
-		offsetArray[scrollbar_index] = 0;
-		offsetArrayStart[scrollbar_index] = 0;
+		scr_memberlist_sort(header);
+		app_save;
+	
+		// jump to top
+		if META_data.memberSort == member_sort.favorite
+			{
+			offsetArray[scrollbar_index] = 0;
+			offsetArrayStart[scrollbar_index] = 0;
+			}
 		}
-	}
 
+	surface_reset_target();
+	}
+	
+	
+	
+var ppos = 0;
+
+if mouse_check_button(mb_left)
+ppos = mouse_ydist;
+	
+draw_surface(textSurf,0,ppos);
+
+	
 if androidBack
 screen_goto_prev();
 }

@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "zUnused Scripts",
-    "path": "folders/zUnused Scripts.yy",
+    "name": "Surfaces",
+    "path": "folders/Android App Library/Surfaces.yy",
   },
   "resourceVersion": "1.0",
-  "name": "draw_sidebar_main_menu",
+  "name": "SURFACES_FUNCTIONS",
   "tags": [],
   "resourceType": "GMScript",
 }

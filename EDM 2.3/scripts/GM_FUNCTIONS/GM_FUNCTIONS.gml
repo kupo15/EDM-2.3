@@ -74,26 +74,28 @@ hh = 1;
 draw_sprite_stretched_ext(spr_pixel,0,xx,yy,ww,hh,col,alpha);
 }
 	
-function draw_rectangle_pixel(xx,yy,ww,hh,col,outline,pct) {
+function draw_rectangle_pixel(xx,yy,ww,hh,col,outline,alpha,pct) {
 
-if argument[6] == true
+if argument[6] == undefined
+alpha = 1;
+
+if argument[7] == true
 	{
 	xx = x_pct_x(xx);
 	yy = y_pct_y(yy);
 	ww = x_pct_x(ww);
 	hh = y_pct_y(hh);
-	
 	}
 
 if outline
 	{
-	draw_sprite_ext(spr_pixel,0,xx,yy,ww,1,0,col,1); // top line
-	draw_sprite_ext(spr_pixel,0,xx,yy,1,hh,0,col,1); // left line
-	draw_sprite_ext(spr_pixel,0,xx,yy+hh,ww,1,0,col,1); // bottom line
-	draw_sprite_ext(spr_pixel,0,xx+ww,yy,1,hh,0,col,1); // right line
+	draw_sprite_ext(spr_pixel,0,xx,yy,ww,1,0,col,alpha); // top line
+	draw_sprite_ext(spr_pixel,0,xx,yy,1,hh,0,col,alpha); // left line
+	draw_sprite_ext(spr_pixel,0,xx,yy+hh,ww,1,0,col,alpha); // bottom line
+	draw_sprite_ext(spr_pixel,0,xx+ww,yy,1,hh,0,col,alpha); // right line
 	}
 else
-draw_sprite_stretched_ext(spr_pixel,0,xx,yy,ww,hh,col,1);
+draw_sprite_stretched_ext(spr_pixel,0,xx,yy,ww,hh,col,alpha);
 }	
 	
 function funct_mouse_wheel(scale) {

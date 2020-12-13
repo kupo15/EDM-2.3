@@ -12,7 +12,6 @@ headerHeight = header_height;
 if argument[4] == undefined
 bg_col = header_color;
 
-
 var xx = app_width*0.5;
 var yy = 0;
 var ww = app_width;
