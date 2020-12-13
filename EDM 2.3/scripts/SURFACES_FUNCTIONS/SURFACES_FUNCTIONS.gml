@@ -1,6 +1,14 @@
 
 function scr_surface_rebuild(surface_ind) {
+/// @param [surface_ind]
 
+if argument[0] == undefined // rebuild all
+	{
+	var size = surfaces.enumcount;
+	for(var	i=0;i<size;i++)
+	surface_free(surface_array[i]);
+	}
+else
 surfaceCanBuild_array[surface_ind] = true; // can rebuild
 }
 
@@ -29,7 +37,6 @@ function surface_set(surface_ind) {
 if !surface_exists(surface_array[surface_ind])
 	{
 	surfaceCanBuild_array[surface_ind] = true; // can rebuild
-	
 	switch surface_ind
 		{
 		case surfaces.header: surface_array[surface_ind] = surface_create(app_width,header_ypos_end); break;

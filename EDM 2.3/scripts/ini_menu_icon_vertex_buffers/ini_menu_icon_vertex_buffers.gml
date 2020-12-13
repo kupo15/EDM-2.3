@@ -458,7 +458,7 @@ var vbuff = global.vbuffer;
 vertex_begin(vbuff,global.vformat_pos_col);	
 	
 // darkened screen
-vbuffer_darkened_screen(vbuff,darken_alpha);
+//vbuffer_darkened_screen(vbuff,darken_alpha);
 
 	
 // profile portion	

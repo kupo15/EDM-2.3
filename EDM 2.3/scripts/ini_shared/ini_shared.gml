@@ -1,5 +1,5 @@
 
-function ini_shared(){
+function ini_shared() {
 
 device_mouse_dbclick_enable(false);
 draw_set_circle_precision(64);

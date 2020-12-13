@@ -42,8 +42,6 @@ element_home_active_event_step();
 if element_home_create_event_step()
 screen_change(screen.eventSetup);
 
-
-
 exit;
 debugyoff = 0;
 debug_device_info(20,200,0,30,30);
