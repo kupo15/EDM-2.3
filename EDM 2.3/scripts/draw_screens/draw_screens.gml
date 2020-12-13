@@ -29,8 +29,6 @@ draw_background_screen();
 //draw_navbar();
 //
 //// popup overlays
-//draw_sidebar_main_menu();
-
 draw_overlay_sidebar();
 
 //draw_overlay_calendar();
@@ -48,5 +46,4 @@ if kvActive // || timer[timerIndex.vk_switch] > -1
 
 if androidBack
 vk_hide();
-
 }

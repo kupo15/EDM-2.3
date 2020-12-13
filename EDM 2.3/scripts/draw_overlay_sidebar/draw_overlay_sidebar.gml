@@ -17,6 +17,8 @@ if surface_set(surfaces.sidebarProfile)
 var offset = 1-offsetArray[offsetScroll.sidebarXoff];
 var alpha = (1-offset)*0.5;
 
+draw_rectangle_pixel(0,0,app_width,app_height,c_black,false,alpha); // darken screen
+
 var xx_hide = -side_menu_width-px(1.5);
 var xx = fade_offset_set(offset,xx_hide);
 

@@ -1,5 +1,5 @@
-function draw_sidebar_main_menu() {
-	
+/*function draw_sidebar_main_menu() {
+
 var offset = 1-offsetArray[offsetScroll.sidebarXoff];
 var alpha = (1-offset)*0.5;
 var xx_off = fade_offset_set(offset,-side_menu_width-30);
