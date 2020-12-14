@@ -100,7 +100,7 @@ draw_text_height(10,yy+off_pos,string(i)+": "+string(surface_ind),30)
 	if click_region_clamp_set(ww*0.83,yy,off_pos,ww*0.17,sep,hh,noone,false,undefined,sub,i)
 	&& click_region_pressed(ww*0.83,yy+off_pos,ww*0.17,sep,false,sub)
 		{
-		scr_surface_rebuild(surface_ind);
+		scr_surface_rebuild(surfaces.scroll+surface_ind);
 
 		canClick = false;
 		canClickPressed = true;

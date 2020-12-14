@@ -8,7 +8,7 @@ if offset > 0.99
 	if surface_exists(surface_array[surfaces.sidebar])
 		{
 		surface_free(surface_array[surfaces.sidebar]);
-		surface_free(surface_array[surfaces.sidebarProfile]);
+		//surface_free(surface_array[surfaces.sidebarProfile]);
 		}
 	exit;
 	}

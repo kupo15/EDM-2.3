@@ -16,6 +16,9 @@ scr_sidebar_lerp(offsetScroll.teamsUnderline,teamlist_index,0.5,false); // under
 scr_sidebar_lerp(offsetScroll.memberSortUnderline,META_data.memberSort,0.5,false); // underline
 scr_sidebar_lerp(offsetScroll.memberProfileUnderline,subheader_member,0.5,false); // underline
 
+// alpha
+scr_sidebar_lerp(offsetScroll.headerDeleteAlpha,mode_delete,0.19); // sidebar darken screen
+
 // darken screen
 var condition = (submenu == navbar.sidebar) || (submenu == navbar.profileChange)
 scr_sidebar_lerp(offsetScroll.sidebarDarken,condition,SIDEBAR_LERP); // sidebar darken screen
@@ -24,14 +27,6 @@ scr_sidebar_lerp(offsetScroll.sidebarDarken,condition,SIDEBAR_LERP); // sidebar 
 // alpha
 if alpha_lerp != alpha_lerp_end
 alpha_lerp = lerp(alpha_lerp,alpha_lerp_end,fade_spd);
-
-
-// header delete
-headerDeleteOffset = mode_delete;
-
-if headerDeleteOffset != headerDeleteOffsetDisp
-headerDeleteOffsetDisp = lerp(headerDeleteOffsetDisp,headerDeleteOffset,0.19);
-	
 }
 
 function scr_sidebar_lerp(ind,condition,lerp_spd,do_clamp) {

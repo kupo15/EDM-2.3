@@ -19,7 +19,7 @@ var hh = header_height;
 var height = header_font_height;
 
 var del_col = make_color_rgb(0,137,123); // delete header color
-var col = merge_color(bg_col,del_col,headerDeleteOffsetDisp);
+var col = merge_color(bg_col,del_col,offsetArray[offsetScroll.headerDeleteAlpha]);
 
 vertex_buffer_header_rect(0,0,ww,bleed_top,hh+bleed_top,header_buffer_color,col,1);
 
@@ -39,7 +39,7 @@ repeat 2
 		var yy = header_ypos_end*0.5;
 		var thick = y_pct_y(6);
 		
-		draw_menu_bars(xpos+xx,yy,ww,hh,thick,c_white,1-headerDeleteOffsetDisp);
+		draw_menu_bars(xpos+xx,yy,ww,hh,thick,c_white,1-offsetArray[offsetScroll.headerDeleteAlpha]);
 
 		// clicked on bars
 		if !mode_delete && (submenu < 0)
@@ -57,7 +57,7 @@ repeat 2
 		var rr = header_height*0.035;
 		var sep = header_height*0.067;
 		
-		draw_menu_dots(xpos+xx,yy,rr,sep,c_white,1-headerDeleteOffsetDisp);
+		draw_menu_dots(xpos+xx,yy,rr,sep,c_white,1-offsetArray[offsetScroll.headerDeleteAlpha]);
 		
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
@@ -70,7 +70,7 @@ repeat 2
 		var ww = header_height*0.43;
 		var hh = header_height*0.44;
 		
-		draw_menu_arrow(xpos+xx,yy,ww,hh,4,1,c_white,1-headerDeleteOffsetDisp);
+		draw_menu_arrow(xpos+xx,yy,ww,hh,4,1,c_white,1-offsetArray[offsetScroll.headerDeleteAlpha]);
 
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
@@ -81,7 +81,7 @@ repeat 2
 		var xx = x_pct_x(15);
 		var yy = bleed_top;
 		
-		draw_icon_height_centered_color(ico_trash3,yy,xpos,yy,pct_x(10),region,header_height*0.44,c_white,1-headerDeleteOffsetDisp); // trash icon
+		draw_icon_height_centered_color(ico_trash3,yy,xpos,yy,pct_x(10),region,header_height*0.44,c_white,1-offsetArray[offsetScroll.headerDeleteAlpha]); // trash icon
 
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
@@ -91,7 +91,7 @@ repeat 2
 		{
 		var yy = bleed_top+pct_y(6.5);
 		
-		draw_plus_button(xpos+pct_x(5),yy,region,c_white,undefined,undefined,1-headerDeleteOffsetDisp); // plus button
+		draw_plus_button(xpos+pct_x(5),yy,region,c_white,undefined,undefined,1-offsetArray[offsetScroll.headerDeleteAlpha]); // plus button
 		
 		if !mode_delete && (submenu < 0)
 		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
@@ -107,7 +107,7 @@ repeat 2
 draw_header_delete(bleed_top,app_width,header_height);
 
 // draw header text
-draw_text_height_middled_color(pct_x(15),bleed_top,header_string,header_height,c_white,height,1-headerDeleteOffsetDisp,undefined,undefined);
+draw_text_height_middled_color(pct_x(15),bleed_top,header_string,header_height,c_white,height,1-offsetArray[offsetScroll.headerDeleteAlpha],undefined,undefined);
 
 return return_val;
 }
@@ -158,7 +158,7 @@ return val;
 function draw_header_delete(yy,ww,hh){
 
 // don't draw
-if headerDeleteOffsetDisp < 0.1
+if offsetArray[offsetScroll.headerDeleteAlpha] < 0.1
 exit;
 
 var xx = 0;
@@ -166,7 +166,7 @@ var size = header_height*0.3;
 var xoff = (hh-size)*0.8;
 var yoff = (hh-size)*0.5;
 
-draw_menu_xout(xx+xoff,yy+yoff,size,size,x_pct_x(5),c_white,headerDeleteOffsetDisp); // draw xout
+draw_menu_xout(xx+xoff,yy+yoff,size,size,x_pct_x(5),c_white,offsetArray[offsetScroll.headerDeleteAlpha]); // draw xout
 
 if mode_delete && click_region_released(0,yy,pct_x(10),hh,true,submenu,1)
 	{
@@ -176,9 +176,9 @@ if mode_delete && click_region_released(0,yy,pct_x(10),hh,true,submenu,1)
 
 // clicked on trash
 var xx = pct_x(88);
-draw_icon_height_centered_color(ico_trash3,0,xx,yy,hh,hh,header_height*0.55,c_white,headerDeleteOffsetDisp); // trash icon
+draw_icon_height_centered_color(ico_trash3,0,xx,yy,hh,hh,header_height*0.55,c_white,offsetArray[offsetScroll.headerDeleteAlpha]); // trash icon
 
-draw_set_alpha(headerDeleteOffsetDisp);
+draw_set_alpha(offsetArray[offsetScroll.headerDeleteAlpha]);
 
 if mode_delete && click_region_released(xx,yy,hh,hh,true,submenu,1)
 delete_list_delete_array(deleteList,mode_delete_list_id);
@@ -192,7 +192,7 @@ var size = ds_list_size(deleteList);
 for(var i=0;i<size;i++)
 count += deleteList[| i];
 
-draw_text_height_middled_color(pct_x(13),yy,string(count)+" selected",hh,c_white,header_height*0.44,headerDeleteOffsetDisp); // draw number of items to delete
+draw_text_height_middled_color(pct_x(13),yy,string(count)+" selected",hh,c_white,header_height*0.44,offsetArray[offsetScroll.headerDeleteAlpha]); // draw number of items to delete
 
 draw_set_alpha(1);
 }

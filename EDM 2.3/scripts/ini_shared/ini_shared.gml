@@ -164,7 +164,4 @@ dayOffsetEnd = 0;
 year_offset = 0;
 year_offset_start = 0;
 year_offset_end = 0;
-	
-headerDeleteOffsetDisp = 0;
-headerDeleteOffset = 0;
 }

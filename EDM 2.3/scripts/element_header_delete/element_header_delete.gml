@@ -5,7 +5,7 @@ var yy = bleed_top;
 var ww = app_width;
 var hh = header_height;
 var del_col = make_color_rgb(0,137,123); // delete header color
-var alpha = headerDeleteOffsetDisp;
+var alpha = offsetArray[offsetScroll.headerDeleteAlpha];
 
 if alpha < 0.1
 exit;

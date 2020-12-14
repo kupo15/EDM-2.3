@@ -44,6 +44,8 @@ if (header != undefined)
 			offsetArrayStart[scrollbar_index] = 0;
 			}
 		}
+		
+		db(offsetArray[offsetScroll.headerDeleteAlpha])
 
 // click //
 

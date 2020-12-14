@@ -39,6 +39,8 @@ groupsOffset,
 currencyOffset,
 calendarOffset,
 
+headerDeleteAlpha,
+
 sidebarDarken,
 
 enumcount,
