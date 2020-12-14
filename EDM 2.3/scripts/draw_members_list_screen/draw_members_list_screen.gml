@@ -19,7 +19,7 @@ if surface_set(surfaces.header)
 	}
 
 // body
-element_overlay_memberlist_draw(xx,0,ww,hh,sep,height,MEMBER_list);
+element_overlay_memberlist_draw(xx,memberslist_offset*sep,ww,hh,sep,height,MEMBER_list);
 
 // draw surface
 surface_draw(surfaces.scroll,0,ypos,1);

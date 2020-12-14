@@ -35,7 +35,6 @@ calendarYear
 enum surfaces {
 header,
 sidebar,
-sidebarProfile,
 clean,
 dirty,
 

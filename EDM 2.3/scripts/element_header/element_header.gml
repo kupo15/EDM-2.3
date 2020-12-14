@@ -19,7 +19,7 @@ var yy = 0;
 var ww = app_width;
 var hh = header_height;
 var height = header_font_height;
-var alpha = 1-offsetArray[offsetScroll.headerDeleteAlpha];
+var alpha = 1;
 
 //var del_col = make_color_rgb(0,137,123); // delete header color
 //var col = merge_color(bg_col,del_col,offsetArray[offsetScroll.headerDeleteAlpha]);

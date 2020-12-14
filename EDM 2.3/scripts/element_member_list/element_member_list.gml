@@ -1,23 +1,32 @@
 function element_overlay_memberlist_draw(xx,yy,ww,hh,sep,height,source_array) {
 	
-var surf_hh = next_pow2(app_height);
+var surf_hh = (app_height);
 var size = array_length(source_array);
 var rows = surf_hh/sep; // number of rows per surface
+
 
 var total_height = size*sep; // how long the list is
 var surf_needed = (total_height/surf_hh); // how many surfaces are needed
 for(var surf_count=0;surf_count<surf_needed;surf_count++)
 	{
 	var height_needed = surf_hh;
-	
+
 	if surf_count+1 == ceil(surf_needed)
 	var height_needed = frac(surf_needed)*surf_hh;
+	
+	// don't initialize pages that are offscreen
+	var surf_ypos = surf_count*surf_hh;
+	var surf_ypos_end = surf_ypos+surf_hh;		
 		
+	if (surf_ypos > (yy+surf_hh)) || (surf_ypos_end <yy)
+	continue;
+	
 	if surface_set(surfaces.scroll+surf_count,undefined,height_needed) // if you can build the surface
-		{			
+		{		
 		var start_ind = surf_count*rows;
 		var pos_start = max(0,floor(start_ind));
-		var pos_end = min(size,ceil(start_ind+rows));		
+		var pos_end = min(size,ceil(start_ind+rows));
+	
 		for(var i=pos_start;i<pos_end;i++)
 			{
 			var off_ind = i;
@@ -42,24 +51,24 @@ for(var surf_count=0;surf_count<surf_needed;surf_count++)
 				{
 				// draw favorites icon
 				case 0:	var ico_alpha = pick(0.5,1,member_favorite);
-						draw_icon_height_centered_color(ico_bookmarked,member_favorite,ww*0.85,yy+off_pos,sep,sep,sep*0.7,c_white,ico_alpha);
+						draw_icon_height_centered_color(ico_bookmarked,member_favorite,ww*0.85,off_pos,sep,sep,sep*0.7,c_white,ico_alpha);
 						break;
 				
 				// draw circle for initial
 				case 1: var r = sep*0.8*0.5;	
-						draw_circle_color(bleed_left+(sep*0.5),yy+off_pos+(sep*0.5),r,header_color,header_color,false);
+						draw_circle_color(bleed_left+(sep*0.5),off_pos+(sep*0.5),r,header_color,header_color,false);
 						break;
 		
 				// draw initial in circle
-				case 2: draw_text_height_middled_color(bleed_left+(sep*0.5),yy+off_pos,capitalize(member_initial),sep,c_white,height,1,undefined,undefined,fa_center);	
+				case 2: draw_text_height_middled_color(bleed_left+(sep*0.5),off_pos,capitalize(member_initial),sep,c_white,height,1,undefined,undefined,fa_center);	
 
 				// draw member name
-				case 3:	draw_text_height_middled_color(pct_x(14.5),yy+off_pos,member_str,sep,c_black,height*1.2,1); break;
+				case 3:	draw_text_height_middled_color(pct_x(14.5),off_pos,member_str,sep,c_black,height*1.2,1); break;
 		
 				// draw line
 				case 4:	var xpos = pct_x(14);
 		
-						draw_line_pixel(xpos,yy+off_pos+sep,ww-xpos,1,c_gray,0.7);
+						draw_line_pixel(xpos,off_pos+sep,ww-xpos,1,c_gray,0.7);
 						break;
 				}
 			}
@@ -78,7 +87,7 @@ var memberslist_offset = offsetArray[scrollbar_index];
 var memberslist_offset_start = offsetArrayStart[scrollbar_index];
 var sub = navbar.hidden;
 
-var surf_hh = next_pow2(app_height);
+var surf_hh = (app_height);
 var rows = hh/sep;
 
 var list_size = array_length(source_array);

@@ -240,7 +240,7 @@ for(var i=0;i<num;i++)
 	var off_pos = (ind+(i+1));
 	var surf_active = surface_exists(surface_array[i]);
 	var str = pick("Active","Disabled",!surf_active);
-	var label_arr = ["header","sidebar","sideProfile","clean","dirty"];
+	var label_arr = ["header","sidebar","clean","dirty"];
 	
 	if i >= array_length(label_arr)
 	var label = "scroll"+string(i-surfaces.scroll);
