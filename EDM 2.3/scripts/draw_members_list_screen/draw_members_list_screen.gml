@@ -21,13 +21,8 @@ if surface_set(surfaces.header)
 	}
 
 // body
-if surface_set(surfaces.scroll)
-	{
-	element_overlay_memberlist_draw(xx,0,ww,hh,sep,height,MEMBER_list);
-	surface_reset_target();
-	}
+element_overlay_memberlist_draw(xx,0,ww,hh,sep,height,MEMBER_list);
 
-	
 // draw surface
 surface_draw(surfaces.header,0,0,1);
 
@@ -37,6 +32,7 @@ var offset = offsetArray[offsetScroll.memberSortUnderline];
 var header = draw_screen_header_submenu(offset,sort_index,0,ww,1,header_arr);
 if (header != undefined)
 		{
+		scr_surface_rebuild(surfaces.scroll);
 		scr_memberlist_sort(header);
 		app_save;
 	

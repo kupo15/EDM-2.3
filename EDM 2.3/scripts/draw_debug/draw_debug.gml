@@ -79,7 +79,7 @@ for(var i=0;i<size;i++)
 	draw_text_height(xx,yy+((i+1)*sep),str+" - "+string(enum_name_submenu[-navbar.enumstart+1+_sub]),height);
 	}
 		
-debugyoff = 7;
+debugyoff = 3;
 
 debug_draw_active_surfaces(xx,yy,debugyoff,sep,height);
 		

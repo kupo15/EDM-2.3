@@ -146,6 +146,23 @@ var new_str = string_replace(str,"0.","");
 return real(new_str);	
 }
 	
+function next_pow2(num) {
+
+var base = 2;
+var i = 0;
+
+if base >= num
+return num
+else
+while base < num
+	{
+	base = power(2,i);
+	i++;	
+	}
+
+return base;
+}
+	
 // Android display
 function pct_x(percent,rounding) {
 

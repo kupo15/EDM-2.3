@@ -41,7 +41,7 @@ dirty,
 
 scroll, // has to be last
 	
-enumcount,
+//enumcount,
 }
 
 enum headerMode {
