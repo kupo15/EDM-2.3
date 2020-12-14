@@ -15,7 +15,6 @@ var ypos = yy-(memberslist_offset*sep);
 if surface_set(surfaces.header)
 	{
 	element_header_draw(headerType.back,headerType.plus,"Members");
-	element_header_delete_draw();
 	surface_reset_target();
 	}
 
@@ -26,6 +25,8 @@ element_overlay_memberlist_draw(xx,0,ww,hh,sep,height,MEMBER_list);
 surface_draw(surfaces.scroll,0,ypos,1);
 
 surface_draw(surfaces.header,0,0,1);
+element_header_delete_draw();
+
 
 var sort_index = META_data.memberSort;
 var header_arr = ["A-Z","Favorites"];
@@ -44,8 +45,7 @@ if (header != undefined)
 			offsetArrayStart[scrollbar_index] = 0;
 			}
 		}
-		
-		db(offsetArray[offsetScroll.headerDeleteAlpha])
+	
 
 // click //
 

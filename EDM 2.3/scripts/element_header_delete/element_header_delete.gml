@@ -69,7 +69,14 @@ if click_region_released(xx,yy,ww,hh,true,submenu,1)
 var xx = pct_x(88);
 
 if click_region_released(xx,yy,hh,hh,true,submenu,1)
-delete_list_delete_array(deleteList,mode_delete_list_id);
+	{
+	delete_list_delete_array(deleteList,mode_delete_list_id);
+	scr_surface_rebuild();
+
+	return true;
+	}
+	
+return false;
 }
 
 

@@ -40,6 +40,7 @@ currencyOffset,
 calendarOffset,
 
 headerDeleteAlpha,
+lerpAlpha,
 
 sidebarDarken,
 

@@ -17,7 +17,8 @@ scr_sidebar_lerp(offsetScroll.memberSortUnderline,META_data.memberSort,0.5,false
 scr_sidebar_lerp(offsetScroll.memberProfileUnderline,subheader_member,0.5,false); // underline
 
 // alpha
-scr_sidebar_lerp(offsetScroll.headerDeleteAlpha,mode_delete,0.19); // sidebar darken screen
+scr_sidebar_lerp(offsetScroll.headerDeleteAlpha,mode_delete,0.19); // header delete
+scr_sidebar_lerp(offsetScroll.lerpAlpha,offsetArrayEnd[offsetScroll.lerpAlpha],fade_spd); // alpha
 
 // darken screen
 var condition = (submenu == navbar.sidebar) || (submenu == navbar.profileChange)
