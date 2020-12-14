@@ -15,9 +15,9 @@ for(var surf_count=0;surf_count<surf_needed;surf_count++)
 		
 	if surface_set(surfaces.scroll+surf_count,undefined,height_needed) // if you can build the surface
 		{			
-		var pos_start = max(0,(floor(surf_count*rows)));
-		var pos_end = min(size,(pos_start+rows));
-		
+		var start_ind = surf_count*rows;
+		var pos_start = max(0,floor(start_ind));
+		var pos_end = min(size,ceil(start_ind+rows));		
 		for(var i=pos_start;i<pos_end;i++)
 			{
 			var off_ind = i;

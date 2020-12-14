@@ -11,7 +11,6 @@ var height = pct_y(5.2);
 var ypos = yy-(memberslist_offset*sep);
 
 // build surface
-
 // header
 if surface_set(surfaces.header)
 	{
@@ -24,6 +23,8 @@ if surface_set(surfaces.header)
 element_overlay_memberlist_draw(xx,0,ww,hh,sep,height,MEMBER_list);
 
 // draw surface
+surface_draw(surfaces.scroll,0,ypos,1);
+
 surface_draw(surfaces.header,0,0,1);
 
 var sort_index = META_data.memberSort;
@@ -43,9 +44,6 @@ if (header != undefined)
 			offsetArrayStart[scrollbar_index] = 0;
 			}
 		}
-		
-surface_draw(surfaces.scroll,0,ypos,1);
-
 
 // click //
 

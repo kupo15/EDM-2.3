@@ -117,12 +117,16 @@ for(var i=0;i<num;i++)
 	{
 	var surf = surface_array[surface_id+i];
 	var off_pos = i*surf_hh;
+	var end_pos = off_pos+surface_get_height(surf);
 	
+	if (yy+off_pos > app_height) || (yy+end_pos < 0)
+	continue;
+		
 	if surface_exists(surf)
 	draw_surface_ext(surf,xx,yy+off_pos,xscale,yscale,0,c_white,alpha);
 	
-	draw_line_pixel(0,yy,app_width,1,c_red,1);
-	draw_line_pixel(0,yy+surf_hh,app_width,1,c_red,1);
+	draw_line_pixel(0,yy+off_pos,app_width,1,c_red,1);
+	draw_line_pixel(0,yy+off_pos+surf_hh,app_width,1,c_red,1);
 	}
 
 return surf;
