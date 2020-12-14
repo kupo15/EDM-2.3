@@ -1,5 +1,8 @@
 function element_sidebar_profile_draw() {
 
+if submenu != navbar.profileChange
+exit;
+
 var yy = pct_y(30);
 var ww = side_menu_width;
 var hh = app_height-yy-pct_y(3);

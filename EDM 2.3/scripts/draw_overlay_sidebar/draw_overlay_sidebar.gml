@@ -16,12 +16,7 @@ if offset > 0.99
 // build surfaces
 if surface_set(surfaces.sidebar)
 	{
-	element_sidebar_draw();	
-	surface_reset_target();
-	}
-
-if surface_set(surfaces.sidebarProfile)
-	{
+	element_sidebar_draw();
 	element_sidebar_profile_draw();	
 	surface_reset_target();
 	}
@@ -36,8 +31,8 @@ var xx = fade_offset_set(offset,xx_hide);
 surface_draw(surfaces.sidebar,xx,0,1);
 
 // draw sidebar profile
-if submenu == navbar.profileChange
-surface_draw(surfaces.sidebarProfile,xx,0,1);
+//if submenu == navbar.profileChange
+//surface_draw(surfaces.sidebarProfile,xx,0,1);
 
 // click
 element_sidebar_step(xx);
