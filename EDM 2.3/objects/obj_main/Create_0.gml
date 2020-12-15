@@ -3,6 +3,8 @@ draw_set_color(c_black);
 draw_set_halign(fa_left);
 application_surface_draw_enable(false);
 
+debug_count = 0;
+
 texture_prefetch("fonts");
 texture_prefetch("icons");
 

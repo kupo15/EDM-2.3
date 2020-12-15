@@ -1,9 +1,7 @@
-function element_overlay_memberlist_draw(xx,yy,ww,hh,sep,height,source_array) {
+function element_overlay_memberlist_draw(xx,yy,ww,offset_pos,surf_hh,sep,height,source_array) {
 	
-var surf_hh = (app_height);
 var size = array_length(source_array);
 var rows = surf_hh/sep; // number of rows per surface
-
 
 var total_height = size*sep; // how long the list is
 var surf_needed = (total_height/surf_hh); // how many surfaces are needed
@@ -15,14 +13,14 @@ for(var surf_count=0;surf_count<surf_needed;surf_count++)
 	var height_needed = frac(surf_needed)*surf_hh;
 	
 	// don't initialize pages that are offscreen
-	var surf_ypos = surf_count*surf_hh;
+	var surf_ypos = yy-offset_pos+(surf_count*surf_hh);
 	var surf_ypos_end = surf_ypos+surf_hh;		
 		
-	if (surf_ypos > (yy+surf_hh)) || (surf_ypos_end <yy)
+	if (surf_ypos > app_height) || (surf_ypos_end < floor(yy))
 	continue;
-	
+
 	if surface_set(surfaces.scroll+surf_count,undefined,height_needed) // if you can build the surface
-		{		
+		{
 		var start_ind = surf_count*rows;
 		var pos_start = max(0,floor(start_ind));
 		var pos_end = min(size,ceil(start_ind+rows));
@@ -80,14 +78,13 @@ for(var surf_count=0;surf_count<surf_needed;surf_count++)
 
 
 
-function element_overlay_memberlist_step(xx,yy,ww,hh,sep,source_array,ref_array,scrollbar_index) {
+function element_overlay_memberlist_step(xx,yy,ww,hh,sep,surf_hh,source_array,ref_array,scrollbar_index) {
 	
 // set offsets
 var memberslist_offset = offsetArray[scrollbar_index];
 var memberslist_offset_start = offsetArrayStart[scrollbar_index];
 var sub = navbar.hidden;
 
-var surf_hh = (app_height);
 var rows = hh/sep;
 
 var list_size = array_length(source_array);
@@ -104,7 +101,7 @@ for(var i=pos_start;i<pos_end;i++)
 	var memberID = ref_pointer.memberID;
 	var member_pointer = database_get_pointer(MEMBER_database,memberID,"memberID");
 
-draw_text_height(10,yy+off_pos,string(i)+": "+string(surface_ind),30)
+//draw_text_height(10,yy+off_pos,string(i)+": "+string(surface_ind),30)
 
 	if click_region_clamp_set(ww*0.83,yy,off_pos,ww*0.17,sep,hh,noone,false,undefined,sub,i)
 	&& click_region_pressed(ww*0.83,yy+off_pos,ww*0.17,sep,false,sub)

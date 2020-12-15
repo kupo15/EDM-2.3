@@ -10,9 +10,6 @@ function scr_surface_create(ind) {
 
 if argument[0] == undefined
 	{
-	// get last index of current array
-	var num = array_length(surface_array);
-
 	// create a new surface
 	array_push(surface_array,-1);
 	array_push(surfaceCanBuild_array,true);
@@ -22,14 +19,23 @@ else
 	// create a new surface at position
 	surface_array[ind] = -1;
 	surfaceCanBuild_array[ind] = true;
+	
+	// make sure all inactive surfaces are -1
+	var num = array_length(surface_array);
+	for(var i=0;i<num;i++)
+	if surface_array[i] == 0
+	surface_array[i] = -1;
 	}
 }
 
 function scr_surface_free(ind) {
 
-surface_free(surface_array[ind]);
-surface_array[ind] = -1;
-
+if surface_exists(surface_array[ind])
+	{
+	surface_free(surface_array[ind]);
+	surface_array[ind] = -1;
+	db("surface ind"+string(ind)+" freed")
+	}
 }
 
 function scr_surface_rebuild(surface_ind) {
@@ -81,7 +87,7 @@ if !surface_exists(surface_array[surface_ind])
 	hh = surface_get_height(surface_array[surface_ind]);
 	
 	surface_resize(surface_array[surface_ind],ww,hh);
-		
+		debug_count++;
 	db("surface ind"+string(surface_ind)+" created: "+string(surface_get_width(surface_array[surface_ind]))+" x "+string(surface_get_height(surface_array[surface_ind])));
 	}	
 	
@@ -102,50 +108,54 @@ else
 return false;
 }
 	
-function surface_draw(surface_id,xx,yy,alpha,xscale,yscale) {
+function surface_draw(surface_id,xx,yy,alpha,off_pos,surf_hh,xscale,yscale) {
 /// @param surface_enum
 /// @param xx
 /// @param yy
 /// @param alpha
-/// @param [xscale
+/// @param [off_pos
+/// @param surf_hh
+/// @param xscale
 /// @param yscale]
 
-if argument[4] == undefined
+if argument[6] == undefined
 xscale = 1;
 
-if argument[5] == undefined
+if argument[7] == undefined
 yscale = 1;
 	
-var surf_hh = surface_get_height(surface_array[surface_id]);	
 var scroll_count = array_length(surface_array)-surfaces.scroll; // number of scrolling pages
 var num = pick(1,scroll_count,surface_id == surfaces.scroll);
 
 for(var i=0;i<num;i++)
 	{
-	var surf = surface_array[surface_id+i];
+	var surf_ind = surface_id+i;
+	var surf = surface_array[surf_ind];
 	
-	if surf_hh == -1
-	surf_hh = surface_get_height(surf); // the height of the surface
+	if !surface_exists(surf)
+	continue;
+	
+	if argument[4] == undefined
+	off_pos = 0;
+	
+	if argument[5] == undefined
+	surf_hh = surface_get_height(surf);
 
-	var off_pos = i*surf_hh;
-	var end_pos = off_pos+surface_get_height(surf);
+	var ypos = yy-off_pos+(i*surf_hh);
+	var end_pos = ypos+surf_hh;
 	
-	if (yy+off_pos > app_height) || (yy+end_pos < 0)
+	if (ypos > app_height) || (end_pos < floor(yy))
 		{
-		scr_surface_free(surface_id+i);
+		scr_surface_free(surf_ind);
 		continue;
 		}
 
-	if surface_exists(surf)
-	draw_surface_ext(surf,xx,yy+off_pos,xscale,yscale,0,c_white,alpha);
-
+	draw_surface_ext(surf,xx,ypos,xscale,yscale,0,c_white,alpha);
 	
 	if os_type == os_windows
 		{
-		draw_line_pixel(0,yy+off_pos,app_width,1,c_red,1);
-		draw_line_pixel(0,yy+off_pos+surf_hh,app_width,1,c_red,1);
+		draw_line_pixel(0,ypos,app_width,1,c_red,1);
+		draw_line_pixel(0,end_pos,app_width,1,c_red,1);
 		}
 	}
-
-return surf;
 }

@@ -1,8 +1,8 @@
 
+
 draw_screens();
 
 draw_text_height_middled(app_width*0.5,bleed_top,string(fps),header_height,header_height*0.5,1);
-
 
 mouse_xprev = mouse_x;
 mouse_yprev = mouse_y;

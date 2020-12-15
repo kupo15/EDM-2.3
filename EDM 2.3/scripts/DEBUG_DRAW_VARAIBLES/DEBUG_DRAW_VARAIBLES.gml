@@ -233,7 +233,7 @@ function debug_draw_active_surfaces(xx,yy,ind,sep,height) {
 var num = array_length(surface_array);
 
 // header
-draw_text_height(xx,yy+((ind+0)*sep),"Surface List["+string(num)+"]",height);
+draw_text_height(xx,yy+((ind+0)*sep),"Surface List["+string(surface_array)+"]",height);
 
 for(var i=0;i<num;i++)
 	{
