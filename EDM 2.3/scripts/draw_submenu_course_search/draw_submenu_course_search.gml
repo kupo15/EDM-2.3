@@ -68,7 +68,7 @@ for(var i=pos_start;i<pos_end;i++)
 
 		draw_line_pixel(xx,yy+off_pos+ysep,app_width,1,c_black,0.7);
 
-		if !mode_new_member && !mode_delete
+		if !mode_new_member && !modeDelete
 		if click_region_released_clamp_array(0,yy,off_pos,ww,ysep,hh,mb_left,true,submenu,i,undefined,undefined)
 			{
 			highlight_struct.action = highlightAction.courseSelect;
@@ -90,12 +90,12 @@ for(var i=pos_start;i<pos_end;i++)
 	// click released on friend
 	if click_region_released_clamp_array(0,yy,off_pos,ww,ysep,hh,mb_left,true,submenu,i,ref_array,undefined)
 		{
-		if mode_delete
+		if modeDelete
 			{
-			if can_delete
+			if canDelete
 			deleteList[| i] = !deleteList[| i]; // toggle selected
 			
-			can_delete = true;
+			canDelete = true;
 			}
 		else // clicking on a friend
 			{

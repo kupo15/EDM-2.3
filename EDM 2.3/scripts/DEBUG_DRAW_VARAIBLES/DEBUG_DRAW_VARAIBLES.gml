@@ -131,7 +131,7 @@ debugyoff += 4;
 function debug_draw_modes(xx,yy,ind,sep,height) {
 
 draw_text_height(xx,yy+((ind+0)*sep),"mode_new_member: "+string(mode_new_member),height);
-draw_text_height(xx,yy+((ind+1)*sep),"mode_delete: "+string(mode_delete),height);
+draw_text_height(xx,yy+((ind+1)*sep),"modeDelete: "+string(modeDelete),height);
 	
 debugyoff += 3;
 }
@@ -233,7 +233,7 @@ function debug_draw_active_surfaces(xx,yy,ind,sep,height) {
 var num = array_length(surface_array);
 
 // header
-draw_text_height(xx,yy+((ind+0)*sep),"Surface List["+string(surface_array)+"]",height);
+draw_text_height(xx,yy+((ind+0)*sep),"Surface List"+string(surface_array),height);
 
 for(var i=0;i<num;i++)
 	{

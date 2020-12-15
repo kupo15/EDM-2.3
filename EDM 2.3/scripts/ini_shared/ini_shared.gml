@@ -39,9 +39,9 @@ searchedList = array_create(0);
 searchedMap = ds_map_create();
 
 // delete list entries
-can_delete = false;
-mode_delete = false;
-mode_delete_list_id = noone;
+canDelete = false;
+modeDelete = false;
+modeDeleteListId = noone;
 deleteList = ds_list_create();
 
 // structs

@@ -1,7 +1,7 @@
 function delete_list_set(ref_list,first_pos) {
 // mouse click
 timer[timerIndex.press_hold] = press_hold_timer; // set timer until activation
-mode_delete_list_id = ref_list; // set the ref list to delete from
+modeDeleteListId = ref_list; // set the ref list to delete from
 			
 ds_list_clear(deleteList);
 
@@ -16,7 +16,7 @@ if !canClickPressed
 exit;
 
 timer[timerIndex.press_hold] = press_hold_timer; // set timer until activation
-mode_delete_list_id = ref_array; // set the ref list to delete from
+modeDeleteListId = ref_array; // set the ref list to delete from
 			
 ds_list_clear(deleteList);
 
@@ -32,8 +32,8 @@ highlight_struct.alpha_end = 0;
 highlight_struct.alpha = 0;
 
 // enable delete mode
-mode_delete = true;
-can_delete = false;
+modeDelete = true;
+canDelete = false;
 
 // get list param
 var size = deleteList[| 0];
@@ -60,7 +60,7 @@ for(var i=size-1;i>-1;i--)
 	}
 		
 // disable delete mode
-mode_delete = false;
+modeDelete = false;
 app_save;
 }
 
@@ -74,7 +74,7 @@ for(var i=size-1;i>-1;i--)
 	}
 		
 // disable delete mode
-mode_delete = false;
+modeDelete = false;
 app_save;
 }
 

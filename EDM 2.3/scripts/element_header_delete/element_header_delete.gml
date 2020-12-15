@@ -50,7 +50,7 @@ draw_text_height_middled_color(xx,yy,str,hh,c_white,height,alpha); // draw numbe
 
 function element_header_delete_step() {
 	
-if !mode_delete
+if !modeDelete
 exit;
 	
 // clicked on xout
@@ -61,7 +61,7 @@ var hh = header_height;
 
 if click_region_released(xx,yy,ww,hh,true,submenu,1)
 	{
-	mode_delete = false;
+	modeDelete = false;
 	androidBack = false;
 	}	
 	
@@ -70,7 +70,7 @@ var xx = pct_x(88);
 
 if click_region_released(xx,yy,hh,hh,true,submenu,1)
 	{
-	delete_list_delete_array(deleteList,mode_delete_list_id);
+	delete_list_delete_array(deleteList,modeDeleteListId);
 	scr_surface_rebuild();
 
 	return true;

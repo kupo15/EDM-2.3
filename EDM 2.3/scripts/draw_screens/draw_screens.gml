@@ -3,9 +3,9 @@ function draw_screens() {
 // android back
 if androidBack
 	{
-	if mode_delete
+	if modeDelete
 		{
-		mode_delete = false;
+		modeDelete = false;
 		androidBack = false;
 		}
 	else if submenu == navbar.main

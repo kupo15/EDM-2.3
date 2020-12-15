@@ -96,7 +96,7 @@ for(var i=0;i<2;i++)
 
 function element_header_step() {
 	
-if !mode_delete && (submenu < 0)
+if !modeDelete && (submenu < 0)
 for(var i=0;i<2;i++)
 	{
 	var header_type = pick(headerLeft,headerRight,i==1);

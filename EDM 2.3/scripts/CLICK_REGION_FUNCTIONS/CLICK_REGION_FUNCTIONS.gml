@@ -252,11 +252,11 @@ var condition = mouse_check_button_released(button);
 draw_highlight_click_clamp(y_top,yoff,hh,box_hh,array_pos,active_sub);
 	
 // highlight selected
-if (ref_list != undefined) && mode_delete
+if (ref_list != undefined) && modeDelete
 delete_list_draw_selected(x_left,y_top,yoff,ww,hh,box_hh,deleteList,array_pos);
 	
 // set list variables to delete
-if (ref_list != undefined) && !mode_delete && click_region_pressed_clamp(0,y_top,yoff,ww,hh,box_hh,button,false,sub,array_pos)	
+if (ref_list != undefined) && !modeDelete && click_region_pressed_clamp(0,y_top,yoff,ww,hh,box_hh,button,false,sub,array_pos)	
 delete_list_set(ref_list,array_pos);
 	
 return click_region_clamp_set(x_left,y_top,yoff,ww,hh,box_hh,button,highlight,condition,sub,array_pos)
@@ -278,11 +278,11 @@ var condition = mouse_check_button_released(button);
 draw_highlight_click_clamp(y_top,yoff,hh,box_hh,array_pos,active_sub);
 	
 // highlight selected
-if (ref_array != undefined) && mode_delete
+if (ref_array != undefined) && modeDelete
 delete_list_draw_selected(x_left,y_top,yoff,ww,hh,box_hh,deleteList,array_pos);
 	
 // set list variables to delete
-if (ref_array != undefined) && !mode_delete && click_region_pressed_clamp(0,y_top,yoff,ww,hh,box_hh,button,false,sub,array_pos)	
+if (ref_array != undefined) && !modeDelete && click_region_pressed_clamp(0,y_top,yoff,ww,hh,box_hh,button,false,sub,array_pos)	
 delete_list_set_array(ref_array,array_pos);
 	
 return click_region_clamp_set(x_left,y_top,yoff,ww,hh,box_hh,button,highlight,condition,sub,array_pos)

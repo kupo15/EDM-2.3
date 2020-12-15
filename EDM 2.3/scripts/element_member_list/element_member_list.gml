@@ -97,10 +97,6 @@ for(var i=pos_start;i<pos_end;i++)
 	
 	var surface_ind = floor(i*sep/surf_hh);
 	
-	var ref_pointer = source_array[i];
-	var memberID = ref_pointer.memberID;
-	var member_pointer = database_get_pointer(MEMBER_database,memberID,"memberID");
-
 //draw_text_height(10,yy+off_pos,string(i)+": "+string(surface_ind),30)
 
 	if click_region_clamp_set(ww*0.83,yy,off_pos,ww*0.17,sep,hh,noone,false,undefined,sub,i)
@@ -117,15 +113,21 @@ for(var i=pos_start;i<pos_end;i++)
 		}
 	else if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,c_yellow,sub,i,ref_array,undefined)
 		{
-		if mode_delete
+		if modeDelete
 			{
-			if can_delete
+			if canDelete
 			deleteList[| i] = !deleteList[| i]; // toggle selected
 			
-			can_delete = true;
+			canDelete = true;
 			}
 		else // select member
-		return [member_pointer,ref_pointer,i];
+			{
+			var ref_pointer = source_array[i];
+			var memberID = ref_pointer.memberID;
+			var member_pointer = database_get_pointer(MEMBER_database,memberID,"memberID");
+	
+			return [member_pointer,ref_pointer,i];
+			}
 		}
 	}
 

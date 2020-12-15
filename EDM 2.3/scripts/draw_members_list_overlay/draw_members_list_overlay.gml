@@ -75,12 +75,12 @@ for(var i=pos_start;i<pos_end;i++)
 		}
 	else if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,c_yellow,sub,i,ref_array,undefined)
 		{
-		if mode_delete
+		if modeDelete
 			{
-			if can_delete
+			if canDelete
 			deleteList[| i] = !deleteList[| i]; // toggle selected
 			
-			can_delete = true;
+			canDelete = true;
 			}
 		else // select member
 		return_val = [member_pointer,ref_pointer,i];

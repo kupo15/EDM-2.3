@@ -42,7 +42,7 @@ repeat 2
 		draw_menu_bars(xpos+xx,yy,ww,hh,thick,c_white,1-offsetArray[offsetScroll.headerDeleteAlpha]);
 
 		// clicked on bars
-		if !mode_delete && (submenu < 0)
+		if !modeDelete && (submenu < 0)
 		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
 			{
 			submenuPrevious = submenu;
@@ -59,7 +59,7 @@ repeat 2
 		
 		draw_menu_dots(xpos+xx,yy,rr,sep,c_white,1-offsetArray[offsetScroll.headerDeleteAlpha]);
 		
-		if !mode_delete && (submenu < 0)
+		if !modeDelete && (submenu < 0)
 		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
 			{}
 		}
@@ -72,7 +72,7 @@ repeat 2
 		
 		draw_menu_arrow(xpos+xx,yy,ww,hh,4,1,c_white,1-offsetArray[offsetScroll.headerDeleteAlpha]);
 
-		if !mode_delete && (submenu < 0)
+		if !modeDelete && (submenu < 0)
 		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
 		screen_goto_prev();
 		}
@@ -83,7 +83,7 @@ repeat 2
 		
 		draw_icon_height_centered_color(ico_trash3,yy,xpos,yy,pct_x(10),region,header_height*0.44,c_white,1-offsetArray[offsetScroll.headerDeleteAlpha]); // trash icon
 
-		if !mode_delete && (submenu < 0)
+		if !modeDelete && (submenu < 0)
 		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
 		return_val = true;
 		}
@@ -93,7 +93,7 @@ repeat 2
 		
 		draw_plus_button(xpos+pct_x(5),yy,region,c_white,undefined,undefined,1-offsetArray[offsetScroll.headerDeleteAlpha]); // plus button
 		
-		if !mode_delete && (submenu < 0)
+		if !modeDelete && (submenu < 0)
 		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
 		return_val = true;
 		}
@@ -168,9 +168,9 @@ var yoff = (hh-size)*0.5;
 
 draw_menu_xout(xx+xoff,yy+yoff,size,size,x_pct_x(5),c_white,offsetArray[offsetScroll.headerDeleteAlpha]); // draw xout
 
-if mode_delete && click_region_released(0,yy,pct_x(10),hh,true,submenu,1)
+if modeDelete && click_region_released(0,yy,pct_x(10),hh,true,submenu,1)
 	{
-	mode_delete = false;
+	modeDelete = false;
 	androidBack = false;
 	}
 
@@ -180,8 +180,8 @@ draw_icon_height_centered_color(ico_trash3,0,xx,yy,hh,hh,header_height*0.55,c_wh
 
 draw_set_alpha(offsetArray[offsetScroll.headerDeleteAlpha]);
 
-if mode_delete && click_region_released(xx,yy,hh,hh,true,submenu,1)
-delete_list_delete_array(deleteList,mode_delete_list_id);
+if modeDelete && click_region_released(xx,yy,hh,hh,true,submenu,1)
+delete_list_delete_array(deleteList,modeDeleteListId);
 
 // number of items selected
 var xx = 120;
