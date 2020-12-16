@@ -6,20 +6,24 @@ var rows = surf_hh/sep;
 var total_height = size*sep; // how long the list is
 var surf_needed = (total_height/surf_hh); // how many surfaces are needed
 for(var surf_count=0;surf_count<surf_needed;surf_count++)
-	{
-	var height_needed = surf_hh;
-
-	if surf_count+1 == ceil(surf_needed)
-	var height_needed = frac(surf_needed)*surf_hh;
-	
+	{	
 	// don't initialize pages that are offscreen
 	var surf_ypos = yy-offset_pos+(surf_count*surf_hh);
 	var surf_ypos_end = surf_ypos+surf_hh;		
 		
 	if (surf_ypos > app_height) || (surf_ypos_end < floor(yy))
 	continue;
+
+	// width needed
+	var width_needed = app_width;
+
+	// height needed
+	var height_needed = surf_hh;
+		
+	if surf_count+1 == ceil(surf_needed)
+	var height_needed = frac(surf_needed)*surf_hh;
 	
-	if surface_set_struct("scrollVert",surf_count,undefined,height_needed) // if you can build the surface
+	if surface_set_struct("scrollVert",surf_count,width_needed,height_needed) // if you can build the surface
 		{
 		var start_ind = surf_count*rows;
 		var pos_start = max(0,floor(start_ind));

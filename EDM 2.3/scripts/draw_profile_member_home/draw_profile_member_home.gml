@@ -62,11 +62,11 @@ var surf_hh = app_height;
 				draw_profile_member_stats_step();
 				break;
 		
-		case 2: draw_profile_member_groups_draw(xx,0,ww,off_pos,surf_hh,sep,height,source_array);
-				surface_draw_struct("scrollVert",-1,0,yy,1,off_pos,surf_hh);
+		case 2: draw_profile_member_groups_draw(xx,0,ww,off_pos,surf_hh,sep,height,source_array); // build surface
+				surface_draw_struct("scrollVert",-1,0,yy,1,off_pos,surf_hh); // draw surface
 				
 				// clicking
-				draw_profile_member_groups_step(xx,yy,ww,hh,sep,surf_hh,source_array,source_array,groupslist_offset,scrollbar_index);
+				draw_profile_member_groups_step(xx,yy,ww,hh,sep,surf_hh,source_array,source_array,groupslist_offset,scrollbar_index); // click surface
 				break;
 		}
 
