@@ -37,7 +37,7 @@ MEMBER_database = debug_data_members_list();
 function debug_data_members_list() {
 // debug
 
-var group_id = array_create(50,0);
+var group_id = [0];
 var arr = [];
 scr_member_create_database("Jim","Baillon",arr,group_id);
 scr_member_create_database("Greg","Stratoti",arr,group_id);

@@ -39,7 +39,7 @@ for(var i=pos_start;i<pos_end;i++)
 		{
 		// draw favorites icon
 		case 0:	var ico_alpha = pick(0.5,1,member_favorite);
-				draw_icon_height_centered_color(ico_bookmarked,member_favorite,ww*0.85,yy+off_pos,sep,sep,sep*0.7,c_white,ico_alpha);
+				draw_icon_height_centered_color(ico_favorites_star,member_favorite,ww*0.85,yy+off_pos,sep,sep,sep*0.7,c_white,ico_alpha);
 				break;
 				
 		// draw circle for initial

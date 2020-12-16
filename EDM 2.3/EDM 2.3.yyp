@@ -151,6 +151,7 @@
     {"id":{"name":"element_header","path":"scripts/element_header/element_header.yy",},"order":0,},
     {"id":{"name":"spr_icon_friend_add","path":"sprites/spr_icon_friend_add/spr_icon_friend_add.yy",},"order":9,},
     {"id":{"name":"ico_trash3","path":"sprites/ico_trash3/ico_trash3.yy",},"order":6,},
+    {"id":{"name":"ico_favorites_star","path":"sprites/ico_favorites_star/ico_favorites_star.yy",},"order":13,},
     {"id":{"name":"scr_profiles","path":"scripts/scr_profiles/scr_profiles.yy",},"order":0,},
     {"id":{"name":"draw_team_list","path":"scripts/draw_team_list/draw_team_list.yy",},"order":10,},
     {"id":{"name":"create_old","path":"scripts/create_old/create_old.yy",},"order":3,},
