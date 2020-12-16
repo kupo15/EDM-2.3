@@ -28,6 +28,7 @@ draw_set_halign(fa_left);
 debug_draw_screens(xx,yy,debugyoff,sep,height);
 //debug_draw_screen_darken(xx,yy,debugyoff,sep,height);
 
+//debug_draw_project_variables(xx,yy,debugyoff,sep,height);
 debug_draw_click_highlight(xx,yy,debugyoff,sep,height);
 //debug_draw_vk(xx,yy,debugyoff,sep,height);
 debug_draw_strings(xx,yy,debugyoff,sep,height);
@@ -46,49 +47,19 @@ debug_draw_strings(xx,yy,debugyoff,sep,height);
 	
 
 // right side
+debugyoff = 0;
 var xx = app_width+10;
 
-// draw prev screen stack
-var size = ds_list_size(prevScreenStack);
+debug_draw_screen_navigation(xx,yy,debugyoff,sep,height);
 
-// draw current screen
-if screenIndex == screen.appStartup
-var str = "appStartup";
-else
-	{
-	var str = script_get_name(drawScreen[screenIndex]);
-	str = string_replace(str,"draw_","");
-	}
-
-draw_text_height(xx,yy+(0*sep),string(str),height);
-
-//draw_text_height(xx+x_pct_x(320),yy+(0*sep),string(fps_real),height);
-
-// draw dividing line
-draw_line(xx,yy+sep,xx+200,yy+sep);
-
-// draw prev screens
-for(var i=0;i<size;i++)
-	{
-	var arr = prevScreenStack[| size-i-1];
-	var _screen = arr[0];
-	var _sub = arr[1];
-	
-	var str = script_get_name(drawScreen[_screen]);
-
-	draw_text_height(xx,yy+((i+1)*sep),str+" - "+string(enum_name_submenu[-navbar.enumstart+1+_sub]),height);
-	}
-		
 debugyoff = 3;
 
 debug_draw_active_surfaces(xx,yy,debugyoff,sep,height);
 		
-		
 debugyoff = 13;		
 debug_draw_mouse(xx,yy,debugyoff,sep,height);
 debug_draw_device_testing(xx,yy,debugyoff,sep,height);
-
-		
+	
 draw_set_color(c_black);
 }
 

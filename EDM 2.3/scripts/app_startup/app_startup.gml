@@ -48,7 +48,7 @@ surface_resize(application_surface,RESOLUTION_WIDTH,RESOLUTION_HEIGHT);
 display_set_gui_size(RESOLUTION_WIDTH,RESOLUTION_HEIGHT); // set GUI
 
 // update layout
-scr_surface_rebuild();
+scr_surface_rebuild_struct();
 layout_normal();
 }
 

@@ -6,7 +6,7 @@
     "path": "folders/zUnused Scripts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "SURFACES_FUNCTIONS",
+  "name": "draw_profile_member_details_old",
   "tags": [],
   "resourceType": "GMScript",
 }

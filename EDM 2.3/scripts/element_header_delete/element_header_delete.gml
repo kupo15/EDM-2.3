@@ -71,7 +71,7 @@ var xx = pct_x(88);
 if click_region_released(xx,yy,hh,hh,true,submenu,1)
 	{
 	delete_list_delete_array(deleteList,modeDeleteListId);
-	scr_surface_rebuild();
+	scr_surface_rebuild_struct();
 
 	return true;
 	}

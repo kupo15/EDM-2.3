@@ -174,7 +174,7 @@ if mouse_check_button(mb_middle)
 	draw_text_height(xx,yy+((ind+8)*sep),"Region Size %: ["+string(abs(mouse_xpos-mouse_x)/room_width*100)+" , "+string(abs(mouse_ypos-mouse_y)/room_height*100)+"]",height); // mouse coor
 	}
 
-debugyoff += 10;
+debugyoff += 9;
 }
 
 function debug_draw_device_testing(xx,yy,ind,sep,height) {
@@ -227,40 +227,91 @@ draw_text_height(xx,yy+((ind+9)*sep),"DPI_Y: "+string(DPI_Y),height);
 debugyoff += 13;
 }
 
-
 function debug_draw_active_surfaces(xx,yy,ind,sep,height) {
-	
-var num = array_length(surface_array);
 
 // header
-draw_text_height(xx,yy+((ind+0)*sep),"Surface List"+string(surface_array),height);
+draw_text_height(xx,yy+(ind*sep),"Surface List",height);
 
-for(var i=0;i<num;i++)
+var keys = variable_struct_get_names(surface_struct);
+var size = array_length(keys);
+for(var n=0;n<size;n++)
 	{
-	var off_pos = (ind+(i+1));
-	var surf_active = surface_exists(surface_array[i]);
-	var str = pick("Active","Disabled",!surf_active);
-	var label_arr = ["header","sidebar","clean","dirty"];
+	var name = keys[n];
+	var surf_array = surface_struct[$ name];
 	
-	if i >= array_length(label_arr)
-	var label = "scroll"+string(i-surfaces.scroll);
-	else
-	label = label_arr[i];
-	
-	draw_text_height(xx,yy+(off_pos*sep),"Surface["+string(label)+"]: "+string(str),height);
-	
-	if surf_active
+	var num = array_length(surf_array);
+	for(var i=0;i<num;i++)
 		{
-		var surf = surface_array[i];
-		var ww = surface_get_width(surf);
-		var hh = surface_get_height(surf);
+		var off_pos = ind+i;
 		
-		draw_text_height(xx+px(26),yy+(off_pos*sep),string(ww)+" x "+string(hh),height);
-		}
+		var surf = surf_array[i].surfID;
+		var surf_active = surface_exists(surf);
+		var str = pick("Active","Disabled",!surf_active);
+	
+		draw_text_height(xx,yy+(off_pos*sep),string(name)+"["+string(i)+"]: "+string(str),height);
+	
+		if surf_active
+			{
+			var ww = surface_get_width(surf);
+			var hh = surface_get_height(surf);
+		
+			draw_text_height(xx+px(26),yy+(off_pos*sep),string(ww)+" x "+string(hh),height);
+			}
+			
+		debugyoff++;
+		}	
+		
+	ind++;
 	}
 
-debugyoff += num+2;	
+debugyoff += 2;	
+
+//cs(js(surface_struct))
+//sm("")
 }
 
+function debug_draw_project_variables(xx,yy,ind,sep,height) {
+
+draw_text_height(xx,yy+((ind+0)*sep),"mode_new_member: "+string(mode_new_member),height);
+draw_text_height(xx,yy+((ind+1)*sep),"modeDelete: "+string(modeDelete),height);
+	
+debugyoff += 3;
+}
+
+function debug_draw_screen_navigation(xx,yy,ind,sep,height) {
+
+// draw prev screen stack
+var size = ds_list_size(prevScreenStack);
+
+// draw current screen
+if screenIndex == screen.appStartup
+var str = "appStartup";
+else
+	{
+	var str = script_get_name(drawScreen[screenIndex]);
+	str = string_replace(str,"draw_","");
+	}
+
+draw_text_height(xx,yy+(0*sep),string(str),height);
+
+//draw_text_height(xx+x_pct_x(320),yy+(0*sep),string(fps_real),height);
+
+// draw dividing line
+draw_line(xx,yy+sep,xx+200,yy+sep);
+
+// draw prev screens
+for(var i=0;i<size;i++)
+	{
+	var arr = prevScreenStack[| size-i-1];
+	var _screen = arr[0];
+	var _sub = arr[1];
+	
+	var str = script_get_name(drawScreen[_screen]);
+
+	draw_text_height(xx,yy+((i+1)*sep),str+" - "+string(enum_name_submenu[-navbar.enumstart+1+_sub]),height);
+	}
+	
+debugyoff += 3+size;
+}
 
 goto_draw_debug();

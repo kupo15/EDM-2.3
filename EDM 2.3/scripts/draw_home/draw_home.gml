@@ -4,13 +4,15 @@ draw_home();
 draw_text_height(20,app_height-50,"Undefined Screen",40);
 }
 
-
 function draw_home() {
 
 draw_clear(c_lt_gray);
 
+//cs(js(surface_struct))
+//sm("")
+
 // header
-if surface_set(surfaces.header)
+if surface_set_struct("header")
 	{
 	element_header_draw(headerType.bars,headerType.none,"Hustle");
 	element_header_delete_draw();
@@ -18,16 +20,19 @@ if surface_set(surfaces.header)
 	}
 
 // body
-if surface_set(surfaces.clean)
+if surface_set_struct("clean")
 	{
 	element_home_active_event_draw();
 	element_home_create_event_draw();
 	surface_reset_target();
 	}
+	
+//cs(js(surface_struct))
+//sm("")	
 
 // draw surfaces
-surface_draw(surfaces.header,0,0,1);
-surface_draw(surfaces.clean,0,0,1);
+surface_draw_struct("header",0,0,0,1);
+surface_draw_struct("clean",0,0,0,1);
 
 
 // click //

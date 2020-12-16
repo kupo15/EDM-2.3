@@ -165,7 +165,6 @@ if within_region
 	// clicked highlight
 	if mouse_check_button_pressed(button) && highlight
 		{
-		if canClickPressed
 		scr_click_highlight_set(x_left,y_top,ww,hh,highlight,screenIndex,array_pos);
 		
 		canClickPressed = false;
@@ -282,8 +281,13 @@ if (ref_array != undefined) && modeDelete
 delete_list_draw_selected(x_left,y_top,yoff,ww,hh,box_hh,deleteList,array_pos);
 	
 // set list variables to delete
-if (ref_array != undefined) && !modeDelete && click_region_pressed_clamp(0,y_top,yoff,ww,hh,box_hh,button,false,sub,array_pos)	
-delete_list_set_array(ref_array,array_pos);
+if click_region_pressed_clamp(x_left,y_top,yoff,ww,hh,box_hh,button,false,sub,array_pos)
+	{
+	if (ref_array != undefined) && !modeDelete
+	delete_list_set_array(ref_array,array_pos);
+	
+	//
+	}
 	
 return click_region_clamp_set(x_left,y_top,yoff,ww,hh,box_hh,button,highlight,condition,sub,array_pos)
 }

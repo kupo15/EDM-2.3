@@ -14,7 +14,7 @@ var surf_hh = app_height;
 
 // build surface
 // header
-if surface_set(surfaces.header)
+if surface_set_struct("header")
 	{
 	element_header_draw(headerType.back,headerType.plus,"Members");
 	surface_reset_target();
@@ -27,11 +27,10 @@ element_overlay_memberlist_draw(xx,yy,ww,memberslist_offset*sep,surf_hh,sep,heig
 // draw surface //
 
 // body
-surface_draw(surfaces.scroll,0,yy,1,memberslist_offset*sep,surf_hh); ///***************
+surface_draw_struct("scrollVert",-1,0,yy,1,memberslist_offset*sep,surf_hh); ///***************
 
 // header
-surface_draw(surfaces.header,0,0,1);
-
+surface_draw_struct("header",-1,0,0,1);
 
 element_header_delete_draw();
 
@@ -41,7 +40,7 @@ var offset = offsetArray[offsetScroll.memberSortUnderline];
 var header = draw_screen_header_submenu(offset,sort_index,0,ww,1,header_arr);
 if (header != undefined)
 		{
-		scr_surface_rebuild(surfaces.scroll);
+		scr_surface_rebuild_struct("scrollVert");
 		scr_memberlist_sort(header);
 		app_save;
 	
@@ -52,9 +51,7 @@ if (header != undefined)
 			offsetArrayStart[scrollbar_index] = 0;
 			}
 		}
-	
-//db("debug_count: "+string(debug_count));
-// click //
+
 
 // header
 element_header_step();

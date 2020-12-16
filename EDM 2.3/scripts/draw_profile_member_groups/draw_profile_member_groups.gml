@@ -1,4 +1,4 @@
-function draw_profile_member_groups() {
+function draw_profile_member_groups_draw() {
 
 // set offsets
 var scrollbar_index = offsetScroll.groupsOffset;
@@ -15,12 +15,9 @@ var hh = app_height-yy;
 var rows = hh/sep;
 var box_hh_end = app_height;
 
-var element_num = 3;
-
 var list_size = array_length(source_array);
 var pos_start = floor(groupslist_offset);
 var pos_end = min(list_size,ceil(groupslist_offset)+rows);
-for(var e=0;e<element_num;e++)
 for(var i=0;i<list_size;i++)
 	{
 	var off_ind = i-groupslist_offset;
@@ -32,6 +29,8 @@ for(var i=0;i<list_size;i++)
 	var venue_name = group_pointer.dispName;
 	var logo_img = group_pointer.logoID;
 	
+	var element_num = 3;
+	for(var e=0;e<element_num;e++)
 	switch e
 		{
 		// venu name
@@ -43,18 +42,45 @@ for(var i=0;i<list_size;i++)
 		// venu logo
 		case 2: if sprite_exists(logo_img)
 				draw_icon_height_centered_color(logo_img,0,pct_x(1.5),yy+off_pos,sep,sep,sep*0.6,c_white,1);
+				
 				break;
 		}
-		
-	if (e+1) != element_num
-	continue;
+	}
+}
+
+
+function draw_profile_member_groups_step() {
+
+// set offsets
+var scrollbar_index = offsetScroll.groupsOffset;
+var groupslist_offset = offsetArray[scrollbar_index];
+var groupslist_offset_start = offsetArrayStart[scrollbar_index];
+var source_array = workingStruct.groups;
+var sub = navbar.hidden;
+
+var yy = subheader_ypos_end;
+var sep = y_pct_y(200);
+var ww = app_width;
+var hh = app_height-yy;
+var rows = hh/sep;
+
+var list_size = array_length(source_array);
+var pos_start = floor(groupslist_offset);
+var pos_end = min(list_size,ceil(groupslist_offset)+rows);
+for(var i=0;i<list_size;i++)
+	{
+	var off_ind = i-groupslist_offset;
+	var off_pos = off_ind*sep;
 	
-	click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.hidden,i,undefined,undefined,false)
+	if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,true,navbar.hidden,i,undefined,undefined,false)
+		{		
+		var venue_id = source_array[i];
+		var group_pointer = database_get_pointer(ROOT_data_struct.profiles,venue_id,"venueID");	
+		}
 	}
 
 #region scrolling
 var xx = 0;
-var sub = navbar.hidden;
 
 funct_screen_scrolling(xx,yy,ww,hh,sep,list_size,rows,scrollbar_index,sub);
 #endregion

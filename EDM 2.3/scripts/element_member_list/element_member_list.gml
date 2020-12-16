@@ -19,7 +19,7 @@ for(var surf_count=0;surf_count<surf_needed;surf_count++)
 	if (surf_ypos > app_height) || (surf_ypos_end < floor(yy))
 	continue;
 
-	if surface_set(surfaces.scroll+surf_count,undefined,height_needed) // if you can build the surface
+	if surface_set_struct("scrollVert",surf_count,undefined,height_needed) // if you can build the surface
 		{
 		var start_ind = surf_count*rows;
 		var pos_start = max(0,floor(start_ind));
@@ -99,19 +99,14 @@ for(var i=pos_start;i<pos_end;i++)
 	
 //draw_text_height(10,yy+off_pos,string(i)+": "+string(surface_ind),30)
 
-	if click_region_clamp_set(ww*0.83,yy,off_pos,ww*0.17,sep,hh,noone,false,undefined,sub,i)
-	&& click_region_pressed(ww*0.83,yy+off_pos,ww*0.17,sep,false,sub)
+	if click_region_released_clamp_array(ww*0.83,yy,off_pos,ww*0.17,sep,hh,mb_left,false,sub,i,undefined,undefined)
 		{
 		scr_surface_rebuild(surfaces.scroll+surface_ind);
-
-		canClick = false;
-		canClickPressed = true;
-		clickMoved = true;
 
 		source_array[i].favorite = !source_array[i].favorite; // toggle favorite
 		app_save;
 		}
-	else if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,c_yellow,sub,i,ref_array,undefined)
+	else if click_region_released_clamp_array(0,yy,off_pos,ww*0.83,sep,hh,mb_left,true,sub,i,ref_array,undefined)
 		{
 		if modeDelete
 			{

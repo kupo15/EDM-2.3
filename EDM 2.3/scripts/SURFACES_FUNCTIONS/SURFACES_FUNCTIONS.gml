@@ -1,9 +1,4 @@
-function ini_surfaces() {
-		
-surface_array = array_create(surfaces.scroll,-1);
-surfaceCanBuild_array = array_create(surfaces.scroll,false);
-surfaceTarget = -1;
-}
+/*
 
 function scr_surface_create(ind) {
 /// @param [ind]

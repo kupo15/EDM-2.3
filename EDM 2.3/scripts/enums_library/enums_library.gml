@@ -35,16 +35,20 @@ calendarYear
 enum surfaces {
 header,
 sidebar,
+sidebarProfile,
 clean,
 dirty,
 
 scroll, // has to be last
 	
-//enumcount,
+// enumcount,
 }
+
+
 
 enum headerMode {
 main,
 trash,
 	
 }
+

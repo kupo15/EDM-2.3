@@ -22,7 +22,7 @@ else // clicked banner
 if click_region_released(xx,bleed_top,side_menu_width,profile_hh-1,true,submenu,1)
 	{
 	submenu = pick(navbar.profileChange,navbar.sidebar,submenu == navbar.profileChange);
-	scr_surface_rebuild(surfaces.sidebar);
+	scr_surface_rebuild_struct("sidebar");
 	}
 
 
@@ -37,7 +37,7 @@ switch submenu
 	
 	
 	case navbar.profileChange: submenu = navbar.sidebar;
-							   scr_surface_rebuild(surfaces.sidebar);
+							   scr_surface_rebuild_struct("sidebar");
 							   break;
 	}
 }
