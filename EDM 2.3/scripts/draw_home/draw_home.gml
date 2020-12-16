@@ -20,7 +20,7 @@ if surface_set_struct("header")
 	}
 
 // body
-if surface_set_struct("clean")
+if surface_set_struct("body")
 	{
 	element_home_active_event_draw();
 	element_home_create_event_draw();
@@ -32,7 +32,7 @@ if surface_set_struct("clean")
 
 // draw surfaces
 surface_draw_struct("header",0,0,0,1);
-surface_draw_struct("clean",0,0,0,1);
+surface_draw_struct("body",0,0,0,1);
 
 
 // click //

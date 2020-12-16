@@ -1,8 +1,4 @@
 function ini_surfaces() {
-		
-//surface_array = array_create(surfaces.scroll,-1);
-//surfaceCanBuild_array = array_create(surfaces.scroll,false);
-//surfaceTarget = -1;
 
 // original template
 init_surf_data = {
@@ -18,8 +14,6 @@ init_surface_struct = {
 	header: [struct_copy(init_surf_data)],
 	body: [struct_copy(init_surf_data)],
 	sidebar: [struct_copy(init_surf_data)],
-	clean: [struct_copy(init_surf_data)],
-	dirty: [struct_copy(init_surf_data)],
 	
 	scrollVert: [],
 	scrollHor: [],
@@ -140,11 +134,11 @@ else
 	{
 	var surf_array = surface_struct[$ key];
 
-	if argument[1] == undefined // rebuild all
+	if argument[1] == undefined // rebuild entire key
 		{
 		var size = array_length(surf_array);
 		for(var i=0;i<size;i++)
-		surf_array.canBuild = true;
+		surf_array[i].canBuild = true;
 		}
 	else
 	surf_array[ind].canBuild = true; // can rebuild

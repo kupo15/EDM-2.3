@@ -101,7 +101,7 @@ for(var i=pos_start;i<pos_end;i++)
 
 	if click_region_released_clamp_array(ww*0.83,yy,off_pos,ww*0.17,sep,hh,mb_left,false,sub,i,undefined,undefined)
 		{
-		scr_surface_rebuild(surfaces.scroll+surface_ind);
+		scr_surface_rebuild_struct("scrollVert",surface_ind);
 
 		source_array[i].favorite = !source_array[i].favorite; // toggle favorite
 		app_save;
