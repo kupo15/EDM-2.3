@@ -8,7 +8,8 @@ var ww = app_width;
 var hh = app_height-yy;
 var sep = pct_y(16);
 var height = pct_y(5.2);
-var ypos = yy-(memberslist_offset*sep);
+var off_pos = memberslist_offset*sep
+var ypos = yy-off_pos;
 var surf_hh = app_height;
 
 
@@ -22,12 +23,12 @@ if surface_set_struct("header")
 	
 
 // body
-element_overlay_memberlist_draw(xx,yy,ww,memberslist_offset*sep,surf_hh,sep,height,MEMBER_list); /// *********
+element_overlay_memberlist_draw(xx,yy,ww,off_pos,surf_hh,sep,height,MEMBER_list); /// *********
 
 // draw surface //
 
 // body
-surface_draw_struct("scrollVert",-1,0,yy,1,memberslist_offset*sep,surf_hh); ///***************
+surface_draw_struct("scrollVert",-1,0,yy,1,off_pos,surf_hh); ///***************
 
 // header
 surface_draw_struct("header",-1,0,0,1);

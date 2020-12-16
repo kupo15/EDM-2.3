@@ -34,13 +34,45 @@ if surface_set_struct("header")
 	surface_reset_target();
 	}
 	
-switch subheader_member
+// set offsets
+var scrollbar_index = offsetScroll.groupsOffset;
+var groupslist_offset = offsetArray[scrollbar_index];
+var source_array = workingStruct.groups;
+
+var xx = 0;
+var yy = subheader_ypos_end;
+var ww = app_width;
+var hh = app_height-yy;
+var sep = py(16.67);
+var height = py(6.25);
+var off_pos = groupslist_offset*sep;
+var ypos = yy-off_pos;
+var surf_hh = app_height;
+
+
+//for(var i=0;i<3;i++)
 	{
-	case 0: draw_profile_member_details_draw(); break;
-	case 1: draw_profile_member_stats_draw(); break;
-	case 2: draw_profile_member_groups_draw(); break;
-	}	
-	
+	switch subheader_member
+		{
+		case 0: draw_profile_member_details_draw(); 
+				draw_profile_member_details_step();
+				break;
+				
+		case 1: draw_profile_member_stats_draw();
+				draw_profile_member_stats_step();
+				break;
+		
+		case 2: draw_profile_member_groups_draw(xx,0,ww,off_pos,surf_hh,sep,height,source_array);
+				surface_draw_struct("scrollVert",-1,0,yy,1,off_pos,surf_hh);
+				
+				// clicking
+				draw_profile_member_groups_step(xx,yy,ww,hh,sep,surf_hh,source_array,source_array,groupslist_offset,scrollbar_index);
+				break;
+		}
+
+//	surface_reset_target();
+	}
+
 // DRAW SURFACES //	
 	
 // header
@@ -56,6 +88,14 @@ subheader_member = header;
 
 #endregion
 
+//var scroll_xx = 0; //offset*app_width;
+//var scroll_yy =
+
+
+
+
+//if subheader_member == 2
+//surface_draw_struct("scrollVert",-1,scroll_xx,scroll_yy,1,memberslist_offset*sep,surf_hh);
 	
 // CLICKING //
 
@@ -65,15 +105,6 @@ if element_header_step() == headerType.trash
 	androidBack = true;
 	subheader_member = -4;
 	}
-	
-	
-switch subheader_member
-	{
-	case 0: draw_profile_member_details_step(); break;
-	case 1: draw_profile_member_stats_step(); break;
-	case 2: draw_profile_member_groups_step(); break;
-	}
-	
 		
 	
 if androidBack

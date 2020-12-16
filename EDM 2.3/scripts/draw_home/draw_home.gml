@@ -8,9 +8,6 @@ function draw_home() {
 
 draw_clear(c_lt_gray);
 
-//cs(js(surface_struct))
-//sm("")
-
 // header
 if surface_set_struct("header")
 	{
@@ -27,8 +24,6 @@ if surface_set_struct("body")
 	surface_reset_target();
 	}
 	
-//cs(js(surface_struct))
-//sm("")	
 
 // draw surfaces
 surface_draw_struct("header",0,0,0,1);

@@ -82,7 +82,6 @@ function element_overlay_memberlist_step(xx,yy,ww,hh,sep,surf_hh,source_array,re
 	
 // set offsets
 var memberslist_offset = offsetArray[scrollbar_index];
-var memberslist_offset_start = offsetArrayStart[scrollbar_index];
 var sub = navbar.hidden;
 
 var rows = hh/sep;

@@ -32,7 +32,18 @@ calendar,
 calendarYear
 }
 
-enum surfaces {
+
+
+
+
+enum headerMode {
+main,
+trash,
+	
+}
+
+
+/*enum surfaces {
 header,
 sidebar,
 sidebarProfile,
@@ -43,12 +54,3 @@ scroll, // has to be last
 	
 // enumcount,
 }
-
-
-
-enum headerMode {
-main,
-trash,
-	
-}
-
