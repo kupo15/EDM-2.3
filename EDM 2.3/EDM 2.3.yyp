@@ -176,6 +176,7 @@
     {"id":{"name":"ELEMENT_STRUCTS","path":"scripts/ELEMENT_STRUCTS/ELEMENT_STRUCTS.yy",},"order":0,},
     {"id":{"name":"draw_breakdown_add_member","path":"scripts/draw_breakdown_add_member/draw_breakdown_add_member.yy",},"order":3,},
     {"id":{"name":"DRAW_TEXT_HEIGHT_FUNCTIONS","path":"scripts/DRAW_TEXT_HEIGHT_FUNCTIONS/DRAW_TEXT_HEIGHT_FUNCTIONS.yy",},"order":3,},
+    {"id":{"name":"element_currency_list","path":"scripts/element_currency_list/element_currency_list.yy",},"order":0,},
     {"id":{"name":"element_overlay_numpad","path":"scripts/element_overlay_numpad/element_overlay_numpad.yy",},"order":0,},
     {"id":{"name":"draw_breakdown_event_date","path":"scripts/draw_breakdown_event_date/draw_breakdown_event_date.yy",},"order":4,},
     {"id":{"name":"scr_timer_beep","path":"scripts/scr_timer_beep/scr_timer_beep.yy",},"order":2,},
@@ -282,6 +283,7 @@
     {"folderPath":"folders/Elements/Header.yy","order":4,"resourceVersion":"1.0","name":"Header","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Elements/Overlays/Sidebar.yy","order":2,"resourceVersion":"1.0","name":"Sidebar","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Elements/Overlays/Memberslist.yy","order":3,"resourceVersion":"1.0","name":"Memberslist","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Elements/Overlays/Currency.yy","order":4,"resourceVersion":"1.0","name":"Currency","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":461609314234257646,"resourceVersion":"1.0","name":"audiogroup_default","resourceType":"GMAudioGroup",},

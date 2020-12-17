@@ -22,19 +22,6 @@ draw_profile_view();
 
 function draw_profile_view() {
 
-var profile_num = array_length(ROOT_data_struct.profiles);	
-var condition = (profile_num == 0) || (submenu == navbar.currencyList);
-var show_trash = pick(headerType.trash,headerType.none,condition); // cant delete the last remaining profile
-var header_str = pick("Edit Profile","Select Currency",submenu == navbar.currencyList);
-var trash = draw_screen_header(headerType.back,show_trash,header_str);
-
-if trash
-	{
-	array_delete(ROOT_data_struct.profiles,activeProfile,1); // delete
-	scr_profile_set(0);
-	screen_change(screen.home,navbar.hidden,true);
-	}
-
 var disp_name = activeStruct.dispName;
 
 var currency_pointer = activeStruct.currency;
@@ -116,5 +103,20 @@ if curr_return != undefined
 	{
 	activeStruct.currency = currency_array[curr_return];		
 	submenu = navbar.hidden;
+	}
+	
+	
+// header
+var profile_num = array_length(ROOT_data_struct.profiles);	
+var condition = (profile_num == 0) || (submenu == navbar.currencyList);
+var show_trash = pick(headerType.trash,headerType.none,condition); // cant delete the last remaining profile
+var header_str = pick("Edit Profile","Select Currency",submenu == navbar.currencyList);
+var trash = draw_screen_header(headerType.back,show_trash,header_str);
+
+if trash
+	{
+	array_delete(ROOT_data_struct.profiles,activeProfile,1); // delete
+	scr_profile_set(0);
+	screen_change(screen.home,navbar.hidden,true);
 	}
 }

@@ -72,9 +72,13 @@ repeat 2
 		
 		draw_menu_arrow(xpos+xx,yy,ww,hh,4,1,c_white,1-offsetArray[offsetScroll.headerDeleteAlpha]);
 
-		if !modeDelete && (submenu < 0)
-		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
-		screen_goto_prev();
+		if !modeDelete && click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)
+			{
+			if submenu < 0
+			screen_goto_prev();
+			else
+			submenu = navbar.hidden;
+			}
 		}
 	else if header_type == headerType.trash
 		{

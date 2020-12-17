@@ -2,6 +2,7 @@ function draw_members_list_screen() {
 	
 var scrollbar_index = offsetScroll.membersOffset;
 var memberslist_offset = offsetArray[scrollbar_index];
+
 var xx = bleed_left;
 var yy = header_ypos_end+header_submenu_height; // 360
 var ww = app_width;
