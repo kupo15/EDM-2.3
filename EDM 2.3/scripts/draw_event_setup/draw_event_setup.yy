@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Screens",
-    "path": "folders/Screens.yy",
+    "name": "zUnused Scripts",
+    "path": "folders/zUnused Scripts.yy",
   },
   "resourceVersion": "1.0",
   "name": "draw_event_setup",

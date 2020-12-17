@@ -6,7 +6,7 @@
     "path": "folders/Screens/Event.yy",
   },
   "resourceVersion": "1.0",
-  "name": "draw_event_setup_split",
+  "name": "draw_event_setup_review",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -12,7 +12,7 @@ var off_pos = memberslist_offset*sep
 var ypos = yy-off_pos;
 var surf_hh = app_height;
 
-element_overlay_memberlist_draw(xx,yy,ww,off_pos,surf_hh,sep,height,MEMBER_list);
+element_overlay_memberlist_draw(xx,yy,ww,off_pos,surf_hh,sep,height,source_list);
 surface_draw_struct("scrollVert",-1,0,yy,1,off_pos,surf_hh);
 
 return element_overlay_memberlist_step(xx,yy,ww,hh,sep,surf_hh,source_list,ref_list,scrollbar_index);	

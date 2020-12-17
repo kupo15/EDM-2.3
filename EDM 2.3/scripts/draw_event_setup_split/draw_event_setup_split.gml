@@ -1,7 +1,7 @@
 
 function draw_event_setup_split() {
 
-var member = draw_memberslist(app_width*0.55,MEMBER_list,undefined);
+var member = draw_memberslist(app_width*0.55,event_entrant_array,undefined);
 if member != undefined
 	{
 	var ref_pointer = member[1];
@@ -21,7 +21,7 @@ var ww = app_width*0.55;
 var hh = app_height-yy;
 
 // main header
-surface_bundle_header(headerType.back,headerType.none,"Select Entrants");
+surface_bundle_header(headerType.back,headerType.none,"Assign Teams");
 
 // player list submenu
 var sort_index = META_data.memberSort;
@@ -44,5 +44,8 @@ element_event_setup_teams(xx,0.45);
 
 // pressed back
 if androidBack
-screen_goto_prev();
+	{
+	active_event = undefined;
+	screen_goto_prev();
+	}
 }

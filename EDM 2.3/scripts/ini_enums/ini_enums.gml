@@ -14,6 +14,8 @@ enumcount,
 
 home,
 
+eventReview,
+
 profileCreate,
 profileView,
 

@@ -46,8 +46,7 @@ for(var surf_count=0;surf_count<surf_needed;surf_count++)
 			var first_initial = string_char_at(member_first_name,1);	
 			var last_initial = string_char_at(member_last_name,1);
 			var member_initial = first_initial+last_initial;
-//sm(ww)
-//sm(ww*0.87)
+
 			var element_num = 5;
 			for(var e=0;e<element_num;e++)
 			switch e
@@ -100,6 +99,13 @@ for(var i=pos_start;i<pos_end;i++)
 	var surface_ind = floor(i*sep/surf_hh);
 	
 //draw_text_height(10,yy+off_pos,string(i)+": "+string(surface_ind),30)
+
+	var ref_pointer = source_array[i];
+	var memberID = ref_pointer.memberID;
+	var member_favorite = ref_pointer.favorite;
+	var ico_alpha = pick(0.7,1,member_favorite);
+	
+	//draw_icon_height_centered_color(ico_favorites_star,member_favorite,ww*0.87,off_pos,ww*0.13,sep,sep*0.5,c_white,ico_alpha);
 
 	if click_region_released_clamp_array(ww*0.85,yy,off_pos,ww*0.15,sep,hh,mb_left,false,sub,i,undefined,undefined)
 		{

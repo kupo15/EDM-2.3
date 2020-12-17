@@ -273,10 +273,10 @@ debugyoff += 2;
 
 function debug_draw_project_variables(xx,yy,ind,sep,height) {
 
-draw_text_height(xx,yy+((ind+0)*sep),"mode_new_member: "+string(mode_new_member),height);
-draw_text_height(xx,yy+((ind+1)*sep),"modeDelete: "+string(modeDelete),height);
+draw_text_height(xx,yy+((ind+0)*sep),"active_event: "+string(active_event != undefined),height);
+//draw_text_height(xx,yy+((ind+1)*sep),"modeDelete: "+string(modeDelete),height);
 	
-debugyoff += 3;
+debugyoff += 2;
 }
 
 function debug_draw_screen_navigation(xx,yy,ind,sep,height) {

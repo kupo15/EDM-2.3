@@ -7,6 +7,8 @@ function ini_screen_change() {
 prevScreenStack = ds_list_create();
 	
 drawScreen[screen.eventSetup] = draw_event_setup_split;
+drawScreen[screen.eventReview] = draw_event_setup_review;
+
 drawScreen[screen.home] = draw_home;
 drawScreen[screen.membersList] = draw_members_list_screen;
 //drawScreen[screen.stats] = draw_stats;
@@ -89,8 +91,8 @@ switch screenIndex
 	{
 	case screen.enumcount: submenu = navbar.hidden; break;
 					
-	case screen.eventSetup: event_entrant_array = MEMBER_list;
-							scr_memberlist_sort(member_sort.favorite);
+	case screen.eventSetup: scr_memberlist_sort(member_sort.favorite);
+							event_entrant_array = struct_copy(MEMBER_list);
 							scr_event_create();
 							break;
 					
