@@ -104,7 +104,7 @@ for(var i=pos_start;i<pos_end;i++)
 	var memberID = ref_pointer.memberID;
 	var member_favorite = ref_pointer.favorite;
 	var ico_alpha = pick(0.7,1,member_favorite);
-	
+		
 	//draw_icon_height_centered_color(ico_favorites_star,member_favorite,ww*0.87,off_pos,ww*0.13,sep,sep*0.5,c_white,ico_alpha);
 
 	if click_region_released_clamp_array(ww*0.85,yy,off_pos,ww*0.15,sep,hh,mb_left,false,sub,i,undefined,undefined)

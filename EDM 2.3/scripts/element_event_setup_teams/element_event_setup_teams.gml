@@ -13,7 +13,7 @@ draw_line_pixel(xx,yy,1,app_height,c_gray,0.8); // dividing line
 var sort_index = teamlist_index;
 var header_arr = ["Team 1","Team 2","Team 3","Team 4","Team 5","Team 6"];
 var offset = offsetArray[offsetScroll.teamsUnderline];
-var header = draw_screen_header_submenu(offset,sort_index,xx,ww,0.65,header_arr);
+var header = draw_screen_header_submenu(offset,sort_index,xx,ww,0.7,header_arr);
 if (header != undefined)
 teamlist_index = header;
 #endregion
@@ -60,8 +60,8 @@ for(var i=0;i<player_count;i++)
 	var lastName = entrant_pointer.lastName;
 	var entrant_name = firstName+" "+lastName;
 	
+	// entrant name
 	draw_text_height_middled(xpos,yy+off_pos,entrant_name,sep,height,1,undefined,undefined,fa_center);
-	
 	
 	if click_region_released_clamp_array(xx,yy,off_pos,ww,sep,hh,mb_left,c_yellow,sub,i,undefined,undefined)
 		{

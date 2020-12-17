@@ -33,7 +33,7 @@ var header = draw_screen_header_submenu(offset,sort_index,0,ww,1,header_arr);
 if (header != undefined)
 	{
 	scr_surface_rebuild_struct("scrollVert");
-	scr_memberlist_sort(header);
+	scr_memberlist_sort(event_entrant_array,header);
 	app_save;
 	
 	// jump to top

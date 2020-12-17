@@ -93,13 +93,19 @@ switch screenIndex
 	{
 	case screen.enumcount: submenu = navbar.hidden; break;
 					
-	case screen.eventSetup: scr_memberlist_sort(member_sort.favorite);
-							event_entrant_array = struct_copy(MEMBER_list);
+	case screen.eventSetup: event_entrant_array = struct_copy(MEMBER_list);
+							scr_memberlist_sort(event_entrant_array,member_sort.favorite);
+							
+							// set all team assignments to undefined
+							var size = array_length(event_entrant_array)
+							for(var i=0;i<size;i++)
+							event_entrant_array[i].team = undefined;
+							
 							scr_event_create();
 							break;
 					
 	// member list
-	case screen.membersList: scr_memberlist_sort(META_data.memberSort); break;		
+	case screen.membersList: scr_memberlist_sort(MEMBER_list,META_data.memberSort); break;		
 	
 	// venue profile
 	case screen.profileView: workingStruct = struct_copy(PROFILE_data);
