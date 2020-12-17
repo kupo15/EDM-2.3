@@ -28,6 +28,7 @@ var profileData = {
 		bannerID: banner,
 		
 		memberlist: [],
+		payoutTable: [],
 		}
 	
 array_push(ROOT_data_struct.profiles,profileData);

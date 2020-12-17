@@ -80,7 +80,6 @@ for(var surf_count=0;surf_count<surf_needed;surf_count++)
 	}
 }
 
-
 function element_overlay_memberlist_step(xx,yy,ww,hh,sep,surf_hh,source_array,ref_array,scrollbar_index) {
 	
 // set offsets

@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "zUnused Scripts",
-    "path": "folders/zUnused Scripts.yy",
+    "name": "Screens",
+    "path": "folders/Screens.yy",
   },
   "resourceVersion": "1.0",
-  "name": "draw_members_list_overlay",
+  "name": "draw_memberslist",
   "tags": [],
   "resourceType": "GMScript",
 }

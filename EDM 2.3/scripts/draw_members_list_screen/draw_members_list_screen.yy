@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "EDM 2.3",
-    "path": "EDM 2.3.yyp",
+    "name": "Screens",
+    "path": "folders/Screens.yy",
   },
   "resourceVersion": "1.0",
   "name": "draw_members_list_screen",

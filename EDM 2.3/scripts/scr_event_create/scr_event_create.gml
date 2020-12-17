@@ -29,3 +29,12 @@ var team_struct = {
 	
 return team_struct;
 }
+
+function scr_event_player_create() {
+	
+var player = {
+	
+	
+	
+	}
+}
