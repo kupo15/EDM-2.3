@@ -1,6 +1,6 @@
 {
   "option_android_sync_amazon": false,
-  "option_android_display_name": "EDM",
+  "option_android_display_name": "Hustle",
   "option_android_version": "1.1.0",
   "option_android_tools_from_version": false,
   "option_android_build_tools": "28.0.3",
@@ -10,7 +10,7 @@
   "option_android_compile_sdk": "29",
   "option_android_package_domain": "com",
   "option_android_package_company": "Lemmelapps",
-  "option_android_package_product": "edm",
+  "option_android_package_product": "hustle",
   "option_android_arch_armv7": true,
   "option_android_arch_x86": true,
   "option_android_arch_arm64": true,
