@@ -1,4 +1,4 @@
-function element_overlay_memberlist_draw(xx,yy,ww,offset_pos,surf_hh,sep,height,source_array) {
+function element_overlay_memberlist_draw(xx,yy,ww,offset_pos,surf_ww,surf_hh,sep,height,source_array) {
 	
 var size = array_length(source_array);
 var rows = surf_hh/sep; // number of rows per surface
@@ -15,7 +15,7 @@ for(var surf_count=0;surf_count<surf_needed;surf_count++)
 	continue;
 	
 	// width 
-	var width_needed = app_width;
+	var width_needed = surf_ww;
 	
 	// height
 	var height_needed = surf_hh;

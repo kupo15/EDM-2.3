@@ -243,7 +243,7 @@ for(var n=0;n<size;n++)
 	var num = array_length(surf_array);
 	for(var i=0;i<num;i++)
 		{
-		var off_pos = ind+i;
+		var off_pos = ind+i+n+1;
 		
 		var surf = surf_array[i].surfID;
 		var surf_active = surface_exists(surf);
@@ -261,8 +261,6 @@ for(var n=0;n<size;n++)
 			
 		debugyoff++;
 		}	
-		
-	ind++;
 	}
 
 debugyoff += 2;	

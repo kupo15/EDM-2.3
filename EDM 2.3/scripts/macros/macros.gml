@@ -16,8 +16,8 @@
 #macro membersort scr_member_sort_abc(MEMBER_list,true)
 
 // layout
-#macro bleed_left pct_x(3)
-#macro bleed_top pct_y(6.6)
+#macro bleed_left px(3)
+#macro bleed_top py(3)
 #macro DPI_POINT 72
 
 // header
@@ -30,7 +30,7 @@
 #macro header_ypos_end bleed_top+header_height
 #macro subheader_ypos_end bleed_top+header_height+header_submenu_height
 
-#macro header_font_height header_height*0.55
+#macro header_font_height header_height*0.45
 #macro header_submenu_font_height header_font_height*0.8
 
 // background colors

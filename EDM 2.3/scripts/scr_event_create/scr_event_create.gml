@@ -2,6 +2,8 @@ function scr_event_create() {
 	
 active_event = {
 		
+	entrantNum: 0,	
+		
 	teams: [],
 	
 	payoutTable: [],

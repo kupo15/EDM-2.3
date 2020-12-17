@@ -23,6 +23,8 @@ var size = array_length(header_arr);
 var region_sep = ww/size;
 var rr = py(0.4);
 var hsep = rr*2.6;
+var yy = header_ypos_end+py(7.9);
+
 for(var n=0;n<size;n++)
 	{
 	var xpos = xx+px(1.5)+(n*region_sep);
@@ -31,8 +33,7 @@ for(var n=0;n<size;n++)
 	for(var i=0;i<team_size;i++)
 		{
 		var xoff = i*hsep;
-		
-		draw_circle_color(xpos+xoff,py(28),rr,c_white,c_white,false);
+		draw_circle_color(xpos+xoff,yy,rr,c_white,c_white,false);
 		}
 	}
 #endregion
@@ -66,7 +67,8 @@ for(var i=0;i<player_count;i++)
 		{
 		array_push(event_entrant_array,ref_pointer); // add back to entrant list
 		array_delete(TEAM_array.players,i,1); // remove from team list
-
+	
+		active_event.entrantNum --;
 		i--;
 		player_count --;
 		}
@@ -80,13 +82,15 @@ for(var i=0;i<5;i++)
 #endregion
 
 #region clicked next
+var submit = active_event.entrantNum > 1;
 xx += px(0.5);
 var ww = app_width*width*0.98;
 var hh = py(10);
 var height = hh*0.5;
 var yy = app_height-hh-py(1);
+var col = pick(c_gray,header_color,submit);
 
-if click_button(xx,yy,"Next",height,c_white,ww,hh,header_color,false,false,navbar.hidden)
+if click_button(xx,yy,"Next",height,c_white,ww,hh,col,false,false,navbar.hidden) && submit
 	{
 	screen_change(screen.eventReview);
 	}

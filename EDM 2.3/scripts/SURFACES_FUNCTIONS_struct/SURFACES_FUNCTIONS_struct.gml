@@ -265,8 +265,10 @@ for(var i=0;i<num;i++)
 	
 	if os_type == os_windows
 		{
-		draw_line_pixel(0,ypos,app_width,1,c_red,1);
-		draw_line_pixel(0,end_pos,app_width,1,c_red,1);
+		surf_ww = surface_get_width(surf);
+			
+		draw_line_pixel(0,ypos,surf_ww,1,c_red,1);
+		draw_line_pixel(0,end_pos,surf_ww,1,c_red,1);
 		}
 	}
 }

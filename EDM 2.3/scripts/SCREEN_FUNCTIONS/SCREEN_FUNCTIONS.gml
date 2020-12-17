@@ -77,7 +77,9 @@ else
 	submenu = arr[1];
 	}
 
-screen_goto_actions();
+//screen_goto_actions();
+scr_surface_rebuild_struct();
+vk_hide();
 
 return screenIndex; // return previous screen
 }

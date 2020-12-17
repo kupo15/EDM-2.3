@@ -11,6 +11,8 @@ if member != undefined
 		{
 		array_push(TEAM_array.players,ref_pointer); // add to teamlist
 		array_delete(event_entrant_array,index,1); // remove from entrant list
+		
+		active_event.entrantNum ++;
 		}
 	}
 
