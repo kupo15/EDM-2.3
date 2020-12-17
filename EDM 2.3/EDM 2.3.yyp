@@ -116,6 +116,7 @@
     {"id":{"name":"sidebar_fades","path":"scripts/sidebar_fades/sidebar_fades.yy",},"order":3,},
     {"id":{"name":"scr_season_breakdown_player_delete","path":"scripts/scr_season_breakdown_player_delete/scr_season_breakdown_player_delete.yy",},"order":2,},
     {"id":{"name":"DRAW_ICON_FUNCTIONS","path":"scripts/DRAW_ICON_FUNCTIONS/DRAW_ICON_FUNCTIONS.yy",},"order":2,},
+    {"id":{"name":"surface_bundle_header","path":"scripts/surface_bundle_header/surface_bundle_header.yy",},"order":18,},
     {"id":{"name":"scr_season_ranking_delete_data","path":"scripts/scr_season_ranking_delete_data/scr_season_ranking_delete_data.yy",},"order":3,},
     {"id":{"name":"DRAW_DIALOGUE_FUNCTIONS","path":"scripts/DRAW_DIALOGUE_FUNCTIONS/DRAW_DIALOGUE_FUNCTIONS.yy",},"order":1,},
     {"id":{"name":"draw_assign_blind","path":"scripts/draw_assign_blind/draw_assign_blind.yy",},"order":0,},

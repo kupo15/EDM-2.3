@@ -9,12 +9,7 @@ function draw_home() {
 draw_clear(c_lt_gray);
 
 // header
-if surface_set_struct("header")
-	{
-	element_header_draw(headerType.bars,headerType.none,"Hustle");
-	element_header_delete_draw();
-	surface_reset_target();
-	}
+surface_bundle_header(headerType.bars,headerType.none,"Hustle");
 
 // body
 if surface_set_struct("body")
@@ -26,15 +21,7 @@ if surface_set_struct("body")
 	
 
 // draw surfaces
-surface_draw_struct("header",0,0,0,1);
 surface_draw_struct("body",0,0,0,1);
-
-
-// click //
-
-// header
-element_header_step();
-element_header_delete_step();
 
 // body
 element_home_active_event_step();

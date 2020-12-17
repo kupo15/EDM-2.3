@@ -1,24 +1,12 @@
 function draw_members_list_screen() {
 	
-
-// build surface
-// header
-if surface_set_struct("header")
-	{
-	element_header_draw(headerType.back,headerType.plus,"Members");
-	surface_reset_target();
-	}
-	
-// draw surface //
-
 // body
 var member = draw_memberslist();
 
 // header
-surface_draw_struct("header",-1,0,0,1);
+surface_bundle_header(headerType.back,headerType.plus,"Members");
 
-element_header_delete_draw();
-
+// subheader
 var sort_index = META_data.memberSort;
 var header_arr = ["A-Z","Favorites"];
 var offset = offsetArray[offsetScroll.memberSortUnderline];
@@ -31,21 +19,14 @@ if (header != undefined)
 	
 		// jump to top
 		if META_data.memberSort == member_sort.favorite
-			{
-			offsetArray[scrollbar_index] = 0;
-			offsetArrayStart[scrollbar_index] = 0;
-			}
+		scrollbar_set(offsetScroll.membersOffset,0,true);
 		}
 
-
-// header
-element_header_step();
-element_header_delete_step();
 
 // clicked on member
 if member != undefined
 		{
-		var member_pointer = selection[0];
+		var member_pointer = member[0];
 		var memberID = member_pointer.memberID;
 		
 		subheader_member = 0; // info
