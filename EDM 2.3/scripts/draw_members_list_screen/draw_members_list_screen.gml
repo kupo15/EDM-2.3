@@ -11,6 +11,8 @@ var sort_index = META_data.memberSort;
 var header_arr = ["A-Z","Favorites"];
 var offset = offsetArray[offsetScroll.memberSortUnderline];
 var header = draw_screen_header_submenu(offset,sort_index,0,app_width,1,header_arr);
+
+// clicked on subheader
 if (header != undefined)
 		{
 		scr_surface_rebuild_struct("scrollVert");
@@ -41,6 +43,7 @@ if member != undefined
 		screen_change(screen.memberProfileView,navbar.hidden);
 		}
 
+// pressed back
 if androidBack
 screen_goto_prev();
 }

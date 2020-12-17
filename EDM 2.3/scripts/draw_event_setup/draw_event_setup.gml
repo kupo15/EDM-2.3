@@ -1,22 +1,11 @@
 
 function draw_event_setup() {
 
-
-var scrollbar_index = offsetScroll.membersOffset;
-var sub = submenu;
-
-var xx = bleed_left;
-var yy = header_ypos_end+header_submenu_height;
-var ww = app_width;
-var hh = app_height-yy;
-var sep = pct_y(13);
-var height = pct_y(4.5);
-
-var selection = draw_members_list_overlay(xx,yy,ww,hh,sep,height,event_entrant_array,undefined,scrollbar_index);
-if selection != undefined
+var member = draw_memberslist();
+if member != undefined
 	{
-	var ref_pointer = selection[1];
-	var index = selection[2];
+	var ref_pointer = member[1];
+	var index = member[2];
 
 	if array_length(TEAM_array.players) < 5
 		{
@@ -32,7 +21,7 @@ var ww = app_width;
 var hh = app_height-yy;
 
 // main header
-draw_screen_header(headerType.back,headerType.none,"Select Entrants");
+surface_bundle_header(headerType.back,headerType.none,"Select Entrants");
 
 // player list submenu
 var sort_index = META_data.memberSort;
@@ -46,13 +35,10 @@ if (header != undefined)
 	
 	// jump to top
 	if META_data.memberSort == member_sort.favorite
-		{
-		offsetArray[scrollbar_index] = 0;
-		offsetArrayStart[scrollbar_index] = 0;
-		}
+	scrollbar_set(offsetScroll.membersOffset,0,true);
 	}
 
-	
+// pressed back
 if androidBack
 screen_goto_prev();
 }

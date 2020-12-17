@@ -122,6 +122,8 @@ for(var i=pos_start;i<pos_end;i++)
 			var memberID = ref_pointer.memberID;
 			var member_pointer = database_get_pointer(MEMBER_database,memberID,"memberID");
 	
+			scr_surface_rebuild_struct("scrollVert",surface_ind);
+	
 			return [member_pointer,ref_pointer,i];
 			}
 		}
