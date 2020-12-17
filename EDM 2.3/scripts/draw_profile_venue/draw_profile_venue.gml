@@ -44,14 +44,9 @@ var curr_str = curr_name+ " ("+curr_iso+")";
 
 #region Finished button
 var submit = (disp_name != "")
-var hh = element_finished.hh;
-var height = element_finished.stringHeight;
-var xx = 0;
-var yy = app_height-hh;
-var ww = app_width-xx-xx;
 var col = pick(c_gray,header_color,submit);
 
-if click_button(xx,yy,"Finished",height,c_white,ww,hh,col,false,false,navbar.hidden) && submit
+if element_shared_finished_draw(col,submit)
 	{
 	PROFILE_data.currency = currency_pointer;
 	PROFILE_data.dispName = disp_name;

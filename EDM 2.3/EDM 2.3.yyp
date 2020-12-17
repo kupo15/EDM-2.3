@@ -64,7 +64,6 @@
     {"id":{"name":"ini_results_load","path":"scripts/ini_results_load/ini_results_load.yy",},"order":12,},
     {"id":{"name":"element_shared_finished","path":"scripts/element_shared_finished/element_shared_finished.yy",},"order":0,},
     {"id":{"name":"ini_results_save","path":"scripts/ini_results_save/ini_results_save.yy",},"order":13,},
-    {"id":{"name":"draw_profile_member_details_old","path":"scripts/draw_profile_member_details_old/draw_profile_member_details_old.yy",},"order":1,},
     {"id":{"name":"spr_estrella_banner","path":"sprites/spr_estrella_banner/spr_estrella_banner.yy",},"order":11,},
     {"id":{"name":"fn_normal","path":"fonts/fn_normal/fn_normal.yy",},"order":2,},
     {"id":{"name":"draw_event_setup","path":"scripts/draw_event_setup/draw_event_setup.yy",},"order":3,},

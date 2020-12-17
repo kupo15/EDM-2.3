@@ -84,7 +84,10 @@ var header_arr = ["Details","Stats","Groups"];
 var offset = offsetArray[offsetScroll.memberProfileUnderline];
 var header = draw_screen_header_submenu(offset,sort_index,0,app_width,1,header_arr);
 if (header != undefined)
-subheader_member = header;
+	{
+	subheader_member = header;
+	scr_surface_rebuild_struct("header",0);
+	}
 
 #endregion
 
