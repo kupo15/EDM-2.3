@@ -3,7 +3,7 @@ function element_header_draw(header_left,header_right,header_string,headerHeight
 /// @param header_right
 /// @param header_string
 /// @param [headerHeightScale
-/// @param [header_color]
+/// @param header_color]
 
 headerLeft = header_left;
 headerRight = header_right;

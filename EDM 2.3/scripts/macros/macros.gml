@@ -1,6 +1,6 @@
 
 // json saving
-#macro save_data "edm_sav.dat"
+#macro save_data "hustle_sav.dat"
 #macro json_version -4
 #macro app_save json_save_array(save_data,ROOT_data_struct)
 #macro app_load json_load_array(save_data)

@@ -1,7 +1,7 @@
 function draw_members_list_screen() {
 	
 // body
-var member = draw_memberslist();
+var member = draw_memberslist(app_width,MEMBER_list,MEMBER_list);
 
 // header
 surface_bundle_header(headerType.back,headerType.plus,"Members");

@@ -4,7 +4,8 @@ bars,
 dots,
 back,
 trash,
-plus
+plus,
+next,
 
 }
 

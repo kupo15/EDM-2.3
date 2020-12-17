@@ -2,6 +2,7 @@ function draw_background_screen() {
 
 // draw background
 draw_clear(c_white);
+//draw_sprite_ext(spr_paper,0,0,0,7.5,7.5,0,c_white,1);
 
 if screenIndex == screen.appStartup
 draw_appStartup();

@@ -1,4 +1,9 @@
 function surface_bundle_header(header_left,header_right,header_string,headerHeightScale,bg_col) {
+/// @param	header_left
+/// @param	header_right
+/// @param	header_string
+/// @param	[headerHeightScale
+/// @param	header_color]	
 	
 if surface_set_struct("header")
 	{

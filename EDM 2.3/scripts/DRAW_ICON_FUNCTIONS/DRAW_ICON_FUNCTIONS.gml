@@ -195,16 +195,23 @@ return x_pct_x(spr_ww*height/spr_hh);
 }
 
 function draw_icon_width_centered(spr,index,xx,yy,ww,hh,width,alpha) {
+
+var col = draw_get_color();
+draw_icon_width_centered_color(spr,index,xx,yy,ww,hh,width,col,alpha)
+}
+
+function draw_icon_width_centered_color(spr,index,xx,yy,ww,hh,width,col,alpha) {
 	
 var spr_ww = sprite_get_width(spr);
 var sca = width/spr_ww;
 var spr_hh = sprite_get_height(spr)*sca;
 var xoff = abs(ww-width)*0.5;
 var yoff = abs(hh-spr_hh)*0.5;
-var col = c_white;
 
 draw_sprite_ext(spr,index,xx+xoff,yy+yoff,sca,sca,0,col,alpha);
 }
+
+
 
 function draw_icon_height_centered(spr,index,xx,yy,ww,hh,height,alpha) {
 	

@@ -1,7 +1,7 @@
 
 function draw_event_setup() {
 
-var member = draw_memberslist();
+var member = draw_memberslist(app_width,MEMBER_list,undefined);
 if member != undefined
 	{
 	var ref_pointer = member[1];
@@ -30,6 +30,7 @@ var offset = offsetArray[offsetScroll.memberSortUnderline];
 var header = draw_screen_header_submenu(offset,sort_index,0,ww,1,header_arr);
 if (header != undefined)
 	{
+	scr_surface_rebuild_struct("scrollVert");
 	scr_memberlist_sort(header);
 	app_save;
 	

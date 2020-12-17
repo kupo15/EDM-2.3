@@ -1,7 +1,7 @@
 
 draw_screens();
 
-draw_text_height_middled(app_width*0.5,bleed_top,string(fps),header_height,header_height*0.5,1);
+draw_text_height_middled(app_width*0.5,0,string(fps),header_height,header_height*0.5,1);
 
 
 mouse_xprev = mouse_x;

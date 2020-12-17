@@ -6,7 +6,7 @@ function ini_screen_change() {
 
 prevScreenStack = ds_list_create();
 	
-drawScreen[screen.eventSetup] = draw_event_setup;
+drawScreen[screen.eventSetup] = draw_event_setup_split;
 drawScreen[screen.home] = draw_home;
 drawScreen[screen.membersList] = draw_members_list_screen;
 //drawScreen[screen.stats] = draw_stats;
