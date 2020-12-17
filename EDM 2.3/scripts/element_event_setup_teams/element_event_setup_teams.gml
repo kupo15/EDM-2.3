@@ -67,7 +67,13 @@ for(var i=0;i<player_count;i++)
 		{
 		array_push(event_entrant_array,ref_pointer); // add back to entrant list
 		array_delete(TEAM_array.players,i,1); // remove from team list
-	
+		
+		var curr_sort = META_data.memberSort;
+		scr_memberlist_sort(event_entrant_array,member_sort.abc);
+		scr_memberlist_sort(event_entrant_array,curr_sort);
+		
+		scr_surface_rebuild_struct("scrollVert");
+
 		active_event.entrantNum --;
 		i--;
 		player_count --;

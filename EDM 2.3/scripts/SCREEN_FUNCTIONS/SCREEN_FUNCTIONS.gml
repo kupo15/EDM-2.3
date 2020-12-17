@@ -93,7 +93,8 @@ switch screenIndex
 	{
 	case screen.enumcount: submenu = navbar.hidden; break;
 					
-	case screen.eventSetup: event_entrant_array = struct_copy(MEMBER_list);
+	case screen.eventSetup: scr_memberlist_sort(MEMBER_list,member_sort.abc);
+							event_entrant_array = struct_copy(MEMBER_list);
 							scr_memberlist_sort(event_entrant_array,member_sort.favorite);
 							
 							// set all team assignments to undefined
