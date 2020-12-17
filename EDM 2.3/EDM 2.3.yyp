@@ -160,6 +160,7 @@
     {"id":{"name":"SCREEN_FUNCTIONS","path":"scripts/SCREEN_FUNCTIONS/SCREEN_FUNCTIONS.yy",},"order":0,},
     {"id":{"name":"draw_results","path":"scripts/draw_results/draw_results.yy",},"order":0,},
     {"id":{"name":"draw_results_teams","path":"scripts/draw_results_teams/draw_results_teams.yy",},"order":1,},
+    {"id":{"name":"ico_checkmark","path":"sprites/ico_checkmark/ico_checkmark.yy",},"order":14,},
     {"id":{"name":"spr_estrella_logo","path":"sprites/spr_estrella_logo/spr_estrella_logo.yy",},"order":10,},
     {"id":{"name":"TIMER_FUNCTIONS","path":"scripts/TIMER_FUNCTIONS/TIMER_FUNCTIONS.yy",},"order":0,},
     {"id":{"name":"draw_event_setup_split","path":"scripts/draw_event_setup_split/draw_event_setup_split.yy",},"order":6,},

@@ -69,6 +69,11 @@ for(var i=pos_start;i<pos_end;i++)
 	{
 	var off_ind = i-offsetvar;
 	var off_pos = off_ind*sep;
+	
+	var xpos = app_width*0.85;		
+
+	if activeStruct.currency.isoCode == currency_array[i].isoCode
+	draw_icon_height_centered_color(ico_checkmark,0,xpos,yy+off_pos,0,sep,sep*0.45,c_white,1);
 		
 	if click_region_released_clamp_array(0,yy,off_pos,ww,sep,hh,mb_left,true,sub,i,undefined,undefined,false)
 	return i;
