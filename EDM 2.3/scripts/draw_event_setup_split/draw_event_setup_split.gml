@@ -13,6 +13,8 @@ if member != undefined
 		array_delete(event_entrant_array,index,1); // remove from entrant list
 		
 		active_event.entrantNum ++;
+		
+		scr_surface_rebuild_struct("body");
 		}
 	}
 
