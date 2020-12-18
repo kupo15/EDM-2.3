@@ -33,7 +33,7 @@ var curr_str = curr_name+ " ("+curr_iso+")";
 var submit = (disp_name != "")
 var col = pick(c_gray,header_color,submit);
 
-if element_shared_finished_draw(col,submit)
+if element_shared_finished_draw(col,"Finished",submit)
 	{
 	PROFILE_data.currency = currency_pointer;
 	PROFILE_data.dispName = disp_name;

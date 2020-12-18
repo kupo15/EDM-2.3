@@ -8,6 +8,7 @@ prevScreenStack = ds_list_create();
 	
 drawScreen[screen.eventSetup] = draw_event_setup_split;
 drawScreen[screen.eventReview] = draw_event_setup_review;
+drawScreen[screen.eventEntry] = draw_event_score_teams;
 
 drawScreen[screen.home] = draw_home;
 drawScreen[screen.membersList] = draw_members_list_screen;
@@ -101,6 +102,9 @@ switch screenIndex
 							var size = array_length(event_entrant_array)
 							for(var i=0;i<size;i++)
 							event_entrant_array[i].team = undefined;
+							
+							teamlist_index = 0;
+							scrollbar_set(offsetScroll.teamsUnderline,0,true);
 							
 							scr_event_create();
 							break;

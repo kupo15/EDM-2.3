@@ -7,9 +7,9 @@ if member != undefined
 	var ref_pointer = member[1];
 	var index = member[2];
 
-	if array_length(TEAM_array.players) < 5
-		{
-		array_push(TEAM_array.players,ref_pointer); // add to teamlist
+	if array_length(setup_team_struct[teamlist_index].players) < 5
+		{			
+		array_push(setup_team_struct[teamlist_index].players,ref_pointer); // add to teamlist
 		array_delete(event_entrant_array,index,1); // remove from entrant list
 		
 		active_event.entrantNum ++;

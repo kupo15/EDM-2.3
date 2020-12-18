@@ -28,7 +28,7 @@ var yy = header_ypos_end+py(7.9);
 for(var n=0;n<size;n++)
 	{
 	var xpos = xx+px(1.5)+(n*region_sep);
-	var team_size = array_length(active_event.teams[n].players);
+	var team_size = array_length(setup_team_struct[n].players);
 
 	for(var i=0;i<team_size;i++)
 		{
@@ -45,14 +45,14 @@ var sep = pct_y(11.5);
 var height = sep*0.5;
 var sub = submenu;
 
-var team_array = TEAM_array;
-var player_count = array_length(TEAM_array.players);
+var team_array = setup_team_struct[teamlist_index];
+var player_count = array_length(setup_team_struct[teamlist_index].players);
 
 for(var i=0;i<player_count;i++)
 	{
 	var off_pos = sep*i;
 	
-	var ref_pointer = TEAM_array.players[i];
+	var ref_pointer = setup_team_struct[teamlist_index].players[i];
 	var memberID = ref_pointer.memberID;
 
 	var entrant_pointer = database_get_pointer(MEMBER_database,memberID,"memberID");
@@ -66,7 +66,7 @@ for(var i=0;i<player_count;i++)
 	if click_region_released_clamp_array(xx,yy,off_pos,ww,sep,hh,mb_left,c_yellow,sub,i,undefined,undefined)
 		{
 		array_push(event_entrant_array,ref_pointer); // add back to entrant list
-		array_delete(TEAM_array.players,i,1); // remove from team list
+		array_delete(setup_team_struct[teamlist_index].players,i,1); // remove from team list
 		
 		var curr_sort = META_data.memberSort;
 		scr_memberlist_sort(event_entrant_array,member_sort.abc);

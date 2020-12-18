@@ -12,6 +12,7 @@
 #macro META_data ROOT_data_struct.meta
 
 #macro TEAM_array active_event.teams[teamlist_index]
+#macro PLAYER_array active_event.teams[teamlist_index].players
 
 #macro membersort scr_member_sort_abc(MEMBER_list,true)
 
