@@ -26,7 +26,7 @@ var team_struct = {
 	
 	frontScore: "",
 	backScore: "",
-	roundScore: undefined,
+	roundScore: "",
 	}
 	
 return team_struct;
@@ -40,7 +40,7 @@ var player = {
 	dispName: disp_name,
 	frontScore: "",
 	backScore: "",
-	roundScore: undefined,
+	roundScore: "",
 	
 	grossSkins: 0,
 	netSkins: 0,

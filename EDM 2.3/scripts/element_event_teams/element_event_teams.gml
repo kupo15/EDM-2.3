@@ -6,7 +6,7 @@ var yy = 0;
 var ww = px(99);
 
 var sep = py(11);
-var height = sep*0.6;
+var height = sep*0.5;
 var hh = 6*sep;
 
 var gross_xx = px(68.6);
@@ -25,10 +25,10 @@ if surface_set_struct("body",undefined,undefined,py(75))
 	var labels = ["Front","Back","Gross Skins","Net Skins"];
 	var col = c_black;
 
-	draw_text_height(px(44)-xx,yy,labels[0],height*0.8,undefined,undefined,fa_center);
-	draw_text_height(px(52)-xx,yy,labels[1],height*0.8,undefined,undefined,fa_center);
-	draw_text_height(gross_xx-xx,yy,labels[2],height*0.8,undefined,undefined,fa_center);
-	draw_text_height(net_xx-xx,yy,labels[3],height*0.8,undefined,undefined,fa_center);
+	draw_text_height(px(44)-xx,yy,labels[0],height*0.95,undefined,undefined,fa_center);
+	draw_text_height(px(52)-xx,yy,labels[1],height*0.95,undefined,undefined,fa_center);
+	draw_text_height(gross_xx-xx,yy,labels[2],height*0.95,undefined,undefined,fa_center);
+	draw_text_height(net_xx-xx,yy,labels[3],height*0.95,undefined,undefined,fa_center);
 
 	// draw background
 	var yy = height*0.8;
@@ -99,7 +99,7 @@ var ypos = subheader_ypos_end+py(1); //0
 
 surface_draw_struct("body",0,xx,ypos,1);
 
-var yy = py(32.75);
+var yy = py(32);
 
 element_event_teams_step(xx,yy,ww,sep,gross_xx,net_xx,button_ww,buffer);
 }	
