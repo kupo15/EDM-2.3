@@ -11,7 +11,10 @@ var header_arr = active_event_team_header;
 var offset = offsetArray[offsetScroll.teamsUnderline];
 var header = draw_screen_header_submenu(offset,sort_index,0,app_width,1,header_arr);
 if (header != undefined)
-teamlist_index = header;
+	{
+	scr_surface_rebuild_struct("body");
+	teamlist_index = header;
+	}
 	
 element_event_teams(header_arr);
 		

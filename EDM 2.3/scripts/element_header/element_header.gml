@@ -88,7 +88,7 @@ for(var i=0;i<2;i++)
 			var xx = xpos+pct_x(5);
 			var yy = bleed_top+pct_y(6.5);
 		
-			draw_plus_button(xx,yy,region,c_white,undefined,undefined,alpha); // plus button
+			draw_plus_button(xx,yy,region,c_white,alpha,undefined,undefined); // plus button
 			break;
 		}
 	}

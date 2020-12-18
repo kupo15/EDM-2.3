@@ -87,18 +87,18 @@ if click_region_released(app_width-hh,yy,hh,hh,true,submenu)
 
 function draw_plus_button_pct(xx,yy,d,enclosed,str_col,col) {
 	
-draw_plus_button(xx,yy,d,enclosed,str_col,col,true);
+draw_plus_button(xx,yy,d,str_col,1,enclosed,true);
 }
 	
-function draw_plus_button(xx,yy,d,plus_col,enclosed_col,pct,alpha) {
+function draw_plus_button(xx,yy,d,plus_col,alpha,enclosed_col,pct) {
 // centered
 /// @param xx
 /// @param yy
 /// @param diameter
 /// @param plusColor
+/// @param alpha
 /// @param [enclosedColor
-/// @param pct?
-/// @param alpha]
+/// @param pct?]
 
 var ww = 3;
 
@@ -109,7 +109,7 @@ if pct == true
 	ww = x_pct_x(ww);
 	}
 
-vertex_buffer_menu_plus(xx,yy,d,ww,plus_col,enclosed_col,alpha);
+vertex_buffer_menu_plus(xx,yy,d,ww,plus_col,alpha,enclosed_col);
 }
 
 function draw_switch_tab(xx,yy,box_hh,switch_hh,ind,variable,enclosed) {

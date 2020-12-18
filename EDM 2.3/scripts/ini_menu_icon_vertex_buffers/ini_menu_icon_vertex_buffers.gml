@@ -278,7 +278,7 @@ vertex_end(vbuff);
 vertex_submit(vbuff,pr_trianglelist,-1); 
 }
 
-function vertex_buffer_menu_plus(xx,yy,d,thick,col,enclosed_col,alpha) {
+function vertex_buffer_menu_plus(xx,yy,d,thick,col,alpha,enclosed_col) {
 
 #region create buffer
 var vbuff = global.vbuffer;
