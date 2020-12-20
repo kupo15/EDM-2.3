@@ -16,6 +16,8 @@ scr_sidebar_lerp(offsetScroll.teamsUnderline,teamlist_index,0.5,false); // under
 scr_sidebar_lerp(offsetScroll.memberSortUnderline,META_data.memberSort,0.5,false); // underline
 scr_sidebar_lerp(offsetScroll.memberProfileUnderline,subheader_member,0.5,false); // underline
 
+scr_sidebar_lerp(offsetScroll.entryPlayerIndex,teammate_index,0.5,false); // highlight
+
 // alpha
 scr_sidebar_lerp(offsetScroll.headerDeleteAlpha,modeDelete,0.19); // header delete
 scr_sidebar_lerp(offsetScroll.lerpAlpha,offsetArrayEnd[offsetScroll.lerpAlpha],fade_spd); // alpha

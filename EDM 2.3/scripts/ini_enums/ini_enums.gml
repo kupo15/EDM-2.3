@@ -38,6 +38,8 @@ teamsUnderline,
 memberSortUnderline,
 memberProfileUnderline,
 
+entryPlayerIndex,
+
 membersOffset,
 groupsOffset,
 currencyOffset,

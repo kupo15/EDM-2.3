@@ -40,9 +40,10 @@ for(var i=0;i<team_size;i++)
 			
 	var entrant_pointer = players_list[i];
 	var name = entrant_pointer.dispName;
-			
-	draw_text_height_middled(px(2),yy+off_pos,string(off_ind+1)+".",sep,height,1); // draw entrant name
-	draw_text_height_middled(xx,yy+off_pos,name,sep,height,1); // draw entrant name
+	var col = pick(c_black,header_color,i==teammate_index);
+
+	draw_text_height_middled_color(px(2),yy+off_pos,string(off_ind+1)+".",sep,col,height,1); // draw entrant name
+	draw_text_height_middled_color(xx,yy+off_pos,name,sep,col,height,1); // draw entrant name
 			
 	draw_line_pixel(px(4),yy+off_pos+sep,ww-px(10),1,c_gray,1);
 	}
@@ -69,6 +70,7 @@ for(var i=0;i<team_num;i++)
 	
 	if click_region_released(xx+off_pos,yy,button_ww,button_hh,true,submenu,1)
 		{
+		teammate_index = 0;
 		teamlist_index = i;
 		scr_surface_rebuild_struct("overlay");
 		break;
@@ -102,7 +104,8 @@ for(var i=0;i<team_size;i++)
 	}
 	
 // draw highlighted player
-var ypos = yy+(teammate_index*sep);
+var offset = offsetArray[offsetScroll.entryPlayerIndex];
+var ypos = yy+(offset*sep);
 
-draw_rectangle_pixel(0,ypos,ww,sep,c_white,false,0.3);
+draw_rectangle_pixel(0,ypos,ww,sep,c_white,false,0.25);
 }
