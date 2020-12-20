@@ -4,6 +4,8 @@ show_debug_overlay(true);
 
 subheader_member = 0;
 teamlist_index = 0;
+teammate_index = 0;
+entrant_index = 0;
 
 event_entrant_array = [];
 

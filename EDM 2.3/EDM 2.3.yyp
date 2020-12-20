@@ -201,6 +201,7 @@
     {"id":{"name":"SEARCHBAR_FUNCTIONS","path":"scripts/SEARCHBAR_FUNCTIONS/SEARCHBAR_FUNCTIONS.yy",},"order":1,},
     {"id":{"name":"element_sidebar_profile","path":"scripts/element_sidebar_profile/element_sidebar_profile.yy",},"order":1,},
     {"id":{"name":"spr_icon_blank_profile","path":"sprites/spr_icon_blank_profile/spr_icon_blank_profile.yy",},"order":8,},
+    {"id":{"name":"element_teams_popup_entry_draw","path":"scripts/element_teams_popup_entry_draw/element_teams_popup_entry_draw.yy",},"order":1,},
     {"id":{"name":"root_data_create","path":"scripts/root_data_create/root_data_create.yy",},"order":4,},
     {"id":{"name":"element_header_delete","path":"scripts/element_header_delete/element_header_delete.yy",},"order":1,},
     {"id":{"name":"element_event_setup_teams","path":"scripts/element_event_setup_teams/element_event_setup_teams.yy",},"order":0,},

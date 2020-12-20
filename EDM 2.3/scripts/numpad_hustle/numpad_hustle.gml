@@ -44,24 +44,24 @@ draw_set_halign(fa_center);
 
 for(var i=0;i<3;i++)
 for(var n=0;n<3;n++)
-click_button(xx+(i*hsep2),yy+(n*vsep),(n*3)+i+1,height,c_black,hsep2,vsep,undefined,true,false,submenu)
+click_button(xx+(i*hsep2),yy+(n*vsep),(n*3)+i+1,height,c_black,hsep2,vsep,undefined,true,false,navbar.enumstart)
 
 // 0
-click_button(xx+(1*hsep2),yy+(3*vsep),"0",height,c_black,hsep2,vsep,undefined,true,false,submenu)
+click_button(xx+(1*hsep2),yy+(3*vsep),"0",height,c_black,hsep2,vsep,undefined,true,false,navbar.enumstart)
 
 // backspace
-draw_button_backspace(ico_backspace,0,xx+(2*hsep2),yy+(3*vsep),hsep2,vsep,height*0.6,1,submenu);
+draw_button_backspace(ico_backspace,0,xx+(2*hsep2),yy+(3*vsep),hsep2,vsep,height*0.6,1,navbar.enumstart);
 
 // draw par buttons
 height *= 1.4;
 
-click_button(xx+(0*hsep1)+(3*hsep2),yy+(0*vsep),"par\n72",height,c_black,hsep1,vsep,undefined,true,false,submenu)
-
-click_button(xx+(0*hsep1)+(3*hsep2),yy+(1*vsep),"par\n71",height,c_black,hsep1,vsep,undefined,true,false,submenu)
-
-click_button(xx+(0*hsep1)+(3*hsep2),yy+(2*vsep),"par\n70",height,c_black,hsep1,vsep,undefined,true,false,submenu)
-
-click_button(xx+(0*hsep1)+(3*hsep2),yy+(3*vsep),"par\n69",height,c_black,hsep1,vsep,undefined,true,false,submenu)
+//click_button(xx+(0*hsep1)+(3*hsep2),yy+(0*vsep),"par\n72",height,c_black,hsep1,vsep,undefined,true,false,navbar.enumstart)
+//
+//click_button(xx+(0*hsep1)+(3*hsep2),yy+(1*vsep),"par\n71",height,c_black,hsep1,vsep,undefined,true,false,navbar.enumstart)
+//
+//click_button(xx+(0*hsep1)+(3*hsep2),yy+(2*vsep),"par\n70",height,c_black,hsep1,vsep,undefined,true,false,navbar.enumstart)
+//
+//click_button(xx+(0*hsep1)+(3*hsep2),yy+(3*vsep),"par\n69",height,c_black,hsep1,vsep,undefined,true,false,navbar.enumstart)
 }
 
 function numpad_hustle_step(variable,xx,yy,ww) {
@@ -101,17 +101,17 @@ if click_region_released(xx+(2*hsep2),yy+(3*vsep),hsep2,vsep,true,submenu,1)
 // draw par buttons
 height *= 1.4;
 
-if click_region_released(xx+(0*hsep1)+(3*hsep2),yy+(0*vsep),hsep1,vsep,true,submenu,1)
-variable = "72";
-
-if click_region_released(xx+(0*hsep1)+(3*hsep2),yy+(1*vsep),hsep1,vsep,true,submenu,1)
-variable = "71";
-
-if click_region_released(xx+(0*hsep1)+(3*hsep2),yy+(2*vsep),hsep1,vsep,true,submenu,1)
-variable = "70";
-
-if click_region_released(xx+(0*hsep1)+(3*hsep2),yy+(3*vsep),hsep1,vsep,true,submenu,1)
-variable = "69";
+//if click_region_released(xx+(0*hsep1)+(3*hsep2),yy+(0*vsep),hsep1,vsep,true,submenu,1)
+//variable = "72";
+//
+//if click_region_released(xx+(0*hsep1)+(3*hsep2),yy+(1*vsep),hsep1,vsep,true,submenu,1)
+//variable = "71";
+//
+//if click_region_released(xx+(0*hsep1)+(3*hsep2),yy+(2*vsep),hsep1,vsep,true,submenu,1)
+//variable = "70";
+//
+//if click_region_released(xx+(0*hsep1)+(3*hsep2),yy+(3*vsep),hsep1,vsep,true,submenu,1)
+//variable = "69";
 
 
 

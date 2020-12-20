@@ -28,6 +28,9 @@ if androidBack
 	if submenu == navbar.hidden
 	screen_goto_prev();
 	else
-	submenu = navbar.hidden;
+		{
+		submenu = navbar.hidden;
+		scr_surface_free_struct("overlay");
+		}
 	}
 }

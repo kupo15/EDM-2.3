@@ -274,8 +274,11 @@ function debug_draw_project_variables(xx,yy,ind,sep,height) {
 
 draw_text_height(xx,yy+((ind+0)*sep),"active_event: "+string(active_event != undefined),height);
 draw_text_height(xx,yy+((ind+1)*sep),"event_entrant_array: "+string(array_length(event_entrant_array)),height);
+draw_text_height(xx,yy+((ind+2)*sep),"teamlist_index: "+string(teamlist_index),height);
+draw_text_height(xx,yy+((ind+3)*sep),"teammate_index: "+string(teammate_index),height);
+draw_text_height(xx,yy+((ind+4)*sep),"entrant_index: "+string(entrant_index),height);
 	
-debugyoff += 3;
+debugyoff += 6;
 }
 
 function debug_draw_screen_navigation(xx,yy,ind,sep,height) {

@@ -15,7 +15,10 @@ var header_arr = ["Team\n1","Team\n2","Team\n3","Team\n4","Team\n5","Team\n6"];
 var offset = offsetArray[offsetScroll.teamsUnderline];
 var header = draw_screen_header_submenu(offset,sort_index,xx,ww,1.5,header_arr);
 if (header != undefined)
-teamlist_index = header;
+	{
+	teamlist_index = header;
+	scr_surface_rebuild_struct("body");
+	}
 #endregion
 
 #region draw circles

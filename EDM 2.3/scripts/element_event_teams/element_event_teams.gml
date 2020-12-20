@@ -143,6 +143,15 @@ for(var n=0;n<player_num;n++)
 		}
 	else if click_region_released(xx,yy+yoff,ww*0.56,sep,true,sub,1) // player
 		{
+		teammate_index = n;
+				
+		entrant_index = n;
+		for(var i=0;i<teamlist_index;i++)
+			{
+			var size = array_length(active_event.teams[i].players);
+			entrant_index += size;
+			}
+					
 		submenu = navbar.eventEntry;
 		}
 	}
