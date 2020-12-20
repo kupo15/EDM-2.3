@@ -52,7 +52,7 @@ var xx = app_width+10;
 
 debug_draw_screen_navigation(xx,yy,debugyoff,sep,height);
 
-debugyoff = 3;
+debugyoff = 4;
 
 debug_draw_active_surfaces(xx,yy,debugyoff,sep,height);
 		

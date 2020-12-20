@@ -16,6 +16,7 @@ home,
 
 eventReview,
 eventEntry,
+eventEntryReview,
 
 profileCreate,
 profileView,
@@ -79,10 +80,14 @@ hidden = -1,
 sidebar,
 numpad,
 
+eventEntry,
+
 profileChange,
 currencyList,
 popupEntry,
 }
+
+//debug_submenu_names()
 
 enum member_sort {
 abc,

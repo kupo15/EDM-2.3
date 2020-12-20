@@ -28,8 +28,8 @@
 #macro header_height pct_y(13)
 #macro header_submenu_height header_height*0.8
 
-#macro header_ypos_end bleed_top+header_height
-#macro subheader_ypos_end bleed_top+header_height+header_submenu_height
+#macro header_ypos_end (bleed_top+header_height)
+#macro subheader_ypos_end (bleed_top+header_height+header_submenu_height)
 
 #macro header_font_height header_height*0.45
 #macro header_submenu_font_height header_font_height*0.8

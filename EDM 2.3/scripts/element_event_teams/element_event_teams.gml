@@ -107,6 +107,7 @@ element_event_teams_step(xx,yy,ww,sep,gross_xx,net_xx,button_ww,buffer);
 	
 function element_event_teams_step(xx,yy,ww,sep,gross_xx,net_xx,button_ww,buffer) {
 
+var sub = navbar.hidden;
 var xoff = px(1.5);
 
 var player_num = array_length(active_event.teams[teamlist_index].players);
@@ -114,7 +115,7 @@ for(var n=0;n<player_num;n++)
 	{
 	var yoff = n*sep;
 
-	if click_region_pressed(gross_xx-buffer-button_ww-xoff,yy+yoff,button_ww,sep,true,submenu) // minus 
+	if click_region_pressed(gross_xx-buffer-button_ww-xoff,yy+yoff,button_ww,sep,true,sub) // minus 
 		{
 		scr_surface_rebuild_struct("body");
 		PLAYER_array[n].grossSkins--;
@@ -122,12 +123,12 @@ for(var n=0;n<player_num;n++)
 		if PLAYER_array[n].grossSkins < 0
 		PLAYER_array[n].grossSkins = 0;
 		}
-	else if click_region_pressed(gross_xx+buffer-xoff,yy+yoff,button_ww,sep,true,submenu) // plus
+	else if click_region_pressed(gross_xx+buffer-xoff,yy+yoff,button_ww,sep,true,sub) // plus
 		{
 		scr_surface_rebuild_struct("body");
 		PLAYER_array[n].grossSkins++;
 		}
-	else if click_region_pressed(net_xx-buffer-button_ww-xoff,yy+yoff,button_ww,sep,true,submenu) // minus
+	else if click_region_pressed(net_xx-buffer-button_ww-xoff,yy+yoff,button_ww,sep,true,sub) // minus
 		{
 		scr_surface_rebuild_struct("body");
 		PLAYER_array[n].netSkins--;
@@ -135,13 +136,14 @@ for(var n=0;n<player_num;n++)
 		if PLAYER_array[n].netSkins < 0
 		PLAYER_array[n].netSkins = 0;
 		}
-	else if click_region_pressed(net_xx+buffer-xoff,yy+yoff,button_ww,sep,true,submenu) // plus
+	else if click_region_pressed(net_xx+buffer-xoff,yy+yoff,button_ww,sep,true,sub) // plus
 		{
 		scr_surface_rebuild_struct("body");
 		PLAYER_array[n].netSkins++;
 		}
-	else click_region_released(xx,yy+yoff,ww*0.56,sep,true,submenu,1) // player
+	else if click_region_released(xx,yy+yoff,ww*0.56,sep,true,sub,1) // player
 		{
+		submenu = navbar.eventEntry;
 		}
 	}
 }

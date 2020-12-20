@@ -18,6 +18,6 @@ surface_draw_struct("header",-1,0,0,1);
 element_header_delete_draw();
 
 // step
-element_header_step();
 element_header_delete_step();
+return element_header_step();
 }

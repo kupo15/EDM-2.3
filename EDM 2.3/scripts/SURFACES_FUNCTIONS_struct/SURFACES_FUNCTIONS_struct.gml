@@ -14,6 +14,7 @@ init_surface_struct = {
 	header: [struct_copy(init_surf_data)],
 	body: [struct_copy(init_surf_data)],
 	sidebar: [struct_copy(init_surf_data)],
+	overlay: [struct_copy(init_surf_data)],
 	
 	scrollVert: [],
 	scrollHor: [],
@@ -155,7 +156,6 @@ var struct = surface_struct[$ key];
 
 if argument[1] == undefined
 ind = 0;
-
 
 // if the index you are trying to set is outside the array
 if ind >= array_length(struct)

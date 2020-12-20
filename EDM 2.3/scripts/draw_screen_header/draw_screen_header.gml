@@ -116,13 +116,17 @@ draw_text_height_middled_color(pct_x(15),bleed_top,header_string,header_height,c
 return return_val;
 }
 
-function draw_screen_header_submenu(offset,sort_index,xpos,width,scale,header_arr) {
+function draw_screen_header_submenu(offset,sort_index,xpos,width,scale,header_arr,sub) {
 /// param offset
 /// param sort_index
 /// param xx
 /// param width
 /// param stringScale
 /// param header_string
+/// param [submenu]
+
+if argument[6] == undefined
+sub = submenu;
 
 var xx = xpos;
 var yy = header_ypos_end;
@@ -152,7 +156,7 @@ for(var i=0;i<header_num;i++)
 	var str_col = pick(c_white,c_white,i==sort_index);
 	var text_alpha = pick(0.75,1,i==sort_index);
 
-	if click_button(pos,yy,header_arr[i],height,str_col,header_sep,header_submenu_height,undefined,false,false,submenu,undefined,text_alpha)
+	if click_button(pos,yy,header_arr[i],height,str_col,header_sep,header_submenu_height,undefined,false,false,sub,undefined,text_alpha)
 	val = i;
 	}
 

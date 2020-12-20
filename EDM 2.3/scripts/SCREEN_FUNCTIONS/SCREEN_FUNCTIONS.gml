@@ -9,6 +9,7 @@ prevScreenStack = ds_list_create();
 drawScreen[screen.eventSetup] = draw_event_setup_split;
 drawScreen[screen.eventReview] = draw_event_setup_review;
 drawScreen[screen.eventEntry] = draw_event_score_teams;
+drawScreen[screen.eventEntryReview] = draw_event_entry_review;
 
 drawScreen[screen.home] = draw_home;
 drawScreen[screen.membersList] = draw_members_list_screen;

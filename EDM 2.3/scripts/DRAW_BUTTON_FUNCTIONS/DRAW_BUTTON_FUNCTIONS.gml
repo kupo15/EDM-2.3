@@ -39,7 +39,7 @@ if screenIndex == screenInd
 
 function draw_button_backspace(spr,index,xx,yy,ww,hh,height,alpha,sub) {
 	
-draw_icon_height_centered(spr,index,xx,yy,ww,hh,height,alpha);
+draw_icon_height_centered_color(spr,index,xx,yy,ww,hh,height,c_white,alpha);
 	
 return click_region_released(xx,yy,ww,hh,true,sub);	
 }

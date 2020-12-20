@@ -90,6 +90,15 @@ for(var i=0;i<2;i++)
 		
 			draw_plus_button(xx,yy,region,c_white,alpha,undefined,undefined); // plus button
 			break;
+			
+		// string
+		default: 
+		
+			var xx = px(2);
+			var yy = bleed_top;
+			var height = header_font_height*0.9;
+			
+			draw_text_height_middled_color(xpos+xx,yy,header_type,header_height,c_white,height,1);
 		}
 	}
 }
@@ -121,6 +130,10 @@ for(var i=0;i<2;i++)
 	else if header_type == headerType.trash	&& click_region_released(xpos,bleed_top,pct_x(10),header_height,true,submenu)
 		{
 		return header_type;
+		}
+	else if (header_type == header_type) && (i==1) && click_region_released(xpos,bleed_top,pct_x(10),header_height,true,submenu)
+		{
+		return -1;
 		}
 	}		
 	
