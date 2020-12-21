@@ -31,6 +31,7 @@ if androidBack
 		{
 		submenu = navbar.hidden;
 		scr_surface_free_struct("overlay");
+		scr_surface_rebuild_struct("body");
 		}
 	}
 }

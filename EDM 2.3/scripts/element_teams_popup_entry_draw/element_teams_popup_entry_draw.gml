@@ -22,7 +22,7 @@ for(var i=0;i<team_num;i++)
 	
 	var col = c_black;
 	draw_roundrect_color(xx+off_pos,yy,xx+off_pos+button_ww,yy+button_hh,col,col,true);
-	click_button(xx+off_pos,yy,"Team "+string(i+1),height,c_black,button_ww,button_hh,undefined,true,true,navbar.main);
+	click_button(xx+off_pos,yy,"Team "+string(i+1),height,c_black,button_ww,button_hh,undefined,true,true,navbar.enumstart);
 	}
 
 // team list
@@ -40,10 +40,18 @@ for(var i=0;i<team_size;i++)
 			
 	var entrant_pointer = players_list[i];
 	var name = entrant_pointer.dispName;
+	var front = entrant_pointer.frontScore;
+	var back = entrant_pointer.backScore;
+	var front_str = pick(front,"-",front == "");
+	var back_str = pick(back,"-",back == "");
+	
 	var col = pick(c_black,header_color,i==teammate_index);
 
-	draw_text_height_middled_color(px(2),yy+off_pos,string(off_ind+1)+".",sep,col,height,1); // draw entrant name
+	draw_text_height_middled_color(px(2),yy+off_pos,string(off_ind+1)+".",sep,col,height,1); // draw entrant number
 	draw_text_height_middled_color(xx,yy+off_pos,name,sep,col,height,1); // draw entrant name
+	
+	draw_text_height_middled_color(px(40),yy+off_pos,front_str,sep,col,height,1,undefined,undefined,fa_center); // draw front nine
+	draw_text_height_middled_color(px(45),yy+off_pos,back_str,sep,col,height,1,undefined,undefined,fa_center); // draw back nine
 			
 	draw_line_pixel(px(4),yy+off_pos+sep,ww-px(10),1,c_gray,1);
 	}
@@ -72,6 +80,9 @@ for(var i=0;i<team_num;i++)
 		{
 		teammate_index = 0;
 		teamlist_index = i;
+		score_nine_index = 0;
+		
+		numpad_value = PLAYER_array[teammate_index].frontScore;
 		scr_surface_rebuild_struct("overlay");
 		break;
 		}
@@ -98,6 +109,10 @@ for(var i=0;i<team_size;i++)
 	if click_region_released(0,yy+off_pos,ww,sep,true,submenu,1)
 		{
 		teammate_index = i;
+		score_nine_index = 0;
+		
+		numpad_value = PLAYER_array[teammate_index].frontScore;
+		
 		scr_surface_rebuild_struct("overlay");
 		break;
 		}

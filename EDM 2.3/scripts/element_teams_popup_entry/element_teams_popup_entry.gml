@@ -1,12 +1,17 @@
 function element_teams_popup_entry() {
 
-if submenu != navbar.eventEntry
+if submenu != navbar.eventEntry && submenu != navbar.numpad
 exit;
 
 var numpad_yoff = 1-offsetArray[offsetScroll.numpadYoff];
-var num_xx = app_width-element_numpad.ww;
 var ww = app_width*0.5;
 var surf_hh = app_height-header_ypos_end;
+var num_xx = app_width-element_numpad.ww;
+var num_yy = surf_hh-element_numpad.hh;
+var num_ww = app_width-num_xx;
+
+var front = PLAYER_array[teammate_index].frontScore;
+var back = PLAYER_array[teammate_index].backScore;
 
 if surface_set_struct("overlay",0,undefined,surf_hh)
 	{
@@ -18,28 +23,69 @@ if surface_set_struct("overlay",0,undefined,surf_hh)
 			
 	// draw entry info	
 	var xx = px(52);
-	draw_text_height(xx,0,"ENTER SCORE:",py(5));
+	var height = py(5);
+	
+	draw_text_height(xx,0,"ENTER SCORE:",height);
+	
+	draw_text_height(xx,height,PLAYER_array[teammate_index].dispName,height*1.5);
+	
+	// draw scores
+	var yy = py(20);
+	
+	draw_text_height(num_xx+(num_ww*0.25),yy,"Front Nine",height,undefined,undefined,fa_center);
+	draw_text_height(num_xx+(num_ww*0.75),yy,"Back Nine",height,undefined,undefined,fa_center);
+	
+	draw_line_pixel(num_xx+(num_ww*0.5),yy+py(2),1,py(7),c_gray,1);
+	
+	// score	
+	var front_str = pick(front,"-",front=="");
+	var back_str = pick(back,"-",back=="");
+	
+	draw_text_height(num_xx+(num_ww*0.25),yy+height,front_str,height,undefined,undefined,fa_center);
+	draw_text_height(num_xx+(num_ww*0.75),yy+height,back_str,height,undefined,undefined,fa_center);
 			
 	// draw numpad
-	numpad_hustle_draw(num_xx,surf_hh-element_numpad.hh);
+	numpad_hustle_draw(num_xx,num_yy);
 	
 	draw_line_pixel(num_xx,0,1,surf_hh,c_gray,1);
-	draw_line_pixel(num_xx,surf_hh-element_numpad.hh,ww,1,c_gray,1);
+	draw_line_pixel(num_xx,num_yy,ww,1,c_gray,1);
 	
 	surface_reset_target();
 	}
 	
-
-
-
 // darken screen
 draw_rectangle_pixel(0,0,app_width,app_height,c_black,false,0.4);
 
 surface_draw_struct("overlay",0,0,header_ypos_end,1);
 
+
 numpad_value = numpad_hustle_step(numpad_value,num_xx,app_height-element_numpad.hh,ww);
 
+switch score_nine_index
+	{
+	case 0: PLAYER_array[teammate_index].frontScore = string_convert_real_numpad(numpad_value,2); break;
+	case 1: PLAYER_array[teammate_index].backScore = string_convert_real_numpad(numpad_value,2); break;
+	}
+	
+
 element_teams_popup_entry_step();
+
+// score entry step
+var button_ww = num_ww*0.5;
+var button_hh = py(12.6);
+var offset = offsetArray[offsetScroll.nineScoreUnderline];
+var xx = num_xx+(offset*button_ww)+(button_ww*0.25);
+var yy = py(41);
+
+draw_rectangle_pixel(xx,yy,button_ww*0.5,py(0.5),header_color,false,0.5);
+
+for(var i=0;i<2;i++)
+if click_region_released(num_xx+(i*button_ww),py(36.2),button_ww,button_hh,true,submenu,1)
+	{
+	score_nine_index = i;	
+	numpad_value = pick(front,back,i==1)
+	break;
+	}	
 
 // clickout
 if click_region_released(0,0,app_width,header_ypos_end,false,submenu,1)

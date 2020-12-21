@@ -76,6 +76,8 @@ var hsep2 = element_numpad.hsep2*xscale;
 var height = element_numpad.height*yscale;
 var yoff = (vsep-height)*0.5;
 
+var variable_old = variable;
+
 for(var i=0;i<3;i++)
 for(var n=0;n<3;n++)
 	{
@@ -89,7 +91,9 @@ for(var n=0;n<3;n++)
 
 // draw 0
 if click_region_released(xx+(1*hsep2),yy+(3*vsep),hsep2,vsep,true,submenu,1)
-variable += "0";
+	{sm(variable)
+	variable += "0";
+	}
 
 // delete
 if click_region_released(xx+(2*hsep2),yy+(3*vsep),hsep2,vsep,true,submenu,1)
@@ -121,6 +125,9 @@ height *= 1.4;
 	//var length = string_length(variable);
 	//variable = string_delete(variable,length,1);
 	}
+
+if variable_old != variable
+scr_surface_rebuild_struct("overlay");
 
 return variable;
 }

@@ -143,15 +143,18 @@ for(var n=0;n<player_num;n++)
 		}
 	else if click_region_released(xx,yy+yoff,ww*0.56,sep,true,sub,1) // player
 		{
+		score_nine_index = 0;
 		teammate_index = n;
-				
+		scrollbar_set(offsetScroll.entryPlayerIndex,teammate_index,true);
+						
 		entrant_index = n;
 		for(var i=0;i<teamlist_index;i++)
 			{
 			var size = array_length(active_event.teams[i].players);
 			entrant_index += size;
 			}
-					
+		
+		numpad_value = PLAYER_array[teammate_index].frontScore;		
 		submenu = navbar.eventEntry;
 		}
 	}

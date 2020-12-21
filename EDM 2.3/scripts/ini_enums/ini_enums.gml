@@ -37,6 +37,7 @@ sidebarXoff,
 teamsUnderline,
 memberSortUnderline,
 memberProfileUnderline,
+nineScoreUnderline,
 
 entryPlayerIndex,
 

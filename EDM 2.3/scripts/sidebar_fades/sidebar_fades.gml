@@ -15,6 +15,7 @@ scr_sidebar_lerp(offsetScroll.numpadYoff,submenu == navbar.numpad,1); // numpad
 scr_sidebar_lerp(offsetScroll.teamsUnderline,teamlist_index,0.5,false); // underline
 scr_sidebar_lerp(offsetScroll.memberSortUnderline,META_data.memberSort,0.5,false); // underline
 scr_sidebar_lerp(offsetScroll.memberProfileUnderline,subheader_member,0.5,false); // underline
+scr_sidebar_lerp(offsetScroll.nineScoreUnderline,score_nine_index,0.5,false); // underline
 
 scr_sidebar_lerp(offsetScroll.entryPlayerIndex,teammate_index,0.5,false); // highlight
 
