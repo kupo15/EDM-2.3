@@ -9,6 +9,7 @@
 #macro VENUE_database ROOT_data_struct.profiles
 #macro MEMBER_list ROOT_data_struct.profiles[activeProfile].memberlist
 #macro PROFILE_data ROOT_data_struct.profiles[activeProfile]
+#macro ACTIVE_data ROOT_data_struct.profiles[activeProfile].activeEvent
 #macro META_data ROOT_data_struct.meta
 
 #macro TEAM_array active_event.teams[teamlist_index]

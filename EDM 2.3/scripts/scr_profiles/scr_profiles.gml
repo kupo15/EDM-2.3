@@ -29,6 +29,7 @@ var profileData = {
 		
 		memberlist: [],
 		payoutTable: [],
+		activeEvent: [],
 		}
 	
 array_push(ROOT_data_struct.profiles,profileData);

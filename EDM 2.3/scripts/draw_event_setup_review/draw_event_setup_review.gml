@@ -12,7 +12,11 @@ if element_shared_finished_draw(col,"Start Event",submit)
 	scrollbar_set(offsetScroll.teamsUnderline,0,true);
 
 	scr_event_struct_setup();
+	array_push(ACTIVE_data,active_event);
+	
 	screen_change(screen.eventEntry);
+	
+	app_save;
 	}
 
 if androidBack

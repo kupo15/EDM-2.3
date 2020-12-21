@@ -14,6 +14,16 @@ active_event = {
 		}
 	}	
 	
+// event variables
+teamlist_index = 0;
+teammate_index = 0;
+entrant_index = 0;
+
+// create 6 blank teams
+for(var i=0;i<6;i++)
+setup_team_struct[i] = scr_team_create();
+
+	
 //cs(js(active_event))
 //sm("")
 }

@@ -22,8 +22,8 @@ deviceTest = {
 	
 	}
 		
-debug_device_add("Dev Computer",room_width,room_height,display_get_dpi_x(),display_get_dpi_y());
 debug_device_add("Fire Tablet",1024,552,160,160);
+debug_device_add("Dev Computer",room_width,room_height,display_get_dpi_x(),display_get_dpi_y());
 //debug_device_add("Galaxy Phone",2024,1080,480,480);
 
 //debug_device_add("Nextbook Tablet",800,400);

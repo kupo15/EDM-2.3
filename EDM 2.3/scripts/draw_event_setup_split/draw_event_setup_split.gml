@@ -49,7 +49,7 @@ element_event_setup_teams(xx,0.45);
 // pressed back
 if androidBack
 	{
-	active_event = undefined;
+
 	screen_goto_prev();
 	}
 }

@@ -91,6 +91,8 @@ for(var i=0;i<2;i++)
 			draw_plus_button(xx,yy,region,c_white,alpha,undefined,undefined); // plus button
 			break;
 			
+		case headerType.none: break;
+			
 		// string
 		default: 
 		

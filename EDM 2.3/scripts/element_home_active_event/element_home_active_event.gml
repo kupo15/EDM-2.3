@@ -4,10 +4,10 @@ function element_home_active_event() {
 element_active_event = {
 	
 	button: {
-		xx: px(1),
+		xx: px(25),
 		yy: py(22),
-		ww: px(98),
-		hh: py(30),
+		ww: px(50),
+		hh: py(50),
 		color: c_white,
 		sub: navbar.hidden,
 		},
@@ -37,6 +37,12 @@ xx = xx+(ww*0.5);
 var height = pct_y(7);
 
 draw_text_height(xx,yy,"Active Events",height,undefined,undefined,fa_center);
+
+var yy = py(40);
+var active_num = array_length(ACTIVE_data);
+
+for(var i=0;i<active_num;i++)
+draw_text_height(xx,yy,"Estrella",height);
 }
 
 function element_home_active_event_step() {
