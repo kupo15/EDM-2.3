@@ -46,8 +46,16 @@ for(var i=0;i<3;i++)
 for(var n=0;n<3;n++)
 click_button(xx+(i*hsep2),yy+(n*vsep),(n*3)+i+1,height,c_black,hsep2,vsep,undefined,true,false,navbar.enumstart)
 
+// negate button
+var neg_str = "negate"; // pick("+/-",numpad_negate);
+
+if numpad_negate == -1
+draw_rectangle_pixel(xx+(0*hsep2),yy+(3*vsep),hsep2,vsep,header_color,false,0.3);
+
+click_button(xx+(0*hsep2),yy+(3*vsep),neg_str,height,c_black,hsep2,vsep,undefined,true,false,navbar.enumstart);
+
 // 0
-click_button(xx+(1*hsep2),yy+(3*vsep),"0",height,c_black,hsep2,vsep,undefined,true,false,navbar.enumstart)
+click_button(xx+(1*hsep2),yy+(3*vsep),"0",height,c_black,hsep2,vsep,undefined,true,false,navbar.enumstart);
 
 // backspace
 draw_button_backspace(ico_backspace,0,xx+(2*hsep2),yy+(3*vsep),hsep2,vsep,height*0.6,1,navbar.enumstart);
@@ -89,11 +97,14 @@ for(var n=0;n<3;n++)
 //if click_button(xx+(0*hsep2),yy+(3*vsep),"00",height,c_black,hsep2,vsep,undefined,true,false,submenu)
 //variable += "00";
 
+// draw negate
+if click_region_released(xx+(0*hsep2),yy+(3*vsep),hsep2,vsep,true,submenu,1)
+numpad_negate *= -1;
+
+	
 // draw 0
 if click_region_released(xx+(1*hsep2),yy+(3*vsep),hsep2,vsep,true,submenu,1)
-	{sm(variable)
-	variable += "0";
-	}
+variable += "0";
 
 // delete
 if click_region_released(xx+(2*hsep2),yy+(3*vsep),hsep2,vsep,true,submenu,1)
@@ -126,7 +137,19 @@ height *= 1.4;
 	//variable = string_delete(variable,length,1);
 	}
 
-if variable_old != variable
+
+
+// negate
+if variable != ""
+	{
+	var convert = string_digits(variable);
+	convert = real(convert);
+	var neg_var = abs(convert)*numpad_negate;
+		
+	variable = string(neg_var);
+	}
+
+if (variable_old != variable)
 scr_surface_rebuild_struct("overlay");
 
 return variable;

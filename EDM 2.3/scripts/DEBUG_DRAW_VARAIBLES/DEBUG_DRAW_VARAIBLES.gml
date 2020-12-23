@@ -97,7 +97,7 @@ function debug_draw_vk(xx,yy,ind,sep,height) {
 draw_text_height(xx,yy+((ind+0)*sep),"vk_active: "+string(kvActive),height);
 draw_text_height(xx,yy+((ind+1)*sep),"keyboard_string:",height);
 draw_text_height(xx,yy+((ind+2)*sep),"'"+keyboard_string+"'",height,fn_italic);
-draw_text_height(xx,yy+((ind+3)*sep),"numpad"+string(numpad_value),height,fn_italic);
+draw_text_height(xx,yy+((ind+3)*sep),"numpad: "+string(numpad_value),height,fn_italic);
 	
 debugyoff += 5;
 }
@@ -279,8 +279,10 @@ draw_text_height(xx,yy+((ind+2)*sep),"teamlist_index: "+string(teamlist_index),h
 draw_text_height(xx,yy+((ind+3)*sep),"teammate_index: "+string(teammate_index),height);
 draw_text_height(xx,yy+((ind+4)*sep),"entrant_index: "+string(entrant_index),height);
 draw_text_height(xx,yy+((ind+5)*sep),"score_nine_index: "+string(score_nine_index),height);
+draw_text_height(xx,yy+((ind+6)*sep),"numpad_negate: "+string(numpad_negate),height,fn_italic);
+
 	
-debugyoff += 7;
+debugyoff += 8;
 }
 
 function debug_draw_screen_navigation(xx,yy,ind,sep,height) {

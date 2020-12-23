@@ -63,8 +63,8 @@ numpad_value = numpad_hustle_step(numpad_value,num_xx,app_height-element_numpad.
 
 switch score_nine_index
 	{
-	case 0: PLAYER_array[teammate_index].frontScore = string_convert_real_numpad(numpad_value,2); break;
-	case 1: PLAYER_array[teammate_index].backScore = string_convert_real_numpad(numpad_value,2); break;
+	case 0: PLAYER_array[teammate_index].frontScore = numpad_value; break;
+	case 1: PLAYER_array[teammate_index].backScore = numpad_value; break;
 	}
 	
 

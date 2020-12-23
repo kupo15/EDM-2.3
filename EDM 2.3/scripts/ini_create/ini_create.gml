@@ -8,6 +8,8 @@ teammate_index = 0;
 entrant_index = 0;
 score_nine_index = 0;
 
+numpad_negate = -1;
+
 event_entrant_array = [];
 
 // create 6 blank teams
