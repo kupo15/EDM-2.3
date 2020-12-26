@@ -9,6 +9,7 @@ entrant_index = 0;
 score_nine_index = 0;
 
 numpad_negate = -1;
+numpad_next = false;
 
 event_entrant_array = [];
 

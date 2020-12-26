@@ -44,10 +44,10 @@ draw_set_halign(fa_center);
 
 for(var i=0;i<3;i++)
 for(var n=0;n<3;n++)
-click_button(xx+(i*hsep2),yy+(n*vsep),(n*3)+i+1,height,c_black,hsep2,vsep,undefined,true,false,navbar.enumstart)
+click_button(xx+(i*hsep2),yy+(n*vsep),((n*3)+i+1)*numpad_negate,height,c_black,hsep2,vsep,undefined,true,false,navbar.enumstart)
 
 // negate button
-var neg_str = "negate"; // pick("+/-",numpad_negate);
+var neg_str = "+/-"; // pick("+/-",numpad_negate);
 
 if numpad_negate == -1
 draw_rectangle_pixel(xx+(0*hsep2),yy+(3*vsep),hsep2,vsep,header_color,false,0.3);
@@ -69,7 +69,7 @@ height *= 1.4;
 //
 //click_button(xx+(0*hsep1)+(3*hsep2),yy+(2*vsep),"par\n70",height,c_black,hsep1,vsep,undefined,true,false,navbar.enumstart)
 //
-//click_button(xx+(0*hsep1)+(3*hsep2),yy+(3*vsep),"par\n69",height,c_black,hsep1,vsep,undefined,true,false,navbar.enumstart)
+click_button(xx+(0*hsep1)+(3*hsep2),yy+(3*vsep),"Done",height,c_black,hsep1,vsep,undefined,true,false,navbar.enumstart)
 }
 
 function numpad_hustle_step(variable,xx,yy,ww) {
@@ -98,8 +98,12 @@ for(var n=0;n<3;n++)
 //variable += "00";
 
 // draw negate
+var num_neg = false;
 if click_region_released(xx+(0*hsep2),yy+(3*vsep),hsep2,vsep,true,submenu,1)
-numpad_negate *= -1;
+	{
+	numpad_negate *= -1;
+	num_neg = true;
+	}
 
 	
 // draw 0
@@ -107,7 +111,9 @@ if click_region_released(xx+(1*hsep2),yy+(3*vsep),hsep2,vsep,true,submenu,1)
 variable += "0";
 
 // delete
-if click_region_released(xx+(2*hsep2),yy+(3*vsep),hsep2,vsep,true,submenu,1)
+var count = string_length(variable);
+var neg_ = string_count("-",variable);
+if click_region_released(xx+(2*hsep2),yy+(3*vsep),hsep2,vsep,true,submenu,1) || (count-neg_ > 2)
 	{
 	var length = string_length(variable);
 	variable = string_delete(variable,length,1);
@@ -125,9 +131,11 @@ height *= 1.4;
 //if click_region_released(xx+(0*hsep1)+(3*hsep2),yy+(2*vsep),hsep1,vsep,true,submenu,1)
 //variable = "70";
 //
-//if click_region_released(xx+(0*hsep1)+(3*hsep2),yy+(3*vsep),hsep1,vsep,true,submenu,1)
-//variable = "69";
 
+numpad_next = false;
+
+if click_region_released(xx+(0*hsep1)+(3*hsep2),yy+(3*vsep),hsep1,vsep,true,submenu,1)
+numpad_next = true;
 
 
 // next
@@ -140,16 +148,16 @@ height *= 1.4;
 
 
 // negate
-if variable != ""
+var convert = string_digits(variable);
+if convert != ""
 	{
-	var convert = string_digits(variable);
 	convert = real(convert);
 	var neg_var = abs(convert)*numpad_negate;
 		
 	variable = string(neg_var);
 	}
 
-if (variable_old != variable)
+if (variable_old != variable) || numpad_next || num_neg
 scr_surface_rebuild_struct("overlay");
 
 return variable;

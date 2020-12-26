@@ -58,14 +58,20 @@ draw_rectangle_pixel(0,0,app_width,app_height,c_black,false,0.4);
 
 surface_draw_struct("overlay",0,0,header_ypos_end,1);
 
-
-numpad_value = numpad_hustle_step(numpad_value,num_xx,app_height-element_numpad.hh,ww);
+var _score = pick(front,back,score_nine_index==1);
+numpad_value = numpad_hustle_step(_score,num_xx,app_height-element_numpad.hh,ww);
 
 switch score_nine_index
 	{
 	case 0: PLAYER_array[teammate_index].frontScore = numpad_value; break;
 	case 1: PLAYER_array[teammate_index].backScore = numpad_value; break;
 	}
+
+//switch score_nine_index
+//	{
+//	case 0: PLAYER_array[teammate_index].frontScore = numpad_value; break;
+//	case 1: PLAYER_array[teammate_index].backScore = numpad_value; break;
+//	}
 	
 
 element_teams_popup_entry_step();
@@ -86,6 +92,32 @@ if click_region_released(num_xx+(i*button_ww),py(36.2),button_ww,button_hh,true,
 	numpad_value = pick(front,back,i==1)
 	break;
 	}	
+	
+
+// pressed done on keypad
+if numpad_next
+	{
+	score_nine_index++;
+	
+	if score_nine_index == 2
+		{
+		var team_size = array_length(TEAM_array);
+
+		if teammate_index+1 < team_size
+		teammate_index++;
+		else
+			{
+			var teams = array_length(active_event.teams);
+			if teamlist_index+1 < teams
+				{
+				teamlist_index++;
+				teammate_index = 0;
+				score_nine_index = 0; // set to front
+				}
+			}
+		}
+	}
+	
 
 // clickout
 if click_region_released(0,0,app_width,header_ypos_end,false,submenu,1)
