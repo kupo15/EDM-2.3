@@ -69,7 +69,7 @@ height *= 1.4;
 //
 //click_button(xx+(0*hsep1)+(3*hsep2),yy+(2*vsep),"par\n70",height,c_black,hsep1,vsep,undefined,true,false,navbar.enumstart)
 //
-click_button(xx+(0*hsep1)+(3*hsep2),yy+(3*vsep),"Done",height,c_black,hsep1,vsep,undefined,true,false,navbar.enumstart)
+click_button(xx+(0*hsep1)+(3*hsep2),yy+(3*vsep),">>",height,c_black,hsep1,vsep,undefined,true,false,navbar.enumstart)
 }
 
 function numpad_hustle_step(variable,xx,yy,ww) {

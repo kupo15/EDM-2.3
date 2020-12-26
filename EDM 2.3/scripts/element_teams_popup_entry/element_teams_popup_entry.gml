@@ -65,14 +65,7 @@ switch score_nine_index
 	{
 	case 0: PLAYER_array[teammate_index].frontScore = numpad_value; break;
 	case 1: PLAYER_array[teammate_index].backScore = numpad_value; break;
-	}
-
-//switch score_nine_index
-//	{
-//	case 0: PLAYER_array[teammate_index].frontScore = numpad_value; break;
-//	case 1: PLAYER_array[teammate_index].backScore = numpad_value; break;
-//	}
-	
+	}	
 
 element_teams_popup_entry_step();
 
@@ -94,6 +87,8 @@ if click_region_released(num_xx+(i*button_ww),py(36.2),button_ww,button_hh,true,
 	}	
 	
 
+	
+
 // pressed done on keypad
 if numpad_next
 	{
@@ -101,12 +96,17 @@ if numpad_next
 	
 	if score_nine_index == 2
 		{
-		var team_size = array_length(TEAM_array);
+		var team_size = array_length(PLAYER_array);
 
-		if teammate_index+1 < team_size
-		teammate_index++;
+		// cycle to next teammate
+		if (teammate_index+1) < team_size
+			{
+			teammate_index++;
+			score_nine_index = 0; // set to front
+			}
 		else
 			{
+			// cycle to next team
 			var teams = array_length(active_event.teams);
 			if teamlist_index+1 < teams
 				{

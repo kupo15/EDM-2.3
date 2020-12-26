@@ -123,4 +123,19 @@ var offset = offsetArray[offsetScroll.entryPlayerIndex];
 var ypos = yy+(offset*sep);
 
 draw_rectangle_pixel(0,ypos,ww,sep,c_white,false,0.25);
+
+#region clicked finished
+var submit = true; // active_event.entrantNum > 1;
+var xx = px(0.5);
+var ww = app_width*0.5*0.98;
+var hh = py(10);
+var height = hh*0.6;
+var yy = app_height-hh-py(1);
+var col = pick(c_gray,header_color,submit);
+
+if click_button(xx,yy,"Finished",height,c_white,ww,hh,col,false,false,submenu) && submit
+	{
+	androidBack = true;
+	}
+#endregion
 }
