@@ -126,6 +126,8 @@ var col = pick(c_gray,header_color,submit);
 
 if click_button(xx,yy,"Next",height,c_white,ww,hh,col,false,false,navbar.hidden) && submit
 	{
+	scr_event_struct_setup();
+
 	screen_change(screen.eventReview);
 	}
 #endregion

@@ -21,7 +21,7 @@ if (header != undefined)
 	
 element_event_teams(header_arr);
 		
-element_teams_popup_entry();		
+element_teams_popup_entry();
 		
 if androidBack
 	{

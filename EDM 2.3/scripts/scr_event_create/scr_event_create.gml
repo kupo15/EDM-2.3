@@ -34,9 +34,11 @@ var team_struct = {
 	
 	players: [],
 	
-	frontScore: "",
-	backScore: "",
-	roundScore: "",
+	team: {
+		frontScore: "",
+		backScore: "",
+		roundScore: "",
+		}
 	}
 	
 return team_struct;

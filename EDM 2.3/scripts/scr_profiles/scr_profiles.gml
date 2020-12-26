@@ -28,7 +28,7 @@ var profileData = {
 		bannerID: banner,
 		
 		memberlist: [],
-		payoutTable: [],
+		payoutTable: scr_payout_create(),
 		activeEvent: [],
 		}
 	
