@@ -11,6 +11,8 @@ score_nine_index = 0;
 numpad_negate = -1;
 numpad_next = false;
 
+assigning_blind = undefined;
+
 event_entrant_array = [];
 
 // create 6 blank teams

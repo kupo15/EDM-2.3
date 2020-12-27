@@ -6,7 +6,7 @@ active_event = {
 		
 	teams: [],
 	
-	payoutTable: [],
+	payoutTable: struct_copy(PROFILE_data.payoutTable),
 	
 	eventDetails: {
 		
@@ -50,6 +50,7 @@ var player = {
 	
 	memberID: member_id,
 	dispName: disp_name,
+	
 	frontScore: "",
 	backScore: "",
 	roundScore: "",
@@ -59,6 +60,10 @@ var player = {
 	
 	blind: undefined,
 	noTeam: false,
+	lownetEvent: true,
+	
+	entryFee: 0,
+	winnings: 0,
 	}
 	
 return player;

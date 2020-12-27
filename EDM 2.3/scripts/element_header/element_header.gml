@@ -66,7 +66,7 @@ for(var i=0;i<2;i++)
 		case headerType.back:
 
 			var xx = pct_x(3);
-			var yy = header_ypos_end*0.5;
+			var yy = bleed_top+(header_height*0.5);
 			var ww = header_height*0.43;
 			var hh = header_height*0.44;
 		
@@ -133,7 +133,7 @@ for(var i=0;i<2;i++)
 		{
 		return header_type;
 		}
-	else if (header_type == header_type) && (i==1) && click_region_released(xpos,bleed_top,pct_x(10),header_height,true,submenu)
+	else if (header_type != headerType.none) && (i==1) && click_region_released(xpos,bleed_top,pct_x(10),header_height,true,submenu)
 		{
 		return -1;
 		}
