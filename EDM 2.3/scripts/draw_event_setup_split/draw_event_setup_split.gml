@@ -24,8 +24,6 @@ var yy = header_ypos_end;
 var ww = app_width*0.55;
 var hh = app_height-yy;
 
-// main header
-surface_bundle_header(headerType.back,headerType.none,"Assign Teams");
 
 // player list submenu
 var sort_index = META_data.memberSort;
@@ -45,6 +43,8 @@ if (header != undefined)
 
 element_event_setup_teams(xx,0.45);
 
+// main header
+surface_bundle_header(headerType.back,headerType.none,"Assign Teams");
 
 // pressed back
 if androidBack

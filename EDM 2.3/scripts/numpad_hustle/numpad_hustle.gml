@@ -38,7 +38,7 @@ for(var i=0;i<3;i++)
 var height = element_numpad.height;
 var yoff = (vsep-height)*0.5;
 
-draw_set_color(c_gray);
+//draw_set_color(c_gray);
 draw_set_halign(fa_center);
 //draw_text_height(xx+(hsep1*0.5)+(hsep2*3),yy+yoff+(2*vsep),"+",height);
 

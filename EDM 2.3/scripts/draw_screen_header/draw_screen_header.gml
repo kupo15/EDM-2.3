@@ -95,7 +95,7 @@ repeat 2
 		{
 		var yy = bleed_top+pct_y(6.5);
 		
-		draw_plus_button(xpos+pct_x(5),yy,region,c_white,undefined,undefined,1-offsetArray[offsetScroll.headerDeleteAlpha]); // plus button
+		draw_plus_button(xpos+pct_x(5),yy,region,c_white,1-offsetArray[offsetScroll.headerDeleteAlpha]); // plus button
 		
 		if !modeDelete && (submenu < 0)
 		if click_region_released(xpos,bleed_top,pct_x(10),region,true,submenu)

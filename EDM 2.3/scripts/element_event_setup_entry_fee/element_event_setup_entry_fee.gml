@@ -21,7 +21,7 @@ if surface_set_struct("body",undefined,undefined,py(75))
 
 	draw_text_height_color(px(2),yy,header_arr[teamlist_index],col,height*0.95); // team number
 
-	var labels = ["Blind Team","Team Entry"];
+	var labels = ["Blind Team","Team Fee"];
 	var col = c_black;
 
 	draw_text_height(lownet_xx,yy,labels[0],height*0.95,undefined,undefined,fa_center);
@@ -126,13 +126,11 @@ for(var n=0;n<player_num;n++)
 				TEAM_array.players[n].blind = i;
 				assigning_blind = undefined;	
 				rebuild = true;
-				break;
 				}
 			else
 				{
 				assigning_blind = undefined;
 				rebuild = true;
-				break;
 				}
 			}
 		}
@@ -143,7 +141,10 @@ for(var n=0;n<player_num;n++)
 		if blind == undefined
 		assigning_blind = n;
 		else
-		TEAM_array.players[n].blind = undefined;
+			{
+			TEAM_array.players[n].blind = undefined;
+			rebuild = true;
+			}
 		
 		break;
 		}

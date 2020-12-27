@@ -34,7 +34,7 @@ for(var e=0;e<element_num;e++)
 				{
 				case 1: draw_text_height_middled_color(text_xpos,yy+off_pos,"Create Venue",sep,c_black,height,1); break;	
 
-				case 2: draw_plus_button(pct_x(4.6),yy+off_pos+(sep*0.5),sep*0.66,c_black,undefined,undefined,1); break; // draw plus sign
+				case 2: draw_plus_button(pct_x(4.6),yy+off_pos+(sep*0.5),sep*0.66,c_black,1); break; // draw plus sign
 				}				
 			}
 		else
@@ -90,16 +90,15 @@ for(var i=0;i<size;i++)
 		{		
 		if click_region_released_clamp_array(xx,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.profileChange,i,undefined,undefined)
 			{
-			activeStruct = scr_profile_create();
-			scr_profile_set(i);
-			
-			screen_change(screen.profileCreate,navbar.popupEntry);
-			click_textbox_set("",textboxEntry.popupEntryText,kbv_type_default);
+			//activeStruct = scr_profile_create();
+			//scr_profile_set(i);
+			//
+			//screen_change(screen.profileCreate,navbar.popupEntry);
+			//click_textbox_set("",textboxEntry.popupEntryText,kbv_type_default);
 			}
 			
 		break;
-		}
-		
+		}		
 		
 	if click_region_released_clamp_array(xx,yy,off_pos,ww,sep,hh,mb_left,c_yellow,navbar.profileChange,i,undefined,undefined)
 		{
