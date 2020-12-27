@@ -46,7 +46,10 @@ if surface_set_struct("body",undefined,undefined,py(75))
 		var no_team = player_pointer.noTeam;		
 		var entry = player_pointer.entryFee;
 
-		var blind_str = pick(blind,"n/a",blind == undefined);
+		if blind == undefined
+		var blind_str = "-";
+		else
+		var blind_str = "T"+string(blind+1);
 		
 		var payout_table = active_event.payoutTable.entry;
 		var low_net_str = string(low_net*payout_table.lowNet)+" "+PROFILE_data.currency.isoCode;
@@ -109,7 +112,8 @@ for(var n=0;n<player_num;n++)
 	if assigning_blind == n
 		{
 		var team_num = array_length(active_event.teams);
-		var ind = 0;
+		
+		draw_rectangle_pixel(blind_xx,yy+yoff,team_num*blind_sep,sep,c_white,false,1);
 		
 		for(var i=0;i<team_num;i++)
 			{
@@ -127,14 +131,20 @@ for(var n=0;n<player_num;n++)
 			else
 				{
 				assigning_blind = undefined;
+				rebuild = true;
 				break;
 				}
 			}
 		}
 
-	if (assigning_blind == undefined) && click_region_released(lownet_xx,yy+yoff,px(25),sep,true,submenu,1) // blind
+	if (assigning_blind == undefined)
+	if click_region_released(lownet_xx,yy+yoff,px(25),sep,true,submenu,1) // blind
 		{
+		if blind == undefined
 		assigning_blind = n;
+		else
+		TEAM_array.players[n].blind = undefined;
+		
 		break;
 		}
 	else if click_region_released(entry_xx,yy+yoff,px(14),sep,true,submenu,1) // no team

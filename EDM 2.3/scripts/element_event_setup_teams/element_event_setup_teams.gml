@@ -126,6 +126,7 @@ var col = pick(c_gray,header_color,submit);
 
 if click_button(xx,yy,"Next",height,c_white,ww,hh,col,false,false,navbar.hidden) && submit
 	{
+	assigning_blind = undefined;
 	teamlist_index = 0;
 	scr_event_struct_setup();
 
