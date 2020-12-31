@@ -97,7 +97,7 @@ var rebuild = false;
 
 yy += height;
 
-var blind_sep = sep*1.1;
+var blind_sep = px(5.3)*1.2;
 var blind_height = sep*0.9;
 var blind_yoff = (sep-blind_height)*0.5;
 
