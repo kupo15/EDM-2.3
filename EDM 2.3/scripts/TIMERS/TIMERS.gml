@@ -5,9 +5,9 @@ function ini_timers(num) {
 	timer[i] = -1;
 	}
 
-function scr_timers(num) {
+function scr_timers() {
 	
-	for(var i=0;i<num;i++)
+	for(var i=0;i<array_length(timer);i++)
 		{
 		if (timer[i] > -1)
 		timer[i]--;

@@ -1,4 +1,14 @@
+#macro px pct_x
+#macro py pct_y
 
+// debug
+#macro db show_debug_message
+#macro sm show_message
+#macro sma show_message_async
+#macro cs clipboard_set_text
+#macro cg clipboard_get_text
+#macro js json_stringify
+#macro ssm struct_debug_show
 
 // background colors
 #macro c_lt_gray make_color_rgb(228,228,228)
@@ -24,4 +34,5 @@ draw_set_color(c_black);
 ini_config();
 
 instance_create_depth(0,0,0,con_main);
+instance_create_depth(0,0,-1,obj_header_bar);
 instance_destroy();
