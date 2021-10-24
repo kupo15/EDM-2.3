@@ -1,5 +1,4 @@
 
-#macro DPI_POINT 72
 
 // background colors
 #macro c_lt_gray make_color_rgb(228,228,228)
