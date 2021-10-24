@@ -77,8 +77,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "[spr] Sprites",
+    "path": "folders/[spr] Sprites.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_blind_draw",

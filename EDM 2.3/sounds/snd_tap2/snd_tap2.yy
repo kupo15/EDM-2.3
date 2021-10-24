@@ -13,8 +13,8 @@
   "soundFile": "snd_tap2",
   "duration": 0.147381,
   "parent": {
-    "name": "Sounds",
-    "path": "folders/Sounds.yy",
+    "name": "[snd] Sounds",
+    "path": "folders/[snd] Sounds.yy",
   },
   "resourceVersion": "1.0",
   "name": "snd_tap2",

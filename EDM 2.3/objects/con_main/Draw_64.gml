@@ -1,4 +1,4 @@
-var col = c_white;
+/*var col = c_white;
 var mx = clamp(mouse_x,0,room_width);
 var my = clamp(mouse_y,0,room_height);
 
