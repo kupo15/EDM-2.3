@@ -1,31 +1,17 @@
-/*var a = 0<<0
-a = a | 1<<1;
-a = a | 0<<2;
-a = a | 1<<3;
-var b = a & 1;
-show_message(b);
-var b = a & 2;
-show_message(b);
-var b = a & 4;
-show_message(b);
-var b = a & 8;
-show_message(b);*/
+
+enum tourneyType {
+	
+team,
+individual
+}
+
 randomize();
 device_mouse_dbclick_enable(false);
+
 debug = false;
-
-
-
 //show_debug_overlay(true);
 
-// set resolution
-var debg_ww = 1.3;
-var scale = 1.5;
-resolution_height = display_get_height();
-resolution_height = 600;
-resolution_width = round(resolution_height*1.70666);
-window_set_size(resolution_width*debg_ww*scale,resolution_height*scale);
-window_set_position(0,0)
+ini_resolution();
 
 spr_center = sprite_get_width(spr_member_button)*0.5;
 
@@ -35,6 +21,7 @@ season_breakdown_edit_x = noone; // edit the breakdown
 season_breakdown_edit_y = noone; // edit the breakdown
 season_save = true;
 season_new_day = true;
+
 edit_event_scrolling = noone;
 edit_event = false;
 edit_event_month_offset_start = 0;
@@ -47,7 +34,7 @@ season_ranking_disp = 0;
 scrollbar_disp = 0;
 scrollbar_disp_end = 0;
 
-tourney_type = 0; // default to team event
+tourney_type = tourneyType.team; // default to team event
 
 distribute_leftover_skins = noone;
 
@@ -93,6 +80,7 @@ button_sep = button_hh+3;
 negate = 1;
 last_entrant_number = 0; // number of entrants in the last game
 
+// scrolling variables
 favorites_team_scroll_offset = 0;
 favorites_team_scroll_offset_start = 0;
 favorites_scroll_offset = 0;
@@ -116,7 +104,6 @@ select_blind_team = noone;
 
 edit_score_highlight_pos = 0;
 edit_member_old = noone;
-
 
 edit_score_offset = 0;
 edit_score_scrolling_offset = 0;
@@ -211,10 +198,5 @@ ini_payout_table();
 ini_member_list_load();
 ini_settings_open();
 
-list_type = (ds_list_size(favorites_list)!=0); // default to favorites
+list_type = (ds_list_size(favorites_list) != 0); // default to favorites
 
-
-
-
-/* */
-/*  */

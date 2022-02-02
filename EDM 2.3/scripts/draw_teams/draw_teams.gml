@@ -42,7 +42,7 @@ function draw_teams() {
 	    draw_rectangle(xx+(col*hsep),yy+(off_pos*sep),xx+ww+(col*hsep),yy+hh+(off_pos*sep),true);
 	    draw_text_transformed_colour(xx+5+(col*hsep),yy-ysep+fn_off+2+(off_pos*sep),string(str_group)+string(_team+1),0.8,0.8,0,c_col,c_col,c_col,c_col,1);
     
-		if tourney_type == 0 // team game
+		if (tourney_type == tourneyType.team) // team game
 			{
 		    var scr1 = if_undef(team_score[_team,0]);
 		    var scr2 = if_undef(team_score[_team,1]);
@@ -67,7 +67,7 @@ function draw_teams() {
 	    draw_set_font(fn_name_up);
     
 	    // edit team score
-	    if edit_score = noone && edit_team_score = noone && select_blind_team == noone
+	    if edit_score = noone && (edit_team_score == noone) && (select_blind_team == noone)
 	    if scr_mouse_position_room_released(xx+(col*hsep),yy-ysep+(off_pos*sep),300+col_off,ysep,mb_left,true)
 	        {
 	        edit_score = -1;      
@@ -75,7 +75,7 @@ function draw_teams() {
 	        negate = -1;
 	        edit_team_offset = 0;
 		
-			if team_score[edit_team_score,edit_score_pos] != undefined
+			if (team_score[edit_team_score,edit_score_pos] != undefined)
 				{
 				if sign(team_score[edit_team_score,edit_score_pos]) != 0
 				negate = sign(team_score[edit_team_score,edit_score_pos]);
@@ -94,8 +94,9 @@ function draw_teams() {
 	        name = scores_grid[# 0,grid_row]; // get name
         
 	        var str = "";
-	        if scores_grid[# 5,grid_row] != noone // if blind draw
+	        if (scores_grid[# 5,grid_row] != noone) // if blind draw
 	        str += "*";
+			
 	        if scores_grid[# 19,grid_row] // if no team
 	        str += "`";
         
@@ -107,6 +108,7 @@ function draw_teams() {
         
 	        var scr = if_undef(scores_grid[# 1,grid_row]);
 	        draw_text(xx+col_off+300,yy+fn_off-15+(ii*ysep)+(off_pos*sep),scr); // front
+			
 	        var scr = if_undef(scores_grid[# 2,grid_row]);
 	        draw_text(xx+col_off+300+80,yy+fn_off-15+(ii*ysep)+(off_pos*sep),scr); // back
         
@@ -151,26 +153,26 @@ function draw_teams() {
 	                {
 	                if scr_mouse_position_room_released(xx+col_off+300+80+60,yy+5+(ii*ysep)+(off_pos*sep),50,50,mb_left,true) // skins minus
 	                    {
-	                    scores_grid[# 13,grid_row] --;
-	                    if scores_grid[# 13,grid_row] < 0
+	                    scores_grid[# 13,grid_row]--;
+	                    if (scores_grid[# 13,grid_row] < 0)
 	                    scores_grid[# 13,grid_row] = 0;
 	                    }
 	                else if scr_mouse_position_room_released(xx+col_off+300+80+100+50+140,yy+5+(ii*ysep)+(off_pos*sep),50,50,mb_left,true) // skins plus
 	                scores_grid[# 15,grid_row] ++;
 	                else if scr_mouse_position_room_released(xx+col_off+300+80+80+125,yy+5+(ii*ysep)+(off_pos*sep),50,50,mb_left,true) // skins minus
 	                    {
-	                    scores_grid[# 15,grid_row] --;
-	                    if scores_grid[# 15,grid_row] < 0
+	                    scores_grid[# 15,grid_row]--;
+	                    if (scores_grid[# 15,grid_row] < 0)
 	                    scores_grid[# 15,grid_row] = 0;
 	                    }
 	                else if scr_mouse_position_room_released(xx+col_off+300+80+100+20+30,yy+5+(ii*ysep)+(off_pos*sep),50,50,mb_left,true) // skins plus
-	                scores_grid[# 13,grid_row] ++;
+	                scores_grid[# 13,grid_row]++;
 	                }
 	            else
 	                {
 	                if scr_mouse_position_room_released(xx+col_off+300+80+80+50,yy+(ii*ysep)+(off_pos*sep),50,50,mb_left,true) // blind draw
 	                    {
-	                    if scores_grid[# 5,grid_row] != noone
+	                    if (scores_grid[# 5,grid_row] != noone)
 	                        {
 	                        var ind_ = ds_list_find_index(blind_list[scores_grid[# 5,grid_row]],string(scores_grid[# 0,grid_row]));
 	                        ds_list_delete(blind_list[scores_grid[# 5,grid_row]],ind_); // delete from blind list
@@ -217,7 +219,7 @@ function draw_teams() {
 	calc = true;
 	else // team score unneeded
 		{
-		if tourney_type == 0 // if team event
+		if (tourney_type == tourneyType.team) // if team event
 		for(var i=0;i<team_number+1;i++) // loop through teams
 		for(var ii=0;ii<3;ii++)
 		if team_score[i,ii] == undefined
