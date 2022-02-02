@@ -34,7 +34,7 @@ function draw_preferences() {
 	if scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,true)
 	    {
 	    season_ranking_load();
-	    pref_phase = 2;
+	    pref_phase = prefPhase.seasonRank;
 	    }
 
 	// reset data
@@ -230,17 +230,9 @@ function draw_preferences() {
 	// back out of preferences
 	if (android_back || scr_mouse_position_room_released(950,15,60,60,mb_left,true))
 	    {
-	    pref_phase = false;
+	    pref_phase = prefPhase.none;
     
 	    if phase > 1 // results screen
 	    scr_calculate_results();
 	    }
-
-
-
-
-
-
-
-
-}
+	}

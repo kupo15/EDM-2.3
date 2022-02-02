@@ -5,6 +5,13 @@ team,
 individual
 }
 
+enum prefPhase {
+	
+	none,
+	preferences,
+	seasonRank,
+	}
+
 randomize();
 device_mouse_dbclick_enable(false);
 
@@ -136,7 +143,7 @@ skins_input = true;
 preference_edit_payout = noone;
 
 slider = false;
-pref_phase = false;
+pref_phase = prefPhase.none;
 no_net_skins = false;
 no_gross_skins = false;
 

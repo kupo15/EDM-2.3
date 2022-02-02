@@ -57,9 +57,6 @@ function draw_season_ranking() {
 		{
 		android_back = false;
 		season_ranking_disp = 0; // reset to simple season
-		pref_phase = 1;
+		pref_phase = prefPhase.preferences;
 		}
-
-
-
-}
+	}

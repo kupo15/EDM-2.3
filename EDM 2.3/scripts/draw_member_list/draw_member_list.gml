@@ -1,4 +1,5 @@
 function draw_member_list(argument0) {
+	
 	draw_set_halign(fa_left);
 	draw_text_transformed(10,573,"Version: "+string(GM_version),0.5,0.5,0);
 
