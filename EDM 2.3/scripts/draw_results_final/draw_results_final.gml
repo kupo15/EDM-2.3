@@ -82,24 +82,24 @@ function draw_results_final() {
       
 	   var name = scores_grid[# 0,off_ind];
 	   var str = "";
-	   if scores_grid[# 5,off_ind] != noone // blind
+	   
+	   if (scores_grid[# 5,off_ind] != noone) // blind
 	   str = "*";
+	   
 	   if scores_grid[# 19,off_ind] // no team
 	   str += "`";
    
 	   str += name;
    
-	   var col = c_black;
-	   if scores_grid[# 23,off_ind] < 0
-	   col = c_red;
-   
+	   var col = pick(c_black,c_red,scores_grid[# 23,off_ind] < 0);
+	   
 	   // entry fee color
 	   var entr_col = c_black;
    
 	  // if team_number == 0 // only one team
 	   //entr_col = c_orange; // make_color_rgb(255,248,153); // yellowish
    
-	   if (scores_grid[# 5,off_ind] != noone)+scores_grid[# 19,off_ind] = 1 // only one
+	   if (scores_grid[# 5,off_ind] != noone)+scores_grid[# 19,off_ind] == 1 // only one
 	   entr_col = make_color_rgb(98,145,242); // blue
    
 	   // blind color
@@ -108,13 +108,15 @@ function draw_results_final() {
 	   draw_text(xx+35,yy+fn_off-5+(off_pos*ysep),str); // draw name
 	   draw_text(xx+35+280,yy+fn_off-5+(off_pos*ysep),scores_grid[# 16,off_ind]); // Team Winning
    
-	   if scores_grid[# 5,off_ind] != noone
+	   if (scores_grid[# 5,off_ind] != noone)
 	   draw_text_transformed_colour(xx+35+280+28,yy+fn_off+0+(off_pos*ysep),"+"+string(scores_grid[# 20,off_ind]),0.8,0.8,0,blind_col,blind_col,blind_col,blind_col,1); // Blind Winning
+	   
 	   draw_text(xx+35+280+100,yy+fn_off-5+(off_pos*ysep),scores_grid[# 17,off_ind]); // Low Net Winning
 	   draw_text(xx+35+300+100+80,yy+fn_off-5+(off_pos*ysep),scores_grid[# 21,off_ind]); // gross skins
 	   draw_text(xx+35+300+100+80+65,yy+fn_off-5+(off_pos*ysep),scores_grid[# 22,off_ind]); // net skins
 	   draw_text(xx+35+300+100+100+85+30,yy+fn_off-5+(off_pos*ysep),scores_grid[# 10,off_ind]); // win total
 	   draw_text_colour(xx+35+300+100+100+80+100,yy+fn_off-5+(off_pos*ysep),scores_grid[# 11,off_ind],entr_col,entr_col,entr_col,entr_col,1); // entry fee
+	   
 	   if no_net_skins || no_gross_skins
 	       {
 	       draw_sprite_ext(spr_crossout,0,xx+35+300+100+100+80+100,yy+5+(off_pos*ysep),0.8,0.8,0,c_white,0.9);
@@ -144,7 +146,6 @@ function draw_results_final() {
 	draw_text(xx+35+300+100+100+85+10,yy+hh+fn_off,ds_grid_get_sum(scores_grid,10,0,10,ds_grid_height(scores_grid)-1)); // win total
 	draw_text(xx+35+300+100+100+80+100,yy+hh+fn_off,abs(_entry)); // entry fee
 
-
 	// draw Next Results
 	var xx = 720+(0*room_width)-(results_screen*room_width);
 	var yy = 545;
@@ -152,8 +153,10 @@ function draw_results_final() {
 	var hh = 50;
 
 	draw_rectangle_colour(xx-700+30,yy-45,xx-700+30+ww,yy+hh-15,c_green,c_green,c_green,c_green,true); // start over
+	
 	if !global.save_loaded
 	draw_rectangle_colour(xx-700+45+ww,yy,xx-700+45+ww+ww,yy+hh,c_green,c_green,c_green,c_green,true);
+	
 	draw_rectangle_colour(xx+ww+5,yy-45,xx+ww+ww,yy+hh-15,c_green,c_green,c_green,c_green,true);
 
 	if mouse_check_button_pressed(mb_left) && !scr_mouse_position_room_pressed(xx-700+30,yy-45,ww,hh+30,mb_left,true,false)
@@ -188,10 +191,10 @@ function draw_results_final() {
 	    if !global.save_loaded && scr_mouse_position_room_released(xx-700+45+ww,yy,ww,hh,mb_left,true)
 	    phase = 1;
 	    else if scr_mouse_position_room_released(xx+ww+5,yy-45,ww,hh+30,mb_left,true)
-	    results_screen_end ++;
+	    results_screen_end++;
 	    }
     
-	if close_enough_timer == -1
+	if (close_enough_timer == -1)
 	exit;
 
 	var off = ((room_speed*5)-close_enough_timer);

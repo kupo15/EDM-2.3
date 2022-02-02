@@ -1,4 +1,5 @@
 function scr_calculate_results() {
+	
 	// calculate all
 	scr_calculate_results_teams(2);
 	scr_calculate_net_scores(3);
@@ -8,18 +9,17 @@ function scr_calculate_results() {
     
 	phase = 2;
 
-	if settings_close_enough && !close_enough
-	    { // do the close enough screen
+	// do the close enough screen
+	if settings_close_enough && !close_enough { 
+		
 	    picture_timer_start = game_time;
 	    close_enough_timer = room_speed*5;
 	    }
+		
 	close_enough = true;
 
 	if !season_save
 	season_ranking_save();
 
 	ini_results_save();
-
-
-
-}
+	}

@@ -1,4 +1,5 @@
 function scr_calculate_results_final(argument0) {
+	
 	phase = argument0;
 
 	ds_grid_sort(scores_grid,18,true); // sort by index
@@ -19,14 +20,15 @@ function scr_calculate_results_final(argument0) {
 	no_gross_skins = (skins_gross_tot == 0);
 	no_net_skins = (skins_net_tot == 0);
 
-	if skins_gross_tot == 0
+	if (skins_gross_tot == 0)
 	skins_gross_tot = 1;   
 
-	if skins_net_tot == 0
+	if (skins_net_tot == 0)
 	skins_net_tot = 1;
 
 	var skins_gross_pot_payout = skins_pot;
 	var skins_net_pot_payout = skins_pot;
+	
 	for(var i=0;i<num;i++)
 	   {
 	   var ind = scores_grid[# 18,i];
@@ -92,26 +94,25 @@ function scr_calculate_results_final(argument0) {
 	ds_grid_sort(scores_grid,22,false); // sort by net skins
 
 	// distribute any remaining net skins
-	if !no_net_skins // if someone had net skins
-	while skins_net_pot_payout > 0
-	for(var i=num-1;i>0;i--)
-	if scores_grid[# 15,i] > 0 // if you had net skins
-	//if irandom(1) = 1 || short > 500
-	   {
-	   scores_grid[# 14,i] ++; // calculate skins winning
-	   scores_grid[# 22,i] ++; // add to net skins breakdown
-	   scores_grid[# 10,i] ++; // total winning 
-	   scores_grid[# 12,i] ++; // net winnings
+	if !no_net_skins { // if someone had net skins
+		
+		while (skins_net_pot_payout > 0)
+		for(var i=num-1;i>0;i--)
+		if scores_grid[# 15,i] > 0 // if you had net skins
+		   {
+		   scores_grid[# 14,i]++; // calculate skins winning
+		   scores_grid[# 22,i]++; // add to net skins breakdown
+		   scores_grid[# 10,i]++; // total winning 
+		   scores_grid[# 12,i]++; // net winnings
    
-	   skins_net_pot_payout --; // 1 less in pot
+		   skins_net_pot_payout--; // 1 less in pot
    
-	   if skins_net_pot_payout == 0
-	   break;
-	   }   
-	else
-	short ++;
-
-
+		   if (skins_net_pot_payout == 0) // if no more in the pot
+		   break;
+		   }   
+		else
+		short++;
+		}
 
 	// calculate final score
 	for(var i=0;i<ds_grid_height(scores_grid);i++)
@@ -129,8 +130,4 @@ function scr_calculate_results_final(argument0) {
 	ds_grid_sort(scores_grid_front,1,true); // front
 	ds_grid_sort(scores_grid_back,2,true); // back
 	ds_grid_sort(scores_grid_total,3,true); // total
-
-
-
-
-}
+	}

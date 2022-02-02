@@ -1,15 +1,15 @@
 function draw_season_ranking() {
+	
 	var xx = 100;
 	var xsep = 80;
 	var cols = 8;
 	var ww = 250+(cols*xsep);
-	var not_in_menu = (season_breakdown_add_member == false && season_breakdown_date_x == noone && season_breakdown_edit_x == noone);
+	var not_in_menu = !season_breakdown_add_member && (season_breakdown_date_x == noone) && (season_breakdown_edit_x == noone);
 
-	draw_set_halign(fa_center);
 	var col = make_color_rgb(98,145,242);
-	var str = "Season Breakdown";
-	if !season_ranking_disp
-	var str = "Season Ranking";
+	var str = pick("Season Breakdown","Season Ranking",!season_ranking_disp);
+	
+	draw_set_halign(fa_center);
 	draw_text_colour(xx+(ww*0.5),10,str,col,col,col,col,1);
 
 	// draw view all
@@ -21,11 +21,9 @@ function draw_season_ranking() {
 	draw_set_color(c_black);
 	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,true);
 
-	draw_set_halign(fa_left);
-	var str = "Breakdown";
-	if season_ranking_disp
-	str = "Ranking";
+	var str = pick("Breakdown","Ranking",season_ranking_disp);
 
+	draw_set_halign(fa_left);
 	draw_text(xx+5,yy+30+fn_off-10,str);
 
 	// ranking/breakdown toggle
@@ -47,7 +45,7 @@ function draw_season_ranking() {
 	    }
 
 	// draw ranked or breakdown
-	if season_ranking_disp == 0
+	if (season_ranking_disp == 0)
 	draw_season_ranking_simple();
 	else
 	draw_season_ranking_breakdown();

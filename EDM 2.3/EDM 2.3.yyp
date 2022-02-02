@@ -67,6 +67,7 @@
     {"id":{"name":"scr_create_teams","path":"scripts/scr_create_teams/scr_create_teams.yy",},"order":6,},
     {"id":{"name":"scr_sort_season_ranking","path":"scripts/scr_sort_season_ranking/scr_sort_season_ranking.yy",},"order":0,},
     {"id":{"name":"scr_sort_season_breakdown","path":"scripts/scr_sort_season_breakdown/scr_sort_season_breakdown.yy",},"order":1,},
+    {"id":{"name":"GM","path":"scripts/GM/GM.yy",},"order":11,},
     {"id":{"name":"scr_season_breakdown_player_delete","path":"scripts/scr_season_breakdown_player_delete/scr_season_breakdown_player_delete.yy",},"order":2,},
     {"id":{"name":"scr_season_ranking_delete_data","path":"scripts/scr_season_ranking_delete_data/scr_season_ranking_delete_data.yy",},"order":3,},
     {"id":{"name":"draw_assign_blind","path":"scripts/draw_assign_blind/draw_assign_blind.yy",},"order":0,},
