@@ -1,4 +1,4 @@
-function scr_sort_members(arr) {
+function scr_sort_members(arr,sortRecent=true) {
 	
 	var tempArr = deep_copy(arr);
 	var tempRecent = [];
@@ -13,15 +13,23 @@ function scr_sort_members(arr) {
 			
 		if entry.favorite
 		array_push(tempFavorite,entry);		
-		else if entry.recent
-		array_push(tempRecent,entry);
+		else if (entry.recent != -1) {
+			
+			if sortRecent
+			array_push(tempRecent,entry);
+			else {
+				
+				entry.recent = -1;
+				array_push(arr,entry);
+				}
+			}
 		else
 		array_push(arr,entry);
 		}
 			
 	array_sort_struct(arr,"name",true);
 	array_sort_struct(tempFavorite,"name",false);
-	array_sort_struct(tempRecent,"name",false);
+	array_sort_struct(tempRecent,"recent",true);
 	
 	// add recent
 	for(var i=0;i<array_length(tempRecent);i++)

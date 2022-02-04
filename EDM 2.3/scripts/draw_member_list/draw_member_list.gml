@@ -40,7 +40,7 @@ function draw_member_list(ysep) {
 	draw_text_centered(xx+10,yy,"Sort Member List",height,,ysep-10,col);
 	
 	if scr_mouse_position_room_released(xx,yy,ww+30,ysep-10,mb_left,true)
-	scr_sort_members(arr);
+	MEMBERS_LIST.list = scr_sort_members(arr,false);
 
 	// draw member list
 	yy += button_sep-8;

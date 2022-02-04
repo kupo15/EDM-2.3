@@ -43,14 +43,15 @@ function memberlist_swipe_right(ind,entryStruct) {
 	if entryStruct.favorite {
 		
 		entryStruct.favorite = false;
-		entryStruct.recent = true;
+		entryStruct.recent = date_current_datetime();
 		}
 	else {
 		// add to favorites
 		entryStruct.favorite = true;
+		entryStruct.recent = -1;
 		}
 
-	scr_sort_members(MEMBERS_LIST.list);
+	MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list);
 	audio_play_sound(snd_tap0,0,false);
 	}
 	

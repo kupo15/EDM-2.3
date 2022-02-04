@@ -90,7 +90,7 @@ function Member(_name,_favorite=false) constructor {
 	
 	name = _name;
 	favorite = _favorite;
-	recent = false;
+	recent = -1;
 	archived = false;
 	handicap = 54;
 	teeColor = "white";
