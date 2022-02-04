@@ -7,7 +7,6 @@ function draw_breakdown_add_member(argument0) {
 	var ysep = argument0;
 
 	draw_set_halign(fa_center);
-	draw_set_font(fn_name_up);
 	draw_set_color(c_white);
 
 	//

@@ -1,11 +1,10 @@
 function draw_results_teams() {
+	
 	var xx = 50+(1*room_width)-(results_screen*room_width);
 	var yy = 13;
 	var ysep = 25.2;
 
-
 	draw_set_halign(fa_center);
-	draw_set_font(fn_name_big);
 	draw_text_ext_colour(xx+805,yy+170,"Team\nResults",60,-1,c_blue,c_blue,c_blue,c_blue,1);
 
 	draw_set_font(fn_name);
@@ -28,7 +27,6 @@ function draw_results_teams() {
 	    draw_text(xx+700+200-5,yy+ysep+(i*ysep)+fn_off-10,string(team_pay_table[num,i])+" pesos");
 	    }   
     
-
 	// Draw Standings
 	var ww = 665;
 	var hh = ((teams_max+1)*ysep)+3;

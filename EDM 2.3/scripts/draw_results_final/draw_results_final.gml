@@ -10,7 +10,6 @@ function draw_results_final() {
 
 	draw_set_halign(fa_left);
 	draw_set_color(c_black);
-	draw_set_font(fn_name_big);
 	draw_text_colour(xx,-30,"RESULTS",c_blue,c_blue,c_blue,c_blue,1);
 
 	draw_set_font(fn_name);
@@ -206,19 +205,18 @@ function draw_results_final() {
 	var ww = 150;
 	var hh = 80;
 
-	if off < 128
+	if (off < 128)
 	draw_sprite_ext(background0,0,0,0,2,2,0,c_white,1);
 
-	else if off == 128 && !close_enough_skip
+	else if (off == 128) && !close_enough_skip
 	close_enough_pause = true;
 
-	if close_enough_pause == 1
+	if (close_enough_pause == 1)
 	alph = 1;
 
 	draw_set_alpha(alph)
 	draw_sprite_ext(background0,0,0,0,2,2,0,c_white,alph);
 	draw_sprite(spr_close_enough,0,150,0);
-	draw_set_font(fn_name_big);
 	draw_set_halign(fa_left);
 
 	var text_off = game_time-picture_timer_start;

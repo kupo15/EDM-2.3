@@ -1,4 +1,5 @@
 function draw_favorites_list(argument0) {
+	
 	var xx = 100;
 	var yy = 40;
 	var ww = sprite_get_width(spr_member_button);
@@ -150,7 +151,4 @@ function draw_favorites_list(argument0) {
 	    edit_member = true;
 	    add_member = get_string_async("Edit Member Name",favorites_members_list[| edit_member_slot]);
 	    }
-
-
-
-}
+	}

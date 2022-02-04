@@ -126,15 +126,16 @@ function draw_season_ranking_breakdown() {
 	    }
     
 	// Event date
-	if season_breakdown_date_x != noone
-	   {
+	if (season_breakdown_date_x != noone) {
+		
 	   draw_breakdown_event_date();
 	   exit;
 	   }
 
 	// Add member
-	draw_set_halign(fa_left);
 	var _col = make_color_rgb(98,145,242);
+	
+	draw_set_halign(fa_left);
 	draw_text_colour(xx+45,yy-10,"Add Member",_col,_col,_col,_col,1);
 
 	if not_in_menu && scr_mouse_position_room_released(xx,yy,250+80,50,mb_left,true)

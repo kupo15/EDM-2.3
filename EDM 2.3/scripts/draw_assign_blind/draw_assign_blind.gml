@@ -21,7 +21,6 @@ function draw_assign_blind() {
 	var col = make_colour_rgb(255,227,215);
 	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,col,col,col,col,false);
 
-	draw_set_font(fn_name_up);
 	draw_set_color(c_black);
 	draw_set_halign(fa_left);
 	draw_text(xx+120,yy-15,"Select Blind Team");

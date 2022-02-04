@@ -27,7 +27,4 @@ function scr_remove_from_team(argument0, argument1, argument2) {
 	ds_list_delete(team_list[_team],pos); // delete from team list
 	ds_list_delete(entrant_list,pos); // delete from entrant list
 	//ds_list_delete(recent_list,pos); // delete from recent list
-
-
-
-}
+	}

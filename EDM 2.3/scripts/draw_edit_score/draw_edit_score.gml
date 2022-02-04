@@ -72,6 +72,7 @@ function draw_edit_score() {
     
 	    var scr = if_undef(scores_grid[# 1,edit_score]);
 	    draw_text(xx+40+30,yy+30+30+80+30+fn_off,scr); // Front Score
+		
 	    var scr = if_undef(scores_grid[# 2,edit_score]);
 	    draw_text(xx+40+30+180,yy+30+30+80+30+fn_off,scr); // Back Score
     
@@ -79,7 +80,6 @@ function draw_edit_score() {
 	    draw_text_transformed(xx+120,yy+245,"Blind",0.9,0.9,0);
 	    draw_text_ext_transformed(xx+250,yy+235,"  No\nTeam",30,-1,0.7,0.7,0);
    
-	    draw_set_font(fn_name_up);
 	    var _bl = scores_grid[# 5,edit_score];
     
 	    if _bl == noone
@@ -347,12 +347,10 @@ function draw_edit_score() {
 	  // num_sign = negate;
 	   }
    
-	if edit_score_pos == 2
+	if (edit_score_pos == 2)
 	num = undefined;
-    
-	draw_set_font(fn_keyboard_entry);
 
-	if num == undefined
+	if (num == undefined)
 	var str = "-";
 	else
 	var str = num*negate;

@@ -1,8 +1,7 @@
 draw_sprite_ext(background0,0,0,0,2,2,0,c_white,1);
 
-if locked
-   {
-   draw_set_font(fn_name_big);
+if locked {
+	
    draw_set_color(c_black);
    draw_text(200,200,"This app is locked\ncontact the developer to access");
    
@@ -11,6 +10,7 @@ if locked
    else
    if mouse_check_button_released(mb_left)
    alarm[0] = -1;
+   
    exit;
    }
 
@@ -24,7 +24,12 @@ if mouse_check_button_released(mb_left)
     deleting_member = false;
     }
 	
-
+// debug
+if keyboard_check_pressed(vk_tab)
+debug = !debug;
+	
+if debug
+draw_circle(15,580,5,false);
     
     /*
 var xx = 10;

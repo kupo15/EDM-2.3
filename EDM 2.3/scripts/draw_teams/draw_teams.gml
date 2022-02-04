@@ -11,7 +11,6 @@ function draw_teams() {
 	var col_off = 120;
 	var in_menu = edit_team_score >= 0 || edit_score >= 0;
 
-	draw_set_font(fn_name_up);
 	draw_set_color(c_black);
 	draw_set_halign(fa_left);
 
@@ -62,9 +61,7 @@ function draw_teams() {
 	        {
 	        draw_text_transformed(xx+col_off+300+80+120+(col*hsep),yy+15-ysep+fn_off+(off_pos*sep),"Blind",0.9,0.9,0);
 	        draw_text_ext_transformed(xx+col_off+300+80+100+125+(col*hsep),yy+5-ysep+fn_off+(off_pos*sep),"  No\nTeam",30,-1,0.7,0.7,0);
-	        }
-        
-	    draw_set_font(fn_name_up);
+	        }     
     
 	    // edit team score
 	    if edit_score = noone && (edit_team_score == noone) && (select_blind_team == noone)
@@ -188,8 +185,7 @@ function draw_teams() {
 	                    }
 	                }
 	            }   
-            
-	        draw_set_font(fn_name_up_it);    
+               
 	        if ii+1 == size // if last member draw
 	           {
 	           var _blind_size = ds_list_size(blind_list[_team]);
@@ -200,8 +196,7 @@ function draw_teams() {
 	               draw_text_colour(xx+10,yy+fn_off-8+((ii+b+1)*ysep)+(off_pos*sep),b_str,bl_col,bl_col,bl_col,bl_col,1); // draw blind name
 	               }
 	           }
-           
-	        draw_set_font(fn_name_up);           
+                  
 	        grid_row ++;
 	        }
 	    }

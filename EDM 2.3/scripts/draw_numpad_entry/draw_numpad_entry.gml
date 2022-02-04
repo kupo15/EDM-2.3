@@ -92,7 +92,6 @@ function draw_numpad_entry(argument0, argument1, argument2) {
 	   num += numpad_list[| size-3]*100;
 	   }
     
-	draw_set_font(fn_keyboard_entry);
 	draw_text(xx+sep,yy-80,num); // draw result
 
 	// Enter Keypad

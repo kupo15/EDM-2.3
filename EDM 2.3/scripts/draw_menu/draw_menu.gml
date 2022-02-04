@@ -26,7 +26,7 @@ function draw_menu() {
 	draw_season_ranking();
 	else if (phase == prefPhase.none)
 	    {
-	    if list_type = 1
+	    if (list_type == listType.favorites)
 	    draw_favorites_list(ysep);
 	    else
 	    draw_member_list(ysep);

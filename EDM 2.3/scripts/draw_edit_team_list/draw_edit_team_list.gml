@@ -20,7 +20,6 @@ function draw_edit_team_list() {
 
 	button_index = scr_mouse_position_room(xx,yy,ww,button_sep,mb_left,true);
 
-	draw_set_font(fn_name_up);
 	draw_set_color(c_white);
 	draw_set_halign(fa_center);
 	draw_sprite_ext(spr_member_button,button_index,xx,yy,1,1,0,c_blue,1);

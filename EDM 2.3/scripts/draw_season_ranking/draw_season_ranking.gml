@@ -25,14 +25,15 @@ function draw_season_ranking() {
 
 	draw_set_halign(fa_left);
 	draw_text(xx+5,yy+30+fn_off-10,str);
-
+		
 	// ranking/breakdown toggle
 	if not_in_menu && scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,true)
 	    {
 	    season_ranking_disp = !season_ranking_disp; // toggle
 	    season_offset = 0;
     
-	    if season_ranking_disp // breakdown
+		// goto breakdown
+	    if season_ranking_disp
 			{
 		    ds_grid_sort(season_ranking_grid,0,true); // sort by name
 		    ds_grid_sort(season_ranking_usage_grid,0,true); // sort usage by name

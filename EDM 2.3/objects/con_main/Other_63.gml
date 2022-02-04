@@ -11,7 +11,7 @@ if i_d == add_member
          
          if !edit_member // add member
              {
-             if list_type == 0 // member list
+             if (list_type == listType.members) // member list
                  {
                  ds_list_insert(member_list,last_entrant_number,str);
                  ds_list_insert(member_list_save,0,str);
@@ -37,7 +37,7 @@ if i_d == add_member
                 break;
                 }
              
-             if list_type == 0
+             if (list_type == listType.members)
                  {
                  member_list[| edit_member_slot] = str; // edit members list
                  

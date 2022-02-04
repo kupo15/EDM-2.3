@@ -7,10 +7,10 @@ individual
 
 enum prefPhase {
 	
-	none,
-	preferences,
-	seasonRank,
-	}
+none,
+preferences,
+seasonRank,
+}
 
 randomize();
 device_mouse_dbclick_enable(false);
@@ -73,17 +73,18 @@ deleting_member = false;
 game_time = 0;
 picture_timer_start = 0; // game time when you start the picture
 
-timer = -1;
 close_enough_timer = -1;
 close_enough_skip = false;
 close_enough = false; // if already done once
 close_enough_pause = false;
 
 list_slot = noone;
+
 button_index = 0;
 button_ww = sprite_get_width(spr_member_button);
 button_hh = sprite_get_height(spr_member_button);
 button_sep = button_hh+3;
+
 negate = 1;
 last_entrant_number = 0; // number of entrants in the last game
 
@@ -191,8 +192,8 @@ season_ranking_load();
 
 ds_grid_clear(scores_grid,0);
 
-for(var i=0;i<teams_max;i++)
-    {
+for(var i=0;i<teams_max;i++) {
+	
     team_list[i] = ds_list_create();
     blind_list[i] = ds_list_create();
     team_score[i,0] = undefined;
@@ -200,10 +201,17 @@ for(var i=0;i<teams_max;i++)
     team_score[i,2] = -99;
     }
     
-
+ini_timer(mainTimers.enumcount);
+ini_save_file();
 ini_payout_table();
-ini_member_list_load();
+//ini_member_list_load();
 ini_settings_open();
+
+enum listType {
+	
+	members,
+	favorites
+	}
 
 list_type = (ds_list_size(favorites_list) != 0); // default to favorites
 

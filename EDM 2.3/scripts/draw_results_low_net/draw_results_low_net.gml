@@ -1,11 +1,10 @@
 function draw_results_low_net() {
+	
 	var xx = 50+(2*room_width)-(results_screen*room_width);
 	var yy = 30;
 	var ysep = 30;
 
-
 	draw_set_halign(fa_center);
-	draw_set_font(fn_name_big);
 	draw_text_ext_colour(xx+805,yy+240,"Low Net\nResults",60,-1,c_blue,c_blue,c_blue,c_blue,1);
 
 	draw_set_font(fn_name);

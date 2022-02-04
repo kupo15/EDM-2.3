@@ -131,8 +131,6 @@ function draw_breakdown_change() {
 	draw_text_transformed_color(xx_old+250,yy_old+hh_old-90+20,pesos_amt,0.7,0.7,0,col,col,col,col,1); // draw amount text
     
 	//
-	draw_set_font(fn_keyboard_entry);
-
 	if num == undefined
 	var str = "-";
 	else

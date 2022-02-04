@@ -8,19 +8,19 @@ function draw_team_list(argument0) {
 	var sep = hh+40;
 	var hsep = 80;
 
-	draw_set_font(fn_name_up);
 	draw_set_color(c_black);
-
 
 	// highlight team to add to
 	draw_set_alpha(0.3);
-	if team_index != -1
+	
+	if (team_index != -1)
 	draw_rectangle_colour(xx+20+(team_index*hsep),yy,xx+20-1+hsep+(team_index*hsep),yy+60,c_yellow,c_yellow,c_yellow,c_yellow,false);
-	else if list_type == 0 // favorites box highight
+	else if (list_type == listType.members) // favorites box highight
 	draw_rectangle_colour(xx+100,yy-60,xx+100+ww-30,yy-60+60,c_yellow,c_yellow,c_yellow,c_yellow,false);
+	
 	draw_set_alpha(1);
 	/*
-	if list_type == 0
+	if (list_type == listType.members)
 	    {
 	    draw_rectangle_colour(xx+100,yy-60,xx+70+ww,yy-60+30,c_black,c_black,c_black,c_black,true);
 	    draw_text(xx+200,yy-60+fn_off-8,"*Favorites");
@@ -34,15 +34,19 @@ function draw_team_list(argument0) {
 	    {
 	    var size = ds_list_size(team_list[i]);
 	    var col = c_black;
-	    if i=team_index
-	    col = c_black;
+		
+	    if (i == team_index)
+	    var col = c_black;
     
+		// draw number of entrants
 	    for(var n=0;n<size;n++)
-	    draw_circle(xx+30+(n*10)+(i*hsep),yy+55,4,false); // number of entrants
+	    draw_circle(xx+30+(n*10)+(i*hsep),yy+55,4,false);
     
 	    draw_rectangle_colour(xx+20+(i*hsep),yy,xx-1+20+hsep+(i*hsep),yy+60,col,col,col,col,true); 
 	    draw_text_transformed(xx+60+(i*hsep),yy-10+fn_off,string(i+1),0.85,0.85,0);    
-	    if scr_mouse_position_room_pressed(xx+20+(i*hsep),yy,hsep,60,mb_left,true,true) // select team
+		
+		// select team
+	    if scr_mouse_position_room_pressed(xx+20+(i*hsep),yy,hsep,60,mb_left,true,true)
 	    team_index = i;
 	    }
     
@@ -57,7 +61,6 @@ function draw_team_list(argument0) {
 	    draw_rectangle(xx,yy+(i*sep),xx+ww,yy+hh+(i*sep),true);
 	    draw_set_font(fn_name);
 	    draw_text_transformed(xx+spr_center,yy+fn_off-(ysep*0.55)+(i*sep),"Team "+string(team_index+1),1,1,0);
-	    draw_set_font(fn_name_up);
     
 	    // draw team list
 	    var size = ds_list_size(team_list[team_index]);

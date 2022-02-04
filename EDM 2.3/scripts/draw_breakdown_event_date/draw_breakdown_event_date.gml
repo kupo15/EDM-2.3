@@ -17,8 +17,10 @@ function draw_breakdown_event_date() {
 	// draw background rectangle
 	var col = make_colour_rgb(255,227,215);
 	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,col,col,col,col,false);
+	
 	draw_set_halign(fa_left);
 	draw_text(xx+100,yy+20+fn_off,"EVENT DATE:");
+	
 	draw_set_font(fn_keyboard);
 	draw_text(xx+120,yy+30+30,season_ranking_header_grid[# season_breakdown_date_x,0] + " - "+ string(season_ranking_header_grid[# season_breakdown_date_x,1])); // Draw event date
 
