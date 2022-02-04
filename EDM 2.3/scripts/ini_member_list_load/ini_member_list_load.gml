@@ -8,7 +8,7 @@ function ini_save_file() {
 	if file_exists(config_file) {
 		
 		CONFIGURATION_FILE = json_load_array(config_file);
-		return -1;
+		//return -1;
 		}
 	
 	CONFIGURATION_FILE = create_default_save_file(config_file);
@@ -90,6 +90,7 @@ function Member(_name,_favorite=false) constructor {
 	
 	name = _name;
 	favorite = _favorite;
+	recent = false;
 	archived = false;
 	handicap = 54;
 	teeColor = "white";
@@ -102,67 +103,52 @@ function debug_members_list_create() {
 	// reset member list
 	last_entrant_number = 0;
 
-	var list = [new Member("Ron Pogue",true),
-				new Member("Gerry Young"),
-				new Member("Frank Enns"),
-				new Member("Clark Hall",true),
-				new Member("Dave Sagan"),
-				new Member("Pat Krommendyk",true),
-				new Member("Ron Crawford"),
-				new Member("Gene Lombardo",true),
-				new Member("Rod Kaasa"),
-				new Member("Steve Barrett"),
-				new Member("Norm Shaw"),
-				new Member("Fernando Compean"),
-				new Member("Hall Wilson",true),
-				new Member("Dick Newton",true),
-				new Member("Brad Hentschel"),
-				new Member("Wayne Macintosh"),
-				new Member("Bill Jones"),
-				new Member("Jorge Corral"),
-				new Member("David Pratt"),
-				new Member("Gerald Allen"),
-				new Member("John Peppers"),
-				new Member("Don Cummings"),
-				new Member("Bob Wallace"),
-				new Member("Jack Gilman"),
-				new Member("Dave Temple"),
-				new Member("Joe Oviatt"),
-				new Member("Bill Schoen"),
-				new Member("Greg Stratoti"),
-				new Member("Brent Cunliffe"),
-				new Member("Ron Ohmes"),
-				new Member("Ron Vagle"),
-				new Member("Giles P"),
-				new Member("John Watson"),
-				new Member("Jim Baillon",true),
-				new Member("Dave Greiner"),
-				new Member("Jim Middlemiss"),
-				new Member("Ron VanVleet"),
-				new Member("Ken Clarence"),
-				new Member("Cliff duFresne",true),
-				new Member("Dick McGuire",true),
-				new Member("Bob Sanz",true)];
+	var list = [
+	
+		new Member("Ron Pogue",true),
+		new Member("Gerry Young"),
+		new Member("Frank Enns"),
+		new Member("Clark Hall",true),
+		new Member("Dave Sagan"),
+		new Member("Pat Krommendyk",true),
+		new Member("Ron Crawford"),
+		new Member("Gene Lombardo",true),
+		new Member("Rod Kaasa"),
+		new Member("Steve Barrett"),
+		new Member("Norm Shaw"),
+		new Member("Fernando Compean"),
+		new Member("Hall Wilson",true),
+		new Member("Dick Newton",true),
+		new Member("Brad Hentschel"),
+		new Member("Wayne Macintosh"),
+		new Member("Bill Jones"),
+		new Member("Jorge Corral"),
+		new Member("David Pratt"),
+		new Member("Gerald Allen"),
+		new Member("John Peppers"),
+		new Member("Don Cummings"),
+		new Member("Bob Wallace"),
+		new Member("Jack Gilman"),
+		new Member("Dave Temple"),
+		new Member("Joe Oviatt"),
+		new Member("Bill Schoen"),
+		new Member("Greg Stratoti"),
+		new Member("Brent Cunliffe"),
+		new Member("Ron Ohmes"),
+		new Member("Ron Vagle"),
+		new Member("Giles P"),
+		new Member("John Watson"),
+		new Member("Jim Baillon",true),
+		new Member("Dave Greiner"),
+		new Member("Jim Middlemiss"),
+		new Member("Ron VanVleet"),
+		new Member("Ken Clarence"),
+		new Member("Cliff duFresne",true),
+		new Member("Dick McGuire",true),
+		new Member("Bob Sanz",true)
+		];
 				
-	// move names to favorites list
-	//var favList = [];
-	//var size = array_length(list);
-	//for(var i=0;i<size;i++)
-	//	{
-	//	var entry = list[i];
-	//	
-	//	if entry.favorite {
-	//		
-	//		array_push(favList,entry);
-	//		array_delete(list,i,1);
-	//		size--;
-	//		i--;
-	//		}
-	//	}
-
-	scr_sort_members(list);
+	list = scr_sort_members(list);
 
 	return list;
-	//return {favorites: favList,nonFavorite: list};
-	//ds_list_clear(recent_list);
 	}
