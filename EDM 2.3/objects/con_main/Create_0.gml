@@ -213,5 +213,3 @@ enum listType {
 	}
 
 list_type = (ds_list_size(favorites_list) != 0); // default to favorites
-
-instance_create_layer(500,0,"Instances_1",obj_number_input);

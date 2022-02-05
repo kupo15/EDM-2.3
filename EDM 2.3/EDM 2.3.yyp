@@ -64,6 +64,7 @@
     {"id":{"name":"DS_GRID_FUNCTIONS","path":"scripts/DS_GRID_FUNCTIONS/DS_GRID_FUNCTIONS.yy",},"order":13,},
     {"id":{"name":"obj_number_input","path":"objects/obj_number_input/obj_number_input.yy",},"order":0,},
     {"id":{"name":"json_functions","path":"scripts/json_functions/json_functions.yy",},"order":12,},
+    {"id":{"name":"ico_edit","path":"sprites/ico_edit/ico_edit.yy",},"order":4,},
     {"id":{"name":"funct_convert_date","path":"scripts/funct_convert_date/funct_convert_date.yy",},"order":10,},
     {"id":{"name":"scr_entrant_scrolling","path":"scripts/scr_entrant_scrolling/scr_entrant_scrolling.yy",},"order":0,},
     {"id":{"name":"scores_grid_add_member","path":"scripts/scores_grid_add_member/scores_grid_add_member.yy",},"order":1,},

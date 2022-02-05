@@ -55,8 +55,9 @@ if !surface_exists(surf) {
 // draw keypad
 draw_surface(surf,x,y);
 
+// draw entryString
 var str = pick(entryString,blankStringDisplay,entryString=="");
-draw_text_centered(x+15,y,str,keyHeight*0.7,,keyHeight);
+draw_text_centered(x+25,y,str,keyHeight*0.6,,keyHeight,ADD_MEMBER_BUTTON_STYLE.bgColor);
 
 // inputs
 if scr_mouse_position_room_released(x+(keyWidth*2),y,keyWidth,keyHeight,mb_left,true)

@@ -1,4 +1,5 @@
 function season_ranking_load() {
+	
 	// set default variables
 	season_ranking_grid[# 0,0] = undefined;
 	season_ranking_grid[# 1,0] = 0; // history

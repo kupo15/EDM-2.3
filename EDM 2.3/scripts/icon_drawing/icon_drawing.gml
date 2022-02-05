@@ -16,3 +16,8 @@ function draw_icon(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha=draw_
 	
 	draw_set_alpha(1);
 	}
+	
+function draw_line_pixel(xx,yy,ww,hh,col=c_black,alpha=1) {
+
+	draw_sprite_stretched_ext(spr_pixel,0,xx,yy,ww,hh,col,alpha);
+	}
