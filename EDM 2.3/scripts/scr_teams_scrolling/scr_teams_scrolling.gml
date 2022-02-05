@@ -20,7 +20,7 @@ function scr_teams_scrolling(argument0, argument1, argument2) {
 	if scr_mouse_position_room(0,yy,room_width,hh,mb_left,false)
 	    {
 	    var num = 0.004;
-	    var amt = (mouse_ydist*num);
+	    var amt = (global.mouse_ydist*num);
 	    team_scroll_speed = amt;
 	    team_scroll_offset = team_scroll_offset_start-amt;
     

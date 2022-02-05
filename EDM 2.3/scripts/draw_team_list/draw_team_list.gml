@@ -18,7 +18,7 @@ function draw_team_list_header(xx,yy) {
 	for(var i=0;i<teams_max;i++)
 	    {
 		var selected = (i == team_index);
-		var teamGroup = TEAM_LIST[i];
+		var teamGroup = TEAM_LIST[i].members;
     
 		// select team header
 	    if scr_mouse_position_room_pressed(xx+(i*hsep),yy,hsep,60,mb_left,true,true)
@@ -53,7 +53,7 @@ function draw_team_list_body(xx,yy,ysep) {
 	draw_text_centered(xx,yy-30,"Team "+string(team_index+1),35,ww); // draw team list number
     
 	// draw team list
-	var teamGroup = TEAM_LIST[team_index];
+	var teamGroup = TEAM_LIST[team_index].members;
 	var size = array_length(teamGroup);
 	for(var i=0;i<size;i++)
 	    {
@@ -82,6 +82,7 @@ function remove_from_team(teamArr,ind,memberStruct) {
 	   
 	// remove from team
 	memberStruct.teamAssigned = undefined;
+	
 	array_delete(teamArr,ind,1);
 	ENTRANT_COUNT--; // remove from entrant count
          		 

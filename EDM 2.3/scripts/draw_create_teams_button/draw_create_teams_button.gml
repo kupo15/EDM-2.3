@@ -11,7 +11,7 @@ function draw_clear_all_teams_button() {
 
 	if scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,true) {
 		
-	    if (mouse_ydist < 15) && (mouse_xdist < 15) && !clear_all_safty
+	    if (global.mouse_ydist < 15) && (global.mouse_xdist < 15) && !clear_all_safty
 	    scr_reset_bracket();
 	    else
 	    clear_all_safty = false;
@@ -45,7 +45,7 @@ function draw_create_teams_button() {
 
 	if create && scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,true) {
 		
-	    if (mouse_ydist < 15) && (mouse_xdist < 15)
+	    if (global.mouse_ydist < 15) && (global.mouse_xdist < 15)
 	    scr_create_teams();
 	    }
 

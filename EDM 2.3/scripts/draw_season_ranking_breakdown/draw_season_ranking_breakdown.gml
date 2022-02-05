@@ -191,7 +191,7 @@ function draw_season_ranking_breakdown() {
 	    if scr_mouse_position_room(xx,yy+10,ww,hh+80,mb_left,false)
 	        {
 	        var num = 0.1;
-	        var amt = (mouse_ydist*num);
+	        var amt = (global.mouse_ydist*num);
 	        season_offset = season_offset_start-amt;
 	        season_offset = clamp(season_offset,0,rank_hh-rows);
         
@@ -213,7 +213,7 @@ function draw_season_ranking_breakdown() {
 	    if scr_mouse_position_room(xx,yy+10,ww,hh+80,mb_left,false)
 	        {
 	        var num = 0.05;
-	        var amt = (mouse_xdist*num);
+	        var amt = (global.mouse_xdist*num);
 	        season_breakdown_offset = season_breakdown_offset_start-amt;
 	        season_breakdown_offset = clamp(season_breakdown_offset,0,rank_ww-cols);
         

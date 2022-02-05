@@ -22,8 +22,8 @@ function scr_mouse_position_room_pressed(argument0, argument1, argument2, argume
 	   {
 	   mouse_xstart = mouse_x;
 	   mouse_ystart = mouse_y;
-	   mouse_xdist = 0;
-	   mouse_ydist = 0;
+	   global.mouse_xdist = 0;
+	   global.mouse_ydist = 0;
 	   }
 
 	if (mx > x_left) && (mx < x_left+ww) && (my > y_top) && (my < y_top+hh)

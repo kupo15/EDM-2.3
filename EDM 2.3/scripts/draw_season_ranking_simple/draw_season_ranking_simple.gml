@@ -89,7 +89,7 @@ function draw_season_ranking_simple() {
 	if scr_mouse_position_room(xx-230,yy+10,ww,hh+80,mb_left,false)
 	    {
 	    var num = 0.05;
-	    var amt = (mouse_ydist*num);
+	    var amt = (global.mouse_ydist*num);
 	    season_offset = season_offset_start-amt;
 	    season_offset = clamp(season_offset,0,rank_hh-rows);
     

@@ -34,7 +34,7 @@ function funct_draw_scrollbar(argument0, argument1, argument2, argument3, argume
 	if scrollbar_ystart != noone
 	    {
 	    scr_mouse_distance_gui();
-	    var drag_ratio = (scrollbar_ystart+mouse_ydist_gui)/(hh-yyoff);
+	    var drag_ratio = (scrollbar_ystart+global.mouse_ydist_gui)/(hh-yyoff);
 	    }*/
     
 	draw_set_alpha(scrollbar_disp);

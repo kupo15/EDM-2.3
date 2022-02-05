@@ -1,4 +1,5 @@
 function draw_results() {
+	
 	if phase > 1
 	   {
 	   if dev_mode && keyboard_check_pressed(vk_space)
@@ -21,7 +22,4 @@ function draw_results() {
 	   if ceil(results_screen) = 2
 	   draw_results_low_net();
 	   }
-
-
-
-}
+	}

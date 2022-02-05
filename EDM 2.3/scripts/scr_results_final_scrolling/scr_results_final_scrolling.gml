@@ -24,7 +24,7 @@ function scr_results_final_scrolling(argument0, argument1, argument2) {
 	if scr_mouse_position_room(xx,yy,ww,hh,mb_left,false)
 	    {
 	    var num = 0.1;
-	    var amt = (mouse_ydist*num);
+	    var amt = (global.mouse_ydist*num);
 	    results_final_offset = results_final_offset_start-amt;
 	    results_final_offset = clamp(results_final_offset,0,size-disp_count);
     

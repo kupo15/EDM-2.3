@@ -59,12 +59,12 @@ function draw_member_list(ysep) {
 	        list_slot = i; // store clicked entry
 	        timer[mainTimers.renameEntry] = round(room_speed*0.65);
 	        }
-	    else if mouse_check_button_released(mb_left) || (abs(mouse_ydist) > 5)
+	    else if mouse_check_button_released(mb_left) || (abs(global.mouse_ydist) > 5)
 	    timer_reset(mainTimers.renameEntry);
     	 
 		// draw button and members
 		var selected = (list_slot == i);
-	    var xx_mouse = pick(0,clamp(mouse_xdist,-100,200),selected); // min(0,mouse_xdist);
+	    var xx_mouse = pick(0,clamp(global.mouse_xdist,-100,200),selected); // min(0,global.mouse_xdist);
 		button_index = selected && mouse_check_button(mb_left);
 		
 		// snap within distance
@@ -122,14 +122,14 @@ function draw_member_list(ysep) {
         
 	        if (xx_mouse == 0) && scr_mouse_position_room(xx,yy,ww,hh,mb_left,false) {
 				
-	            var amt = round(mouse_ydist*0.05);
+	            var amt = round(global.mouse_ydist*0.05);
 	            member_scroll_offset = member_scroll_offset_start-amt;
 	            member_scroll_offset = clamp(member_scroll_offset,0,list_size-memberListDisplayCount);
        
 	            if (amt != 0)
 	            list_slot = noone;
 			
-				if (mouse_ydist != 0)
+				if (global.mouse_ydist != 0)
 				scrollbar_disp_end = 1;
 	            }
 	        }         
@@ -138,7 +138,7 @@ function draw_member_list(ysep) {
 	memberlist_release_actions();
         
 	// going to delete
-	if (list_slot != noone) && (abs(mouse_xdist) > 7) {
+	if (list_slot != noone) && (abs(global.mouse_xdist) > 7) {
 		
 	    deleting_member = true;
 	    timer[mainTimers.renameEntry] = -1;

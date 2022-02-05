@@ -47,11 +47,11 @@ tourney_type = tourneyType.team; // default to team event
 distribute_leftover_skins = noone;
 
 // pointer variables
-clicked = false;
+global.clicked = false;
 mouse_xstart = 0;
 mouse_ystart = 0;
-mouse_xdist = 0
-mouse_ydist = 0;
+global.mouse_xdist = 0
+global.mouse_ydist = 0;
 mouse_left = 0;
 scrolling = false;
 results_calculated = false;
@@ -214,3 +214,4 @@ enum listType {
 
 list_type = (ds_list_size(favorites_list) != 0); // default to favorites
 
+instance_create_layer(500,0,"Instances_1",obj_number_input);

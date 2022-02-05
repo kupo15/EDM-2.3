@@ -1,4 +1,5 @@
 function draw_teams() {
+	
 	// draw team groups
 	var xx = 10;
 	var yy = 60;

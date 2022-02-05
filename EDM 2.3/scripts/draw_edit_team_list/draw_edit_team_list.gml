@@ -5,7 +5,7 @@ function draw_edit_team_list() {
 	var hh = button_sep*10-12;
 	var ysep = sprite_get_height(spr_member_button)+2;
 
-	if !clicked && !scr_mouse_position_room_released(xx,yy,ww,hh+button_sep*2,noone,false) && mouse_check_button_released(mb_left)
+	if !global.clicked && !scr_mouse_position_room_released(xx,yy,ww,hh+button_sep*2,noone,false) && mouse_check_button_released(mb_left)
 	   {
 	   edit_team_add_member = false;
 	   exit;
@@ -53,13 +53,13 @@ function draw_edit_team_list() {
 	        list_slot = i;
 	        timer = round(room_speed*0.65);
 	        }
-	    else if mouse_check_button_released(mb_left) || abs(mouse_ydist) > 5
+	    else if mouse_check_button_released(mb_left) || abs(global.mouse_ydist) > 5
 	    timer = -1;
     
 	    if list_slot = i
 	       {
 	       button_index = 1;
-	       xx_mouse = clamp(mouse_xdist,-button_ww,button_ww); // min(0,mouse_xdist);
+	       xx_mouse = clamp(global.mouse_xdist,-button_ww,button_ww); // min(0,global.mouse_xdist);
        
 	       if mouse_check_button_released(mb_left)
 	           {// add to team list
@@ -96,7 +96,7 @@ function draw_edit_team_list() {
         
 	        if xx_mouse == 0 && scr_mouse_position_room(xx,yy,ww,hh,mb_left,false)
 	            {
-	            var amt = round(mouse_ydist*0.05);
+	            var amt = round(global.mouse_ydist*0.05);
 	            member_scroll_offset = member_scroll_offset_start-amt;
 	            member_scroll_offset = clamp(member_scroll_offset,0,list_size-disp_count);
 	            if member_scroll_offset < 0 member_scroll_offset = 0;
@@ -144,7 +144,7 @@ function draw_edit_team_list() {
 	scr_sort_members();
     
 	// going to delete
-	if list_slot != noone && abs(mouse_xdist) > 5 
+	if list_slot != noone && abs(global.mouse_xdist) > 5 
 	    {
 	    deleting_member = true;
 	    timer = -1;

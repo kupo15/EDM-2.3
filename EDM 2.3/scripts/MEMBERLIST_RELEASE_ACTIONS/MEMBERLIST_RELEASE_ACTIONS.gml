@@ -9,8 +9,8 @@ function memberlist_release_actions() {
 	var entryStruct = MEMBERS_LIST.list[ind];
 	
 	// release entry actions
-	var swipeLeft = (mouse_xdist <= -100);
-	var swipeRight = (mouse_xdist >= 200);
+	var swipeLeft = (global.mouse_xdist <= -100);
+	var swipeRight = (global.mouse_xdist >= 200);
 	var addTeam = !deleting_member;
 		
 	if mouse_check_button_released(mb_left) {
@@ -57,7 +57,7 @@ function memberlist_swipe_right(ind,entryStruct) {
 	
 function memberlist_add_to_team(ind,entryStruct) {
 	
-	var teamGroup = TEAM_LIST[team_index];
+	var teamGroup = TEAM_LIST[team_index].members;
 	
 	if (array_length(teamGroup) < 5) {
 		// add to team

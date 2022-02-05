@@ -3,6 +3,23 @@ function draw_menu() {
 	draw_set_font(fn_name);
 	draw_set_halign(fa_center);
 
+
+	draw_settings_icon();
+
+	if (pref_phase == prefPhase.preferences)
+	screen_settings();
+	else if (pref_phase == prefPhase.seasonRank)
+	screen_season_rankings();
+	else if (phase == prefPhase.homeScreen)
+	screen_home();
+	else if phase = 1
+	screen_score_entry();
+	else if phase > 1
+	screen_results();
+	}
+	
+function draw_settings_icon() {
+	
 	// draw preferences icon
 	var pref_xx = 970;
 	var pref_yy = 15;
@@ -17,26 +34,4 @@ function draw_menu() {
 	    }
 	else 
 	draw_sprite(spr_back,0,950,15); // draw return button
-
-	var ysep = sprite_get_height(spr_member_button)+2;
-
-	if (pref_phase == prefPhase.preferences)
-	draw_preferences();
-	else if (pref_phase == prefPhase.seasonRank)
-	draw_season_ranking();
-	else if (phase == prefPhase.homeScreen)
-	    {
-	    if (list_type == listType.favorites)
-	    draw_favorites_list(ysep);
-	    else
-	    draw_member_list(ysep);
-		
-	    draw_team_list_home(ysep);
-	    draw_clear_all_teams_button();
-	    draw_create_teams_button();
-	    }
-	else if phase = 1
-	draw_teams();
-	else if phase > 1
-	draw_results();
 	}

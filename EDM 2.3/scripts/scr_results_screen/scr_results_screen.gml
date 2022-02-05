@@ -6,7 +6,7 @@ function scr_results_screen() {
 	results_screen_start = results_screen;
 	else if mouse_check_button(mb_left)
 	   {
-	   var amt = mouse_xdist*0.0009765625;
+	   var amt = global.mouse_xdist*0.0009765625;
 
 	   results_screen = results_screen_start-amt;
 	   results_screen = clamp(results_screen,0,2);

@@ -1,7 +1,5 @@
-function scr_entrant_scrolling(argument0, argument1, argument2) {
-	var xx = argument0;
-	var yy = argument1;
-	var hh = argument2;
+function scr_entrant_scrolling(xx,yy,hh) {
+	
 	var ww = 500;
 	var disp_count = 12;
 	var size = ds_grid_height(scores_grid);
@@ -12,7 +10,7 @@ function scr_entrant_scrolling(argument0, argument1, argument2) {
 	if (can_edit_score_scroll && scr_mouse_position_room(xx,yy,ww,hh,mb_left,true)) || edit_score_scrolling
 	    {
 	    var num = 1/ww;
-	    edit_score_scrolling_offset = clamp(mouse_xdist*num,-1,1);
+	    edit_score_scrolling_offset = clamp(global.mouse_xdist*num,-1,1);
 	    edit_score_scrolling_offset_end = edit_score_scrolling_offset;
 	    edit_score_offset = 0;
     

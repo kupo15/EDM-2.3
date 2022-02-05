@@ -1,9 +1,5 @@
-function scr_results_low_net_scrolling(argument0, argument1, argument2, argument3) {
+function scr_results_low_net_scrolling(xx,yy,ww,hh) {
 
-	var xx = argument0;
-	var yy = argument1;
-	var ww = argument2;
-	var hh = argument3;
 	var disp_count = 15;
 	var size = ds_grid_height(scores_grid);
 
@@ -24,7 +20,7 @@ function scr_results_low_net_scrolling(argument0, argument1, argument2, argument
 	if scr_mouse_position_room(xx,yy,ww,hh,mb_left,false)
 	    {
 	    var num = 0.1;
-	    var amt = (mouse_ydist*num);
+	    var amt = (global.mouse_ydist*num);
 	    results_low_net_offset = results_low_net_offset_start-amt;
 	    results_low_net_offset = clamp(results_low_net_offset,0,size-disp_count);
     
@@ -34,9 +30,4 @@ function scr_results_low_net_scrolling(argument0, argument1, argument2, argument
 		    scrolling = true;
 			}
 	    }
-      
-
-
-
-
-}
+	}

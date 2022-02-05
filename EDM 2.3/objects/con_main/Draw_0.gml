@@ -44,7 +44,7 @@ draw_text(40,210,"window: "+string(window_get_width())+"x"+string(window_get_hei
 draw_text(40,270,"usage: "+string(ds_grid_width(season_ranking_usage_grid))+","+string(ds_grid_height(season_ranking_usage_grid)));
 draw_text(40,300,"data: "+string(season_ranking_grid[# 0,0]));
 //draw_text(40,50,edit_score_scrolling)
-//show_debug_message(mouse_xdist);
+//show_debug_message(global.mouse_xdist);
   
 /*
     

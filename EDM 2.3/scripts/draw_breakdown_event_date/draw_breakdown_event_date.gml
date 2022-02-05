@@ -27,7 +27,7 @@ function draw_breakdown_event_date() {
 	if edit_event
 		{	
 		// click out / cancel
-		if (android_back || (abs(mouse_xdist) < 2 && abs(mouse_ydist) < 2 && !scr_mouse_position_room(xx,yy,ww,hh,noone,false) && mouse_check_button_released(mb_left)))
+		if (android_back || ((abs(global.mouse_xdist) < 2) && abs(global.mouse_ydist) < 2 && !scr_mouse_position_room(xx,yy,ww,hh,noone,false) && mouse_check_button_released(mb_left)))
 		    {
 		    edit_event = false;
 		    exit;
@@ -64,7 +64,7 @@ function draw_breakdown_event_date() {
 	    if edit_event_scrolling = 0 && scr_mouse_position_room(xx-30,yy-250,ww,hh+180,mb_left,false)
 	        {
 	        var num = 0.1;
-	        var amt = (mouse_ydist*num);
+	        var amt = (global.mouse_ydist*num);
 	        edit_event_month_offset = edit_event_month_offset_start-amt;
 	        edit_event_month_offset = floor(clamp(edit_event_month_offset,0,11));
         
@@ -96,7 +96,7 @@ function draw_breakdown_event_date() {
 	    if edit_event_scrolling = 1 && scr_mouse_position_room(xx+50,yy-250,ww+10,hh+180,mb_left,false)
 	        {
 	        var num = 0.1;
-	        var amt = (mouse_ydist*num);
+	        var amt = (global.mouse_ydist*num);
 	        edit_event_day_offset = edit_event_day_offset_start-amt;
 	        edit_event_day_offset = floor(clamp(edit_event_day_offset,0,30));
         
@@ -127,7 +127,7 @@ function draw_breakdown_event_date() {
 	    if edit_event_scrolling = 2 && scr_mouse_position_room(xx-30,yy-250,ww+30,hh+180,mb_left,false)
 	        {
 	        var num = 0.1;
-	        var amt = (mouse_ydist*num);
+	        var amt = (global.mouse_ydist*num);
 	        edit_event_time_offset = edit_event_time_offset_start-amt;
 	        edit_event_time_offset = floor(clamp(edit_event_time_offset,0,23));
         

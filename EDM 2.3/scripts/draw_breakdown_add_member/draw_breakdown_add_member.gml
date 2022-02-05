@@ -27,7 +27,7 @@ function draw_breakdown_add_member(argument0) {
 	// funct_draw_scrollbar(xx,yy,disp_count,0,list_size,30,member_scroll_offset,ysep,0);
 
 	// click out
-	if android_back || (!scr_mouse_position_room(xx-40,yy-button_sep,ww+50,hh+button_sep+20,noone,false) && !clicked && mouse_check_button_released(mb_left))
+	if android_back || (!scr_mouse_position_room(xx-40,yy-button_sep,ww+50,hh+button_sep+20,noone,false) && !global.clicked && mouse_check_button_released(mb_left))
 	    {
 	    season_breakdown_add_member = false;
 	    exit;
@@ -44,7 +44,7 @@ function draw_breakdown_add_member(argument0) {
     
 	    if list_slot = i
 	       {
-	       xx_mouse = clamp(mouse_xdist,-button_ww,button_ww); // min(0,mouse_xdist);
+	       xx_mouse = clamp(global.mouse_xdist,-button_ww,button_ww); // min(0,global.mouse_xdist);
 	       //if abs(xx_mouse) < 7
 	       //xx_mouse = 0; 
        
@@ -97,7 +97,7 @@ function draw_breakdown_add_member(argument0) {
     
 	    if xx_mouse == 0 && scr_mouse_position_room(xx-30,yy,ww+30,hh,mb_left,false)
 	        {
-	        var amt = round(mouse_ydist*0.05);
+	        var amt = round(global.mouse_ydist*0.05);
 	        member_scroll_offset = member_scroll_offset_start-amt;
 	        member_scroll_offset = clamp(member_scroll_offset,0,list_size-disp_count);
 	        if member_scroll_offset < 0 member_scroll_offset = 0;

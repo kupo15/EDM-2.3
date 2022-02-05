@@ -37,12 +37,13 @@ function create_default_save_file(filename) {
 			entrantCount: 0,
 			
 			teams: [
-				[],
-				[],
-				[],
-				[],
-				[],
-				[],
+			
+				new Team(),
+				new Team(),
+				new Team(),
+				new Team(),
+				new Team(),
+				new Team(),
 				],
 			},
 			
@@ -61,10 +62,16 @@ function create_default_save_file(filename) {
 			version: configversion,
 			}
 		}
-						
+				
 	json_save_array(filename,config_data);
 	
 	return config_data;
+	}
+	
+function Team() constructor {
+	
+	members = [];
+	teamScore = undefined;
 	}
 	
 function PrizePool() constructor {

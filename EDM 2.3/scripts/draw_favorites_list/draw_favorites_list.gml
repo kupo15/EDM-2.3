@@ -56,14 +56,14 @@ function draw_favorites_list(argument0) {
 	        list_slot = i;
 	        timer = round(room_speed*0.65); // start countdown to edit name
 	        }
-	    else if mouse_check_button_released(mb_left) || abs(mouse_ydist) > 5
+	    else if mouse_check_button_released(mb_left) || abs(global.mouse_ydist) > 5
 	    timer = -1;
     
 	    // if clicked on a name
 	    if list_slot = i
 	       {
 	       button_index = 1;
-	       xx_mouse = min(0,mouse_xdist);
+	       xx_mouse = min(0,global.mouse_xdist);
        
 	       if mouse_check_button_released(mb_left)
 	           {
@@ -114,7 +114,7 @@ function draw_favorites_list(argument0) {
         
 	        if xx_mouse == 0 && scr_mouse_position_room(xx,yy,ww,hh,mb_left,false)
 	            {            
-	            var amt = round(mouse_ydist*0.05);
+	            var amt = round(global.mouse_ydist*0.05);
 	            favorites_scroll_offset = favorites_scroll_offset_start-amt;
 	            favorites_scroll_offset = clamp(favorites_scroll_offset,0,list_size-disp_count);
 	            if favorites_scroll_offset < 0 favorites_scroll_offset = 0;
@@ -137,7 +137,7 @@ function draw_favorites_list(argument0) {
 	    }
     
 	// going to delete
-	if list_slot != noone && mouse_xdist < 0 
+	if list_slot != noone && global.mouse_xdist < 0 
 	    {
 	    deleting_member = true;
 	    timer = -1;

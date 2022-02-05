@@ -12,7 +12,7 @@ function draw_assign_blind() {
 	var sep = hsep+20;
 
 	// click out/cancel
-	if android_back || (!scr_mouse_position_room_released(xx,yy,ww,hh,noone,true) && mouse_check_button_released(mb_left) && !clicked)
+	if android_back || (!scr_mouse_position_room_released(xx,yy,ww,hh,noone,true) && mouse_check_button_released(mb_left) && !global.clicked)
 	   {
 	   select_blind_team = noone;
 	   exit;
