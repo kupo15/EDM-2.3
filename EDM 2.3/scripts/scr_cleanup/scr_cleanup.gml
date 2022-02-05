@@ -6,9 +6,6 @@ function scr_cleanup() {
 	ini_entry_fee_save();
 	ini_settings_save();
 
-	ds_list_destroy(member_list);
-	ds_list_destroy(member_list_save);
-	ds_list_destroy(entrant_list);
 	ds_list_destroy(favorites_list);
 	ds_list_destroy(favorites_members_list);
 	ds_list_destroy(recent_list);

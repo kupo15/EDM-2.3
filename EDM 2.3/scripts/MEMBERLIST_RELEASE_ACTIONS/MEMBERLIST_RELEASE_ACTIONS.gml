@@ -64,26 +64,16 @@ function memberlist_add_to_team(ind,entryStruct) {
 		
 		entryStruct.teamAssigned = team_index;
 		array_push(teamGroup,entryStruct); // add to group
-		array_delete(MEMBERS_LIST.list,ind,1); // remove from members list
+		ENTRANT_COUNT++; // add to entrant number
 		
+		array_delete(MEMBERS_LIST.list,ind,1); // remove from members list
+		member_scroll_offset = clamp(member_scroll_offset,0,array_length(MEMBERS_LIST.list)-memberListDisplayCount);
+
 		audio_play_sound(snd_tap0,0,false);
 		}
 	else {
 		
 		entryStruct.teamAssigned = undefined;
 		audio_play_sound(snd_tap0,0,false);
-		}
-
-	exit;
-	if ds_list_size(team_list[team_index]) < 5 // limit team size
-		{// click name
-		ds_list_add(entrant_list,ind); // add to entrant list
-		ds_list_add(team_list[team_index],ind); // add to team list
-		ds_list_delete(member_list,i+member_scroll_offset); // delete from member list
-                      
-		member_scroll_offset = clamp(member_scroll_offset,0,list_size-disp_count-1);						  
-                      
-		if (i+member_scroll_offset < last_entrant_number) // if moving last entrant number
-		last_entrant_number = max(last_entrant_number-1,0);
 		}
 	}

@@ -83,6 +83,7 @@ function remove_from_team(teamArr,ind,memberStruct) {
 	// remove from team
 	memberStruct.teamAssigned = undefined;
 	array_delete(teamArr,ind,1);
+	ENTRANT_COUNT--; // remove from entrant count
          		 
 	// add back to member list
 	var list = MEMBERS_LIST.list;

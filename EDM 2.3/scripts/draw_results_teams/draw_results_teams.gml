@@ -12,7 +12,7 @@ function draw_results_teams() {
 	draw_set_halign(fa_left);
 
 	// draw payout table
-	var num = team_number; // ds_list_size(entrant_list)-1; // number of players
+	var num = team_number; // ENTRANT_COUNT-1; // number of players
 	var payout_max = array_length_2d(team_pay_table,num); // the last pay slot
 
 	draw_rectangle(xx+700,yy,xx+700+200,yy+20+((payout_max+1)*ysep),true);

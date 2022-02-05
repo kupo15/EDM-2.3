@@ -37,7 +37,7 @@ function scr_entrant_scrolling(argument0, argument1, argument2) {
    
 	   if edit_team_score == noone
 	       { // player score
-	       var size = ds_list_size(entrant_list);
+	       var size = ENTRANT_COUNT;
 	       edit_score = (edit_score-edit_score_scrolling_offset_end) mod size;
        
 	       if edit_score < 0 

@@ -68,7 +68,7 @@ function draw_edit_team_list() {
 	               if ds_list_size(team_list[edit_team_score]) < 5 // limit team size
 	                  {// click name
 	                  var ind = member_list[| i+member_scroll_offset]; // find name
-	                  ds_list_add(entrant_list,ind); // add to entrant list
+	                  ENTRANT_COUNT++; // add to entrant count
 	                  ds_list_add(team_list[edit_team_score],ind); // add to team list
 	                  ds_list_delete(member_list,i+member_scroll_offset); // delete from member list
                   

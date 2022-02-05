@@ -5,6 +5,7 @@
 // structure
 #macro MEMBERS_LIST SAVE_FILE.membersList
 #macro TEAM_LIST SAVE_FILE.activeEvent.teams
+#macro ENTRANT_COUNT SAVE_FILE.activeEvent.entrantCount
 
 function ini_save_file() {
 
@@ -33,7 +34,7 @@ function create_default_save_file(filename) {
 			
 		activeEvent: {
 			
-			entrantList: [],
+			entrantCount: 0,
 			
 			teams: [
 				[],

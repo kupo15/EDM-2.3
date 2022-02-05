@@ -1,4 +1,5 @@
 function ini_results_save() {
+	
 	ini_open("results.ini");
 	var save1 = ds_grid_write(scores_grid);
 	var save2 = ds_grid_write(team_score_front_grid);
@@ -8,8 +9,6 @@ function ini_results_save() {
 	var save6 = ds_grid_write(scores_grid_back);
 	var save7 = ds_grid_write(scores_grid_total);
 
-	var save8 = ds_list_write(entrant_list);
-
 	ini_write_string("final","scores",save1);
 	ini_write_string("team","front",save2);
 	ini_write_string("team","back",save3);
@@ -17,8 +16,6 @@ function ini_results_save() {
 	ini_write_string("net","front",save5);
 	ini_write_string("net","back",save6);
 	ini_write_string("net","total",save7);
-
-	ini_write_string("entrant_list","entrants",save8);
 
 	ini_write_real("no_skins","gross",no_gross_skins);
 	ini_write_real("no_skins","net",no_net_skins);

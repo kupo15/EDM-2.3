@@ -1,4 +1,5 @@
 function scr_create_teams() {
+	
 	var redo = (ds_grid_height(scores_grid) != 1); // if grid already created
 
 	// debug
@@ -10,9 +11,10 @@ function scr_create_teams() {
 	        {
 	        var rand = irandom(ds_list_size(member_list)-1);
 	        var str = member_list[| rand]; // get name
+			
 	        ds_list_delete(member_list,rand); // delete index
 	        ds_list_add(team_list[i],str); 
-	        ds_list_add(entrant_list,str);
+	        ENTRANT_COUNT++; // add to entrant count
 	        }
     
 	    // set team scores
@@ -66,7 +68,7 @@ function scr_create_teams() {
 	    team_number ++; // add to the number of teams
 	    }
 
-	var hh = ds_list_size(entrant_list);
+	var hh = ENTRANT_COUNT;
 	ds_grid_resize(scores_grid,ds_grid_width(scores_grid),hh);
 
 	var row = 0;

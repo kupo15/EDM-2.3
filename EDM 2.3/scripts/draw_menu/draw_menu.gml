@@ -32,6 +32,7 @@ function draw_menu() {
 	    draw_member_list(ysep);
 		
 	    draw_team_list_home(ysep);
+	    draw_clear_all_teams_button();
 	    draw_create_teams_button();
 	    }
 	else if phase = 1

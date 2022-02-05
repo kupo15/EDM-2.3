@@ -87,7 +87,7 @@ function draw_favorites_list(argument0) {
 	                   if ds_list_size(team_list[team_index]) < 5 // limit team size
 	                      {// click name
 	                      var ind = favorites_members_list[| i+favorites_scroll_offset]; // find name
-	                      ds_list_add(entrant_list,ind); // add to entrant list
+	                      ENTRANT_COUNT++; // add to entrant count
 	                      ds_list_add(team_list[team_index],ind); // add to team list
 	                      ds_list_delete(favorites_members_list,i+favorites_scroll_offset); // delete from member list
                       

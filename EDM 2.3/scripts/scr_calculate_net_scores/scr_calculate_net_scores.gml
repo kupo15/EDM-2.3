@@ -2,7 +2,7 @@ function scr_calculate_net_scores(argument0) {
 	// phase 3
 	phase = argument0;
 
-	var num = min(ds_list_size(entrant_list)-1,23); // number of players
+	var num = min(ENTRANT_COUNT-1,23); // number of players
 	var payout_max = array_length_2d(low_net_pay_table,num); // the last pay slot
 
 	// calculate total score

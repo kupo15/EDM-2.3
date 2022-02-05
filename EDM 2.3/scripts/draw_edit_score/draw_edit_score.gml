@@ -31,7 +31,7 @@ function draw_edit_score() {
 
 	if edit_score >= 0
 	    {
-	    var size = ds_list_size(entrant_list);
+	    var size = ENTRANT_COUNT;
 	    draw_text_transformed(xx+370,yy,"entrant "+string(edit_score+1)+"/"+string(size),0.7,0.7,0);
 	    }
 	else
@@ -398,7 +398,7 @@ function draw_edit_score() {
 	          {
 	          edit_score ++; // advance to next player
           
-	          var entr = ds_list_size(entrant_list);
+	          var entr = ENTRANT_COUNT;
 	          if edit_score < entr
 	          edit_score_pos = 0; // reset position
 	          }

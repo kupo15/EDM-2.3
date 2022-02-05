@@ -206,7 +206,7 @@ function draw_teams() {
 	var yy = 500;
 	var ww = 150;
 	var hh = 80;
-	var entr = ds_list_size(entrant_list);
+	var entr = ENTRANT_COUNT;
 	var calc = (entr > 3);
 
 	// if all players are No Team
