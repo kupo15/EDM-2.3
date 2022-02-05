@@ -230,7 +230,7 @@ function draw_preferences() {
 	// back out of preferences
 	if (android_back || scr_mouse_position_room_released(950,15,60,60,mb_left,true))
 	    {
-	    pref_phase = prefPhase.none;
+	    pref_phase = prefPhase.homeScreen;
     
 	    if phase > 1 // results screen
 	    scr_calculate_results();

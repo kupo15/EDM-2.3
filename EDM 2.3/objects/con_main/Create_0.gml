@@ -7,7 +7,7 @@ individual
 
 enum prefPhase {
 	
-none,
+homeScreen,
 preferences,
 seasonRank,
 }
@@ -145,7 +145,7 @@ skins_input = true;
 preference_edit_payout = noone;
 
 slider = false;
-pref_phase = prefPhase.none;
+pref_phase = prefPhase.homeScreen;
 no_net_skins = false;
 no_gross_skins = false;
 

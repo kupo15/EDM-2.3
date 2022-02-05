@@ -1,10 +1,16 @@
-function draw_team_list(ysep) {
+function draw_team_list_home(ysep) {
+
+	var xx = 470;
+	var yy = 20;
 
 	draw_set_color(c_black);
 
-	// draw team boxes to select
-	var xx = 470;
-	var yy = 20;
+	draw_team_list_header(xx,yy);
+	draw_team_list_body(xx+60,yy+100,ysep);
+	}
+	
+function draw_team_list_header(xx,yy) {
+
 	var hsep = 80;
 	var region_ww = hsep;
 	var region_hh = 60;
@@ -37,10 +43,10 @@ function draw_team_list(ysep) {
 			}
 
 	    }
-    
-	// draw team list
-	xx += 60;
-	yy += 100;
+	}
+	
+function draw_team_list_body(xx,yy,ysep) {
+	
 	var ww = button_ww;
 	var hh = button_sep*5-7;
 

@@ -7,7 +7,7 @@ function draw_menu() {
 	var pref_xx = 970;
 	var pref_yy = 15;
 	
-	if (pref_phase == prefPhase.none) {
+	if (pref_phase == prefPhase.homeScreen) {
 		
 	    draw_sprite(spr_preferences,0,pref_xx,pref_yy);
 		
@@ -24,14 +24,14 @@ function draw_menu() {
 	draw_preferences();
 	else if (pref_phase == prefPhase.seasonRank)
 	draw_season_ranking();
-	else if (phase == prefPhase.none)
+	else if (phase == prefPhase.homeScreen)
 	    {
 	    if (list_type == listType.favorites)
 	    draw_favorites_list(ysep);
 	    else
 	    draw_member_list(ysep);
 		
-	    draw_team_list(ysep);
+	    draw_team_list_home(ysep);
 	    draw_create_teams_button();
 	    }
 	else if phase = 1
