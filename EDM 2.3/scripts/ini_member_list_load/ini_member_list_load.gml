@@ -28,64 +28,53 @@ function create_default_save_file(filename) {
 			archived: [],
 			},
 			
+		activeEvent: {
+			
+			entrantList: [],
+			
+			teams: [
+				[],
+				[],
+				[],
+				[],
+				[],
+				[],
+				],
+			},
+			
+		settings: {
+			
+			closeEnough: true,
+			},
+			
+		prizePool: new PrizePool(),
+			
+		eventHistory: [],
+			
 		meta: {
 			
 			version: configversion,
 			}
 		}
-			
+						
 	json_save_array(filename,config_data);
 	
 	return config_data;
 	}
-
-function ini_member_list_load() {
 	
-	ini_open("member_list.ini");
-	var open = ini_read_string("members","all",""); // open members list
-	ds_list_read(member_list_save,open); // load members list
-
-	var open = ini_read_string("members","recent","");  // open last entrants
-	ds_list_read(recent_list,open); // load last entrants list
-
-	var open = ini_read_string("members","favorites","");  // open last entrants
-	ds_list_read(favorites_list,open); // load last entrants list
-	ini_close();
-
-	// sort lists
-	ds_list_sort(member_list_save,true);
-	ds_list_sort(recent_list,true);
-	//ds_list_sort(favorites_list,false);
-
-	//ds_list_copy(member_list_save,member_list);
-	//ds_list_copy(favorites_members_list,favorites_list);
-
-	ds_list_clear(member_list);
-
-	// add favorites to member list
-	var size = ds_list_size(recent_list);
-	last_entrant_number = size; // set number of entrants from last time
-
-	// loop through favorites list
-	for(var i=0;i<size;i++)
-	    {
-	    var entr = recent_list[| i]; // find name on entrant list
-	    ds_list_add(member_list,entr); // insert in beginning of master list
-	    }
-    
-	var size = ds_list_size(member_list_save);
-	// loop through member list
-	for(var i=0;i<size;i++)
-	    {
-	    var entr = member_list_save[| i]; // find name on entrant list
-	    ds_list_add(member_list,entr); // add to end of master list
-	    }
-    
-	//ds_list_sort(recent_list,true);    
-
-	//ds_list_clear(entrant_list); // clear the entrant list
+function PrizePool() constructor {
+			
+	entryFees = {
+				
+		teamEntry: 30,
+		lowNetEntry: 30,
+		skinsEntry: 20,
+		blindEntry: 30,
+		}
+			
+	payoutTable = new PayoutTables();
 	}
-	
+
 function Member(_name,_favorite=false) constructor {
 	
 	name = _name;
@@ -94,6 +83,7 @@ function Member(_name,_favorite=false) constructor {
 	archived = false;
 	handicap = 54;
 	teeColor = "white";
+	teamAssigned = undefined;
 	
 	roundHistory = [];
 	}

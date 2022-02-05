@@ -57,9 +57,6 @@ function memberlist_swipe_right(ind,entryStruct) {
 	
 function memberlist_add_to_team(ind,entryStruct) {
 // add to team list
-
-	if (team_index == -1)
-	exit;
 	
 	if ds_list_size(team_list[team_index]) < 5 // limit team size
 		{// click name

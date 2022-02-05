@@ -39,6 +39,7 @@ function draw_member_list(ysep) {
 	draw_set_halign(fa_left);
 	draw_text_centered(xx+10,yy,"Sort Member List",height,,ysep-10,col);
 	
+	// pressed
 	if scr_mouse_position_room_released(xx,yy,ww+30,ysep-10,mb_left,true)
 	MEMBERS_LIST.list = scr_sort_members(arr,false);
 

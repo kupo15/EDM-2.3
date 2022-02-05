@@ -160,8 +160,6 @@ team_payout[5] = 0;
 low_net_payout[24] = 0;
 
 // create ds lists
-member_list = ds_list_create(); // list of all members
-member_list_save = ds_list_create(); // list that saves to ini
 entrant_list = ds_list_create(); // list of players entered
 recent_list = ds_list_create(); // list of recent players NOT in favorites
 favorites_list = ds_list_create(); // list of frequent members to save to INI
@@ -204,8 +202,9 @@ for(var i=0;i<teams_max;i++) {
 ini_timer(mainTimers.enumcount);
 ini_save_file();
 ini_payout_table();
-//ini_member_list_load();
 ini_settings_open();
+
+member_list = deep_copy(MEMBERS_LIST.list); // list of all members
 
 enum listType {
 	
