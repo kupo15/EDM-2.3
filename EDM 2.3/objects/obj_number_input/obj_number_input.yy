@@ -24,8 +24,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Number Input",
+    "path": "folders/Objects/Number Input.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_number_input",

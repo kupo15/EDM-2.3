@@ -55,14 +55,16 @@ if !surface_exists(surf) {
 // draw keypad
 draw_surface(surf,x,y);
 
+var str = pick(entryString,blankStringDisplay,entryString=="");
+draw_text_centered(x+15,y,str,keyHeight*0.7,,keyHeight);
+
 // inputs
 if scr_mouse_position_room_released(x+(keyWidth*2),y,keyWidth,keyHeight,mb_left,true)
-db("delete");
+delete_character();
 
 for(var i=0;i<4;i++)
 for(var j=0;j<3;j++)
 	{
-
 	// draw numbers
 	var xx = j*keyWidth;
 	var yy = i*keyHeight;
@@ -71,7 +73,13 @@ for(var j=0;j<3;j++)
 		
 	if scr_mouse_position_room_released(x+xx,y+yy+displayHeight,keyWidth,keyHeight,mb_left,true) {
 		
-		db(str[ind]);
+		switch str[ind]
+			{
+			case "+/-": negate_entry(); break;
+			case "Done": submit_entry(); break;
+			
+			default: append_character(str[ind]); break;
+			}
 		}
 	}
 	

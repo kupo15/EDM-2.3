@@ -7,3 +7,7 @@ width = 3*keyWidth;
 height = 4*keyHeight+displayHeight;
 
 surf = -1;
+
+maxCharacters = 3;
+entryString = "";
+blankStringDisplay = "-";
