@@ -32,7 +32,7 @@ function memberlist_swipe_left(ind,entryStruct) {
 	array_push(MEMBERS_LIST.archived,entryStruct); // add to the archived list
 	array_delete(MEMBERS_LIST.list,ind,1); // delete from member list
                
-	//member_scroll_offset = clamp(member_scroll_offset,0,list_size-disp_count-1);				    
+	member_scroll_offset = clamp(member_scroll_offset,0,array_length(MEMBERS_LIST.list)-memberListDisplayCount);
 				   
 	audio_play_sound(snd_tap0,0,false);
 	}

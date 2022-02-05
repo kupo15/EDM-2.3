@@ -1,7 +1,14 @@
 #macro BUTTON_STYLE con_main.buttonStyle
 #macro FAVORITE_BUTTON_STYLE con_main.favoriteButtonStyle
+#macro ADD_MEMBER_BUTTON_STYLE con_main.addMemberStyle
 
 function ini_styles() {
+	
+	addMemberStyle = {
+		
+		bgColor: make_color_rgb(121,112,225),
+		textColor: c_white,
+		}
 	
 	favoriteButtonStyle = {
 		

@@ -41,7 +41,6 @@ function draw_team_list_header(xx,yy) {
 			draw_set_alpha(0.3);
 		    draw_rectangle_colour(xx+(i*hsep),yy,xx-1+(i*hsep)+hsep,yy+region_hh,c_yellow,c_yellow,c_yellow,c_yellow,false); 
 			}
-
 	    }
 	}
 	
@@ -55,7 +54,8 @@ function draw_team_list_body(xx,yy,ysep) {
     
 	// draw team list
 	var teamGroup = TEAM_LIST[team_index];
-	for(var i=0;i<array_length(teamGroup);i++)
+	var size = array_length(teamGroup);
+	for(var i=0;i<size;i++)
 	    {
 		var memberStruct = teamGroup[i];
 		var name = memberStruct.name;
@@ -69,8 +69,12 @@ function draw_team_list_body(xx,yy,ysep) {
 	    draw_text_centered(xx,yy+yoff,name,45,button_ww,button_hh,BUTTON_STYLE.textColor); // draw player's name
                  
 	    // clicked on name
-	    if scr_mouse_position_room_released(xx,yy+yoff,ww,button_sep,mb_left,false)
-	    remove_from_team(teamGroup,i,memberStruct);
+	    if scr_mouse_position_room_released(xx,yy+yoff,ww,button_sep,mb_left,false) {
+			
+		    remove_from_team(teamGroup,i,memberStruct);
+			size--;
+			i--;
+			}
 	    }
 	}
 

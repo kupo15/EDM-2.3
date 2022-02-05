@@ -1,16 +1,17 @@
+#macro memberListDisplayCount 6
+
 function draw_member_list(ysep) {
 		
-	var disp_count = 6;
 	var xx = 40;
 	var yy = 0;
 	var ww = sprite_get_width(spr_member_button);
-	var hh = button_sep*disp_count-12;
+	var hh = button_sep*memberListDisplayCount-12;
 	
 	// draw add member
 	button_index = scr_mouse_position_room(xx,yy,ww,button_sep,mb_left,true);
 
-	draw_sprite_ext(spr_member_button,button_index,xx,yy+5,1,1,0,c_blue,1); // button
-	draw_text_centered(xx,yy+5,"Add Member",50,button_ww,button_hh,c_white);
+	draw_sprite_ext(spr_member_button,button_index,xx,yy+5,1,1,0,ADD_MEMBER_BUTTON_STYLE.bgColor,1); // button
+	draw_text_centered(xx,yy+5,"Add Member",50,button_ww,button_hh,ADD_MEMBER_BUTTON_STYLE.textColor);
 
 	// if clicked
 	if scr_mouse_position_room_released(xx,yy,ww,button_sep,mb_left,true) {
@@ -47,9 +48,9 @@ function draw_member_list(ysep) {
 	yy += button_sep-8;
 	var xx = 40;
 	var list_size = array_length(arr);
-	var size = min(list_size,disp_count);
+	var size = min(list_size,memberListDisplayCount);
 	
-	funct_draw_scrollbar(xx-5,yy,disp_count,0,list_size,20,member_scroll_offset,ysep,0);
+	funct_draw_scrollbar(xx-5,yy,memberListDisplayCount,0,list_size,20,member_scroll_offset,ysep,0);
 	for(var i=0;i<size;i++) // loop through list
 	    {
 		// set selected entry
@@ -80,7 +81,7 @@ function draw_member_list(ysep) {
 	    var name_col = pick(BUTTON_STYLE.textColor,FAVORITE_BUTTON_STYLE.textColor,favorite);	
 	    var button_col = pick(BUTTON_STYLE.bgColor,FAVORITE_BUTTON_STYLE.bgColor,favorite);	
 		var alph = clamp((xx_mouse)/100,0,1);
-		
+				
 		// favorite underneath
 		var fav_text = pick("Favorite","Remove",favorite);
 		var fav_col = pick(c_white,c_white,favorite);
@@ -123,7 +124,7 @@ function draw_member_list(ysep) {
 				
 	            var amt = round(mouse_ydist*0.05);
 	            member_scroll_offset = member_scroll_offset_start-amt;
-	            member_scroll_offset = clamp(member_scroll_offset,0,list_size-disp_count);
+	            member_scroll_offset = clamp(member_scroll_offset,0,list_size-memberListDisplayCount);
        
 	            if (amt != 0)
 	            list_slot = noone;
