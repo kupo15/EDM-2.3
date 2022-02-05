@@ -17,8 +17,8 @@
   "includeTTF": false,
   "TTFName": "",
   "textureGroupId": {
-    "name": "Other",
-    "path": "texturegroups/Other",
+    "name": "fontNormal",
+    "path": "texturegroups/fontNormal",
   },
   "ascenderOffset": 0,
   "glyphs": {

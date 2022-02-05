@@ -18,6 +18,7 @@ device_mouse_dbclick_enable(false);
 debug = false;
 //show_debug_overlay(true);
 
+ini_styles();
 ini_resolution();
 
 spr_center = sprite_get_width(spr_member_button)*0.5;

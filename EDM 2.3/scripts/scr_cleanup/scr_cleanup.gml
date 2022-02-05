@@ -1,4 +1,6 @@
 function scr_cleanup() {
+	
+	exit;
 	ini_member_list_save();
 	ini_payout_table_save();
 	ini_entry_fee_save();

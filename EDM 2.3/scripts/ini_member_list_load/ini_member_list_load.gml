@@ -1,7 +1,10 @@
 #macro config_file "data.config"
 #macro configversion "0.1"
 #macro SAVE_FILE con_main.CONFIGURATION_FILE
+
+// structure
 #macro MEMBERS_LIST SAVE_FILE.membersList
+#macro TEAM_LIST SAVE_FILE.activeEvent.teams
 
 function ini_save_file() {
 
@@ -44,6 +47,7 @@ function create_default_save_file(filename) {
 			
 		settings: {
 			
+			soundOn: true,
 			closeEnough: true,
 			},
 			

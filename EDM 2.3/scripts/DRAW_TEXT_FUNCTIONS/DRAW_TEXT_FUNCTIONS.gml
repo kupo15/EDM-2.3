@@ -38,36 +38,18 @@ function draw_text_height_transformed_color(xx,yy,str,angle,col,height,font,hali
 	return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,font,halign);
 	}
 
-function draw_text_height(xx,yy,str,height,pct,font,halign) {
-/// @param xx
-/// @param yy
-/// @param str
-/// @param height
-/// @param [pct?
-/// @param font
-/// @param halign]
+function draw_text_height(xx,yy,str,height,font=undefined,halign=undefined) {
 
-var int = argument[4];
+	var sep = -1;
+	var w = -1;
+	var angle = 0;
+	var col = draw_get_color();
+	var alpha = draw_get_alpha();
 
-var sep = -1;
-var w = -1;
-var angle = 0;
-var col = draw_get_color();
-var alpha = draw_get_alpha();
+	return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,font,halign);
+	}
 
-return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,pct,font,halign);
-}
-
-function draw_text_height_label(xx,yy,str,str_label,height,font,halign) {
-/// @param xx
-/// @param yy
-/// @param str
-/// @param str_label
-/// @param height
-/// @param [font
-/// @param halign]
-
-var int = argument[5];
+function draw_text_height_label(xx,yy,str,str_label,height,font=undefined,halign=undefined) {
 
 var sep = -1;
 var w = -1;
@@ -75,11 +57,11 @@ var angle = 0;
 var col = draw_get_color();
 var alpha = draw_get_alpha();
 
-if str == ""
-	{
+if str == "" {
+	
 	str = str_label;
 	col = c_gray;
-	font = fn_italic
+	font = fn_italic;
 	}
 
 return draw_text_height_ext_color(xx,yy,str,sep,w,angle,col,alpha,height,font,halign);

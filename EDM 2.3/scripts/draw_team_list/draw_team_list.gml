@@ -12,27 +12,30 @@ function draw_team_list(ysep) {
 	for(var i=0;i<teams_max;i++)
 	    {
 		var selected = (i == team_index);
-	    var size = ds_list_size(team_list[i]);
-	    var col = c_black;
+		var teamGroup = TEAM_LIST[i];
     
+		// select team header
+	    if scr_mouse_position_room_pressed(xx+(i*hsep),yy,hsep,60,mb_left,true,true)
+	    team_index = i;
+		
 		// draw number of entrants dots
-	    for(var n=0;n<size;n++)
+	    for(var n=0;n<array_length(teamGroup);n++)
 	    draw_circle(xx+10+(n*10)+(i*hsep),yy+55,4,false);
-    
-		// draw team boxes
+
+		// draw team box outline
+		var col = c_black;
+
+		draw_set_alpha(1);
+	    draw_rectangle_colour(xx+(i*hsep),yy,xx-1+(i*hsep)+hsep,yy+region_hh,col,col,col,col,true); // outline
+	    draw_text_centered(xx+(i*hsep),yy,string(i+1),50,region_ww,region_hh); // draw team index
+
+		// draw selected team
 		if selected {
 
 			draw_set_alpha(0.3);
 		    draw_rectangle_colour(xx+(i*hsep),yy,xx-1+(i*hsep)+hsep,yy+region_hh,c_yellow,c_yellow,c_yellow,c_yellow,false); 
 			}
 
-		draw_set_alpha(1);
-	    draw_rectangle_colour(xx+(i*hsep),yy,xx-1+(i*hsep)+hsep,yy+region_hh,col,col,col,col,true); // outline
-	    draw_text_centered(xx+(i*hsep),yy,string(i+1),50,region_ww,region_hh); // draw team index
-		
-		// select team
-	    if scr_mouse_position_room_pressed(xx+(i*hsep),yy,hsep,60,mb_left,true,true)
-	    team_index = i;
 	    }
     
 	// draw team list
@@ -45,50 +48,42 @@ function draw_team_list(ysep) {
 	draw_text_centered(xx,yy-30,"Team "+string(team_index+1),35,ww); // draw team list number
     
 	// draw team list
-	var teamList = team_list[team_index];
-	var size = ds_list_size(teamList);
-	for(var i=0;i<size;i++)
+	var teamGroup = TEAM_LIST[team_index];
+	for(var i=0;i<array_length(teamGroup);i++)
 	    {
-		var memberStruct = teamList[| i];
+		var memberStruct = teamGroup[i];
 		var name = memberStruct.name;
 		var yoff = (i*ysep);
 		
 	    // draw team member names
 	    var spr_ind = scr_mouse_position_room(xx,yy+yoff,ww,button_sep,mb_left,true);
-        
-	    draw_sprite(spr_member_button,spr_ind,xx,yy+yoff); // draw button
-	    draw_text_centered(xx,yy+yoff,name,45,button_ww,button_hh); // draw player's name
+        var col = BUTTON_STYLE.bgColor;
+		
+	    draw_sprite_ext(spr_member_button,spr_ind,xx,yy+yoff,1,1,0,col,1); // draw button
+	    draw_text_centered(xx,yy+yoff,name,45,button_ww,button_hh,BUTTON_STYLE.textColor); // draw player's name
                  
 	    // clicked on name
 	    if scr_mouse_position_room_released(xx,yy+yoff,ww,button_sep,mb_left,false)
-	    remove_from_team();
+	    remove_from_team(teamGroup,i,memberStruct);
 	    }
 	}
 
-function remove_from_team() {
+function remove_from_team(teamArr,ind,memberStruct) {
 	   
-	var ind = ds_list_find_value(team_list[team_index],a); // find name
-           
-	var fav = false;
-	for(var ff=0;ff<ds_list_size(recent_list);ff++) // loop through favorites list
-	if recent_list[| ff] == ind
-		{
-		fav = true; // found on favorites list
+	// remove from team
+	memberStruct.teamAssigned = undefined;
+	array_delete(teamArr,ind,1);
+         		 
+	// add back to member list
+	var list = MEMBERS_LIST.list;
+	for(var i=0;i<array_length(list);i++)
+		{	
+		var listEntry = list[i];
+		
+		if listEntry.favorite
+		continue;
+		
+		array_insert(list,i,memberStruct);
 		break;
-		}
-           
-	if fav // put back on favorites list
-		{
-		ds_list_insert(member_list,last_entrant_number,ind);
-		last_entrant_number ++;
-		}
-	else // add to members list
-		{
-		var _slot = max(member_scroll_offset,last_entrant_number);
-		ds_list_insert(member_list,_slot,ind); // insert to top of member list below recent
-		}
-               
-	ds_list_delete(team_list[team_index],a); // delete from team list
-	ds_list_delete(entrant_list,a); // delete from entrant list
-	//ds_list_delete(recent_list,a); // delete from recent list	    
+		}    
 	}

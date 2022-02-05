@@ -75,16 +75,18 @@ function draw_member_list(ysep) {
 		var entry = MEMBERS_LIST.list[index];
 		var name = entry.name;
 		var favorite = entry.favorite;
-	    var button_col = pick(c_purple,make_color_rgb(255,128,128),favorite);
-			
+		var assigned = (entry.teamAssigned != undefined);
+		var nameFont = pick(fn_name,fn_name_it,assigned);
+	    var name_col = pick(BUTTON_STYLE.textColor,FAVORITE_BUTTON_STYLE.textColor,favorite);	
+	    var button_col = pick(BUTTON_STYLE.bgColor,FAVORITE_BUTTON_STYLE.bgColor,favorite);	
 		var alph = clamp((xx_mouse)/100,0,1);
-	    draw_set_alpha(alph);
 		
 		// favorite underneath
 		var fav_text = pick("Favorite","Remove",favorite);
 		var fav_col = pick(c_white,c_white,favorite);
 		var bgcol = pick(c_blue,c_yellow,favorite);
 		
+		draw_set_alpha(alph);
 		draw_icon(,,xx,yy+(i*ysep),440-xx,ysep-3,bgcol,alph);
         draw_text_centered(xx+60,yy+(i*ysep),fav_text,40,,ysep-3,fav_col,alph);
 		draw_icon(ico_favorite,0,xx-20,yy+(i*ysep),100,ysep-3,,alph);
@@ -97,7 +99,18 @@ function draw_member_list(ysep) {
 		draw_icon(ico_trash,0,340,yy+(i*ysep),100,ysep-3,,1-alph);
 
 	    draw_sprite_ext(spr_member_button,button_index,xx+xx_mouse,yy+(i*ysep),1,1,0,button_col,1); // draw button
-	    draw_text_centered(xx+xx_mouse,yy+(i*ysep),name,45,button_ww,button_hh); // draw member name
+		
+		draw_set_font(nameFont);
+	    draw_text_centered(xx+15+xx_mouse,yy+(i*ysep),name,45,,button_hh,name_col); // draw member name
+		draw_set_font(fn_name);
+		
+		// assigned overlay
+		if assigned {
+			
+			draw_icon(,,xx+xx_mouse,yy+(i*ysep),440-xx,ysep-3,c_black,0.7);
+			draw_text_centered(xx+360+xx_mouse,yy+(i*ysep),entry.teamAssigned+1,45,,button_hh,,);
+			}
+
 	    draw_set_alpha(1);
 		          
 	    // scrolling

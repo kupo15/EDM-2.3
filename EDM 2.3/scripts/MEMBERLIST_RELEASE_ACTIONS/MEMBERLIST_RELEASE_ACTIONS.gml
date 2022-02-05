@@ -56,8 +56,25 @@ function memberlist_swipe_right(ind,entryStruct) {
 	}
 	
 function memberlist_add_to_team(ind,entryStruct) {
-// add to team list
 	
+	var teamGroup = TEAM_LIST[team_index];
+	
+	if (array_length(teamGroup) < 5) {
+		// add to team
+		
+		entryStruct.teamAssigned = team_index;
+		array_push(teamGroup,entryStruct); // add to group
+		array_delete(MEMBERS_LIST.list,ind,1); // remove from members list
+		
+		audio_play_sound(snd_tap0,0,false);
+		}
+	else {
+		
+		entryStruct.teamAssigned = undefined;
+		audio_play_sound(snd_tap0,0,false);
+		}
+
+	exit;
 	if ds_list_size(team_list[team_index]) < 5 // limit team size
 		{// click name
 		ds_list_add(entrant_list,ind); // add to entrant list
