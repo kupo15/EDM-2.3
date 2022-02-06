@@ -98,7 +98,20 @@ function Member(_name,_favorite=false) constructor {
 	teeColor = "white";
 	teamAssigned = undefined;
 	
+	roundStats = new RoundStats();
+	
 	roundHistory = [];
+	}
+	
+function RoundStats() constructor {
+	
+	netFront = "";
+	netBack = "";
+	skinsGross = "";
+	skinsNet = "";
+	blindTeam = undefined;
+	noTeam = false;
+	grossAdj = "";
 	}
 	
 function debug_members_list_create() {

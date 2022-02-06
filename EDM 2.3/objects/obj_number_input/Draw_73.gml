@@ -1,4 +1,7 @@
 
+if !active
+exit;
+
 if !surface_exists(surf) {
 	
 	// build surface
@@ -57,6 +60,8 @@ draw_surface(surf,x,y);
 
 // draw entryString
 var str = pick(entryString,blankStringDisplay,entryString=="");
+
+draw_set_halign(fa_left);
 draw_text_centered(x+25,y,str,keyHeight*0.6,,keyHeight,ADD_MEMBER_BUTTON_STYLE.bgColor);
 
 // inputs

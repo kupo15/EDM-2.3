@@ -1,3 +1,4 @@
+
 function screen_settings() {
 
 	var ysep = 40;
@@ -9,38 +10,61 @@ function screen_settings() {
 	
 function screen_payouts(ysep) {
 	
+	draw_team_payout_table(ysep);
+
+	}
+	
+function draw_team_payout_table(ysep) {
+	
 	// team payout table
 	var xx = 20;
-	var yy = 50;	
+	var yy = 50;
 	var ww = 300;
 	var hh = 6*ysep;
 	var height = ysep;
 	var header_col = make_color_rgb(98,145,242);
 
 	draw_rectangle(xx,yy,xx+ww,yy-ysep+hh,true);
-	draw_line(xx,yy+ysep,xx+ww,yy+ysep); // header line
-
 	draw_text_centered(xx,yy,"Team Payout",height,ww,ysep,header_col);
-	draw_text_centered(xx+15,yy+ysep,string(pref_team_num+1)+" Teams",height,,ysep);
 
-	yy += ysep*2;
+	yy += ysep;
+	draw_line(xx,yy,xx+ww,yy); // header line
+	draw_text_centered(xx+15,yy,string(pref_team_num+1)+" Teams",height,,ysep);
+
+	draw_text_centered(xx+ww-ysep-ysep,yy,"+",ysep,ysep,ysep);
+	draw_text_centered(xx+ww-ysep,yy,"-",ysep,ysep,ysep);
+	draw_line_pixel(xx+ww-ysep,yy+5,1,ysep-2,,0.2);
+
+	yy += ysep;	
 	var arr = PAYOUT_TABLES.teamPayout[pref_team_num];
 	var size = array_length(arr);
 	for(var i=0;i<size;i++)
 	    {    
+		var str = arr[i];	
+			
 	    // draw payout slot
 		draw_set_halign(fa_left);
 	    draw_text_centered(xx+15,yy+(i*ysep),string(i+1)+")",height*0.7,,ysep);
     
 	    draw_set_halign(fa_right);
-	    draw_text_centered(xx+130,yy+(i*ysep),string(arr[i])+" pesos",height*0.7,,ysep);
+	    draw_text_centered(xx+130,yy+(i*ysep),string(str)+" pesos",height*0.7,,ysep);
 		
 		// horizontal line
 		draw_line_pixel(xx+20,yy+((i+1)*ysep),ww-40,1,,0.3);
 		
 		// edit icon
 		//draw_icon(ico_edit,0,xx+ww-40,yy+(i*ysep),ysep,ysep,,0.5);
+		
+		// if clicked
+		if scr_mouse_position_room_released(xx,yy+(i*ysep),ww,ysep,mb_left,!keypad_entry) {
+			
+			init_keypad(entryType.teamPayout,str);
+			settings_clicked_index = i;
+			}
 	    }
+	}
+	
+function draw_entry_fee_table() {
 		
 	exit;
 
@@ -238,16 +262,7 @@ function draw_preferences() {
 	yy += 230;
 	var slots = array_length_2d(team_pay_table,pref_team_num);
 
-	// team selection
-	for(var i=0;i<slots;i++)
-	if scr_mouse_position_room_released(xx-60,yy-80+(3*ysep)+(i*ysep),ww,30,mb_left,!keypad_entry)
-	    { // select payout row
-	    keypad_entry = true;
-	    preference_type = 2;
-	    preference_index = i;
-	    negate = 1;
-	    break;
-	    }
+
     
 	// back out of preferences
 	if (android_back || scr_mouse_position_room_released(950,15,60,60,mb_left,true))

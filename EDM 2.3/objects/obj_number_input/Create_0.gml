@@ -10,4 +10,24 @@ surf = -1;
 
 maxCharacters = 3;
 entryString = "";
+startingString = "";
 blankStringDisplay = "-";
+active = false;
+
+x = room_width-width;
+y = room_height-height;
+
+submitedString = undefined;
+
+enum entryType {
+	
+	none,
+	teamEntryFee,
+	lowNetEntryFee,
+	skinsEntryFee,
+	blindFee,
+	teamPayout,
+	lowNetPayout,
+	}
+	
+global.entryEnum = entryType.none;

@@ -9,6 +9,7 @@
     {"id":{"name":"spr_crossout","path":"sprites/spr_crossout/spr_crossout.yy",},"order":5,},
     {"id":{"name":"spr_key_circles","path":"sprites/spr_key_circles/spr_key_circles.yy",},"order":7,},
     {"id":{"name":"spr_member_button","path":"sprites/spr_member_button/spr_member_button.yy",},"order":9,},
+    {"id":{"name":"init_keypad","path":"scripts/init_keypad/init_keypad.yy",},"order":1,},
     {"id":{"name":"sprite16","path":"sprites/sprite16/sprite16.yy",},"order":10,},
     {"id":{"name":"spr_preferences","path":"sprites/spr_preferences/spr_preferences.yy",},"order":11,},
     {"id":{"name":"spr_slider","path":"sprites/spr_slider/spr_slider.yy",},"order":12,},

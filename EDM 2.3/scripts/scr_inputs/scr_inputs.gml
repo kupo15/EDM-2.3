@@ -9,6 +9,15 @@ function scr_inputs() {
 		case os_android: android_back = keyboard_check_released(vk_backspace); break;
 		}
 
+	if mouse_check_button_pressed(mb_left) {
+		
+	   mouse_xstart = mouse_x;
+	   mouse_ystart = mouse_y;
+	   
+	   global.mouse_xdist = 0;
+	   global.mouse_ydist = 0;
+	   }
+
 	if mouse_check_button_pressed(mb_middle) {
 		
 	   mouse_xstart = mouse_x;
