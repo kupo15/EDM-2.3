@@ -1,5 +1,8 @@
 
-function scr_mouse_position_room_pressed(x_left,y_top,ww,hh,button,highlight,sound) {
+function scr_mouse_position_room_pressed(x_left,y_top,ww,hh,button,highlight,sound,isKeypad=false) {
+
+	if (!isKeypad && KEYPAD_ACTIVE)
+	exit;
 
 	var mx = mouse_x;
 	var my = mouse_y;
@@ -30,9 +33,9 @@ function scr_mouse_position_room_pressed(x_left,y_top,ww,hh,button,highlight,sou
 	}
 
 
-function scr_mouse_position_room_released(x_left,y_top,ww,hh,button,highlight) {
+function scr_mouse_position_room_released(x_left,y_top,ww,hh,button,highlight,isKeypad=false) {
 
-	if global.clicked
+	if global.clicked || (!isKeypad && KEYPAD_ACTIVE)
 	exit;
 
 	var mx = mouse_x;

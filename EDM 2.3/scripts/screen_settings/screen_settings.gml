@@ -68,7 +68,7 @@ function draw_entry_fee_table(ysep) {
 		
 	var xx = 360;
 	var yy = 50;
-	var ww = 320;
+	var ww = 330;
 	var hh = 6*ysep;
 	var height = ysep*0.7;
 	var header_col = make_color_rgb(98,145,242);
@@ -91,7 +91,7 @@ function draw_entry_fee_table(ysep) {
 	    draw_text_centered(xx+180,yy+(i*ysep),string(arr[i])+":",height,,ysep);
 			
 	    draw_set_halign(fa_left);
-	    draw_text_centered(xx+185,yy+(i*ysep),str+" pesos",height,,ysep);
+	    draw_text_centered(xx+190,yy+(i*ysep),str+" pesos",height,,ysep);
 		
 		// horizontal line
 		draw_line_pixel(xx+20,yy+((i+1)*ysep),ww-40,1,,0.3);
