@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Library Functions",
-    "path": "folders/Library Functions.yy",
+    "name": "Scripts",
+    "path": "folders/Objects/Main/Scripts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_mouse_position_room_pressed",
+  "name": "ini_settings",
   "tags": [],
   "resourceType": "GMScript",
 }

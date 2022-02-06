@@ -76,7 +76,7 @@ function draw_member_list(ysep) {
 		var entry = MEMBERS_LIST.list[index];
 		var name = entry.name;
 		var favorite = entry.favorite;
-		var assigned = (entry.teamAssigned != undefined);
+		var assigned = is_real(entry.teamAssigned);
 		var nameFont = pick(fn_name,fn_name_it,assigned);
 	    var name_col = pick(BUTTON_STYLE.textColor,FAVORITE_BUTTON_STYLE.textColor,favorite);	
 	    var button_col = pick(BUTTON_STYLE.bgColor,FAVORITE_BUTTON_STYLE.bgColor,favorite);	

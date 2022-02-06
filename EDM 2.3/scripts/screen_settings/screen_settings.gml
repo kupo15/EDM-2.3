@@ -11,12 +11,11 @@ function screen_settings() {
 function screen_payouts(ysep) {
 	
 	draw_team_payout_table(ysep);
-
+	draw_entry_fee_table(ysep);
 	}
 	
 function draw_team_payout_table(ysep) {
 	
-	// team payout table
 	var xx = 20;
 	var yy = 50;
 	var ww = 300;
@@ -64,7 +63,44 @@ function draw_team_payout_table(ysep) {
 	    }
 	}
 	
-function draw_entry_fee_table() {
+function draw_entry_fee_table(ysep) {
+		
+	var xx = 200;
+	var yy = 50;
+	var ww = 300;
+	var hh = 6*ysep;
+	var height = ysep;
+	var header_col = make_color_rgb(98,145,242);
+
+	draw_rectangle(xx,yy,xx+ww,yy-ysep+hh,true);
+	draw_text_centered(xx,yy,"Entry Fees",height,ww,ysep,header_col);
+
+	yy += ysep;
+	draw_line(xx,yy,xx+ww,yy); // header line
+
+	yy += ysep;	
+	var arr = ["Team Entry","Low Net Entry","Skins Entry","Blind Fee"];
+	var size = array_length(arr);
+	for(var i=0;i<size;i++)
+	    {    
+		var str = arr[i];	
+			
+	    draw_set_halign(fa_right);
+	    draw_text_centered(xx+130,yy+(i*ysep),string(str)+":",height,,ysep);
+		
+		// horizontal line
+		draw_line_pixel(xx+20,yy+((i+1)*ysep),ww-40,1,,0.3);
+		
+		// edit icon
+		//draw_icon(ico_edit,0,xx+ww-40,yy+(i*ysep),ysep,ysep,,0.5);
+		
+		// if clicked
+		if scr_mouse_position_room_released(xx,yy+(i*ysep),ww,ysep,mb_left,!keypad_entry) {
+			
+			init_keypad(entryType.teamPayout,str);
+			settings_clicked_index = i;
+			}
+	    }	
 		
 	exit;
 

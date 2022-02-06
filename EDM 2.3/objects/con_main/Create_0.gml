@@ -135,27 +135,15 @@ team_number = -1; // number of teams entered
 teams_max = 6; // the max number of teams to account for
 net_score_tab = 0;
 skins_total = 0;
-skins_entry = 20;
-blind_fee = 30;
-team_entry = 30;
-low_net_entry = 30;
-preference_index = 0;
-preference_type = 0;
+
 skins_input = true;
-preference_edit_payout = noone;
 
 slider = false;
 pref_phase = prefPhase.homeScreen;
 no_net_skins = false;
 no_gross_skins = false;
 
-pref_low_net_num = 11;
-pref_low_net_num_min = 3;
-pref_low_net_num_max = 23;
-
-pref_team_num = 2;
-pref_team_num_min = 1;
-pref_team_num_max = 5;
+ini_settings();
 
 team_payout[5] = 0;
 low_net_payout[24] = 0;

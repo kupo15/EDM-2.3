@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Functions",
-    "path": "folders/Scripts/Scripts/Functions.yy",
+    "name": "Library Functions",
+    "path": "folders/Library Functions.yy",
   },
   "resourceVersion": "1.0",
   "name": "DS_GRID_FUNCTIONS",
