@@ -12,6 +12,7 @@ function screen_payouts(ysep) {
 	
 	draw_team_payout_table(ysep);
 	draw_entry_fee_table(ysep);
+	draw_low_net_table(ysep);
 	}
 	
 function draw_team_payout_table(ysep) {
@@ -20,7 +21,7 @@ function draw_team_payout_table(ysep) {
 	var yy = 50;
 	var ww = 300;
 	var hh = 6*ysep;
-	var height = ysep;
+	var height = ysep*0.7;
 	var header_col = make_color_rgb(98,145,242);
 
 	draw_rectangle(xx,yy,xx+ww,yy-ysep+hh,true);
@@ -30,8 +31,8 @@ function draw_team_payout_table(ysep) {
 	draw_line(xx,yy,xx+ww,yy); // header line
 	draw_text_centered(xx+15,yy,string(pref_team_num+1)+" Teams",height,,ysep);
 
-	draw_text_centered(xx+ww-ysep-ysep,yy,"+",ysep,ysep,ysep);
-	draw_text_centered(xx+ww-ysep,yy,"-",ysep,ysep,ysep);
+	draw_text_centered(xx+ww-ysep-ysep,yy,"-",ysep,ysep,ysep);
+	draw_text_centered(xx+ww-ysep,yy,"+",ysep,ysep,ysep);
 	draw_line_pixel(xx+ww-ysep,yy+5,1,ysep-2,,0.2);
 
 	yy += ysep;	
@@ -43,10 +44,10 @@ function draw_team_payout_table(ysep) {
 			
 	    // draw payout slot
 		draw_set_halign(fa_left);
-	    draw_text_centered(xx+15,yy+(i*ysep),string(i+1)+")",height*0.7,,ysep);
+	    draw_text_centered(xx+15,yy+(i*ysep),string(i+1)+")",height,,ysep);
     
 	    draw_set_halign(fa_right);
-	    draw_text_centered(xx+130,yy+(i*ysep),string(str)+" pesos",height*0.7,,ysep);
+	    draw_text_centered(xx+145,yy+(i*ysep),string(str)+" pesos",height,,ysep);
 		
 		// horizontal line
 		draw_line_pixel(xx+20,yy+((i+1)*ysep),ww-40,1,,0.3);
@@ -69,7 +70,7 @@ function draw_entry_fee_table(ysep) {
 	var yy = 50;
 	var ww = 320;
 	var hh = 6*ysep;
-	var height = ysep;
+	var height = ysep*0.7;
 	var header_col = make_color_rgb(98,145,242);
 
 	draw_rectangle(xx,yy,xx+ww,yy-ysep+hh,true);
@@ -87,10 +88,10 @@ function draw_entry_fee_table(ysep) {
 		var str = arrVal[i];
 			
 	    draw_set_halign(fa_right);
-	    draw_text_centered(xx+180,yy+(i*ysep),string(arr[i])+":",height*0.7,,ysep);
+	    draw_text_centered(xx+180,yy+(i*ysep),string(arr[i])+":",height,,ysep);
 			
 	    draw_set_halign(fa_left);
-	    draw_text_centered(xx+185,yy+(i*ysep),str+" pesos",height*0.7,,ysep);
+	    draw_text_centered(xx+185,yy+(i*ysep),str+" pesos",height,,ysep);
 		
 		// horizontal line
 		draw_line_pixel(xx+20,yy+((i+1)*ysep),ww-40,1,,0.3);
@@ -105,33 +106,54 @@ function draw_entry_fee_table(ysep) {
 			settings_clicked_index = i;
 			}
 	    }	
-		
-	exit;
+	}	
+	
+function draw_low_net_table(ysep) {
+	
+	var xx = 700;
+	var yy = 100;
+	var ww = 300;
+	var hh = 10*ysep;
+	var height = ysep*0.7;
+	var header_col = make_color_rgb(98,145,242);
 
-	// low net payout table
-	xx += 500;
-	yy -= 230;
-	hh = 9*ysep;
+	draw_rectangle(xx,yy,xx+ww,yy-ysep+hh,true);
+	draw_text_centered(xx,yy,"Low Net Payout",height,ww,ysep,header_col);
 
-	draw_rectangle(xx-60,yy-ysep,xx-60+ww,yy-ysep+hh,true);
-	draw_line(xx-60,yy,xx-60+ww,yy);
+	yy += ysep;
+	draw_line(xx,yy,xx+ww,yy); // header line
+	draw_text_centered(xx+15,yy,"Entrants: "+string(pref_low_net_num+1),height,,ysep);
 
-	draw_set_color(c_black);
-	draw_set_halign(fa_left);
-	draw_set_font(fn_name);
+	draw_text_centered(xx+ww-ysep-ysep,yy,"-",ysep,ysep,ysep);
+	draw_text_centered(xx+ww-ysep,yy,"+",ysep,ysep,ysep);
+	draw_line_pixel(xx+ww-ysep,yy+5,1,ysep-2,,0.2);
 
-	draw_text_colour(xx+30,yy-fn_off-75,"Low Net Payout",col,col,col,col,1);
-	draw_text(xx-55,yy-fn_off-75+(1*ysep),"Entrants: "+string(pref_low_net_num+1));
-
-	var slots = array_length_2d(low_net_pay_table,pref_low_net_num);
-	for(var i=0;i<slots;i++)
+	yy += ysep;	
+	var arr = PAYOUT_TABLES.lowNetPayout[pref_low_net_num];
+	var size = array_length(arr);
+	for(var i=0;i<size;i++)
 	    {    
+		var str = arr[i];	
+			
 	    // draw payout slot
-	    draw_set_halign(fa_left);
-	    draw_text(xx-50,yy-fn_off-75+(2*ysep)+(i*ysep),string(i+1)+")");
+		draw_set_halign(fa_left);
+	    draw_text_centered(xx+15,yy+(i*ysep),string(i+1)+")",height,,ysep);
     
 	    draw_set_halign(fa_right);
-	    draw_text(xx+150,yy-fn_off-75+(2*ysep)+(i*ysep),string(low_net_pay_table[pref_low_net_num,i])+" pesos");
+	    draw_text_centered(xx+145,yy+(i*ysep),string(str)+" pesos",height,,ysep);
+		
+		// horizontal line
+		draw_line_pixel(xx+20,yy+((i+1)*ysep),ww-40,1,,0.3);
+		
+		// edit icon
+		//draw_icon(ico_edit,0,xx+ww-40,yy+(i*ysep),ysep,ysep,,0.5);
+		
+		// if clicked
+		if scr_mouse_position_room_released(xx,yy+(i*ysep),ww,ysep,mb_left,!keypad_entry) {
+			
+			init_keypad(entryType.lowNetPayout,str);
+			settings_clicked_index = i;
+			}
 	    }
     
 	if draw_slider() = -1
@@ -216,23 +238,6 @@ function draw_preferences() {
 	draw_set_halign(fa_right);
 	draw_set_font(fn_name);
 
-	// entry fee table
-	draw_rectangle(xx-60,yy-ysep,xx-60+ww,yy-ysep+hh,true);
-	draw_line(xx-60,yy,xx-60+ww,yy);
-
-	draw_text_colour(xx+180,yy-fn_off-75,"Entry Fees",col,col,col,col,1);
-	draw_text(xx+150,yy-fn_off-30,"Team Entry:");
-	draw_text(xx+150,yy+(ysep*1)-fn_off-30,"Low Net Entry:");
-	draw_text(xx+150,yy+(ysep*2)-fn_off-30,"Skins Entry:");
-	draw_text(xx+150,yy+(ysep*3)-fn_off-30,"Blind Fee:");
-
-	draw_set_halign(fa_left);
-	draw_text(xx+170,yy-fn_off-30,string(team_entry)+" pesos");
-	draw_text(xx+170,yy+(ysep*1)-fn_off-30,string(low_net_entry)+" pesos");
-	draw_text(xx+170,yy+(ysep*2)-fn_off-30,string(skins_entry)+" pesos");
-	draw_text(xx+170,yy+(ysep*3)-fn_off-30,string(blind_fee)+" pesos");
-
-
 	// keypad entry
 	var def_num = 0; 
 	if preference_type = 0 
@@ -286,24 +291,7 @@ function draw_preferences() {
 	    negate = 1;
 	    break;
 	    }
-    
-	xx -= 500;    
-	// entry fee selection
-	for(var i=0;i<4;i++)
-	if scr_mouse_position_room_released(xx-60,yy+(i*ysep),ww,ysep,mb_left,!keypad_entry)
-	   {// select entry fee
-	   keypad_entry = true;
-	   preference_index = i;
-	   preference_type = 0;
-	   negate = 1;
-	   break;
-	   }
-   
-	yy += 230;
-	var slots = array_length_2d(team_pay_table,pref_team_num);
-
-
-    
+        
 	// back out of preferences
 	if (android_back || scr_mouse_position_room_released(950,15,60,60,mb_left,true))
 	    {

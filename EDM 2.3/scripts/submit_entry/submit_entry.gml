@@ -41,8 +41,8 @@ function retrieve_keypad() {
 			case entryType.skinsEntry: ENTRY_FEES.skinsEntry = entry; break;
 			case entryType.blindFee: ENTRY_FEES.blindFee = entry; break;
 			case entryType.teamPayout: PAYOUT_TABLES.teamPayout[pref_team_num][settings_clicked_index] = entry; break;
-			case entryType.lowNetPayout: team_pay_table[pref_team_num,settings_clicked_index] = entry; break;			
-			}    
+			case entryType.lowNetPayout: PAYOUT_TABLES.lowNetPayout[pref_low_net_num][settings_clicked_index] = entry; break;			
+			}    			
 			
 		// reset after applying
 		obj_number_input.submitedString = undefined;

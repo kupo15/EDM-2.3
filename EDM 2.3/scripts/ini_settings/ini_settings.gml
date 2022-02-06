@@ -1,6 +1,5 @@
 function ini_settings() {
 
-	
 	pref_low_net_num = 11;
 	pref_low_net_num_min = 3;
 	pref_low_net_num_max = 23;

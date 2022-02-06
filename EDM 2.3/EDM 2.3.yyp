@@ -23,8 +23,6 @@
     {"id":{"name":"season_ranking_save","path":"scripts/season_ranking_save/season_ranking_save.yy",},"order":3,},
     {"id":{"name":"ini_season_ranking_save","path":"scripts/ini_season_ranking_save/ini_season_ranking_save.yy",},"order":4,},
     {"id":{"name":"MEMBERLIST_RELEASE_ACTIONS","path":"scripts/MEMBERLIST_RELEASE_ACTIONS/MEMBERLIST_RELEASE_ACTIONS.yy",},"order":0,},
-    {"id":{"name":"ini_entry_fee_load","path":"scripts/ini_entry_fee_load/ini_entry_fee_load.yy",},"order":5,},
-    {"id":{"name":"ini_entry_fee_save","path":"scripts/ini_entry_fee_save/ini_entry_fee_save.yy",},"order":6,},
     {"id":{"name":"ini_member_list_load","path":"scripts/ini_member_list_load/ini_member_list_load.yy",},"order":7,},
     {"id":{"name":"ini_member_list_save","path":"scripts/ini_member_list_save/ini_member_list_save.yy",},"order":8,},
     {"id":{"name":"ini_payout_table","path":"scripts/ini_payout_table/ini_payout_table.yy",},"order":9,},
