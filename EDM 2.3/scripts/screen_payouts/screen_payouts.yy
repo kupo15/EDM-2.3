@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Ini",
-    "path": "folders/Scripts/Ini.yy",
+    "name": "Settings",
+    "path": "folders/Screens/Settings.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_reset_payout",
+  "name": "screen_payouts",
   "tags": [],
   "resourceType": "GMScript",
 }
