@@ -1,5 +1,7 @@
 function ini_settings() {
 
+	in_settings = false;
+
 	pref_low_net_num = 11;
 	pref_low_net_num_min = 3;
 	pref_low_net_num_max = 23;
@@ -12,4 +14,6 @@ function ini_settings() {
 	preference_type = 0;
 	
 	preference_edit_payout = noone;
+	
+	sliderIndex = sliderEnum.none;
 	}

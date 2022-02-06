@@ -1,37 +1,76 @@
+enum screenEnum {
+	
+homeScreen,
+preferences,
+seasonRank,
+payoutSettings,
+manageMembers,
+eventRunning,
+eventResults
+}
+
+function ini_screens() {
+	
+	drawScreen[screenEnum.homeScreen] = screen_home;
+	drawScreen[screenEnum.preferences] = screen_settings;
+	drawScreen[screenEnum.seasonRank] = screen_season_rankings;
+	drawScreen[screenEnum.payoutSettings] = screen_payouts;
+	drawScreen[screenEnum.eventRunning] = screen_score_entry;
+	drawScreen[screenEnum.eventResults] = screen_results;
+	
+	screen_index = screenEnum.homeScreen;
+	prevScreenStack = [];
+	}
+
 function draw_menu() {
 	
 	draw_set_font(fn_name);
 	draw_set_halign(fa_center);
 
-
+	script_execute(drawScreen[screen_index]);
+	
 	draw_settings_icon();
-
-	if (pref_phase == prefPhase.preferences)
-	screen_settings();
-	else if (pref_phase == prefPhase.seasonRank)
-	screen_season_rankings();
-	else if (phase == prefPhase.homeScreen)
-	screen_home();
-	else if phase = 1
-	screen_score_entry();
-	else if phase > 1
-	screen_results();
+	}
+	
+function screen_change(ind) {
+	
+	screen_index = ind;
+	array_insert(prevScreenStack,0,ind);
+	}
+	
+function screen_back(clear=false) {
+	
+	if (array_length(prevScreenStack) > 1)
+	screen_index = array_pop(prevScreenStack);
+	
+	if clear
+	prevScreenStack = [];
 	}
 	
 function draw_settings_icon() {
 	
-	// draw preferences icon
-	var pref_xx = 970;
-	var pref_yy = 15;
-	
-	if (pref_phase == prefPhase.homeScreen) {
+	var xx = 970;
+	var yy = 15;
+	var ind = pick(0,1,in_settings);
+	var ww = sprite_get_width(ico_settings);
+
+	// draw icon
+    draw_sprite(ico_settings,ind,xx,yy);
+
+	// clicked on icon
+	if scr_mouse_position_room_released(xx,yy,ww,ww,mb_left,true) && (edit_score == noone) && (edit_team_score == noone) {
 		
-	    draw_sprite(spr_preferences,0,pref_xx,pref_yy);
-		
-		// clicked on gear icon
-	    if (edit_score == noone) && (edit_team_score == noone) && scr_mouse_position_room_released(pref_xx,pref_yy,40,40,mb_left,true)
-	    pref_phase = prefPhase.preferences;
-	    }
-	else 
-	draw_sprite(spr_back,0,950,15); // draw return button
+		if in_settings {
+			
+			if (screen_index == screenEnum.preferences)
+			in_settings = false;
+			
+			screen_back();
+			}
+		else {
+			
+			in_settings = true;
+			screen_change(screenEnum.preferences);			
+			}
+		}
 	}

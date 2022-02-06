@@ -1,10 +1,19 @@
 
 function screen_settings() {
 
-	var ysep = 40;
-
 	draw_set_halign(fa_left);
-	screen_payouts(ysep);
+	
+	var xx = 100;
+	var yy = 100;
+	var ww = 300;
+	var hh = 100;
+	
+	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
+	draw_text_centered(xx,yy,"Settings",50,ww,hh);
+	
+	if scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,true)
+	screen_change(screenEnum.payoutSettings);
+	
 	//draw_preferences();
 	}
 	
@@ -44,13 +53,13 @@ function draw_preferences() {
 	if scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,true)
 	    {
 	    season_ranking_load();
-	    pref_phase = prefPhase.seasonRank;
+	    pref_phase = screenEnum.seasonRank;
 	    }
         
 	// back out of preferences
 	if (android_back || scr_mouse_position_room_released(950,15,60,60,mb_left,true))
 	    {
-	    pref_phase = prefPhase.homeScreen;
+	    pref_phase = screenEnum.homeScreen;
     
 	    if phase > 1 // results screen
 	    scr_calculate_results();

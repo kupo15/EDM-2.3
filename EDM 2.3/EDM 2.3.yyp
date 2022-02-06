@@ -26,6 +26,7 @@
     {"id":{"name":"MEMBERLIST_RELEASE_ACTIONS","path":"scripts/MEMBERLIST_RELEASE_ACTIONS/MEMBERLIST_RELEASE_ACTIONS.yy",},"order":0,},
     {"id":{"name":"ini_member_list_load","path":"scripts/ini_member_list_load/ini_member_list_load.yy",},"order":7,},
     {"id":{"name":"ini_member_list_save","path":"scripts/ini_member_list_save/ini_member_list_save.yy",},"order":8,},
+    {"id":{"name":"ico_settings","path":"sprites/ico_settings/ico_settings.yy",},"order":5,},
     {"id":{"name":"ini_payout_table","path":"scripts/ini_payout_table/ini_payout_table.yy",},"order":9,},
     {"id":{"name":"ini_payout_table_load","path":"scripts/ini_payout_table_load/ini_payout_table_load.yy",},"order":10,},
     {"id":{"name":"ini_settings","path":"scripts/ini_settings/ini_settings.yy",},"order":0,},

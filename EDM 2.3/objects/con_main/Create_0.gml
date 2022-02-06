@@ -5,12 +5,6 @@ team,
 individual
 }
 
-enum prefPhase {
-	
-homeScreen,
-preferences,
-seasonRank,
-}
 
 randomize();
 device_mouse_dbclick_enable(false);
@@ -18,6 +12,7 @@ device_mouse_dbclick_enable(false);
 debug = false;
 //show_debug_overlay(true);
 
+ini_screens();
 ini_styles();
 ini_resolution();
 
@@ -139,7 +134,7 @@ skins_total = 0;
 skins_input = true;
 
 slider = false;
-pref_phase = prefPhase.homeScreen;
+pref_phase = screenEnum.homeScreen;
 no_net_skins = false;
 no_gross_skins = false;
 

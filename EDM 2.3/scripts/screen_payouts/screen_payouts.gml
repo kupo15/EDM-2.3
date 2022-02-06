@@ -1,4 +1,8 @@
-function screen_payouts(ysep) {
+function screen_payouts() {
+	
+	var ysep = 40;
+
+	draw_set_halign(fa_left);
 	
 	draw_team_payout_table(ysep);
 	draw_entry_fee_table(ysep);
