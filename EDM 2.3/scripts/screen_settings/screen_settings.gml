@@ -65,9 +65,9 @@ function draw_team_payout_table(ysep) {
 	
 function draw_entry_fee_table(ysep) {
 		
-	var xx = 200;
+	var xx = 360;
 	var yy = 50;
-	var ww = 300;
+	var ww = 320;
 	var hh = 6*ysep;
 	var height = ysep;
 	var header_col = make_color_rgb(98,145,242);
@@ -78,15 +78,19 @@ function draw_entry_fee_table(ysep) {
 	yy += ysep;
 	draw_line(xx,yy,xx+ww,yy); // header line
 
-	yy += ysep;	
 	var arr = ["Team Entry","Low Net Entry","Skins Entry","Blind Fee"];
+	var arrVal = [ENTRY_FEES.teamEntry,ENTRY_FEES.lowNetEntry,ENTRY_FEES.skinsEntry,ENTRY_FEES.blindFee];
+	var arrEnum = [entryType.teamEntry,entryType.lowNetEntry,entryType.skinsEntry,entryType.blindFee];
 	var size = array_length(arr);
 	for(var i=0;i<size;i++)
 	    {    
-		var str = arr[i];	
+		var str = arrVal[i];
 			
 	    draw_set_halign(fa_right);
-	    draw_text_centered(xx+130,yy+(i*ysep),string(str)+":",height,,ysep);
+	    draw_text_centered(xx+180,yy+(i*ysep),string(arr[i])+":",height*0.7,,ysep);
+			
+	    draw_set_halign(fa_left);
+	    draw_text_centered(xx+185,yy+(i*ysep),str+" pesos",height*0.7,,ysep);
 		
 		// horizontal line
 		draw_line_pixel(xx+20,yy+((i+1)*ysep),ww-40,1,,0.3);
@@ -95,9 +99,9 @@ function draw_entry_fee_table(ysep) {
 		//draw_icon(ico_edit,0,xx+ww-40,yy+(i*ysep),ysep,ysep,,0.5);
 		
 		// if clicked
-		if scr_mouse_position_room_released(xx,yy+(i*ysep),ww,ysep,mb_left,!keypad_entry) {
+		if scr_mouse_position_room_released(xx,yy+(i*ysep),ww,ysep,mb_left,!keypad_entry) {			
 			
-			init_keypad(entryType.teamPayout,str);
+			init_keypad(arrEnum[i],str);
 			settings_clicked_index = i;
 			}
 	    }	

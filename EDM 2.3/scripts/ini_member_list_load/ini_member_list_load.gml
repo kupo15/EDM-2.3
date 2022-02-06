@@ -6,6 +6,8 @@
 #macro MEMBERS_LIST SAVE_FILE.membersList
 #macro TEAM_LIST SAVE_FILE.activeEvent.teams
 #macro ENTRANT_COUNT SAVE_FILE.activeEvent.entrantCount
+
+#macro ENTRY_FEES SAVE_FILE.prizePool.entryFees
 #macro PAYOUT_TABLES SAVE_FILE.prizePool.payoutTable
 
 function ini_save_file() {
@@ -13,7 +15,7 @@ function ini_save_file() {
 	if file_exists(config_file) {
 		
 		CONFIGURATION_FILE = json_load_array(config_file);
-		return -1;
+		//return -1;
 		}
 	
 	CONFIGURATION_FILE = create_default_save_file(config_file);
@@ -79,10 +81,10 @@ function PrizePool() constructor {
 			
 	entryFees = {
 				
-		teamEntry: 30,
-		lowNetEntry: 30,
-		skinsEntry: 20,
-		blindEntry: 30,
+		teamEntry: "30",
+		lowNetEntry: "30",
+		skinsEntry: "20",
+		blindFee: "30",
 		}
 			
 	payoutTable = new PayoutTables();

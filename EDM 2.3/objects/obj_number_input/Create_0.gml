@@ -22,9 +22,9 @@ submitedString = undefined;
 enum entryType {
 	
 	none,
-	teamEntryFee,
-	lowNetEntryFee,
-	skinsEntryFee,
+	teamEntry,
+	lowNetEntry,
+	skinsEntry,
 	blindFee,
 	teamPayout,
 	lowNetPayout,

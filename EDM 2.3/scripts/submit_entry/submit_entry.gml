@@ -27,7 +27,7 @@ function delete_character() {
 	if (str_ll > 0)
 	entryString = string_delete(entryString,str_ll,1);
 	}
-	
+
 function retrieve_keypad() {
 				
 	// if submitted entry
@@ -36,10 +36,10 @@ function retrieve_keypad() {
 		var entry = obj_number_input.submitedString;		
 		switch global.entryEnum
 			{
-			case entryType.teamEntryFee: break;
-			case entryType.lowNetEntryFee: break;
-			case entryType.skinsEntryFee: break;
-			case entryType.blindFee: break;
+			case entryType.teamEntry: ENTRY_FEES.teamEntry = entry; break;
+			case entryType.lowNetEntry: ENTRY_FEES.lowNetEntry= entry; break;
+			case entryType.skinsEntry: ENTRY_FEES.skinsEntry = entry; break;
+			case entryType.blindFee: ENTRY_FEES.blindFee = entry; break;
 			case entryType.teamPayout: PAYOUT_TABLES.teamPayout[pref_team_num][settings_clicked_index] = entry; break;
 			case entryType.lowNetPayout: team_pay_table[pref_team_num,settings_clicked_index] = entry; break;			
 			}    
