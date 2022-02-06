@@ -34,13 +34,13 @@ function draw_menu() {
 	
 function screen_change(ind) {
 	
+	array_push(prevScreenStack,screen_index);
 	screen_index = ind;
-	array_insert(prevScreenStack,0,ind);
 	}
 	
 function screen_back(clear=false) {
 	
-	if (array_length(prevScreenStack) > 1)
+	if (array_length(prevScreenStack) > 0)
 	screen_index = array_pop(prevScreenStack);
 	
 	if clear

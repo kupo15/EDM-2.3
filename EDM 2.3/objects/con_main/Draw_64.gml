@@ -19,9 +19,10 @@ var xx = -140;
 var yy = 50;
 var sep = 30;
 
-for(var i=0;i<array_length(prevScreenStack);i++) {
+var size = array_length(prevScreenStack);
+for(var i=0;i<size;i++) {
 	
-	var ind = prevScreenStack[i];
+	var ind = prevScreenStack[size-i-1];
 	var name = script_get_name(drawScreen[ind]);
 	
 	draw_text_height_color(xx,yy+(i*sep),name,col,sep*0.8);
