@@ -1,10 +1,13 @@
 enum screenEnum {
 	
 homeScreen,
+
+settingsHome,
 preferences,
-seasonRank,
 payoutSettings,
+seasonRank,
 manageMembers,
+
 eventRunning,
 eventResults
 }
@@ -12,8 +15,9 @@ eventResults
 function ini_screens() {
 	
 	drawScreen[screenEnum.homeScreen] = screen_home;
-	drawScreen[screenEnum.preferences] = screen_settings;
+	drawScreen[screenEnum.settingsHome] = screen_settings;
 	drawScreen[screenEnum.seasonRank] = screen_season_rankings;
+	drawScreen[screenEnum.preferences] = draw_preferences;
 	drawScreen[screenEnum.payoutSettings] = screen_payouts;
 	drawScreen[screenEnum.eventRunning] = screen_score_entry;
 	drawScreen[screenEnum.eventResults] = screen_results;
@@ -62,7 +66,7 @@ function draw_settings_icon() {
 		
 		if in_settings {
 			
-			if (screen_index == screenEnum.preferences)
+			if (screen_index == screenEnum.settingsHome)
 			in_settings = false;
 			
 			screen_back();
@@ -70,7 +74,7 @@ function draw_settings_icon() {
 		else {
 			
 			in_settings = true;
-			screen_change(screenEnum.preferences);			
+			screen_change(screenEnum.settingsHome);			
 			}
 		}
 	}

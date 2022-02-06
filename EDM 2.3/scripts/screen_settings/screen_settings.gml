@@ -3,18 +3,25 @@ function screen_settings() {
 
 	draw_set_halign(fa_left);
 	
-	var xx = 100;
-	var yy = 100;
+	var xx = 40;
+	var yy = 150;
 	var ww = 300;
 	var hh = 100;
 	
-	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
-	draw_text_centered(xx,yy,"Settings",50,ww,hh);
+	var arr = ["Settings","Payout Tables","Manage Members","Event History"];
+	var arrEnum = [screenEnum.preferences,screenEnum.payoutSettings,screenEnum.manageMembers,screenEnum.seasonRank];
 	
-	if scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,true)
-	screen_change(screenEnum.payoutSettings);
+	for(var i=0;i<array_length(arr);i++) {
+		
+		var xoff = ww*1.1*(i mod 3);
+		var yoff = floor(i/3)*hh*1.25;
+		
+		draw_rectangle(xx+xoff,yy+yoff,xx+xoff+ww,yy+yoff+hh,true);
+		draw_text_centered(xx+xoff,yy+yoff,arr[i],35,ww,hh);
 	
-	//draw_preferences();
+		if scr_mouse_position_room_released(xx+xoff,yy+yoff,ww,hh,mb_left,true)
+		screen_change(arrEnum[i]);
+		}
 	}
 	
 function draw_preferences() {
