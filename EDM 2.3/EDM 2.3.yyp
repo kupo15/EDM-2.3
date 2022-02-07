@@ -6,6 +6,7 @@
     {"id":{"name":"screen_payouts","path":"scripts/screen_payouts/screen_payouts.yy",},"order":4,},
     {"id":{"name":"spr_back","path":"sprites/spr_back/spr_back.yy",},"order":2,},
     {"id":{"name":"spr_blind_draw","path":"sprites/spr_blind_draw/spr_blind_draw.yy",},"order":3,},
+    {"id":{"name":"async_member_list","path":"scripts/async_member_list/async_member_list.yy",},"order":5,},
     {"id":{"name":"spr_close_enough","path":"sprites/spr_close_enough/spr_close_enough.yy",},"order":4,},
     {"id":{"name":"spr_crossout","path":"sprites/spr_crossout/spr_crossout.yy",},"order":5,},
     {"id":{"name":"spr_key_circles","path":"sprites/spr_key_circles/spr_key_circles.yy",},"order":6,},

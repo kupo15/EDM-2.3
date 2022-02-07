@@ -1,4 +1,5 @@
 function draw_edit_team_list() {
+	
 	var xx = 620;
 	var yy = 20;
 	var ww = sprite_get_width(spr_member_button);
