@@ -1,5 +1,6 @@
 #macro config_file "data.config"
 #macro configversion "0.1"
+#macro save_program json_save_array(config_file,SAVE_FILE)
 #macro SAVE_FILE con_main.CONFIGURATION_FILE
 
 // structure
@@ -9,6 +10,7 @@
 
 #macro ENTRY_FEES SAVE_FILE.prizePool.entryFees
 #macro PAYOUT_TABLES SAVE_FILE.prizePool.payoutTable
+#macro SETTINGS SAVE_FILE.settings
 
 function ini_save_file() {
 

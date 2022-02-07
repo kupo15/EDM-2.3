@@ -23,7 +23,7 @@ function draw_payouts_reset_button() {
 			
 			default_payout_safty = true;
 			SAVE_FILE.prizePool = new PrizePool();
-			json_save_array(config_file,SAVE_FILE); // save file
+			save_program; // save file
 			}
 	    else
 	    default_payout_safty = false;

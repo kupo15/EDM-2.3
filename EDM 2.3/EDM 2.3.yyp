@@ -19,7 +19,6 @@
     {"id":{"name":"snd_tap1","path":"sounds/snd_tap1/snd_tap1.yy",},"order":1,},
     {"id":{"name":"snd_tap2","path":"sounds/snd_tap2/snd_tap2.yy",},"order":2,},
     {"id":{"name":"ini_settings_open","path":"scripts/ini_settings_open/ini_settings_open.yy",},"order":0,},
-    {"id":{"name":"ini_settings_save","path":"scripts/ini_settings_save/ini_settings_save.yy",},"order":1,},
     {"id":{"name":"season_ranking_load","path":"scripts/season_ranking_load/season_ranking_load.yy",},"order":2,},
     {"id":{"name":"season_ranking_save","path":"scripts/season_ranking_save/season_ranking_save.yy",},"order":3,},
     {"id":{"name":"ini_season_ranking_save","path":"scripts/ini_season_ranking_save/ini_season_ranking_save.yy",},"order":4,},

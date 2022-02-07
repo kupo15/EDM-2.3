@@ -70,6 +70,9 @@ function draw_settings_icon() {
 			in_settings = false;
 			
 			screen_back();
+			
+			if (screen_index == screenEnum.eventResults)
+			scr_calculate_results();
 			}
 		else {
 			
