@@ -25,14 +25,10 @@ function ini_save_file() {
 	
 function create_default_save_file(filename) {
 
-	//var membersResult = debug_members_list_create();
-
 	var config_data = {
 		
 		membersList: {
 			
-			//favorites: deep_copy(membersResult.favorites),
-			//nonFavorites: deep_copy(membersResult.nonFavorite),
 			list: debug_members_list_create(),
 			archived: [],
 			},

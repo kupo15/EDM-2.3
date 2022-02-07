@@ -16,8 +16,6 @@ ini_screens();
 ini_styles();
 ini_resolution();
 
-spr_center = sprite_get_width(spr_member_button)*0.5;
-
 season_breakdown_add_member = false;
 season_breakdown_date_x = noone; // select a date
 season_breakdown_edit_x = noone; // edit the breakdown
@@ -48,6 +46,7 @@ mouse_ystart = 0;
 global.mouse_xdist = 0
 global.mouse_ydist = 0;
 mouse_left = 0;
+
 scrolling = false;
 results_calculated = false;
 results_screen = 0;
@@ -85,8 +84,6 @@ negate = 1;
 last_entrant_number = 0; // number of entrants in the last game
 
 // scrolling variables
-favorites_team_scroll_offset = 0;
-favorites_team_scroll_offset_start = 0;
 favorites_scroll_offset = 0;
 favorites_scroll_offset_start = 0;
 member_scroll_offset = 0;
@@ -107,7 +104,6 @@ entrant_scrolling = false;
 select_blind_team = noone;
 
 edit_score_highlight_pos = 0;
-edit_member_old = noone;
 
 edit_score_offset = 0;
 edit_score_scrolling_offset = 0;
@@ -133,7 +129,6 @@ skins_total = 0;
 
 skins_input = true;
 
-slider = false;
 pref_phase = screenEnum.homeScreen;
 no_net_skins = false;
 no_gross_skins = false;
@@ -141,7 +136,6 @@ no_gross_skins = false;
 ini_settings();
 
 team_payout[5] = 0;
-low_net_payout[24] = 0;
 
 // create ds lists
 recent_list = ds_list_create(); // list of recent players NOT in favorites
@@ -185,9 +179,6 @@ for(var i=0;i<teams_max;i++) {
 ini_timer(mainTimers.enumcount);
 ini_save_file();
 ini_payout_table();
-ini_settings_open();
-
-//member_list = deep_copy(MEMBERS_LIST.list); // list of all members
 
 enum listType {
 	
@@ -196,5 +187,6 @@ enum listType {
 	}
 
 list_type = (ds_list_size(favorites_list) != 0); // default to favorites
+dev_mode = false;
 
 instance_create_layer(500,0,"Instances_1",obj_number_input);

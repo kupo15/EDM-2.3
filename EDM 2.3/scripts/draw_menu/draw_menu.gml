@@ -31,6 +31,7 @@ function draw_menu() {
 	draw_set_font(fn_name);
 	draw_set_halign(fa_center);
 
+	draw_sprite_ext(background0,0,0,0,2,2,0,c_white,1);
 	script_execute(drawScreen[screen_index]);
 	
 	draw_settings_icon();

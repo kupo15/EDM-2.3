@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Ini",
-    "path": "folders/Scripts/Ini.yy",
+    "name": "Scripts",
+    "path": "folders/Objects/Main/Scripts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "ini_payout_table_load",
+  "name": "ini_configuration",
   "tags": [],
   "resourceType": "GMScript",
 }

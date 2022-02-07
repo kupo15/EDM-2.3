@@ -1,4 +1,5 @@
 function ini_results_load() {
+	
 	if keyboard_check(vk_space)
 	exit;
 
@@ -42,7 +43,4 @@ function ini_results_load() {
 	phase = 2;
 	global.save_loaded = true;
 	close_enough = true; // if already done once
-
-
-
-}
+	}
