@@ -47,3 +47,17 @@ function scr_sort_members(arr,sortRecent=true) {
 	
 	return arr;
 	}
+	
+function member_add_recent(name) {
+	
+	var list = MEMBERS_LIST.list;
+	for(var i=0;i<array_length(list);i++)
+		{
+		if !list[i].favorite {
+			
+			array_insert(list,i,new Member(name));
+			break;
+			}
+		}
+	
+	}
