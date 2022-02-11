@@ -49,5 +49,30 @@ function draw_preferences() {
 		SETTINGS.closeEnough = !SETTINGS.closeEnough; // toggle
 		save_program;
 		}
+		
+	// tees
+	var yy = 280;
+	var ww = 250;
+
+	draw_text_centered(xx,yy,"Course Tees",40,250,50);
+	draw_tee_data(xx,yy+50,ww);
+	}
+	
+function draw_tee_data(xx,yy,ww) {
+		
+	var sep = 40;
+	for(var i=0;i<array_length(TEE_DATA.teeOrder);i++)
+		{
+		var name = TEE_DATA.teeOrder[i];
+		var struct = TEE_DATA[$ name];
+			
+		draw_circle_color(xx,yy+(i*sep)+(sep*0.5),7,struct.color,struct.color,name=="white");
+		draw_text_centered(xx+25,yy+(i*sep),name,30,,sep);
+		draw_text_centered(xx+120,yy+(i*sep),struct.rating+" / "+struct.slope,30,,sep);
+		
+		draw_line_pixel(xx+15,yy+sep+(i*sep),ww,1,c_black,0.3);
+		
+		scr_mouse_position_room_released(xx-5,yy+(i*sep),ww+20,sep,mb_left,true);
+		}
 	}
 	

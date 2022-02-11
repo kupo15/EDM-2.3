@@ -11,6 +11,13 @@
 #macro ENTRY_FEES SAVE_FILE.prizePool.entryFees
 #macro PAYOUT_TABLES SAVE_FILE.prizePool.payoutTable
 #macro SETTINGS SAVE_FILE.settings
+#macro TEE_DATA SAVE_FILE.teeData
+
+#macro goldColor c_yellow
+#macro blueColor c_blue
+#macro whiteColor c_black
+#macro silverColor c_gray
+#macro comboColor c_black
 
 function ini_save_file() {
 
@@ -54,6 +61,17 @@ function create_default_save_file(filename) {
 			closeEnough: true,
 			},
 			
+		teeData: {
+			
+			teeOrder: ["gold","blue","white","silver","combo"],
+			
+			white: new Tee("70.7","128",whiteColor),
+			gold: new Tee("75.4","131",goldColor),
+			blue: new Tee("72.5","129",blueColor),
+			silver: new Tee("68.6","122",silverColor),
+			combo: new Tee("69.3","125",comboColor),
+			},
+			
 		prizePool: new PrizePool(),
 			
 		eventHistory: [],
@@ -67,6 +85,13 @@ function create_default_save_file(filename) {
 	json_save_array(filename,config_data);
 	
 	return config_data;
+	}
+	
+function Tee(_rating,_slope,_color) constructor {
+	
+	rating = _rating;
+	slope = _slope;
+	color = _color;
 	}
 	
 function Team() constructor {
