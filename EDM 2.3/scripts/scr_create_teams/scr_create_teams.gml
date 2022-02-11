@@ -1,31 +1,38 @@
 function scr_create_teams() {
+
+	team_number = -1; // reset
+
+	// shift members over to skip blank teams
+	var list = TEAM_LIST;
+	var maxTeams = array_length(list)-1;
+	for(var i=0;i<maxTeams;i++) {
+		
+		// current team is empty
+		if (array_length(list[i].members) == 0)
+		for(var j=i+1;j<maxTeams+1;j++) {
+
+			if (array_length(list[j].members) != 0) {
+				
+				list[i].members = deep_copy(list[j].members); // copy over next teams roster
+				list[j].members = []; // clear next team
+				team_number++;
+				break;
+				}
+			}
+		}
+
+cs(js(list))
+
+	skins_input = true;
+	screen_change(screenEnum.eventRunning);
+	scr_sort_members(MEMBERS_LIST.list);
+
+exit;
 	
 	var redo = (ds_grid_height(scores_grid) != 1); // if grid already created
 
 	// debug
-	var team_num = 2;
-	if debug
-	    {
-	    repeat(4) // four players
-	    for(var i=0;i<team_num;i++)
-	        {
-	        var rand = irandom(ds_list_size(member_list)-1);
-	        var str = member_list[| rand]; // get name
-			
-	        ds_list_delete(member_list,rand); // delete index
-	        ds_list_add(team_list[i],str); 
-	        ENTRANT_COUNT++; // add to entrant count
-	        }
-    
-	    // set team scores
-	    for(var i=0;i<team_num;i++)
-	        {
-	        team_score[i,0] = -irandom(26)-1;
-	        team_score[i,1] = -irandom(26)-1;
-	        team_score[i,2] = team_score[i,0]+team_score[i,1];
-	        }
-	    }
-	else if !redo
+	if !redo
 	for(var i=0;i<team_num;i++)
 	    {
 	    team_score[i,0] = undefined;
@@ -35,10 +42,7 @@ function scr_create_teams() {
 
 	//
 
-	skins_input = 1;
 	phase = 1;
-	team_number = -1; // reset
-	ini_member_list_save();
 
 	if redo
 	    {
@@ -146,8 +150,5 @@ function scr_create_teams() {
 	   scr_blinds_cleanup();
 	   }
     
-	scr_sort_members();
-
-
-
-}
+	scr_sort_members(MEMBERS_LIST.list);
+	}

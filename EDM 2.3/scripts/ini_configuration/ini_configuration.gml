@@ -130,6 +130,7 @@ function Member(_name,_favorite=false) constructor {
 	
 function RoundStats() constructor {
 	
+	rank = 1;
 	netFront = "";
 	netBack = "";
 	skinsGross = "";
