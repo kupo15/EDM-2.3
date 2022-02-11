@@ -15,13 +15,12 @@ function scr_create_teams() {
 				
 				list[i].members = deep_copy(list[j].members); // copy over next teams roster
 				list[j].members = []; // clear next team
-				team_number++;
 				break;
 				}
 			}
+			
+		team_number += (array_length(list[i].members) != 0);
 		}
-
-cs(js(list))
 
 	skins_input = true;
 	screen_change(screenEnum.eventRunning);
@@ -50,27 +49,6 @@ exit;
 	    ds_grid_copy(grid_copy,scores_grid); // copy the grid
 	    }
 
-	// set number of teams
-	for(var i=0;i<teams_max;i++)
-	    {
-	    var n=i+1;
-	    while ds_list_empty(team_list[i])
-	        {
-	        if n = teams_max
-	        break;
-        
-	        if ds_list_empty(team_list[n]) // if next list is empty
-	        n ++;
-	        else // not empty
-	            {
-	            ds_list_copy(team_list[i],team_list[n]); // copy list
-	            ds_list_clear(team_list[n]); // clear copied list
-	            }
-	        }  
-    
-	    if !ds_list_empty(team_list[i])
-	    team_number ++; // add to the number of teams
-	    }
 
 	var hh = ENTRANT_COUNT;
 	ds_grid_resize(scores_grid,ds_grid_width(scores_grid),hh);

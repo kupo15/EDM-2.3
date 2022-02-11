@@ -1,3 +1,15 @@
+function draw_team_header(xx,yy,ysep,_team) {
+	
+	var str_group = pick("Team ","Group ",tourney_type);
+	var c_col = make_color_rgb(98,145,242);
+	var height = 40;
+	
+	draw_text_centered(xx+5,yy,string(str_group)+string(_team+1),height,,ysep,c_col); // team number
+	draw_text_centered(xx+420,yy,"Front",height,,ysep,c_col);
+	draw_text_centered(xx+520,yy,"Back",height,,ysep,c_col);
+    
+	}
+
 function draw_teams() {
 	
 	// draw team groups
@@ -6,7 +18,7 @@ function draw_teams() {
 	var ysep = 55; // line break separation
 	var ww = 845;
 	var hsep = ww+10; // column separation
-	var rows = 3;
+
 	var col = 0;
 	var grid_row = 0;
 	var col_off = 120;
@@ -16,42 +28,33 @@ function draw_teams() {
 	draw_set_halign(fa_left);
 
 	scr_teams_scrolling(xx,yy,ww);
-
-	// alter row offset
-	/*for(var i=0;i<floor(team_scroll_offset);i++)
-	   {
-	   var size = ds_list_size(team_list[i]);
-	   grid_row += size;
-	   }      */
    
 	var loop = team_number+1; // min(team_number+1,2);
 	for(var i=0;i<loop;i++)
 	    {        
 	    var _team = i; //+floor(team_scroll_offset);
 	    var off_pos = i-team_scroll_offset;
-	    var c_col = make_color_rgb(98,145,242);
+		
+		var hh = 59*5;
+	    var sep = hh+ysep+10; // row separation
+		
+		// outline
+		draw_rectangle(xx+(col*hsep),yy+(off_pos*sep),xx+ww+(col*hsep),yy+hh+(off_pos*sep),true);
+		
+		draw_team_header(xx,yy-ysep+(off_pos*sep),ysep,i);
+		
 	    var _team_sep = max(_team-1,0);
 	    var sep_pos = ds_list_size(team_list[_team_sep]);
 	    var ss = ds_list_size(team_list[_team]);
-	    var hh = 59*5;
-	    var sep = hh+ysep+10; // row separation
-		var str_group = "Team ";
-		if tourney_type // individual
-		str_group = "Group ";
-    
-	    draw_rectangle(xx+(col*hsep),yy+(off_pos*sep),xx+ww+(col*hsep),yy+hh+(off_pos*sep),true);
-	    draw_text_transformed_colour(xx+5+(col*hsep),yy-ysep+fn_off+2+(off_pos*sep),string(str_group)+string(_team+1),0.8,0.8,0,c_col,c_col,c_col,c_col,1);
-    
+
+		
+
 		if (tourney_type == tourneyType.team) // team game
 			{
 		    var scr1 = if_undef(team_score[_team,0]);
 		    var scr2 = if_undef(team_score[_team,1]);
 		    draw_text_transformed(xx+125+(col*hsep),yy-ysep+fn_off+2+(off_pos*sep),"Score: F: "+string(scr1)+"   B: "+string(scr2),0.8,0.8,0);
 			}
-	
-	    draw_set_font(fn_name);
-	    draw_text_transformed(xx+col_off+300+(col*hsep),yy+15-ysep+fn_off+(off_pos*sep),"Front",0.9,0.9,0);
-	    draw_text_transformed(xx+col_off+300+80+(col*hsep),yy+15-ysep+fn_off+(off_pos*sep),"Back",0.9,0.9,0);
     
 	    if skins_input
 	        {
@@ -301,9 +304,4 @@ function draw_teams() {
 	draw_edit_score();
 	else
 	draw_assign_blind();    
-
-    
-
-
-
-}
+	}
