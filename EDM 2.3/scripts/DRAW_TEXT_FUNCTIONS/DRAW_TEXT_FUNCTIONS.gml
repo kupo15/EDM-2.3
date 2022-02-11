@@ -358,7 +358,7 @@ return ll*scale;
 
 //
 
-function draw_text_centered(xx,yy,str,height,region_ww=0,region_hh=height,col=draw_get_color(),alpha=draw_get_alpha()) {
+function draw_text_centered(xx,yy,str,height,region_ww=0,region_hh=height,col=draw_get_color(),alpha=draw_get_alpha(),valignOverride=false) {
 	
 	var alp = draw_get_alpha();
 	var halign = draw_get_halign();
@@ -368,12 +368,14 @@ function draw_text_centered(xx,yy,str,height,region_ww=0,region_hh=height,col=dr
 	if (xoff != 0)
 	draw_set_halign(fa_center);
 	
-	draw_set_alpha(alpha);
+	if !valignOverride
 	draw_set_valign(fa_center);
-	
+
+	draw_set_alpha(alpha);
 	draw_text_height_color(xx+xoff,yy+yoff,str,col,height);
 	
 	draw_set_alpha(alp);
 	draw_set_halign(halign);
-	//draw_rectangle(xx,yy+1,xx+200,yy+region_hh+1,true)
+	
+	//draw_rectangle(xx,yy+1,xx+region_ww,yy+region_hh+1,true)
 	}

@@ -4,10 +4,28 @@ function draw_team_header(xx,yy,ysep,_team) {
 	var c_col = make_color_rgb(98,145,242);
 	var height = 40;
 	
-	draw_text_centered(xx+5,yy,string(str_group)+string(_team+1),height,,ysep,c_col); // team number
-	draw_text_centered(xx+420,yy,"Front",height,,ysep,c_col);
-	draw_text_centered(xx+520,yy,"Back",height,,ysep,c_col);
-    
+	draw_set_valign(fa_bottom);
+	draw_text_height_color(xx+5,yy,string(str_group)+string(_team+1),c_col,height); // team number
+	
+	if (tourney_type == tourneyType.team) // team game
+		{
+		var scr1 = if_undef(team_score[_team,0]);
+		var scr2 = if_undef(team_score[_team,1]);
+		
+		draw_text_height(xx+135,yy,"Score: F: "+string(scr1)+"   B: "+string(scr2),height);
+		}
+	
+	var height = 35;
+	
+	draw_text_height(xx+400,yy,"F/B/",height,);
+	draw_text_height(xx+480,yy,"Adj.\nGross",height*1.2);
+	
+	var c1_str = pick("Gross Skins","Blind",!skins_input);
+	var c2_str = pick("Net Skins","No Team",!skins_input);
+	var height = 30;
+	
+	draw_text_centered(xx+535,yy,c1_str,height,150,0,,,true);
+	draw_text_centered(xx+695,yy,c2_str,height,150,0,,,true);
 	}
 
 function draw_teams() {
@@ -41,31 +59,11 @@ function draw_teams() {
 		// outline
 		draw_rectangle(xx+(col*hsep),yy+(off_pos*sep),xx+ww+(col*hsep),yy+hh+(off_pos*sep),true);
 		
-		draw_team_header(xx,yy-ysep+(off_pos*sep),ysep,i);
+		draw_team_header(xx,yy+(off_pos*sep),ysep,i);
 		
 	    var _team_sep = max(_team-1,0);
 	    var sep_pos = ds_list_size(team_list[_team_sep]);
 	    var ss = ds_list_size(team_list[_team]);
-
-		
-
-		if (tourney_type == tourneyType.team) // team game
-			{
-		    var scr1 = if_undef(team_score[_team,0]);
-		    var scr2 = if_undef(team_score[_team,1]);
-		    draw_text_transformed(xx+125+(col*hsep),yy-ysep+fn_off+2+(off_pos*sep),"Score: F: "+string(scr1)+"   B: "+string(scr2),0.8,0.8,0);
-			}
-    
-	    if skins_input
-	        {
-	        draw_text_transformed(xx+col_off+300+80+70+(col*hsep),yy+15-ysep+fn_off+(off_pos*sep),"Gross Skins",0.9,0.9,0);
-	        draw_text_transformed(xx+col_off+300+80+100+120+(col*hsep),yy+15-ysep+fn_off+(off_pos*sep),"Net Skins",0.9,0.9,0);
-	        }
-	    else
-	        {
-	        draw_text_transformed(xx+col_off+300+80+120+(col*hsep),yy+15-ysep+fn_off+(off_pos*sep),"Blind",0.9,0.9,0);
-	        draw_text_ext_transformed(xx+col_off+300+80+100+125+(col*hsep),yy+5-ysep+fn_off+(off_pos*sep),"  No\nTeam",30,-1,0.7,0.7,0);
-	        }     
     
 	    // edit team score
 	    if edit_score = noone && (edit_team_score == noone) && (select_blind_team == noone)
@@ -237,30 +235,15 @@ function draw_teams() {
 		break;
 		}
 
-	draw_set_font(fn_name);
+	// draw blind/no team toggle
+	var str = pick("Blind/\nNo Teams","Gross Skins/\n Net Skins",!skins_input);
+	
 	draw_rectangle_colour(xx,yy-400,xx+ww,yy-400+hh+hh,c_green,c_green,c_green,c_green,true);
-	draw_set_color(c_black);
-	if skins_input
-	draw_text_ext(xx+20,yy+30+fn_off-400,"  Blind/\nNo Teams",40,-1);   
-	else
-	draw_text_ext(xx+30,yy+30+fn_off-400,"Input\nSkins",40,-1);   
+	draw_text_centered(xx,yy-400,str,60,ww,hh+hh);
    
-	// toggle event type
-	/*draw_rectangle_colour(xx,yy-200,xx+ww,yy-200+hh,c_green,c_green,c_green,c_green,true);
-	draw_set_color(c_black);
-	var str = "Teams";
-	if tourney_type
-	str = "Individual";
-	draw_text(xx+15,yy+30+fn_off-210,str); 
-
-	// event type
-	if !in_menu && scr_mouse_position_room_released(xx,yy-200,ww,hh,mb_left,true)
-	tourney_type = !tourney_type;*/
-   
-	   // debug
+	// debug
 	draw_rectangle_colour(xx,yy-100,xx+ww,yy-100+hh,c_green,c_green,c_green,c_green,true);
-	draw_set_color(c_black);
-	draw_text(xx+15,yy+30+fn_off-110,"Go Back"); 
+	draw_text_centered(xx,yy-100,"Go Back",40,ww,hh); 
 
 	// back button
 	if !in_menu && scr_mouse_position_room_released(xx,yy-100,ww,hh,mb_left,true)
@@ -287,8 +270,7 @@ function draw_teams() {
 	draw_set_alpha((calc*0.5)+0.5)
 	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,false);
 
-	draw_set_color(c_white);
-	draw_text(xx+15,yy+30+fn_off,"Results");
+	draw_text_centered(xx,yy,"Results",40,ww,hh,c_white);
 	draw_set_alpha(1);
 
 	if edit_score == noone && edit_team_score == noone && select_blind_team == noone
