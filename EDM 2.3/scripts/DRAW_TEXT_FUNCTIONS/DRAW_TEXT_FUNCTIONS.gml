@@ -356,7 +356,12 @@ return 0;
 return ll*scale;
 }
 
-//
+function draw_text_button(xx,yy,str,height,region_ww,region_hh,col=draw_get_color(),alpha=draw_get_alpha(),highlight=true,isKeypad=false) {
+	
+	draw_text_centered(xx,yy,str,height,region_ww,region_hh,col,alpha);
+
+	return scr_mouse_position_room_released(xx,yy,region_ww,region_hh,mb_left,highlight,isKeypad);
+	}
 
 function draw_text_centered(xx,yy,str,height,region_ww=0,region_hh=height,col=draw_get_color(),alpha=draw_get_alpha(),valignOverride=false) {
 	
