@@ -131,13 +131,14 @@ function Member(_name,_favorite=false) constructor {
 function RoundStats() constructor {
 	
 	rank = 1;
-	netFront = "";
-	netBack = "";
-	skinsGross = "";
-	skinsNet = "";
+	grossFront = "";
+	grossBack = "";
+	skinsGross = "0";
+	skinsNet = "0";
+	grossAdj = "";
+	
 	blindTeam = undefined;
 	noTeam = false;
-	grossAdj = "";
 	}
 	
 function debug_members_list_create() {

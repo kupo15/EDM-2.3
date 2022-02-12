@@ -156,3 +156,16 @@ function get_files_in_directory(filepath,attr=0) {
 	
 	return arr;
 	}
+	
+function add_string(str,value,_min=undefined,_max=undefined) {
+	
+	str = real(str);
+	str += value;
+	
+	_min = pick(_min,str,_min==undefined);
+	_max = pick(_max,str,_max==undefined);
+	
+	str = clamp(str,_min,_max);
+	
+	return string(str);
+	}
