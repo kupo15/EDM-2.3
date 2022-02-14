@@ -1,5 +1,6 @@
 {
   "option_gameguid": "{10035F5E-2CD9-4AFE-8ACA-A32E0DA6BAA0}",
+  "option_gameid": "0",
   "option_game_speed": 65,
   "option_mips_for_3d_textures": false,
   "option_draw_colour": 4294967295,
@@ -9,6 +10,9 @@
   "option_author": "",
   "option_lastchanged": "",
   "option_spine_licence": false,
+  "option_template_image": "${base_options_dir}/main/template_image.png",
+  "option_template_icon": "template_icon.png",
+  "option_template_description": null,
   "resourceVersion": "1.2",
   "name": "Main",
   "tags": [],
