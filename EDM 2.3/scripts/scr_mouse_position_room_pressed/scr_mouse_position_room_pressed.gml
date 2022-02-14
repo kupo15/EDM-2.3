@@ -33,9 +33,9 @@ function scr_mouse_position_room_pressed(x_left,y_top,ww,hh,button,highlight,sou
 	}
 
 
-function scr_mouse_position_room_released(x_left,y_top,ww,hh,button,highlight,isKeypad=false) {
+function scr_mouse_position_room_released(x_left,y_top,ww,hh,button,highlight,isKeypad=false,can_click=true) {
 
-	if global.clicked || (!isKeypad && KEYPAD_ACTIVE)
+	if global.clicked || (!isKeypad && KEYPAD_ACTIVE) || !can_click
 	exit;
 
 	var mx = mouse_x;

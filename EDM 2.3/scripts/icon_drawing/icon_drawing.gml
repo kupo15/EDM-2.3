@@ -21,7 +21,7 @@ function draw_icon_click(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha
 	
 	draw_icon(spr,ind,xx,yy,ww,hh,bgcolor,alpha);
 	
-	return scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,highlight,canEdit);
+	return scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,highlight,,canEdit);
 	}
 	
 function draw_line_pixel(xx,yy,ww,hh,col=c_black,alpha=1) {

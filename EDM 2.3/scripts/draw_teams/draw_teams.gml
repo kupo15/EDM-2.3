@@ -1,4 +1,4 @@
-function draw_team_header(xx,yy,ysep,_team) {
+function draw_team_header(xx,yy,ysep,_team,in_popover) {
 	
 	var str_group = pick("Team ","Group ",tourney_type);
 	var c_col = make_color_rgb(98,145,242);
@@ -28,9 +28,9 @@ function draw_team_header(xx,yy,ysep,_team) {
 	draw_text_centered(xx+695,yy,c2_str,height,150,0,,,true);
 	}
 	
-function draw_team_content(xx,team_yy,ysep,teamInd) {
+function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 	
-	var can_edit = (edit_score == noone) && (select_blind_team == noone);
+	can_edit = !can_edit;
 	
 	// draw team list
 	var list = TEAM_LIST[teamInd].members;
@@ -38,20 +38,10 @@ function draw_team_content(xx,team_yy,ysep,teamInd) {
 	    {
 		var struct = list[i];
 		var round_stats = struct.roundStats;
-	    var name = struct.name;
 		var height = 55;
         
-	    var str = "";
-	    if (round_stats.blindTeam != undefined) // if blind draw
-	    str += "*";
-			
-	    if round_stats.noTeam // if no team
-	    str += "`";
-        
-	    str += string(name);
-        
 		// draw name
-	    draw_text_centered(xx+5,team_yy+(i*ysep),str,height,,ysep);
+		draw_member_name(xx+5,team_yy+(i*ysep),struct,height,,ysep)
         
 		// gross front/back
 		var fr = pick("-",round_stats.grossFront,round_stats.grossFront != "");
@@ -62,7 +52,7 @@ function draw_team_content(xx,team_yy,ysep,teamInd) {
 	    draw_text_centered(xx+375,team_yy+(i*ysep),scr,30,145,ysep);
 		
 		// edit score
-		if scr_mouse_position_room_released(xx,team_yy+(i*ysep),535,ysep,mb_left,true,can_edit) {
+		if scr_mouse_position_room_released(xx,team_yy+(i*ysep),535,ysep,mb_left,true,,can_edit) {
 			
 	        edit_score = grid_row;   
 	        edit_score_scrolling_end = edit_score;
@@ -81,8 +71,7 @@ function draw_team_content(xx,team_yy,ysep,teamInd) {
 	        if draw_icon_click(spr_add_button,0,xx+555+85,team_yy+(i*ysep),50,ysep,,,,can_edit) // plus button
 			round_stats.skinsGross = add_string(round_stats.skinsGross,1,0,17);
 			
-			draw_text_centered(xx+555+85,team_yy+(i*ysep),"+",35,50,ysep); // plus
-			
+			draw_text_centered(xx+555+85,team_yy+(i*ysep),"+",35,50,ysep); // plus	
 			draw_text_centered(xx+535,team_yy+(i*ysep),round_stats.skinsGross,50,155,ysep) // value
 
 			// net skins
@@ -100,36 +89,32 @@ function draw_team_content(xx,team_yy,ysep,teamInd) {
 	        }
 	    else
 	        {
-	        var _bl = scores_grid[# 5,grid_row];
-	        if _bl == noone
-	        draw_sprite(spr_blind_draw,0,xx+col_off+300+80+80+50,yy+(ii*ysep)+(off_pos*sep)); // blind draw
+			// blind team
+	        var _bl = round_stats.blindTeam;
+			
+	        if (_bl == undefined)
+	        draw_icon(ico_checkbox,0,xx+585,team_yy+(i*ysep),55,ysep); // Blind
 	        else
-	        draw_text(xx+col_off+300+80+80+50,yy-30+(ii*ysep)+(off_pos*sep),"T"+string(_bl+1)); // team the blind is assigned to
-	        draw_sprite(spr_blind_draw,scores_grid[# 19,grid_row],xx+col_off+300+80+80+50+100,yy+(ii*ysep)+(off_pos*sep)); // No Team
+	        draw_text_centered(xx+585,team_yy+(i*ysep),"T"+string(_bl+1),45,55,ysep); // team the blind is assigned to
+			
+			// clicked blind
+			if scr_mouse_position_room_released(xx+570,team_yy+(i*ysep),90,ysep,mb_left,true,,can_edit) {
+				
+				// assign blinds
+				if (_bl == undefined) {
+					
+					select_blind_team = struct;
+					}
+				else // remove from blinds
+				round_stats.blindTeam = undefined;
+				}
+						
+			// no team
+	        if draw_icon_click(ico_checkbox,round_stats.noTeam,xx+725,team_yy+(i*ysep),100,ysep,,,,can_edit)
+			round_stats.noTeam = !round_stats.noTeam;
 	        }
-        
-	    if edit_score = noone && select_blind_team == noone 
-	        {
-
-	            {
-	            if scr_mouse_position_room_released(xx+col_off+300+80+80+50,yy+(ii*ysep)+(off_pos*sep),50,50,mb_left,true) // blind draw
-	                {
-	                if (scores_grid[# 5,grid_row] != noone)
-	                    {
-	                    var ind_ = ds_list_find_index(blind_list[scores_grid[# 5,grid_row]],string(scores_grid[# 0,grid_row]));
-	                    ds_list_delete(blind_list[scores_grid[# 5,grid_row]],ind_); // delete from blind list
-                        
-	                    scores_grid[# 5,grid_row] = noone; // toggle off blind
-	                    }
-	                else
-	                select_blind_team = grid_row;
-	                }
-	            else if scr_mouse_position_room_released(xx+col_off+300+80+80+50+100,yy+(ii*ysep)+(off_pos*sep),50,50,mb_left,true) // No team
-	                {
-	                scores_grid[# 19,grid_row]  = !scores_grid[# 19,grid_row]; // toggle no team
-	                }
-	            }
-	        }   
+			
+        continue 
                
 	    if ii+1 == size // if last member draw
 	        {
@@ -154,9 +139,8 @@ function draw_teams() {
 	var hsep = ww+10; // column separation
 
 	var col = 0;
-	var grid_row = 0;
 	var col_off = 120;
-	var in_menu = edit_team_score >= 0 || edit_score >= 0;
+	var in_popover = (select_blind_team != undefined) || edit_score >= 0;
 
 	draw_set_color(c_black);
 	draw_set_halign(fa_left);
@@ -177,8 +161,8 @@ function draw_teams() {
 		// outline
 		draw_rectangle(xx+(col*hsep),yy+team_yoff,xx+ww+(col*hsep),yy+team_yoff+hh,true);
 		
-		draw_team_header(xx,yy+team_yoff,ysep,i);
-		draw_team_content(xx,yy+team_yoff,member_sep,i);
+		draw_team_header(xx,yy+team_yoff,ysep,i,in_popover);
+		draw_team_content(xx,yy+team_yoff,member_sep,i,in_popover);
 		
 		continue;
 		
@@ -187,8 +171,8 @@ function draw_teams() {
 	    var ss = ds_list_size(team_list[_team]);
     
 	    // edit team score
-	    if (edit_score == noone) && (edit_team_score == noone) && (select_blind_team == noone)
-	    if scr_mouse_position_room_released(xx+(col*hsep),yy-ysep+team_yoff,300+col_off,ysep,mb_left,true)
+	    if (edit_score == noone) && (edit_team_score == noone) && (select_blind_team == undefined)
+	    if scr_mouse_position_room_released(xx+(col*hsep),yy-ysep+team_yoff,300+col_off,ysep,mb_left,true,in_popover)
 	        {
 	        edit_score = -1;      
 	        edit_team_score = _team;
@@ -244,37 +228,34 @@ function draw_teams() {
 	
 	draw_rectangle_colour(xx,yy-400,xx+ww,yy-400+hh+hh,c_green,c_green,c_green,c_green,true);
 	
-	if draw_text_button(xx,yy-400,str,60,ww,hh+hh)
+	if draw_text_button(xx,yy-400,str,60,ww,hh+hh,,,,,!in_popover)
 	skins_input = !skins_input;
    
-	// debug
+	// back button
 	draw_rectangle_colour(xx,yy-100,xx+ww,yy-100+hh,c_green,c_green,c_green,c_green,true);
 	
-	if draw_text_button(xx,yy-100,"Go Back",40,ww,hh)
+	if draw_text_button(xx,yy-100,"Go Back",40,ww,hh,,,,,!in_popover)
 	screen_change(screenEnum.homeScreen);
 
-	// back button
-	if !in_menu && scr_mouse_position_room_released(xx,yy-100,ww,hh,mb_left,true)
-	phase = 0;
-
+	// results button
 	draw_set_alpha((calc*0.5)+0.5)
 	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,false);
 
 	draw_text_centered(xx,yy,"Results",40,ww,hh,c_white);
 	draw_set_alpha(1);
 
-	if edit_score == noone && edit_team_score == noone && select_blind_team == noone
-	if calc && scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,true)
+	if edit_score == noone && edit_team_score == noone && (select_blind_team == undefined)
+	if calc && scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,true,,!in_popover)
 		{
 		season_save = false;
 		scr_calculate_results();
 		}
     
-	if select_blind_team == noone
+	// draw popovers
 	draw_edit_score();
-	else
 	draw_assign_blind();
 	
+	// debug
 	debug_randomize_scores();
 	}
 	

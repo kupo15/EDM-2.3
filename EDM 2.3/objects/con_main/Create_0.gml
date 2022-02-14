@@ -101,7 +101,7 @@ season_breakdown_offset = 0;
 season_breakdown_offset_start = 0;
 results_scrolling = false;
 entrant_scrolling = false;
-select_blind_team = noone;
+select_blind_team = undefined;
 
 edit_score_highlight_pos = 0;
 

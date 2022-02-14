@@ -1,10 +1,6 @@
 function scr_cleanup() {
 	
 	exit;
-	ini_member_list_save();
-	ini_payout_table_save();
-	ini_entry_fee_save();
-	ini_settings_save();
 
 	ds_list_destroy(favorites_list);
 	ds_list_destroy(favorites_members_list);

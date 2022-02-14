@@ -1,6 +1,6 @@
 function scr_teams_scrolling(xx,yy,ww) {
 	
-	if (edit_score != noone) || (edit_team_score != noone) || (select_blind_team != noone)
+	if (edit_score != noone) || (edit_team_score != noone) || (select_blind_team != undefined)
 	exit;
 
 	var hh = 600;

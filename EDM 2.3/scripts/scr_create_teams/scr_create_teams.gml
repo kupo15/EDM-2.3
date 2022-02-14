@@ -4,12 +4,12 @@ function scr_create_teams() {
 
 	// shift members over to skip blank teams
 	var list = TEAM_LIST;
-	var maxTeams = array_length(list)-1;
+	var maxTeams = array_length(list);
 	for(var i=0;i<maxTeams;i++) {
-		
+
 		// current team is empty
-		if (array_length(list[i].members) == 0)
-		for(var j=i+1;j<maxTeams+1;j++) {
+		if (array_length(list[i].members) == 0) && (i+1<maxTeams)
+		for(var j=i+1;j<maxTeams;j++) {
 
 			if (array_length(list[j].members) != 0) {
 				
@@ -40,8 +40,6 @@ exit;
 	    }
 
 	//
-
-	phase = 1;
 
 	if redo
 	    {

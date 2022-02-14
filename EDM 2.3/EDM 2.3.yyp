@@ -10,6 +10,7 @@
     {"id":{"name":"spr_close_enough","path":"sprites/spr_close_enough/spr_close_enough.yy",},"order":4,},
     {"id":{"name":"spr_crossout","path":"sprites/spr_crossout/spr_crossout.yy",},"order":5,},
     {"id":{"name":"spr_key_circles","path":"sprites/spr_key_circles/spr_key_circles.yy",},"order":6,},
+    {"id":{"name":"draw_member_name","path":"scripts/draw_member_name/draw_member_name.yy",},"order":10,},
     {"id":{"name":"spr_member_button","path":"sprites/spr_member_button/spr_member_button.yy",},"order":7,},
     {"id":{"name":"init_keypad","path":"scripts/init_keypad/init_keypad.yy",},"order":1,},
     {"id":{"name":"spr_preferences","path":"sprites/spr_preferences/spr_preferences.yy",},"order":8,},

@@ -1,5 +1,6 @@
 function draw_edit_score() {
-	if edit_score == noone && edit_team_score == noone
+	
+	if (edit_score == noone) && (edit_team_score == noone)
 	exit;
 
 	var xx = 100;
