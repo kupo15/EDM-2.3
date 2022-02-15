@@ -1,15 +1,24 @@
+function edit_score_player_surface() {
+	
+	
+	
+	}
+
 function draw_edit_score() {
 	
 	if (edit_score == noone) && (edit_team_score == noone)
 	exit;
 
-	var xx = 100;
-	var yy = 50;
-	var ww = 800;
-	var hh = 530;
+	var xx = 0;
+	var yy = 0;
+	var ww = 920;
+	var hh = room_height;
 	var ysep = 35;
 
 	draw_set_color(c_black);
+	draw_set_alpha(0.5);
+	draw_rectangle(0,0,room_width,room_height,false);
+	draw_set_alpha(1);
 
 	// click out / cancel
 	if android_back || (!scr_mouse_position_room(xx,yy,ww+10,hh+10,noone,false) && mouse_check_button_released(mb_left) && !edit_score_scrolling)
@@ -27,55 +36,53 @@ function draw_edit_score() {
 	var col = make_colour_rgb(255,227,215);
 	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,col,col,col,col,false);
 
-	draw_set_halign(fa_left);
-	draw_text(xx+15,yy+20+fn_off,"ENTER SCORE:");
+	draw_text_centered(xx+15,yy+20,"ENTER SCORE:",35,,);
 
-	if edit_score >= 0
-	    {
+	if (edit_score >= 0) {
+		
 	    var size = ENTRANT_COUNT;
-	    draw_text_transformed(xx+370,yy,"entrant "+string(edit_score+1)+"/"+string(size),0.7,0.7,0);
+	    draw_text_height(xx+370,yy+25,"entrant "+string(edit_score+1)+"/"+string(size),25);
 	    }
-	else
-	    {
-		var team_str = "team ";
-		if tourney_type 
-		team_str = "group ";
+	else {// unused
+		
+		var team_str = pick("team ","group ",tourney_type);
 	    draw_text_transformed(xx+400,yy,string(team_str)+string(edit_team_score+1)+"/"+string(team_number+1),0.7,0.7,0);
 	    }
-	draw_set_font(fn_keyboard);
 
-	var submit = scr_mouse_position_room_released(xx+150,yy+hh-110,220,100,mb_left,true);    
-
+	// submit button
 	draw_rectangle(xx+150,yy+hh-110,xx+150+220,yy+hh-10,true);
 
 	var col = make_colour_rgb(69,117,228);
-	draw_text_colour(xx+160,yy+hh-90,"SUBMIT",col,col,col,col,1);
+	var submit = draw_text_button(xx+150,yy+hh-110,"SUBMIT",45,220,100,col);
+
+	// headers
+	var yy = 160;
+	var height = 30;
+	
+	draw_set_valign(fa_bottom);
+	draw_text_height(50,yy,"Front 9",height);
+	draw_text_height(170,yy,"Back 9",height);
+	draw_text_height(280,yy,"Adj. Gross",height);
+
+	draw_line_pixel(xx,yy,470,1); // line
 
 	if !surface_exists(surface)
 	surface = surface_create(room_width,room_height);
 
-	surface_set_target(surface);
-	draw_clear_alpha(c_black,0);
+	//surface_set_target(surface);
+	//draw_clear_alpha(c_black,0);
 
-	if edit_team_score == noone
+	if (edit_team_score == noone)
 	    {// edit player's score
 	    var size = ds_grid_height(scores_grid);
-	    for(var i=-1;i<2;i++)
-	        {
+	    for(var i=-1;i<2;i++) {
+			
 	        var ind = (edit_score+i+edit_score_offset+size) mod size;
 	        draw_text(xx+15+(edit_score_scrolling_offset*500)+(i*500),yy+30+30,scores_grid[# 0,ind]); // Draw player's name
 	        }
-    
-	    draw_set_font(fn_name);
-	    draw_text(xx+40,yy+30+80+20+fn_off,"Front 9"); // Front
-	    draw_text(xx+40+180,yy+30+80+20+fn_off,"Back 9"); // Back
-	    draw_line(xx,yy+30+30+80+30,xx+ww,yy+30+30+80+30);
-    
-	    var scr = if_undef(scores_grid[# 1,edit_score]);
-	    draw_text(xx+40+30,yy+30+30+80+30+fn_off,scr); // Front Score
-		
-	    var scr = if_undef(scores_grid[# 2,edit_score]);
-	    draw_text(xx+40+30+180,yy+30+30+80+30+fn_off,scr); // Back Score
+			
+		exit
+
     
 	    // Blind and No Team
 	    draw_text_transformed(xx+120,yy+245,"Blind",0.9,0.9,0);

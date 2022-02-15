@@ -51,12 +51,14 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 		
 	    draw_text_centered(xx+375,team_yy+(i*ysep),scr,30,145,ysep);
 		
-		// edit score
+		// edit individual score
 		if scr_mouse_position_room_released(xx,team_yy+(i*ysep),535,ysep,mb_left,true,,can_edit) {
 			
-	        edit_score = grid_row;   
+	        edit_score = 0;   
 	        edit_score_scrolling_end = edit_score;
 	        edit_team_score = noone;
+			
+			init_keypad(entryType.memberFront,"-",,560);
 	        mouse_clear(mb_left);
 	        }
 	

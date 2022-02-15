@@ -1,14 +1,17 @@
 function scr_create_teams() {
 
+	entrant_list = [];
 	team_number = -1; // reset
 
 	// shift members over to skip blank teams
 	var list = TEAM_LIST;
 	var maxTeams = array_length(list);
 	for(var i=0;i<maxTeams;i++) {
+		
+		var teamMemberList = list[i].members;
 
 		// current team is empty
-		if (array_length(list[i].members) == 0) && (i+1<maxTeams)
+		/*if (array_length(teamMemberList) == 0) && (i+1<maxTeams)
 		for(var j=i+1;j<maxTeams;j++) {
 
 			if (array_length(list[j].members) != 0) {
@@ -17,10 +20,26 @@ function scr_create_teams() {
 				list[j].members = []; // clear next team
 				break;
 				}
-			}
+			}*/
 			
-		team_number += (array_length(list[i].members) != 0);
+		var teamSize = array_length(teamMemberList);
+		if (teamSize != 0) {
+			
+			team_number++;
+		
+			// assign team number and add to entrant list
+			for(var j=0;j<teamSize;j++) {
+			
+				var member = teamMemberList[j];
+				member.teamAssigned = team_number;
+				
+				array_push(entrant_list,member);
+				}
+			}
 		}
+
+
+cs(js(entrant_list));
 
 	skins_input = true;
 	screen_change(screenEnum.eventRunning);

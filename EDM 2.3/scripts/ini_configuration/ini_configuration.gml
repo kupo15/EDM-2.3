@@ -27,16 +27,22 @@ function ini_save_file() {
 		//return -1;
 		}
 	
-	CONFIGURATION_FILE = create_default_save_file(config_file);
+	CONFIGURATION_FILE = create_default_save_file();
+	debug_members_list_create();
+	save_program;
+	
+	cs(js(SAVE_FILE));
 	}
 	
-function create_default_save_file(filename) {
+function create_default_save_file() {
 
 	var config_data = {
 		
 		membersList: {
 			
-			list: debug_members_list_create(),
+			nextMemberId: 0,
+			
+			list: [],
 			archived: [],
 			},
 			
@@ -81,9 +87,7 @@ function create_default_save_file(filename) {
 			version: configversion,
 			}
 		}
-				
-	json_save_array(filename,config_data);
-	
+			
 	return config_data;
 	}
 	
@@ -115,6 +119,7 @@ function PrizePool() constructor {
 
 function Member(_name,_favorite=false) constructor {
 	
+	memberId = MEMBERS_LIST.nextMemberId;
 	name = _name;
 	favorite = _favorite;
 	recent = -1;
@@ -126,6 +131,8 @@ function Member(_name,_favorite=false) constructor {
 	roundStats = new RoundStats();
 	
 	roundHistory = [];
+	
+	MEMBERS_LIST.nextMemberId++;
 	}
 	
 function RoundStats() constructor {
@@ -192,6 +199,8 @@ function debug_members_list_create() {
 		];
 				
 	list = scr_sort_members(list);
+
+	MEMBERS_LIST.list = list;
 
 	return list;
 	}

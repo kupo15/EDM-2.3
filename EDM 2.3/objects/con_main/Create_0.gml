@@ -133,6 +133,8 @@ pref_phase = screenEnum.homeScreen;
 no_net_skins = false;
 no_gross_skins = false;
 
+entrant_list = [];
+
 ini_settings();
 
 team_payout[5] = 0;

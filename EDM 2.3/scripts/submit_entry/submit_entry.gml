@@ -1,6 +1,6 @@
-function submit_entry() {
+function submit_entry(deactivate=false) {
 
-	active = false;
+	active = !deactivate;
 	submitedString = entryString;
 	}
 	

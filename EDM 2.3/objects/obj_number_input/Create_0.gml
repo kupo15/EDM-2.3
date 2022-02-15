@@ -28,6 +28,13 @@ enum entryType {
 	blindFee,
 	teamPayout,
 	lowNetPayout,
+	
+	memberFront,
+	memberBack,
+	memberAdjGross,
+	
+	teamFront,
+	teamBack,
 	}
 	
 global.entryEnum = entryType.none;
