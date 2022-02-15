@@ -22,3 +22,18 @@ function draw_member_name(xx,yy,struct,height,ww=undefined,hh=undefined) {
 
 	draw_circle_color(xx+str_ww,yy+(hh*0.5),7,teeStruct.color,teeStruct.color,teeName=="white");
 	}
+	
+function get_entrant_by_id(ind) {
+	
+	var memberId = entrant_list[ind];
+	
+	return memberId.name;
+	}
+	
+function draw_value(value,defaultStr) {
+	
+	if (value == "")
+	return defaultStr;
+	
+	return value;
+	}

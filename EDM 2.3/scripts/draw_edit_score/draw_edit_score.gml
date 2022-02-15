@@ -56,7 +56,7 @@ function draw_edit_score() {
 	var submit = draw_text_button(xx+150,yy+hh-110,"SUBMIT",45,220,100,col);
 
 	// headers
-	var yy = 160;
+	var yy = 180;
 	var height = 30;
 	
 	draw_set_valign(fa_bottom);
@@ -74,16 +74,30 @@ function draw_edit_score() {
 
 	if (edit_team_score == noone)
 	    {// edit player's score
-	    var size = ds_grid_height(scores_grid);
+	    var size = array_length(entrant_list);
 	    for(var i=-1;i<2;i++) {
 			
 	        var ind = (edit_score+i+edit_score_offset+size) mod size;
-	        draw_text(xx+15+(edit_score_scrolling_offset*500)+(i*500),yy+30+30,scores_grid[# 0,ind]); // Draw player's name
+			var entrantName = get_entrant_by_id(ind);
+			var xoff = (edit_score_scrolling_offset*500)+(i*500);
+			
+			// draw player's name
+	        draw_text(xx+20+xoff,130,entrantName);
 	        }
 			
-		exit
+		// draw front/back/adj gross
+		var entrantStruct = entrant_list[edit_score];
+		var entrantRoundStats = entrantStruct.roundStats;
+		var height = 35;
+		var sep = 45;
 
-    
+		draw_text_button(45,yy,draw_value(entrantRoundStats.grossFront,"25"),height,85,sep);
+		draw_text_button(170,yy,draw_value(entrantRoundStats.grossBack,"-"),height,85,sep);
+		draw_text_button(280,yy,draw_value(entrantRoundStats.grossAdj,"-"),height,120,sep);
+
+    		exit
+
+	
 	    // Blind and No Team
 	    draw_text_transformed(xx+120,yy+245,"Blind",0.9,0.9,0);
 	    draw_text_ext_transformed(xx+250,yy+235,"  No\nTeam",30,-1,0.7,0.7,0);

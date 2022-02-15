@@ -38,9 +38,6 @@ function scr_create_teams() {
 			}
 		}
 
-
-cs(js(entrant_list));
-
 	skins_input = true;
 	screen_change(screenEnum.eventRunning);
 	scr_sort_members(MEMBERS_LIST.list);

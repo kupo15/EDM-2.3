@@ -30,8 +30,6 @@ function ini_save_file() {
 	CONFIGURATION_FILE = create_default_save_file();
 	debug_members_list_create();
 	save_program;
-	
-	cs(js(SAVE_FILE));
 	}
 	
 function create_default_save_file() {
