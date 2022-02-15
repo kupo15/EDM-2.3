@@ -58,7 +58,7 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 	        edit_score_scrolling_end = edit_score;
 	        edit_team_score = noone;
 			
-			init_keypad(entryType.memberFront,"-",,560,,0,0);
+			init_keypad(entryType.memberFront,entrant_list[edit_score].roundStats.grossFront,,560,,0,0);
 	        mouse_clear(mb_left);
 	        }
 	

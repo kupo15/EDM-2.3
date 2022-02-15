@@ -15,11 +15,6 @@ function draw_edit_score() {
 	var hh = room_height;
 	var ysep = 35;
 
-	draw_set_color(c_black);
-	draw_set_alpha(0.5);
-	draw_rectangle(0,0,room_width,room_height,false);
-	draw_set_alpha(1);
-
 	// click out / cancel
 	if android_back || (!scr_mouse_position_room(xx,yy,ww+10,hh+10,noone,false) && mouse_check_button_released(mb_left) && !edit_score_scrolling)
 	    {
@@ -30,6 +25,11 @@ function draw_edit_score() {
 	    ds_list_clear(numpad_list);
 	    exit;
 	    }
+		
+	draw_set_color(c_black);
+	draw_set_alpha(0.5);
+	draw_rectangle(0,0,room_width,room_height,false);
+	draw_set_alpha(1);
     
 	scr_entrant_scrolling(xx,yy,hh);
 
@@ -69,8 +69,8 @@ function draw_edit_score() {
 	if !surface_exists(surface)
 	surface = surface_create(room_width,room_height);
 
-	//surface_set_target(surface);
-	//draw_clear_alpha(c_black,0);
+	surface_set_target(surface);
+	draw_clear_alpha(c_black,0);
 
 	if (edit_team_score == noone)
 	    {// edit player's score
@@ -91,43 +91,43 @@ function draw_edit_score() {
 		var height = 35;
 		var sep = 45;
 
-		draw_text_button(45,yy,draw_value(entrantRoundStats.grossFront,"25"),height,85,sep);
-		draw_text_button(170,yy,draw_value(entrantRoundStats.grossBack,"-"),height,85,sep);
-		draw_text_button(280,yy,draw_value(entrantRoundStats.grossAdj,"-"),height,120,sep);
+		draw_text_button(45,yy,draw_value(entrantRoundStats.grossFront,"-"),height,85,sep,,,,true);
+		draw_text_button(170,yy,draw_value(entrantRoundStats.grossBack,"-"),height,85,sep,,,,true);
+		draw_text_button(280,yy,draw_value(entrantRoundStats.grossAdj,"-"),height,120,sep,,,,true);
 
-    		exit
-
-	
-	    // Blind and No Team
-	    draw_text_transformed(xx+120,yy+245,"Blind",0.9,0.9,0);
-	    draw_text_ext_transformed(xx+250,yy+235,"  No\nTeam",30,-1,0.7,0.7,0);
-   
-	    var _bl = scores_grid[# 5,edit_score];
-    
-	    if _bl == noone
-	    draw_sprite(spr_blind_draw,0,xx+130,yy+310); // blind draw
+		// draw blind
+		var xx = 100;
+		var yy = 380;
+		var ww = 36;
+		
+	    var _bl = entrantRoundStats.blindTeam;
+			
+		draw_text_button(xx,yy-ww-30,"Blind",40,ww,65);	
+			
+	    if (_bl == undefined)
+	    draw_icon(ico_checkbox,entrantRoundStats.noTeam,xx,yy,ww,ww);
 	    else
-	    draw_text(xx+130,yy+310-30,"T"+string(_bl+1)); // team number the blind is on
-	    draw_sprite(spr_blind_draw,scores_grid[# 19,edit_score],xx+250,yy+310); // No Team
-    
-	    draw_set_font(fn_name);
-     
-	    if scr_mouse_position_room_released(xx+130,yy+310,50,50,mb_left,true) // blind draw
-	       {
-	       if scores_grid[# 5,edit_score] == noone
-	       select_blind_team = edit_score;
-	       else
-	           {
-	           var ind_ = ds_list_find_index(blind_list[scores_grid[# 5,edit_score]],scores_grid[# 0,edit_score]);
-	           ds_list_delete(blind_list[scores_grid[# 5,edit_score]],ind_); // delete from blind list
-           
-	           scores_grid[# 5,edit_score] = noone; // remove from blind
-	           }
-	       }
-	    else if scr_mouse_position_room_released(xx+250,yy+310,50,50,mb_left,true) // No team
-	       {
-	       scores_grid[# 19,edit_score]  = !scores_grid[# 19,edit_score]; // toggle no team
-	       }
+	    draw_text_centered(xx,yy,"T"+string(_bl+1),45,55,36); // team the blind is assigned to
+			
+		// clicked blind
+		if scr_mouse_position_room_released(70,yy,80,ww,mb_left,true,true) {
+				
+			// assign blinds
+			if (_bl == undefined) {
+					
+				select_blind_team = entrantStruct;
+				}
+			else // remove from blinds
+			entrantRoundStats.blindTeam = undefined;
+			}
+	
+		// no team
+		var xx = 300;
+		
+		if draw_icon_click(ico_checkbox,entrantRoundStats.noTeam,xx,yy,ww,ww,,,,,true)
+		entrantRoundStats.noTeam = !entrantRoundStats.noTeam;
+
+		draw_text_button(xx,yy-ww-30,"No\nTeam",60,ww,65);
 	    }
 	else
 	    {// edit teams score and roster
@@ -203,16 +203,15 @@ function draw_edit_score() {
 	        }
 	    }
     
-	draw_text(xx+40+180+180,yy+30+80+20+fn_off,"Review"); // Back
-    
+	// cutoff 
 	gpu_set_blendmode(bm_subtract);
-	draw_rectangle(0,yy,xx,yy+hh,false);
-	draw_rectangle(xx+ww,yy,room_width,room_height,false);
+	draw_rectangle(470,0,room_width,room_height,false);
 	gpu_set_blendmode(bm_normal);    
     
+	// draw surface
 	surface_reset_target();
 	draw_surface(surface,0,0);
-
+exit;
 	for(var i=0;i<2;i++)
 	if scr_mouse_position_room_pressed(xx+20+(i*180),yy+30+80+20,150,100,mb_left,true,true)
 		{
