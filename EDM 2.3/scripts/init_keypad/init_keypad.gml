@@ -31,3 +31,15 @@ function init_keypad(entry_enum,initValue="",blankValue="-",xx=obj_number_input.
 	    global.entryEnum = entry_enum;
 		}
 	}
+	
+function keypad_set_value(entry_enum,initValue="",blankValue="-") {
+	
+	with obj_number_input {
+		
+		global.entryEnum = entry_enum;
+
+		entryString = initValue;
+		startingString = initValue;
+		blankStringDisplay = blankValue;
+		}
+	}

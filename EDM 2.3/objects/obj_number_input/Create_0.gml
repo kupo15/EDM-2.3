@@ -23,23 +23,5 @@ clickoutX2 = x+width;
 clickoutY2 = y+height;
 
 submitedString = undefined;
-
-enum entryType {
-	
-	none,
-	teamEntry,
-	lowNetEntry,
-	skinsEntry,
-	blindFee,
-	teamPayout,
-	lowNetPayout,
-	
-	memberFront,
-	memberBack,
-	memberAdjGross,
-	
-	teamFront,
-	teamBack,
-	}
 	
 global.entryEnum = entryType.none;

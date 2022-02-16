@@ -1,3 +1,24 @@
+enum entryType {
+	
+	none,
+	teamEntry,
+	lowNetEntry,
+	skinsEntry,
+	blindFee,
+	teamPayout,
+	lowNetPayout,
+	
+	memberFront,
+	memberBack,
+	memberAdjGross,
+	memberEntryNext,
+	
+	teamFront,
+	teamBack,
+	teamReview,
+	teamNext,
+	}
+
 function submit_entry(deactivate=false) {
 
 	active = !deactivate;
@@ -33,6 +54,7 @@ function retrieve_keypad() {
 	// if submitted entry
 	if (obj_number_input.submitedString != undefined) {
 		
+		var reset = true;
 		var entry = obj_number_input.submitedString;		
 		switch global.entryEnum
 			{
@@ -41,11 +63,19 @@ function retrieve_keypad() {
 			case entryType.skinsEntry: ENTRY_FEES.skinsEntry = entry; break;
 			case entryType.blindFee: ENTRY_FEES.blindFee = entry; break;
 			case entryType.teamPayout: PAYOUT_TABLES.teamPayout[pref_team_num][settings_clicked_index] = entry; break;
-			case entryType.lowNetPayout: PAYOUT_TABLES.lowNetPayout[pref_low_net_num][settings_clicked_index] = entry; break;			
+			case entryType.lowNetPayout: PAYOUT_TABLES.lowNetPayout[pref_low_net_num][settings_clicked_index] = entry; break;
+			
+			case entryType.memberFront:
+			case entryType.memberBack:
+			case entryType.memberAdjGross: entry_scores_individual_submit(entry); 
+										   reset = false; 
+										   break;
 			}    			
 			
 		// reset after applying
 		obj_number_input.submitedString = undefined;
+		
+		if reset
 		global.entryEnum = entryType.none;
 		}
 	}

@@ -215,6 +215,7 @@ function draw_edit_score() {
 	// draw surface
 	surface_reset_target();
 	draw_surface(surface,0,0);
+	
 exit;
 	for(var i=0;i<2;i++)
 	if scr_mouse_position_room_pressed(xx+20+(i*180),yy+30+80+20,150,100,mb_left,true,true)
@@ -306,24 +307,6 @@ exit;
 			   negate = sign(team_score[edit_team_score,edit_score_pos]);
 			   }
 	       }
-	   else // individual
-	       {
-	       if num != undefined
-	       scores_grid[# edit_score_pos+1,edit_score] = num*negate; // save score in grid
-       
-	       edit_score_pos ++; // advance to next position
-       
-	       if edit_score_pos = 3
-	          {
-	          edit_score ++; // advance to next player
-          
-	          var entr = ENTRANT_COUNT;
-	          if edit_score < entr
-	          edit_score_pos = 0; // reset position
-	          }
-	       }
-   
-	   ds_list_clear(numpad_list);
 	   }
    
 	// Submit Button
@@ -351,4 +334,33 @@ exit;
 	   edit_team_score = noone;
 	   negate = 1;
 	   }
+	}
+	
+function entry_scores_individual_submit(entry) {
+	
+	var entrantStruct = entrant_list[edit_score];
+	var entrantRoundStats = entrantStruct.roundStats;
+	
+	// save score
+	switch edit_score_pos
+		{
+		case entryType.memberFront: entrantRoundStats.grossFront = entry; break;	
+		case entryType.memberBack: entrantRoundStats.grossBack = entry; break;	
+		case entryType.memberAdjGross: entrantRoundStats.grossAdj = entry; break;
+		
+		case entryType.memberEntryNext: 
+		
+			// advance to next player
+			edit_score++;
+			  
+			// reset position
+			if (edit_score < ENTRANT_COUNT)
+			edit_score_pos = entryType.memberFront;
+			
+			break;
+		}
+	
+	// advance to next position
+	edit_score_pos++;
+	keypad_set_value(edit_score_pos);
 	}
