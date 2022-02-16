@@ -141,7 +141,6 @@ function draw_edit_score() {
 	var yy = 0;
 	var ww = 920;
 	var hh = room_height;
-	var ysep = 35;
 
 	// click out / cancel
 	if android_back || (!scr_mouse_position_room(xx,yy,ww+10,hh+10,noone,false) && mouse_check_button_released(mb_left) && !edit_score_scrolling)
@@ -215,7 +214,7 @@ function draw_edit_score() {
 	// draw surface
 	surface_reset_target();
 	draw_surface(surface,0,0);
-	
+	db(global.entryEnum)
 exit;
 	for(var i=0;i<2;i++)
 	if scr_mouse_position_room_pressed(xx+20+(i*180),yy+30+80+20,150,100,mb_left,true,true)
@@ -236,6 +235,7 @@ exit;
 			}
 		}
     
+	// underline highlight
 	if edit_score_highlight_pos != edit_score_pos
 	edit_score_highlight_pos = lerp(edit_score_highlight_pos,edit_score_pos,0.2);
 
@@ -340,7 +340,7 @@ function entry_scores_individual_submit(entry) {
 	
 	var entrantStruct = entrant_list[edit_score];
 	var entrantRoundStats = entrantStruct.roundStats;
-	
+
 	// save score
 	switch edit_score_pos
 		{
@@ -348,7 +348,7 @@ function entry_scores_individual_submit(entry) {
 		case entryType.memberBack: entrantRoundStats.grossBack = entry; break;	
 		case entryType.memberAdjGross: entrantRoundStats.grossAdj = entry; break;
 		
-		case entryType.memberEntryNext: 
+		case entryType.memberEntryNext:
 		
 			// advance to next player
 			edit_score++;

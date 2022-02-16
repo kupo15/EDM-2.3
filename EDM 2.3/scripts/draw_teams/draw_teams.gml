@@ -142,7 +142,7 @@ function draw_teams() {
 
 	var col = 0;
 	var col_off = 120;
-	var in_popover = (select_blind_team != undefined) || edit_score >= 0;
+	var in_popover = (select_blind_team != undefined) || (edit_score != noone) || (edit_team_score != noone);
 
 	draw_set_color(c_black);
 	draw_set_halign(fa_left);
@@ -192,40 +192,12 @@ function draw_teams() {
 	        mouse_clear(mb_left);
 	        }
 	    }
-
-    
+		
+	// draw blind/no team toggle
 	var xx = 870;
 	var yy = 500;
 	var ww = 150;
 	var hh = 80;
-	var entr = ENTRANT_COUNT;
-	var calc = (entr > 3);
-
-	// if all players are No Team
-	if ds_grid_get_sum(scores_grid,19,0,19,entr-1) == entr
-	calc = true;
-	else // team score unneeded
-		{
-		if (tourney_type == tourneyType.team) // if team event
-		for(var i=0;i<team_number+1;i++) // loop through teams
-		for(var ii=0;ii<3;ii++)
-		if team_score[i,ii] == undefined
-		   {
-		   calc = false;
-		   break;
-		   }
-		}
-   
-	// make sure entrants entered scores - activates Results Button
-	for(var i=0;i<entr;i++)
-	for(var ii=0;ii<2;ii++)
-	if scores_grid[# ii+1,i] == undefined
-		{
-		calc = false;
-		break;
-		}
-
-	// draw blind/no team toggle
 	var str = pick("Blind/\nNo Teams","Gross Skins/\n Net Skins",!skins_input);
 	
 	draw_rectangle_colour(xx,yy-400,xx+ww,yy-400+hh+hh,c_green,c_green,c_green,c_green,true);
@@ -240,19 +212,19 @@ function draw_teams() {
 	screen_change(screenEnum.homeScreen);
 
 	// results button
-	draw_set_alpha((calc*0.5)+0.5)
-	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,false);
+	var calc = activate_results_button();
+	var alpha = (calc*0.5)+0.5;
 
-	draw_text_centered(xx,yy,"Results",40,ww,hh,c_white);
+	draw_set_alpha(alpha);
+	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,false);
 	draw_set_alpha(1);
 
-	if edit_score == noone && edit_team_score == noone && (select_blind_team == undefined)
-	if calc && scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,true,,!in_popover)
-		{
+	if draw_text_button(xx,yy,"Results",40,ww,hh,c_white,alpha,true,,!in_popover && calc) {
+		
 		season_save = false;
 		scr_calculate_results();
 		}
-    
+
 	// draw popovers
 	draw_edit_score();
 	draw_assign_blind();
@@ -279,4 +251,36 @@ function debug_randomize_scores() {
 	        scores_grid[# 2,i] = irandom_range(33,50); // back nine
 	        }
 	    }
+	}
+	
+function activate_results_button() {
+	
+	var entr = ENTRANT_COUNT;
+	var calc = (entr > 3); // must have at least entrants 
+
+	//// if all players are No Team
+	//if ds_grid_get_sum(scores_grid,19,0,19,entr-1) == entr
+	//calc = true;
+	//else // team score unneeded
+	//	{
+	//	if (tourney_type == tourneyType.team) // if team event
+	//	for(var i=0;i<team_number+1;i++) // loop through teams
+	//	for(var ii=0;ii<3;ii++)
+	//	if team_score[i,ii] == undefined
+	//	   {
+	//	   calc = false;
+	//	   break;
+	//	   }
+	//	}
+   	//
+	//// make sure entrants entered scores - activates Results Button
+	//for(var i=0;i<entr;i++)
+	//for(var ii=0;ii<2;ii++)
+	//if scores_grid[# ii+1,i] == undefined
+	//	{
+	//	calc = false;
+	//	break;
+	//	}
+	
+	return calc;
 	}
