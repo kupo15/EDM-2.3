@@ -36,12 +36,12 @@ function draw_edit_score() {
 	var col = make_colour_rgb(255,227,215);
 	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,col,col,col,col,false);
 
-	draw_text_centered(xx+15,yy+20,"ENTER SCORE:",35,,);
+	draw_text_centered(xx+15,yy+20,"ENTER GROSS SCORE:",35,,);
 
 	if (edit_score >= 0) {
 		
 	    var size = ENTRANT_COUNT;
-	    draw_text_height(xx+370,yy+25,"entrant "+string(edit_score+1)+"/"+string(size),25);
+	    draw_text_height(xx+430,yy+25,"entrant "+string(edit_score+1)+"/"+string(size),25);
 	    }
 	else {// unused
 		
@@ -62,7 +62,7 @@ function draw_edit_score() {
 	draw_set_valign(fa_bottom);
 	draw_text_height(50,yy,"Front 9",height);
 	draw_text_height(170,yy,"Back 9",height);
-	draw_text_height(280,yy,"Adj. Gross",height);
+	draw_text_height(280,yy,"Adjusted 18",height);
 
 	draw_line_pixel(xx,yy,470,1); // line
 
@@ -105,7 +105,7 @@ function draw_edit_score() {
 		draw_text_button(xx,yy-ww-30,"Blind",40,ww,65);	
 			
 	    if (_bl == undefined)
-	    draw_icon(ico_checkbox,entrantRoundStats.noTeam,xx,yy,ww,ww);
+	    draw_icon(ico_checkbox,0,xx,yy,ww,ww);
 	    else
 	    draw_text_centered(xx,yy,"T"+string(_bl+1),45,55,36); // team the blind is assigned to
 			
@@ -239,8 +239,8 @@ exit;
 	draw_set_alpha(1);
 
 
-	if edit_team_add_member
-	   {
+	if edit_team_add_member {
+		
 	   draw_edit_team_list();
 	   exit;
 	   }
@@ -248,25 +248,7 @@ exit;
 	var xx = 600;
 	var yy = 180;
 	var sep = 100;
-	var cent = sep*0.5;
-	var row = -1;
 	var size = ds_list_size(numpad_list);  
-
-	draw_set_halign(fa_center);
-	draw_set_font(fn_keyboard);
-
-
-	draw_line(xx+(1.5*sep),yy-80-50,xx+(1.5*sep),yy-80); // middle line
-
-	draw_set_alpha((!edit_score_pos*0.5)+0.5);
-	draw_rectangle_colour(xx,yy-80-50,xx+(1.5*sep),yy-80,c_white,c_gray,c_gray,c_gray,false); // draw front tab
-	draw_text_transformed(xx+(0.75*sep),yy-80-50+5,"Front",0.5,0.5,0); // front tab
-
-	draw_set_alpha((edit_score_pos*0.5)+0.5);    
-	draw_rectangle_colour(xx+(1.5*sep),yy-80-50,xx+(3*sep),yy-80,c_white,c_gray,c_gray,c_gray,false); // draw back tab
-	draw_text_transformed(xx+(2.25*sep),yy-80-50+5,"Back",0.5,0.5,0); // back tab
-
-	draw_set_alpha(1);
 
 	// front/back
 	for(var i=0;i<2;i++)
@@ -289,94 +271,6 @@ exit;
 			}
 	    }
 
-	draw_rectangle_colour(xx,yy-80,xx+(3*sep),yy+(4*sep),c_white,c_white,c_white,c_white,false); // draw background
-	draw_line(xx,yy,xx+(3*sep),yy);
-	draw_rectangle(xx,yy-80,xx+(3*sep),yy+(4*sep),true); // draw background outline
-
-	for(var i=0;i<9;i++) // row (x)
-	    {    
-	    if (i mod 3) == 0
-	    row ++;
-    
-	//    draw_rectangle_colour(xx+((i mod 3)*sep),yy+(row*sep),xx+(((i mod 3)+1)*sep),yy+((row+1)*sep),c_white,c_white,c_white,c_white,true);
-	    draw_sprite(spr_key_circles,0,xx+7+((i mod 3)*sep),yy+12+(row*sep));  
-  
-	    var num = 7+(i mod 3) - (row*3);
-	    draw_text(xx+cent+((i mod 3)*sep),yy-25+cent+(row*sep),num); // draw numpad numbers
-
-	    if scr_mouse_position_room_released(xx+((i mod 3)*sep),yy+(row*sep),sep,sep,mb_left,true)
-	    if size < 2
-	    ds_list_add(numpad_list,num);
-	    }
-    
-	// draw 0
-	draw_sprite(spr_key_circles,0,xx+sep+7,yy+12+(3*sep));
-	draw_sprite(spr_key_circles,0,xx+7,yy+12+(3*sep));
-	draw_sprite(spr_keyboard,0,xx+5+(2*sep),yy-80+10); // backspace
-	draw_text(xx+cent,yy+20+(3*sep),"+/-"); // draw +/-
-	draw_text(xx+cent+sep,yy+20+(3*sep),"0"); // draw 0
-
-	var ind = 1;
-	if edit_score_pos == 2
-	ind = 2;
-	draw_sprite(spr_keyboard,ind,xx+3+(2*sep),yy+2+(3*sep)); // enter
-
-	// backspace
-	if scr_mouse_position_room_released(xx+(2*sep),yy-80,sep,80,mb_left,true)
-	ds_list_delete(numpad_list,size-1);
-
-	// negate score
-	if scr_mouse_position_room_released(xx,yy+(3*sep),sep,sep,mb_left,true)
-	negate *= -1;
-
-	// add 0
-	if scr_mouse_position_room_released(xx+sep,yy+(3*sep),sep,sep,mb_left,true)
-	if size < 2
-	ds_list_add(numpad_list,0);
-
-
-	// evaluate
-	size = ds_list_size(numpad_list); 
-
-	var num = 0;
-	//var num_sign = 1;
-	if size = 0
-	   {
-	   if edit_team_score != noone // editing team score
-		   {
-		   num = (team_score[edit_team_score,edit_score_pos]);
-	   
-		   if num != undefined
-		   num = abs(num);
-		   }
-	   else // editing individual
-		   {
-		   num = scores_grid[# edit_score_pos+1,edit_score];
-	   
-		   if num != undefined
-		   num = abs(num);
-		   }
-	   }
-	else
-	   {
-	   if size > 0
-	   num += numpad_list[| size-1];
-    
-	   if size > 1
-	   num += numpad_list[| 0] *10;
-   
-	  // num_sign = negate;
-	   }
-   
-	if (edit_score_pos == 2)
-	num = undefined;
-
-	if (num == undefined)
-	var str = "-";
-	else
-	var str = num*negate;
-
-	draw_text(xx+sep,yy-80,str); // draw result
 
 	// Enter Keypad
 	if scr_mouse_position_room(xx+(2*sep),yy+(3*sep),sep,sep,noone,true) && mouse_check_button_released(mb_left)
@@ -453,8 +347,4 @@ exit;
 	   edit_team_score = noone;
 	   negate = 1;
 	   }
-
-
-
-
-}
+	}

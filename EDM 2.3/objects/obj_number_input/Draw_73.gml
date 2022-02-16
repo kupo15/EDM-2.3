@@ -1,5 +1,5 @@
 
-if !active
+if !active || (con_main.select_blind_team != undefined)
 exit;
 
 if !surface_exists(surf) {

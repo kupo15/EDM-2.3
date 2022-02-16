@@ -13,11 +13,14 @@ function draw_assign_blind() {
 	var sep = hsep+20;
 
 	// click out/cancel
-	if android_back || (!scr_mouse_position_room_released(xx,yy,ww,hh,noone,true) && mouse_check_button_released(mb_left) && !global.clicked)
+	if android_back || (!scr_mouse_position_room_released(xx,yy,ww,hh,noone,true,true) && mouse_check_button_released(mb_left) && !global.clicked)
 	   {
 	   select_blind_team = undefined;
 	   exit;
 	   }
+	   
+	// darken back
+	draw_line_pixel(0,0,room_width,room_height,c_black,0.3);
 
 	// background
 	var col = make_colour_rgb(255,227,215);
@@ -36,7 +39,7 @@ function draw_assign_blind() {
 	    draw_rectangle(xx+30+(i*sep),yy+120,xx+30+hsep+(i*sep),yy+120+vsep,true);
 	    draw_text_centered(xx+30+(i*sep),yy+120,i+1,45,hsep,vsep);
     
-	    if !gray_out && scr_mouse_position_room_released(xx+30+(i*sep),yy+120,hsep,hsep,mb_left,true) {
+	    if !gray_out && scr_mouse_position_room_released(xx+30+(i*sep),yy+120,hsep,hsep,mb_left,true,true) {
 			
 	        struct.roundStats.blindTeam = i; // assign blind team
 	        //ds_list_add(blind_list[i],scores_grid[# 0,ind]); // add to the blind list

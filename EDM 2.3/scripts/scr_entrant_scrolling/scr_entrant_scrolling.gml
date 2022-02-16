@@ -4,7 +4,7 @@ function scr_entrant_scrolling(xx,yy,hh) {
 	var disp_count = 12;
 	var size = ds_grid_height(scores_grid);
 
-	if scr_mouse_position_room_pressed(xx,yy,ww,hh,mb_left,true,false)
+	if scr_mouse_position_room_pressed(xx,yy,ww,hh,mb_left,true,false,true)
 	can_edit_score_scroll = true;
 
 	if (can_edit_score_scroll && scr_mouse_position_room(xx,yy,ww,hh,mb_left,true)) || edit_score_scrolling
