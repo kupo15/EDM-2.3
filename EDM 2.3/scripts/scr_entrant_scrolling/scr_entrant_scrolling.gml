@@ -1,13 +1,13 @@
 function scr_entrant_scrolling(xx,yy,hh) {
 	
-	var ww = 500;
+	var ww = 560;
 	var disp_count = 12;
 	var size = ds_grid_height(scores_grid);
 
-	if scr_mouse_position_room_pressed(xx,yy,ww,hh,mb_left,true,false,true)
+	if scr_mouse_position_room_pressed(xx,yy,ww,hh,mb_left,false,false,true)
 	can_edit_score_scroll = true;
 
-	if (can_edit_score_scroll && scr_mouse_position_room(xx,yy,ww,hh,mb_left,true)) || edit_score_scrolling
+	if (can_edit_score_scroll && scr_mouse_position_room(xx,yy,ww,hh,mb_left,false)) || edit_score_scrolling
 	    {
 	    var num = 1/ww;
 	    edit_score_scrolling_offset = clamp(global.mouse_xdist*num,-1,1);
@@ -55,7 +55,4 @@ function scr_entrant_scrolling(xx,yy,hh) {
    
 	if edit_score_scrolling_offset != edit_score_scrolling_offset_end
 	edit_score_scrolling_offset = lerp(edit_score_scrolling_offset,edit_score_scrolling_offset_end,0.2);
-
-
-
-}
+	}

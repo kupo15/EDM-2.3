@@ -117,8 +117,12 @@ function PrizePool() constructor {
 
 function Member(_name,_favorite=false) constructor {
 	
+	var parsedName = parse_name(_name);
+	
 	memberId = MEMBERS_LIST.nextMemberId;
 	name = _name;
+	firstName = parsedName.first;
+	lastName = parsedName.last;
 	favorite = _favorite;
 	recent = -1;
 	archived = false;
@@ -131,6 +135,17 @@ function Member(_name,_favorite=false) constructor {
 	roundHistory = [];
 	
 	MEMBERS_LIST.nextMemberId++;
+	}
+	
+function parse_name(name) {
+	
+	var sepInd = string_pos(" ",name);
+	var lastInd = string_length(name);
+	
+	var _first = string_copy(name,1,sepInd-1);
+	var _last = string_copy(name,sepInd+1,lastInd);
+
+	return {first: _first, last: _last};
 	}
 	
 function RoundStats() constructor {

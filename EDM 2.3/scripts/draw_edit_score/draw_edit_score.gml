@@ -1,3 +1,70 @@
+function draw_edit_score_all() {
+	
+	var xx = 0;
+	var yy = 0;
+	var ww = 920;
+	var hh = room_height;
+
+	// click out / cancel
+	if android_back || (!scr_mouse_position_room(xx,yy,ww+10,hh+10,noone,false) && mouse_check_button_released(mb_left) && !edit_score_scrolling)
+	    {
+	    edit_score = noone;
+	    edit_team_score = noone;
+	    edit_score_pos = 0;
+	    edit_team_add_member = false;
+	    ds_list_clear(numpad_list);
+	    exit;
+	    }
+		
+	draw_set_color(c_black);
+	draw_set_alpha(0.5);
+	draw_rectangle(0,0,room_width,room_height,false);
+	draw_set_alpha(1);
+    
+	var col = make_colour_rgb(255,227,215);
+	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,col,col,col,col,false);
+
+	draw_text_centered(xx+15,yy+20,"ENTER GROSS SCORE:",35,,);
+	
+	scr_entrant_scrolling(xx,yy,hh);
+
+	// number of teams
+	var size = ENTRANT_COUNT;
+	draw_text_height(xx+430,yy+25,"team "+string(edit_score+1)+"/"+string(size),25);
+
+	// submit button
+	draw_rectangle(xx+150,yy+hh-110,xx+150+220,yy+hh-10,true);
+
+	var col = make_colour_rgb(69,117,228);
+	var submit = draw_text_button(xx+150,yy+hh-110,"SUBMIT",45,220,100,col);
+
+	// headers
+	var yy = 180;
+	var height = 30;
+	
+	draw_set_valign(fa_bottom);
+	draw_text_height(335,yy,"Front",height);
+	draw_text_height(410,yy,"Back",height);
+	draw_text_height(475,yy,"Adj. 18",height);
+
+	draw_line_pixel(xx,yy,560,1); // line
+
+	// create surface
+	if !surface_exists(surface)
+	surface = surface_create(room_width,room_height);
+
+	surface_set_target(surface);
+	draw_clear_alpha(c_black,0);
+
+	// edit player's score
+	draw_edit_score_player_popup();
+    
+	// draw surface
+	surface_reset_target();
+	draw_surface(surface,0,0);
+	}
+
+
 function draw_edit_score_player_popup() {
 	
 	var xx = 0;
@@ -12,17 +79,33 @@ function draw_edit_score_player_popup() {
 		// draw player's name
 	    draw_text(xx+20+xoff,130,entrantName);
 	    }
-			
-	// draw front/back/adj gross
-	var entrantStruct = entrant_list[edit_score];
-	var entrantRoundStats = entrantStruct.roundStats;
+		
+	// cutoff 
+	gpu_set_blendmode(bm_subtract);
+	draw_rectangle(520,0,room_width,room_height,false);
+	gpu_set_blendmode(bm_normal);
+	
+	// draw list of members
 	var height = 35;
 	var sep = 45;
+	var list = TEAM_LIST[0].members;
+	for(var i=0;i<array_length(list);i++)
+		{
+		var memberData = list[i];
+		var name = memberData.name;
+		
+		var entrantRoundStats = memberData.roundStats;
+			
+		// member name
+		draw_text_centered(15,yy+(i*sep),string(i+1)+". "+name,height,,sep*1.2,,,);
+		
+		// member scores
+		draw_text_button(335,yy+(i*sep),draw_value(entrantRoundStats.grossFront,"-"),height,60,sep,,,,true);
+		draw_text_button(410,yy+(i*sep),draw_value(entrantRoundStats.grossBack,"-"),height,55,sep,,,,true);
+		draw_text_button(475,yy+(i*sep),draw_value(entrantRoundStats.grossAdj,"-"),height,85,sep,,,,true);
+		}
 
-	draw_text_button(45,yy,draw_value(entrantRoundStats.grossFront,"-"),height,85,sep,,,,true);
-	draw_text_button(170,yy,draw_value(entrantRoundStats.grossBack,"-"),height,85,sep,,,,true);
-	draw_text_button(280,yy,draw_value(entrantRoundStats.grossAdj,"-"),height,120,sep,,,,true);
-
+	exit;
 	// draw blind
 	var xx = 100;
 	var yy = 380;
@@ -137,6 +220,9 @@ function draw_edit_score() {
 	if (edit_score == noone) && (edit_team_score == noone)
 	exit;
 
+draw_edit_score_all();
+exit;
+
 	var xx = 0;
 	var yy = 0;
 	var ww = 920;
@@ -158,12 +244,12 @@ function draw_edit_score() {
 	draw_rectangle(0,0,room_width,room_height,false);
 	draw_set_alpha(1);
     
-	scr_entrant_scrolling(xx,yy,hh);
-
 	var col = make_colour_rgb(255,227,215);
 	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,col,col,col,col,false);
 
 	draw_text_centered(xx+15,yy+20,"ENTER GROSS SCORE:",35,,);
+
+	scr_entrant_scrolling(xx,yy,hh);
 
 	if (edit_score >= 0) {
 		
@@ -214,7 +300,6 @@ function draw_edit_score() {
 	// draw surface
 	surface_reset_target();
 	draw_surface(surface,0,0);
-	db(global.entryEnum)
 exit;
 	for(var i=0;i<2;i++)
 	if scr_mouse_position_room_pressed(xx+20+(i*180),yy+30+80+20,150,100,mb_left,true,true)

@@ -255,8 +255,7 @@ function debug_randomize_scores() {
 	
 function activate_results_button() {
 	
-	var entr = ENTRANT_COUNT;
-	var calc = (entr > 3); // must have at least entrants 
+	var calc = (ENTRANT_COUNT > 3); // must have at least entrants 
 
 	//// if all players are No Team
 	//if ds_grid_get_sum(scores_grid,19,0,19,entr-1) == entr

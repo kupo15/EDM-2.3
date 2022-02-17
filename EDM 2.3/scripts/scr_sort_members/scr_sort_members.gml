@@ -27,8 +27,8 @@ function scr_sort_members(arr,sortRecent=true) {
 		array_push(arr,entry);
 		}
 			
-	array_sort_struct(arr,"name",true);
-	array_sort_struct(tempFavorite,"name",false);
+	array_sort_struct(arr,"lastName",true);
+	array_sort_struct(tempFavorite,"lastName",false);
 	array_sort_struct(tempRecent,"recent",true);
 	
 	// add recent
