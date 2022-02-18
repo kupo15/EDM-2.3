@@ -46,7 +46,7 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 		// gross front/back
 		var fr = pick("-",round_stats.grossFront,round_stats.grossFront != "");
 		var bk = pick("-",round_stats.grossBack,round_stats.grossBack!= "");
-		var adjGross = pick("-",round_stats.grossAdj,round_stats.grossBack!= "");
+		var adjGross = pick("-",round_stats.grossAdj,round_stats.grossAdj!= "");
 		
 	    draw_text_centered(xx+400,team_yy+(i*ysep),fr,30,43,ysep); // front
 	    draw_text_centered(xx+445,team_yy+(i*ysep),bk,30,36,ysep); // back
