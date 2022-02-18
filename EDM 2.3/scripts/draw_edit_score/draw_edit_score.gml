@@ -32,19 +32,29 @@ function draw_edit_score_all() {
 	draw_text_height(xx+430,yy+25,"team "+string(edit_score+1)+"/"+string(size),25);
 
 	// submit button
+	var b_ww = 220;
+	var b_hh = 90;
+	var b_xx = xx+150;
+	var b_yy = yy+hh-10-b_hh;
 	var col = make_colour_rgb(69,117,228);
-	var submit = draw_text_button(xx+150,yy+hh-110,"SUBMIT",45,220,100,col,,,true);
-	draw_rectangle(xx+150,yy+hh-110,xx+150+220,yy+hh-10,true);
+	var submit = draw_text_button(b_xx,b_yy,"SUBMIT",45,220,b_hh,col,,,true);
+	
+	draw_rectangle(b_xx,b_yy,b_xx+b_ww,b_yy+b_hh,true);
 
 	// headers
 	var yy = 180;
 	var height = 25;
-	
+	var c_col = make_color_rgb(98,145,242);
+
+	draw_text_centered(30,yy-height*1.8,"Team "+string(team_index_entry+1),height*1.8,,height*2,c_col);
 	draw_text_centered(340,yy-height,"Front",height,70);
 	draw_text_centered(410,yy-height,"Back",height,70);
 	draw_text_centered(480,yy-height,"Adj. 18",height,70);
 
 	draw_line_pixel(xx,yy,560,1); // line
+	
+
+	//draw_set_valign(fa_bottom);
 
 	// create surface
 	if !surface_exists(surface)
@@ -86,7 +96,7 @@ function draw_edit_score_player_popup() {
 		var xoff = (edit_score_scrolling_offset*500)+(i*500);
 			
 		// draw player's name
-	    draw_text_centered(xx+20+xoff,140-height,entrantName,height);
+	    draw_text_centered(xx+20+xoff,130-height,entrantName,height);
 	    }
 		
 	// cutoff 
@@ -140,9 +150,31 @@ function draw_edit_score_player_popup() {
 	draw_icon(,,0,yy+(edit_score*sep),560,sep,c_white,0.7);
 	
 	// draw highlight entry
-	var xoff = (clamp(edit_score_pos,entryType.memberFront,entryType.memberAdjGross)-entryType.memberFront)*70;
-	draw_icon(,,340+xoff,yy+(edit_score*sep),70,sep,c_blue,0.3);
-
+	if (edit_score_pos != entryType.memberEntryNext) {
+		
+		var xoff = (clamp(edit_score_pos,entryType.memberFront,entryType.memberAdjGross)-entryType.memberFront)*70;
+		draw_icon(,,340+xoff,yy+(edit_score*sep),70,sep,c_blue,0.3);
+		}
+		
+	// draw Next Team button
+	var xx = 350;
+	var yy = 440;
+	var ww = 200;
+	var height = 30;
+	var hh = height*1.5;
+	var alpha = 1;
+	
+	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
+	if draw_text_button(xx,yy,"Next Team",height,ww,hh,,alpha,,true) {
+		
+		edit_score_pos = entryType.memberEntryNext;
+		entry_scores_individual_submit();
+		}
+		
+	// highlight
+	if (edit_score_pos == entryType.memberEntryNext) 
+	draw_icon(,,xx,yy,ww,hh,c_blue,0.3);
+	
 	exit;
 	// draw blind
 	var xx = 100;
@@ -308,8 +340,9 @@ function draw_edit_score() {
 	// headers
 	var yy = 180;
 	var height = 30;
-	
+
 	draw_set_valign(fa_bottom);
+	draw_text_height(15,yy,"Team",height);
 	draw_text_height(50,yy,"Front 9",height);
 	draw_text_height(170,yy,"Back 9",height);
 	draw_text_height(280,yy,"Adjusted 18",height);
