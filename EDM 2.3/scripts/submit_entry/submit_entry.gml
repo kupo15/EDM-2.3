@@ -21,8 +21,11 @@ enum entryType {
 
 function submit_entry(deactivate=false) {
 
-	active = !deactivate;
-	submitedString = entryString;
+	with obj_number_input {
+		
+		active = !deactivate;
+		submitedString = entryString;
+		}
 	}
 	
 function negate_entry() {

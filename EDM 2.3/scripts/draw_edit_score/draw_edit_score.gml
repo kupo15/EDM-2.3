@@ -32,10 +32,9 @@ function draw_edit_score_all() {
 	draw_text_height(xx+430,yy+25,"team "+string(edit_score+1)+"/"+string(size),25);
 
 	// submit button
-	draw_rectangle(xx+150,yy+hh-110,xx+150+220,yy+hh-10,true);
-
 	var col = make_colour_rgb(69,117,228);
-	var submit = draw_text_button(xx+150,yy+hh-110,"SUBMIT",45,220,100,col);
+	var submit = draw_text_button(xx+150,yy+hh-110,"SUBMIT",45,220,100,col,,,true);
+	draw_rectangle(xx+150,yy+hh-110,xx+150+220,yy+hh-10,true);
 
 	// headers
 	var yy = 180;
@@ -59,6 +58,18 @@ function draw_edit_score_all() {
     
 	// draw surface
 	draw_surface(surface,0,0);
+	
+	// submit button
+	if submit {
+
+		entry_scores_individual_submit(obj_number_input.entryString);
+		obj_number_input.active = false;
+		
+		edit_score = noone;
+	    edit_team_score = noone;
+	    edit_score_pos = entryType.memberFront;
+	    edit_team_add_member = false;
+		}
 	}
 
 
@@ -247,8 +258,8 @@ function draw_edit_score() {
 	if (edit_score == noone) && (edit_team_score == noone)
 	exit;
 
-draw_edit_score_all();
-exit;
+	draw_edit_score_all();
+	exit;
 
 	var xx = 0;
 	var yy = 0;
@@ -328,123 +339,15 @@ exit;
 	draw_surface(surface,0,0);
 	
 exit;
-	for(var i=0;i<2;i++)
-	if scr_mouse_position_room_pressed(xx+20+(i*180),yy+30+80+20,150,100,mb_left,true,true)
-		{
-		edit_score_pos = i;
-	
-		if edit_team_score != noone // if editing team score
-			{
-			if team_score[edit_team_score,edit_score_pos] != undefined 
-			&& sign(team_score[edit_team_score,edit_score_pos]) != 0
-			negate = sign(team_score[edit_team_score,edit_score_pos]);
-			}
-		else // editing individual
-			{
-			if scores_grid[# edit_score_pos+1,edit_score] != undefined
-			&& sign(scores_grid[# edit_score_pos+1,edit_score]) != 0
-			negate = sign(scores_grid[# edit_score_pos+1,edit_score]);
-			}
-		}
     
 	// underline highlight
 	if edit_score_highlight_pos != edit_score_pos
 	edit_score_highlight_pos = lerp(edit_score_highlight_pos,edit_score_pos,0.2);
 
-	draw_set_alpha(0.7);
-	draw_line_width_colour(xx+40+(edit_score_highlight_pos*180),yy+30+30+80+29,xx+40+90+(edit_score_highlight_pos*180),yy+30+30+80+29,7,c_yellow,c_yellow);
-	draw_set_alpha(1);
-
-
 	if edit_team_add_member {
 		
 	   draw_edit_team_list();
 	   exit;
-	   }
-
-	var xx = 600;
-	var yy = 180;
-	var sep = 100;
-	var size = ds_list_size(numpad_list);  
-
-	// front/back
-	for(var i=0;i<2;i++)
-	if scr_mouse_position_room_released(xx+(i*1.5*sep),yy-80-50,1.5*sep,50,mb_left,true)
-	    {
-	    ds_list_clear(numpad_list);
-	    edit_score_pos = i;
-	
-		if edit_team_score != noone // editing team score
-			{
-			if team_score[edit_team_score,edit_score_pos] != undefined 
-			&& sign(team_score[edit_team_score,edit_score_pos]) != 0
-			negate = sign(team_score[edit_team_score,edit_score_pos]);
-			}
-		else // editing individual
-			{
-			if scores_grid[# edit_score_pos+1,edit_score] != undefined
-			&& sign(scores_grid[# edit_score_pos+1,edit_score]) != 0
-			negate = sign(scores_grid[# edit_score_pos+1,edit_score]);
-			}
-	    }
-
-
-	// Enter Keypad
-	if scr_mouse_position_room(xx+(2*sep),yy+(3*sep),sep,sep,noone,true) && mouse_check_button_released(mb_left)
-	   {
-	   var sfx = irandom(2);
-	   audio_play_sound(asset_get_index("snd_tap"+string(sfx)),0,false);
-   
-	   if edit_team_score != noone // team score
-	       {
-	       if num != undefined
-	       team_score[edit_team_score,edit_score_pos] = num*negate;
-       
-	       edit_score_pos ++;
-       
-	       if edit_score_pos = 3
-	          {
-	          edit_team_score ++; // advance to next team
-          
-	          edit_team_offset = 0;
-	          for(var tt=0;tt<edit_team_score;tt++)
-	          edit_team_offset += ds_list_size(team_list[tt]);
-
-	          if edit_team_score <= team_number
-	          edit_score_pos = entryType.memberFront; // reset position
-	          }
-		   else if team_score[edit_team_score,edit_score_pos] != undefined
-			   {
-			   if sign(team_score[edit_team_score,edit_score_pos]) != 0
-			   negate = sign(team_score[edit_team_score,edit_score_pos]);
-			   }
-	       }
-	   }
-   
-	// Submit Button
-	if submit
-	    {
-	    if num != undefined
-	        {
-	        if edit_team_score != noone // team score
-	        team_score[edit_team_score,edit_score_pos] = num*negate;
-	        else
-	        scores_grid[# edit_score_pos+1,edit_score] = num*negate;
-	        }
-       
-	    edit_score_pos = 3;
-	    }
-
-	// Save Score
-	if edit_score_pos = 3
-	   {
-	   mouse_clear(mb_left);
-	   ds_list_clear(numpad_list);
-	   edit_score_pos = entryType.memberFront;
-	   edit_score_highlight_pos = 0;
-	   edit_score = noone;
-	   edit_team_score = noone;
-	   negate = 1;
 	   }
 	}
 	
