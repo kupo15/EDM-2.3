@@ -36,7 +36,7 @@ function scr_mouse_position_room_pressed(x_left,y_top,ww,hh,button,highlight,sou
 function scr_mouse_position_room_released(x_left,y_top,ww,hh,button,highlight,isKeypad=false,can_click=true) {
 
 	if global.clicked || (!isKeypad && KEYPAD_ACTIVE) || !can_click
-	exit;
+	return false;
 
 	var mx = mouse_x;
 	var my = mouse_y;
@@ -52,14 +52,14 @@ function scr_mouse_position_room_released(x_left,y_top,ww,hh,button,highlight,is
 	        }
            
 	    if (mouse_check_button_released(button) && (abs(global.mouse_ydist) < 15) && (abs(global.mouse_xdist) < 30) && !con_main.scrolling && !con_main.results_scrolling && !con_main.edit_score_scrolling) || (button == noone) {
-			
+
 	        if (button != noone) {
 				
 				var num = irandom(2);			
 		        audio_play_sound(asset_get_index("snd_tap"+string(num)),0,false);
 		        global.clicked = true;
 				}
-			
+				
 	        return true;
 	        }
 	    }

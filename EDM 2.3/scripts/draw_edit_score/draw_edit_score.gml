@@ -97,24 +97,27 @@ function draw_edit_score_player_popup() {
 		// member name
 		draw_text_centered(15,yy+(i*sep),string(i+1)+". "+name,height,,sep*1.2,,,);
 		
-		if draw_icon_click(,,0,yy+(i*sep),560,sep,,,false,,true)
+		if draw_icon_click(,,0,yy+(i*sep),340,sep,,,false,,true)
 		edit_score = i;
 		
 		// member scores
 		if draw_text_button(340,yy+(i*sep),draw_value(entrantRoundStats.grossFront,"-"),height,70,sep,,,,true) {
 			
+			edit_score = i;
 			edit_score_pos = entryType.memberFront;
 			keypad_set_value(edit_score_pos,entrantRoundStats.grossFront);
 			}
 		
 		if draw_text_button(410,yy+(i*sep),draw_value(entrantRoundStats.grossBack,"-"),height,70,sep,,,,true) {
-			
+
+			edit_score = i;
 			edit_score_pos = entryType.memberBack;
 			keypad_set_value(edit_score_pos,entrantRoundStats.grossBack);
 			}
 		
 		if draw_text_button(480,yy+(i*sep),draw_value(entrantRoundStats.grossAdj,"-"),height,70,sep,,,,true) {
 			
+			edit_score = i;
 			edit_score_pos = entryType.memberAdjGross;
 			keypad_set_value(edit_score_pos,entrantRoundStats.grossAdj);
 			}
@@ -466,40 +469,47 @@ function entry_scores_individual_submit(entry) {
 								   break;
 									
 		case entryType.memberAdjGross: entrantRoundStats.grossAdj = entry;
-									   edit_score_pos++;
-									   keypad_set_value(edit_score_pos);
+									   edit_score++; // advance to next player
+									   edit_score_pos = entryType.memberFront;
+									   entry_next_entrant(list,teamSize);
 									   break;
 		
-		case entryType.memberEntryNext:
-		
-				// advance to next player
-				edit_score++;
-				edit_score_pos = entryType.memberFront;
-
-				// end of team list
-				if (edit_score == teamSize) {
+		case entryType.memberEntryNext: edit_score = 0; // start at first member
+										edit_score_pos = entryType.memberFront;
+										team_index_entry++; // move to next team
+										
+										// reaches end exit
+										if (team_index_entry == team_number+1) {
 				
-					edit_score = 0; // start at first member
-					team_index_entry++; // move to next team
-					}
-			
-				// reaches end exit
-				if (team_index_entry == team_number+1) {
-				
-					edit_score = noone;
-				    edit_team_score = noone;
-				    edit_team_add_member = false;
-					team_index_entry = undefined;
+											edit_score = noone;
+											edit_team_score = noone;
+											edit_team_add_member = false;
+											team_index_entry = undefined;
 					
-					with obj_number_input
-					active = false;
-					}
-					
-				// advance to next position
-				var entrantStruct = list[edit_score];
-				var entrantRoundStats = entrantStruct.roundStats;
-				
-				keypad_set_value(edit_score_pos,entrantRoundStats.grossFront);
-				break;
+											with obj_number_input
+											active = false;
+											
+											break;
+											}
+										
+										entry_next_entrant(list,teamSize);
+										break;
 		}
+	}
+
+function entry_next_entrant(list,teamSize) {
+
+	// end of team list
+	if (edit_score == teamSize) {
+		
+		edit_score--;
+		edit_score_pos = entryType.memberEntryNext;
+		exit;
+		}
+			
+	// advance to next position
+	var entrantStruct = list[edit_score];
+	var entrantRoundStats = entrantStruct.roundStats;
+				
+	keypad_set_value(edit_score_pos,entrantRoundStats.grossFront);
 	}
