@@ -23,7 +23,7 @@ function scr_entrant_scrolling(xx,yy,hh) {
 	   can_edit_score_scroll = false;
 	   edit_score_scrolling = false;
 	   ds_list_clear(numpad_list);
-	   edit_score_pos = 0;
+	   edit_score_pos = entryType.memberFront;
    
 	   if edit_score_scrolling_offset > 0.3
 	   edit_score_scrolling_offset_end = 1;

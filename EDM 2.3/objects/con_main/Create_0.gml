@@ -122,6 +122,7 @@ edit_score = noone;
 edit_team_score = noone;
 
 edit_score_pos = entryType.memberFront; // which score you are entering
+team_index_entry = undefined;
 team_index = 0; // the team selected to add to
 team_number = -1; // number of teams entered
 teams_max = 6; // the max number of teams to account for

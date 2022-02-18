@@ -10,9 +10,8 @@ function draw_edit_score_all() {
 	    {
 	    edit_score = noone;
 	    edit_team_score = noone;
-	    edit_score_pos = 0;
+	    edit_score_pos = entryType.memberFront;
 	    edit_team_add_member = false;
-	    ds_list_clear(numpad_list);
 	    exit;
 	    }
 		
@@ -40,12 +39,11 @@ function draw_edit_score_all() {
 
 	// headers
 	var yy = 180;
-	var height = 30;
+	var height = 25;
 	
-	draw_set_valign(fa_bottom);
-	draw_text_height(335,yy,"Front",height);
-	draw_text_height(410,yy,"Back",height);
-	draw_text_height(475,yy,"Adj. 18",height);
+	draw_text_centered(340,yy-height,"Front",height,70);
+	draw_text_centered(410,yy-height,"Back",height,70);
+	draw_text_centered(480,yy-height,"Adj. 18",height,70);
 
 	draw_line_pixel(xx,yy,560,1); // line
 
@@ -60,7 +58,6 @@ function draw_edit_score_all() {
 	draw_edit_score_player_popup();
     
 	// draw surface
-	surface_reset_target();
 	draw_surface(surface,0,0);
 	}
 
@@ -70,6 +67,7 @@ function draw_edit_score_player_popup() {
 	var xx = 0;
 	var yy = 180;
 	var size = array_length(entrant_list);
+	var height = 70;
 	for(var i=-1;i<2;i++) {
 			
 	    var ind = (edit_score+i+edit_score_offset+size) mod size;
@@ -77,7 +75,7 @@ function draw_edit_score_player_popup() {
 		var xoff = (edit_score_scrolling_offset*500)+(i*500);
 			
 		// draw player's name
-	    draw_text(xx+20+xoff,130,entrantName);
+	    draw_text_centered(xx+20+xoff,140-height,entrantName,height);
 	    }
 		
 	// cutoff 
@@ -87,8 +85,8 @@ function draw_edit_score_player_popup() {
 	
 	// draw list of members
 	var height = 35;
-	var sep = 45;
-	var list = TEAM_LIST[0].members;
+	var sep = 50;
+	var list = TEAM_LIST[team_index_entry].members;
 	for(var i=0;i<array_length(list);i++)
 		{
 		var memberData = list[i];
@@ -99,11 +97,37 @@ function draw_edit_score_player_popup() {
 		// member name
 		draw_text_centered(15,yy+(i*sep),string(i+1)+". "+name,height,,sep*1.2,,,);
 		
+		if draw_icon_click(,,0,yy+(i*sep),560,sep,,,false,,true)
+		edit_score = i;
+		
 		// member scores
-		draw_text_button(335,yy+(i*sep),draw_value(entrantRoundStats.grossFront,"-"),height,60,sep,,,,true);
-		draw_text_button(410,yy+(i*sep),draw_value(entrantRoundStats.grossBack,"-"),height,55,sep,,,,true);
-		draw_text_button(475,yy+(i*sep),draw_value(entrantRoundStats.grossAdj,"-"),height,85,sep,,,,true);
+		if draw_text_button(340,yy+(i*sep),draw_value(entrantRoundStats.grossFront,"-"),height,70,sep,,,,true) {
+			
+			edit_score_pos = entryType.memberFront;
+			keypad_set_value(edit_score_pos,entrantRoundStats.grossFront);
+			}
+		
+		if draw_text_button(410,yy+(i*sep),draw_value(entrantRoundStats.grossBack,"-"),height,70,sep,,,,true) {
+			
+			edit_score_pos = entryType.memberBack;
+			keypad_set_value(edit_score_pos,entrantRoundStats.grossBack);
+			}
+		
+		if draw_text_button(480,yy+(i*sep),draw_value(entrantRoundStats.grossAdj,"-"),height,70,sep,,,,true) {
+			
+			edit_score_pos = entryType.memberAdjGross;
+			keypad_set_value(edit_score_pos,entrantRoundStats.grossAdj);
+			}
 		}
+
+	surface_reset_target();
+		
+	// draw highlight member
+	draw_icon(,,0,yy+(edit_score*sep),560,sep,c_white,0.7);
+	
+	// draw highlight entry
+	var xoff = (clamp(edit_score_pos,entryType.memberFront,entryType.memberAdjGross)-entryType.memberFront)*70;
+	draw_icon(,,340+xoff,yy+(edit_score*sep),70,sep,c_blue,0.3);
 
 	exit;
 	// draw blind
@@ -233,9 +257,8 @@ exit;
 	    {
 	    edit_score = noone;
 	    edit_team_score = noone;
-	    edit_score_pos = 0;
+	    edit_score_pos = entryType.memberFront;
 	    edit_team_add_member = false;
-	    ds_list_clear(numpad_list);
 	    exit;
 	    }
 		
@@ -300,6 +323,7 @@ exit;
 	// draw surface
 	surface_reset_target();
 	draw_surface(surface,0,0);
+	
 exit;
 	for(var i=0;i<2;i++)
 	if scr_mouse_position_room_pressed(xx+20+(i*180),yy+30+80+20,150,100,mb_left,true,true)
@@ -384,7 +408,7 @@ exit;
 	          edit_team_offset += ds_list_size(team_list[tt]);
 
 	          if edit_team_score <= team_number
-	          edit_score_pos = 0; // reset position
+	          edit_score_pos = entryType.memberFront; // reset position
 	          }
 		   else if team_score[edit_team_score,edit_score_pos] != undefined
 			   {
@@ -413,7 +437,7 @@ exit;
 	   {
 	   mouse_clear(mb_left);
 	   ds_list_clear(numpad_list);
-	   edit_score_pos = 0;
+	   edit_score_pos = entryType.memberFront;
 	   edit_score_highlight_pos = 0;
 	   edit_score = noone;
 	   edit_team_score = noone;
@@ -423,29 +447,59 @@ exit;
 	
 function entry_scores_individual_submit(entry) {
 	
-	var entrantStruct = entrant_list[edit_score];
+	var list = TEAM_LIST[team_index_entry].members;
+	var teamSize = array_length(list);
+	var entrantStruct = list[edit_score];
 	var entrantRoundStats = entrantStruct.roundStats;
 
 	// save score
 	switch edit_score_pos
 		{
-		case entryType.memberFront: entrantRoundStats.grossFront = entry; break;	
-		case entryType.memberBack: entrantRoundStats.grossBack = entry; break;	
-		case entryType.memberAdjGross: entrantRoundStats.grossAdj = entry; break;
+		case entryType.memberFront: entrantRoundStats.grossFront = entry;
+									edit_score_pos++;
+									keypad_set_value(edit_score_pos,entrantRoundStats.grossBack);
+									break;
+									
+		case entryType.memberBack: entrantRoundStats.grossBack = entry;
+								   edit_score_pos++;
+								   keypad_set_value(edit_score_pos,entrantRoundStats.grossAdj);
+								   break;
+									
+		case entryType.memberAdjGross: entrantRoundStats.grossAdj = entry;
+									   edit_score_pos++;
+									   keypad_set_value(edit_score_pos);
+									   break;
 		
 		case entryType.memberEntryNext:
 		
-			// advance to next player
-			edit_score++;
-			  
-			// reset position
-			if (edit_score < ENTRANT_COUNT)
-			edit_score_pos = entryType.memberFront;
+				// advance to next player
+				edit_score++;
+				edit_score_pos = entryType.memberFront;
+
+				// end of team list
+				if (edit_score == teamSize) {
+				
+					edit_score = 0; // start at first member
+					team_index_entry++; // move to next team
+					}
 			
-			break;
+				// reaches end exit
+				if (team_index_entry == team_number+1) {
+				
+					edit_score = noone;
+				    edit_team_score = noone;
+				    edit_team_add_member = false;
+					team_index_entry = undefined;
+					
+					with obj_number_input
+					active = false;
+					}
+					
+				// advance to next position
+				var entrantStruct = list[edit_score];
+				var entrantRoundStats = entrantStruct.roundStats;
+				
+				keypad_set_value(edit_score_pos,entrantRoundStats.grossFront);
+				break;
 		}
-	
-	// advance to next position
-	edit_score_pos++;
-	keypad_set_value(edit_score_pos);
 	}

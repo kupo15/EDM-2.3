@@ -17,8 +17,8 @@ function draw_team_header(xx,yy,ysep,_team,in_popover) {
 	
 	var height = 35;
 	
-	draw_text_height(xx+400,yy,"F/B/",height,);
-	draw_text_height(xx+480,yy,"Adj.\nGross",height*1.2);
+	draw_text_height(xx+410,yy,"F | B|",height*0.9,);
+	draw_text_height(xx+485,yy, "Adj.\nGross",height*1.2);
 	
 	var c1_str = pick("Gross Skins","Blind",!skins_input);
 	var c2_str = pick("Net Skins","No Team",!skins_input);
@@ -38,7 +38,7 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 	    {
 		var struct = list[i];
 		var round_stats = struct.roundStats;
-		var height = 55;
+		var height = 50;
         
 		// draw name
 		draw_member_name(xx+5,team_yy+(i*ysep),struct,height,,ysep)
@@ -47,18 +47,20 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 		var fr = pick("-",round_stats.grossFront,round_stats.grossFront != "");
 		var bk = pick("-",round_stats.grossBack,round_stats.grossBack!= "");
 		var adjGross = pick("-",round_stats.grossAdj,round_stats.grossBack!= "");
-	    var scr = fr+"/"+bk+"/"+adjGross;
 		
-	    draw_text_centered(xx+375,team_yy+(i*ysep),scr,30,145,ysep);
+	    draw_text_centered(xx+400,team_yy+(i*ysep),fr,30,43,ysep); // front
+	    draw_text_centered(xx+445,team_yy+(i*ysep),bk,30,36,ysep); // back
+	    draw_text_centered(xx+486,team_yy+(i*ysep),adjGross,30,38,ysep); // adj 18
 		
 		// edit individual score
 		if scr_mouse_position_room_released(xx,team_yy+(i*ysep),535,ysep,mb_left,true,,can_edit) {
 			
-	        edit_score = 0;   
+	        edit_score = i; // member index
+			team_index_entry = teamInd; // team index
 	        edit_score_scrolling_end = edit_score;
 	        edit_team_score = noone;
 			
-			init_keypad(entryType.memberFront,entrant_list[edit_score].roundStats.grossFront,,560,,0,0);
+			init_keypad(entryType.memberFront,round_stats.grossFront,,560,,0,0);
 	        mouse_clear(mb_left);
 	        }
 	

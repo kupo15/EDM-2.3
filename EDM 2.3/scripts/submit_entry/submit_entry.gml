@@ -67,9 +67,10 @@ function retrieve_keypad() {
 			
 			case entryType.memberFront:
 			case entryType.memberBack:
-			case entryType.memberAdjGross: entry_scores_individual_submit(entry); 
-										   reset = false; 
-										   break;
+			case entryType.memberAdjGross:
+			case entryType.memberEntryNext: entry_scores_individual_submit(entry); 
+										    reset = false; 
+										    break;
 			}    			
 			
 		// reset after applying
