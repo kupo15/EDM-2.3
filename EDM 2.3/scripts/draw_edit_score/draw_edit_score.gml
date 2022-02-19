@@ -25,11 +25,11 @@ function draw_edit_score_all() {
 
 	draw_text_centered(xx+15,yy+20,"ENTER GROSS SCORE:",35,,);
 	
-	scr_entrant_scrolling(xx,yy,hh);
+	//scr_entrant_scrolling(xx,yy,hh);
 
 	// number of teams
-	var size = ENTRANT_COUNT;
-	draw_text_height(xx+430,yy+25,"team "+string(edit_score+1)+"/"+string(size),25);
+	var size = team_number+1;
+	draw_text_height(xx+430,yy+25,"team "+string(team_index_entry+1)+"/"+string(size),25);
 
 	// submit button
 	var b_ww = 220;
@@ -87,13 +87,14 @@ function draw_edit_score_player_popup() {
 	
 	var xx = 0;
 	var yy = 180;
-	var size = array_length(entrant_list);
+	var list = TEAM_LIST[team_index_entry].members;
+	var size = array_length(list);
 	var height = 70;
 	for(var i=-1;i<2;i++) {
 			
 	    var ind = (edit_score+i+edit_score_offset+size) mod size;
-		var entrantName = get_entrant_by_id(ind);
 		var xoff = (edit_score_scrolling_offset*500)+(i*500);
+		var entrantName = list[ind].name; // get_entrant_by_id(ind);
 			
 		// draw player's name
 	    draw_text_centered(xx+20+xoff,130-height,entrantName,height);
@@ -107,8 +108,7 @@ function draw_edit_score_player_popup() {
 	// draw list of members
 	var height = 35;
 	var sep = 50;
-	var list = TEAM_LIST[team_index_entry].members;
-	for(var i=0;i<array_length(list);i++)
+	for(var i=0;i<size;i++)
 		{
 		var memberData = list[i];
 		var name = memberData.name;
