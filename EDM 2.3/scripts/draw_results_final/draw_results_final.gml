@@ -26,28 +26,6 @@ function draw_results_final() {
 	yy += ysep;
 	scr_results_final_scrolling(xx,yy,ww);
 
-	if !surface_exists(surface)
-	surface = surface_create(room_width,room_height);
-
-	surface_set_target(surface);
-	draw_clear_alpha(c_black,0);
-
-	var team_size = 1;
-	for(var i=0;i<team_number+1;i++)
-	    {
-	    var off_pos = i-results_final_offset;
-	    team_size += ds_list_size(team_list[i])-1;
-    
-	    draw_set_halign(fa_center);
-	    var col = make_color_rgb(98,145,242);
-		var team_str = "T\ne\na\nm\n\n";
-		if tourney_type
-		team_str = "G\nr\no\nu\np\n\n";
-	    draw_text_ext_colour(xx-25,yy+5+((team_size-4)*ysep)+(off_pos*ysep)+fn_off-5,(string(team_str)+string(i+1)),17,-1,col,col,col,col,1); // team number
-       
-	    draw_line(0+(0*room_width)-(results_screen*room_width),yy+5+(team_size*ysep)+(off_pos*ysep),xx+ww,yy+5+(team_size*ysep)+(off_pos*ysep));
-	    }
-
 	// calculate entry fee
 	var _entry = 0;
 	for(var i=0;i<ds_grid_height(scores_grid);i++) // loop through grid
@@ -289,9 +267,12 @@ function draw_results_final_content(xx,yy) {
 			draw_text_centered(985,yy+yoff,string(winningStruct.netWinning)+" pesos",height,,sep,col);
 			
 			// line separator
-			draw_line_pixel(xx+20,yy+yoff,930,1,c_black,0.3);
-			}
+			var col = pick(c_black,make_color_rgb(98,145,242),j+1==size);
+			var alpha = pick(0.3,0.9,j+1==size);
 			
+			draw_line_pixel(xx+20,yy+yoff,930,1,col,alpha);
+			}
+		
 		teamOff += (size*sep);
 		}
 		
@@ -303,7 +284,7 @@ function draw_results_final_content(xx,yy) {
 	
 function draw_results_final_totals(xx,yy) {
 	
-	var height = 35;
+	var height = 30;
 	var sep = 38;
 	
 	// subtract bottom border
