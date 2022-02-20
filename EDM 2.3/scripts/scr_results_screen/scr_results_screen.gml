@@ -1,5 +1,6 @@
 function scr_results_screen() {
-	if scrolling || close_enough_timer != -1
+	
+	if scrolling || (close_enough_timer != -1)
 	exit;
 
 	if mouse_check_button_pressed(mb_left)
@@ -11,28 +12,23 @@ function scr_results_screen() {
 	   results_screen = results_screen_start-amt;
 	   results_screen = clamp(results_screen,0,2);
    
-	   if abs(amt) > 0.01
+	   if (abs(amt) > 0.01)
 	   results_scrolling = true;
 	   }
 	else if mouse_check_button_released(mb_left)
 	    {
-	    if results_screen > results_screen_start // if moving the left
+	    if (results_screen > results_screen_start) // if moving the left
 	        {
-	        if frac(results_screen) > 0.25
+	        if (frac(results_screen) > 0.25)
 	        results_screen_end = ceil(results_screen);
 	        }
-	    else if results_screen < results_screen_start // if moving the right
+	    else if (results_screen < results_screen_start) // if moving the right
 	        {
-	        if frac(results_screen) < 0.75
+	        if (frac(results_screen) < 0.75)
 	        results_screen_end = floor(results_screen);
 	        }
 	    }
-	else
-	    {
-	    if results_screen != results_screen_end
-	    results_screen = lerp(results_screen,results_screen_end,0.2);
-	    }
 
-
-
-}
+	// lerp screen
+	results_screen = lerp(results_screen,results_screen_end,0.2);
+	}

@@ -1,46 +1,30 @@
 function draw_results_final() {
 
+	var page = 0;
+	var xx = 30+(page*room_width);
+	var yy = 60;
 	var ysep = 33;
 	var row = 12;
-	var xx = 50+(0*room_width)-(results_screen*room_width);
-	var yy = 50;
 	var ww = 970;
 	var hh = (ysep*row)+10;
-
-
+	
+	draw_results_final_content(xx,yy);
+	draw_results_final_headers(xx,yy);
+	draw_results_final_totals(0,yy+hh);
+	
+	// draw screen label
+	var height = 70;
+	var col = c_blue;
+	
 	draw_set_halign(fa_left);
-	draw_set_color(c_black);
-	draw_text_colour(xx,-30,"RESULTS",c_blue,c_blue,c_blue,c_blue,1);
-
-	draw_set_font(fn_name);
-	draw_set_halign(fa_center);
-	//draw_text(xx,yy,"Team");
-	draw_text_ext_transformed(xx+35+300,yy-ysep+fn_off+5,"Team\nWinnings",27,-1,0.8,0.8,0);
-	draw_text_ext_transformed(xx+35+300+100,yy-ysep+fn_off+5,"Low Net\nWinnings",27,-1,0.8,0.8,0);
-	draw_text_ext_transformed(xx+35+300+100+90,yy-ysep+fn_off+5,"Gross\nSkins",27,-1,0.8,0.8,0);
-	draw_text_ext_transformed(xx+35+300+100+80+75,yy-ysep+fn_off+5,"Net\nSkins",27,-1,0.8,0.8,0);
-	draw_text_ext_transformed(xx+35+300+100+100+100+30,yy-ysep+fn_off+5,"Win\nTotal",27,-1,0.8,0.8,0);
-	draw_text_ext_transformed(xx+35+300+100+100+80+115,yy-ysep+fn_off+5,"Entry\nFee",27,-1,0.8,0.8,0);
-	if no_net_skins || no_gross_skins
-	   {
-	   if no_net_skins
-	   var str_s = " No Net\nSkins";
-	   else if no_gross_skins
-	   var str_s = " No Gross\nSkins";
-   
-	   if no_net_skins && no_gross_skins
-	   var str_s = "No\nSkins";
-   
-	   var entr_col = make_color_rgb(98,145,242);
-	   draw_text_ext_transformed_colour(xx+35+300+100+100+80+115+55,yy-ysep+10,str_s,27,-1,0.65,0.65,0,entr_col,entr_col,entr_col,entr_col,1);
-	   }
-      
-	draw_text_ext_transformed(xx+35+300+100+100+80+130+130,yy-ysep+fn_off+5,"Net\nWinnings",27,-1,0.8,0.8,0);
-
+	draw_text_centered(xx,0,"RESULTS",height,,,col);
+	
+	// draw outline
+	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
+	exit;
 
 	yy += ysep;
 	scr_results_final_scrolling(xx,yy,ww);
-	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
 
 	if !surface_exists(surface)
 	surface = surface_create(room_width,room_height);
@@ -127,23 +111,6 @@ function draw_results_final() {
 	  // draw_text(xx+ww-5-110,yy+fn_off-5+(off_pos*ysep),scores_grid[# 23,off_ind]);
 	   draw_text_colour(xx+ww-5,yy+fn_off-5+(off_pos*ysep),string(scores_grid[# 12,off_ind]+(no_net_skins+no_gross_skins)*10)+" pesos",col,col,col,col,1); // net win
 	   }
-
-	gpu_set_blendmode(bm_subtract);
-	draw_rectangle(0,0,xx+ww,yy,false);
-	draw_rectangle(0,yy+hh-5,xx+ww,yy+hh+400,false);
-	gpu_set_blendmode(bm_normal);
-   
-	surface_reset_target();
-	draw_surface(surface,0,0);
-
-	draw_set_halign(fa_left);
-	draw_text(xx+210,yy+hh+fn_off,"Totals:");
-	draw_text(xx+35+280,yy+hh+fn_off,ds_grid_get_sum(scores_grid,16,0,16,ds_grid_height(scores_grid)-1)); // Team Winning
-	draw_text(xx+35+280+100,yy+hh+fn_off,ds_grid_get_sum(scores_grid,17,0,17,ds_grid_height(scores_grid)-1)); // Low Net Winning
-	draw_text(xx+35+300+100+70,yy+hh+fn_off,ds_grid_get_sum(scores_grid,21,0,21,ds_grid_height(scores_grid)-1)); // gross skins
-	draw_text(xx+35+300+100+80+50,yy+hh+fn_off,ds_grid_get_sum(scores_grid,22,0,22,ds_grid_height(scores_grid)-1)); // net skins
-	draw_text(xx+35+300+100+100+85+10,yy+hh+fn_off,ds_grid_get_sum(scores_grid,10,0,10,ds_grid_height(scores_grid)-1)); // win total
-	draw_text(xx+35+300+100+100+80+100,yy+hh+fn_off,abs(_entry)); // entry fee
 
 	// draw Next Results
 	var xx = 720+(0*room_width)-(results_screen*room_width);
@@ -250,7 +217,101 @@ function draw_results_final() {
 
 	if alph <= 0
 	close_enough_timer = -1;
+	}
+	
+function draw_results_final_headers(xx,yy) {
+	
+	var height = 50;
+	var xoff = 315;
+	 draw_line_pixel(xx+xoff,yy,1,room_height)
+	xoff += draw_text_centered(xx+xoff,yy-height,"Team\nWinnings",height,100); draw_line_pixel(xx+xoff,yy,1,room_height)
+	xoff += draw_text_centered(xx+xoff,yy-height,"Low Net\nWinnings",height,100); draw_line_pixel(xx+xoff,yy,1,room_height)
+	xoff += draw_text_centered(xx+xoff,yy-height,"Gross\nSkins",height,60); draw_line_pixel(xx+xoff,yy,1,room_height)
+	xoff += draw_text_centered(xx+xoff,yy-height,"Net\nSkins",height,60); draw_line_pixel(xx+xoff,yy,1,room_height)
+	xoff += draw_text_centered(xx+xoff,yy-height,"Win\nTotal",height,60); draw_line_pixel(xx+xoff,yy,1,room_height)
+	xoff += draw_text_centered(xx+xoff,yy-height,"Entry\nFee",height,60); draw_line_pixel(xx+xoff,yy,1,room_height)
+	
+	//if no_net_skins || no_gross_skins {
+	{	
+	   var str_s = "No ";
+	   
+	   if no_net_skins
+	   str_s += "Net";
+	   else if no_gross_skins
+	   str_s += "Gross";
+   
+	   str_s += "\nSkins";
+   
+	   var entr_col = make_color_rgb(98,145,242);
+	   draw_text_centered(xx+xoff,yy-height,str_s,height,70,,entr_col);
+	   }
+      
+	draw_text_centered(890,yy-height,"Net\nWinnings",height,70);
+	}
 
-
-
-}
+function draw_results_final_content(xx,yy) {
+	
+	var height = 35;
+	var sep = 40;
+	
+	for(var i=0;i<team_number+1;i++)
+		{
+		var teamStruct = TEAM_LIST[i];	
+		
+		for(var j=0;j<array_length(teamStruct.members);j++)
+			{
+			var memberStruct = teamStruct.members[j];
+			var winningStruct = memberStruct.eventWinnings;
+			var yoff = j*sep;
+				
+			// highlight row
+			scr_mouse_position_room(xx,yy+yoff,970,sep,noone,true);
+				
+			draw_set_halign(fa_left);
+			draw_text_centered(xx+5,yy+yoff,memberStruct.name,height,,sep); // member name
+			
+			var xoff = 315;
+			xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.teamWinning,height,100,sep);
+			xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.lowNetWinning,height,100,sep);
+			xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.skinsGross,height,60,sep);
+			xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.skinsNet,height,60,sep);
+			xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.winTotal,height,60,sep);
+			xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.entryFee,height,60,sep);
+			
+			draw_text_centered(xx+xoff,yy+yoff,"-60",height,70,sep);
+			
+			draw_set_halign(fa_right)
+			draw_text_centered(985,yy+yoff,string(winningStruct.netWinning)+" pesos",height,,sep);
+			
+			// line separator
+			draw_line_pixel(xx+20,yy+yoff,930,1,c_black,0.3);
+			}
+		}
+		
+	// subtract top border
+	gpu_set_blendmode(bm_subtract);
+	draw_line_pixel(0,0,room_width,yy-1,c_black);
+	gpu_set_blendmode(bm_normal);
+	}
+	
+function draw_results_final_totals(xx,yy) {
+	
+	var height = 35;
+	var sep = 38;
+	
+	// subtract bottom border
+	gpu_set_blendmode(bm_subtract);
+	draw_line_pixel(0,yy,room_width,room_height,c_black);
+	gpu_set_blendmode(bm_normal);
+	
+	draw_set_halign(fa_right);
+	draw_text_centered(325,yy,"Totals:",height,,sep);
+	
+	// draw totals
+	draw_text_centered(330,yy,"-",height,100,sep);
+	draw_text_centered(430,yy,"-",height,100,sep);
+	draw_text_centered(530,yy,"-",height,60,sep);
+	draw_text_centered(590,yy,"-",height,60,sep);
+	draw_text_centered(650,yy,"-",height,60,sep);
+	draw_text_centered(710,yy,"-",height,60,sep);
+	}

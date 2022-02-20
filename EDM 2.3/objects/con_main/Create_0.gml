@@ -136,6 +136,9 @@ no_net_skins = false;
 no_gross_skins = false;
 
 entrant_list = [];
+results_list = [];
+
+results_surface = -1;
 
 ini_settings();
 

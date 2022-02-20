@@ -382,5 +382,6 @@ function draw_text_centered(xx,yy,str,height,region_ww=0,region_hh=height,col=dr
 	draw_set_alpha(alp);
 	draw_set_halign(halign);
 	
+	return region_ww;
 	//draw_rectangle(xx,yy+1,xx+region_ww,yy+region_hh+1,true)
 	}

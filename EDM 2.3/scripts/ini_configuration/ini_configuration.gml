@@ -132,10 +132,24 @@ function Member(_name,_favorite=false) constructor {
 	teamAssigned = undefined;
 	
 	roundStats = new RoundStats();
+	eventWinnings = new EventWinnings();
 	
 	roundHistory = [];
 	
 	MEMBERS_LIST.nextMemberId++;
+	}
+	
+function EventWinnings() constructor {
+	
+	var defaultVal = irandom(100);
+	
+	teamWinning = defaultVal;
+	lowNetWinning = defaultVal;
+	skinsGross = defaultVal;
+	skinsNet = defaultVal;
+	winTotal = defaultVal;
+	entryFee = defaultVal;
+	netWinning = defaultVal;
 	}
 	
 function parse_name(name) {

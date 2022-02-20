@@ -1,25 +1,19 @@
 function draw_results() {
-	
-	if phase > 1
-	   {
-	   if dev_mode && keyboard_check_pressed(vk_space)
-	       {
-	       season_new_day = true;
-	       season_ranking_save();
-	       }
+		
+	if !surface_exists(results_surface)
+	results_surface = surface_create(room_width*3,room_height);
 
-	   scr_results_screen();
-   
-	   if floor(results_screen) = 0
-	   draw_results_final();
-   
-	   if restart
-	   exit;
-   
-	   if results_screen > 0 && results_screen < 2
-	   draw_results_teams();
-   
-	   if ceil(results_screen) = 2
-	   draw_results_low_net();
-	   }
+	// build surface
+	surface_set_target(results_surface);
+	draw_clear_alpha(c_black,0);
+	
+	draw_set_halign(fa_left);
+	draw_results_final();   
+	//draw_results_teams();
+	//draw_results_low_net();
+	
+	surface_reset_target();
+	
+	scr_results_screen(); // scrolling navigation
+	draw_surface(results_surface,0,0); // draw surface
 	}
