@@ -22,6 +22,8 @@ function draw_results_final() {
 	
 	// draw outline
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
+
+	draw_close_enough_animation();
 	exit;
 
 	yy += ysep;
@@ -39,20 +41,7 @@ function draw_results_final() {
 	   var off_pos = i-results_final_offset;
 	   var off_ind = i; //+floor(results_final_offset);
       
-	   draw_set_halign(fa_left);
-	   scr_mouse_position_room(xx+20,yy+(off_pos*ysep),ww-20,ysep,noone,true); // highlight row
-      
-	   var name = scores_grid[# 0,off_ind];
-	   var str = "";
-	   
-	   if (scores_grid[# 5,off_ind] != noone) // blind
-	   str = "*";
-	   
-	   if scores_grid[# 19,off_ind] // no team
-	   str += "`";
-   
-	   str += name;
-   
+
 	   var col = pick(c_black,c_red,scores_grid[# 23,off_ind] < 0);
 	   
 	   // entry fee color
@@ -90,6 +79,9 @@ function draw_results_final() {
 	  // draw_text(xx+ww-5-110,yy+fn_off-5+(off_pos*ysep),scores_grid[# 23,off_ind]);
 	   draw_text_colour(xx+ww-5,yy+fn_off-5+(off_pos*ysep),string(scores_grid[# 12,off_ind]+(no_net_skins+no_gross_skins)*10)+" pesos",col,col,col,col,1); // net win
 	   }
+	}
+	
+function draw_close_enough_animation() {
     
 	if (close_enough_timer == -1)
 	exit;
@@ -98,10 +90,10 @@ function draw_results_final() {
 	var alph_off = off;
 	var alph = sin((alph_off/100)-50.09);
 
-	var xx = 870;
+	var xx = 820;
 	var yy = 200;
-	var ww = 150;
-	var hh = 80;
+	var ww = 180;
+	var hh = 100;
 
 	if (off < 128)
 	draw_sprite_ext(background0,0,0,0,2,2,0,c_white,1);
@@ -119,35 +111,28 @@ function draw_results_final() {
 
 	var text_off = game_time-picture_timer_start;
 
-	// skip or next
-	if scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,false)
-	    {
-	    close_enough_pause = false;
-	    picture_timer_start = game_time-text_off;
-	   // close_enough_timer = 196;
-	    close_enough_skip = true;
-	    }
-	/*else if scr_mouse_position_room_pressed(0,0,room_width,room_height,mb_left,false,false)
-	    {
-	    close_enough_skip = true;
-	    close_enough_pause = false;
-	    picture_timer_start = game_time-text_off;
-	    }*/
-
 	if close_enough_pause
 	text_off = min(text_off,280);
 
-	draw_text_ext(600+(off*0.2),400,("\"-It's close\n      enough...\""),60,-1);
+	draw_text_ext(600+(off*0.2),510,("\"-It's close\n      enough...\""),60,-1);
 
 	// finished with picture
+	
+	// details button
 	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,true);
 
-	draw_set_font(fn_name);
-	draw_text(xx+15,yy+30+fn_off,"Details");
-	draw_set_alpha(1);
+	if draw_text_button(xx,yy,"Results",40,ww,hh) {
+		
+	    close_enough_pause = false;
+	    picture_timer_start = game_time-text_off;
+	    // close_enough_timer = 196;
+	    close_enough_skip = true;
+	    }
 
-	if alph <= 0
+	if (alph <= 0)
 	close_enough_timer = -1;
+	
+	draw_set_alpha(1);
 	}
 	
 function draw_results_final_headers(xx,yy) {
@@ -301,7 +286,7 @@ function draw_results_final_calculate_totals() {
 	
 function draw_results_final_buttons(page) {
 	
-	var can_click = true//(edit_score == undefined) && (edit_team_score == undefined) && (close_enough_timer == -1);
+	var can_click = (close_enough_timer == -1);
 	var rec_col = c_green;
 	
 	// start over
