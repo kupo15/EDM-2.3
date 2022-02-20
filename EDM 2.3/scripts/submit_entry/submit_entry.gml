@@ -32,6 +32,7 @@ function negate_entry() {
 	
 	var convert = real(entryString);
 	entryString = string(convert*-1);
+	negate = !negate;
 	}
 	
 function append_character(str) {
@@ -40,8 +41,13 @@ function append_character(str) {
 	
 	if (str_ll >= maxCharacters)
 	exit;
+	
+	var neg = pick(1,-1,negate);
+	var convert = real(entryString+str);
+	
+	convert = abs(convert)*neg;
 
-	entryString += str;
+	entryString = string(convert);
 	}
 	
 function delete_character() {
@@ -58,7 +64,7 @@ function retrieve_keypad() {
 	if (obj_number_input.submitedString != undefined) {
 		
 		var reset = true;
-		var entry = obj_number_input.submitedString;		
+		var entry = obj_number_input.submitedString;
 		switch global.entryEnum
 			{
 			case entryType.teamEntry: ENTRY_FEES.teamEntry = entry; break;

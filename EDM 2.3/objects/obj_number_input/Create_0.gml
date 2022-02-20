@@ -13,6 +13,7 @@ entryString = "";
 startingString = "";
 blankStringDisplay = "-";
 active = false;
+negate = false;
 
 x = room_width-width;
 y = room_height-height;

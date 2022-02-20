@@ -174,13 +174,13 @@ function draw_edit_score_player_popup() {
 	if draw_text_button(200,yy,draw_value(list.teamNetFront,"-"),height,70,sep,,,,true) {
 		
 		edit_score_pos = entryType.teamFront;
-		keypad_set_value(edit_score_pos,list.teamNetFront);
+		keypad_set_value(edit_score_pos,list.teamNetFront,,true);
 		}
 	
 	if draw_text_button(270,yy,draw_value(list.teamNetBack,"-"),height,70,sep,,,,true) {
 		
 		edit_score_pos = entryType.teamBack;
-		keypad_set_value(edit_score_pos,list.teamNetBack);
+		keypad_set_value(edit_score_pos,list.teamNetBack,,true);
 		}
 	
 	// draw Next Team button
@@ -420,12 +420,12 @@ function entry_scores_team_submit(entry) {
 		{
 		case entryType.teamFront: list.teamNetFront = entry;
 								  edit_score_pos++;
-								  keypad_set_value(edit_score_pos,list.teamNetBack);
+								  keypad_set_value(edit_score_pos,list.teamNetBack,,true);
 								  break;
 		
 		case entryType.teamBack: list.teamNetBack = entry;
 								 //edit_score_pos++;
-								 keypad_set_value(edit_score_pos,list.teamNetBack);							
+								 keypad_set_value(edit_score_pos,list.teamNetBack,,true);
 								 break;			
 		}
 	}
