@@ -99,7 +99,8 @@ function Tee(_rating,_slope,_color) constructor {
 function Team() constructor {
 	
 	members = [];
-	teamScore = undefined;
+	teamNetFront = "";
+	teamNetBack = "";
 	}
 	
 function PrizePool() constructor {

@@ -68,6 +68,11 @@ function retrieve_keypad() {
 			case entryType.teamPayout: PAYOUT_TABLES.teamPayout[pref_team_num][settings_clicked_index] = entry; break;
 			case entryType.lowNetPayout: PAYOUT_TABLES.lowNetPayout[pref_low_net_num][settings_clicked_index] = entry; break;
 			
+			case entryType.teamFront:
+			case entryType.teamBack: entry_scores_team_submit(entry);
+									 reset = false;
+									 break;
+			
 			case entryType.memberFront:
 			case entryType.memberBack:
 			case entryType.memberAdjGross:

@@ -7,12 +7,14 @@ function draw_team_header(xx,yy,ysep,_team,in_popover) {
 	draw_set_valign(fa_bottom);
 	draw_text_height_color(xx+5,yy,string(str_group)+string(_team+1),c_col,height); // team number
 	
-	if (tourney_type == tourneyType.team) // team game
-		{
-		var scr1 = if_undef(team_score[_team,0]);
-		var scr2 = if_undef(team_score[_team,1]);
+	// team game
+	if (tourney_type == tourneyType.team) {
 		
-		draw_text_height(xx+135,yy,"Score: F: "+string(scr1)+"   B: "+string(scr2),height);
+		var list = TEAM_LIST[_team];
+		var front = draw_value(list.teamNetFront,"-");
+		var back = draw_value(list.teamNetBack,"-");
+		
+		draw_text_height(xx+135,yy,"Score:  "+string(front)+" | "+string(back),height);
 		}
 	
 	var height = 35;
@@ -134,7 +136,7 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 	}
 
 function draw_teams() {
-	
+
 	// draw team groups
 	var xx = 10;
 	var yy = 60;

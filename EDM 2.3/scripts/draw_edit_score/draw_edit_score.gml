@@ -149,13 +149,40 @@ function draw_edit_score_player_popup() {
 	// draw highlight member
 	draw_icon(,,0,yy+(edit_score*sep),560,sep,c_white,0.7);
 	
-	// draw highlight entry
-	if (edit_score_pos != entryType.memberEntryNext) {
+	// draw highlight entry members
+	if (edit_score_pos >= entryType.memberFront) && (edit_score_pos <= entryType.memberEntryNext) {
 		
 		var xoff = (clamp(edit_score_pos,entryType.memberFront,entryType.memberAdjGross)-entryType.memberFront)*70;
 		draw_icon(,,340+xoff,yy+(edit_score*sep),70,sep,c_blue,0.3);
 		}
+	else {
 		
+		var xoff = (clamp(edit_score_pos,entryType.teamFront,entryType.teamBack)-entryType.teamFront)*70;
+		draw_icon(,,200+xoff,420,70,sep,c_blue,0.3);
+		}
+		
+	// draw team score
+	var xx = 20;
+	var yy = 420;
+	var height = 30;
+	var c_col = make_color_rgb(98,145,242);
+
+	draw_text_centered(xx,yy,"Team Score",height,,sep,c_col);
+	
+	var list = TEAM_LIST[team_index_entry];
+	
+	if draw_text_button(200,yy,draw_value(list.teamNetFront,"-"),height,70,sep,,,,true) {
+		
+		edit_score_pos = entryType.teamFront;
+		keypad_set_value(edit_score_pos,list.teamNetFront);
+		}
+	
+	if draw_text_button(270,yy,draw_value(list.teamNetBack,"-"),height,70,sep,,,,true) {
+		
+		edit_score_pos = entryType.teamBack;
+		keypad_set_value(edit_score_pos,list.teamNetBack);
+		}
+	
 	// draw Next Team button
 	var xx = 350;
 	var yy = 440;
@@ -382,6 +409,25 @@ exit;
 	   draw_edit_team_list();
 	   exit;
 	   }
+	}
+	
+function entry_scores_team_submit(entry) {
+	
+	var list = TEAM_LIST[team_index_entry];
+
+	// save score
+	switch edit_score_pos
+		{
+		case entryType.teamFront: list.teamNetFront = entry;
+								  edit_score_pos++;
+								  keypad_set_value(edit_score_pos,list.teamNetBack);
+								  break;
+		
+		case entryType.teamBack: list.teamNetBack = entry;
+								 //edit_score_pos++;
+								 keypad_set_value(edit_score_pos,list.teamNetBack);							
+								 break;			
+		}
 	}
 	
 function entry_scores_individual_submit(entry) {
