@@ -28,7 +28,6 @@
     {"id":{"name":"ini_payout_table","path":"scripts/ini_payout_table/ini_payout_table.yy",},"order":3,},
     {"id":{"name":"ini_settings","path":"scripts/ini_settings/ini_settings.yy",},"order":0,},
     {"id":{"name":"ini_results_load","path":"scripts/ini_results_load/ini_results_load.yy",},"order":12,},
-    {"id":{"name":"ini_results_save","path":"scripts/ini_results_save/ini_results_save.yy",},"order":13,},
     {"id":{"name":"screen_home","path":"scripts/screen_home/screen_home.yy",},"order":2,},
     {"id":{"name":"screen_score_entry","path":"scripts/screen_score_entry/screen_score_entry.yy",},"order":3,},
     {"id":{"name":"macros","path":"scripts/macros/macros.yy",},"order":0,},

@@ -1,4 +1,5 @@
 function scr_calculate_results_teams(argument0) {
+	
 	phase = argument0;
 
 	// remove empty teams and sort
@@ -155,22 +156,4 @@ function scr_calculate_results_teams(argument0) {
 	            }
 	        }
 	    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-}
+	}

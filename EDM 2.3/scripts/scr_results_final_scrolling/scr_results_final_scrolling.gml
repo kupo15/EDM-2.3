@@ -1,13 +1,10 @@
-function scr_results_final_scrolling(argument0, argument1, argument2) {
+function scr_results_final_scrolling(xx,yy,ww) {
 
-	var xx = argument0;
-	var yy = argument1;
-	var ww = argument2;
 	var hh = 406;
 	var disp_count = 12;
 	var size = ds_grid_height(scores_grid);
 
-	if (size-1 < disp_count) || close_enough_timer != -1
+	if (size-1 < disp_count) || (close_enough_timer != -1)
 	exit;
 
 	draw_set_color(c_gray);
@@ -21,22 +18,18 @@ function scr_results_final_scrolling(argument0, argument1, argument2) {
 	if scr_mouse_position_room_pressed(xx-30,yy,ww+30,hh,mb_left,false,false)
 	results_final_offset_start = results_final_offset;
 
-	if scr_mouse_position_room(xx,yy,ww,hh,mb_left,false)
-	    {
+	if scr_mouse_position_room(xx,yy,ww,hh,mb_left,false) {
+		
 	    var num = 0.1;
 	    var amt = (global.mouse_ydist*num);
+		
 	    results_final_offset = results_final_offset_start-amt;
 	    results_final_offset = clamp(results_final_offset,0,size-disp_count);
     
-	    if abs(results_final_offset-results_final_offset_start) > 0.01
-			{
+	    if (abs(results_final_offset-results_final_offset_start) > 0.01) {
+			
 			scrollbar_disp_end = 1;
 		    scrolling = true;
 			}
-	    }
-      
-
-
-
-
-}
+	    }     
+	}

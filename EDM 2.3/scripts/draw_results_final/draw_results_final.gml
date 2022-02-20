@@ -41,43 +41,25 @@ function draw_results_final() {
 	   var off_pos = i-results_final_offset;
 	   var off_ind = i; //+floor(results_final_offset);
       
-
 	   var col = pick(c_black,c_red,scores_grid[# 23,off_ind] < 0);
 	   
 	   // entry fee color
 	   var entr_col = c_black;
-   
-	  // if team_number == 0 // only one team
-	   //entr_col = c_orange; // make_color_rgb(255,248,153); // yellowish
    
 	   if (scores_grid[# 5,off_ind] != noone)+scores_grid[# 19,off_ind] == 1 // only one
 	   entr_col = make_color_rgb(98,145,242); // blue
    
 	   // blind color
 	   var blind_col = make_color_rgb(98,145,242);
-   
-	   draw_text(xx+35,yy+fn_off-5+(off_pos*ysep),str); // draw name
-	   draw_text(xx+35+280,yy+fn_off-5+(off_pos*ysep),scores_grid[# 16,off_ind]); // Team Winning
-   
+  
 	   if (scores_grid[# 5,off_ind] != noone)
 	   draw_text_transformed_colour(xx+35+280+28,yy+fn_off+0+(off_pos*ysep),"+"+string(scores_grid[# 20,off_ind]),0.8,0.8,0,blind_col,blind_col,blind_col,blind_col,1); // Blind Winning
-	   
-	   draw_text(xx+35+280+100,yy+fn_off-5+(off_pos*ysep),scores_grid[# 17,off_ind]); // Low Net Winning
-	   draw_text(xx+35+300+100+80,yy+fn_off-5+(off_pos*ysep),scores_grid[# 21,off_ind]); // gross skins
-	   draw_text(xx+35+300+100+80+65,yy+fn_off-5+(off_pos*ysep),scores_grid[# 22,off_ind]); // net skins
-	   draw_text(xx+35+300+100+100+85+30,yy+fn_off-5+(off_pos*ysep),scores_grid[# 10,off_ind]); // win total
-	   draw_text_colour(xx+35+300+100+100+80+100,yy+fn_off-5+(off_pos*ysep),scores_grid[# 11,off_ind],entr_col,entr_col,entr_col,entr_col,1); // entry fee
 	   
 	   if no_net_skins || no_gross_skins
 	       {
 	       draw_sprite_ext(spr_crossout,0,xx+35+300+100+100+80+100,yy+5+(off_pos*ysep),0.8,0.8,0,c_white,0.9);
 	       draw_text_colour(xx+35+300+100+100+80+100+55,yy+fn_off-5+(off_pos*ysep),scores_grid[# 11,off_ind]+((no_net_skins+no_gross_skins)*10),entr_col,entr_col,entr_col,entr_col,1); // win total
-	       }
-   
-	   draw_set_halign(fa_right);
-	   //scores_grid[# 23,i] = scores_grid[# 12,i]+((no_net_skins+no_gross_skins)*10); // grand total
-	  // draw_text(xx+ww-5-110,yy+fn_off-5+(off_pos*ysep),scores_grid[# 23,off_ind]);
-	   draw_text_colour(xx+ww-5,yy+fn_off-5+(off_pos*ysep),string(scores_grid[# 12,off_ind]+(no_net_skins+no_gross_skins)*10)+" pesos",col,col,col,col,1); // net win
+		   }
 	   }
 	}
 	
@@ -301,11 +283,8 @@ function draw_results_final_buttons(page) {
 	
 	if draw_text_button(xx,yy,"Start Over",height,ww,hh,col,,,,can_click) {
 		
-	    if !clear_all_safty {
-			
-	        file_delete("results.ini");
-	        scr_reset_bracket();
-	        }
+	    if !clear_all_safty
+		scr_reset_bracket();
 	    else
 	    clear_all_safty = false;
 	    }

@@ -141,7 +141,7 @@ function Member(_name,_favorite=false) constructor {
 	
 function EventWinnings() constructor {
 	
-	var defaultVal = irandom(100);
+	var defaultVal = 0;
 	
 	teamWinning = defaultVal;
 	lowNetWinning = defaultVal;

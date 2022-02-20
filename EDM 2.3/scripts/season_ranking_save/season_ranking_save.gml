@@ -1,4 +1,5 @@
 function season_ranking_save() {
+	
 	var hh = ds_grid_height(scores_grid); // height of entrants
 	var ranking_ww = ds_grid_width(season_ranking_grid); // width of ranking
 	var ranking_hh = ds_grid_height(season_ranking_grid); // height of ranking
@@ -87,7 +88,4 @@ function season_ranking_save() {
     
 	scr_season_breakdown_player_delete();
 	ini_season_ranking_save();
-
-
-
-}
+	}
