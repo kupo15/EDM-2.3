@@ -11,6 +11,7 @@ function draw_results_final() {
 	draw_results_final_content(xx,yy);
 	draw_results_final_headers(xx,yy);
 	draw_results_final_totals(xx,yy+hh);
+	draw_results_final_buttons(page);
 	
 	// draw screen label
 	var height = 70;
@@ -89,54 +90,6 @@ function draw_results_final() {
 	  // draw_text(xx+ww-5-110,yy+fn_off-5+(off_pos*ysep),scores_grid[# 23,off_ind]);
 	   draw_text_colour(xx+ww-5,yy+fn_off-5+(off_pos*ysep),string(scores_grid[# 12,off_ind]+(no_net_skins+no_gross_skins)*10)+" pesos",col,col,col,col,1); // net win
 	   }
-
-	// draw Next Results
-	var xx = 720+(0*room_width)-(results_screen*room_width);
-	var yy = 545;
-	var ww = 150;
-	var hh = 50;
-
-	draw_rectangle_colour(xx-700+30,yy-45,xx-700+30+ww,yy+hh-15,c_green,c_green,c_green,c_green,true); // start over
-	
-	if !global.save_loaded
-	draw_rectangle_colour(xx-700+45+ww,yy,xx-700+45+ww+ww,yy+hh,c_green,c_green,c_green,c_green,true);
-	
-	draw_rectangle_colour(xx+ww+5,yy-45,xx+ww+ww,yy+hh-15,c_green,c_green,c_green,c_green,true);
-
-	if mouse_check_button_pressed(mb_left) && !scr_mouse_position_room_pressed(xx-700+30,yy-45,ww,hh+30,mb_left,true,false)
-	clear_all_safty = true;
-
-	var col = c_black;
-	if !clear_all_safty
-	col = c_red;
-
-	draw_text_colour(xx-700+35,yy-50,"Start Over",col,col,col,col,1);
-	draw_text_transformed(xx-700+35+30,yy+30-40,"(tap twice)",0.6,0.6,0);
-	if !global.save_loaded
-	draw_text(xx-700+25+ww+27,yy+fn_off,"Edit Scores");
-	draw_text(xx+ww+35,yy+fn_off-20,"Next");
-
-
-	if edit_score == noone && edit_team_score == noone && close_enough_timer == -1
-	    {
-	    if scr_mouse_position_room_released(xx-700+30,yy-45,ww,hh+30,mb_left,true)
-	        {
-	        if !clear_all_safty
-	            {
-	            file_delete("results.ini");
-	            scr_reset_bracket();
-	            }
-	        else
-	        clear_all_safty = false;
-	        }
-	    else if mouse_check_button_released(mb_left)
-	    clear_all_safty = true;
-     
-	    if !global.save_loaded && scr_mouse_position_room_released(xx-700+45+ww,yy,ww,hh,mb_left,true)
-	    phase = 1;
-	    else if scr_mouse_position_room_released(xx+ww+5,yy-45,ww,hh+30,mb_left,true)
-	    results_screen_end++;
-	    }
     
 	if (close_enough_timer == -1)
 	exit;
@@ -267,10 +220,11 @@ function draw_results_final_content(xx,yy) {
 			draw_text_centered(985,yy+yoff,string(winningStruct.netWinning)+" pesos",height,,sep,col);
 			
 			// line separator
-			var col = pick(c_black,make_color_rgb(98,145,242),j+1==size);
-			var alpha = pick(0.3,0.9,j+1==size);
-			
-			draw_line_pixel(xx+20,yy+yoff,930,1,col,alpha);
+			var lastTeam = (j+1 == size);
+			var col = pick(c_black,make_color_rgb(98,145,242),lastTeam);
+			var alpha = pick(0.3,0.9,lastTeam);
+
+			draw_line_pixel(xx+20,yy+yoff+sep,930,1,col,alpha);
 			}
 		
 		teamOff += (size*sep);
@@ -343,4 +297,62 @@ function draw_results_final_calculate_totals() {
 		win: winTotal,
 		entry: entryTotal,
 		}
+	}
+	
+function draw_results_final_buttons(page) {
+	
+	var can_click = true//(edit_score == undefined) && (edit_team_score == undefined) && (close_enough_timer == -1);
+	var rec_col = c_green;
+	
+	// start over
+	var xx = 30+(page*room_width);
+	var yy = 510;
+	var ww = 150;
+	var hh = 80;
+	var height = 35;
+	var col = pick(c_black,c_red,!clear_all_safty);
+	
+	draw_text_centered(xx,yy,"(tap twice)",height*0.66,ww,hh*1.5);
+	
+	if draw_text_button(xx,yy,"Start Over",height,ww,hh,col,,,,can_click) {
+		
+	    if !clear_all_safty {
+			
+	        file_delete("results.ini");
+	        scr_reset_bracket();
+	        }
+	    else
+	    clear_all_safty = false;
+	    }
+	else if mouse_check_button_released(mb_left)
+	clear_all_safty = true;
+	
+	draw_rectangle_color(xx,yy,xx+ww,yy+hh,rec_col,rec_col,rec_col,rec_col,true);
+	
+	// edit scores
+	var xx = 250+(page*room_width);
+	var yy = 525;
+	var ww = 180;
+	var hh = 65;
+	var height = 35;
+	
+	if !global.save_loaded {
+		
+		draw_rectangle_colour(xx,yy,xx+ww,yy+hh,rec_col,rec_col,rec_col,rec_col,true);
+
+		if !global.save_loaded && draw_text_button(xx,yy,"Edit Scores",height,ww,hh,,,,,can_click)
+		screen_change(screenEnum.eventRunning);
+	    }
+	
+	// team results
+	var xx = 880+(page*room_width);
+	var yy = 510;
+	var ww = 120;
+	var hh = 80;
+	var height = 60;
+	
+	if draw_text_button(xx,yy,"Team\nResults",height,ww,hh,,,,,can_click)
+    results_screen_end++;
+	
+	draw_rectangle_color(xx,yy,xx+ww,yy+hh,rec_col,rec_col,rec_col,rec_col,true);
 	}
