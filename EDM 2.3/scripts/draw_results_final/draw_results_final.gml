@@ -10,12 +10,12 @@ function draw_results_final() {
 	
 	draw_results_final_content(xx,yy);
 	draw_results_final_headers(xx,yy);
-	draw_results_final_totals(0,yy+hh);
+	draw_results_final_totals(xx,yy+hh);
 	
 	// draw screen label
 	var height = 70;
-	var col = c_blue;
-	
+	var col = make_color_rgb(98,145,242);
+
 	draw_set_halign(fa_left);
 	draw_text_centered(xx,0,"RESULTS",height,,,col);
 	
@@ -223,13 +223,13 @@ function draw_results_final_headers(xx,yy) {
 	
 	var height = 50;
 	var xoff = 315;
-	 draw_line_pixel(xx+xoff,yy,1,room_height)
-	xoff += draw_text_centered(xx+xoff,yy-height,"Team\nWinnings",height,100); draw_line_pixel(xx+xoff,yy,1,room_height)
-	xoff += draw_text_centered(xx+xoff,yy-height,"Low Net\nWinnings",height,100); draw_line_pixel(xx+xoff,yy,1,room_height)
-	xoff += draw_text_centered(xx+xoff,yy-height,"Gross\nSkins",height,60); draw_line_pixel(xx+xoff,yy,1,room_height)
-	xoff += draw_text_centered(xx+xoff,yy-height,"Net\nSkins",height,60); draw_line_pixel(xx+xoff,yy,1,room_height)
-	xoff += draw_text_centered(xx+xoff,yy-height,"Win\nTotal",height,60); draw_line_pixel(xx+xoff,yy,1,room_height)
-	xoff += draw_text_centered(xx+xoff,yy-height,"Entry\nFee",height,60); draw_line_pixel(xx+xoff,yy,1,room_height)
+
+	xoff += draw_text_centered(xx+xoff,yy-height,"Team\nWinnings",height,100);
+	xoff += draw_text_centered(xx+xoff,yy-height,"Low Net\nWinnings",height,100);
+	xoff += draw_text_centered(xx+xoff,yy-height,"Gross\nSkins",height,60);
+	xoff += draw_text_centered(xx+xoff,yy-height,"Net\nSkins",height,60);
+	xoff += draw_text_centered(xx+xoff,yy-height,"Win\nTotal",height,60);
+	xoff += draw_text_centered(xx+xoff,yy-height,"Entry\nFee",height,60);
 	
 	//if no_net_skins || no_gross_skins {
 	{	
@@ -262,7 +262,7 @@ function draw_results_final_content(xx,yy) {
 			{
 			var memberStruct = teamStruct.members[j];
 			var winningStruct = memberStruct.eventWinnings;
-			var yoff = j*sep;
+			var yoff = (j*sep)+(i*sep);
 				
 			// highlight row
 			scr_mouse_position_room(xx,yy+yoff,970,sep,noone,true);
@@ -280,8 +280,11 @@ function draw_results_final_content(xx,yy) {
 			
 			draw_text_centered(xx+xoff,yy+yoff,"-60",height,70,sep);
 			
+			// net winning
+			var col = pick(c_red,c_black,winningStruct.netWinning >= 0);
+			
 			draw_set_halign(fa_right)
-			draw_text_centered(985,yy+yoff,string(winningStruct.netWinning)+" pesos",height,,sep);
+			draw_text_centered(985,yy+yoff,string(winningStruct.netWinning)+" pesos",height,,sep,col);
 			
 			// line separator
 			draw_line_pixel(xx+20,yy+yoff,930,1,c_black,0.3);
@@ -308,10 +311,11 @@ function draw_results_final_totals(xx,yy) {
 	draw_text_centered(325,yy,"Totals:",height,,sep);
 	
 	// draw totals
-	draw_text_centered(330,yy,"-",height,100,sep);
-	draw_text_centered(430,yy,"-",height,100,sep);
-	draw_text_centered(530,yy,"-",height,60,sep);
-	draw_text_centered(590,yy,"-",height,60,sep);
-	draw_text_centered(650,yy,"-",height,60,sep);
-	draw_text_centered(710,yy,"-",height,60,sep);
+	var xoff = 315;
+	xoff += draw_text_centered(xx+xoff,yy,"-",height,100,sep);
+	xoff += draw_text_centered(xx+xoff,yy,"-",height,100,sep);
+	xoff += draw_text_centered(xx+xoff,yy,"-",height,60,sep);
+	xoff += draw_text_centered(xx+xoff,yy,"-",height,60,sep);
+	xoff += draw_text_centered(xx+xoff,yy,"-",height,60,sep);
+	xoff += draw_text_centered(xx+xoff,yy,"-",height,60,sep);
 	}
