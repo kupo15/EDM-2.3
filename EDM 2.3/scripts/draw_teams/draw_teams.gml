@@ -169,32 +169,6 @@ function draw_teams() {
 		
 		draw_team_header(xx,yy+team_yoff,ysep,i,in_popover);
 		draw_team_content(xx,yy+team_yoff,member_sep,i,in_popover);
-		
-		continue;
-		
-	    var _team_sep = max(_team-1,0);
-	    var sep_pos = ds_list_size(team_list[_team_sep]);
-	    var ss = ds_list_size(team_list[_team]);
-    
-	    // edit team score
-	    if (edit_score == noone) && (edit_team_score == noone) && (select_blind_team == undefined)
-	    if scr_mouse_position_room_released(xx+(col*hsep),yy-ysep+team_yoff,300+col_off,ysep,mb_left,true,in_popover)
-	        {
-	        edit_score = -1;      
-	        edit_team_score = _team;
-	        negate = -1;
-	        edit_team_offset = 0;
-		
-			if (team_score[edit_team_score,edit_score_pos] != undefined)
-				{
-				if sign(team_score[edit_team_score,edit_score_pos]) != 0
-				negate = sign(team_score[edit_team_score,edit_score_pos]);
-				}
-        
-	        for(var tt=0;tt<_team;tt++)
-	        edit_team_offset += ds_list_size(team_list[tt]);
-	        mouse_clear(mb_left);
-	        }
 	    }
 		
 	// draw blind/no team toggle
@@ -240,50 +214,58 @@ function draw_teams() {
 function debug_randomize_scores() {
 	
 	// debug randomize
-	if dev_mode && keyboard_check_pressed(vk_space)
-	    {
-	    for(var i=0;i<team_number+1;i++)
-	        {
-	        team_score[i,0] = -irandom(26)-1;
-	        team_score[i,1] = -irandom(26)-1;
-	        }
-        
-	    var height = ds_grid_height(scores_grid);
-	    for(var i=0;i<height;i++)
-	        {
-	        scores_grid[# 1,i] = irandom_range(33,50); // front nine
-	        scores_grid[# 2,i] = irandom_range(33,50); // back nine
-	        }
-	    }
+	if dev_mode && keyboard_check_pressed(vk_space)		
+	for(var i=0;i<team_number+1;i++) // loop through teams
+		{
+		var teamStruct = TEAM_LIST[i];
+		
+		teamStruct.teamNetFront = string(irandom(30)-10);
+		teamStruct.teamNetBack = string(irandom(30)-10);
+						
+		// loop through members
+		for(var j=0;j<array_length(teamStruct.members);j++)
+			{
+			var memberStruct = teamStruct.members[j].roundStats;	
+
+			memberStruct.grossFront = string(irandom_range(33,50));
+			memberStruct.grossBack = string(irandom_range(33,50));
+			memberStruct.grossAdj = string(irandom_range(69,95));
+			}
+		}
 	}
 	
 function activate_results_button() {
 	
 	var calc = (ENTRANT_COUNT > 3); // must have at least entrants 
 
-	//// if all players are No Team
+	// if all players are No Team
 	//if ds_grid_get_sum(scores_grid,19,0,19,entr-1) == entr
-	//calc = true;
-	//else // team score unneeded
-	//	{
-	//	if (tourney_type == tourneyType.team) // if team event
-	//	for(var i=0;i<team_number+1;i++) // loop through teams
-	//	for(var ii=0;ii<3;ii++)
-	//	if team_score[i,ii] == undefined
-	//	   {
-	//	   calc = false;
-	//	   break;
-	//	   }
+	//return true;
+	//else {
+		// loop through teams
+		for(var i=0;i<team_number+1;i++)
+			{
+			var teamStruct = TEAM_LIST[i];
+			var frontNull = (teamStruct.teamNetFront == "");
+			var backNull = (teamStruct.teamNetBack == "");
+			
+			if frontNull || backNull
+			return false;
+			
+			// loop through members
+			for(var j=0;j<array_length(teamStruct.members);j++)
+				{
+				var memberStruct = teamStruct.members[j].roundStats;	
+				var grossFrontNull = (memberStruct.grossFront == "");
+				var grossBackNull = (memberStruct.grossBack == "");
+				var grossAdjNull = (memberStruct.grossAdj == "");
+				
+				if grossFrontNull || grossBackNull || grossAdjNull
+				return false;
+				}
+			}
 	//	}
-   	//
-	//// make sure entrants entered scores - activates Results Button
-	//for(var i=0;i<entr;i++)
-	//for(var ii=0;ii<2;ii++)
-	//if scores_grid[# ii+1,i] == undefined
-	//	{
-	//	calc = false;
-	//	break;
-	//	}
+	
 	
 	return calc;
 	}

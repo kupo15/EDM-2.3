@@ -191,6 +191,6 @@ enum listType {
 	}
 
 list_type = (ds_list_size(favorites_list) != 0); // default to favorites
-dev_mode = false;
+dev_mode = (os_type == os_windows);
 
 instance_create_layer(500,0,"Instances_1",obj_number_input);

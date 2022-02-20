@@ -152,11 +152,13 @@ function parse_name(name) {
 function RoundStats() constructor {
 	
 	rank = 1;
+	
 	grossFront = "";
 	grossBack = "";
+	grossAdj = "";
+	
 	skinsGross = "0";
 	skinsNet = "0";
-	grossAdj = "";
 	
 	blindTeam = undefined;
 	noTeam = false;
