@@ -9,7 +9,7 @@ function scr_calculate_results() {
 	event_results = new EventResults();
 	
 	// calculate all
-	scr_calculate_results_teams(2);
+	//scr_calculate_results_teams(2);
 	//scr_calculate_net_scores(3);
 	//scr_calculate_results_final(4);
 

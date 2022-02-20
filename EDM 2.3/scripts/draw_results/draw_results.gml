@@ -9,7 +9,7 @@ function draw_results() {
 	//gpu_set_blendmode_ext(bm_one,bm_zero);
 	
 	draw_set_halign(fa_left);
-	draw_results_final();   
+	draw_results_final();
 	//draw_results_teams();
 	//draw_results_low_net();
 	
@@ -17,5 +17,7 @@ function draw_results() {
 	surface_reset_target();
 	
 	scr_results_screen(); // scrolling navigation
-	draw_surface(results_surface,0,0); // draw surface
+	
+	var xx = -results_screen*room_width;
+	draw_surface(results_surface,xx,0); // draw surface
 	}
