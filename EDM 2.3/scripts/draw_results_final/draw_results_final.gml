@@ -102,7 +102,7 @@ function draw_close_enough_animation() {
 	// details button
 	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,true);
 
-	if draw_text_button(xx,yy,"Results",40,ww,hh) {
+	if draw_text_button(xx,yy,"Details",40,ww,hh) {
 		
 	    close_enough_pause = false;
 	    picture_timer_start = game_time-text_off;
@@ -312,9 +312,9 @@ function draw_results_final_buttons(page) {
 	    }
 	
 	// team results
-	var xoff = 880;
+	var xoff = 870;
 	var yy = 510;
-	var ww = 120;
+	var ww = 150;
 	var hh = 80;
 	var height = 60;
 	
