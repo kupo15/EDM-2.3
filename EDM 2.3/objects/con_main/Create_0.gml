@@ -80,7 +80,6 @@ button_ww = sprite_get_width(spr_member_button);
 button_hh = sprite_get_height(spr_member_button);
 button_sep = button_hh+3;
 
-negate = 1;
 last_entrant_number = 0; // number of entrants in the last game
 
 // scrolling variables
@@ -136,16 +135,12 @@ no_net_skins = false;
 no_gross_skins = false;
 
 entrant_list = [];
-results_list = [];
 
 results_surface = -1;
 
 ini_settings();
 
-team_payout[5] = 0;
-
 // create ds lists
-recent_list = ds_list_create(); // list of recent players NOT in favorites
 favorites_list = ds_list_create(); // list of frequent members to save to INI
 favorites_members_list = ds_list_create(); // list of favorites to assign to teams
 numpad_list = ds_list_create(); // to create scores from number pad

@@ -7,6 +7,7 @@
 #macro MEMBERS_LIST SAVE_FILE.membersList
 #macro TEAM_LIST SAVE_FILE.activeEvent.teams
 #macro ENTRANT_COUNT SAVE_FILE.activeEvent.entrantCount
+#macro EVENT_RESULTS SAVE_FILE.activeEvent.eventResults
 
 #macro ENTRY_FEES SAVE_FILE.prizePool.entryFees
 #macro PAYOUT_TABLES SAVE_FILE.prizePool.payoutTable
@@ -60,6 +61,8 @@ function create_default_save_file() {
 				new Team(),
 				new Team(),
 				],
+				
+			eventResults: new EventResults(),
 			},
 			
 		settings: {

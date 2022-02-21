@@ -316,7 +316,7 @@ function draw_results_final_buttons(page) {
 	var yy = 510;
 	var ww = 150;
 	var hh = 80;
-	var height = 60;
+	var height = 70;
 	
 	draw_text_centered(xx+xoff,yy,"Team\nResults",height,ww,hh);
 	

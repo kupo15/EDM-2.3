@@ -31,8 +31,4 @@ function scr_cleanup() {
 	ds_grid_destroy(season_ranking_header_grid);
 	ds_grid_destroy(season_ranking_grid);
 	ds_grid_destroy(season_ranking_usage_grid);
-
-
-
-
-}
+	}

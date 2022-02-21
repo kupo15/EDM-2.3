@@ -6,7 +6,7 @@ function EventResults() constructor {
 
 function scr_calculate_results() {
 	
-	event_results = new EventResults();
+	EVENT_RESULTS = new EventResults();
 	
 	// calculate all
 	//scr_calculate_results_teams(2);
@@ -25,6 +25,7 @@ function scr_calculate_results() {
 	    }
 		
 	close_enough = true;
+	
 exit
 	if !season_save
 	season_ranking_save();
