@@ -1,7 +1,7 @@
 function draw_team_header(xx,yy,ysep,_team,in_popover) {
 	
 	var str_group = pick("Team ","Group ",tourney_type);
-	var c_col = make_color_rgb(98,145,242);
+	var c_col = appblue;
 	var height = 40;
 	
 	draw_set_valign(fa_bottom);
@@ -125,7 +125,7 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 	    if ii+1 == size // if last member draw
 	        {
 	        var _blind_size = ds_list_size(blind_list[_team]);
-	        var bl_col = make_color_rgb(98,145,242);
+	        var bl_col = appblue;
 	        for(var b=0;b<_blind_size;b++) // loop through blind list
 	            {
 	            var b_str = ds_list_find_value(blind_list[_team],b); // get name

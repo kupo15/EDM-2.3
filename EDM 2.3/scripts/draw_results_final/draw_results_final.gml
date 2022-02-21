@@ -1,6 +1,5 @@
-function draw_results_final() {
+function draw_results_final(page) {
 
-	var page = 0;
 	var xx = 30+(page*room_width);
 	var yy = 60;
 	var ysep = 33;
@@ -15,7 +14,7 @@ function draw_results_final() {
 	
 	// draw screen label
 	var height = 70;
-	var col = make_color_rgb(98,145,242);
+	var col = appblue;
 
 	draw_set_halign(fa_left);
 	draw_text_centered(xx,0,"RESULTS",height,,,col);
@@ -47,10 +46,10 @@ function draw_results_final() {
 	   var entr_col = c_black;
    
 	   if (scores_grid[# 5,off_ind] != noone)+scores_grid[# 19,off_ind] == 1 // only one
-	   entr_col = make_color_rgb(98,145,242); // blue
+	   entr_col = appblue; // blue
    
 	   // blind color
-	   var blind_col = make_color_rgb(98,145,242);
+	   var blind_col = appblue;
   
 	   if (scores_grid[# 5,off_ind] != noone)
 	   draw_text_transformed_colour(xx+35+280+28,yy+fn_off+0+(off_pos*ysep),"+"+string(scores_grid[# 20,off_ind]),0.8,0.8,0,blind_col,blind_col,blind_col,blind_col,1); // Blind Winning
@@ -140,7 +139,7 @@ function draw_results_final_headers(xx,yy) {
    
 	   str_s += "\nSkins";
    
-	   var entr_col = make_color_rgb(98,145,242);
+	   var entr_col = appblue;
 	   draw_text_centered(xx+xoff,yy-height,str_s,height,70,,entr_col);
 	   }
       
@@ -188,7 +187,7 @@ function draw_results_final_content(xx,yy) {
 			
 			// line separator
 			var lastTeam = (j+1 == size);
-			var col = pick(c_black,make_color_rgb(98,145,242),lastTeam);
+			var col = pick(c_black,appblue,lastTeam);
 			var alpha = pick(0.3,0.9,lastTeam);
 
 			draw_line_pixel(xx+20,yy+yoff+sep,930,1,col,alpha);
@@ -268,20 +267,23 @@ function draw_results_final_calculate_totals() {
 	
 function draw_results_final_buttons(page) {
 	
+	var screenOffset = (page-results_screen)*room_width;
 	var can_click = (close_enough_timer == -1);
 	var rec_col = c_green;
 	
 	// start over
-	var xx = 30+(page*room_width);
+	var xx = (page*room_width);
+	var xoff = 30;
 	var yy = 510;
 	var ww = 150;
 	var hh = 80;
 	var height = 35;
 	var col = pick(c_black,c_red,!clear_all_safty);
 	
-	draw_text_centered(xx,yy,"(tap twice)",height*0.66,ww,hh*1.5);
+	draw_text_centered(xx+xoff,yy,"(tap twice)",height*0.66,ww,hh*1.5);
+	draw_text_centered(xx+xoff,yy,"Start Over",height,ww,hh,col);
 	
-	if draw_text_button(xx,yy,"Start Over",height,ww,hh,col,,,,can_click) {
+	if scr_mouse_position_room_released(xoff+screenOffset,yy,ww,hh,mb_left,true) {
 		
 	    if !clear_all_safty
 		scr_reset_bracket();
@@ -291,10 +293,10 @@ function draw_results_final_buttons(page) {
 	else if mouse_check_button_released(mb_left)
 	clear_all_safty = true;
 	
-	draw_rectangle_color(xx,yy,xx+ww,yy+hh,rec_col,rec_col,rec_col,rec_col,true);
+	draw_rectangle_color(xx+xoff,yy,xx+xoff+ww,yy+hh,rec_col,rec_col,rec_col,rec_col,true);
 	
 	// edit scores
-	var xx = 250+(page*room_width);
+	var xoff = 250;
 	var yy = 525;
 	var ww = 180;
 	var hh = 65;
@@ -302,21 +304,24 @@ function draw_results_final_buttons(page) {
 	
 	if !global.save_loaded {
 		
-		draw_rectangle_colour(xx,yy,xx+ww,yy+hh,rec_col,rec_col,rec_col,rec_col,true);
-
-		if !global.save_loaded && draw_text_button(xx,yy,"Edit Scores",height,ww,hh,,,,,can_click)
+		draw_rectangle_colour(xx+xoff,yy,xx+xoff+ww,yy+hh,rec_col,rec_col,rec_col,rec_col,true);
+		draw_text_centered(xx+xoff,yy,"Edit Scores",height,ww,hh);
+		
+		if !global.save_loaded && draw_text_button(xoff+screenOffset,yy,"",height,ww,hh,,,,,can_click)
 		screen_change(screenEnum.eventRunning);
 	    }
 	
 	// team results
-	var xx = 880+(page*room_width);
+	var xoff = 880;
 	var yy = 510;
 	var ww = 120;
 	var hh = 80;
 	var height = 60;
 	
-	if draw_text_button(xx,yy,"Team\nResults",height,ww,hh,,,,,can_click)
+	draw_text_centered(xx+xoff,yy,"Team\nResults",height,ww,hh);
+	
+	if draw_text_button(xoff+screenOffset,yy,"",height,ww,hh,,,,,can_click)
     results_screen_end++;
 	
-	draw_rectangle_color(xx,yy,xx+ww,yy+hh,rec_col,rec_col,rec_col,rec_col,true);
+	draw_rectangle_color(xx+xoff,yy,xx+xoff+ww,yy+hh,rec_col,rec_col,rec_col,rec_col,true);
 	}

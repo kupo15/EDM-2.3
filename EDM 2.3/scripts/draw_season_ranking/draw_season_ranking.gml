@@ -6,7 +6,7 @@ function draw_season_ranking() {
 	var ww = 250+(cols*xsep);
 	var not_in_menu = !season_breakdown_add_member && (season_breakdown_date_x == noone) && (season_breakdown_edit_x == noone);
 
-	var col = make_color_rgb(98,145,242);
+	var col = appblue;
 	var str = pick("Season Breakdown","Season Ranking",!season_ranking_disp);
 	
 	draw_set_halign(fa_center);

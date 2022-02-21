@@ -44,7 +44,7 @@ function draw_edit_score_all() {
 	// headers
 	var yy = 180;
 	var height = 25;
-	var c_col = make_color_rgb(98,145,242);
+	var c_col = appblue;
 
 	draw_text_centered(30,yy-height*1.8,"Team "+string(team_index_entry+1),height*1.8,,height*2,c_col);
 	draw_text_centered(340,yy-height,"Front",height,70);
@@ -165,7 +165,7 @@ function draw_edit_score_player_popup() {
 	var xx = 20;
 	var yy = 420;
 	var height = 30;
-	var c_col = make_color_rgb(98,145,242);
+	var c_col = appblue;
 
 	draw_text_centered(xx,yy,"Team Score",height,,sep,c_col);
 	
@@ -288,7 +288,7 @@ function draw_edit_score_team_popup() {
 	        draw_text(xx+50+260+70,yy+215+(i*ysep),sco_back); // draw team players back
 	        draw_text(xx+50+260+70+70,yy+215+(i*ysep),sco_tot); // draw team players total
             
-	        var blind_col = make_color_rgb(98,145,242);
+	        var blind_col = appblue;
 	        draw_set_font(fn_name_it);
 	        if i+1 == team_size // if last name is drawn
 	        for(var b=0;b<blind_size;b++)

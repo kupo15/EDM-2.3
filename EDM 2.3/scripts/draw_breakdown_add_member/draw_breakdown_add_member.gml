@@ -17,7 +17,7 @@ function draw_breakdown_add_member(argument0) {
 	draw_rectangle_colour(xx-30,yy-ysep+5,xx+ww,yy+hh,c_white,c_white,c_white,c_white,true);
 
 
-	var col = make_color_rgb(98,145,242);
+	var col = appblue;
 	draw_text_colour(xx+10+spr_center,yy-ysep+fn_off,"Member List:",col,col,col,col,1);
 
 	// draw member list

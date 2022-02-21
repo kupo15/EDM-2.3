@@ -1,32 +1,19 @@
-function draw_results_teams() {
+function draw_results_teams(page) {
 	
-	var xx = 50+(1*room_width)-(results_screen*room_width);
-	var yy = 13;
 	var ysep = 25.2;
+	
+	var xx = (page*room_width);
+	var yy = 285;
+	var height = 150;
 
-	draw_set_halign(fa_center);
-	draw_text_ext_colour(xx+805,yy+170,"Team\nResults",60,-1,c_blue,c_blue,c_blue,c_blue,1);
+	draw_text_centered(xx+750,yy,"Team\nResults",height,,,appblue);
 
-	draw_set_font(fn_name);
-	draw_set_color(c_black);
-	draw_set_halign(fa_left);
-
-	// draw payout table
-	var num = team_number; // ENTRANT_COUNT-1; // number of players
-	var payout_max = array_length_2d(team_pay_table,num); // the last pay slot
-
-	draw_rectangle(xx+700,yy,xx+700+200,yy+20+((payout_max+1)*ysep),true);
-	draw_text(xx+700+10,yy+fn_off-10,"Payout Chart");
-
-	for(var i=0;i<payout_max;i++)
-	    {
-	    draw_set_halign(fa_left);
-	    draw_text(xx+700+5,yy+ysep+(i*ysep)+fn_off-10,string(i+1)+")");
-    
-	    draw_set_halign(fa_right);
-	    draw_text(xx+700+200-5,yy+ysep+(i*ysep)+fn_off-10,string(team_pay_table[num,i])+" pesos");
-	    }   
-    
+	draw_payout_table(xx+730,70,PAYOUT_TABLES.teamPayout[team_number]);
+    draw_team_result_tables(xx);
+	draw_results_team_buttons(page,xx);
+	
+	exit;
+	
 	// Draw Standings
 	var ww = 665;
 	var hh = ((teams_max+1)*ysep)+3;
@@ -119,35 +106,92 @@ function draw_results_teams() {
 	        }
         
 	    yy += 7*ysep+25;
-	    }        
-   
-	// draw Next Results
-	var xx = 720+(1*room_width)-(results_screen*room_width);
+	    }
+	}
+	
+function draw_payout_table(xx,yy,arr) {
+
+	var size = array_length(arr);
+	var ysep = 40;
+	var ww = 280;
+	var hh = (2+size)*ysep;
+	var height = ysep*0.7;
+	var header_col = appblue;
+
+	draw_rectangle(xx,yy,xx+ww,yy-ysep+hh,true);
+	draw_text_centered(xx,yy,"Payout Chart",height,ww,ysep,header_col);
+
+	yy += ysep;
+	draw_line(xx,yy,xx+ww,yy); // header line
+
+	for(var i=0;i<size;i++) {
+		
+		var str = arr[i];	
+			
+	    // draw payout slot
+		draw_set_halign(fa_left);
+	    draw_text_centered(xx+15,yy+(i*ysep),string(i+1)+")",height,,ysep);
+    
+	    draw_set_halign(fa_right);
+	    draw_text_centered(xx+130,yy+(i*ysep),string(str)+" pesos",height,,ysep);
+		
+		// horizontal line
+		draw_line_pixel(xx+20,yy+((i+1)*ysep),ww-40,1,,0.3);
+		}
+	}
+
+function draw_team_result_tables(xx) {
+	
+	xx += 20;
+	var sep = 32.2;
+	var yy = 40;
+	var ww = 680;
+	var hh = 5*sep;
+	
+	var labels = ["Front","Back","18 Hole"];
+	for(var i=0;i<3;i++) {
+		
+		var yoff = (hh*i)+(sep*i);
+		draw_rectangle(xx,yy+yoff,xx+ww,yy+yoff+hh,true);
+		
+		draw_set_halign(fa_left);
+		draw_text_centered(xx+10,yy+yoff-sep,"Place",sep,,sep*1.3);
+		draw_text_centered(xx+330,yy+yoff-sep,labels[i]+" Score",sep,155,sep*1.3);
+		draw_text_centered(xx+500,yy+yoff-sep,labels[i]+" Payout",sep,,sep*1.3);
+		}
+	}
+	
+function draw_results_team_buttons(page,xx) {
+	
+	var screenOffset = (page-results_screen)*room_width;
+	
+	// draw Results
+	var xoff = 708;
 	var yy = 500;
 	var ww = 150;
 	var hh = 80;
+	var height = 35;
 
-	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,true);
-	draw_rectangle_colour(xx+ww+5,yy,xx+ww+ww,yy+hh,c_green,c_green,c_green,c_green,true);
-
-	draw_set_halign(fa_left);
-	draw_text(xx+25,yy+30+fn_off-10,"Results");
-	draw_text(xx+ww+25,yy+30+fn_off-10,"Low Net");
-
-	if edit_score == noone && edit_team_score == noone
-	    {
-	    if (android_back || scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,true))
-			{
-			android_back = false;
-		    results_screen_end --;
+	draw_rectangle_colour(xx+xoff,yy,xx+xoff+ww,yy+hh,c_green,c_green,c_green,c_green,true);
+	
+	draw_text_centered(xx+xoff,yy,"Results",height,ww,hh);
+	
+	if scr_mouse_position_room_released(xoff+screenOffset,yy,ww,hh,mb_left,true) {
 		
-			if results_screen_end < 0
-			results_screen_end = 0;
-			}
-	    else if scr_mouse_position_room_released(xx+ww+5,yy,ww,hh,mb_left,true)
-	    results_screen_end ++;
-	    }
+		android_back = false;
+		results_screen_end--;
+		
+		if (results_screen_end < 0)
+		results_screen_end = 0;
+		}
+		
+	// draw low net button	
+	xoff += ww+10;
 
-
-
-}
+	draw_rectangle_colour(xx+xoff,yy,xx+xoff+ww,yy+hh,c_green,c_green,c_green,c_green,true);
+	
+	draw_text_centered(xx+xoff,yy,"Low Net",height,ww,hh);
+	
+	if scr_mouse_position_room_released(xoff+screenOffset,yy,ww,hh,mb_left,true)
+	results_screen_end++;
+	}

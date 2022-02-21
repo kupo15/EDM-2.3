@@ -46,7 +46,7 @@ function draw_team_payout_table(ysep) {
 	var ww = 330;
 	var hh = 6*ysep;
 	var height = ysep*0.7;
-	var header_col = make_color_rgb(98,145,242);
+	var header_col = appblue;
 
 	draw_rectangle(xx,yy,xx+ww,yy-ysep+hh,true);
 	draw_text_centered(xx,yy,"Team Payout",height,ww,ysep,header_col);
@@ -97,7 +97,7 @@ function draw_entry_fee_table(ysep) {
 	var ww = 330;
 	var hh = 6*ysep;
 	var height = ysep*0.7;
-	var header_col = make_color_rgb(98,145,242);
+	var header_col = appblue;
 
 	draw_rectangle(xx,yy,xx+ww,yy-ysep+hh,true);
 	draw_text_centered(xx,yy,"Entry Fees",height,ww,ysep,header_col);
@@ -141,7 +141,7 @@ function draw_low_net_table(ysep) {
 	var ww = 300;
 	var hh = 10*ysep;
 	var height = ysep*0.7;
-	var header_col = make_color_rgb(98,145,242);
+	var header_col = appblue;
 
 	draw_rectangle(xx,yy,xx+ww,yy-ysep+hh,true);
 	draw_text_centered(xx,yy,"Low Net Payout",height,ww,ysep,header_col);

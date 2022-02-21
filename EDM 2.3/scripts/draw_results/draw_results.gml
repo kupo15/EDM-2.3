@@ -1,5 +1,7 @@
 function draw_results() {
 		
+	// 	results_screen_end = 1
+		
 	if !surface_exists(results_surface)
 	results_surface = surface_create(room_width*3,room_height);
 
@@ -9,9 +11,9 @@ function draw_results() {
 	//gpu_set_blendmode_ext(bm_one,bm_zero);
 	
 	draw_set_halign(fa_left);
-	draw_results_final();
-	//draw_results_teams();
-	//draw_results_low_net();
+	draw_results_final(0);
+	draw_results_teams(1);
+	//draw_results_low_net(2);
 	
 	//gpu_set_blendmode(bm_normal);
 	surface_reset_target();

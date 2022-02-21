@@ -2,7 +2,7 @@ function PayoutTables() constructor {
 	
 	teamPayout = [
 			
-			[],
+			["0"],
 			["20"],
 			["20","10"],
 			["30","10"],

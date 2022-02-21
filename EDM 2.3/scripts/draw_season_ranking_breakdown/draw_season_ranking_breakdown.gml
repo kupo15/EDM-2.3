@@ -133,7 +133,7 @@ function draw_season_ranking_breakdown() {
 	   }
 
 	// Add member
-	var _col = make_color_rgb(98,145,242);
+	var _col = appblue;
 	
 	draw_set_halign(fa_left);
 	draw_text_colour(xx+45,yy-10,"Add Member",_col,_col,_col,_col,1);
