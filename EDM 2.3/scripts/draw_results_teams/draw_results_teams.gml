@@ -180,7 +180,7 @@ function draw_results_team_buttons(page,xx) {
 		
 		android_back = false;
 		results_screen_end--;
-		
+
 		if (results_screen_end < 0)
 		results_screen_end = 0;
 		}

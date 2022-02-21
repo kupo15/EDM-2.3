@@ -1,8 +1,13 @@
-function draw_results_low_net() {
+function draw_results_low_net(page) {
 	
-	var xx = 50+(2*room_width)-(results_screen*room_width);
+	var xx = (page*room_width);
 	var yy = 30;
 	var ysep = 30;
+
+	draw_payout_table(xx+730,70,PAYOUT_TABLES.lowNetPayout[23]);
+	draw_results_low_net_buttons(page,xx);
+
+	exit;
 
 	draw_set_halign(fa_center);
 	draw_text_ext_colour(xx+805,yy+240,"Low Net\nResults",60,-1,c_blue,c_blue,c_blue,c_blue,1);
@@ -189,3 +194,25 @@ function draw_results_low_net() {
 
 
 }
+
+function draw_results_low_net_buttons(page,xx) {
+	
+	var screenOffset = (page-results_screen)*room_width;
+	
+	var xoff = 820;
+	var yy = 500;
+	var ww = 190;
+	var hh = 80;
+	var height = 35;
+	
+	// draw low net button
+	draw_rectangle_colour(xx+xoff,yy,xx+xoff+ww,yy+hh,c_green,c_green,c_green,c_green,true);
+	
+	draw_text_centered(xx+xoff,yy,"Team Results",height,ww,hh);
+	
+	if scr_mouse_position_room_released(xoff+screenOffset,yy,ww,hh,mb_left,true) {
+		
+		android_back = false;
+		results_screen_end--;
+		}
+	}

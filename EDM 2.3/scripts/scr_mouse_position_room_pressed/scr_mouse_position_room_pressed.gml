@@ -44,7 +44,7 @@ function scr_mouse_position_room_released(x_left,y_top,ww,hh,button,highlight,is
 	if point_in_rectangle(mx,my,x_left,y_top,x_left+ww,y_top+hh) {
 		
 		// highlight area
-	    if highlight && ((os_type == os_windows) || mouse_check_button(mb_left)) {
+	    if highlight && (os_type == os_windows) {
 			
 	        draw_set_alpha(0.3);
 	        draw_rectangle_colour(x_left,y_top,x_left+ww,y_top+hh,c_yellow,c_yellow,c_yellow,c_yellow,false);
