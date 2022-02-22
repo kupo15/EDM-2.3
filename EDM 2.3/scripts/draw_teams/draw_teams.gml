@@ -229,7 +229,7 @@ function debug_randomize_scores() {
 
 			memberStruct.grossFront = string(irandom_range(33,50));
 			memberStruct.grossBack = string(irandom_range(33,50));
-			memberStruct.grossAdj = string(irandom_range(69,95));
+			memberStruct.grossAdj = string(real(memberStruct.grossFront)+real(memberStruct.grossBack)-15);
 			}
 		}
 	}

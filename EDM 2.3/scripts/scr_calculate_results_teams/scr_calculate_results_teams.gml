@@ -70,6 +70,9 @@ function payout_team_winnings(tempArr,sortKey,winningKey)  {
 				teamStruct.teamWinnings[$ winningKey]++;
 				payoutPot--;
 				}
+				
+			if (payoutPot == 0)
+			break;
 			}
 		}
 	}
