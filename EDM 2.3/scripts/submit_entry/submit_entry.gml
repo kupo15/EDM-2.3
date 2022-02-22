@@ -57,6 +57,12 @@ function delete_character() {
 	if (str_ll > 0)
 	entryString = string_delete(entryString,str_ll,1);
 	}
+	
+function string_add(strNum1,strNum2) {
+	
+	var total = real(strNum1)+real(strNum2);
+	return string(total);
+	}
 
 function retrieve_keypad() {
 				

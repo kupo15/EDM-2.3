@@ -1,34 +1,42 @@
-function scr_calculate_results_final(argument0) {
+function scr_calculate_results_final() {
 	
-	phase = argument0;
-
-	ds_grid_sort(scores_grid,18,true); // sort by index
-
-	ds_grid_sort(scores_grid_front,18,true);
-	ds_grid_sort(scores_grid_back,18,true);
-	ds_grid_sort(scores_grid_total,18,true);
-
-	ds_grid_sort(team_score_front_grid,0,true);
-	ds_grid_sort(team_score_back_grid,0,true);
-	ds_grid_sort(team_score_total_grid,0,true);
-
-	var num = ds_grid_height(scores_grid);
-	var skins_gross_tot = ds_grid_get_sum(scores_grid,13,0,13,num-1); // total gross skins given
-	var skins_net_tot = ds_grid_get_sum(scores_grid,15,0,15,num-1); // total net skins given
-	var skins_pot = skins_entry*num*0.5;
+	var num = ENTRANT_COUNT;
+	var skins_total_struct = scr_calculate_skins_count();
+	var skins_gross_tot = skins_total_struct.gross; // total gross skins awarded
+	var skins_net_tot = skins_total_struct.net; // total net skins awarded
+	var skins_pot = real(ENTRY_FEES.skinsEntry)*ENTRANT_COUNT*0.5;
 
 	no_gross_skins = (skins_gross_tot == 0);
 	no_net_skins = (skins_net_tot == 0);
 
-	if (skins_gross_tot == 0)
-	skins_gross_tot = 1;   
+	// default count to 1 if 0
+	if no_gross_skins
+	skins_gross_tot = 1;
 
-	if (skins_net_tot == 0)
+	if no_net_skins
 	skins_net_tot = 1;
 
 	var skins_gross_pot_payout = skins_pot;
 	var skins_net_pot_payout = skins_pot;
 	
+	// loop through teams
+	for(var i=0;i<team_number+1;i++)
+		{
+		var teamStruct = TEAM_LIST[i];	
+		
+		var size = array_length(teamStruct.members);
+		for(var j=0;j<size;j++)
+			{
+			var memberStruct = teamStruct.members[j];
+			var roundStats = memberStruct.roundStats;
+			var eventWinnings = memberStruct.eventWinnings;
+			
+			eventWinnings.lowNetWinning = eventWinnings.frontWinnings+eventWinnings.backWinnings+eventWinnings.allHolesWinnings;
+			eventWinnings.teamWinning = (eventWinnings.teamFrontWinnings+eventWinnings.teamBackWinnings+eventWinnings.teamAllHolesWinnings)*!roundStats.noTeam;
+			
+			}
+		}
+		
 	for(var i=0;i<num;i++)
 	   {
 	   var ind = scores_grid[# 18,i];
@@ -37,6 +45,7 @@ function scr_calculate_results_final(argument0) {
 	   var skins_gross_win = round(scores_grid[# 13,i]/skins_gross_tot*skins_pot);
 	   var skins_net_win = round(scores_grid[# 15,i]/skins_net_tot*skins_pot);
 	   var blind_winnings = 0;
+	   
 	   if scores_grid[# 5,i] != noone
 	   blind_winnings = (team_score_front_grid[# 3,scores_grid[# 5,i]]+team_score_back_grid[# 3,scores_grid[# 5,i]]+team_score_total_grid[# 3,scores_grid[# 5,i]]);
 
@@ -70,12 +79,12 @@ function scr_calculate_results_final(argument0) {
 
 	var short = 0;   
 	ds_grid_sort(scores_grid,21,false); // sort by gross skins
+	
 	// distribute any remaining gross skins
 	if !no_gross_skins // if someone had gross skins
 	while skins_gross_pot_payout > 0
 	for(var i=num-1;i>0;i--)
 	if scores_grid[# 13,i] > 0 // if you had gross skins
-	//if irandom(1) = 1 || short > 500
 	   {
 	   scores_grid[# 14,i] ++; // calculate skins winning
 	   scores_grid[# 21,i] ++; // add to gross skins breakdown
@@ -130,4 +139,27 @@ function scr_calculate_results_final(argument0) {
 	ds_grid_sort(scores_grid_front,1,true); // front
 	ds_grid_sort(scores_grid_back,2,true); // back
 	ds_grid_sort(scores_grid_total,3,true); // total
+	}
+
+function scr_calculate_skins_count() {
+	
+	var grossCount = 0;
+	var netCount = 0;
+	
+	for(var i=0;i<team_number+1;i++)
+		{
+		var teamStruct = TEAM_LIST[i];	
+		
+		var size = array_length(teamStruct.members);
+		for(var j=0;j<size;j++)
+			{
+			var memberStruct = teamStruct.members[j];
+			var roundStats = memberStruct.roundStats;
+			
+			grossCount += real(roundStats.skinsGross);
+			netCount += real(roundStats.skinsNet);
+			}
+		}
+		
+	return {gross: grossCount, net: netCount}
 	}

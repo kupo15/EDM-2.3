@@ -54,12 +54,12 @@ function create_default_save_file() {
 			
 			teams: [
 			
-				new Team(),
-				new Team(),
-				new Team(),
-				new Team(),
-				new Team(),
-				new Team(),
+				new Team(0),
+				new Team(1),
+				new Team(2),
+				new Team(3),
+				new Team(4),
+				new Team(5),
 				],
 				
 			eventResults: new EventResults(),
@@ -102,11 +102,23 @@ function Tee(_rating,_slope,_color) constructor {
 	color = _color;
 	}
 	
-function Team() constructor {
+function Team(num) constructor {
 	
+	var defaultVal = 0;
+	
+	teamNumber = num;
 	members = [];
+	
 	teamNetFront = "";
 	teamNetBack = "";
+	teamNetTotal = "";
+	
+	teamWinnings = {
+				
+		frontWinnings: defaultVal,
+		backWinnings: defaultVal,
+		allHolesWinnings: defaultVal,
+		}
 	}
 	
 function PrizePool() constructor {
@@ -149,10 +161,16 @@ function EventWinnings() constructor {
 	
 	var defaultVal = 0;
 	
-	teamWinning = defaultVal;
+	frontWinnings = defaultVal;
+	backWinnings = defaultVal;
+	allHolesWinnings = defaultVal;
 	lowNetWinning = defaultVal;
+
+	teamWinning = defaultVal;
+	
 	skinsGross = defaultVal;
 	skinsNet = defaultVal;
+	
 	winTotal = defaultVal;
 	entryFee = defaultVal;
 	netWinning = defaultVal;

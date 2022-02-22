@@ -6,12 +6,13 @@ function EventResults() constructor {
 
 function scr_calculate_results() {
 	
-	EVENT_RESULTS = new EventResults();
+	//scr_event_results_build();
 	
 	// calculate all
-	//scr_calculate_results_teams(2);
+	scr_calculate_results_teams(2);
 	//scr_calculate_net_scores(3);
-	//scr_calculate_results_final(4);
+	scr_calculate_results_final();
+	//scr_calculate_member_handicap();
 
 	show_debug_message("calculated");
     
@@ -31,4 +32,29 @@ exit
 	season_ranking_save();
 	
 	// save results
+	}
+
+function scr_event_results_build() {
+	
+	EVENT_RESULTS = new EventResults();
+	
+	// team results
+	EVENT_RESULTS.teamResults = deep_copy(TEAM_LIST);
+	array_delete(EVENT_RESULTS.teamResults,team_number+1,teams_max-team_number-1);
+	
+	// low net results
+	var copy = deep_copy(EVENT_RESULTS.teamResults);
+
+	// loop through teams
+	for(var i=0;i<array_length(copy);i++) {
+		
+		var teamList = copy[i].members;
+
+		// while not empty
+		for(var j=0;j<array_length(teamList);j++)
+		array_push(EVENT_RESULTS.lowNetResults,teamList[j]);
+		}
+		
+		
+	cs(js(EVENT_RESULTS))
 	}
