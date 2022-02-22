@@ -13,22 +13,16 @@ function scr_calculate_results_teams() {
 			
 			front: real(teamStruct.teamNetFront),
 			back: real(teamStruct.teamNetBack),
-			total: real(teamStruct.teamNetFront)+real(teamStruct.teamNetBack),
+			total: real(teamStruct.teamNetTotal),
 			}
 			
 		array_push(tempRanking,entry);
-		
-		// record totalScore
-		teamStruct.teamNetTotal = string(entry.total);
 		}
 
 	// apply payouts
 	payout_team_winnings(tempRanking,"front","frontWinnings");
 	payout_team_winnings(tempRanking,"back","backWinnings");
 	payout_team_winnings(tempRanking,"total","allHolesWinnings");
-	
-	cs(js(TEAM_LIST))
-	sm("")
 	}
 
 function payout_team_winnings(tempArr,sortKey,winningKey)  {

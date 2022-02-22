@@ -1,20 +1,17 @@
-function EventResults() constructor {
-	
-	lowNetResults = [];
-	teamResults = [];
-	}
-
 function scr_calculate_results() {
 	
-	//scr_event_results_build();
-	
 	// calculate all
-	scr_calculate_results_teams(2);
-	//scr_calculate_net_scores(3);
+	scr_calculate_missing_fields();
+	scr_calculate_results_teams();
+	scr_calculate_net_scores();
 	scr_calculate_results_final();
-	//scr_calculate_member_handicap();
+	scr_calculate_member_handicaps();
 
-	show_debug_message("calculated");
+	//scr_event_results_build();
+
+	cs(js(TEAM_LIST))
+	sm("")
+	db("calculated");
     
 	screen_change(screenEnum.eventResults);
 
@@ -57,4 +54,10 @@ function scr_event_results_build() {
 		
 		
 	cs(js(EVENT_RESULTS))
+	}
+	
+function EventResults() constructor {
+	
+	lowNetResults = [];
+	teamResults = [];
 	}

@@ -1,6 +1,0 @@
-function payout_skins() {
-
-
-
-
-}

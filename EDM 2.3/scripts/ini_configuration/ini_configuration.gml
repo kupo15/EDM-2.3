@@ -142,10 +142,12 @@ function Member(_name,_favorite=false) constructor {
 	name = _name;
 	firstName = parsedName.first;
 	lastName = parsedName.last;
+	
 	favorite = _favorite;
 	recent = -1;
 	archived = false;
-	handicap = 54;
+	
+	handicapIndex = 54;
 	teeColor = "white";
 	teamAssigned = undefined;
 	
@@ -189,11 +191,20 @@ function parse_name(name) {
 	
 function RoundStats() constructor {
 	
-	rank = 1;
+	resultRanking = {
+		
+		netFront: 1,
+		netBack: 1,
+		netTotal: 1,
+		}
 	
 	grossFront = "";
 	grossBack = "";
 	grossAdj = "";
+	
+	netFront = "";
+	netBack = "";
+	netTotal = "";
 	
 	skinsGross = "0";
 	skinsNet = "0";

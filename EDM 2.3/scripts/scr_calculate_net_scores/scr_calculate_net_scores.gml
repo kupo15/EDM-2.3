@@ -1,6 +1,7 @@
-function scr_calculate_net_scores(argument0) {
-	// phase 3
-	phase = argument0;
+function scr_calculate_net_scores() {
+
+
+	exit;
 
 	var num = min(ENTRANT_COUNT-1,23); // number of players
 	var payout_max = array_length_2d(low_net_pay_table,num); // the last pay slot
@@ -78,9 +79,4 @@ function scr_calculate_net_scores(argument0) {
 	            }
 	        }
 	    }
-
-
-
-
-
-}
+	}

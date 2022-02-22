@@ -6,7 +6,7 @@
     "path": "folders/Scripts/Scripts/Calculate.yy",
   },
   "resourceVersion": "1.0",
-  "name": "payout_skins",
+  "name": "scr_calculate_missing_fields",
   "tags": [],
   "resourceType": "GMScript",
 }
