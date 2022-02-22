@@ -98,7 +98,7 @@ function json_are_equal(a, b) {
     return true;
 	}	
 	
-function array_sort_struct(source_array,key,ascending) {
+function array_sort_struct(source_array,key,ascending,nestedFolder=[]) {
 	
 	// create temp sorting grid
 	var sorting_grid = ds_grid_create(2,0);
@@ -108,18 +108,25 @@ function array_sort_struct(source_array,key,ascending) {
 	for(var i=0;i<size;i++)
 		{
 		var pointer = source_array[i];
+		
+		for(var j=0;j<array_length(nestedFolder);j++) {
+
+			var nestName = nestedFolder[j];
+			pointer = pointer[$ nestName];
+			}
+		
 		var sort_value = pointer[$ key];
 
 		// debug
-		if (sort_value == undefined)
-			{
+		if (sort_value == undefined) {
+			
 			ds_grid_destroy(sorting_grid);
 			sm("score key undefined >> not sorted");
 			exit;
 			}
 
 		grid_row_add(sorting_grid); // add a row to the temp sorting grid
-		sorting_grid[# 0,i] = pointer; // add list pointer to grid
+		sorting_grid[# 0,i] = source_array[i]; // add list pointer to grid
 		sorting_grid[# 1,i] = sort_value; // add value to sort to grid
 		}
 	

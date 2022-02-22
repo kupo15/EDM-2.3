@@ -6,17 +6,17 @@ function scr_calculate_results() {
 	scr_calculate_net_scores();
 	scr_calculate_results_final();
 	scr_calculate_member_handicaps();
+	db("calculated");
 
 	//scr_event_results_build();
 
 	cs(js(TEAM_LIST))
 	sm("")
-	db("calculated");
     
 	screen_change(screenEnum.eventResults);
 
 	// do the close enough screen
-	if SETTINGS.closeEnough && !close_enough { 
+	if SETTINGS.closeEnough && !close_enough {
 		
 	    picture_timer_start = game_time;
 	    close_enough_timer = room_speed*5;

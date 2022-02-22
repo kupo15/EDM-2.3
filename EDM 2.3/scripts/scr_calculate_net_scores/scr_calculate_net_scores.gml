@@ -1,24 +1,40 @@
+function create_entrant_list() {
+	
+	var list = [];
+	
+	for(var i=0;i<team_number+1;i++) {
+		
+		var teamStruct = TEAM_LIST[i];	
+		
+		var size = array_length(teamStruct.members);
+		for(var j=0;j<size;j++)	{
+			
+			var memberStruct = teamStruct.members[j];
+			array_push(list,memberStruct);
+			}
+		}
+		
+	return list;
+	}
+
+function payout_low_net_winnings(tempArr,sortKey,winningKey) {
+		
+	array_sort_struct(tempArr,sortKey,true,["roundStats"]);
+
+	}
+
 function scr_calculate_net_scores() {
 
+	var entrantList = create_entrant_list();
+	
+	payout_low_net_winnings(entrantList,"netFront","frontWinnings");
+	//payout_low_net_winnings(entrantList,"netBack","backWinnings");
+	//payout_low_net_winnings(entrantList,"netTotal","allHolesWinnings");
 
 	exit;
 
 	var num = min(ENTRANT_COUNT-1,23); // number of players
 	var payout_max = array_length_2d(low_net_pay_table,num); // the last pay slot
-
-	// calculate total score
-	for(var i=0;i<num+1;i++)
-	scores_grid[# 3,i] = scores_grid[# 1,i]+scores_grid[# 2,i]; 
-
-	// copy grids
-	ds_grid_copy(scores_grid_front,scores_grid); // front
-	ds_grid_copy(scores_grid_back,scores_grid); // back
-	ds_grid_copy(scores_grid_total,scores_grid); // total
-
-	// sort scores
-	ds_grid_sort(scores_grid_front,1,true); // front
-	ds_grid_sort(scores_grid_back,2,true); // back
-	ds_grid_sort(scores_grid_total,3,true); // total
 
 	for(var rr=0;rr<3;rr++)
 	    {
@@ -30,7 +46,7 @@ function scr_calculate_net_scores() {
     
 	    // set rest to 0
 	    for(var i=1;i<num;i++)
-	    ds_list_add(payout_list_front,0);   
+	    ds_list_add(payout_list_front,0);
     
 	    // select grid
 	    var ds_grid = scores_grid_front;
