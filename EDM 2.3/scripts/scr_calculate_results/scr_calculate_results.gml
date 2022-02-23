@@ -15,11 +15,6 @@ function scr_calculate_results() {
 	// create event results struct to display
 	scr_event_results_build();
 	
-	scr_calculate_member_handicaps();
-
-	cs(js(TEAM_LIST))
-	sm("")
-    
 	screen_change(screenEnum.eventResults);
 
 	// do the close enough screen
@@ -41,15 +36,12 @@ exit
 function scr_event_results_build() {
 	
 	EVENT_RESULTS = new EventResults();
-		
-		
-	cs(js(EVENT_RESULTS))
-	sm("")
+
 	}
 	
 function EventResults() constructor {
 	
-	lowNetResults = [];
+	leaderboard = deep_copy(con_main.entrantResultsList);
 	teamResults = TeamResults();
 	}
 

@@ -13,7 +13,7 @@ function scr_calculate_missing_fields(){
 			var memberStruct = teamStruct.members[j];
 			var roundStats = memberStruct.roundStats;
 			
-			var courseHandicap = 15;
+			var courseHandicap = scr_calculate_member_handicaps();
 			var frontAdj = ceil(courseHandicap*0.5);
 			var backAdj = floor(courseHandicap*0.5);
 			

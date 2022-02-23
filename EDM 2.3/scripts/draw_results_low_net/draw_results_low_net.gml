@@ -56,12 +56,6 @@ function draw_results_low_net(page) {
 	    draw_sprite_ext(sprite16,0,xx+(i*260*scale),yy,scale,1.5,0,col,alph);
 	    }
 
-	xx += 5;
-	draw_text(xx+10,yy+fn_off,"Front Results");
-	draw_text(xx+10+(1*260*scale),yy+fn_off,"Back Results");
-	draw_text(xx+10+(2*260*scale),yy+fn_off,"18 Hole Results");
-
-
 	yy += 2*ysep;
 	draw_line_width(xx-5,yy+ysep,xx-5+ww,yy+ysep,3);
 

@@ -108,6 +108,7 @@ function Team(num) constructor {
 	
 	teamNumber = num;
 	members = [];
+	blindMembers = [];
 	
 	teamNetFront = "";
 	teamNetBack = "";
