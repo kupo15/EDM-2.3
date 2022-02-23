@@ -34,26 +34,6 @@ function scr_create_teams() {
 
 exit;
 	
-	var redo = (ds_grid_height(scores_grid) != 1); // if grid already created
-
-	// debug
-	if !redo
-	for(var i=0;i<team_num;i++)
-	    {
-	    team_score[i,0] = undefined;
-	    team_score[i,1] = undefined;
-	    team_score[i,2] = 0;
-	    }
-
-	//
-
-	if redo
-	    {
-	    grid_copy = ds_grid_create(ds_grid_width(scores_grid),ds_grid_height(scores_grid));
-	    ds_grid_copy(grid_copy,scores_grid); // copy the grid
-	    }
-
-
 	var hh = ENTRANT_COUNT;
 	ds_grid_resize(scores_grid,ds_grid_width(scores_grid),hh);
 
@@ -98,39 +78,4 @@ exit;
 	       row ++;
 	       }    
 	    }
-    
-	if redo
-	   {    
-	   var size = ds_grid_height(scores_grid); // get height of scores grid
-	   var size_copy = ds_grid_height(grid_copy); // get height of copy grid
-   
-	   for(var i=0;i<size;i++) // loop through scores grid
-	      {
-	      var name = scores_grid[# 0,i]; // get name
-	      for(var ii=0;ii<size_copy;ii++) // loop through copy scores
-	          {
-	          if grid_copy[# 0,ii] == name // if matching name found
-	              {
-	              ds_grid_set_grid_region(scores_grid,grid_copy,1,ii,3,ii,1,i); // copy scores over
-	              scores_grid[# 5,i] = grid_copy[# 5,ii]; // blind
-	              scores_grid[# 13,i] = grid_copy[# 13,ii]; // net skins
-	              scores_grid[# 15,i] = grid_copy[# 15,ii]; // gross skins
-	              scores_grid[# 19,i] = grid_copy[# 19,ii]; // no team
-              
-	              if scores_grid[# 5,i] == scores_grid[# 4,i] // if blind team is the same as current team
-	                  {
-	                  scr_blinds_remove(name,scores_grid[# 4,i]) // remove from blinds team
-	                  scores_grid[# 5,i] = noone; // reset blinds assignment
-	                  }
-	              }
-	          }
-	      }
-   
-	   ds_grid_destroy(grid_copy);
-   
-	   // remove from blind list
-	   scr_blinds_cleanup();
-	   }
-    
-	scr_sort_members(MEMBERS_LIST.list);
 	}

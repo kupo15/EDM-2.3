@@ -21,6 +21,7 @@
 #macro comboColor c_black
 
 #macro teamMemberMax 5
+#macro teams_max 6
 
 // colors
 #macro appblue make_color_rgb(98,145,242)
