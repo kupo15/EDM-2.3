@@ -149,6 +149,8 @@ function Member(_name,_favorite=false) constructor {
 	
 	handicapIndex = 54;
 	teeColor = "white";
+	
+	entrantNumber = undefined;
 	teamAssigned = undefined;
 	
 	roundStats = new RoundStats();

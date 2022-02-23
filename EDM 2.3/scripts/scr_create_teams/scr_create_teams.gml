@@ -9,19 +9,7 @@ function scr_create_teams() {
 	for(var i=0;i<maxTeams;i++) {
 		
 		var teamMemberList = list[i].members;
-
-		// current team is empty
-		/*if (array_length(teamMemberList) == 0) && (i+1<maxTeams)
-		for(var j=i+1;j<maxTeams;j++) {
-
-			if (array_length(list[j].members) != 0) {
-				
-				list[i].members = deep_copy(list[j].members); // copy over next teams roster
-				list[j].members = []; // clear next team
-				break;
-				}
-			}*/
-			
+		
 		var teamSize = array_length(teamMemberList);
 		if (teamSize != 0) {
 			
@@ -31,7 +19,9 @@ function scr_create_teams() {
 			for(var j=0;j<teamSize;j++) {
 			
 				var member = teamMemberList[j];
+				
 				member.teamAssigned = team_number;
+				member.entrantNumber = array_length(entrant_list);
 				
 				array_push(entrant_list,member);
 				}

@@ -1,29 +1,9 @@
+
 function scr_calculate_net_scores() {
 
-	var entrantList = create_entrant_list();
-	
-	payout_low_net_winnings(entrantList,"netFront","frontWinnings");
-	payout_low_net_winnings(entrantList,"netBack","backWinnings");
-	payout_low_net_winnings(entrantList,"netTotal","allHolesWinnings");
-	}
-
-function create_entrant_list() {
-	
-	var list = [];
-	
-	for(var i=0;i<team_number+1;i++) {
-		
-		var teamStruct = TEAM_LIST[i];	
-		
-		var size = array_length(teamStruct.members);
-		for(var j=0;j<size;j++)	{
-			
-			var memberStruct = teamStruct.members[j];
-			array_push(list,memberStruct);
-			}
-		}
-		
-	return list;
+	payout_low_net_winnings(entrantResultsList,"netFront","frontWinnings");
+	payout_low_net_winnings(entrantResultsList,"netBack","backWinnings");
+	payout_low_net_winnings(entrantResultsList,"netTotal","allHolesWinnings");
 	}
 
 function payout_low_net_winnings(tempArr,sortKey,winningKey) {
@@ -65,6 +45,7 @@ function payout_low_net_winnings(tempArr,sortKey,winningKey) {
 			if (memberStruct.roundStats.resultRanking[$ sortKey] == i+1) {
 
 				memberStruct.eventWinnings[$ winningKey]++;
+				sm(memberStruct)
 				payoutPot--;
 				}
 				

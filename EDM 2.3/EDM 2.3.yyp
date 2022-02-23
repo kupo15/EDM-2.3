@@ -14,6 +14,7 @@
     {"id":{"name":"spr_member_button","path":"sprites/spr_member_button/spr_member_button.yy",},"order":7,},
     {"id":{"name":"init_keypad","path":"scripts/init_keypad/init_keypad.yy",},"order":1,},
     {"id":{"name":"spr_preferences","path":"sprites/spr_preferences/spr_preferences.yy",},"order":8,},
+    {"id":{"name":"scr_create_entrant_list_results","path":"scripts/scr_create_entrant_list_results/scr_create_entrant_list_results.yy",},"order":6,},
     {"id":{"name":"spr_slider","path":"sprites/spr_slider/spr_slider.yy",},"order":9,},
     {"id":{"name":"background0","path":"sprites/background0/background0.yy",},"order":12,},
     {"id":{"name":"snd_tap0","path":"sounds/snd_tap0/snd_tap0.yy",},"order":0,},
