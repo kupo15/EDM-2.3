@@ -1,7 +1,5 @@
 function draw_results() {
 				
-	// 	results_screen_end = 1
-	
 	// scrolling navigation
 	scr_results_screen();
 	
@@ -13,6 +11,7 @@ function draw_results() {
 	draw_clear_alpha(c_black,0);
 	//gpu_set_blendmode_ext(bm_one,bm_zero);
 	
+	// draw pages
 	draw_set_halign(fa_left);
 	draw_results_final(0);
 	draw_results_teams(1);

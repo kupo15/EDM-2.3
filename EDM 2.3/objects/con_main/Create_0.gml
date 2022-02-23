@@ -122,11 +122,11 @@ edit_team_score = noone;
 
 edit_score_pos = entryType.memberFront; // which score you are entering
 team_index_entry = undefined;
+
 team_index = 0; // the team selected to add to
 team_number = -1; // number of teams entered
 teams_max = 6; // the max number of teams to account for
 net_score_tab = 0;
-skins_total = 0;
 
 skins_input = true;
 
@@ -145,38 +145,11 @@ favorites_list = ds_list_create(); // list of frequent members to save to INI
 favorites_members_list = ds_list_create(); // list of favorites to assign to teams
 numpad_list = ds_list_create(); // to create scores from number pad
 
-payout_list_front = ds_list_create(); // payout amounts
-payout_list_back = ds_list_create(); // payout amounts
-payout_list_total = ds_list_create(); // payout amounts
-
-scores_grid = ds_grid_create(24,1);
-scores_grid_front = ds_grid_create(ds_grid_width(scores_grid),1);
-scores_grid_back = ds_grid_create(ds_grid_width(scores_grid),1);
-scores_grid_total = ds_grid_create(ds_grid_width(scores_grid),1);
-
-team_score_front_grid = ds_grid_create(4,teams_max);
-team_score_back_grid = ds_grid_create(4,teams_max);
-team_score_total_grid = ds_grid_create(4,teams_max);
-
-pay_teams_save = ds_grid_create(6,3);
-pay_low_net_save = ds_grid_create(24,7);
-
 season_delete_safty = true;
 season_ranking_header_grid = ds_grid_create(2,3); // the date and info of the day recorded
 season_ranking_grid = ds_grid_create(2,1);
 season_ranking_usage_grid = ds_grid_create(2,1);
 season_ranking_load();
-
-ds_grid_clear(scores_grid,0);
-
-for(var i=0;i<teams_max;i++) {
-	
-    team_list[i] = ds_list_create();
-    blind_list[i] = ds_list_create();
-    team_score[i,0] = undefined;
-    team_score[i,1] = undefined;
-    team_score[i,2] = -99;
-    }
     
 ini_timer(mainTimers.enumcount);
 ini_save_file();
