@@ -1,5 +1,29 @@
 function scr_calculate_results_final() {
 	
+	// loop through results list
+	for(var i=0;i<array_length(entrantResultsList);i++) {
+		
+		var memberStruct = entrantResultsList[i];
+		var winningStruct = memberStruct.eventWinnings;
+		var teamInd = memberStruct.teamAssigned;
+		var blind = (memberStruct.roundStats.blindTeam != undefined);
+		var noTeam = !memberStruct.roundStats.noTeam;
+	
+		// apply team winnings
+		var teamFront = TEAM_LIST[teamInd].teamWinnings.frontWinnings;
+		var teamBack = TEAM_LIST[teamInd].teamWinnings.backWinnings;
+		var teamTotal = TEAM_LIST[teamInd].teamWinnings.allHolesWinnings;
+		
+		winningStruct.teamWinning = teamFront+teamBack+teamTotal;
+		winningStruct.entryFee = -real(ENTRY_FEES.lowNetEntry)-(noTeam*real(ENTRY_FEES.teamEntry))-real(ENTRY_FEES.skinsEntry)-(blind*real(ENTRY_FEES.blindFee));
+		}
+		
+	cs(js(entrantResultsList))
+	sm("")
+		
+	
+	exit;
+	
 	var num = ENTRANT_COUNT;
 	var skins_total_struct = scr_calculate_skins_count();
 	var skins_gross_tot = skins_total_struct.gross; // total gross skins awarded

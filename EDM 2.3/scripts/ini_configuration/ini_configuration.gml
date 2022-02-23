@@ -62,7 +62,7 @@ function create_default_save_file() {
 				new Team(5),
 				],
 				
-			eventResults: new EventResults(),
+			eventResults: undefined,
 			},
 			
 		settings: {

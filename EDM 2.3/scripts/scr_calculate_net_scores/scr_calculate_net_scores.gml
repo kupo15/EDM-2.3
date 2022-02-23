@@ -32,8 +32,8 @@ function payout_low_net_winnings(tempArr,sortKey,winningKey) {
 
 	// loop through winning slots
 	var payoutTableArray = PAYOUT_TABLES.lowNetPayout[ENTRANT_COUNT-1];
-	for(var i=0;i<array_length(payoutTableArray);i++)
-		{
+	for(var i=0;i<array_length(payoutTableArray);i++) {
+		
 		var payoutPot = real(payoutTableArray[i]);
 
 		while (payoutPot > 0) // while there is money in the pot
@@ -45,7 +45,6 @@ function payout_low_net_winnings(tempArr,sortKey,winningKey) {
 			if (memberStruct.roundStats.resultRanking[$ sortKey] == i+1) {
 
 				memberStruct.eventWinnings[$ winningKey]++;
-				sm(memberStruct)
 				payoutPot--;
 				}
 				

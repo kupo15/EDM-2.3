@@ -2,14 +2,18 @@ function scr_calculate_results() {
 	
 	// calculate all
 	scr_calculate_missing_fields();
-	//scr_event_results_build();
-
-	create_entrant_list_results();
 	scr_calculate_results_teams();
+	
+	entrantResultsList = create_entrant_list_results();
 	scr_calculate_net_scores();
 	scr_calculate_results_final();
-	scr_calculate_member_handicaps();
+
 	db("calculated");
+
+	// create event results struct to display
+	scr_event_results_build();
+	
+	scr_calculate_member_handicaps();
 
 	cs(js(TEAM_LIST))
 	sm("")
@@ -38,10 +42,26 @@ function scr_event_results_build() {
 		
 		
 	cs(js(EVENT_RESULTS))
+	sm("")
 	}
 	
 function EventResults() constructor {
 	
 	lowNetResults = [];
-	teamResults = [];
+	teamResults = TeamResults();
+	}
+
+function TeamResults() {
+	
+	var results = [];
+	
+	for(var i=0;i<con_main.team_number+1;i++) {
+		
+		var teamStruct = deep_copy(TEAM_LIST[i]);
+		variable_struct_remove(teamStruct,"members");
+		
+		array_push(results,teamStruct);
+		}
+	
+	return results;
 	}
