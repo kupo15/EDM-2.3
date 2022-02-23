@@ -6,7 +6,7 @@
     "path": "folders/Scripts/Draw/Results.yy",
   },
   "resourceVersion": "1.0",
-  "name": "draw_results_final",
+  "name": "draw_results_overview",
   "tags": [],
   "resourceType": "GMScript",
 }

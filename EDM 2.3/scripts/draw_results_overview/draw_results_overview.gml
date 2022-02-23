@@ -1,4 +1,4 @@
-function draw_results_final(page) {
+function draw_results_overview(page) {
 
 	var xx = 30+(page*room_width);
 	var yy = 60;
@@ -23,43 +23,8 @@ function draw_results_final(page) {
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
 
 	draw_close_enough_animation();
-	exit;
-
-	yy += ysep;
-	scr_results_final_scrolling(xx,yy,ww);
-
-	// calculate entry fee
-	var _entry = 0;
-	for(var i=0;i<ds_grid_height(scores_grid);i++) // loop through grid
-	_entry += scores_grid[# 11,i]+((no_net_skins+no_gross_skins)*10);
-    
-	// draw leaderboard
-	var num = min(ds_grid_height(scores_grid),row+floor(results_final_offset)+1);
-	for(var i=floor(results_final_offset);i<num;i++)
-	   {
-	   var off_pos = i-results_final_offset;
-	   var off_ind = i; //+floor(results_final_offset);
-      
-	   var col = pick(c_black,c_red,scores_grid[# 23,off_ind] < 0);
-	   
-	   // entry fee color
-	   var entr_col = c_black;
-   
-	   if (scores_grid[# 5,off_ind] != noone)+scores_grid[# 19,off_ind] == 1 // only one
-	   entr_col = appblue; // blue
-   
-	   // blind color
-	   var blind_col = appblue;
-  
-	   if (scores_grid[# 5,off_ind] != noone)
-	   draw_text_transformed_colour(xx+35+280+28,yy+fn_off+0+(off_pos*ysep),"+"+string(scores_grid[# 20,off_ind]),0.8,0.8,0,blind_col,blind_col,blind_col,blind_col,1); // Blind Winning
-	   
-	   if no_net_skins || no_gross_skins
-	       {
-	       draw_sprite_ext(spr_crossout,0,xx+35+300+100+100+80+100,yy+5+(off_pos*ysep),0.8,0.8,0,c_white,0.9);
-	       draw_text_colour(xx+35+300+100+100+80+100+55,yy+fn_off-5+(off_pos*ysep),scores_grid[# 11,off_ind]+((no_net_skins+no_gross_skins)*10),entr_col,entr_col,entr_col,entr_col,1); // win total
-		   }
-	   }
+	
+	// scr_results_final_scrolling(xx,yy,ww);
 	}
 	
 function draw_close_enough_animation() {
@@ -152,13 +117,13 @@ function draw_results_final_content(xx,yy) {
 	var sep = 40;
 	var teamOff = 0;
 	
-	for(var i=0;i<team_number+1;i++)
-		{
+	for(var i=0;i<team_number+1;i++) {
+		
 		var teamStruct = TEAM_LIST[i];	
 		
 		var size = array_length(teamStruct.members);
-		for(var j=0;j<size;j++)
-			{
+		for(var j=0;j<size;j++)	{
+			
 			var memberStruct = teamStruct.members[j];
 			var winningStruct = memberStruct.eventWinnings;
 			var yoff = (j*sep)+teamOff;
@@ -236,12 +201,12 @@ function draw_results_final_calculate_totals() {
 	var winSubtotal = 0;
 	var entryTotal = 0;
 	
-	for(var i=0;i<team_number+1;i++)
-		{
+	for(var i=0;i<team_number+1;i++) {
+		
 		var teamStruct = TEAM_LIST[i];		
 		var size = array_length(teamStruct.members);
-		for(var j=0;j<size;j++)
-			{
+		for(var j=0;j<size;j++)	{
+			
 			var memberStruct = teamStruct.members[j];
 			var winningStruct = memberStruct.eventWinnings;
 			

@@ -13,18 +13,17 @@ function scr_calculate_results() {
 	db("calculated");
 
 	// create event results struct to display
-	scr_event_results_build();
+	EVENT_RESULTS = new EventResults();
 	
 	screen_change(screenEnum.eventResults);
 
 	// do the close enough screen
 	if SETTINGS.closeEnough && !close_enough {
 		
+		close_enough = true;
 	    picture_timer_start = game_time;
 	    close_enough_timer = room_speed*5;
 	    }
-		
-	close_enough = true;
 	
 exit
 	if !season_save
@@ -33,15 +32,9 @@ exit
 	// save results
 	}
 
-function scr_event_results_build() {
-	
-	EVENT_RESULTS = new EventResults();
-
-	}
-	
 function EventResults() constructor {
 	
-	leaderboard = deep_copy(con_main.entrantResultsList);
+	entrantResults = deep_copy(con_main.entrantResultsList);
 	teamResults = TeamResults();
 	}
 

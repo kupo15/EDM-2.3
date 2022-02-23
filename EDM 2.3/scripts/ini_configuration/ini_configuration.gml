@@ -69,6 +69,7 @@ function create_default_save_file() {
 			
 			soundOn: true,
 			closeEnough: true,
+			keypadOverwrite: false,
 			},
 			
 		teeData: {

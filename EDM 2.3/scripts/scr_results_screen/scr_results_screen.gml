@@ -1,4 +1,4 @@
-function scr_results_screen() {
+function scr_results_screen_scrolling() {
 	
 	if scrolling || (close_enough_timer != -1)
 	exit;

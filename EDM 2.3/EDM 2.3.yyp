@@ -95,7 +95,7 @@
     {"id":{"name":"draw_results","path":"scripts/draw_results/draw_results.yy",},"order":0,},
     {"id":{"name":"draw_results_teams","path":"scripts/draw_results_teams/draw_results_teams.yy",},"order":1,},
     {"id":{"name":"draw_results_low_net","path":"scripts/draw_results_low_net/draw_results_low_net.yy",},"order":2,},
-    {"id":{"name":"draw_results_final","path":"scripts/draw_results_final/draw_results_final.yy",},"order":3,},
+    {"id":{"name":"draw_results_overview","path":"scripts/draw_results_overview/draw_results_overview.yy",},"order":3,},
     {"id":{"name":"screen_results","path":"scripts/screen_results/screen_results.yy",},"order":3,},
     {"id":{"name":"draw_season_ranking","path":"scripts/draw_season_ranking/draw_season_ranking.yy",},"order":0,},
     {"id":{"name":"draw_season_ranking_simple","path":"scripts/draw_season_ranking_simple/draw_season_ranking_simple.yy",},"order":1,},
