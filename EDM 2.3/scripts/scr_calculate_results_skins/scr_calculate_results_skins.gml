@@ -1,3 +1,36 @@
+function scr_calculate_skins_count() {
+	
+	var grossCount = 0;
+	var netCount = 0;
+	
+	for(var i=0;i<team_number+1;i++)
+		{
+		var teamStruct = TEAM_LIST[i];	
+		
+		var size = array_length(teamStruct.members);
+		for(var j=0;j<size;j++) {
+			
+			var memberStruct = teamStruct.members[j];
+			var roundStats = memberStruct.roundStats;
+			
+			grossCount += real(roundStats.skinsGross);
+			netCount += real(roundStats.skinsNet);
+			}
+		}
+		
+	no_gross_skins = (grossCount == 0);
+	no_net_skins = (netCount == 0);
+
+	// default count to 1 if 0
+	if no_gross_skins
+	grossCount = 1;
+
+	if no_net_skins
+	netCount = 1;
+		
+	return {gross: grossCount, net: netCount}
+	}
+
 function scr_calculate_results_skins() {
 
 	var skins_pot_collected = real(ENTRY_FEES.skinsEntry)*ENTRANT_COUNT;

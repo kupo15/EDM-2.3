@@ -29,10 +29,10 @@ function scr_calculate_results_final() {
 			winningStruct.blindWinning = teamFront+teamBack+teamTotal;
 			}
 		
-		// winningStruct.skinsGross
-		// winningStruct.skinsNet
 		// winningStruct.winSubtotal
-		// winningStruct.winGrandTotal
+		
+		var noSkinsRefund = (no_net_skins+no_gross_skins)*real(ENTRY_FEES.skinsEntry)*0.5;
+		winningStruct.winGrandTotal = winningStruct.winSubtotal+noSkinsRefund;
 		
 		//cs(js(memberStruct))
 		//sm("")
@@ -40,45 +40,4 @@ function scr_calculate_results_final() {
 		
 	cs(js(entrantResultsList))
 	sm("")
-		
-	
-	exit;
-	
-
-	// calculate final score
-	for(var i=0;i<ds_grid_height(scores_grid);i++)
-	scores_grid[# 23,i] = scores_grid[# 12,i]+((no_net_skins+no_gross_skins)*10); // grand total
-	}
-
-function scr_calculate_skins_count() {
-	
-	var grossCount = 0;
-	var netCount = 0;
-	
-	for(var i=0;i<team_number+1;i++)
-		{
-		var teamStruct = TEAM_LIST[i];	
-		
-		var size = array_length(teamStruct.members);
-		for(var j=0;j<size;j++)
-			{
-			var memberStruct = teamStruct.members[j];
-			var roundStats = memberStruct.roundStats;
-			
-			grossCount += real(roundStats.skinsGross);
-			netCount += real(roundStats.skinsNet);
-			}
-		}
-		
-	no_gross_skins = (grossCount == 0);
-	no_net_skins = (netCount == 0);
-
-	// default count to 1 if 0
-	if no_gross_skins
-	grossCount = 1;
-
-	if no_net_skins
-	netCount = 1;
-		
-	return {gross: grossCount, net: netCount}
 	}
