@@ -15,8 +15,8 @@ function draw_team_list_header(xx,yy) {
 	var region_ww = hsep;
 	var region_hh = 60;
 		
-	for(var i=0;i<teams_max;i++)
-	    {
+	for(var i=0;i<teams_max;i++) {
+		
 		var selected = (i == team_index);
 		var teamGroup = TEAM_LIST[i].members;
     
@@ -40,6 +40,7 @@ function draw_team_list_header(xx,yy) {
 
 			draw_set_alpha(0.3);
 		    draw_rectangle_colour(xx+(i*hsep),yy,xx-1+(i*hsep)+hsep,yy+region_hh,c_yellow,c_yellow,c_yellow,c_yellow,false); 
+			draw_set_alpha(1);
 			}
 	    }
 	}
