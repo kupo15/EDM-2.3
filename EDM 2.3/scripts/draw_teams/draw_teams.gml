@@ -1,4 +1,4 @@
-function draw_team_header(xx,yy,ysep,_team,in_popover) {
+function draw_team_header(xx,yy,ysep,_team) {
 	
 	var str_group = pick("Team ","Group ",tourney_type);
 	var c_col = appblue;
@@ -165,9 +165,9 @@ function draw_teams() {
 
 	scr_teams_scrolling(xx,yy,ww);
    
-	var loop = team_number+1; // min(team_number+1,2);
-	for(var i=0;i<loop;i++)
-	    {        
+	var loop = team_number+1;
+	for(var i=0;i<loop;i++) {        
+		
 	    var _team = i; //+floor(team_scroll_offset);
 	    var off_pos = i-team_scroll_offset;
 		
@@ -179,7 +179,7 @@ function draw_teams() {
 		// outline
 		draw_rectangle(xx+(col*hsep),yy+team_yoff,xx+ww+(col*hsep),yy+team_yoff+hh,true);
 		
-		draw_team_header(xx,yy+team_yoff,ysep,i,in_popover);
+		draw_team_header(xx,yy+team_yoff,ysep,i);
 		draw_team_content(xx,yy+team_yoff,member_sep,i,in_popover);
 	    }
 		

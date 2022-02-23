@@ -324,88 +324,9 @@ function draw_edit_score() {
 	exit;
 
 	draw_edit_score_all();
-	exit;
-
-	var xx = 0;
-	var yy = 0;
-	var ww = 920;
-	var hh = room_height;
-
-	// click out / cancel
-	if android_back || (!scr_mouse_position_room(xx,yy,ww+10,hh+10,noone,false) && mouse_check_button_released(mb_left) && !edit_score_scrolling)
-	    {
-	    edit_score = noone;
-	    edit_team_score = noone;
-	    edit_score_pos = entryType.memberFront;
-	    edit_team_add_member = false;
-	    exit;
-	    }
-		
-	draw_set_color(c_black);
-	draw_set_alpha(0.5);
-	draw_rectangle(0,0,room_width,room_height,false);
-	draw_set_alpha(1);
-    
-	var col = make_colour_rgb(255,227,215);
-	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,col,col,col,col,false);
-
-	draw_text_centered(xx+15,yy+20,"ENTER GROSS SCORE:",35,,);
-
-	scr_entrant_scrolling(xx,yy,hh);
-
-	if (edit_score >= 0) {
-		
-	    var size = ENTRANT_COUNT;
-	    draw_text_height(xx+430,yy+25,"entrant "+string(edit_score+1)+"/"+string(size),25);
-	    }
-	else {// unused
-		
-		var team_str = pick("team ","group ",tourney_type);
-	    draw_text_transformed(xx+400,yy,string(team_str)+string(edit_team_score+1)+"/"+string(team_number+1),0.7,0.7,0);
-	    }
-
-	// submit button
-	draw_rectangle(xx+150,yy+hh-110,xx+150+220,yy+hh-10,true);
-
-	var col = make_colour_rgb(69,117,228);
-	var submit = draw_text_button(xx+150,yy+hh-110,"SUBMIT",45,220,100,col);
-
-	// headers
-	var yy = 180;
-	var height = 30;
-
-	draw_set_valign(fa_bottom);
-	draw_text_height(15,yy,"Team",height);
-	draw_text_height(50,yy,"Front 9",height);
-	draw_text_height(170,yy,"Back 9",height);
-	draw_text_height(280,yy,"Adjusted 18",height);
-
-	draw_line_pixel(xx,yy,470,1); // line
-
-	// create surface
-	if !surface_exists(surface)
-	surface = surface_create(room_width,room_height);
-
-	surface_set_target(surface);
-	draw_clear_alpha(c_black,0);
-
-	// edit player's score
-	if (edit_team_score == noone)
-	draw_edit_score_player_popup();
-	else // edit team score
-	draw_edit_score_team_popup();
-    
-	// cutoff 
-	gpu_set_blendmode(bm_subtract);
-	draw_rectangle(470,0,room_width,room_height,false);
-	gpu_set_blendmode(bm_normal);    
-    
-	// draw surface
-	surface_reset_target();
-	draw_surface(surface,0,0);
 	
-exit;
-    
+	exit;
+	
 	// underline highlight
 	if edit_score_highlight_pos != edit_score_pos
 	edit_score_highlight_pos = lerp(edit_score_highlight_pos,edit_score_pos,0.2);
