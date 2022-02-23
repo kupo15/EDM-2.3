@@ -129,6 +129,7 @@ teams_max = 6; // the max number of teams to account for
 net_score_tab = 0;
 
 skins_input = true;
+noTeamCount = 0;
 
 pref_phase = screenEnum.homeScreen;
 no_net_skins = false;

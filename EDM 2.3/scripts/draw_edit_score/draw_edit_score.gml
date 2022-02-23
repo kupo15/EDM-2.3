@@ -225,15 +225,21 @@ function draw_edit_score_player_popup() {
 					
 			select_blind_team = entrantStruct;
 			}
-		else // remove from blinds
-		entrantRoundStats.blindTeam = undefined;
+		else { // remove from blinds
+			
+			blind_struct_remove_member(struct,entrantRoundStats.blindTeam);
+			entrantRoundStats.blindTeam = undefined;
+			}
 		}
 	
 	// no team
 	var xx = 300;
 		
-	if draw_icon_click(ico_checkbox,entrantRoundStats.noTeam,xx,yy,ww,ww,,,,,true)
-	entrantRoundStats.noTeam = !entrantRoundStats.noTeam;
+	if draw_icon_click(ico_checkbox,entrantRoundStats.noTeam,xx,yy,ww,ww,,,,,true) {
+	
+		entrantRoundStats.noTeam = !entrantRoundStats.noTeam;
+		noTeamCount += pick(-1,1,round_stats.noTeam);
+		}
 
 	draw_text_button(xx,yy-ww-30,"No\nTeam",60,ww,65);
 	}

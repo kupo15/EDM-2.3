@@ -20,6 +20,8 @@
 #macro silverColor c_gray
 #macro comboColor c_black
 
+#macro teamMemberMax 5
+
 // colors
 #macro appblue make_color_rgb(98,145,242)
 
@@ -109,7 +111,7 @@ function Team(num) constructor {
 	
 	teamNumber = num;
 	members = [];
-	blindMembers = [];
+	blindMembers = {};
 	
 	teamNetFront = "";
 	teamNetBack = "";

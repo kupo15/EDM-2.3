@@ -59,7 +59,7 @@ function memberlist_add_to_team(ind,entryStruct) {
 	
 	var teamGroup = TEAM_LIST[team_index].members;
 	
-	if (array_length(teamGroup) < 5) {
+	if (array_length(teamGroup) < teamMemberMax) {
 		// add to team
 		
 		entryStruct.teamAssigned = team_index;

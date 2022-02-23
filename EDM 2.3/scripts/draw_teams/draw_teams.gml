@@ -36,14 +36,15 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 	
 	// draw team list
 	var list = TEAM_LIST[teamInd].members;
-	for(var i=0;i<array_length(list);i++) // loop through teams
-	    {
+	var size = array_length(list);
+	for(var i=0;i<size;i++) { // loop through team member list
+		
 		var struct = list[i];
 		var round_stats = struct.roundStats;
 		var height = 50;
         
 		// draw name
-		draw_member_name(xx+5,team_yy+(i*ysep),struct,height,,ysep)
+		draw_member_name(xx+5,team_yy+(i*ysep),struct,height,,ysep);
         
 		// gross front/back
 		var fr = pick("-",round_stats.grossFront,round_stats.grossFront != "");
@@ -66,6 +67,7 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 	        mouse_clear(mb_left);
 	        }
 	
+		// draw checkbuttons
 	    if skins_input {
 			
 			// gross skins
@@ -111,27 +113,37 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 					
 					select_blind_team = struct;
 					}
-				else // remove from blinds
-				round_stats.blindTeam = undefined;
+				else {// remove from blinds
+					
+					blind_struct_remove_member(struct,round_stats.blindTeam);
+					round_stats.blindTeam = undefined;
+					}
 				}
 						
 			// no team
-	        if draw_icon_click(ico_checkbox,round_stats.noTeam,xx+725,team_yy+(i*ysep),100,ysep,,,,can_edit)
-			round_stats.noTeam = !round_stats.noTeam;
+	        if draw_icon_click(ico_checkbox,round_stats.noTeam,xx+725,team_yy+(i*ysep),100,ysep,,,,can_edit) {
+				
+				round_stats.noTeam = !round_stats.noTeam;
+				noTeamCount += pick(-1,1,round_stats.noTeam);
+				}
 	        }
 			
-        continue 
-               
-	    if ii+1 == size // if last member draw
-	        {
-	        var _blind_size = ds_list_size(blind_list[_team]);
-	        var bl_col = appblue;
-	        for(var b=0;b<_blind_size;b++) // loop through blind list
-	            {
-	            var b_str = ds_list_find_value(blind_list[_team],b); // get name
-	            draw_text_colour(xx+10,yy+fn_off-8+((ii+b+1)*ysep)+(off_pos*sep),b_str,bl_col,bl_col,bl_col,bl_col,1); // draw blind name
-	            }
-	        }
+		// draw blind list
+		if (i+1 == size) // if last member draw
+		draw_blind_members(teamInd,xx,team_yy+(i*ysep)+ysep,ysep,height);
+	    }
+	}
+	
+function draw_blind_members(teamInd,xx,yy,ysep,height) {
+	
+	var blindStruct = TEAM_LIST[teamInd].blindMembers;
+	var names = variable_struct_get_names(blindStruct);
+	for(var i=0;i<array_length(names);i++) {
+		
+		var key = names[i];
+	    var member = blindStruct[$ key];
+		
+	    draw_text_centered(xx+5,yy+(i*ysep),member.name,height,,ysep,appblue);
 	    }
 	}
 
@@ -239,33 +251,31 @@ function activate_results_button() {
 	var calc = (ENTRANT_COUNT > 3); // must have at least entrants 
 
 	// if all players are No Team
-	//if ds_grid_get_sum(scores_grid,19,0,19,entr-1) == entr
-	//return true;
-	//else {
-		// loop through teams
-		for(var i=0;i<team_number+1;i++)
-			{
-			var teamStruct = TEAM_LIST[i];
-			var frontNull = (teamStruct.teamNetFront == "");
-			var backNull = (teamStruct.teamNetBack == "");
-			
-			if frontNull || backNull
-			return false;
-			
-			// loop through members
-			for(var j=0;j<array_length(teamStruct.members);j++)
-				{
-				var memberStruct = teamStruct.members[j].roundStats;	
-				var grossFrontNull = (memberStruct.grossFront == "");
-				var grossBackNull = (memberStruct.grossBack == "");
-				var grossAdjNull = (memberStruct.grossAdj == "");
-				
-				if grossFrontNull || grossBackNull || grossAdjNull
-				return false;
-				}
-			}
-	//	}
+	if (noTeamCount == ENTRANT_COUNT)
+	return true;
 	
+	// loop through teams
+	for(var i=0;i<team_number+1;i++)
+		{
+		var teamStruct = TEAM_LIST[i];
+		var frontNull = (teamStruct.teamNetFront == "");
+		var backNull = (teamStruct.teamNetBack == "");
+			
+		if frontNull || backNull
+		return false;
+			
+		// loop through members
+		for(var j=0;j<array_length(teamStruct.members);j++)
+			{
+			var memberStruct = teamStruct.members[j].roundStats;	
+			var grossFrontNull = (memberStruct.grossFront == "");
+			var grossBackNull = (memberStruct.grossBack == "");
+			var grossAdjNull = (memberStruct.grossAdj == "");
+				
+			if grossFrontNull || grossBackNull || grossAdjNull
+			return false;
+			}
+		}
 	
 	return calc;
 	}

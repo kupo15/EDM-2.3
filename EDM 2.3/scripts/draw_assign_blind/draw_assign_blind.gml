@@ -13,8 +13,8 @@ function draw_assign_blind() {
 	var sep = hsep+20;
 
 	// click out/cancel
-	if android_back || (!scr_mouse_position_room_released(xx,yy,ww,hh,noone,true,true) && mouse_check_button_released(mb_left) && !global.clicked)
-	   {
+	if android_back || (!scr_mouse_position_room_released(xx,yy,ww,hh,noone,true,true) && mouse_check_button_released(mb_left) && !global.clicked) {
+		
 	   select_blind_team = undefined;
 	   exit;
 	   }
@@ -29,24 +29,36 @@ function draw_assign_blind() {
 	draw_text_centered(xx,yy,"Select Blind Team",45,ww,45);
 
 	var get_team = struct.teamAssigned; // current team player is on
-	for(var i=0;i<team_number+1;i++)
-	    {
-	    var tot_size = 0; //ds_list_size(team_list[i])+ds_list_size(blind_list[i]);
-	    var gray_out = (get_team == i) || (tot_size == 5) // team list size isn't maxed out
+	for(var i=0;i<team_number+1;i++) {
+		
+		var blindTeamStruct = TEAM_LIST[i];
+	    var tot_size = array_length(blindTeamStruct.members)+array_length(variable_struct_get_names(blindTeamStruct.blindMembers));
+	    var gray_out = (get_team == i) || (tot_size == teamMemberMax) // team list size isn't maxed out
     
 	    var alph = 0.4+(!gray_out*0.6);
 	    draw_set_alpha(alph);
 	    draw_rectangle(xx+30+(i*sep),yy+120,xx+30+hsep+(i*sep),yy+120+vsep,true);
-	    draw_text_centered(xx+30+(i*sep),yy+120,i+1,45,hsep,vsep);
     
-	    if !gray_out && scr_mouse_position_room_released(xx+30+(i*sep),yy+120,hsep,hsep,mb_left,true,true) {
+	    if draw_text_button(xx+30+(i*sep),yy+120,i+1,45,hsep,vsep,,alph,,true) && !gray_out {
 			
 	        struct.roundStats.blindTeam = i; // assign blind team
-	        //ds_list_add(blind_list[i],scores_grid[# 0,ind]); // add to the blind list
+	        blind_struct_add_member(select_blind_team,i); // add to the blind list
 	        select_blind_team = undefined;
 	        break;
 	        }
 	    }
     
 	draw_set_alpha(1);
+	}
+	
+function blind_struct_add_member(struct,teamInd) {
+	
+	var key = struct.lastName;
+	TEAM_LIST[teamInd].blindMembers[$ key] = struct;
+	}
+	
+function blind_struct_remove_member(struct,teamInd) {
+
+	var key = struct.lastName;
+	variable_struct_remove(TEAM_LIST[teamInd].blindMembers,key);;
 	}
