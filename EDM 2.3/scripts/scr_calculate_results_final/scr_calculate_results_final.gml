@@ -32,12 +32,6 @@ function scr_calculate_results_final() {
 		winningStruct.winSubtotal = winningStruct.lowNetWinning+winningStruct.skinsTotalWinnings+winningStruct.teamWinning+winningStruct.blindWinning;
 		
 		var noSkinsRefund = (no_net_skins+no_gross_skins)*real(ENTRY_FEES.skinsEntry)*0.5;
-		winningStruct.winGrandTotal = winningStruct.winSubtotal+noSkinsRefund-winningStruct.entryFee;
-		
-		//cs(js(memberStruct))
-		//sm("")
+		winningStruct.winningGrandTotal = winningStruct.winSubtotal+noSkinsRefund-winningStruct.entryFee;
 		}
-		
-	cs(js(entrantResultsList))
-	sm("")
 	}
