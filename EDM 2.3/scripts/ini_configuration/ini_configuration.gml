@@ -168,16 +168,18 @@ function EventWinnings() constructor {
 	frontWinnings = defaultVal;
 	backWinnings = defaultVal;
 	allHolesWinnings = defaultVal;
+	
+	// totals
 	lowNetWinning = defaultVal;
-
 	teamWinning = defaultVal;
+	blindWinning = defaultVal;
 	
 	skinsGross = defaultVal;
 	skinsNet = defaultVal;
 	
-	winTotal = defaultVal;
+	winSubtotal = defaultVal;
 	entryFee = defaultVal;
-	netWinning = defaultVal;
+	winningGrandTotal = defaultVal;
 	}
 	
 function parse_name(name) {

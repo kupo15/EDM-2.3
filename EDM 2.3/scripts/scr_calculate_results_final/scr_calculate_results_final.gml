@@ -1,3 +1,8 @@
+function scr_calculate_results_skins() {
+	
+	
+	}
+
 function scr_calculate_results_final() {
 	
 	// loop through results list
@@ -14,8 +19,24 @@ function scr_calculate_results_final() {
 		var teamBack = TEAM_LIST[teamInd].teamWinnings.backWinnings;
 		var teamTotal = TEAM_LIST[teamInd].teamWinnings.allHolesWinnings;
 		
+		winningStruct.lowNetWinning = winningStruct.frontWinnings+winningStruct.backWinnings+winningStruct.allHolesWinnings;
 		winningStruct.teamWinning = teamFront+teamBack+teamTotal;
 		winningStruct.entryFee = -real(ENTRY_FEES.lowNetEntry)-(noTeam*real(ENTRY_FEES.teamEntry))-real(ENTRY_FEES.skinsEntry)-(blind*real(ENTRY_FEES.blindFee));
+		
+		// blind winning
+		if blind {
+			
+			var blindInd = memberStruct.roundStats.blindTeam;
+			var teamFront = TEAM_LIST[blindInd].teamWinnings.frontWinnings;
+			var teamBack = TEAM_LIST[blindInd].teamWinnings.backWinnings;
+			var teamTotal = TEAM_LIST[blindInd].teamWinnings.allHolesWinnings;
+		
+			winningStruct.blindWinning = teamFront+teamBack+teamTotal;
+			}
+		
+		
+		//cs(js(memberStruct))
+		//sm("")
 		}
 		
 	cs(js(entrantResultsList))
@@ -43,24 +64,6 @@ function scr_calculate_results_final() {
 	var skins_gross_pot_payout = skins_pot;
 	var skins_net_pot_payout = skins_pot;
 	
-	// loop through teams
-	for(var i=0;i<team_number+1;i++)
-		{
-		var teamStruct = TEAM_LIST[i];	
-		
-		var size = array_length(teamStruct.members);
-		for(var j=0;j<size;j++)
-			{
-			var memberStruct = teamStruct.members[j];
-			var roundStats = memberStruct.roundStats;
-			var eventWinnings = memberStruct.eventWinnings;
-			
-			eventWinnings.lowNetWinning = eventWinnings.frontWinnings+eventWinnings.backWinnings+eventWinnings.allHolesWinnings;
-			eventWinnings.teamWinning = (eventWinnings.teamFrontWinnings+eventWinnings.teamBackWinnings+eventWinnings.teamAllHolesWinnings)*!roundStats.noTeam;
-			
-			}
-		}
-		
 	for(var i=0;i<num;i++)
 	   {
 	   var ind = scores_grid[# 18,i];
