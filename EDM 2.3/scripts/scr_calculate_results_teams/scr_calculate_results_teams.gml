@@ -1,5 +1,8 @@
 function scr_calculate_results_teams() {	
 	
+	if (noTeamCount == ENTRANT_COUNT)
+	exit;
+	
 	var tempRanking = [];
 	
 	// convert values to real

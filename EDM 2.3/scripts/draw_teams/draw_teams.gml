@@ -249,24 +249,20 @@ function debug_randomize_scores() {
 function activate_results_button() {
 	
 	var calc = (ENTRANT_COUNT > 3); // must have at least entrants 
-
-	// if all players are No Team
-	if (noTeamCount == ENTRANT_COUNT)
-	return true;
 	
 	// loop through teams
-	for(var i=0;i<team_number+1;i++)
-		{
+	for(var i=0;i<team_number+1;i++) {
+		
 		var teamStruct = TEAM_LIST[i];
 		var frontNull = (teamStruct.teamNetFront == "");
 		var backNull = (teamStruct.teamNetBack == "");
 			
-		if frontNull || backNull
+		if (frontNull || backNull) && (noTeamCount != ENTRANT_COUNT)
 		return false;
 			
 		// loop through members
-		for(var j=0;j<array_length(teamStruct.members);j++)
-			{
+		for(var j=0;j<array_length(teamStruct.members);j++)	{
+			
 			var memberStruct = teamStruct.members[j].roundStats;	
 			var grossFrontNull = (memberStruct.grossFront == "");
 			var grossBackNull = (memberStruct.grossBack == "");

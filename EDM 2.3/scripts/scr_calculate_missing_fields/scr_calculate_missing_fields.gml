@@ -5,8 +5,10 @@ function scr_calculate_missing_fields(){
 		
 		var teamStruct = TEAM_LIST[i];
 		
+		if (noTeamCount != ENTRANT_COUNT)
 		teamStruct.teamNetTotal = real(teamStruct.teamNetFront)+real(teamStruct.teamNetBack);
 		
+		// members
 		var size = array_length(teamStruct.members);
 		for(var j=0;j<size;j++)
 			{
