@@ -16,7 +16,7 @@ function scr_calculate_results_final() {
 		
 		winningStruct.lowNetWinning = winningStruct.frontWinnings+winningStruct.backWinnings+winningStruct.allHolesWinnings;
 		winningStruct.teamWinning = teamFront+teamBack+teamTotal;
-		winningStruct.entryFee = -real(ENTRY_FEES.lowNetEntry)-(noTeam*real(ENTRY_FEES.teamEntry))-real(ENTRY_FEES.skinsEntry)-(blind*real(ENTRY_FEES.blindFee));
+		winningStruct.entryFee = real(ENTRY_FEES.lowNetEntry)+(noTeam*real(ENTRY_FEES.teamEntry))+real(ENTRY_FEES.skinsEntry)+(blind*real(ENTRY_FEES.blindFee));
 		
 		// blind winning
 		if blind {
@@ -29,10 +29,10 @@ function scr_calculate_results_final() {
 			winningStruct.blindWinning = teamFront+teamBack+teamTotal;
 			}
 		
-		// winningStruct.winSubtotal
+		winningStruct.winSubtotal = winningStruct.lowNetWinning+winningStruct.skinsTotalWinnings+winningStruct.teamWinning+winningStruct.blindWinning;
 		
 		var noSkinsRefund = (no_net_skins+no_gross_skins)*real(ENTRY_FEES.skinsEntry)*0.5;
-		winningStruct.winGrandTotal = winningStruct.winSubtotal+noSkinsRefund;
+		winningStruct.winGrandTotal = winningStruct.winSubtotal+noSkinsRefund-winningStruct.entryFee;
 		
 		//cs(js(memberStruct))
 		//sm("")

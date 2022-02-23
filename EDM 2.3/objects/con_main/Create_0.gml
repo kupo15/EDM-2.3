@@ -6,7 +6,7 @@ individual
 }
 
 draw_set_circle_precision(64);
-randomize();
+//randomize();
 device_mouse_dbclick_enable(false);
 
 debug = false;
