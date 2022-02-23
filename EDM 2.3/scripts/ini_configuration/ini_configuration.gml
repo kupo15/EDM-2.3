@@ -176,6 +176,7 @@ function EventWinnings() constructor {
 	
 	skinsGross = defaultVal;
 	skinsNet = defaultVal;
+	skinsTotalWinnings = defaultVal;
 	
 	winSubtotal = defaultVal;
 	entryFee = defaultVal;

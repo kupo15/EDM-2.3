@@ -6,6 +6,7 @@ function scr_calculate_results() {
 	
 	entrantResultsList = create_entrant_list_results();
 	scr_calculate_net_scores();
+	scr_calculate_results_skins();
 	scr_calculate_results_final();
 
 	db("calculated");

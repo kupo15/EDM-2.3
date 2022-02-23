@@ -46,6 +46,7 @@
     {"id":{"name":"scr_results_low_net_scrolling","path":"scripts/scr_results_low_net_scrolling/scr_results_low_net_scrolling.yy",},"order":1,},
     {"id":{"name":"scr_results_screen","path":"scripts/scr_results_screen/scr_results_screen.yy",},"order":2,},
     {"id":{"name":"scr_teams_scrolling","path":"scripts/scr_teams_scrolling/scr_teams_scrolling.yy",},"order":3,},
+    {"id":{"name":"scr_calculate_results_skins","path":"scripts/scr_calculate_results_skins/scr_calculate_results_skins.yy",},"order":7,},
     {"id":{"name":"funct_draw_rectangle","path":"scripts/funct_draw_rectangle/funct_draw_rectangle.yy",},"order":0,},
     {"id":{"name":"funct_draw_scrollbar","path":"scripts/funct_draw_scrollbar/funct_draw_scrollbar.yy",},"order":1,},
     {"id":{"name":"funct_draw_scrollbar_hor","path":"scripts/funct_draw_scrollbar_hor/funct_draw_scrollbar_hor.yy",},"order":2,},
