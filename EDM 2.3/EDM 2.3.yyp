@@ -86,6 +86,7 @@
     {"id":{"name":"draw_menu","path":"scripts/draw_menu/draw_menu.yy",},"order":6,},
     {"id":{"name":"draw_numpad_entry","path":"scripts/draw_numpad_entry/draw_numpad_entry.yy",},"order":7,},
     {"id":{"name":"draw_preferences","path":"scripts/draw_preferences/draw_preferences.yy",},"order":8,},
+    {"id":{"name":"ico_tee_marker","path":"sprites/ico_tee_marker/ico_tee_marker.yy",},"order":6,},
     {"id":{"name":"draw_slider","path":"scripts/draw_slider/draw_slider.yy",},"order":9,},
     {"id":{"name":"draw_team_list","path":"scripts/draw_team_list/draw_team_list.yy",},"order":10,},
     {"id":{"name":"draw_teams","path":"scripts/draw_teams/draw_teams.yy",},"order":0,},

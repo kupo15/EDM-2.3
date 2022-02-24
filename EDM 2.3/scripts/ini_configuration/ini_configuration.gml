@@ -14,11 +14,11 @@
 #macro SETTINGS SAVE_FILE.settings
 #macro TEE_DATA SAVE_FILE.teeData
 
-#macro goldColor c_yellow
-#macro blueColor c_blue
-#macro whiteColor c_black
-#macro silverColor c_gray
-#macro comboColor c_black
+#macro goldColor make_color_rgb(255,215,0)
+#macro blueColor make_color_rgb(29,77,165)
+#macro whiteColor c_white
+#macro silverColor make_color_rgb(190,190,190)
+#macro comboColor make_color_rgb(4,5,6)
 
 #macro teamMemberMax 5
 #macro teams_max 6
@@ -153,7 +153,7 @@ function Member(_name,_favorite=false) constructor {
 	archived = false;
 	
 	handicapIndex = 54;
-	teeColor = "white";
+	teeColor = choose("white","gold","blue","silver","combo");
 	
 	entrantNumber = undefined;
 	teamAssigned = undefined;

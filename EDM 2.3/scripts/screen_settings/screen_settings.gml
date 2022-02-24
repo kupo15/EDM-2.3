@@ -61,12 +61,14 @@ function draw_preferences() {
 function draw_tee_data(xx,yy,ww) {
 		
 	var sep = 40;
-	for(var i=0;i<array_length(TEE_DATA.teeOrder);i++)
-		{
+	for(var i=0;i<array_length(TEE_DATA.teeOrder);i++) {
+		
 		var name = TEE_DATA.teeOrder[i];
 		var struct = TEE_DATA[$ name];
 			
-		draw_circle_color(xx,yy+(i*sep)+(sep*0.5),7,struct.color,struct.color,name=="white");
+		//draw_circle_color(xx,yy+(i*sep)+(sep*0.5),7,struct.color,struct.color,name=="white");
+		draw_sprite_ext(ico_tee_marker,0,xx,yy+(i*sep)+(sep*0.5),1,1,0,struct.color,1);
+		
 		draw_text_centered(xx+25,yy+(i*sep),name,30,,sep);
 		draw_text_centered(xx+120,yy+(i*sep),struct.rating+" / "+struct.slope,30,,sep);
 		
