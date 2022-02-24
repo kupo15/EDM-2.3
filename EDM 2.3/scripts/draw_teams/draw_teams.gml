@@ -163,9 +163,7 @@ function draw_teams() {
 	draw_set_color(c_black);
 	draw_set_halign(fa_left);
 
-	scr_teams_scrolling(xx,yy,ww);
-   
-	var loop = team_number+1;
+   	var loop = team_number+1;
 	for(var i=0;i<loop;i++) {        
 		
 	    var _team = i; //+floor(team_scroll_offset);
@@ -182,6 +180,8 @@ function draw_teams() {
 		draw_team_header(xx,yy+team_yoff,ysep,i);
 		draw_team_content(xx,yy+team_yoff,member_sep,i,in_popover);
 	    }
+		
+	scr_teams_scrolling(xx,yy,ww,sep);
 		
 	// draw blind/no team toggle
 	var xx = 870;

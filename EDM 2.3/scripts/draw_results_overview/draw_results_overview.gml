@@ -23,7 +23,7 @@ function draw_results_overview(page) {
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
 
 	draw_close_enough_animation();
-	scr_results_final_scrolling(xx,yy,ww);
+	scr_results_final_scrolling(xx,yy,ww,ysep,scrollbarIndex.resultsOverview);
 	}
 	
 function draw_close_enough_animation() {

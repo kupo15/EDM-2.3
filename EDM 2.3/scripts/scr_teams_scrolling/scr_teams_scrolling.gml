@@ -1,4 +1,4 @@
-function scr_teams_scrolling(xx,yy,ww) {
+function scr_teams_scrolling(xx,yy,ww,sep) {
 	
 	if (edit_score != noone) || (edit_team_score != noone) || (select_blind_team != undefined)
 	exit;
@@ -16,7 +16,7 @@ function scr_teams_scrolling(xx,yy,ww) {
 
 	if scr_mouse_position_room(0,yy,room_width,hh,mb_left,false)
 	    {
-	    var num = 0.004;
+	    var num = 1/sep;
 	    var amt = (global.mouse_ydist*num);
 		
 	    team_scroll_speed = amt;
