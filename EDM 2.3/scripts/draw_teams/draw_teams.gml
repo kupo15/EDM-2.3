@@ -164,7 +164,7 @@ function draw_teams() {
 	draw_set_halign(fa_left);
 
    	var loop = team_number+1;
-	for(var i=0;i<loop;i++) {        
+	for(var i=0;i<loop;i++) {
 		
 	    var _team = i; //+floor(team_scroll_offset);
 	    var off_pos = i-team_scroll_offset;
