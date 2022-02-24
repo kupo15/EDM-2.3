@@ -14,7 +14,7 @@ function draw_results() {
 	draw_set_halign(fa_left);
 	draw_results_overview(0);
 	draw_results_teams(1);
-	draw_results_low_net(2);
+	//draw_results_low_net(2);
 	
 	surface_reset_target();
 	

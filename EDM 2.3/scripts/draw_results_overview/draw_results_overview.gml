@@ -125,9 +125,7 @@ function draw_results_final_content_list(xx,yy) {
 		var winningStruct = memberStruct.eventWinnings;
 		var teamInd = memberStruct.teamAssigned;
 		var newTeam = (teamInd != prevTeamInd);
-		
-		teamOff += sep*newTeam;
-		var yoff = (i*sep)+teamOff;	
+		var yoff = (i*sep);	
 
 		// highlight row
 		scr_mouse_position_room(xx,yy+yoff,970,sep,noone,true);
@@ -155,7 +153,9 @@ function draw_results_final_content_list(xx,yy) {
 		var col = pick(c_black,appblue,newTeam);
 		var alpha = pick(0.3,0.9,newTeam);
 
-		draw_line_pixel(xx+20,yy+yoff+sep,930,1,col,alpha);
+		draw_line_pixel(xx+20,yy+yoff+(sep*!newTeam),930,1,col,alpha);
+		
+		prevTeamInd += newTeam;
 		}
 		
 	// subtract top border
