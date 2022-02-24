@@ -23,28 +23,6 @@ function draw_results_low_net(page) {
 	draw_low_net_result_tables(xx,sep,page);
 	
 	draw_results_low_net_buttons(page,xx);
-
-	exit;
-
-	var ww = 665;
-	var hh = (18*ysep)+10; 
-	var scale = 0.85;
-
-
-
-	if !surface_exists(surface)
-	surface = surface_create(room_width,room_height);
-
-	surface_set_target(surface);
-	draw_clear_alpha(c_black,0);
-           
-	gpu_set_blendmode(bm_subtract);
-	draw_rectangle(0,0,room_width,yy+ysep,false);
-	draw_rectangle(0,yy-(2*ysep)+hh,room_width,room_height,false);
-	gpu_set_blendmode(bm_normal);
-   
-	surface_reset_target();
-	draw_surface(surface,0,0);
 	}
 	
 function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
@@ -114,6 +92,24 @@ function draw_low_net_result_tables(xx,sep,page) {
 	draw_text_centered(xx+10,yy-height,"Place",height,,height*1.3);
 	draw_text_centered(xx+330,yy-height,labels[net_score_tab]+" Score",height,155,height*1.3);
 	draw_text_centered(xx+500,yy-height,labels[net_score_tab]+" Payout",height,,height*1.3);
+	
+	// cycle helper
+	var label = ["F","B","18"];
+	for(var i=0;i<3;i++) {
+		
+		var selected = (net_score_tab == i);
+		var height = pick(25*0.8,27,selected);
+		var alpha = pick(0.8,1,selected);
+		
+		draw_text_centered(xx+125+(i*30),yy-40,label[i],height,30,30*1.3,appblue,alpha);
+		
+		var rr = pick(2,3,selected);
+		
+		draw_set_alpha(alpha);
+		draw_circle_color(xx+125+(i*30)+15,yy-10,rr,appblue,appblue,false);
+
+		draw_set_alpha(1);
+		}
 	
 	// scrolling
 	var screenOffset = (page-results_screen)*room_width;
