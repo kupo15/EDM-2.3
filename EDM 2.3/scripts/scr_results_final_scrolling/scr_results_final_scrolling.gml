@@ -2,6 +2,7 @@ enum scrollbarIndex {
 	
 none = -1,
 resultsOverview,
+resultsLowNet,
 }
 
 function scr_results_final_scrolling(xx,yy,ww,sep,scrollEnum) {
