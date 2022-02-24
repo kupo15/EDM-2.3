@@ -7,14 +7,14 @@ resultsOverview,
 function scr_results_final_scrolling(xx,yy,ww,sep,scrollEnum) {
 
 	var hh = 406;
-	var disp_count = 12;
+	var disp_count = 10;
 	var size = array_length(EVENT_RESULTS.entrantResults);
 
 	if (size-1 < disp_count) || (close_enough_timer != -1)
 	exit;
 
 	draw_set_color(c_gray);
-	funct_draw_scrollbar(xx-5,yy,disp_count,0,size,20,results_final_offset,33.8,0);
+	funct_draw_scrollbar(xx-5,yy,disp_count,0,size,20,results_final_offset,sep,0);
 	draw_set_color(c_black);
 
 	if results_scrolling

@@ -92,16 +92,19 @@ function draw_results_final_headers(xx,yy) {
 	xoff += draw_text_centered(xx+xoff,yy-height,"Win\nTotal",height,60);
 	xoff += draw_text_centered(xx+xoff,yy-height,"Entry\nFee",height,60);
 	
-	//if no_net_skins || no_gross_skins {
-	{	
+	if no_net_skins || no_gross_skins {
+
 	   var str_s = "No ";
 	   
 	   if no_net_skins
 	   str_s += "Net";
-	   else if no_gross_skins
+	   else
 	   str_s += "Gross";
-   
-	   str_s += "\nSkins";
+	   
+       str_s += "\nSkins";
+	   
+	   if no_net_skins && no_gross_skins
+	   str_s = "No\nSkins";
    
 	   var entr_col = appblue;
 	   draw_text_centered(xx+xoff,yy-height,str_s,height,70,,entr_col);
@@ -124,7 +127,8 @@ function draw_results_final_content(xx,yy) {
 		var winningStruct = memberStruct.eventWinnings;
 		var teamInd = memberStruct.teamAssigned;
 		var newTeam = (teamInd != prevTeamInd);
-		var yoff = (ind*sep);	
+		var yoff = (ind*sep);
+		var entryAlpha = pick(1,0.8,no_net_skins || no_gross_skins);
 
 		// highlight row
 		if !results_scrolling && !scrolling
@@ -138,10 +142,16 @@ function draw_results_final_content(xx,yy) {
 		xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.lowNetWinning,height,100,sep);
 		xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.skinsGross,height,60,sep);
 		xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.skinsNet,height,60,sep);
-		xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.winningGrandTotal,height,60,sep);
-		xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.entryFee,height,60,sep);
+		xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.winSubtotal,height,60,sep);
+		xoff += draw_text_centered(xx+xoff,yy+yoff,-winningStruct.entryFee,height,60,sep,,entryAlpha);
 			
-		draw_text_centered(xx+xoff,yy+yoff,"-60",height,70,sep);
+		if no_net_skins || no_gross_skins {
+
+			var refund = winningStruct.entryFee-(no_net_skins+no_gross_skins)*real(ENTRY_FEES.skinsEntry)*0.5;
+			
+			draw_line_pixel(xx+xoff-50,yy+(sep*0.5)+yoff,45,2,c_red,entryAlpha); // cross out entry fee
+			draw_text_centered(xx+xoff-10,yy+yoff,-refund,height,70,sep); // modified entry fee
+			}
 			
 		// grand total winning
 		var col = pick(c_red,c_black,winningStruct.winningGrandTotal >= 0);
