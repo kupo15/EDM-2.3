@@ -116,49 +116,46 @@ function draw_results_final_content_list(xx,yy) {
 	var height = 35;
 	var sep = 40;
 	var teamOff = 0;
+	var prevTeamInd = 0;
 	
-	for(var i=0;i<team_number+1;i++) {
+	var arr = EVENT_RESULTS.entrantResults;
+	for(var i=0;i<array_length(arr);i++) {
 		
-		var teamStruct = TEAM_LIST[i];	
+		var memberStruct = arr[i];
+		var winningStruct = memberStruct.eventWinnings;
+		var teamInd = memberStruct.teamAssigned;
+		var newTeam = (teamInd != prevTeamInd);
 		
-		var size = array_length(teamStruct.members);
-		for(var j=0;j<size;j++)	{
-			
-			var memberStruct = teamStruct.members[j];
-			var winningStruct = memberStruct.eventWinnings;
-			var yoff = (j*sep)+teamOff;
+		teamOff += sep*newTeam;
+		var yoff = (i*sep)+teamOff;	
 
-			// highlight row
-			scr_mouse_position_room(xx,yy+yoff,970,sep,noone,true);
+		// highlight row
+		scr_mouse_position_room(xx,yy+yoff,970,sep,noone,true);
 				
-			draw_set_halign(fa_left);
-			draw_member_name(xx+5,yy+yoff,memberStruct,height,,sep); // member name
+		draw_set_halign(fa_left);
+		draw_member_name(xx+5,yy+yoff,memberStruct,height,,sep); // member name
 			
-			var xoff = 315;
-			xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.teamWinning,height,100,sep);
-			xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.lowNetWinning,height,100,sep);
-			xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.skinsGross,height,60,sep);
-			xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.skinsNet,height,60,sep);
-			xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.winningGrandTotal,height,60,sep);
-			xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.entryFee,height,60,sep);
+		var xoff = 315;
+		xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.teamWinning,height,100,sep);
+		xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.lowNetWinning,height,100,sep);
+		xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.skinsGross,height,60,sep);
+		xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.skinsNet,height,60,sep);
+		xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.winningGrandTotal,height,60,sep);
+		xoff += draw_text_centered(xx+xoff,yy+yoff,winningStruct.entryFee,height,60,sep);
 			
-			draw_text_centered(xx+xoff,yy+yoff,"-60",height,70,sep);
+		draw_text_centered(xx+xoff,yy+yoff,"-60",height,70,sep);
 			
-			// grand total winning
-			var col = pick(c_red,c_black,winningStruct.winningGrandTotal >= 0);
+		// grand total winning
+		var col = pick(c_red,c_black,winningStruct.winningGrandTotal >= 0);
 			
-			draw_set_halign(fa_right)
-			draw_text_centered(985,yy+yoff,string(winningStruct.winningGrandTotal)+" pesos",height,,sep,col);
+		draw_set_halign(fa_right)
+		draw_text_centered(985,yy+yoff,string(winningStruct.winningGrandTotal)+" pesos",height,,sep,col);
 			
-			// line separator
-			var lastTeam = (j+1 == size);
-			var col = pick(c_black,appblue,lastTeam);
-			var alpha = pick(0.3,0.9,lastTeam);
+		// line separator
+		var col = pick(c_black,appblue,newTeam);
+		var alpha = pick(0.3,0.9,newTeam);
 
-			draw_line_pixel(xx+20,yy+yoff+sep,930,1,col,alpha);
-			}
-		
-		teamOff += (size*sep);
+		draw_line_pixel(xx+20,yy+yoff+sep,930,1,col,alpha);
 		}
 		
 	// subtract top border

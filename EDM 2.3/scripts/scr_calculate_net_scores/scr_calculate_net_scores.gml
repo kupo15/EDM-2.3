@@ -12,8 +12,8 @@ function payout_low_net_winnings(tempArr,sortKey,winningKey) {
 
 	// rank individuals
 	var rank = 1;
-	for(var i=0;i<array_length(tempArr);i++)
-		{
+	for(var i=0;i<array_length(tempArr);i++) {
+		
 		var tempMemberStruct = tempArr[i].roundStats;
 		
 		// if score is worse than previous team
@@ -29,7 +29,7 @@ function payout_low_net_winnings(tempArr,sortKey,winningKey) {
 		// assign rank
 		tempMemberStruct.resultRanking[$ sortKey] = rank;
 		}
-
+		
 	// loop through winning slots
 	var payoutTableArray = PAYOUT_TABLES.lowNetPayout[ENTRANT_COUNT-1];
 	for(var i=0;i<array_length(payoutTableArray);i++) {
