@@ -12,6 +12,7 @@ function draw_member_name(xx,yy,struct,height,ww=undefined,hh=undefined) {
         
 	str += string(name);
 	
+	// draw name
 	draw_text_centered(xx+5,yy,str,height,ww,hh);
 	
 	var str_ww = string_width_height(str+"  ",height);
@@ -20,7 +21,7 @@ function draw_member_name(xx,yy,struct,height,ww=undefined,hh=undefined) {
 	var teeName = struct.teeColor;
 	var teeStruct = TEE_DATA[$ teeName];
 
-	draw_sprite_ext(ico_tee_marker,0,xx+str_ww,yy+(hh*0.5),1,1,0,teeStruct.color,1);
+	draw_sprite_ext(ico_tee_marker,0,xx+str_ww+2,yy+(hh*0.5),1,1,0,teeStruct.color,1);
 	//draw_circle_color(xx+str_ww,yy+(hh*0.5),7,teeStruct.color,teeStruct.color,teeName=="white");
 	}
 	
