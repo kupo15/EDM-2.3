@@ -2,13 +2,13 @@ function scr_results_final_scrolling(xx,yy,ww) {
 
 	var hh = 406;
 	var disp_count = 12;
-	var size = ds_grid_height(scores_grid);
+	var size = array_length(EVENT_RESULTS.entrantResults);
 
 	if (size-1 < disp_count) || (close_enough_timer != -1)
 	exit;
 
 	draw_set_color(c_gray);
-	funct_draw_scrollbar(xx+20,yy,disp_count,0,size,20,results_final_offset,33.8,0);
+	funct_draw_scrollbar(xx-5,yy,disp_count,0,size,20,results_final_offset,33.8,0);
 	draw_set_color(c_black);
 
 	if results_scrolling
@@ -20,7 +20,7 @@ function scr_results_final_scrolling(xx,yy,ww) {
 
 	if scr_mouse_position_room(xx,yy,ww,hh,mb_left,false) {
 		
-	    var num = 0.1;
+	    var num = 1;
 	    var amt = (global.mouse_ydist*num);
 		
 	    results_final_offset = results_final_offset_start-amt;

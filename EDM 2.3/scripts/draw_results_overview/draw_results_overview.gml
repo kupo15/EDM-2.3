@@ -23,8 +23,7 @@ function draw_results_overview(page) {
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
 
 	draw_close_enough_animation();
-	
-	// scr_results_final_scrolling(xx,yy,ww);
+	scr_results_final_scrolling(xx,yy,ww);
 	}
 	
 function draw_close_enough_animation() {
@@ -121,13 +120,15 @@ function draw_results_final_content_list(xx,yy) {
 	var arr = EVENT_RESULTS.entrantResults;
 	for(var i=0;i<array_length(arr);i++) {
 		
+		var ind = (i-results_final_offset);
 		var memberStruct = arr[i];
 		var winningStruct = memberStruct.eventWinnings;
 		var teamInd = memberStruct.teamAssigned;
 		var newTeam = (teamInd != prevTeamInd);
-		var yoff = (i*sep);	
+		var yoff = (ind*sep);	
 
 		// highlight row
+		if !results_scrolling && !scrolling
 		scr_mouse_position_room(xx,yy+yoff,970,sep,noone,true);
 				
 		draw_set_halign(fa_left);
