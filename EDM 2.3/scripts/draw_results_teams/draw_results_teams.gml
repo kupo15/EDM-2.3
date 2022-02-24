@@ -13,37 +13,9 @@ function draw_results_teams(page) {
 	draw_results_team_buttons(page,xx);
 	
 	exit;
-	
-	// Draw Standings
-	var ww = 665;
-	var hh = ((teams_max+1)*ysep)+3;
-	var size = ds_grid_height(team_score_front_grid);
 
 	for(var n=0;n<3;n++)
 	    {  
-	    draw_set_alpha(0.3);
-	    draw_rectangle_colour(xx,yy-5,xx+ww,yy+hh+3,c_black,c_black,c_black,c_black,true);
-	    draw_set_alpha(1);
-	    draw_line_width(xx,yy+ysep-5,xx+ww,yy+ysep-5,2);
-    
-	    draw_set_halign(fa_left);
-	    var str1 = "Front Score";
-	    var str2 = "Front Payout";
-	    var grid_id = team_score_front_grid;
-    
-	    if n = 1
-	       {
-	       str1 = "Back Score";
-	       str2 = "Back Payout";
-	       grid_id = team_score_back_grid;
-	       }
-	    else if n = 2
-	       {
-	       str1 = "18 Hole Score";
-	       str2 = "18 Hole Payout";
-	       grid_id = team_score_total_grid;
-	       }
-       
 	    // draw ranked    
 	    var rank_pos = 0;
 	    var rank = 1;
@@ -143,12 +115,15 @@ function draw_payout_table(xx,yy,arr) {
 function draw_team_result_tables(xx) {
 	
 	xx += 20;
-	var sep = 32.2;
-	var yy = 40;
+	var sep = 28;
+	var yy = 30;
 	var ww = 680;
-	var hh = 5*sep;
+	var hh = 6*sep;
 	
 	var labels = ["Front","Back","18 Hole"];
+	var sortKey = ["frontRank","backRank","totalRank"];
+	var scoreKey = ["teamNetFront","teamNetBack","teamNetTotal"];
+	var payoutKey = ["frontWinnings","backWinnings","allHolesWinnings"];
 	for(var i=0;i<3;i++) {
 		
 		var yoff = (hh*i)+(sep*i);
@@ -158,6 +133,44 @@ function draw_team_result_tables(xx) {
 		draw_text_centered(xx+10,yy+yoff-sep,"Place",sep,,sep*1.3);
 		draw_text_centered(xx+330,yy+yoff-sep,labels[i]+" Score",sep,155,sep*1.3);
 		draw_text_centered(xx+500,yy+yoff-sep,labels[i]+" Payout",sep,,sep*1.3);
+		
+		draw_team_results_content(xx,yy+yoff,sep,sortKey[i],scoreKey[i],payoutKey[i]);
+		}
+	}
+	
+function draw_team_results_content(xx,yy,sep,sortKey,scoreKey,payoutKey) {
+	
+	var list = EVENT_RESULTS.teamResults;
+	
+	array_sort_struct(list,sortKey,true,["teamWinnings"]);
+	
+	var rankCount = 0;
+	var prevRank = 0;
+	for(var i=0;i<array_length(list);i++) {
+		
+		var teamStruct = list[i];
+		var teamRank = teamStruct.teamWinnings[$ sortKey];
+		
+		if (teamRank != prevRank) {
+			
+			draw_text_centered(xx+10,yy+(i*sep),teamRank,sep*0.8,,sep*1.3); // rank
+			
+			if (rankCount > 0)
+			draw_line_pixel(xx+70,yy-(sep*0.6)+((i-rankCount)*sep),2,(rankCount+0.5)*sep,appblue); // line
+			
+			prevRank++;
+			rankCount = 0;
+			}
+		else
+		rankCount++;
+		
+		draw_text_centered(xx+80,yy+(i*sep),"Team "+string(i+1),sep,,sep*1.3); // team name
+		draw_text_centered(xx+330,yy+(i*sep),teamStruct[$ scoreKey],sep,155,sep*1.3); // score
+		
+		draw_set_halign(fa_right)
+		draw_text_centered(xx+630,yy+(i*sep),string(teamStruct.teamWinnings[$ payoutKey])+" pesos",sep,,sep*1.3); // payout
+		
+		draw_set_halign(fa_left);
 		}
 	}
 	

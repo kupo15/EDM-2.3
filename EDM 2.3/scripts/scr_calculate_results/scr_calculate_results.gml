@@ -14,7 +14,7 @@ function scr_calculate_results() {
 
 	// create event results struct to display
 	EVENT_RESULTS = new EventResults();
-	
+
 	screen_change(screenEnum.eventResults);
 
 	// do the close enough screen
