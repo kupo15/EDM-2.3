@@ -1,7 +1,5 @@
 function draw_results_teams(page) {
-	
-	var ysep = 25.2;
-	
+		
 	var xx = (page*room_width);
 	var yy = 285;
 	var height = 150;
@@ -11,74 +9,6 @@ function draw_results_teams(page) {
 	draw_payout_table(xx+730,70,PAYOUT_TABLES.teamPayout[team_number]);
     draw_team_result_tables(xx);
 	draw_results_team_buttons(page,xx);
-	
-	exit;
-
-	for(var n=0;n<3;n++)
-	    {  
-	    // draw ranked    
-	    var rank_pos = 0;
-	    var rank = 1;
-	    var rank_count = 0;
-	    var rank_disp;
-    
-	    draw_set_halign(fa_left);
-	    for(var i=0;i<size;i++) // loop through leaderboard
-	       {
-	       if grid_id[# 2,i] == rank
-	       rank_count ++;
-	       else // end draw rank
-	          {
-	          var off_pos = rank_pos;
-	          if rank_count > 1
-	              {
-	              rank_disp = string(i-rank_count+1);
-	              draw_line(xx+50,yy+20+ysep+(off_pos*ysep),xx+50,yy+ysep+((off_pos+rank_count)*ysep)); // draw tied line
-	              }
-	          else
-	          rank_disp = i;
-               
-	          draw_text_transformed(xx+10,yy+ysep+(off_pos*ysep)+fn_off-10,rank_disp,1,1,0); // draw rank
-	          rank_count = 1; // reset rank count
-	          rank_pos = i; // update rank position
-	          rank ++;
-	          }
-          
-	          // last slot
-	          if i+1 == ds_grid_height(grid_id) // if last index
-	              {
-	              var off_pos = rank_pos;
-	              if rank_count > 1
-	                  {
-	                  rank_disp = string(i-rank_count+2);
-	                  draw_line(xx+30,yy+ysep+20+(off_pos*ysep),xx+30,yy+ysep+((off_pos+rank_count)*ysep));
-	                  }
-	              else
-	              rank_disp = i+1;
-                   
-	              draw_text_transformed(xx+10,yy+ysep+(off_pos*ysep)+fn_off-10,rank_disp,1,1,0); // draw rank
-	              }
-	        } 
-        
-           
-	    draw_set_halign(fa_left);
-	    draw_text(xx+5,yy-5+fn_off-10,"Place");
-	    draw_text(xx+5+200,yy-5+fn_off-10,str1); // score
-	    draw_text(xx+5+200+200,yy-5+fn_off-10,str2); // payout
-    
-	    for(var i=0;i<size;i++)
-	        {
-	        draw_text(xx+70,yy+ysep+(i*ysep)+fn_off-10,"Team "+string(grid_id[# 0,i])); // team name
-        
-	        draw_set_halign(fa_right);
-	        draw_text(xx+5+300,yy+ysep+(i*ysep)+fn_off-10,grid_id[# 1,i]); // front 9 score
-	        draw_text(xx+5+250+300,yy+ysep+(i*ysep)+fn_off-10,string(grid_id[# 3,i])+" pesos"); // front 9 payout
-        
-	        draw_set_halign(fa_left);
-	        }
-        
-	    yy += 7*ysep+25;
-	    }
 	}
 	
 function draw_payout_table(xx,yy,arr) {
@@ -167,7 +97,7 @@ function draw_team_results_content(xx,yy,sep,sortKey,scoreKey,payoutKey) {
 		draw_text_centered(xx+80,yy+(i*sep),"Team "+string(i+1),sep,,sep*1.3); // team name
 		draw_text_centered(xx+330,yy+(i*sep),teamStruct[$ scoreKey],sep,155,sep*1.3); // score
 		
-		draw_set_halign(fa_right)
+		draw_set_halign(fa_right);
 		draw_text_centered(xx+630,yy+(i*sep),string(teamStruct.teamWinnings[$ payoutKey])+" pesos",sep,,sep*1.3); // payout
 		
 		draw_set_halign(fa_left);
@@ -196,6 +126,8 @@ function draw_results_team_buttons(page,xx) {
 
 		if (results_screen_end < 0)
 		results_screen_end = 0;
+		
+		array_sort_struct(EVENT_RESULTS.entrantResults,"entrantNumber",true);
 		}
 		
 	// draw low net button	
@@ -205,6 +137,9 @@ function draw_results_team_buttons(page,xx) {
 	
 	draw_text_centered(xx+xoff,yy,"Low Net",height,ww,hh);
 	
-	if scr_mouse_position_room_released(xoff+screenOffset,yy,ww,hh,mb_left,true)
-	results_screen_end++;
+	if scr_mouse_position_room_released(xoff+screenOffset,yy,ww,hh,mb_left,true) {
+		
+		results_screen_end++;
+		low_net_rank_sort_results();
+		}
 	}

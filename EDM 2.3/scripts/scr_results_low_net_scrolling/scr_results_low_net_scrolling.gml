@@ -1,9 +1,8 @@
-function scr_results_low_net_scrolling(xx,yy,ww,hh) {
+function scr_results_low_net_scrolling(xx,yy,ww,hh,sep,disp_count) {
+	
+	var size = array_length(EVENT_RESULTS.entrantResults);
 
-	var disp_count = 15;
-	var size = ds_grid_height(scores_grid);
-
-	if size-1 < disp_count
+	if (size-1 < disp_count)
 	exit;
 
 	draw_set_color(c_gray);
@@ -17,15 +16,15 @@ function scr_results_low_net_scrolling(xx,yy,ww,hh) {
 	if scr_mouse_position_room_pressed(xx,yy,ww,hh,mb_left,false,false)
 	results_low_net_offset_start = results_low_net_offset;
 
-	if scr_mouse_position_room(xx,yy,ww,hh,mb_left,false)
-	    {
-	    var num = 0.1;
+	if scr_mouse_position_room(xx,yy,ww,hh,mb_left,false) {
+		
+		var num = 1/sep;
 	    var amt = (global.mouse_ydist*num);
-	    results_low_net_offset = results_low_net_offset_start-amt;
-	    results_low_net_offset = clamp(results_low_net_offset,0,size-disp_count);
+		
+	    results_low_net_offset = clamp(results_low_net_offset_start-amt,0,size-disp_count);
     
-	    if abs(results_low_net_offset-results_low_net_offset_start) > 0.01
-			{
+	    if (abs(results_low_net_offset-results_low_net_offset_start) > 0.01) {
+			
 			scrollbar_disp_end = 1;
 		    scrolling = true;
 			}

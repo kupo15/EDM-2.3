@@ -1,14 +1,26 @@
+function low_net_rank_sort_results() {
+	
+	var sortKey = ["netFront","netBack","netTotal"];
+	array_sort_struct(EVENT_RESULTS.entrantResults,sortKey[net_score_tab],true,["roundStats","resultRanking"]);
+	}
+
 function draw_results_low_net(page) {
 	
 	var xx = (page*room_width);
 	var yy = 400;
 	var height = 60;
+	var sep = 35;
 
 	var ww = draw_text_centered(xx+750,yy,"Low Net",height,220,,appblue);
 	draw_text_centered(xx+750,yy,"Results",height,ww,height*2.5,appblue);
 	
-	draw_payout_table(xx+730,70,PAYOUT_TABLES.lowNetPayout[ENTRANT_COUNT]);
-	draw_low_net_result_tables(xx);
+	draw_payout_table(xx+730,70,PAYOUT_TABLES.lowNetPayout[ENTRANT_COUNT-1]);
+	draw_low_net_result_tables(xx,sep);
+	
+	var sortKey = ["netFront","netBack","netTotal"];
+	var payoutKey = ["frontWinnings","backWinnings","allHolesWinnings"];
+	
+	draw_low_net_results_content(xx,sep,sortKey[net_score_tab],sortKey[net_score_tab],payoutKey[net_score_tab]);
 	draw_results_low_net_buttons(page,xx);
 
 	exit;
@@ -17,140 +29,14 @@ function draw_results_low_net(page) {
 	var hh = (18*ysep)+10; 
 	var scale = 0.85;
 
-	scr_results_low_net_scrolling(xx,yy,ww,hh);
 
-	// if clicked on tab
-	for(var i=0;i<3;i++)
-	if scr_mouse_position_room_released(xx+(i*260*scale),yy,260*scale,60,mb_left,true)
-	net_score_tab = i;
-    
-	var col = make_colour_rgb(73,14,227);
-	//draw_rectangle_colour(xx,yy,xx+ww,yy+hh,col,col,col,col,false); // table background
-	draw_rectangle(xx,yy,xx+ww,yy+hh,true); // table outline
-
-	// draw payout table
-	var num = min(ENTRANT_COUNT-1,23); // number of players
-	var payout_max = array_length_2d(low_net_pay_table,num); // the last pay slot
-
-	draw_rectangle(xx+700,yy,xx+700+200,yy+20+((payout_max+1)*ysep),true);
-	draw_text(xx+700+10,yy+fn_off,"Payout Chart");
-
-	for(var i=0;i<payout_max;i++)
-	    {
-	    draw_set_halign(fa_left);
-	    draw_text(xx+700+5,yy+ysep+(i*ysep)+fn_off,string(i+1)+")");
-    
-	    draw_set_halign(fa_right);
-	    draw_text(xx+700+200-5,yy+ysep+(i*ysep)+fn_off,string(low_net_pay_table[num,i])+" pesos");
-	    }
-    
-	// Draw Standings    
-	draw_set_halign(fa_left);
-	for(var i=0;i<3;i++)
-	    {
-	    var col = c_black;
-	    if net_score_tab = i
-	    col = c_white;
-    
-	    var alph = ((net_score_tab==i)*0.5)+0.5;
-	    draw_sprite_ext(sprite16,0,xx+(i*260*scale),yy,scale,1.5,0,col,alph);
-	    }
-
-	yy += 2*ysep;
-	draw_line_width(xx-5,yy+ysep,xx-5+ww,yy+ysep,3);
-
-	var size = min(ds_grid_height(scores_grid),15);
-
-	var str1 = "Front Score";
-	var str2 = "Front Payout";
-	var ds_grid = scores_grid_front;
-
-	if net_score_tab = 1
-	   {
-	   str1 = "Back Score";
-	   str2 = "Back Payout";
-	   ds_grid = scores_grid_back;
-	   }
-	else if net_score_tab = 2
-	   {
-	   str1 = "18 Hole Score";
-	   str2 = "18 Hole Payout";
-	   ds_grid = scores_grid_total;
-	   }
-
-	draw_text(xx,yy-10+fn_off,"Place");
-	draw_text(xx+300,yy-10+fn_off,str1); // score
-	draw_text(xx+250+220,yy-10+fn_off,str2); // payout
 
 	if !surface_exists(surface)
 	surface = surface_create(room_width,room_height);
 
 	surface_set_target(surface);
 	draw_clear_alpha(c_black,0);
-       
-	var offset = net_score_tab;
-	var rank = 1;
-	var _score;
-	var num_display = min(ds_grid_height(scores_grid),15+floor(results_low_net_offset)+1);
-
-	var rank_pos = 0;
-	var rank = 1;
-	var rank_count = 0;
-	var rank_disp;
-
-	draw_set_halign(fa_left);
-	for(var i=0;i<ds_grid_height(scores_grid);i++) // loop through leaderboard
-	   {
-	   if ds_grid[# 6,i] == rank
-	   rank_count ++;
-	   else // end draw rank
-	      {
-	      var off_pos = rank_pos-results_low_net_offset;
-	      if rank_count > 1
-	          {
-	          rank_disp = string(i-rank_count+1);
-	          draw_line(xx+50,yy+ysep+20+(off_pos*ysep),xx+50,yy+ysep+((off_pos+rank_count)*ysep));
-	          }
-	      else
-	      rank_disp = i;
            
-	      draw_text_transformed(xx+3,yy+ysep+(off_pos*ysep)+fn_off,rank_disp,0.9,0.9,0); // draw rank
-	      rank_count = 1; // reset rank count
-	      rank_pos = i; // update rank position
-	      rank ++;
-	      }
-      
-	      // last slot
-	      if i+1 = ds_grid_height(scores_grid) // if last index
-	          {
-	          var off_pos = rank_pos-results_low_net_offset;
-	          if rank_count > 1
-	              {
-	              rank_disp = string(i-rank_count+1);
-	              draw_line(xx+50,yy+ysep+20+(off_pos*ysep),xx+50,yy+ysep+((off_pos+rank_count)*ysep));
-	              }
-	          else
-	          rank_disp = i+1;
-               
-	          draw_text_transformed(xx+3,yy+ysep+(off_pos*ysep)+fn_off,rank_disp,0.9,0.9,0); // draw rank
-	          }
-	      }  
-   
-	for(var i=floor(results_low_net_offset);i<num_display;i++)
-	    {
-	    var off_pos = i-results_low_net_offset;    
-	    var name = ds_grid[# 0,i];
-	    draw_text(xx+70,yy+ysep+(off_pos*ysep)+fn_off,name); // player name
-    
-	    draw_set_halign(fa_right);
-	    draw_text(xx+400,yy+ysep+(off_pos*ysep)+fn_off,ds_grid[# 1+offset,i]); // front 9 score
-    
-	    if ds_grid[# 7+offset,i] != 0 
-	    draw_text(xx+300+320,yy+ysep+(off_pos*ysep)+fn_off,string(ds_grid[# 7+offset,i])+" pesos"); // front 9 payout
-    
-	    draw_set_halign(fa_left);
-	    }
-    
 	gpu_set_blendmode(bm_subtract);
 	draw_rectangle(0,0,room_width,yy+ysep,false);
 	draw_rectangle(0,yy-(2*ysep)+hh,room_width,room_height,false);
@@ -160,23 +46,62 @@ function draw_results_low_net(page) {
 	draw_surface(surface,0,0);
 	}
 	
-function draw_low_net_result_tables(xx) {
+function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 	
 	xx += 20;
-	var sep = 32.2;
+	var yy = 40;
+	var height = sep*0.875;
+
+	var prevRank = 0;
+	var arr = EVENT_RESULTS.entrantResults;
+	for(var i=0;i<array_length(arr);i++) {
+		
+		var ind = (i-results_low_net_offset);
+		var yoff = (ind*sep);
+
+		var memberStruct = arr[i];
+		var winningStruct = memberStruct.eventWinnings;
+		var roundStats = memberStruct.roundStats;
+		var rank = roundStats.resultRanking[$ sortKey];
+				
+		draw_set_halign(fa_left);
+		draw_text_centered(xx+10,yy+yoff,rank,height,,sep); // rank
+		draw_text_centered(xx+80,yy+yoff,memberStruct.name,height,,sep); // member name
+		draw_text_centered(xx+330,yy+yoff,roundStats[$ scoreKey],height,155,sep); // score
+		
+		draw_set_halign(fa_right);
+		draw_text_centered(xx+630,yy+yoff,string(winningStruct[$ payoutKey])+" pesos",height,,sep); // payout
+		
+		draw_set_halign(fa_left);
+		}
+		
+	// subtract top border
+	//gpu_set_blendmode(bm_subtract);
+	//draw_line_pixel(0,0,room_width,yy-1,c_black);
+	//gpu_set_blendmode(bm_normal);
+	}
+	
+function draw_low_net_result_tables(xx,sep) {
+	
+	xx += 20;
 	var yy = 40;
 	var ww = 680;
-	var hh = 20*sep;
+	var hh = room_height-yy;
+	var rows = hh/sep;
 	
 	// draw outline
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
 
 	var labels = ["Front","Back","18 Hole"];
+	var height = 30;
 	
 	draw_set_halign(fa_left);
-	draw_text_centered(xx+10,yy-sep,"Place",sep,,sep*1.3);
-	draw_text_centered(xx+330,yy-sep,labels[net_score_tab]+" Score",sep,155,sep*1.3);
-	draw_text_centered(xx+500,yy-sep,labels[net_score_tab]+" Payout",sep,,sep*1.3);
+	draw_text_centered(xx+10,yy-height,"Place",height,,height*1.3);
+	draw_text_centered(xx+330,yy-height,labels[net_score_tab]+" Score",height,155,height*1.3);
+	draw_text_centered(xx+500,yy-height,labels[net_score_tab]+" Payout",height,,height*1.3);
+	
+	// scrolling
+	scr_results_low_net_scrolling(xx,yy,ww,hh,sep,rows);
 	}
 
 function draw_results_low_net_buttons(page,xx) {
@@ -201,6 +126,9 @@ function draw_results_low_net_buttons(page,xx) {
 		}
 		
 	// tap anywhere to cycle
-	if scr_mouse_position_room_released(0,0,700+screenOffset,room_height,mb_left,false)
-	net_score_tab = (net_score_tab+1) mod 3;
+	if scr_mouse_position_room_released(0,0,700+screenOffset,room_height,mb_left,false) {
+		
+		net_score_tab = (net_score_tab+1) mod 3;
+		low_net_rank_sort_results();
+		}
 	}
