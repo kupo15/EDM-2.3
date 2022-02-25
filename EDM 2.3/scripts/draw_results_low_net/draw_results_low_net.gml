@@ -89,6 +89,7 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 	
 function draw_low_net_result_tables(xx,sep,page) {
 	
+	var screenOffset = (page-results_screen)*room_width;
 	var xoff = 20;
 	
 	xx += xoff;
@@ -109,26 +110,28 @@ function draw_low_net_result_tables(xx,sep,page) {
 	draw_text_centered(xx+500,yy-height,labels[net_score_tab]+" Payout",height,,height*1.3);
 	
 	// cycle helper
-	var label = ["F","B","18"];
+	var can_click = (results_screen_end == page);
+	var label = ["Front","Back","18Hole"];
 	for(var i=0;i<3;i++) {
 		
 		var selected = (net_score_tab == i);
 		var height = pick(25*0.8,27,selected);
 		var alpha = pick(0.8,1,selected);
 		
-		draw_text_centered(xx+125+(i*30),yy-40,label[i],height,30,30*1.3,appblue,alpha);
+		draw_text_centered(xx+125+(i*60),yy-40,label[i],height,60,30*1.3,appblue,alpha);
+		
+		if scr_mouse_position_room_released(xoff+125+(i*60),yy-40,60+screenOffset,30*1.3,mb_left,,,can_click)
+		net_score_tab = i;
 		
 		var rr = pick(2,3,selected);
 		
 		draw_set_alpha(alpha);
-		draw_circle_color(xx+125+(i*30)+15,yy-10,rr,appblue,appblue,false);
+		draw_circle_color(xx+125+(i*60)+30,yy-10,rr,appblue,appblue,false);
 
 		draw_set_alpha(1);
 		}
 	
 	// scrolling
-	var screenOffset = (page-results_screen)*room_width;
-
 	scr_results_low_net_scrolling(xoff+screenOffset,yy,ww,hh,sep,rows,scrollbarIndex.resultsLowNet);
 	}
 
@@ -155,7 +158,7 @@ function draw_results_low_net_buttons(page,xx) {
 		}
 		
 	// tap anywhere to cycle
-	if scr_mouse_position_room_released(0,0,700+screenOffset,room_height,mb_left,false,,can_click) {
+	if scr_mouse_position_room_released(0,40,700+screenOffset,room_height,mb_left,false,,can_click) {
 		
 		net_score_tab = (net_score_tab+1) mod 3;
 		low_net_rank_sort_results();
