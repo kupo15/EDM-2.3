@@ -23,6 +23,10 @@ function draw_results_overview(page) {
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
 
 	draw_close_enough_animation();
+	
+	var can_click = (close_enough_timer == -1) && (page == results_screen_end);
+
+	if can_click
 	scr_results_final_scrolling(xx,yy,ww,ysep,scrollbarIndex.resultsOverview);
 	}
 	
@@ -236,7 +240,7 @@ function draw_results_final_calculate_totals() {
 function draw_results_final_buttons(page) {
 	
 	var screenOffset = (page-results_screen)*room_width;
-	var can_click = (close_enough_timer == -1);
+	var can_click = (close_enough_timer == -1) && (page == results_screen_end);
 	var rec_col = c_green;
 	
 	// start over

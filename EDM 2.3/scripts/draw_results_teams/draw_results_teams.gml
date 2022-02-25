@@ -104,7 +104,7 @@ function draw_team_results_content(xx,yy,sep,sortKey,scoreKey,payoutKey) {
 			cutoffDrawn = true;
 			}
 		
-		var alpha = pick(1,0.95,cutoffDrawn);
+		var alpha = pick(1,0.9,cutoffDrawn);
 
 		draw_text_centered(xx+80,yy+(i*sep),"Team "+string(teamStruct.teamNumber+1),sep,,sep*1.3,,alpha); // team name
 		draw_text_centered(xx+330,yy+(i*sep),teamStruct[$ scoreKey],sep,155,sep*1.3,,alpha); // score
@@ -122,6 +122,7 @@ function draw_team_results_content(xx,yy,sep,sortKey,scoreKey,payoutKey) {
 function draw_results_team_buttons(page,xx) {
 	
 	var screenOffset = (page-results_screen)*room_width;
+	var can_click = (results_screen_end == page);
 	
 	// draw Results
 	var xoff = 708;
@@ -141,8 +142,6 @@ function draw_results_team_buttons(page,xx) {
 
 		if (results_screen_end < 0)
 		results_screen_end = 0;
-		
-		array_sort_struct(EVENT_RESULTS.entrantResults,"entrantNumber",true);
 		}
 		
 	// draw low net button	
@@ -152,9 +151,6 @@ function draw_results_team_buttons(page,xx) {
 	
 	draw_text_centered(xx+xoff,yy,"Low Net",height,ww,hh);
 	
-	if scr_mouse_position_room_released(xoff+screenOffset,yy,ww,hh,mb_left,true) {
-		
-		results_screen_end++;
-		low_net_rank_sort_results();
-		}
+	if scr_mouse_position_room_released(xoff+screenOffset,yy,ww,hh,mb_left,true)
+	results_screen_end++;
 	}

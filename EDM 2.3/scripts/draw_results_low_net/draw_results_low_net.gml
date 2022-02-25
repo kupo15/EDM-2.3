@@ -1,7 +1,7 @@
 function low_net_rank_sort_results() {
 	
 	var sortKey = ["netFront","netBack","netTotal"];
-	array_sort_struct(EVENT_RESULTS.entrantResults,sortKey[net_score_tab],true,["roundStats","resultRanking"]);
+	array_sort_struct(lowNetResults,sortKey[net_score_tab],true,["roundStats","resultRanking"]);
 	}
 
 function draw_results_low_net(page) {
@@ -35,7 +35,7 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 	var cutoffDrawn = false;
 	var prevRank = 0;
 	var rankCount = 0;
-	var arr = EVENT_RESULTS.entrantResults;
+	var arr = lowNetResults;
 	var size = array_length(arr);
 	for(var i=0;i<size;i++) {
 		
@@ -67,7 +67,7 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 			cutoffDrawn = true;
 			}
 			
-		var alpha = pick(1,0.95,cutoffDrawn);
+		var alpha = pick(1,0.9,cutoffDrawn);
 		
 		draw_text_centered(xx+80,yy+yoff,memberStruct.name,height,,sep,,alpha); // member name
 		draw_text_centered(xx+330,yy+yoff,roundStats[$ scoreKey],height,155,sep,,alpha); // score

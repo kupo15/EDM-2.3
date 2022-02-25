@@ -15,6 +15,9 @@ function scr_calculate_results() {
 	// create event results struct to display
 	EVENT_RESULTS = new EventResults();
 
+	lowNetResults = deep_copy(EVENT_RESULTS.entrantResults);
+	low_net_rank_sort_results();
+
 	screen_change(screenEnum.eventResults);
 
 	// do the close enough screen

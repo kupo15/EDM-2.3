@@ -33,6 +33,8 @@ edit_event_time_offset = 8;
 edit_event_time_offset_start = 0;
 season_ranking_disp = 0;
 
+results_sorted = 0;
+
 scrollbarActive = scrollbarIndex.none;
 scrollbar_disp = 0;
 scrollbar_disp_end = 0;
