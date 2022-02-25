@@ -167,7 +167,7 @@ function draw_edit_score_player_popup() {
 	var height = 30;
 	var c_col = appblue;
 
-	draw_text_centered(xx,yy,"Team Score",height,,sep,c_col);
+	draw_text_centered(xx,yy,"Team Net Score",height,,sep,c_col);
 	
 	var list = TEAM_LIST[team_index_entry];
 	

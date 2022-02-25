@@ -18,3 +18,18 @@ function create_entrant_list_results() {
 		
 	return list;
 	}
+	
+function create_team_list_results() {
+	
+	var results = [];
+	
+	for(var i=0;i<con_main.team_number+1;i++) {
+		
+		var teamStruct = deep_copy(TEAM_LIST[i]);
+		variable_struct_remove(teamStruct,"members");
+		
+		array_push(results,teamStruct);
+		}
+	
+	return results;
+	}

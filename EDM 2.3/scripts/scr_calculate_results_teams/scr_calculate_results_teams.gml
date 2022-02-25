@@ -34,8 +34,8 @@ function payout_team_winnings(tempArr,sortKey,winningKey)  {
 		
 	// rank teams
 	var rank = 1;
-	for(var i=0;i<array_length(tempArr);i++)
-		{
+	for(var i=0;i<array_length(tempArr);i++) {
+		
 		var tempTeamStruct = tempArr[i];
 		
 		// if score is worse than previous team
@@ -51,6 +51,7 @@ function payout_team_winnings(tempArr,sortKey,winningKey)  {
 		// assign rank
 		tempTeamStruct.teamRank = rank; // assign to temp team
 		TEAM_LIST[tempTeamStruct.teamIndex].teamWinnings[$ sortKey+"Rank"] = rank; // assign to actual team
+		TEAM_LIST[tempTeamStruct.teamIndex].teamWinnings[$ winningKey] = 0; // reset
 		}
 
 	// loop through winning slots
