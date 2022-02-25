@@ -19,7 +19,8 @@ function draw_results_low_net(page) {
 	var ww = draw_text_centered(xx+750,yy,"Low Net",height,220,,appblue);
 	draw_text_centered(xx+750,yy,"Results",height,ww,height*2.5,appblue);
 	
-	draw_payout_table(xx+730,70,PAYOUT_TABLES.lowNetPayout[ENTRANT_COUNT-1]);
+	var entrantMax = min(PAYOUT_TABLES.lowNetPayoutMax,ENTRANT_COUNT)-1;
+	draw_payout_table(xx+730,70,PAYOUT_TABLES.lowNetPayout[entrantMax]);
 	draw_low_net_result_tables(xx,sep,page);
 	
 	draw_results_low_net_buttons(page,xx);
@@ -31,7 +32,8 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 	var yy = 40;
 	var height = sep*0.875;
 
-	var payoutCutoffInd = array_length(PAYOUT_TABLES.lowNetPayout[ENTRANT_COUNT-1])+1;
+	var entrantMax = min(PAYOUT_TABLES.lowNetPayoutMax,ENTRANT_COUNT)-1;
+	var payoutCutoffInd = array_length(PAYOUT_TABLES.lowNetPayout[entrantMax])+1;
 	var cutoffDrawn = false;
 	var prevRank = 0;
 	var rankCount = 0;

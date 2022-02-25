@@ -94,10 +94,10 @@ function draw_edit_score_player_popup() {
 			
 	    var ind = (edit_score+i+edit_score_offset+size) mod size;
 		var xoff = (edit_score_scrolling_offset*500)+(i*500);
-		var entrantName = list[ind].name; // get_entrant_by_id(ind);
+		var entrantName = list[ind]; // get_entrant_by_id(ind);
 			
 		// draw player's name
-	    draw_text_centered(xx+20+xoff,130-height,entrantName,height);
+	    draw_text_centered(xx+20+xoff,130-height,entrantName,height,);
 	    }
 		
 	// cutoff 

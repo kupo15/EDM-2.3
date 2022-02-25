@@ -31,7 +31,8 @@ function payout_low_net_winnings(tempArr,sortKey,winningKey) {
 		}
 		
 	// loop through winning slots
-	var payoutTableArray = PAYOUT_TABLES.lowNetPayout[ENTRANT_COUNT-1];
+	var entrantMax = min(PAYOUT_TABLES.lowNetPayoutMax,ENTRANT_COUNT)-1;
+	var payoutTableArray = PAYOUT_TABLES.lowNetPayout[entrantMax];
 	for(var i=0;i<array_length(payoutTableArray);i++) {
 		
 		var payoutPot = real(payoutTableArray[i]);

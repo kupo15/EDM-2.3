@@ -37,6 +37,9 @@ function PayoutTables() constructor {
 			["64","60","44","28","18","16"],
 			["64","60","44","28","18","16","10"],
 			]
+			
+	teamPayoutMax = array_length(teamPayout);
+	lowNetPayoutMax = array_length(lowNetPayout);
 	}
 
 function ini_payout_table() {
