@@ -31,10 +31,13 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 	var yy = 40;
 	var height = sep*0.875;
 
+	var payoutCutoffInd = array_length(PAYOUT_TABLES.lowNetPayout[ENTRANT_COUNT-1])+1;
+	var cutoffDrawn = false;
 	var prevRank = 0;
 	var rankCount = 0;
 	var arr = EVENT_RESULTS.entrantResults;
-	for(var i=0;i<array_length(arr);i++) {
+	var size = array_length(arr);
+	for(var i=0;i<size;i++) {
 		
 		var ind = (i-results_low_net_offset);
 		var yoff = (ind*sep);
@@ -56,7 +59,14 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 			}
 		else
 		rankCount++;
+		
+		// cutoff win line
+		if (rank == payoutCutoffInd) && !cutoffDrawn {
 			
+			draw_line_pixel(xx+80,yy+yoff,600,1,,0.5);
+			cutoffDrawn = true;
+			}
+		
 		draw_text_centered(xx+80,yy+yoff,memberStruct.name,height,,sep); // member name
 		draw_text_centered(xx+330,yy+yoff,roundStats[$ scoreKey],height,155,sep); // score
 		
@@ -64,6 +74,9 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 		draw_text_centered(xx+630,yy+yoff,string(winningStruct[$ payoutKey])+" pesos",height,,sep); // payout
 		
 		draw_set_halign(fa_left);
+		
+		if (i+1 == size) && (rankCount > 0)
+		draw_line_pixel(xx+70,yy-(sep*0.6)+((ind-rankCount+1)*sep),2,(rankCount+0.5)*sep,appblue); // line
 		}
 		
 	// subtract top border

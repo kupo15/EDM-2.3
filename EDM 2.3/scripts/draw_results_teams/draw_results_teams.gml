@@ -74,9 +74,12 @@ function draw_team_results_content(xx,yy,sep,sortKey,scoreKey,payoutKey) {
 	
 	array_sort_struct(list,sortKey,true,["teamWinnings"]);
 	
+	var payoutCutoffInd = array_length(PAYOUT_TABLES.teamPayout[team_number])+1;
+	var cutoffDrawn = false;
 	var rankCount = 0;
 	var prevRank = 0;
-	for(var i=0;i<array_length(list);i++) {
+	var size = array_length(list);
+	for(var i=0;i<size;i++) {
 		
 		var teamStruct = list[i];
 		var teamRank = teamStruct.teamWinnings[$ sortKey];
@@ -84,7 +87,7 @@ function draw_team_results_content(xx,yy,sep,sortKey,scoreKey,payoutKey) {
 		if (teamRank != prevRank) {
 			
 			draw_text_centered(xx+10,yy+(i*sep),teamRank,sep*0.9,,sep*1.3); // rank
-			
+							
 			if (rankCount > 0)
 			draw_line_pixel(xx+70,yy-(sep*0.6)+((i-rankCount)*sep),2,(rankCount+0.5)*sep,appblue); // line
 			
@@ -94,6 +97,13 @@ function draw_team_results_content(xx,yy,sep,sortKey,scoreKey,payoutKey) {
 		else
 		rankCount++;
 		
+		// cutoff win line
+		if (teamRank == payoutCutoffInd) && !cutoffDrawn {
+			
+			draw_line_pixel(xx+80,yy+(i*sep),600,1,,0.5);
+			cutoffDrawn = true;
+			}
+		
 		draw_text_centered(xx+80,yy+(i*sep),"Team "+string(teamStruct.teamNumber+1),sep,,sep*1.3); // team name
 		draw_text_centered(xx+330,yy+(i*sep),teamStruct[$ scoreKey],sep,155,sep*1.3); // score
 		
@@ -101,6 +111,9 @@ function draw_team_results_content(xx,yy,sep,sortKey,scoreKey,payoutKey) {
 		draw_text_centered(xx+630,yy+(i*sep),string(teamStruct.teamWinnings[$ payoutKey])+" pesos",sep,,sep*1.3); // payout
 		
 		draw_set_halign(fa_left);
+		
+		if (i+1 == size) && (rankCount > 0)
+		draw_line_pixel(xx+70,yy-(sep*0.6)+((i-rankCount+1)*sep),2,(rankCount+0.5)*sep,appblue); // line
 		}
 	}
 	
