@@ -66,12 +66,14 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 			draw_line_pixel(xx+80,yy+yoff,600,1,,0.5);
 			cutoffDrawn = true;
 			}
+			
+		var alpha = pick(1,0.95,cutoffDrawn);
 		
-		draw_text_centered(xx+80,yy+yoff,memberStruct.name,height,,sep); // member name
-		draw_text_centered(xx+330,yy+yoff,roundStats[$ scoreKey],height,155,sep); // score
+		draw_text_centered(xx+80,yy+yoff,memberStruct.name,height,,sep,,alpha); // member name
+		draw_text_centered(xx+330,yy+yoff,roundStats[$ scoreKey],height,155,sep,,alpha); // score
 		
 		draw_set_halign(fa_right);
-		draw_text_centered(xx+630,yy+yoff,string(winningStruct[$ payoutKey])+" pesos",height,,sep); // payout
+		draw_text_centered(xx+630,yy+yoff,string(winningStruct[$ payoutKey])+" pesos",height,,sep,,alpha); // payout
 		
 		draw_set_halign(fa_left);
 		

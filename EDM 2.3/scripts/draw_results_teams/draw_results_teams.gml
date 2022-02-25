@@ -104,11 +104,13 @@ function draw_team_results_content(xx,yy,sep,sortKey,scoreKey,payoutKey) {
 			cutoffDrawn = true;
 			}
 		
-		draw_text_centered(xx+80,yy+(i*sep),"Team "+string(teamStruct.teamNumber+1),sep,,sep*1.3); // team name
-		draw_text_centered(xx+330,yy+(i*sep),teamStruct[$ scoreKey],sep,155,sep*1.3); // score
+		var alpha = pick(1,0.95,cutoffDrawn);
+
+		draw_text_centered(xx+80,yy+(i*sep),"Team "+string(teamStruct.teamNumber+1),sep,,sep*1.3,,alpha); // team name
+		draw_text_centered(xx+330,yy+(i*sep),teamStruct[$ scoreKey],sep,155,sep*1.3,,alpha); // score
 		
 		draw_set_halign(fa_right);
-		draw_text_centered(xx+630,yy+(i*sep),string(teamStruct.teamWinnings[$ payoutKey])+" pesos",sep,,sep*1.3); // payout
+		draw_text_centered(xx+630,yy+(i*sep),string(teamStruct.teamWinnings[$ payoutKey])+" pesos",sep,,sep*1.3,,alpha); // payout
 		
 		draw_set_halign(fa_left);
 		
