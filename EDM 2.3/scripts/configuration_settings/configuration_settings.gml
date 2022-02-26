@@ -33,3 +33,36 @@ function ConfigurationMeta() constructor {
 	
 	version = configversion;
 	}
+	
+function Team(num) constructor {
+	
+	var defaultVal = 0;
+	
+	teamNumber = num;
+	members = [];
+	blindMembers = {};
+	
+	teamNetFront = "";
+	teamNetBack = "";
+	teamNetTotal = "";
+	
+	teamWinnings = {
+				
+		frontWinnings: defaultVal,
+		backWinnings: defaultVal,
+		allHolesWinnings: defaultVal,
+		}
+	}
+	
+function PrizePool() constructor {
+			
+	entryFees = {
+				
+		teamEntry: "30",
+		lowNetEntry: "30",
+		skinsEntry: "20",
+		blindFee: "30",
+		}
+			
+	payoutTable = new PayoutTables();
+	}

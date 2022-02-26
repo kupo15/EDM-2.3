@@ -1,5 +1,6 @@
 {
   "resources": [
+    {"id":{"name":"debug_scripts","path":"scripts/debug_scripts/debug_scripts.yy",},"order":0,},
     {"id":{"name":"main_timer_beep","path":"scripts/main_timer_beep/main_timer_beep.yy",},"order":1,},
     {"id":{"name":"spr_pixel","path":"sprites/spr_pixel/spr_pixel.yy",},"order":0,},
     {"id":{"name":"spr_add_button","path":"sprites/spr_add_button/spr_add_button.yy",},"order":1,},
@@ -10,6 +11,7 @@
     {"id":{"name":"spr_crossout","path":"sprites/spr_crossout/spr_crossout.yy",},"order":5,},
     {"id":{"name":"draw_member_name","path":"scripts/draw_member_name/draw_member_name.yy",},"order":10,},
     {"id":{"name":"spr_member_button","path":"sprites/spr_member_button/spr_member_button.yy",},"order":7,},
+    {"id":{"name":"scr_member_creation","path":"scripts/scr_member_creation/scr_member_creation.yy",},"order":3,},
     {"id":{"name":"init_keypad","path":"scripts/init_keypad/init_keypad.yy",},"order":1,},
     {"id":{"name":"ico_chevron_down","path":"sprites/ico_chevron_down/ico_chevron_down.yy",},"order":7,},
     {"id":{"name":"scr_create_entrant_list_results","path":"scripts/scr_create_entrant_list_results/scr_create_entrant_list_results.yy",},"order":6,},
@@ -18,7 +20,7 @@
     {"id":{"name":"snd_tap1","path":"sounds/snd_tap1/snd_tap1.yy",},"order":1,},
     {"id":{"name":"snd_tap2","path":"sounds/snd_tap2/snd_tap2.yy",},"order":2,},
     {"id":{"name":"season_ranking_load","path":"scripts/season_ranking_load/season_ranking_load.yy",},"order":2,},
-    {"id":{"name":"scr_course_tee_data","path":"scripts/scr_course_tee_data/scr_course_tee_data.yy",},"order":0,},
+    {"id":{"name":"scr_course_tee_data","path":"scripts/scr_course_tee_data/scr_course_tee_data.yy",},"order":4,},
     {"id":{"name":"season_ranking_save","path":"scripts/season_ranking_save/season_ranking_save.yy",},"order":3,},
     {"id":{"name":"ini_season_ranking_save","path":"scripts/ini_season_ranking_save/ini_season_ranking_save.yy",},"order":4,},
     {"id":{"name":"MEMBERLIST_RELEASE_ACTIONS","path":"scripts/MEMBERLIST_RELEASE_ACTIONS/MEMBERLIST_RELEASE_ACTIONS.yy",},"order":0,},
@@ -27,7 +29,7 @@
     {"id":{"name":"ini_payout_table","path":"scripts/ini_payout_table/ini_payout_table.yy",},"order":3,},
     {"id":{"name":"ini_settings","path":"scripts/ini_settings/ini_settings.yy",},"order":0,},
     {"id":{"name":"ini_results_load","path":"scripts/ini_results_load/ini_results_load.yy",},"order":12,},
-    {"id":{"name":"configuration_settings","path":"scripts/configuration_settings/configuration_settings.yy",},"order":2,},
+    {"id":{"name":"configuration_settings","path":"scripts/configuration_settings/configuration_settings.yy",},"order":1,},
     {"id":{"name":"screen_home","path":"scripts/screen_home/screen_home.yy",},"order":2,},
     {"id":{"name":"screen_score_entry","path":"scripts/screen_score_entry/screen_score_entry.yy",},"order":3,},
     {"id":{"name":"macros","path":"scripts/macros/macros.yy",},"order":0,},
@@ -175,7 +177,7 @@
     {"folderPath":"folders/Objects/Tee Selection.yy","order":5,"resourceVersion":"1.0","name":"Tee Selection","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Objects/Tee Selection/Scripts.yy","order":1,"resourceVersion":"1.0","name":"Scripts","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Scripts/Configuration.yy","order":3,"resourceVersion":"1.0","name":"Configuration","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Scripts/Configuration/Course Data.yy","order":1,"resourceVersion":"1.0","name":"Course Data","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Scripts/Debug.yy","order":4,"resourceVersion":"1.0","name":"Debug","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

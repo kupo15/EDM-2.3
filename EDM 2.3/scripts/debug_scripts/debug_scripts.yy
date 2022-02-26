@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Configuration",
-    "path": "folders/Scripts/Configuration.yy",
+    "name": "Debug",
+    "path": "folders/Scripts/Debug.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_course_tee_data",
+  "name": "debug_scripts",
   "tags": [],
   "resourceType": "GMScript",
 }
