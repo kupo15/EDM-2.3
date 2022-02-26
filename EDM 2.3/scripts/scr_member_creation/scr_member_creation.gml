@@ -7,7 +7,7 @@ function Member(_name,_teeColor=choose("white","gold","blue","silver","combo"),_
 	
 	eventDetails = new EventDetails();
 	eventScores = new EventScores();
-	eventResults = new EventWinnings();
+	eventResults = new EventResults();
 	
 	favorite = _favorite;
 	recent = -1;
@@ -73,7 +73,7 @@ function EventScores() constructor {
 	courseHandicap = calculate_member_handicaps();
 	}
 	
-function EventWinnings() constructor {
+function EventResults() constructor {
 	
 	var defaultVal = 0;
 	

@@ -70,7 +70,7 @@ function draw_team_result_tables(xx) {
 	
 function draw_team_results_content(xx,yy,sep,sortKey,scoreKey,payoutKey) {
 	
-	var list = EVENT_RESULTS.teamResults;
+	var list = FINAL_EVENT_RESULTS.teamResults;
 	
 	array_sort_struct(list,sortKey,true,["teamWinnings"]);
 	

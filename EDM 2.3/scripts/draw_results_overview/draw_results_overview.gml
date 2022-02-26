@@ -123,7 +123,7 @@ function draw_results_final_content(xx,yy) {
 	var sep = 40;
 	var prevTeamInd = 0;
 	
-	var arr = EVENT_RESULTS.entrantResults;
+	var arr = FINAL_EVENT_RESULTS.entrantResults;
 	for(var i=0;i<array_length(arr);i++) {
 		
 		var memberStruct = arr[i];
@@ -215,7 +215,7 @@ function draw_results_final_calculate_totals() {
 	var winSubtotal = 0;
 	var entryTotal = 0;
 	
-	var arr = EVENT_RESULTS.entrantResults;
+	var arr = FINAL_EVENT_RESULTS.entrantResults;
 	for(var i=0;i<array_length(arr);i++) {
 		
 		var memberStruct = arr[i];

@@ -9,7 +9,7 @@ function scr_results_final_scrolling(xx,yy,ww,sep,scrollEnum) {
 
 	var hh = 406;
 	var disp_count = 10;
-	var size = array_length(EVENT_RESULTS.entrantResults);
+	var size = array_length(FINAL_EVENT_RESULTS.entrantResults);
 
 	if (size-1 < disp_count) || (close_enough_timer != -1)
 	exit;

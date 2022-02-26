@@ -17,9 +17,9 @@ function scr_calculate_results() {
 	db("calculated");
 
 	// create event results struct to display
-	EVENT_RESULTS = new EventResults();
+	FINAL_EVENT_RESULTS = new EventFinalResults();
 
-	lowNetResults = deep_copy(EVENT_RESULTS.entrantResults);
+	lowNetResults = deep_copy(FINAL_EVENT_RESULTS.entrantResults);
 	low_net_rank_sort_results();
 
 	screen_change(screenEnum.eventResults);
@@ -39,7 +39,7 @@ exit
 	// save results
 	}
 
-function EventResults() constructor {
+function EventFinalResults() constructor {
 	
 	entrantResults = deep_copy(con_main.entrantResultsList);
 	teamResults = TeamResults();

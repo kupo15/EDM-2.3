@@ -1,6 +1,6 @@
 function scr_results_low_net_scrolling(xx,yy,ww,hh,sep,disp_count,scrollEnum) {
 	
-	var size = array_length(EVENT_RESULTS.entrantResults);
+	var size = array_length(FINAL_EVENT_RESULTS.entrantResults);
 
 	if (size-1 < disp_count)
 	exit;
