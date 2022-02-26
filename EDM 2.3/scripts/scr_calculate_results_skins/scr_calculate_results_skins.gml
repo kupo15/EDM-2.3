@@ -95,12 +95,13 @@ function distribute_leftover_skin_payout(arr,sortKey,payoutPot) {
 		
 		var memberStruct = arr[i];
 		var eventResults = memberStruct.eventResults;
+		var payoutBreakdown = eventResults.payoutBreakdown;
 		
 		// if you had skins
 		if (eventResults[$ sortKey]) {
 			
-		   eventResults[$ sortKey]++; // add to skins breakdown
-		   eventResults.skinsTotalWinnings++; // calculate skins total winning
+		   payoutBreakdown[$ sortKey]++; // add to skins winnings breakdown
+		   payoutBreakdown.skinsTotalWinnings++; // calculate skins total winning
    
 		   payoutPot--; // 1 less in pot
    

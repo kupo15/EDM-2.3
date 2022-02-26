@@ -127,8 +127,9 @@ function draw_results_final_content(xx,yy) {
 	for(var i=0;i<array_length(arr);i++) {
 		
 		var memberStruct = arr[i];
-		var eventResults = memberStruct.eventResults;
 		var eventDetails = memberStruct.eventDetails;
+		var eventResults = memberStruct.eventResults;
+		var payoutBreakdown = eventResults.payoutBreakdown;
 
 		var teamInd = eventDetails.teamAssigned;
 		var newTeam = (teamInd != prevTeamInd);
@@ -145,26 +146,26 @@ function draw_results_final_content(xx,yy) {
 		draw_member_name(xx+5,yy+yoff,memberStruct,height,,sep); // member name
 			
 		var xoff = 315;
-		xoff += draw_text_centered(xx+xoff,yy+yoff,eventResults.teamWinning,height,100,sep);
-		xoff += draw_text_centered(xx+xoff,yy+yoff,eventResults.lowNetWinning,height,100,sep);
-		xoff += draw_text_centered(xx+xoff,yy+yoff,eventResults.skinsGross,height,60,sep);
-		xoff += draw_text_centered(xx+xoff,yy+yoff,eventResults.skinsNet,height,60,sep);
-		xoff += draw_text_centered(xx+xoff,yy+yoff,eventResults.winSubtotal,height,60,sep);
-		xoff += draw_text_centered(xx+xoff,yy+yoff,-eventResults.entryFee,height,60,sep,,entryAlpha);
+		xoff += draw_text_centered(xx+xoff,yy+yoff,payoutBreakdown.teamWinning,height,100,sep);
+		xoff += draw_text_centered(xx+xoff,yy+yoff,payoutBreakdown.lowNetWinning,height,100,sep);
+		xoff += draw_text_centered(xx+xoff,yy+yoff,payoutBreakdown.skinsGross,height,60,sep);
+		xoff += draw_text_centered(xx+xoff,yy+yoff,payoutBreakdown.skinsNet,height,60,sep);
+		xoff += draw_text_centered(xx+xoff,yy+yoff,payoutBreakdown.winSubtotal,height,60,sep);
+		xoff += draw_text_centered(xx+xoff,yy+yoff,-payoutBreakdown.entryFee,height,60,sep,,entryAlpha);
 			
 		if no_net_skins || no_gross_skins {
 
-			var refund = eventResults.entryFee-(no_net_skins+no_gross_skins)*real(ENTRY_FEES.skinsEntry)*0.5;
+			var refund = payoutBreakdown.entryFee-(no_net_skins+no_gross_skins)*real(ENTRY_FEES.skinsEntry)*0.5;
 			
 			draw_line_pixel(xx+xoff-50,yy+(sep*0.5)+yoff,45,2,c_red,entryAlpha); // cross out entry fee
 			draw_text_centered(xx+xoff-10,yy+yoff,-refund,height,70,sep); // modified entry fee
 			}
 			
 		// grand total winning
-		var col = pick(c_red,c_black,eventResults.winningGrandTotal >= 0);
+		var col = pick(c_red,c_black,payoutBreakdown.winningGrandTotal >= 0);
 			
 		draw_set_halign(fa_right)
-		draw_text_centered(985,yy+yoff,string(eventResults.winningGrandTotal)+" pesos",height,,sep,col);
+		draw_text_centered(985,yy+yoff,string(payoutBreakdown.winningGrandTotal)+" pesos",height,,sep,col);
 			
 		// line separator
 		var col = pick(c_black,appblue,newTeam);
@@ -219,14 +220,14 @@ function draw_results_final_calculate_totals() {
 	for(var i=0;i<array_length(arr);i++) {
 		
 		var memberStruct = arr[i];
-		var eventResults = memberStruct.eventResults;
+		var payoutBreakdown = memberStruct.eventResults.payoutBreakdown;
 			
-		teamTotal += eventResults.teamWinning;
-		lowNetTotal += eventResults.lowNetWinning;
-		grossSkinTotal += eventResults.skinsGross;
-		netSkinTotal += eventResults.skinsNet;
-		winSubtotal += eventResults.winSubtotal;
-		entryTotal += eventResults.entryFee;
+		teamTotal += payoutBreakdown.teamWinning;
+		lowNetTotal += payoutBreakdown.lowNetWinning;
+		grossSkinTotal += payoutBreakdown.skinsGross;
+		netSkinTotal += payoutBreakdown.skinsNet;
+		winSubtotal += payoutBreakdown.winSubtotal;
+		entryTotal += payoutBreakdown.entryFee;
 		}
 		
 	return {

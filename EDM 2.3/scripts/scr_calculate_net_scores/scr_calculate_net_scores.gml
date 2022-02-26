@@ -44,11 +44,12 @@ function payout_low_net_winnings(tempArr,sortKey,winningKey) {
 			
 			var memberStruct = tempArr[j];
 			var eventResults = memberStruct.eventResults;
+			var payoutBreakdown = eventResults.payoutBreakdown;
 
 			// if rank equals payout index
 			if (eventResults.resultRanking[$ sortKey] == i+1) {
 
-				eventResults[$ winningKey]++;
+				payoutBreakdown[$ winningKey]++; // add to winnings
 				payoutPot--;
 				}
 				

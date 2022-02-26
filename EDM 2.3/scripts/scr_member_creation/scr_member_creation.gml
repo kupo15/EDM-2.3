@@ -70,22 +70,25 @@ function EventResults() constructor {
 	
 	var defaultVal = 0;
 	
-	frontWinnings = defaultVal;
-	backWinnings = defaultVal;
-	allHolesWinnings = defaultVal;
+	payoutBreakdown = {
+		
+		frontWinnings: defaultVal,
+		backWinnings: defaultVal,
+		allHolesWinnings: defaultVal,
 	
-	// totals
-	lowNetWinning = defaultVal;
-	teamWinning = defaultVal;
-	blindWinning = defaultVal;
+		// totals
+		lowNetWinning: defaultVal,
+		teamWinning: defaultVal,
+		blindWinning: defaultVal,
 	
-	skinsGross = defaultVal;
-	skinsNet = defaultVal;
-	skinsTotalWinnings = defaultVal;
+		skinsGross: defaultVal,
+		skinsNet: defaultVal,
+		skinsTotalWinnings: defaultVal,
 	
-	winSubtotal = defaultVal;
-	entryFee = defaultVal;
-	winningGrandTotal = defaultVal;
+		winSubtotal: defaultVal,
+		entryFee: defaultVal,
+		winningGrandTotal: defaultVal,
+		}
 	
 	resultRanking = {
 		
