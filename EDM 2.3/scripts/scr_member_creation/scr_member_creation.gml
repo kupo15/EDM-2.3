@@ -45,6 +45,11 @@ function EventDetails() constructor {
 	
 	entrantNumber = undefined;
 	teamAssigned = undefined;
+	
+	blindTeam = undefined;
+	noTeam = false;
+	
+	courseHandicap = calculate_member_handicaps();
 	}
 		
 function EventScores() constructor {
@@ -59,11 +64,6 @@ function EventScores() constructor {
 	
 	skinsGross = "0";
 	skinsNet = "0";
-	
-	blindTeam = undefined;
-	noTeam = false;
-	
-	courseHandicap = calculate_member_handicaps();
 	}
 	
 function EventResults() constructor {

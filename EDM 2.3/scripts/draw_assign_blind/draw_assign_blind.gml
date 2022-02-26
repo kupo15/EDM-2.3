@@ -44,7 +44,7 @@ function draw_assign_blind() {
     
 	    if draw_text_button(xx+30+(i*sep),yy+120,i+1,45,hsep,vsep,,alph,,true) && !gray_out {
 			
-	        struct.eventScores.blindTeam = i; // assign blind team
+	        eventDetails.blindTeam = i; // assign blind team
 	        blind_struct_add_member(select_blind_team,i); // add to the blind list
 	        select_blind_team = undefined;
 	        break;
@@ -56,12 +56,16 @@ function draw_assign_blind() {
 	
 function blind_struct_add_member(struct,teamInd) {
 	
-	var key = struct.lastName;
+	var memberDetails = struct.memberDetails;
+	var key = memberDetails.lastName;
+	
 	TEAM_LIST[teamInd].blindMembers[$ key] = struct;
 	}
 	
 function blind_struct_remove_member(struct,teamInd) {
 
-	var key = struct.lastName;
-	variable_struct_remove(TEAM_LIST[teamInd].blindMembers,key);;
+	var memberDetails = struct.memberDetails;
+	var key = memberDetails.lastName;
+	
+	variable_struct_remove(TEAM_LIST[teamInd].blindMembers,key);
 	}

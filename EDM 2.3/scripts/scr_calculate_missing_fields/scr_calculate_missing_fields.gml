@@ -1,4 +1,4 @@
-function scr_calculate_missing_fields(){
+function scr_calculate_missing_fields() {
 
 	// loop through teams
 	for(var i=0;i<team_number+1;i++) {
@@ -14,8 +14,9 @@ function scr_calculate_missing_fields(){
 			{
 			var memberStruct = teamStruct.members[j];
 			var eventScores = memberStruct.eventScores;
+			var eventDetails = memberStruct.eventDetails;
 			
-			var courseHandicap = eventScores.courseHandicap;
+			var courseHandicap = eventDetails.courseHandicap;
 			var frontAdj = ceil(courseHandicap*0.5);
 			var backAdj = floor(courseHandicap*0.5);
 			

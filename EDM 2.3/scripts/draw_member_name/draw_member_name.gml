@@ -1,14 +1,16 @@
 function draw_member_name(xx,yy,struct,height,ww=undefined,hh=undefined) {
 
+	var eventDetails = struct.eventDetails;
 	var eventScores = struct.eventScores;
 	var memberDetails = struct.memberDetails;
+	
 	var name = memberDetails.fullName;
 	
 	var str = "";
-	if (eventScores.blindTeam != undefined) // if blind draw
+	if (eventDetails.blindTeam != undefined) // if blind draw
 	str += "*";
 			
-	if eventScores.noTeam // if no team
+	if eventDetails.noTeam // if no team
 	str += "`";
         
 	str += string(name);

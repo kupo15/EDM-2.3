@@ -40,6 +40,7 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 	for(var i=0;i<size;i++) { // loop through team member list
 		
 		var struct = list[i];
+		var eventDetails = struct.eventDetails;
 		var eventScores = struct.eventScores;
 		var height = 50;
         
@@ -98,33 +99,33 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 	    else
 	        {
 			// blind team
-	        var _bl = eventScores.blindTeam;
+	        var _blindInd = eventDetails.blindTeam;
 			
-	        if (_bl == undefined)
+	        if (_blindInd == undefined)
 	        draw_icon(ico_checkbox,0,xx+585,team_yy+(i*ysep),55,ysep); // Blind
 	        else
-	        draw_text_centered(xx+585,team_yy+(i*ysep),"T"+string(_bl+1),45,55,ysep); // team the blind is assigned to
+	        draw_text_centered(xx+585,team_yy+(i*ysep),"T"+string(_blindInd+1),45,55,ysep); // team the blind is assigned to
 			
 			// clicked blind
 			if scr_mouse_position_room_released(xx+570,team_yy+(i*ysep),90,ysep,mb_left,true,,can_edit) {
 				
 				// assign blinds
-				if (_bl == undefined) {
+				if (_blindInd == undefined) {
 					
 					select_blind_team = struct;
 					}
 				else {// remove from blinds
 					
-					blind_struct_remove_member(struct,eventScores.blindTeam);
-					eventScores.blindTeam = undefined;
+					blind_struct_remove_member(struct,_blindInd);
+					eventDetails.blindTeam = undefined;
 					}
 				}
 						
 			// no team
-	        if draw_icon_click(ico_checkbox,eventScores.noTeam,xx+725,team_yy+(i*ysep),100,ysep,,,,can_edit) {
+	        if draw_icon_click(ico_checkbox,eventDetails.noTeam,xx+725,team_yy+(i*ysep),100,ysep,,,,can_edit) {
 				
-				eventScores.noTeam = !eventScores.noTeam;
-				noTeamCount += pick(-1,1,eventScores.noTeam);
+				eventDetails.noTeam = !eventDetails.noTeam;
+				noTeamCount += pick(-1,1,eventDetails.noTeam);
 				}
 	        }
 			

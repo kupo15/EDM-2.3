@@ -32,12 +32,13 @@ function draw_edit_score_all() {
 	draw_text_height(xx+430,yy+25,"team "+string(team_index_entry+1)+"/"+string(size),25);
 
 	// submit button
+	var can_click = !TEELIST_ACTIVE && (select_blind_team == undefined);
 	var b_ww = 200;
 	var b_hh = 90;
 	var b_xx = xx+180;
 	var b_yy = yy+hh-10-b_hh;
 	var col = make_colour_rgb(69,117,228);
-	var submit = draw_text_button(b_xx,b_yy,"SUBMIT",45,b_ww,b_hh,col,,,true,!TEELIST_ACTIVE);
+	var submit = draw_text_button(b_xx,b_yy,"SUBMIT",45,b_ww,b_hh,col,,,true,can_click);
 	
 	draw_rectangle(b_xx,b_yy,b_xx+b_ww,b_yy+b_hh,true);
 
@@ -84,6 +85,8 @@ function draw_edit_score_all() {
 
 function draw_selected_edit_score(xx,list,size) {
 	
+	var can_click = !TEELIST_ACTIVE && (select_blind_team == undefined);
+	
 	var yy = 120;
 	var sep = 35;
 	var height = 70;
@@ -92,8 +95,10 @@ function draw_selected_edit_score(xx,list,size) {
 			
 	    var ind = (edit_score+i+edit_score_offset+size) mod size;
 		var xoff = (edit_score_scrolling_offset*500)+(i*500);
+		
 		var entrant = list[ind]; // get_entrant_by_id(ind);
 		var entrantDetails = entrant.memberDetails;
+		var eventDetails = entrant.eventDetails;
 			
 		// draw player's name
 	    draw_text_centered(xx+20+xoff,115-height,entrantDetails.fullName,height,);
@@ -105,7 +110,7 @@ function draw_selected_edit_score(xx,list,size) {
 		draw_sprite_ext(ico_tee_marker,0,xx+20+xoff,yy+(sep*0.5*1.3),1,1,0,struct.color,1);
 		draw_text_centered(xx+40+xoff,yy,teeStr,sep,,sep*1.3);
 		
-		if draw_text_button(xx,yy,"",sep,220,sep*1.3,,,,true,!TEELIST_ACTIVE)	
+		if draw_text_button(xx,yy,"",sep,220,sep*1.3,,,,true,can_click)	
 		tee_popover_init(entrant,,room_height,,entrant.teeColor);
 		
 		// draw chevron
@@ -113,7 +118,7 @@ function draw_selected_edit_score(xx,list,size) {
 		draw_icon(ico_chevron_down,0,xx+40+ww+xoff,yy,36,sep*1.3);
 		
 		// draw course handicap
-		draw_text_centered(xx+230+xoff,yy,"HCP: "+string(entrant.eventScores.courseHandicap),sep*0.9,,sep*1.3);
+		draw_text_centered(xx+230+xoff,yy,"HCP: "+string(eventDetails.courseHandicap),sep*0.9,,sep*1.3);
 		}
 		
 	return list[ind];
@@ -121,12 +126,13 @@ function draw_selected_edit_score(xx,list,size) {
 
 function draw_edit_score_player_popup() {
 	
-	var can_click = !TEELIST_ACTIVE;
+	var can_click = !TEELIST_ACTIVE && (select_blind_team == undefined);
 	var xx = 0;
 	var list = TEAM_LIST[team_index_entry].members;
 	var size = array_length(list);
 
 	var entrant = draw_selected_edit_score(xx,list,size);
+	var eventDetails = entrant.eventDetails;
 		
 	// cutoff 
 	gpu_set_blendmode(bm_subtract);
@@ -138,37 +144,37 @@ function draw_edit_score_player_popup() {
 	var b_yy = 55;
 	var b_ww = 36;
 		
-	var _bl = entrant.eventScores.blindTeam;
+	var _blindInd = eventDetails.blindTeam;
 			
 	draw_text_button(b_xx,b_yy-b_ww-15,"Blind",35,b_ww,65);	
 			
-	if (_bl == undefined)
+	if (_blindInd == undefined)
 	draw_icon(ico_checkbox,0,b_xx,b_yy,b_ww,b_ww);
 	else
-	draw_text_centered(b_xx,b_yy,"T"+string(_bl+1),45,55,36); // team the blind is assigned to
+	draw_text_centered(b_xx,b_yy,"T"+string(_blindInd+1),45,b_ww,36); // team the blind is assigned to
 			
 	// clicked blind
 	if scr_mouse_position_room_released(b_xx,b_yy,b_ww,b_ww,mb_left,true,true,can_click) {
 				
 		// assign blinds
-		if (_bl == undefined) {
+		if (_blindInd == undefined) {
 					
 			select_blind_team = entrant;
 			}
 		else { // remove from blinds
 			
-			blind_struct_remove_member(struct,entrantRoundStats.blindTeam);
-			entrant.eventScores.blindTeam = undefined;
+			blind_struct_remove_member(entrant,_blindInd);
+			eventDetails.blindTeam = undefined;
 			}
 		}
 	
 	// no team
 	var b_xx = 790;
 		
-	if draw_icon_click(ico_checkbox,entrant.eventScores.noTeam,b_xx,b_yy,b_ww,b_ww,,,,can_click,true) {
+	if draw_icon_click(ico_checkbox,eventDetails.noTeam,b_xx,b_yy,b_ww,b_ww,,,,can_click,true) {
 	
-		entrant.eventScores.noTeam = !entrant.eventScores.noTeam;
-		noTeamCount += pick(-1,1,entrant.eventScores.noTeam);
+		eventDetails.noTeam = !eventDetails.noTeam;
+		noTeamCount += pick(-1,1,eventDetails.noTeam);
 		}
 
 	draw_text_button(b_xx,b_yy-b_ww-15,"No Team",35,b_ww,65);
