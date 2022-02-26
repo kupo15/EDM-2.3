@@ -1,5 +1,10 @@
-function scr_calculate_member_handicaps() {
+function calculate_member_handicaps() {
 
 
 	return 15;
+	}
+
+function calculate_member_index() {
+	
+	
 	}

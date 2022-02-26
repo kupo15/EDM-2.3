@@ -33,7 +33,7 @@ edit_event_time_offset = 8;
 edit_event_time_offset_start = 0;
 season_ranking_disp = 0;
 
-results_sorted = 0;
+edit_member_tee = undefined;
 
 scrollbarActive = scrollbarIndex.none;
 scrollbar_disp = 0;
@@ -169,3 +169,4 @@ list_type = (ds_list_size(favorites_list) != 0); // default to favorites
 dev_mode = (os_type == os_windows);
 
 instance_create_layer(500,0,"Instances_1",obj_number_input);
+instance_create_layer(0,room_height,"Instances_1",obj_tee_selector);

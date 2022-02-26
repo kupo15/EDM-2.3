@@ -36,7 +36,7 @@ function negate_entry() {
 	}
 	
 function append_character(str) {
-	
+		
 	var str_ll = string_length(entryString);
 	
 	if (str_ll >= maxCharacters)

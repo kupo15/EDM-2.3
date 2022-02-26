@@ -23,7 +23,7 @@ function draw_edit_score_all() {
 	var col = make_colour_rgb(255,227,215);
 	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,col,col,col,col,false);
 
-	draw_text_centered(xx+15,yy+20,"ENTER GROSS SCORE:",35,,);
+	draw_text_centered(xx+15,yy+10,"ENTER GROSS SCORE:",35,,);
 	
 	//scr_entrant_scrolling(xx,yy,hh);
 
@@ -32,12 +32,12 @@ function draw_edit_score_all() {
 	draw_text_height(xx+430,yy+25,"team "+string(team_index_entry+1)+"/"+string(size),25);
 
 	// submit button
-	var b_ww = 220;
+	var b_ww = 200;
 	var b_hh = 90;
-	var b_xx = xx+150;
+	var b_xx = xx+180;
 	var b_yy = yy+hh-10-b_hh;
 	var col = make_colour_rgb(69,117,228);
-	var submit = draw_text_button(b_xx,b_yy,"SUBMIT",45,220,b_hh,col,,,true);
+	var submit = draw_text_button(b_xx,b_yy,"SUBMIT",45,b_ww,b_hh,col,,,true);
 	
 	draw_rectangle(b_xx,b_yy,b_xx+b_ww,b_yy+b_hh,true);
 
@@ -46,7 +46,7 @@ function draw_edit_score_all() {
 	var height = 25;
 	var c_col = appblue;
 
-	draw_text_centered(30,yy-height*1.8,"Team "+string(team_index_entry+1),height*1.8,,height*2,c_col);
+	//draw_text_centered(30,yy-height*1.8,"Team "+string(team_index_entry+1),height*1.8,,height*2,c_col);
 	draw_text_centered(340,yy-height,"Front",height,70);
 	draw_text_centered(410,yy-height,"Back",height,70);
 	draw_text_centered(480,yy-height,"Adj. 18",height,70);
@@ -82,34 +82,96 @@ function draw_edit_score_all() {
 		}
 	}
 
+function draw_selected_edit_score(xx,list,size) {
+	
+	var yy = 120;
+	var sep = 35;
+	var height = 70;
+	
+	for(var i=0;i<1;i++) {
+			
+	    var ind = (edit_score+i+edit_score_offset+size) mod size;
+		var xoff = (edit_score_scrolling_offset*500)+(i*500);
+		var entrant = list[ind]; // get_entrant_by_id(ind);
+			
+		// draw player's name
+	    draw_text_centered(xx+20+xoff,115-height,entrant.name,height,);
+		
+		// draw tees
+		var struct = TEE_DATA[$ entrant.teeColor];
+		
+		draw_text_centered(xx+40+xoff,yy,entrant.teeColor+" tees",sep,,sep*1.3);
+		draw_sprite_ext(ico_tee_marker,0,xx+20+xoff,yy+(sep*0.5*1.3),1,1,0,struct.color,1);
+		
+		if draw_text_button(xx,yy,"",sep,200,sep*1.3,,,,true)
+		edit_member_tee = entrant;
+		
+		// draw course handicap
+		draw_text_centered(xx+210+xoff,yy,"HCP: "+string(entrant.roundStats.courseHandicap),sep*0.9,,sep*1.3);
+		}
+		
+	return list[ind];
+	}
 
 function draw_edit_score_player_popup() {
 	
 	var xx = 0;
-	var yy = 180;
 	var list = TEAM_LIST[team_index_entry].members;
 	var size = array_length(list);
-	var height = 70;
-	for(var i=-1;i<2;i++) {
-			
-	    var ind = (edit_score+i+edit_score_offset+size) mod size;
-		var xoff = (edit_score_scrolling_offset*500)+(i*500);
-		var entrantName = list[ind]; // get_entrant_by_id(ind);
-			
-		// draw player's name
-	    draw_text_centered(xx+20+xoff,130-height,entrantName,height,);
-	    }
+
+	var entrant = draw_selected_edit_score(xx,list,size);
 		
 	// cutoff 
 	gpu_set_blendmode(bm_subtract);
 	draw_rectangle(520,0,room_width,room_height,false);
 	gpu_set_blendmode(bm_normal);
 	
+	// draw blind
+	var b_xx = 640;
+	var b_yy = 55;
+	var b_ww = 36;
+		
+	var _bl = entrant.roundStats.blindTeam;
+			
+	draw_text_button(b_xx,b_yy-b_ww-15,"Blind",35,b_ww,65);	
+			
+	if (_bl == undefined)
+	draw_icon(ico_checkbox,0,b_xx,b_yy,b_ww,b_ww);
+	else
+	draw_text_centered(b_xx,b_yy,"T"+string(_bl+1),45,55,36); // team the blind is assigned to
+			
+	// clicked blind
+	if scr_mouse_position_room_released(b_xx,b_yy,b_ww,b_ww,mb_left,true,true) {
+				
+		// assign blinds
+		if (_bl == undefined) {
+					
+			select_blind_team = entrant;
+			}
+		else { // remove from blinds
+			
+			blind_struct_remove_member(struct,entrantRoundStats.blindTeam);
+			entrant.roundStats.blindTeam = undefined;
+			}
+		}
+	
+	// no team
+	var b_xx = 790;
+		
+	if draw_icon_click(ico_checkbox,entrant.roundStats.noTeam,b_xx,b_yy,b_ww,b_ww,,,,,true) {
+	
+		entrant.roundStats.noTeam = !entrant.roundStats.noTeam;
+		noTeamCount += pick(-1,1,entrant.roundStats.noTeam);
+		}
+
+	draw_text_button(b_xx,b_yy-b_ww-15,"No Team",35,b_ww,65);
+	
 	// draw list of members
+	var yy = 180+50;
 	var height = 35;
 	var sep = 50;
-	for(var i=0;i<size;i++)
-		{
+	for(var i=0;i<size;i++)	{
+		
 		var memberData = list[i];
 		var name = memberData.name;
 		
@@ -158,37 +220,41 @@ function draw_edit_score_player_popup() {
 	else {
 		
 		var xoff = (clamp(edit_score_pos,entryType.teamFront,entryType.teamBack)-entryType.teamFront)*70;
-		draw_icon(,,200+xoff,420,70,sep,c_blue,0.3);
+		draw_icon(,,340+xoff,180,70,sep,c_blue,0.3);
 		}
 		
 	// draw team score
 	var xx = 20;
-	var yy = 420;
-	var height = 30;
+	var yy = 180;
+	var height = 35;
 	var c_col = appblue;
 
-	draw_text_centered(xx,yy,"Team Net Score",height,,sep,c_col);
+	draw_text_centered(xx,yy,"Team "+string(team_index_entry+1)+" Net Score",height,,sep+1.1,c_col);
+	draw_line_pixel(xx,yy+sep,540,1,,0.5);	
 	
 	var list = TEAM_LIST[team_index_entry];
 	
-	if draw_text_button(200,yy,draw_value(list.teamNetFront,"-"),height,70,sep,,,,true) {
+	if draw_text_button(340,yy,draw_value(list.teamNetFront,"-"),height,70,sep,,,,true) {
 		
 		edit_score_pos = entryType.teamFront;
 		keypad_set_value(edit_score_pos,list.teamNetFront,,true);
 		}
 	
-	if draw_text_button(270,yy,draw_value(list.teamNetBack,"-"),height,70,sep,,,,true) {
+	if draw_text_button(410,yy,draw_value(list.teamNetBack,"-"),height,70,sep,,,,true) {
 		
 		edit_score_pos = entryType.teamBack;
 		keypad_set_value(edit_score_pos,list.teamNetBack,,true);
 		}
+				
+	if (team_number == 0)
+	exit;
 	
 	// draw Next Team button
-	var xx = 350;
-	var yy = 440;
-	var ww = 200;
+	var xx = 400;
+	var yy = 500;
+	var ww = 150;
 	var height = 30;
-	var hh = height*1.5;
+	var hh = 90; // height*1.5;
 	var alpha = 1;
 	
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
@@ -197,51 +263,25 @@ function draw_edit_score_player_popup() {
 		edit_score_pos = entryType.memberEntryNext;
 		entry_scores_individual_submit();
 		}
+	
+	// draw Prev Team button
+	var xx = 10;
+	var yy = 500;
+	var ww = 150;
+	var height = 60;
+	var hh = 90; // height*1.5;
+	var alpha = 1;
+	
+	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
+	if draw_text_button(xx,yy,"Previous\nTeam",height,ww,hh,,alpha,,true) {
+		
+		//edit_score_pos = entryType.memberEntryNext;
+		//entry_scores_individual_submit();
+		}
 		
 	// highlight
 	if (edit_score_pos == entryType.memberEntryNext) 
 	draw_icon(,,xx,yy,ww,hh,c_blue,0.3);
-	
-	exit;
-	// draw blind
-	var xx = 100;
-	var yy = 380;
-	var ww = 36;
-		
-	var _bl = entrantRoundStats.blindTeam;
-			
-	draw_text_button(xx,yy-ww-30,"Blind",40,ww,65);	
-			
-	if (_bl == undefined)
-	draw_icon(ico_checkbox,0,xx,yy,ww,ww);
-	else
-	draw_text_centered(xx,yy,"T"+string(_bl+1),45,55,36); // team the blind is assigned to
-			
-	// clicked blind
-	if scr_mouse_position_room_released(70,yy,80,ww,mb_left,true,true) {
-				
-		// assign blinds
-		if (_bl == undefined) {
-					
-			select_blind_team = entrantStruct;
-			}
-		else { // remove from blinds
-			
-			blind_struct_remove_member(struct,entrantRoundStats.blindTeam);
-			entrantRoundStats.blindTeam = undefined;
-			}
-		}
-	
-	// no team
-	var xx = 300;
-		
-	if draw_icon_click(ico_checkbox,entrantRoundStats.noTeam,xx,yy,ww,ww,,,,,true) {
-	
-		entrantRoundStats.noTeam = !entrantRoundStats.noTeam;
-		noTeamCount += pick(-1,1,round_stats.noTeam);
-		}
-
-	draw_text_button(xx,yy-ww-30,"No\nTeam",60,ww,65);
 	}
 	
 function draw_edit_score_team_popup() {

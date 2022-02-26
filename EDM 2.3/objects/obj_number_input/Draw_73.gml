@@ -45,7 +45,7 @@ if !surface_exists(surf) {
 			if (ind < 11)
 			draw_text_centered(xx,yy+displayHeight,str[ind],70,keyWidth,keyHeight);
 			else
-			draw_text_centered(xx,yy+displayHeight,"Done",50,keyWidth,keyHeight,c_blue);
+			draw_text_centered(xx,yy+displayHeight,"Enter",50,keyWidth,keyHeight,c_blue);
 			}
 		}
 
@@ -69,8 +69,8 @@ if scr_mouse_position_room_released(x+(keyWidth*2),y,keyWidth,keyHeight,mb_left,
 delete_character();
 
 for(var i=0;i<4;i++)
-for(var j=0;j<3;j++)
-	{
+for(var j=0;j<3;j++) {
+	
 	// draw numbers
 	var xx = j*keyWidth;
 	var yy = i*keyHeight;

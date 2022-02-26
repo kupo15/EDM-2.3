@@ -37,10 +37,13 @@ function draw_menu() {
 	draw_settings_icon();
 	}
 	
-function screen_change(ind) {
+function screen_change(ind,clear=false) {
 	
 	array_push(prevScreenStack,screen_index);
 	screen_index = ind;
+	
+	if clear
+	prevScreenStack = [];
 	}
 	
 function screen_back(clear=false) {

@@ -115,16 +115,17 @@ function draw_member_list(ysep) {
 	    draw_set_alpha(1);
 		          
 	    // scrolling
-	    if !deleting_member
-	        {
+	    if !deleting_member {
+			
 	        if scr_mouse_position_room_pressed(xx,yy,ww,hh,mb_left,false,false)
 	        member_scroll_offset_start = member_scroll_offset;
         
 	        if (xx_mouse == 0) && scr_mouse_position_room(xx,yy,ww,hh,mb_left,false) {
 				
-	            var amt = round(global.mouse_ydist*0.05);
-	            member_scroll_offset = member_scroll_offset_start-amt;
-	            member_scroll_offset = clamp(member_scroll_offset,0,list_size-memberListDisplayCount);
+				var num = 1/ysep*2;
+	            var amt = round(global.mouse_ydist*num);
+
+	            member_scroll_offset = clamp(member_scroll_offset_start-amt,0,list_size-memberListDisplayCount);
        
 	            if (amt != 0)
 	            list_slot = noone;
@@ -143,8 +144,4 @@ function draw_member_list(ysep) {
 	    deleting_member = true;
 	    timer[mainTimers.renameEntry] = -1;
 	    }
-    
-	// draw version number
-	draw_set_halign(fa_left);
-	draw_text_height_color(10,590,"Version: "+string(GM_version),c_black,20);
 	}

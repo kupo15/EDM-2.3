@@ -221,6 +221,8 @@ function RoundStats() constructor {
 	
 	blindTeam = undefined;
 	noTeam = false;
+	
+	courseHandicap = calculate_member_handicaps();
 	}
 	
 function debug_members_list_create() {

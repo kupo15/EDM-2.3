@@ -199,7 +199,7 @@ function draw_teams() {
 	draw_rectangle_colour(xx,yy-100,xx+ww,yy-100+hh,c_green,c_green,c_green,c_green,true);
 	
 	if draw_text_button(xx,yy-100,"Go Back",40,ww,hh,,,,,!in_popover)
-	screen_change(screenEnum.homeScreen);
+	screen_change(screenEnum.homeScreen,true);
 
 	// results button
 	var calc = activate_results_button();

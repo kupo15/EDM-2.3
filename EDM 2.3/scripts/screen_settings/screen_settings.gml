@@ -22,6 +22,10 @@ function screen_settings() {
 		if scr_mouse_position_room_released(xx+xoff,yy+yoff,ww,hh,mb_left,true)
 		screen_change(arrEnum[i]);
 		}
+		
+	// draw version number
+	draw_set_halign(fa_left);
+	draw_text_height_color(10,590,"Version: "+string(GM_version),c_black,20);
 	}
 	
 function draw_preferences() {
@@ -58,23 +62,31 @@ function draw_preferences() {
 	draw_tee_data(xx,yy+50,ww);
 	}
 	
-function draw_tee_data(xx,yy,ww) {
+function draw_tee_data(xx,yy,ww,highlight=undefined,canPress=true) {
 		
+	var result = undefined;
 	var sep = 40;
+	var line_gap = ww*0.1;
 	for(var i=0;i<array_length(TEE_DATA.teeOrder);i++) {
 		
 		var name = TEE_DATA.teeOrder[i];
 		var struct = TEE_DATA[$ name];
+		var selected = (highlight == name);
 			
-		//draw_circle_color(xx,yy+(i*sep)+(sep*0.5),7,struct.color,struct.color,name=="white");
-		draw_sprite_ext(ico_tee_marker,0,xx,yy+(i*sep)+(sep*0.5),1,1,0,struct.color,1);
+		draw_sprite_ext(ico_tee_marker,0,xx+20,yy+(i*sep)+(sep*0.5),1,1,0,struct.color,1);
 		
-		draw_text_centered(xx+25,yy+(i*sep),name,30,,sep);
-		draw_text_centered(xx+120,yy+(i*sep),struct.rating+" / "+struct.slope,30,,sep);
+		draw_text_centered(xx+45,yy+(i*sep),name,30,,sep); // tee color
+		draw_text_centered(xx+140,yy+(i*sep),struct.rating+" / "+struct.slope,30,,sep); // rating and slope
 		
-		draw_line_pixel(xx+15,yy+sep+(i*sep),ww,1,c_black,0.3);
+		draw_line_pixel(xx+line_gap,yy+sep+(i*sep),ww-line_gap,1,c_black,0.3);
 		
-		scr_mouse_position_room_released(xx-5,yy+(i*sep),ww+20,sep,mb_left,true);
+		if selected
+		draw_icon(,,xx,yy+(i*sep),ww,sep,appblue,0.3);
+		
+		if scr_mouse_position_room_released(xx,yy+(i*sep),ww,sep,mb_left,true,,canPress)
+		result = name;
 		}
+		
+	return result;
 	}
 	
