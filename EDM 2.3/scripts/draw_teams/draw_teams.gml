@@ -142,8 +142,9 @@ function draw_blind_members(teamInd,xx,yy,ysep,height) {
 		
 		var key = names[i];
 	    var member = blindStruct[$ key];
+		var entrantDetails = member.memberDetails;
 		
-	    draw_text_centered(xx+5,yy+(i*ysep),member.fullName,height,,ysep,appblue);
+	    draw_text_centered(xx+5,yy+(i*ysep),entrantDetails.fullName,height,,ysep,appblue);
 	    }
 	}
 

@@ -74,7 +74,9 @@ function draw_member_list(ysep) {
 		// entry draw
 		var index = i+member_scroll_offset;
 		var entry = MEMBERS_LIST.list[index];
-		var name = entry.fullName;
+		var entrantDetails = entry.memberDetails;
+		
+		var name = entrantDetails.fullName;
 		var favorite = entry.favorite;
 		var assigned = is_real(entry.teamAssigned);
 		var nameFont = pick(fn_name,fn_name_it,assigned);

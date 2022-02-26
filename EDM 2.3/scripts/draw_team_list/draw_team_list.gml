@@ -56,10 +56,12 @@ function draw_team_list_body(xx,yy,ysep) {
 	// draw team list
 	var teamGroup = TEAM_LIST[team_index].members;
 	var size = array_length(teamGroup);
-	for(var i=0;i<size;i++)
-	    {
+	for(var i=0;i<size;i++) {
+		
 		var memberStruct = teamGroup[i];
-		var name = memberStruct.fullName;
+		var memberDetails = memberStruct.memberDetails;
+
+		var name = memberDetails.fullName;
 		var yoff = (i*ysep);
 		
 	    // draw team member names

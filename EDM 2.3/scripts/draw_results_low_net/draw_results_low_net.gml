@@ -45,8 +45,10 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 		var yoff = (ind*sep);
 
 		var memberStruct = arr[i];
+		var memberDetails = memberStruct.memberDetails;
 		var winningStruct = memberStruct.eventWinnings;
 		var roundStats = memberStruct.roundStats;
+		
 		var rank = roundStats.resultRanking[$ sortKey];
 				
 		if (rank != prevRank) {
@@ -71,7 +73,7 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 			
 		var alpha = pick(1,0.9,cutoffDrawn);
 		
-		draw_text_centered(xx+80,yy+yoff,memberStruct.fullName,height,,sep,,alpha); // member name
+		draw_text_centered(xx+80,yy+yoff,memberDetails.fullName,height,,sep,,alpha); // member name
 		draw_text_centered(xx+330,yy+yoff,roundStats[$ scoreKey],height,155,sep,,alpha); // score
 		
 		draw_set_halign(fa_right);

@@ -93,9 +93,10 @@ function draw_selected_edit_score(xx,list,size) {
 	    var ind = (edit_score+i+edit_score_offset+size) mod size;
 		var xoff = (edit_score_scrolling_offset*500)+(i*500);
 		var entrant = list[ind]; // get_entrant_by_id(ind);
+		var entrantDetails = entrant.memberDetails;
 			
 		// draw player's name
-	    draw_text_centered(xx+20+xoff,115-height,entrant.fullName,height,);
+	    draw_text_centered(xx+20+xoff,115-height,entrantDetails.fullName,height,);
 		
 		// draw tee
 		var struct = TEE_DATA[$ entrant.teeColor];
@@ -179,10 +180,11 @@ function draw_edit_score_player_popup() {
 	for(var i=0;i<size;i++)	{
 		
 		var memberData = list[i];
-		var name = memberData.fullName;
-		
+		var entrantDetails = memberData.memberDetails;
 		var entrantRoundStats = memberData.roundStats;
-			
+
+		var name = entrantDetails.fullName;
+					
 		// member name
 		draw_text_centered(15,yy+(i*sep),string(i+1)+". "+name,height,,sep*1.2,,,);
 		
