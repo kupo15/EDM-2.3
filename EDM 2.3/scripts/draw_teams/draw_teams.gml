@@ -40,16 +40,16 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 	for(var i=0;i<size;i++) { // loop through team member list
 		
 		var struct = list[i];
-		var round_stats = struct.eventScores;
+		var eventScores = struct.eventScores;
 		var height = 50;
         
 		// draw name
 		draw_member_name(xx+5,team_yy+(i*ysep),struct,height,,ysep);
         
 		// gross front/back
-		var fr = pick("-",round_stats.grossFront,round_stats.grossFront != "");
-		var bk = pick("-",round_stats.grossBack,round_stats.grossBack!= "");
-		var adjGross = pick("-",round_stats.grossAdj,round_stats.grossAdj!= "");
+		var fr = pick("-",eventScores.grossFront,eventScores.grossFront != "");
+		var bk = pick("-",eventScores.grossBack,eventScores.grossBack!= "");
+		var adjGross = pick("-",eventScores.grossAdj,eventScores.grossAdj!= "");
 		
 	    draw_text_centered(xx+400,team_yy+(i*ysep),fr,30,43,ysep); // front
 	    draw_text_centered(xx+445,team_yy+(i*ysep),bk,30,36,ysep); // back
@@ -63,7 +63,7 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 	        edit_score_scrolling_end = edit_score;
 	        edit_team_score = noone;
 			
-			init_keypad(entryType.memberFront,round_stats.grossFront,,,560,,0,0);
+			init_keypad(entryType.memberFront,eventScores.grossFront,,,560,,0,0);
 	        mouse_clear(mb_left);
 	        }
 	
@@ -72,33 +72,33 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 			
 			// gross skins
 	        if draw_icon_click(spr_add_button,0,xx+535,team_yy+(i*ysep),50,ysep,,,,can_edit) // minus button
-			round_stats.skinsGross = add_string(round_stats.skinsGross,-1,0,17);
+			eventScores.skinsGross = add_string(eventScores.skinsGross,-1,0,17);
 			
 			draw_text_centered(xx+535,team_yy+(i*ysep),"-",35,50,ysep); // minus
 
 	        if draw_icon_click(spr_add_button,0,xx+555+85,team_yy+(i*ysep),50,ysep,,,,can_edit) // plus button
-			round_stats.skinsGross = add_string(round_stats.skinsGross,1,0,17);
+			eventScores.skinsGross = add_string(eventScores.skinsGross,1,0,17);
 			
 			draw_text_centered(xx+555+85,team_yy+(i*ysep),"+",35,50,ysep); // plus	
-			draw_text_centered(xx+535,team_yy+(i*ysep),round_stats.skinsGross,50,155,ysep) // value
+			draw_text_centered(xx+535,team_yy+(i*ysep),eventScores.skinsGross,50,155,ysep) // value
 
 			// net skins
 	        if draw_icon_click(spr_add_button,0,xx+695,team_yy+(i*ysep),50,ysep,,,,can_edit) // minus button
-			round_stats.skinsNet = add_string(round_stats.skinsNet,-1,0,17);
+			eventScores.skinsNet = add_string(eventScores.skinsNet,-1,0,17);
 
 			draw_text_centered(xx+695,team_yy+(i*ysep),"-",35,50,ysep); // minus
 
 	        if draw_icon_click(spr_add_button,0,xx+795,team_yy+(i*ysep),50,ysep,,,,can_edit) // plus button
-			round_stats.skinsNet = add_string(round_stats.skinsNet,1,0,17);
+			eventScores.skinsNet = add_string(eventScores.skinsNet,1,0,17);
 
 			draw_text_centered(xx+795,team_yy+(i*ysep),"+",35,50,ysep); // plus
 			
-			draw_text_centered(xx+695,team_yy+(i*ysep),round_stats.skinsNet,50,155,ysep) // value
+			draw_text_centered(xx+695,team_yy+(i*ysep),eventScores.skinsNet,50,155,ysep) // value
 	        }
 	    else
 	        {
 			// blind team
-	        var _bl = round_stats.blindTeam;
+	        var _bl = eventScores.blindTeam;
 			
 	        if (_bl == undefined)
 	        draw_icon(ico_checkbox,0,xx+585,team_yy+(i*ysep),55,ysep); // Blind
@@ -115,16 +115,16 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 					}
 				else {// remove from blinds
 					
-					blind_struct_remove_member(struct,round_stats.blindTeam);
-					round_stats.blindTeam = undefined;
+					blind_struct_remove_member(struct,eventScores.blindTeam);
+					eventScores.blindTeam = undefined;
 					}
 				}
 						
 			// no team
-	        if draw_icon_click(ico_checkbox,round_stats.noTeam,xx+725,team_yy+(i*ysep),100,ysep,,,,can_edit) {
+	        if draw_icon_click(ico_checkbox,eventScores.noTeam,xx+725,team_yy+(i*ysep),100,ysep,,,,can_edit) {
 				
-				round_stats.noTeam = !round_stats.noTeam;
-				noTeamCount += pick(-1,1,round_stats.noTeam);
+				eventScores.noTeam = !eventScores.noTeam;
+				noTeamCount += pick(-1,1,eventScores.noTeam);
 				}
 	        }
 			
