@@ -5,7 +5,9 @@ function scr_calculate_results_final() {
 		
 		var memberStruct = entrantResultsList[i];
 		var winningStruct = memberStruct.eventWinnings;
-		var teamInd = memberStruct.teamAssigned;
+		var eventDetails = memberStruct.eventDetails;
+		
+		var teamInd = eventDetails.teamAssigned;
 		var blind = (memberStruct.roundStats.blindTeam != undefined);
 		var noTeam = !memberStruct.roundStats.noTeam || (team_number == 0);
 	

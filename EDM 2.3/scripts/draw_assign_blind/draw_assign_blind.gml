@@ -4,6 +4,8 @@ function draw_assign_blind() {
 	exit;
 
 	var struct = select_blind_team;
+	var eventDetails = struct.eventDetails;
+
 	var xx = 160;
 	var yy = 150;
 	var ww = 580;
@@ -29,7 +31,7 @@ function draw_assign_blind() {
 
 	draw_text_centered(xx,yy,"Select Blind Team",45,ww,45);
 
-	var get_team = struct.teamAssigned; // current team player is on
+	var get_team = eventDetails.teamAssigned; // current team player is on
 	for(var i=0;i<team_number+1;i++) {
 		
 		var blindTeamStruct = TEAM_LIST[i];

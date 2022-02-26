@@ -83,16 +83,16 @@ function draw_team_list_body(xx,yy,ysep) {
 
 function remove_from_team(teamArr,ind,memberStruct) {
 	   
-	// remove from team
-	memberStruct.teamAssigned = undefined;
+	var eventDetails = memberStruct.eventDetails;	
+	eventDetails.teamAssigned = undefined;
 	
 	array_delete(teamArr,ind,1);
 	ENTRANT_COUNT--; // remove from entrant count
          		 
 	// add back to member list
 	var list = MEMBERS_LIST.list;
-	for(var i=0;i<array_length(list);i++)
-		{	
+	for(var i=0;i<array_length(list);i++) {
+		
 		var listEntry = list[i];
 		
 		if listEntry.favorite

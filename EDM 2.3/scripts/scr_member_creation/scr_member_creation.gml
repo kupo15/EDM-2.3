@@ -2,7 +2,9 @@
 function Member(_name,_teeColor=choose("white","gold","blue","silver","combo"),_favorite=false) constructor {
 	
 	memberId = MEMBERS_LIST.nextMemberId;
+	
 	memberDetails = new MemberInfo(_name);
+	eventDetails = new EventDetails();
 	
 	favorite = _favorite;
 	recent = -1;
@@ -10,10 +12,7 @@ function Member(_name,_teeColor=choose("white","gold","blue","silver","combo"),_
 	
 	handicapIndex = 54;
 	teeColor = _teeColor;
-	
-	entrantNumber = undefined;
-	teamAssigned = undefined;
-	
+		
 	roundStats = new RoundStats();
 	eventWinnings = new EventWinnings();
 	
@@ -40,6 +39,12 @@ function MemberInfo(_name) constructor {
 	fullName = _name;
 	firstName = parsedName.first;
 	lastName = parsedName.last;
+	}
+	
+function EventDetails() constructor {
+	
+	entrantNumber = undefined;
+	teamAssigned = undefined;
 	}
 		
 function RoundStats() constructor {

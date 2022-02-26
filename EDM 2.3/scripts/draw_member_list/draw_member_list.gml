@@ -75,10 +75,12 @@ function draw_member_list(ysep) {
 		var index = i+member_scroll_offset;
 		var entry = MEMBERS_LIST.list[index];
 		var entrantDetails = entry.memberDetails;
+		var eventDetails = entry.eventDetails;
 		
 		var name = entrantDetails.fullName;
 		var favorite = entry.favorite;
-		var assigned = is_real(entry.teamAssigned);
+		var assigned = is_real(eventDetails.teamAssigned);
+		
 		var nameFont = pick(fn_name,fn_name_it,assigned);
 	    var name_col = pick(BUTTON_STYLE.textColor,FAVORITE_BUTTON_STYLE.textColor,favorite);	
 	    var button_col = pick(BUTTON_STYLE.bgColor,FAVORITE_BUTTON_STYLE.bgColor,favorite);	
@@ -111,7 +113,7 @@ function draw_member_list(ysep) {
 		if assigned {
 			
 			draw_icon(,,xx+xx_mouse,yy+(i*ysep),440-xx,ysep-3,c_black,0.7);
-			draw_text_centered(xx+360+xx_mouse,yy+(i*ysep),entry.teamAssigned+1,45,,button_hh,,);
+			draw_text_centered(xx+360+xx_mouse,yy+(i*ysep),eventDetails.teamAssigned+1,45,,button_hh,,);
 			}
 
 	    draw_set_alpha(1);

@@ -57,12 +57,13 @@ function memberlist_swipe_right(ind,entryStruct) {
 	
 function memberlist_add_to_team(ind,entryStruct) {
 	
+	var eventDetails = entryStruct.eventDetails;
 	var teamGroup = TEAM_LIST[team_index].members;
 	
 	if (array_length(teamGroup) < teamMemberMax) {
 		// add to team
 		
-		entryStruct.teamAssigned = team_index;
+		eventDetails.teamAssigned = team_index;
 		array_push(teamGroup,entryStruct); // add to group
 		ENTRANT_COUNT++; // add to entrant number
 		
@@ -73,7 +74,7 @@ function memberlist_add_to_team(ind,entryStruct) {
 		}
 	else {
 		
-		entryStruct.teamAssigned = undefined;
+		eventDetails.teamAssigned = undefined;
 		audio_play_sound(snd_tap0,0,false);
 		}
 	}

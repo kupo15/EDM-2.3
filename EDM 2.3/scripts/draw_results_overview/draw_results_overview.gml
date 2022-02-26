@@ -129,7 +129,9 @@ function draw_results_final_content(xx,yy) {
 		var ind = (i-results_final_offset);
 		var memberStruct = arr[i];
 		var winningStruct = memberStruct.eventWinnings;
-		var teamInd = memberStruct.teamAssigned;
+		var eventDetails = memberStruct.eventDetails;
+
+		var teamInd = eventDetails.teamAssigned;
 		var newTeam = (teamInd != prevTeamInd);
 		var yoff = (ind*sep);
 		var entryAlpha = pick(1,0.8,no_net_skins || no_gross_skins);

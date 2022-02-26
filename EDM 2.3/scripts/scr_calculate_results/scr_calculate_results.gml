@@ -44,7 +44,7 @@ function EventResults() constructor {
 	entrantResults = deep_copy(con_main.entrantResultsList);
 	teamResults = TeamResults();
 	
-	array_sort_struct(entrantResults,"entrantNumber",true);
+	array_sort_struct(entrantResults,"entrantNumber",true,["eventDetails"]);
 	}
 
 function TeamResults() {
