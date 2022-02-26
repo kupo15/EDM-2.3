@@ -13,15 +13,15 @@ function scr_calculate_missing_fields(){
 		for(var j=0;j<size;j++)
 			{
 			var memberStruct = teamStruct.members[j];
-			var roundStats = memberStruct.roundStats;
+			var eventScores = memberStruct.eventScores;
 			
-			var courseHandicap = roundStats.courseHandicap;
+			var courseHandicap = eventScores.courseHandicap;
 			var frontAdj = ceil(courseHandicap*0.5);
 			var backAdj = floor(courseHandicap*0.5);
 			
-			roundStats.netFront = roundStats.grossFront-frontAdj;
-			roundStats.netBack = roundStats.grossBack-backAdj;
-			roundStats.netTotal = roundStats.netFront+roundStats.netBack;
+			eventScores.netFront = eventScores.grossFront-frontAdj;
+			eventScores.netBack = eventScores.grossBack-backAdj;
+			eventScores.netTotal = eventScores.netFront+eventScores.netBack;
 			}
 		}
 	}

@@ -113,7 +113,7 @@ function draw_selected_edit_score(xx,list,size) {
 		draw_icon(ico_chevron_down,0,xx+40+ww+xoff,yy,36,sep*1.3);
 		
 		// draw course handicap
-		draw_text_centered(xx+230+xoff,yy,"HCP: "+string(entrant.roundStats.courseHandicap),sep*0.9,,sep*1.3);
+		draw_text_centered(xx+230+xoff,yy,"HCP: "+string(entrant.eventScores.courseHandicap),sep*0.9,,sep*1.3);
 		}
 		
 	return list[ind];
@@ -138,7 +138,7 @@ function draw_edit_score_player_popup() {
 	var b_yy = 55;
 	var b_ww = 36;
 		
-	var _bl = entrant.roundStats.blindTeam;
+	var _bl = entrant.eventScores.blindTeam;
 			
 	draw_text_button(b_xx,b_yy-b_ww-15,"Blind",35,b_ww,65);	
 			
@@ -158,17 +158,17 @@ function draw_edit_score_player_popup() {
 		else { // remove from blinds
 			
 			blind_struct_remove_member(struct,entrantRoundStats.blindTeam);
-			entrant.roundStats.blindTeam = undefined;
+			entrant.eventScores.blindTeam = undefined;
 			}
 		}
 	
 	// no team
 	var b_xx = 790;
 		
-	if draw_icon_click(ico_checkbox,entrant.roundStats.noTeam,b_xx,b_yy,b_ww,b_ww,,,,can_click,true) {
+	if draw_icon_click(ico_checkbox,entrant.eventScores.noTeam,b_xx,b_yy,b_ww,b_ww,,,,can_click,true) {
 	
-		entrant.roundStats.noTeam = !entrant.roundStats.noTeam;
-		noTeamCount += pick(-1,1,entrant.roundStats.noTeam);
+		entrant.eventScores.noTeam = !entrant.eventScores.noTeam;
+		noTeamCount += pick(-1,1,entrant.eventScores.noTeam);
 		}
 
 	draw_text_button(b_xx,b_yy-b_ww-15,"No Team",35,b_ww,65);
@@ -181,7 +181,7 @@ function draw_edit_score_player_popup() {
 		
 		var memberData = list[i];
 		var entrantDetails = memberData.memberDetails;
-		var entrantRoundStats = memberData.roundStats;
+		var entrantRoundStats = memberData.eventScores;
 
 		var name = entrantDetails.fullName;
 					
@@ -410,7 +410,7 @@ function entry_scores_individual_submit(entry) {
 	var list = TEAM_LIST[team_index_entry].members;
 	var teamSize = array_length(list);
 	var entrantStruct = list[edit_score];
-	var entrantRoundStats = entrantStruct.roundStats;
+	var entrantRoundStats = entrantStruct.eventScores;
 
 	// save score
 	switch edit_score_pos
@@ -466,7 +466,7 @@ function entry_next_entrant(list,teamSize) {
 			
 	// advance to next position
 	var entrantStruct = list[edit_score];
-	var entrantRoundStats = entrantStruct.roundStats;
+	var entrantRoundStats = entrantStruct.eventScores;
 				
 	keypad_set_value(edit_score_pos,entrantRoundStats.grossFront);
 	}

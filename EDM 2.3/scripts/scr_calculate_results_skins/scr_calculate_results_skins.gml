@@ -11,10 +11,10 @@ function scr_calculate_skins_count() {
 		for(var j=0;j<size;j++) {
 			
 			var memberStruct = teamStruct.members[j];
-			var roundStats = memberStruct.roundStats;
+			var eventScores = memberStruct.eventScores;
 			
-			grossCount += real(roundStats.skinsGross);
-			netCount += real(roundStats.skinsNet);
+			grossCount += real(eventScores.skinsGross);
+			netCount += real(eventScores.skinsNet);
 			}
 		}
 		
@@ -50,11 +50,11 @@ function scr_calculate_results_skins() {
 	for(var i=0;i<array_length(entrantResultsList);i++) {
 		
 	   var memberStruct = entrantResultsList[i];
-	   var roundStats = memberStruct.roundStats;
+	   var eventScores = memberStruct.eventScores;
 	   var winningStruct = memberStruct.eventWinnings;
 		
-	   var skins_gross_win = round(real(roundStats.skinsGross)/skins_gross_total*skins_gross_pot_collected);
-	   var skins_net_win = round(real(roundStats.skinsNet)/skins_net_total*skins_net_pot_collected);
+	   var skins_gross_win = round(real(eventScores.skinsGross)/skins_gross_total*skins_gross_pot_collected);
+	   var skins_net_win = round(real(eventScores.skinsNet)/skins_net_total*skins_net_pot_collected);
 	   
 	   // if rounding up causes higher payout than whats in pot, subtract 1   
 	   if (skins_gross_win > 0) 

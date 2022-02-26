@@ -40,7 +40,7 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 	for(var i=0;i<size;i++) { // loop through team member list
 		
 		var struct = list[i];
-		var round_stats = struct.roundStats;
+		var round_stats = struct.eventScores;
 		var height = 50;
         
 		// draw name
@@ -238,7 +238,7 @@ function debug_randomize_scores() {
 		// loop through members
 		for(var j=0;j<array_length(teamStruct.members);j++)
 			{
-			var memberStruct = teamStruct.members[j].roundStats;	
+			var memberStruct = teamStruct.members[j].eventScores;	
 
 			memberStruct.grossFront = string(irandom_range(33,50));
 			memberStruct.grossBack = string(irandom_range(33,50));
@@ -264,7 +264,7 @@ function activate_results_button() {
 		// loop through members
 		for(var j=0;j<array_length(teamStruct.members);j++)	{
 			
-			var memberStruct = teamStruct.members[j].roundStats;	
+			var memberStruct = teamStruct.members[j].eventScores;	
 			var grossFrontNull = (memberStruct.grossFront == "");
 			var grossBackNull = (memberStruct.grossBack == "");
 			var grossAdjNull = (memberStruct.grossAdj == "");

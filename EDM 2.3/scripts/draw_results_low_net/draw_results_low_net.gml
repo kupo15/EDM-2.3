@@ -1,7 +1,7 @@
 function low_net_rank_sort_results() {
 	
 	var sortKey = ["netFront","netBack","netTotal"];
-	array_sort_struct(lowNetResults,sortKey[net_score_tab],true,["roundStats","resultRanking"]);
+	array_sort_struct(lowNetResults,sortKey[net_score_tab],true,["eventScores","resultRanking"]);
 	}
 
 function draw_results_low_net(page) {
@@ -47,9 +47,9 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 		var memberStruct = arr[i];
 		var memberDetails = memberStruct.memberDetails;
 		var winningStruct = memberStruct.eventWinnings;
-		var roundStats = memberStruct.roundStats;
+		var eventScores = memberStruct.eventScores;
 		
-		var rank = roundStats.resultRanking[$ sortKey];
+		var rank = eventScores.resultRanking[$ sortKey];
 				
 		if (rank != prevRank) {
 			
@@ -74,7 +74,7 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 		var alpha = pick(1,0.9,cutoffDrawn);
 		
 		draw_text_centered(xx+80,yy+yoff,memberDetails.fullName,height,,sep,,alpha); // member name
-		draw_text_centered(xx+330,yy+yoff,roundStats[$ scoreKey],height,155,sep,,alpha); // score
+		draw_text_centered(xx+330,yy+yoff,eventScores[$ scoreKey],height,155,sep,,alpha); // score
 		
 		draw_set_halign(fa_right);
 		draw_text_centered(xx+630,yy+yoff,string(winningStruct[$ payoutKey])+" pesos",height,,sep,,alpha); // payout

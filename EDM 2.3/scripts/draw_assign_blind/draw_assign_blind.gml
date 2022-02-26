@@ -44,7 +44,7 @@ function draw_assign_blind() {
     
 	    if draw_text_button(xx+30+(i*sep),yy+120,i+1,45,hsep,vsep,,alph,,true) && !gray_out {
 			
-	        struct.roundStats.blindTeam = i; // assign blind team
+	        struct.eventScores.blindTeam = i; // assign blind team
 	        blind_struct_add_member(select_blind_team,i); // add to the blind list
 	        select_blind_team = undefined;
 	        break;

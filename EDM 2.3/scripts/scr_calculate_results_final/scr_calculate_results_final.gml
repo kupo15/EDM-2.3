@@ -6,10 +6,11 @@ function scr_calculate_results_final() {
 		var memberStruct = entrantResultsList[i];
 		var winningStruct = memberStruct.eventWinnings;
 		var eventDetails = memberStruct.eventDetails;
+		var eventScores = memberStruct.eventScores;
 		
 		var teamInd = eventDetails.teamAssigned;
-		var blind = (memberStruct.roundStats.blindTeam != undefined);
-		var noTeam = !memberStruct.roundStats.noTeam || (team_number == 0);
+		var blind = (eventScores.blindTeam != undefined);
+		var noTeam = !eventScores.noTeam || (team_number == 0);
 	
 		// apply team winnings
 		var teamFront = TEAM_LIST[teamInd].teamWinnings.frontWinnings;
@@ -23,7 +24,7 @@ function scr_calculate_results_final() {
 		// blind winning
 		if blind {
 			
-			var blindInd = memberStruct.roundStats.blindTeam;
+			var blindInd = eventScores.blindTeam;
 			var teamFront = TEAM_LIST[blindInd].teamWinnings.frontWinnings;
 			var teamBack = TEAM_LIST[blindInd].teamWinnings.backWinnings;
 			var teamTotal = TEAM_LIST[blindInd].teamWinnings.allHolesWinnings;

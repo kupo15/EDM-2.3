@@ -4,7 +4,10 @@ function Member(_name,_teeColor=choose("white","gold","blue","silver","combo"),_
 	memberId = MEMBERS_LIST.nextMemberId;
 	
 	memberDetails = new MemberInfo(_name);
+	
 	eventDetails = new EventDetails();
+	eventScores = new EventScores();
+	eventWinnings = new EventWinnings();
 	
 	favorite = _favorite;
 	recent = -1;
@@ -12,9 +15,6 @@ function Member(_name,_teeColor=choose("white","gold","blue","silver","combo"),_
 	
 	handicapIndex = 54;
 	teeColor = _teeColor;
-		
-	roundStats = new RoundStats();
-	eventWinnings = new EventWinnings();
 	
 	roundHistory = [];
 	
@@ -47,7 +47,7 @@ function EventDetails() constructor {
 	teamAssigned = undefined;
 	}
 		
-function RoundStats() constructor {
+function EventScores() constructor {
 	
 	resultRanking = {
 		
