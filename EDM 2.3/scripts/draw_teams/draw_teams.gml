@@ -143,7 +143,7 @@ function draw_blind_members(teamInd,xx,yy,ysep,height) {
 		var key = names[i];
 	    var member = blindStruct[$ key];
 		
-	    draw_text_centered(xx+5,yy+(i*ysep),member.name,height,,ysep,appblue);
+	    draw_text_centered(xx+5,yy+(i*ysep),member.fullName,height,,ysep,appblue);
 	    }
 	}
 

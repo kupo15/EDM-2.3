@@ -144,7 +144,7 @@ function Member(_name,_favorite=false) constructor {
 	var parsedName = parse_name(_name);
 	
 	memberId = MEMBERS_LIST.nextMemberId;
-	name = _name;
+	fullName = _name;
 	firstName = parsedName.first;
 	lastName = parsedName.last;
 	

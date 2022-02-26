@@ -27,7 +27,7 @@ function async_member_create(name) {
 
 function async_member_edit(name) {
 	
-	edit_member_slot.name = name;
+	edit_member_slot.fullName = name;
 
 	// update season ranking name
 	}

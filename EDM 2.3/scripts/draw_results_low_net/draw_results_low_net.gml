@@ -71,7 +71,7 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 			
 		var alpha = pick(1,0.9,cutoffDrawn);
 		
-		draw_text_centered(xx+80,yy+yoff,memberStruct.name,height,,sep,,alpha); // member name
+		draw_text_centered(xx+80,yy+yoff,memberStruct.fullName,height,,sep,,alpha); // member name
 		draw_text_centered(xx+330,yy+yoff,roundStats[$ scoreKey],height,155,sep,,alpha); // score
 		
 		draw_set_halign(fa_right);
@@ -122,8 +122,11 @@ function draw_low_net_result_tables(xx,sep,page) {
 		
 		draw_text_centered(xx+125+(i*60),yy-40,label[i],height,60,30*1.3,appblue,alpha);
 		
-		if scr_mouse_position_room_released(xoff+125+(i*60),yy-40,60+screenOffset,30*1.3,mb_left,,,can_click)
-		net_score_tab = i;
+		if scr_mouse_position_room_released(xoff+125+(i*60),yy-40,60+screenOffset,30*1.3,mb_left,,,can_click) {
+			
+			net_score_tab = i;
+			low_net_rank_sort_results();
+			}
 		
 		var rr = pick(2,3,selected);
 		

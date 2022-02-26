@@ -59,7 +59,7 @@ function draw_team_list_body(xx,yy,ysep) {
 	for(var i=0;i<size;i++)
 	    {
 		var memberStruct = teamGroup[i];
-		var name = memberStruct.name;
+		var name = memberStruct.fullName;
 		var yoff = (i*ysep);
 		
 	    // draw team member names

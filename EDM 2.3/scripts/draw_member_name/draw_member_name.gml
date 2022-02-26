@@ -1,7 +1,7 @@
 function draw_member_name(xx,yy,struct,height,ww=undefined,hh=undefined) {
 
 	var round_stats = struct.roundStats;
-	var name = struct.name;
+	var name = struct.fullName;
 	
 	var str = "";
 	if (round_stats.blindTeam != undefined) // if blind draw
@@ -29,7 +29,7 @@ function get_entrant_by_id(ind) {
 	
 	var memberId = entrant_list[ind];
 	
-	return memberId.name;
+	return memberId.fullName;
 	}
 	
 function draw_value(value,defaultStr) {

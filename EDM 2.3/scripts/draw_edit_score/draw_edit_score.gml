@@ -95,7 +95,7 @@ function draw_selected_edit_score(xx,list,size) {
 		var entrant = list[ind]; // get_entrant_by_id(ind);
 			
 		// draw player's name
-	    draw_text_centered(xx+20+xoff,115-height,entrant.name,height,);
+	    draw_text_centered(xx+20+xoff,115-height,entrant.fullName,height,);
 		
 		// draw tee
 		var struct = TEE_DATA[$ entrant.teeColor];
@@ -179,7 +179,7 @@ function draw_edit_score_player_popup() {
 	for(var i=0;i<size;i++)	{
 		
 		var memberData = list[i];
-		var name = memberData.name;
+		var name = memberData.fullName;
 		
 		var entrantRoundStats = memberData.roundStats;
 			
