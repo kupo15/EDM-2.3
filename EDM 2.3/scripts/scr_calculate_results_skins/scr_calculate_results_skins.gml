@@ -51,7 +51,7 @@ function scr_calculate_results_skins() {
 		
 	   var memberStruct = entrantResultsList[i];
 	   var eventScores = memberStruct.eventScores;
-	   var winningStruct = memberStruct.eventWinnings;
+	   var eventResults = memberStruct.eventResults;
 		
 	   var skins_gross_win = round(real(eventScores.skinsGross)/skins_gross_total*skins_gross_pot_collected);
 	   var skins_net_win = round(real(eventScores.skinsNet)/skins_net_total*skins_net_pot_collected);
@@ -70,9 +70,9 @@ function scr_calculate_results_skins() {
 	   skins_net_pot_payout -= skins_net_win;
    
 	   // calculate skins winning pesos
-	   winningStruct.skinsGross = skins_gross_win;
-	   winningStruct.skinsNet = skins_net_win;
-	   winningStruct.skinsTotalWinnings = skins_net_win+skins_gross_win;
+	   eventResults.skinsGross = skins_gross_win;
+	   eventResults.skinsNet = skins_net_win;
+	   eventResults.skinsTotalWinnings = skins_net_win+skins_gross_win;
 	   }
   
   	// if someone had gross skins
@@ -87,20 +87,20 @@ function scr_calculate_results_skins() {
 function distribute_leftover_skin_payout(arr,sortKey,payoutPot) {
 	
 	// sort descending
-	array_sort_struct(arr,sortKey,false,["eventWinnings"]);
+	array_sort_struct(arr,sortKey,false,["eventResults"]);
 	
 	// distribute any remaining skins starting from the bottom
 	while (payoutPot > 0)
 	for(var i=array_length(arr)-1;i>0;i--) {
 		
 		var memberStruct = arr[i];
-		var winningStruct = memberStruct.eventWinnings;
+		var eventResults = memberStruct.eventResults;
 		
 		// if you had skins
-		if (winningStruct[$ sortKey]) {
+		if (eventResults[$ sortKey]) {
 			
-		   winningStruct[$ sortKey]++; // add to skins breakdown
-		   winningStruct.skinsTotalWinnings++; // calculate skins total winning
+		   eventResults[$ sortKey]++; // add to skins breakdown
+		   eventResults.skinsTotalWinnings++; // calculate skins total winning
    
 		   payoutPot--; // 1 less in pot
    

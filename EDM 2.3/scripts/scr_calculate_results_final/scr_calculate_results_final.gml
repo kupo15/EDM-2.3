@@ -4,7 +4,7 @@ function scr_calculate_results_final() {
 	for(var i=0;i<array_length(entrantResultsList);i++) {
 		
 		var memberStruct = entrantResultsList[i];
-		var winningStruct = memberStruct.eventWinnings;
+		var eventResults = memberStruct.eventResults;
 		var eventDetails = memberStruct.eventDetails;
 		var eventScores = memberStruct.eventScores;
 		
@@ -17,9 +17,9 @@ function scr_calculate_results_final() {
 		var teamBack = TEAM_LIST[teamInd].teamWinnings.backWinnings;
 		var teamTotal = TEAM_LIST[teamInd].teamWinnings.allHolesWinnings;
 		
-		winningStruct.lowNetWinning = winningStruct.frontWinnings+winningStruct.backWinnings+winningStruct.allHolesWinnings;
-		winningStruct.teamWinning = teamFront+teamBack+teamTotal;
-		winningStruct.entryFee = real(ENTRY_FEES.lowNetEntry)+(noTeam*real(ENTRY_FEES.teamEntry))+real(ENTRY_FEES.skinsEntry)+(blind*real(ENTRY_FEES.blindFee));
+		eventResults.lowNetWinning = eventResults.frontWinnings+eventResults.backWinnings+eventResults.allHolesWinnings;
+		eventResults.teamWinning = teamFront+teamBack+teamTotal;
+		eventResults.entryFee = real(ENTRY_FEES.lowNetEntry)+(noTeam*real(ENTRY_FEES.teamEntry))+real(ENTRY_FEES.skinsEntry)+(blind*real(ENTRY_FEES.blindFee));
 		
 		// blind winning
 		if blind {
@@ -29,12 +29,12 @@ function scr_calculate_results_final() {
 			var teamBack = TEAM_LIST[blindInd].teamWinnings.backWinnings;
 			var teamTotal = TEAM_LIST[blindInd].teamWinnings.allHolesWinnings;
 		
-			winningStruct.blindWinning = teamFront+teamBack+teamTotal;
+			eventResults.blindWinning = teamFront+teamBack+teamTotal;
 			}
 		
-		winningStruct.winSubtotal = winningStruct.lowNetWinning+winningStruct.skinsTotalWinnings+winningStruct.teamWinning+winningStruct.blindWinning;
+		eventResults.winSubtotal = eventResults.lowNetWinning+eventResults.skinsTotalWinnings+eventResults.teamWinning+eventResults.blindWinning;
 		
 		var noSkinsRefund = (no_net_skins+no_gross_skins)*real(ENTRY_FEES.skinsEntry)*0.5;
-		winningStruct.winningGrandTotal = winningStruct.winSubtotal+noSkinsRefund-winningStruct.entryFee;
+		eventResults.winningGrandTotal = eventResults.winSubtotal+noSkinsRefund-eventResults.entryFee;
 		}
 	}

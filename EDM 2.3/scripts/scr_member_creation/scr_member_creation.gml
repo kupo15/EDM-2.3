@@ -7,7 +7,7 @@ function Member(_name,_teeColor=choose("white","gold","blue","silver","combo"),_
 	
 	eventDetails = new EventDetails();
 	eventScores = new EventScores();
-	eventWinnings = new EventWinnings();
+	eventResults = new EventWinnings();
 	
 	favorite = _favorite;
 	recent = -1;

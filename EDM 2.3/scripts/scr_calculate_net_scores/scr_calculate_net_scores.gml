@@ -45,7 +45,7 @@ function payout_low_net_winnings(tempArr,sortKey,winningKey) {
 			// if rank equals payout index
 			if (memberStruct.eventScores.resultRanking[$ sortKey] == i+1) {
 
-				memberStruct.eventWinnings[$ winningKey]++;
+				memberStruct.eventResults[$ winningKey]++;
 				payoutPot--;
 				}
 				
