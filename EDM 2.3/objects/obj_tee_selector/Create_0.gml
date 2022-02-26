@@ -12,3 +12,5 @@ yposEnd = y;
 
 animationValue = 0;
 animationValueEnd = 0;
+
+editTeeStruct = undefined;

@@ -64,7 +64,7 @@ function draw_preferences() {
 	
 function draw_tee_data(xx,yy,ww,highlight=undefined,canPress=true) {
 		
-	var alpha = draw_get_alpha();	
+	var alpha = draw_get_alpha();
 	var result = undefined;
 	var sep = 40;
 	var line_gap = ww*0.1;

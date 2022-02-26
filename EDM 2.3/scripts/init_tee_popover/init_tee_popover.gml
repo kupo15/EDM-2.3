@@ -1,6 +1,6 @@
 #macro TEELIST_ACTIVE obj_tee_selector.active
 
-function tee_popover_init(xx=obj_tee_selector.x,yy=obj_tee_selector.y,ww=obj_tee_selector.width,teeColorSelected=undefined,animation=true) {
+function tee_popover_init(activeStruct,xx=obj_tee_selector.x,yy=obj_tee_selector.y,ww=obj_tee_selector.width,teeColorSelected=undefined,animation=true) {
 
 	with obj_tee_selector {
 
@@ -19,6 +19,8 @@ function tee_popover_init(xx=obj_tee_selector.x,yy=obj_tee_selector.y,ww=obj_tee
 		
 		active = true;
 		highlightedTee = teeColorSelected;
+		
+		editTeeStruct = activeStruct;
 		}
 	}
 	
@@ -30,4 +32,11 @@ function tee_popover_deactivate(animation=true) {
 	
 	if !animation
 	animationValue = animationValueEnd;
+	
+	editTeeStruct = undefined;
+	}
+	
+function tee_popover_select_tee(selectedColor) {
+	
+	editTeeStruct.teeColor = selectedColor;
 	}
