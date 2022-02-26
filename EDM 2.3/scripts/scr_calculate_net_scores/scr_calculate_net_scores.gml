@@ -14,20 +14,22 @@ function payout_low_net_winnings(tempArr,sortKey,winningKey) {
 	var rank = 1;
 	for(var i=0;i<array_length(tempArr);i++) {
 		
-		var tempMemberStruct = tempArr[i].eventScores;
+		var tempMemberStruct = tempArr[i];
+		var eventScores = tempMemberStruct.eventScores;
+		var eventResults = tempMemberStruct.eventResults;
 		
 		// if score is worse than previous team
 		if (i > 0) {
 
 			var prevScore = tempArr[i-1].eventScores[$ sortKey];
-			var currScore = tempMemberStruct[$ sortKey];
+			var currScore = eventScores[$ sortKey];
 		
 			if (currScore > prevScore)
 			rank++;
 			}
 
 		// assign rank
-		tempMemberStruct.resultRanking[$ sortKey] = rank;
+		eventResults.resultRanking[$ sortKey] = rank;
 		}
 		
 	// loop through winning slots
@@ -41,11 +43,12 @@ function payout_low_net_winnings(tempArr,sortKey,winningKey) {
 		for(var j=0;j<array_length(tempArr);j++) {
 			
 			var memberStruct = tempArr[j];
+			var eventResults = memberStruct.eventResults;
 
 			// if rank equals payout index
-			if (memberStruct.eventScores.resultRanking[$ sortKey] == i+1) {
+			if (eventResults.resultRanking[$ sortKey] == i+1) {
 
-				memberStruct.eventResults[$ winningKey]++;
+				eventResults[$ winningKey]++;
 				payoutPot--;
 				}
 				

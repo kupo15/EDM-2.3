@@ -1,7 +1,7 @@
 function low_net_rank_sort_results() {
 	
 	var sortKey = ["netFront","netBack","netTotal"];
-	array_sort_struct(lowNetResults,sortKey[net_score_tab],true,["eventScores","resultRanking"]);
+	array_sort_struct(lowNetResults,sortKey[net_score_tab],true,["eventResults","resultRanking"]);
 	}
 
 function draw_results_low_net(page) {
@@ -37,6 +37,7 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 	var cutoffDrawn = false;
 	var prevRank = 0;
 	var rankCount = 0;
+	
 	var arr = lowNetResults;
 	var size = array_length(arr);
 	for(var i=0;i<size;i++) {
@@ -49,7 +50,7 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 		var eventResults = memberStruct.eventResults;
 		var eventScores = memberStruct.eventScores;
 		
-		var rank = eventScores.resultRanking[$ sortKey];
+		var rank = eventResults.resultRanking[$ sortKey];
 				
 		if (rank != prevRank) {
 			

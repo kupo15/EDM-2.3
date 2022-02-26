@@ -48,14 +48,7 @@ function EventDetails() constructor {
 	}
 		
 function EventScores() constructor {
-	
-	resultRanking = {
 		
-		netFront: 1,
-		netBack: 1,
-		netTotal: 1,
-		}
-	
 	grossFront = "";
 	grossBack = "";
 	grossAdj = "";
@@ -93,4 +86,11 @@ function EventResults() constructor {
 	winSubtotal = defaultVal;
 	entryFee = defaultVal;
 	winningGrandTotal = defaultVal;
+	
+	resultRanking = {
+		
+		netFront: 1,
+		netBack: 1,
+		netTotal: 1,
+		}
 	}
