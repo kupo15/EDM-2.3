@@ -78,7 +78,7 @@ function draw_member_list(ysep) {
 		var eventDetails = entry.eventDetails;
 		
 		var name = entrantDetails.fullName;
-		var favorite = entry.favorite;
+		var favorite = entrantDetails.favorite;
 		var assigned = is_real(eventDetails.teamAssigned);
 		
 		var nameFont = pick(fn_name,fn_name_it,assigned);

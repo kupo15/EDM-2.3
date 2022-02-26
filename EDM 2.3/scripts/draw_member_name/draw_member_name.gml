@@ -21,7 +21,7 @@ function draw_member_name(xx,yy,struct,height,ww=undefined,hh=undefined) {
 	var str_ww = string_width_height(str+"  ",height);
 	
 	// tee
-	var teeName = struct.teeColor;
+	var teeName = memberDetails.teeColor;
 	var teeStruct = TEE_DATA[$ teeName];
 
 	draw_sprite_ext(ico_tee_marker,0,xx+str_ww+2,yy+(hh*0.5),1,1,0,teeStruct.color,1);

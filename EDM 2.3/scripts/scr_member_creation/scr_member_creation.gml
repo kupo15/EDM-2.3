@@ -3,19 +3,11 @@ function Member(_name,_teeColor=choose("white","gold","blue","silver","combo"),_
 	
 	memberId = MEMBERS_LIST.nextMemberId;
 	
-	memberDetails = new MemberInfo(_name);
+	memberDetails = new MemberInfo(_name,_favorite,_teeColor);
 	
 	eventDetails = new EventDetails();
 	eventScores = new EventScores();
 	eventResults = new EventResults();
-	
-	favorite = _favorite;
-	recent = -1;
-	archived = false;
-	
-	handicapIndex = 54;
-	teeColor = _teeColor;
-	
 	roundHistory = [];
 	
 	MEMBERS_LIST.nextMemberId++;
@@ -32,13 +24,20 @@ function parse_name(name) {
 	return {first: _first, last: _last};
 	}
 		
-function MemberInfo(_name) constructor {
+function MemberInfo(_name,_favorite,_teeColor) constructor {
 	
 	var parsedName = parse_name(_name);
 	
 	fullName = _name;
 	firstName = parsedName.first;
 	lastName = parsedName.last;
+	
+	favorite = _favorite;
+	recent = -1;
+	archived = false;
+	
+	handicapIndex = 54;
+	teeColor = _teeColor;
 	}
 	
 function EventDetails() constructor {

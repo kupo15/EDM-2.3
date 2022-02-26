@@ -38,5 +38,5 @@ function tee_popover_deactivate(animation=true) {
 	
 function tee_popover_select_tee(selectedColor) {
 	
-	editTeeStruct.teeColor = selectedColor;
+	editTeeStruct.memberDetails.teeColor = selectedColor;
 	}

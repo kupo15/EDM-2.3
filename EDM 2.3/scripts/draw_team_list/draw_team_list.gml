@@ -94,8 +94,9 @@ function remove_from_team(teamArr,ind,memberStruct) {
 	for(var i=0;i<array_length(list);i++) {
 		
 		var listEntry = list[i];
+		var memberDetails = listEntry.memberDetails;
 		
-		if listEntry.favorite
+		if memberDetails.favorite
 		continue;
 		
 		array_insert(list,i,memberStruct);

@@ -39,16 +39,18 @@ function memberlist_swipe_left(ind,entryStruct) {
 	
 function memberlist_swipe_right(ind,entryStruct) {			
 	                            
+	var memberDetails = entryStruct.memberDetails;
+								
 	// remove from favorites list
-	if entryStruct.favorite {
+	if memberDetails.favorite {
 		
-		entryStruct.favorite = false;
-		entryStruct.recent = date_current_datetime();
+		memberDetails.favorite = false;
+		memberDetails.recent = date_current_datetime();
 		}
 	else {
 		// add to favorites
-		entryStruct.favorite = true;
-		entryStruct.recent = -1;
+		memberDetails.favorite = true;
+		memberDetails.recent = -1;
 		}
 
 	MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list);

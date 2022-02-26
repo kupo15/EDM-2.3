@@ -104,14 +104,14 @@ function draw_selected_edit_score(xx,list,size) {
 	    draw_text_centered(xx+20+xoff,115-height,entrantDetails.fullName,height,);
 		
 		// draw tee
-		var struct = TEE_DATA[$ entrant.teeColor];
-		var teeStr = entrant.teeColor+" tees";
+		var struct = TEE_DATA[$ entrantDetails.teeColor];
+		var teeStr = entrantDetails.teeColor+" tees";
 		
 		draw_sprite_ext(ico_tee_marker,0,xx+20+xoff,yy+(sep*0.5*1.3),1,1,0,struct.color,1);
 		draw_text_centered(xx+40+xoff,yy,teeStr,sep,,sep*1.3);
 		
 		if draw_text_button(xx,yy,"",sep,220,sep*1.3,,,,true,can_click)	
-		tee_popover_init(entrant,,room_height,,entrant.teeColor);
+		tee_popover_init(entrant,,room_height,,entrantDetails.teeColor);
 		
 		// draw chevron
 		var ww = string_width_height(teeStr,sep);
