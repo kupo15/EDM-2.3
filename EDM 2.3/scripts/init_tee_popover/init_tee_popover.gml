@@ -1,6 +1,6 @@
 #macro TEELIST_ACTIVE obj_tee_selector.active
 
-function init_tee_popover(xx=obj_tee_selector.x,yy=obj_tee_selector.y,ww=obj_tee_selector.width,teeColorSelected=undefined,animation=true) {
+function tee_popover_init(xx=obj_tee_selector.x,yy=obj_tee_selector.y,ww=obj_tee_selector.width,teeColorSelected=undefined,animation=true) {
 
 	with obj_tee_selector {
 

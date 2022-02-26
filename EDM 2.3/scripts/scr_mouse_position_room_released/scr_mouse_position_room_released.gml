@@ -1,5 +1,5 @@
 
-function scr_button_hover(x_left,y_top,ww,hh,highlight) {
+function scr_button_hover(x_left,y_top,ww,hh,highlight=true) {
 	
 	var in_region = point_in_rectangle(mouse_x,mouse_y,x_left,y_top,x_left+ww,y_top+hh);
 	

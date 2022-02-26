@@ -16,6 +16,7 @@ function draw_assign_blind() {
 	if android_back || (!scr_mouse_position_room_released(xx,yy,ww,hh,noone,true,true) && mouse_check_button_released(mb_left) && !global.clicked) {
 		
 	   select_blind_team = undefined;
+	   global.clicked = true;
 	   exit;
 	   }
 	   

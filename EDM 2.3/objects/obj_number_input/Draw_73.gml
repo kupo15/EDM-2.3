@@ -65,7 +65,7 @@ draw_set_halign(fa_left);
 draw_text_centered(x+25,y,str,keyHeight*0.6,,keyHeight,ADD_MEMBER_BUTTON_STYLE.bgColor);
 
 // inputs
-if scr_mouse_position_room_released(x+(keyWidth*2),y,keyWidth,keyHeight,mb_left,true,true)
+if scr_mouse_position_room_released(x+(keyWidth*2),y,keyWidth,keyHeight,mb_left,true,true,!TEELIST_ACTIVE)
 delete_character();
 
 for(var i=0;i<4;i++)
@@ -77,7 +77,7 @@ for(var j=0;j<3;j++) {
 	var ind = (i*3)+j;
 	var str = ["7","8","9","4","5","6","1","2","3","+/-","0","Done"];
 		
-	if scr_mouse_position_room_released(x+xx,y+yy+displayHeight,keyWidth,keyHeight,mb_left,true,true) {
+	if scr_mouse_position_room_released(x+xx,y+yy+displayHeight,keyWidth,keyHeight,mb_left,true,true,!TEELIST_ACTIVE) {
 		
 		switch str[ind]
 			{

@@ -6,8 +6,8 @@ function draw_edit_score_all() {
 	var hh = room_height;
 
 	// click out / cancel
-	if android_back || (!scr_mouse_position_room(xx,yy,ww+10,hh+10,noone,false) && mouse_check_button_released(mb_left) && !edit_score_scrolling)
-	    {
+	if android_back || (!scr_mouse_position_room(xx,yy,ww+10,hh+10,noone,false) && mouse_check_button_released(mb_left) && !TEELIST_ACTIVE && !edit_score_scrolling) {
+		
 	    edit_score = noone;
 	    edit_team_score = noone;
 	    edit_score_pos = entryType.memberFront;
@@ -37,7 +37,7 @@ function draw_edit_score_all() {
 	var b_xx = xx+180;
 	var b_yy = yy+hh-10-b_hh;
 	var col = make_colour_rgb(69,117,228);
-	var submit = draw_text_button(b_xx,b_yy,"SUBMIT",45,b_ww,b_hh,col,,,true);
+	var submit = draw_text_button(b_xx,b_yy,"SUBMIT",45,b_ww,b_hh,col,,,true,!TEELIST_ACTIVE);
 	
 	draw_rectangle(b_xx,b_yy,b_xx+b_ww,b_yy+b_hh,true);
 
@@ -97,14 +97,17 @@ function draw_selected_edit_score(xx,list,size) {
 		// draw player's name
 	    draw_text_centered(xx+20+xoff,115-height,entrant.name,height,);
 		
-		// draw tees
+		// draw tee
 		var struct = TEE_DATA[$ entrant.teeColor];
 		
-		draw_text_centered(xx+40+xoff,yy,entrant.teeColor+" tees",sep,,sep*1.3);
 		draw_sprite_ext(ico_tee_marker,0,xx+20+xoff,yy+(sep*0.5*1.3),1,1,0,struct.color,1);
+		draw_text_centered(xx+40+xoff,yy,entrant.teeColor+" tees",sep,,sep*1.3);
 		
-		if draw_text_button(xx,yy,"",sep,200,sep*1.3,,,,true)
-		edit_member_tee = entrant;
+		if draw_text_button(xx,yy,"",sep,200,sep*1.3,,,,true,!TEELIST_ACTIVE) {
+			
+			edit_member_tee = entrant;
+			tee_popover_init(,room_height,,entrant.teeColor);
+			}
 		
 		// draw course handicap
 		draw_text_centered(xx+210+xoff,yy,"HCP: "+string(entrant.roundStats.courseHandicap),sep*0.9,,sep*1.3);
@@ -115,6 +118,7 @@ function draw_selected_edit_score(xx,list,size) {
 
 function draw_edit_score_player_popup() {
 	
+	var can_click = !TEELIST_ACTIVE;
 	var xx = 0;
 	var list = TEAM_LIST[team_index_entry].members;
 	var size = array_length(list);
@@ -141,7 +145,7 @@ function draw_edit_score_player_popup() {
 	draw_text_centered(b_xx,b_yy,"T"+string(_bl+1),45,55,36); // team the blind is assigned to
 			
 	// clicked blind
-	if scr_mouse_position_room_released(b_xx,b_yy,b_ww,b_ww,mb_left,true,true) {
+	if scr_mouse_position_room_released(b_xx,b_yy,b_ww,b_ww,mb_left,true,true,can_click) {
 				
 		// assign blinds
 		if (_bl == undefined) {
@@ -158,7 +162,7 @@ function draw_edit_score_player_popup() {
 	// no team
 	var b_xx = 790;
 		
-	if draw_icon_click(ico_checkbox,entrant.roundStats.noTeam,b_xx,b_yy,b_ww,b_ww,,,,,true) {
+	if draw_icon_click(ico_checkbox,entrant.roundStats.noTeam,b_xx,b_yy,b_ww,b_ww,,,,can_click,true) {
 	
 		entrant.roundStats.noTeam = !entrant.roundStats.noTeam;
 		noTeamCount += pick(-1,1,entrant.roundStats.noTeam);
@@ -180,25 +184,25 @@ function draw_edit_score_player_popup() {
 		// member name
 		draw_text_centered(15,yy+(i*sep),string(i+1)+". "+name,height,,sep*1.2,,,);
 		
-		if draw_icon_click(,,0,yy+(i*sep),340,sep,,,false,,true)
+		if draw_icon_click(,,0,yy+(i*sep),340,sep,,,false,can_click,true)
 		edit_score = i;
 		
 		// member scores
-		if draw_text_button(340,yy+(i*sep),draw_value(entrantRoundStats.grossFront,"-"),height,70,sep,,,,true) {
+		if draw_text_button(340,yy+(i*sep),draw_value(entrantRoundStats.grossFront,"-"),height,70,sep,,,,true,can_click) {
 			
 			edit_score = i;
 			edit_score_pos = entryType.memberFront;
 			keypad_set_value(edit_score_pos,entrantRoundStats.grossFront);
 			}
 		
-		if draw_text_button(410,yy+(i*sep),draw_value(entrantRoundStats.grossBack,"-"),height,70,sep,,,,true) {
+		if draw_text_button(410,yy+(i*sep),draw_value(entrantRoundStats.grossBack,"-"),height,70,sep,,,,true,can_click) {
 
 			edit_score = i;
 			edit_score_pos = entryType.memberBack;
 			keypad_set_value(edit_score_pos,entrantRoundStats.grossBack);
 			}
 		
-		if draw_text_button(480,yy+(i*sep),draw_value(entrantRoundStats.grossAdj,"-"),height,70,sep,,,,true) {
+		if draw_text_button(480,yy+(i*sep),draw_value(entrantRoundStats.grossAdj,"-"),height,70,sep,,,,true,can_click) {
 			
 			edit_score = i;
 			edit_score_pos = entryType.memberAdjGross;
@@ -234,13 +238,13 @@ function draw_edit_score_player_popup() {
 	
 	var list = TEAM_LIST[team_index_entry];
 	
-	if draw_text_button(340,yy,draw_value(list.teamNetFront,"-"),height,70,sep,,,,true) {
+	if draw_text_button(340,yy,draw_value(list.teamNetFront,"-"),height,70,sep,,,,true,can_click) {
 		
 		edit_score_pos = entryType.teamFront;
 		keypad_set_value(edit_score_pos,list.teamNetFront,,true);
 		}
 	
-	if draw_text_button(410,yy,draw_value(list.teamNetBack,"-"),height,70,sep,,,,true) {
+	if draw_text_button(410,yy,draw_value(list.teamNetBack,"-"),height,70,sep,,,,true,can_click) {
 		
 		edit_score_pos = entryType.teamBack;
 		keypad_set_value(edit_score_pos,list.teamNetBack,,true);
@@ -258,7 +262,7 @@ function draw_edit_score_player_popup() {
 	var alpha = 1;
 	
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
-	if draw_text_button(xx,yy,"Next Team",height,ww,hh,,alpha,,true) {
+	if draw_text_button(xx,yy,"Next Team",height,ww,hh,,alpha,,true,can_click) {
 		
 		edit_score_pos = entryType.memberEntryNext;
 		entry_scores_individual_submit();
@@ -273,7 +277,7 @@ function draw_edit_score_player_popup() {
 	var alpha = 1;
 	
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
-	if draw_text_button(xx,yy,"Previous\nTeam",height,ww,hh,,alpha,,true) {
+	if draw_text_button(xx,yy,"Previous\nTeam",height,ww,hh,,alpha,,true,can_click) {
 		
 		//edit_score_pos = entryType.memberEntryNext;
 		//entry_scores_individual_submit();

@@ -24,7 +24,7 @@ function draw_icon_click(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha
 	return scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,highlight,isKeypad,canEdit);
 	}
 	
-function draw_line_pixel(xx,yy,ww,hh,col=c_black,alpha=1) {
+function draw_line_pixel(xx,yy,ww,hh,col=c_black,alpha=draw_get_alpha()) {
 
 	draw_sprite_stretched_ext(spr_pixel,0,xx,yy,ww,hh,col,alpha);
 	}

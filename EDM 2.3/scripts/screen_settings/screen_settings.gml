@@ -64,6 +64,7 @@ function draw_preferences() {
 	
 function draw_tee_data(xx,yy,ww,highlight=undefined,canPress=true) {
 		
+	var alpha = draw_get_alpha();	
 	var result = undefined;
 	var sep = 40;
 	var line_gap = ww*0.1;
@@ -73,17 +74,17 @@ function draw_tee_data(xx,yy,ww,highlight=undefined,canPress=true) {
 		var struct = TEE_DATA[$ name];
 		var selected = (highlight == name);
 			
-		draw_sprite_ext(ico_tee_marker,0,xx+20,yy+(i*sep)+(sep*0.5),1,1,0,struct.color,1);
+		draw_sprite_ext(ico_tee_marker,0,xx+20,yy+(i*sep)+(sep*0.5),1,1,0,struct.color,alpha);
 		
-		draw_text_centered(xx+45,yy+(i*sep),name,30,,sep); // tee color
-		draw_text_centered(xx+140,yy+(i*sep),struct.rating+" / "+struct.slope,30,,sep); // rating and slope
+		draw_text_centered(xx+45,yy+(i*sep),name,30,,sep,,alpha); // tee color
+		draw_text_centered(xx+140,yy+(i*sep),struct.rating+" / "+struct.slope,30,,sep,,alpha); // rating and slope
 		
-		draw_line_pixel(xx+line_gap,yy+sep+(i*sep),ww-line_gap,1,c_black,0.3);
+		draw_line_pixel(xx+line_gap,yy+sep+(i*sep),ww-line_gap,1,c_black,0.3*alpha);
 		
 		if selected
-		draw_icon(,,xx,yy+(i*sep),ww,sep,appblue,0.3);
+		draw_icon(,,xx,yy+(i*sep),ww,sep,appblue,0.3*alpha);
 		
-		if scr_mouse_position_room_released(xx,yy+(i*sep),ww,sep,mb_left,true,,canPress)
+		if scr_mouse_position_room_released(xx,yy+(i*sep),ww,sep,mb_left,true,true,canPress)
 		result = name;
 		}
 		
