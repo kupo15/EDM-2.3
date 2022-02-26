@@ -12,7 +12,7 @@
 #macro ENTRY_FEES SAVE_FILE.prizePool.entryFees
 #macro PAYOUT_TABLES SAVE_FILE.prizePool.payoutTable
 #macro SETTINGS SAVE_FILE.settings
-#macro TEE_DATA SAVE_FILE.teeData
+#macro TEE_DATA SAVE_FILE.courseList.estrella.teeMarker
 
 #macro goldColor make_color_rgb(255,215,0)
 #macro blueColor make_color_rgb(29,77,165)
@@ -43,69 +43,20 @@ function create_default_save_file() {
 
 	var config_data = {
 		
-		membersList: {
-			
-			nextMemberId: 0,
-			
-			list: [],
-			archived: [],
-			},
-			
-		activeEvent: {
-			
-			entrantCount: 0,
-			
-			teams: [
-			
-				new Team(0),
-				new Team(1),
-				new Team(2),
-				new Team(3),
-				new Team(4),
-				new Team(5),
-				],
-				
-			eventResults: undefined,
-			},
-			
-		settings: {
-			
-			soundOn: true,
-			closeEnough: true,
-			keypadOverwrite: false,
-			},
-			
-		teeData: {
-			
-			teeOrder: ["gold","blue","white","silver","combo"],
-			
-			white: new Tee("70.7","128",whiteColor),
-			gold: new Tee("75.4","131",goldColor),
-			blue: new Tee("72.5","129",blueColor),
-			silver: new Tee("68.6","122",silverColor),
-			combo: new Tee("69.3","125",comboColor),
-			},
-			
+		membersList: new ConfigurationMembersList(),
+		activeEvent: new ActiveEvent(),	
+		eventHistory: [],
+		
+		settings: new ConfigurationSettings(),
+		courseList: new CourseList(),			
 		prizePool: new PrizePool(),
 			
-		eventHistory: [],
-			
-		meta: {
-			
-			version: configversion,
-			}
+		meta: new ConfigurationMeta(),
 		}
-			
+
 	return config_data;
 	}
-	
-function Tee(_rating,_slope,_color) constructor {
-	
-	rating = _rating;
-	slope = _slope;
-	color = _color;
-	}
-	
+		
 function Team(num) constructor {
 	
 	var defaultVal = 0;
