@@ -12,5 +12,5 @@ function calculate_member_handicaps(current_index,_teeColor) {
 
 function calculate_member_index() {
 	
-	
+	return 10;
 	}

@@ -27,7 +27,14 @@ function async_member_create(name) {
 
 function async_member_edit(name) {
 	
-	edit_member_slot.memberDetails.fullName = name;
+	var parsedName = parse_name(name);
 
+	with edit_member_slot.memberDetails {
+		
+		fullName = name;
+		firstName = parsedName.first;
+		lastName = parsedName.last;
+		}
+		
 	// update season ranking name
 	}
