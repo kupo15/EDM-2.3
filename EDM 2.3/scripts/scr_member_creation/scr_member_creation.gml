@@ -3,8 +3,7 @@ function Member(_name,_teeColor=choose("white","gold","blue","silver","combo"),_
 	
 	memberId = MEMBERS_LIST.nextMemberId;
 	
-	memberDetails = new MemberInfo(_name,_favorite,_teeColor);
-	
+	memberDetails = new MemberInfo(_name,_favorite,_teeColor);	
 	eventDetails = new EventDetails();
 	eventScores = new EventScores();
 	eventResults = new EventResults();
@@ -48,7 +47,7 @@ function EventDetails() constructor {
 	blindTeam = undefined;
 	noTeam = false;
 	
-	courseHandicap = calculate_member_handicaps();
+	courseHandicap = undefined;
 	}
 		
 function EventScores() constructor {

@@ -1,5 +1,7 @@
 function ConfigurationSettings() constructor {
 
+	courseName = "estrella";
+
 	soundOn = true;
 	closeEnough = true;
 	keypadOverwrite = false;

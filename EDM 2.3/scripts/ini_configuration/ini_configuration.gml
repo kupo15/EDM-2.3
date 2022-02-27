@@ -15,7 +15,7 @@
 #macro SETTINGS SAVE_FILE.settings
 
 // course data
-#macro COURSE_DATA SAVE_FILE.courseList.estrella
+#macro COURSE_DATA SAVE_FILE.courseList[$ SETTINGS.courseName]
 #macro TEE_DATA COURSE_DATA.teeMarker
 
 // tees
@@ -49,12 +49,13 @@ function create_default_save_file() {
 
 	var config_data = {
 		
+		settings: new ConfigurationSettings(),
+		courseList: new CourseList(),
+
 		membersList: new ConfigurationMembersList(),
 		activeEvent: new ActiveEvent(),	
 		eventHistory: [],
 		
-		settings: new ConfigurationSettings(),
-		courseList: new CourseList(),			
 		prizePool: new PrizePool(),
 			
 		meta: new ConfigurationMeta(),

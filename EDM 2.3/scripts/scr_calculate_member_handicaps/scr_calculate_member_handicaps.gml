@@ -1,7 +1,6 @@
-function calculate_member_handicaps(teeStruct) {
+function calculate_member_handicaps(current_index,_teeColor) {
 
-return 15;
-
+	var teeStruct = TEE_DATA[$ _teeColor];
 	var course_slope = teeStruct.slope;
 	var course_rating = teeStruct.rating;
 	var course_par = teeStruct.par;

@@ -19,10 +19,12 @@ function scr_create_teams() {
 			for(var j=0;j<teamSize;j++) {
 			
 				var member = teamMemberList[j];
+				var memberDetails = member.memberDetails;
 				var eventDetails = member.eventDetails;
 				
 				eventDetails.teamAssigned = team_number;
 				eventDetails.entrantNumber = array_length(entrant_list);
+				eventDetails.courseHandicap = calculate_member_handicaps(memberDetails.handicapIndex,memberDetails.teeColor);
 				
 				array_push(entrant_list,member);
 				}

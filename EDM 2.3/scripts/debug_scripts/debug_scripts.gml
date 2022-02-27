@@ -48,8 +48,6 @@ function debug_members_list_create() {
 		new Member("Bob Sanz",,true)
 		];
 		
-		cs(js(list[0]))
-
 	list = scr_sort_members(list);
 
 	MEMBERS_LIST.list = list;
