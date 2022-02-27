@@ -13,6 +13,7 @@ function scr_calculate_results() {
 	scr_calculate_net_scores();
 	scr_calculate_results_skins();
 	scr_calculate_results_final();
+	//scr_save_round_history();
 
 	db("calculated");
 

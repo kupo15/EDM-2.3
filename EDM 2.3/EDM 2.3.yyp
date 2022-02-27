@@ -108,6 +108,7 @@
     {"id":{"name":"draw_season_ranking_breakdown","path":"scripts/draw_season_ranking_breakdown/draw_season_ranking_breakdown.yy",},"order":5,},
     {"id":{"name":"draw_distribute_leftover_skins","path":"scripts/draw_distribute_leftover_skins/draw_distribute_leftover_skins.yy",},"order":14,},
     {"id":{"name":"fn_keyboard","path":"fonts/fn_keyboard/fn_keyboard.yy",},"order":0,},
+    {"id":{"name":"scr_debug_round_history","path":"scripts/scr_debug_round_history/scr_debug_round_history.yy",},"order":1,},
     {"id":{"name":"fn_name","path":"fonts/fn_name/fn_name.yy",},"order":2,},
     {"id":{"name":"fn_name_it","path":"fonts/fn_name_it/fn_name_it.yy",},"order":4,},
     {"id":{"name":"timer_functions","path":"scripts/timer_functions/timer_functions.yy",},"order":16,},
