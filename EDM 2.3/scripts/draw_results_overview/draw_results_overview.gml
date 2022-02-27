@@ -165,7 +165,7 @@ function draw_results_final_content(xx,yy) {
 		var col = pick(c_red,c_black,payoutBreakdown.winningGrandTotal >= 0);
 			
 		draw_set_halign(fa_right)
-		draw_text_centered(985,yy+yoff,string(payoutBreakdown.winningGrandTotal)+" pesos",height,,sep,col);
+		draw_text_centered(985,yy+yoff,string(payoutBreakdown.winningGrandTotal)+CURRENCY_SYMBOL,height,,sep,col);
 			
 		// line separator
 		var col = pick(c_black,appblue,newTeam);

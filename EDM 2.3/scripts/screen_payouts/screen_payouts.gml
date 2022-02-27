@@ -71,7 +71,7 @@ function draw_team_payout_table(ysep) {
 	    draw_text_centered(xx+15,yy+(i*ysep),string(i+1)+")",height,,ysep);
     
 	    draw_set_halign(fa_right);
-	    draw_text_centered(xx+145,yy+(i*ysep),string(str)+" pesos",height,,ysep);
+	    draw_text_centered(xx+145,yy+(i*ysep),string(str)+CURRENCY_SYMBOL,height,,ysep);
 		
 		// horizontal line
 		draw_line_pixel(xx+20,yy+((i+1)*ysep),ww-40,1,,0.3);
@@ -117,7 +117,7 @@ function draw_entry_fee_table(ysep) {
 	    draw_text_centered(xx+180,yy+(i*ysep),string(arr[i])+":",height,,ysep);
 			
 	    draw_set_halign(fa_left);
-	    draw_text_centered(xx+190,yy+(i*ysep),str+" pesos",height,,ysep);
+	    draw_text_centered(xx+190,yy+(i*ysep),str+CURRENCY_SYMBOL,height,,ysep);
 		
 		// horizontal line
 		draw_line_pixel(xx+20,yy+((i+1)*ysep),ww-40,1,,0.3);
@@ -166,7 +166,7 @@ function draw_low_net_table(ysep) {
 	    draw_text_centered(xx+15,yy+(i*ysep),string(i+1)+")",height,,ysep);
     
 	    draw_set_halign(fa_right);
-	    draw_text_centered(xx+145,yy+(i*ysep),string(str)+" pesos",height,,ysep);
+	    draw_text_centered(xx+145,yy+(i*ysep),string(str)+CURRENCY_SYMBOL,height,,ysep);
 		
 		// horizontal line
 		draw_line_pixel(xx+20,yy+((i+1)*ysep),ww-40,1,,0.3);

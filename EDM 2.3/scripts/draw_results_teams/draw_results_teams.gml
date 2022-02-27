@@ -35,7 +35,7 @@ function draw_payout_table(xx,yy,arr) {
 	    draw_text_centered(xx+15,yy+(i*ysep),string(i+1)+")",height,,ysep);
     
 	    draw_set_halign(fa_right);
-	    draw_text_centered(xx+130,yy+(i*ysep),string(str)+" pesos",height,,ysep);
+	    draw_text_centered(xx+130,yy+(i*ysep),string(str)+CURRENCY_SYMBOL,height,,ysep);
 		
 		// horizontal line
 		draw_line_pixel(xx+20,yy+((i+1)*ysep),ww-40,1,,0.3);
@@ -110,7 +110,7 @@ function draw_team_results_content(xx,yy,sep,sortKey,scoreKey,payoutKey) {
 		draw_text_centered(xx+330,yy+(i*sep),teamStruct[$ scoreKey],sep,155,sep*1.3,,alpha); // score
 		
 		draw_set_halign(fa_right);
-		draw_text_centered(xx+630,yy+(i*sep),string(teamStruct.teamWinnings[$ payoutKey])+" pesos",sep,,sep*1.3,,alpha); // payout
+		draw_text_centered(xx+630,yy+(i*sep),string(teamStruct.teamWinnings[$ payoutKey])+CURRENCY_SYMBOL,sep,,sep*1.3,,alpha); // payout
 		
 		draw_set_halign(fa_left);
 		

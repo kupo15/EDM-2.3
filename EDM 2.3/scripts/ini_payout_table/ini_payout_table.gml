@@ -41,8 +41,3 @@ function PayoutTables() constructor {
 	teamPayoutMax = array_length(teamPayout);
 	lowNetPayoutMax = array_length(lowNetPayout);
 	}
-
-function ini_payout_table() {
-
-	//ini_payout_table_load();
-	}

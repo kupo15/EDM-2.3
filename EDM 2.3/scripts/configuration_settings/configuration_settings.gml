@@ -2,6 +2,7 @@ function ConfigurationSettings() constructor {
 
 	courseName = "estrella";
 
+	currencyIndex = 1;
 	soundOn = true;
 	closeEnough = true;
 	keypadOverwrite = false;

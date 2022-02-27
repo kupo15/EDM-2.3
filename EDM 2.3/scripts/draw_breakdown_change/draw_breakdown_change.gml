@@ -12,7 +12,7 @@ function draw_breakdown_change() {
 
 	var ysep = 35;
 	var size = ds_list_size(numpad_list);  
-	var tot_winnings = string(season_ranking_grid[# season_breakdown_edit_x,season_breakdown_edit_y])+" pesos";
+	var tot_winnings = string(season_ranking_grid[# season_breakdown_edit_x,season_breakdown_edit_y])+CURRENCY_SYMBOL;
 
 	draw_set_color(c_black);
 
@@ -118,7 +118,7 @@ function draw_breakdown_change() {
 	var col = make_colour_rgb(69,117,228);
 	var col_str = make_colour_rgb(69,117,228);
 	var str = "SUBMIT";
-	var pesos_amt = string(num)+" pesos";
+	var pesos_amt = string(num)+CURRENCY_SYMBOL;
 
 	if size == 0
 		{

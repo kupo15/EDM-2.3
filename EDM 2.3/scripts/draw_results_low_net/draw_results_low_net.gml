@@ -79,7 +79,7 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 		draw_text_centered(xx+330,yy+yoff,eventScores[$ scoreKey],height,155,sep,,alpha); // score
 		
 		draw_set_halign(fa_right);
-		draw_text_centered(xx+630,yy+yoff,string(payoutBreakdown[$ payoutKey])+" pesos",height,,sep,,alpha); // payout
+		draw_text_centered(xx+630,yy+yoff,string(payoutBreakdown[$ payoutKey])+CURRENCY_SYMBOL,height,,sep,,alpha); // payout
 		
 		draw_set_halign(fa_left);
 		

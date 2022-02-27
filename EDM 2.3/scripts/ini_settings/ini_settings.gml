@@ -1,4 +1,8 @@
+#macro CURRENCY_SYMBOL con_main.currency[SETTINGS.currencyIndex]
+
 function ini_settings() {
+
+	currency = [" USD"," pesos"];
 
 	in_settings = false;
 

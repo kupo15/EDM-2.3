@@ -76,7 +76,7 @@ function draw_season_ranking_simple() {
 	    col = c_red;
     
 	    draw_set_halign(fa_right);
-	    draw_text_colour(xx+270,yy+(i*hsep),string(sum)+" pesos",col,col,col,col,1); // pesos
+	    draw_text_colour(xx+270,yy+(i*hsep),string(sum)+CURRENCY_SYMBOL,col,col,col,col,1); // pesos
 	    }
     
 	if rank_hh < rows

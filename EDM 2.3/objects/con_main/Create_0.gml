@@ -144,11 +144,6 @@ results_surface = -1;
 
 ini_settings();
 
-// create ds lists
-favorites_list = ds_list_create(); // list of frequent members to save to INI
-favorites_members_list = ds_list_create(); // list of favorites to assign to teams
-numpad_list = ds_list_create(); // to create scores from number pad
-
 season_delete_safty = true;
 season_ranking_header_grid = ds_grid_create(2,3); // the date and info of the day recorded
 season_ranking_grid = ds_grid_create(2,1);
@@ -157,7 +152,6 @@ season_ranking_load();
     
 ini_timer(mainTimers.enumcount);
 ini_save_file();
-ini_payout_table();
 
 enum listType {
 	
@@ -165,7 +159,6 @@ enum listType {
 	favorites
 	}
 
-list_type = (ds_list_size(favorites_list) != 0); // default to favorites
 dev_mode = (os_type == os_windows);
 
 instance_create_layer(500,0,"Instances_1",obj_number_input);
