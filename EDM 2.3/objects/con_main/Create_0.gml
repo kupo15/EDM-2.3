@@ -1,5 +1,5 @@
 
-enum tourneyType {
+enum eventEnum {
 	
 team,
 individual
@@ -39,7 +39,7 @@ scrollbarActive = scrollbarIndex.none;
 scrollbar_disp = 0;
 scrollbar_disp_end = 0;
 
-tourney_type = tourneyType.team; // default to team event
+eventType = eventEnum.team; // default to team event
 
 distribute_leftover_skins = noone;
 

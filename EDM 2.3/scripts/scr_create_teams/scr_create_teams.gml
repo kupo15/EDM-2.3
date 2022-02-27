@@ -32,6 +32,9 @@ function scr_create_teams() {
 			}
 		}
 
+	// disable team scores and entry fees
+	eventType = pick(eventEnum.team,eventEnum.individual,team_number == 0);
+	
 	skins_input = true;
 	screen_change(screenEnum.eventRunning);
 	scr_sort_members(MEMBERS_LIST.list);

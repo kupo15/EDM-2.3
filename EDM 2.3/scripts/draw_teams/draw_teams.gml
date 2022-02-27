@@ -1,6 +1,6 @@
 function draw_team_header(xx,yy,ysep,_team) {
 	
-	var str_group = pick("Team ","Group ",tourney_type);
+	var str_group = pick("Team ","Group ",eventType);
 	var c_col = appblue;
 	var height = 40;
 	
@@ -8,7 +8,7 @@ function draw_team_header(xx,yy,ysep,_team) {
 	draw_text_height_color(xx+5,yy,string(str_group)+string(_team+1),c_col,height); // team number
 	
 	// team game
-	if (tourney_type == tourneyType.team) {
+	if (eventType == eventEnum.team) {
 		
 		var list = TEAM_LIST[_team];
 		var front = draw_value(list.teamNetFront,"-");
@@ -96,8 +96,8 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 			
 			draw_text_centered(xx+695,team_yy+(i*ysep),eventScores.skinsNet,50,155,ysep) // value
 	        }
-	    else
-	        {
+	    else if (eventType == eventEnum.team) {
+			
 			// blind team
 	        var _blindInd = eventDetails.blindTeam;
 			
@@ -185,24 +185,23 @@ function draw_teams() {
 		
 	scr_teams_scrolling(xx,yy,ww,sep);
 		
-	// draw blind/no team toggle
+	draw_event_running_buttons(in_popover);
+
+	// draw popovers
+	draw_edit_score();
+	draw_assign_blind();
+	
+	// debug
+	debug_randomize_scores();
+	}
+	
+function draw_event_running_buttons(in_popover) {
+	
 	var xx = 870;
 	var yy = 500;
 	var ww = 150;
 	var hh = 80;
-	var str = pick("Blind/\nNo Teams","Gross Skins/\n Net Skins",!skins_input);
 	
-	draw_rectangle_colour(xx,yy-400,xx+ww,yy-400+hh+hh,c_green,c_green,c_green,c_green,true);
-	
-	if draw_text_button(xx,yy-400,str,60,ww,hh+hh,,,,,!in_popover)
-	skins_input = !skins_input;
-   
-	// back button
-	draw_rectangle_colour(xx,yy-100,xx+ww,yy-100+hh,c_green,c_green,c_green,c_green,true);
-	
-	if draw_text_button(xx,yy-100,"Go Back",40,ww,hh,,,,,!in_popover)
-	screen_change(screenEnum.homeScreen,true);
-
 	// results button
 	var calc = activate_results_button();
 	var alpha = (calc*0.5)+0.5;
@@ -216,13 +215,22 @@ function draw_teams() {
 		season_save = false;
 		scr_calculate_results();
 		}
-
-	// draw popovers
-	draw_edit_score();
-	draw_assign_blind();
 	
-	// debug
-	debug_randomize_scores();
+	// back button
+	draw_rectangle_colour(xx,yy-100,xx+ww,yy-100+hh,c_green,c_green,c_green,c_green,true);
+	
+	if draw_text_button(xx,yy-100,"Go Back",40,ww,hh,,,,,!in_popover)
+	screen_change(screenEnum.homeScreen,true);
+	
+	if (eventType == eventEnum.individual)
+	exit;
+	
+	// draw blind/no team toggle
+	var str = pick("Blind/\nNo Teams","Gross Skins/\n Net Skins",!skins_input);
+	
+	draw_rectangle_colour(xx,yy-400,xx+ww,yy-400+hh+hh,c_green,c_green,c_green,c_green,true);	
+	if draw_text_button(xx,yy-400,str,60,ww,hh+hh,,,,,!in_popover)
+	skins_input = !skins_input;
 	}
 	
 function debug_randomize_scores() {
@@ -233,12 +241,15 @@ function debug_randomize_scores() {
 		{
 		var teamStruct = TEAM_LIST[i];
 		
-		teamStruct.teamNetFront = string(irandom(30)-10);
-		teamStruct.teamNetBack = string(irandom(30)-10);
+		if (eventType == eventEnum.team) {
+			
+			teamStruct.teamNetFront = string(irandom(30)-10);
+			teamStruct.teamNetBack = string(irandom(30)-10);
+			}
 						
 		// loop through members
-		for(var j=0;j<array_length(teamStruct.members);j++)
-			{
+		for(var j=0;j<array_length(teamStruct.members);j++)	{
+			
 			var memberStruct = teamStruct.members[j].eventScores;	
 
 			memberStruct.grossFront = string(irandom_range(33,50));
@@ -250,6 +261,7 @@ function debug_randomize_scores() {
 	
 function activate_results_button() {
 	
+	var isTeamEvent = (noTeamCount != ENTRANT_COUNT) && (eventType == eventEnum.team);
 	var calc = (ENTRANT_COUNT > 3); // must have at least entrants 
 	
 	// loop through teams
@@ -259,7 +271,7 @@ function activate_results_button() {
 		var frontNull = (teamStruct.teamNetFront == "");
 		var backNull = (teamStruct.teamNetBack == "");
 			
-		if (frontNull || backNull) && (noTeamCount != ENTRANT_COUNT)
+		if (frontNull || backNull) && isTeamEvent
 		return false;
 			
 		// loop through members

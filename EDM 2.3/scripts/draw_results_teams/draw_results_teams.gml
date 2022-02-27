@@ -49,7 +49,7 @@ function draw_team_result_tables(xx) {
 	var yy = 30;
 	var ww = 680;
 	var hh = 6*sep;
-	
+
 	var labels = ["Front","Back","18 Hole"];
 	var sortKey = ["frontRank","backRank","totalRank"];
 	var scoreKey = ["teamNetFront","teamNetBack","teamNetTotal"];
@@ -70,10 +70,16 @@ function draw_team_result_tables(xx) {
 	
 function draw_team_results_content(xx,yy,sep,sortKey,scoreKey,payoutKey) {
 	
-	var list = FINAL_EVENT_RESULTS.teamResults;
+	if (eventType == eventEnum.individual) {
+		
+		//draw_line_pixel(0,0,room_width,room_height,c_black,0.5);
+		//draw_text_centered(300,200,"NOT A TEAM EVENT",60,,,appblue);
+		exit;
+		}
 	
+	var list = FINAL_EVENT_RESULTS.teamResults;	
 	array_sort_struct(list,sortKey,true,["teamWinnings"]);
-	
+
 	var payoutCutoffInd = array_length(PAYOUT_TABLES.teamPayout[team_number])+1;
 	var cutoffDrawn = false;
 	var rankCount = 0;

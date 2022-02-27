@@ -105,8 +105,8 @@ function array_sort_struct(source_array,key,ascending,nestedFolder=[]) {
 
 	// add data to grid
 	var size = array_length(source_array);
-	for(var i=0;i<size;i++)
-		{
+	for(var i=0;i<size;i++) {
+		
 		var pointer = source_array[i];
 		
 		for(var j=0;j<array_length(nestedFolder);j++) {
@@ -121,7 +121,7 @@ function array_sort_struct(source_array,key,ascending,nestedFolder=[]) {
 		if (sort_value == undefined) {
 			
 			ds_grid_destroy(sorting_grid);
-			sm("score key undefined >> not sorted");
+			sm("score key "+key+" undefined >> not sorted");
 			exit;
 			}
 

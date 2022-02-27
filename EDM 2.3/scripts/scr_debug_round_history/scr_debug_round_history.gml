@@ -5,6 +5,8 @@ function RoundHistory() constructor {
 	
 	differential = 0;
 	differentialAdjusted = 0;
+	
+	teeData = {};
 	}
 
 function debug_generate_round_history(arr) {

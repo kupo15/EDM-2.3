@@ -1,3 +1,20 @@
+function draw_entrant_count_label(xx,yy) {
+	
+	if (eventType == eventEnum.team) {
+		
+		var size = team_number+1;
+		var str = "team "+string(team_index_entry+1);
+		}
+	else {
+		
+		var size = ENTRANT_COUNT;
+		var str = "entrant "+string(edit_score+1);
+		}
+		
+	// draw label
+	draw_text_height(xx,yy,str+"/"+string(size),25);
+	}
+
 function draw_edit_score_all() {
 	
 	var xx = 0;
@@ -28,8 +45,7 @@ function draw_edit_score_all() {
 	//scr_entrant_scrolling(xx,yy,hh);
 
 	// number of teams
-	var size = team_number+1;
-	draw_text_height(xx+430,yy+25,"team "+string(team_index_entry+1)+"/"+string(size),25);
+	draw_entrant_count_label(xx+430,yy+25);
 
 	// submit button
 	var can_click = !TEELIST_ACTIVE && (select_blind_team == undefined);
@@ -124,20 +140,12 @@ function draw_selected_edit_score(xx,list,size) {
 	return list[ind];
 	}
 
-function draw_edit_score_player_popup() {
+function draw_edit_score_player_popup_buttons(entrant,can_click) {
 	
-	var can_click = !TEELIST_ACTIVE && (select_blind_team == undefined);
-	var xx = 0;
-	var list = TEAM_LIST[team_index_entry].members;
-	var size = array_length(list);
-
-	var entrant = draw_selected_edit_score(xx,list,size);
+	if (eventType == eventEnum.individual)
+	exit;
+	
 	var eventDetails = entrant.eventDetails;
-		
-	// cutoff 
-	gpu_set_blendmode(bm_subtract);
-	draw_rectangle(520,0,room_width,room_height,false);
-	gpu_set_blendmode(bm_normal);
 	
 	// draw blind
 	var b_xx = 640;
@@ -178,6 +186,23 @@ function draw_edit_score_player_popup() {
 		}
 
 	draw_text_button(b_xx,b_yy-b_ww-15,"No Team",35,b_ww,65);
+	}
+
+function draw_edit_score_player_popup() {
+	
+	var can_click = !TEELIST_ACTIVE && (select_blind_team == undefined);
+	var xx = 0;
+	var list = TEAM_LIST[team_index_entry].members;
+	var size = array_length(list);
+
+	var entrant = draw_selected_edit_score(xx,list,size);
+		
+	// cutoff 
+	gpu_set_blendmode(bm_subtract);
+	draw_rectangle(520,0,room_width,room_height,false);
+	gpu_set_blendmode(bm_normal);
+	
+	draw_edit_score_player_popup_buttons(entrant,can_click);
 	
 	// draw list of members
 	var yy = 180+50;
@@ -236,6 +261,10 @@ function draw_edit_score_player_popup() {
 		var xoff = (clamp(edit_score_pos,entryType.teamFront,entryType.teamBack)-entryType.teamFront)*70;
 		draw_icon(,,340+xoff,180,70,sep,c_blue,0.3);
 		}
+	
+	// if an individual event
+	if (eventType == eventEnum.individual)
+	exit;	
 		
 	// draw team score
 	var xx = 20;
@@ -259,10 +288,7 @@ function draw_edit_score_player_popup() {
 		edit_score_pos = entryType.teamBack;
 		keypad_set_value(edit_score_pos,list.teamNetBack,,true);
 		}
-				
-	if (team_number == 0)
-	exit;
-	
+					
 	// draw Next Team button
 	var xx = 400;
 	var yy = 500;
@@ -289,87 +315,14 @@ function draw_edit_score_player_popup() {
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
 	if draw_text_button(xx,yy,"Previous\nTeam",height,ww,hh,,alpha,,true,can_click) {
 		
-		//edit_score_pos = entryType.memberEntryNext;
-		//entry_scores_individual_submit();
+		team_index_entry -= 2;
+		edit_score_pos = entryType.memberEntryNext;
+		entry_scores_individual_submit();
 		}
 		
 	// highlight
 	if (edit_score_pos == entryType.memberEntryNext) 
 	draw_icon(,,xx,yy,ww,hh,c_blue,0.3);
-	}
-	
-function draw_edit_score_team_popup() {
-	
-	var team_str = "Team ";
-	if tourney_type team_str = "Group ";
-	
-	for(var i=-1;i<2;i++)
-	draw_text(xx+15+(edit_score_scrolling_offset*500)+(i*500),yy+30+30,string(team_str)+string(edit_team_score+1+i+edit_score_offset)); // Draw Team name
-    
-	draw_set_font(fn_name);
-	draw_text(xx+40,yy+30+80+20+fn_off,string(team_str)+"Front"); // Front
-	draw_text(xx+40+180,yy+30+80+20+fn_off,string(team_str)+"Back"); // Back
-	draw_line(xx,yy+30+30+80+30,xx+ww,yy+30+30+80+30);
-
-	var scr = if_undef(team_score[edit_team_score,0]);
-	draw_text(xx+40+30,yy+30+30+80+30+fn_off,scr); // Team Score Front
-	var scr = if_undef(team_score[edit_team_score,1]);
-	draw_text(xx+40+30+180,yy+30+30+80+30+fn_off,scr); // Team Score Front
-    
-	var blind_size = ds_list_size(blind_list[edit_team_score]);
-	var team_size = ds_list_size(team_list[edit_team_score]);
-	var team_loop = min(team_size+1,5);
-	for(var i=0;i<team_loop;i++)
-	    {
-	    /*if i == team_size && scr_mouse_position_room_released(xx+ysep+10,yy+215+20+(i*ysep),480-ysep,ysep,mb_left,true)
-	    edit_team_add_member = true;*/
-        
-	    if i < team_size
-	        {
-	        var name = ds_list_find_value(team_list[edit_team_score],i);
-	        var sco_fr = if_undef(scores_grid[# 1,edit_team_offset+i]);
-	        var sco_back = if_undef(scores_grid[# 2,edit_team_offset+i]);
-	        if scores_grid[# 1,edit_team_offset+i] == undefined || scores_grid[# 2,edit_team_offset+i] == undefined
-	        var sco_tot = "-";
-	        else
-	        var sco_tot = scores_grid[# 1,edit_team_offset+i]+scores_grid[# 2,edit_team_offset+i];
-            
-	        if scr_mouse_position_room_released(xx+5,yy+215+20+(i*ysep),46,ysep,mb_left,true)
-	            {
-	            scr_remove_from_team(name,edit_team_score,i);
-	            scr_blinds_remove(scores_grid[# 0,i],scores_grid[# 5,i]);
-	            scores_grid_delete_member(edit_team_offset+i);
-	            }
-            
-//            draw_rectangle(xx+10,yy+215+20+(i*ysep),xx+10+30,yy+215+20+(i*ysep)+30,true);
-	        draw_sprite_ext(spr_crossout,0,xx+10,yy+215+25+(i*ysep),0.7,0.7,0,c_white,1);
-	        draw_text(xx+50,yy+215+(i*ysep),name); // draw team players
-	        draw_text(xx+50+260,yy+215+(i*ysep),sco_fr); // draw team players front
-	        draw_text(xx+50+260+70,yy+215+(i*ysep),sco_back); // draw team players back
-	        draw_text(xx+50+260+70+70,yy+215+(i*ysep),sco_tot); // draw team players total
-            
-	        var blind_col = appblue;
-	        draw_set_font(fn_name_it);
-	        if i+1 == team_size // if last name is drawn
-	        for(var b=0;b<blind_size;b++)
-	            {
-	            var bl_name = ds_list_find_value(blind_list[edit_team_score],b);
-	            draw_text_colour(xx+50,yy+215+((i+b+1)*ysep),bl_name,blind_col,blind_col,blind_col,blind_col,1); // draw blind players
-	            }
-	        draw_set_font(fn_name);
-	        }
-	    else if team_size+blind_size < 5
-	        {
-			// add another team member
-	        if scr_mouse_position_room_released(xx+ysep+10,yy+215+20+((i+blind_size)*ysep),480-ysep,ysep,mb_left,true)
-	        edit_team_add_member = true;
-        
-	        draw_set_alpha(0.5);
-	        draw_rectangle(xx+50,yy+215+20+((i+blind_size)*ysep),xx+450,yy+215+20+((i+blind_size)*ysep)+ysep,true);
-	        draw_set_alpha(1);
-	        draw_text_transformed(xx+150,yy+215+12+((i+blind_size)*ysep),"(add member)",0.7,0.7,0);
-	        }
-	    }
 	}
 
 function draw_edit_score() {
@@ -413,7 +366,11 @@ function entry_scores_team_submit(entry) {
 	
 function entry_scores_individual_submit(entry) {
 	
-	var list = TEAM_LIST[team_index_entry].members;
+	if (team_index_entry < -1)
+	team_index_entry = team_number-1;
+	
+	var ind = max(0,team_index_entry);
+	var list = TEAM_LIST[ind].members;
 	var teamSize = array_length(list);
 	var entrantStruct = list[edit_score];
 	var entrantRoundStats = entrantStruct.eventScores;
@@ -444,6 +401,10 @@ function entry_scores_individual_submit(entry) {
 										// reaches end exit
 										if (team_index_entry == team_number+1) {
 				
+											// loop
+											team_index_entry = 0;
+											break; 
+											
 											edit_score = noone;
 											edit_team_score = noone;
 											edit_team_add_member = false;

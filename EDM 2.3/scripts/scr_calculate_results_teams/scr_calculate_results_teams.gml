@@ -1,6 +1,8 @@
 function scr_calculate_results_teams() {	
 	
-	if (noTeamCount == ENTRANT_COUNT)
+	var isTeamEvent = (noTeamCount != ENTRANT_COUNT) && (eventType == eventEnum.team);
+	
+	if !isTeamEvent
 	exit;
 	
 	var tempRanking = [];
