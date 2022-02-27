@@ -34,7 +34,7 @@ function memberlist_swipe_left(ind,entryStruct) {
                
 	member_scroll_offset = clamp(member_scroll_offset,0,array_length(MEMBERS_LIST.list)-memberListDisplayCount);
 				   
-	audio_play_sound(snd_tap0,0,false);
+	scr_play_sound(snd_tap0);
 	}
 	
 function memberlist_swipe_right(ind,entryStruct) {			
@@ -54,7 +54,7 @@ function memberlist_swipe_right(ind,entryStruct) {
 		}
 
 	MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list);
-	audio_play_sound(snd_tap0,0,false);
+	scr_play_sound(snd_tap0);
 	}
 	
 function memberlist_add_to_team(ind,entryStruct) {
@@ -72,11 +72,11 @@ function memberlist_add_to_team(ind,entryStruct) {
 		array_delete(MEMBERS_LIST.list,ind,1); // remove from members list
 		member_scroll_offset = clamp(member_scroll_offset,0,array_length(MEMBERS_LIST.list)-memberListDisplayCount);
 
-		audio_play_sound(snd_tap0,0,false);
+		scr_play_sound(snd_tap0);
 		}
 	else {
 		
 		eventDetails.teamAssigned = undefined;
-		audio_play_sound(snd_tap0,0,false);
+		scr_play_sound(snd_tap0);
 		}
 	}

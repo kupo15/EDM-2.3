@@ -20,9 +20,9 @@ function scr_mouse_position_room_pressed(x_left,y_top,ww,hh,button,highlight,sou
 	    if mouse_check_button_pressed(button) || (button == noone)
 	        {
 	        if button != noone && sound {
-				
-				var num = irandom(2);
-				audio_play_sound(asset_get_index("snd_tap"+string(num)),0,false);
+
+				var sfx = "snd_tap"+string(irandom(2));
+				scr_play_sound(asset_get_index(sfx));
 				}
         
 	        return true;
@@ -55,8 +55,9 @@ function scr_mouse_position_room_released(x_left,y_top,ww,hh,button,highlight,is
 
 	        if (button != noone) {
 				
-				var num = irandom(2);			
-		        audio_play_sound(asset_get_index("snd_tap"+string(num)),0,false);
+				var sfx = "snd_tap"+string(irandom(2));
+				scr_play_sound(asset_get_index(sfx));
+				
 		        global.clicked = true;
 				}
 				

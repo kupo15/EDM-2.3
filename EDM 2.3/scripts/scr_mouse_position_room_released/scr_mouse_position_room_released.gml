@@ -17,9 +17,9 @@ function scr_click_button(xx,yy,ww,hh,button,highlight) {
 
 	if scr_button_hover(xx,yy,ww,hh,highlight) && mouse_check_button_released(button) {
 		
-		var num = irandom(2);			
+		var sfx = "snd_tap"+string(irandom(2));
+		scr_play_sound(asset_get_index(sfx));
 		
-		audio_play_sound(asset_get_index("snd_tap"+string(num)),0,false);
 		global.clicked = true;
 		
 		return true;
@@ -32,9 +32,9 @@ function scr_click_button_pressed(xx,yy,ww,hh,button,highlight) {
 
 	if scr_button_hover(xx,yy,ww,hh,highlight) && mouse_check_button_pressed(button) {
 		
-		var num = irandom(2);			
+		var sfx = "snd_tap"+string(irandom(2));
+		scr_play_sound(asset_get_index(sfx));
 		
-		audio_play_sound(asset_get_index("snd_tap"+string(num)),0,false);
 		global.clicked = true;
 		
 		return true;

@@ -22,8 +22,6 @@ function scr_calculate_results() {
 	lowNetResults = deep_copy(FINAL_EVENT_RESULTS.entrantResults);
 	low_net_rank_sort_results();
 
-	screen_change(screenEnum.eventResults);
-
 	// do the close enough screen
 	if SETTINGS.closeEnough && !close_enough {
 		
@@ -32,11 +30,12 @@ function scr_calculate_results() {
 	    close_enough_timer = room_speed*5;
 	    }
 	
-exit
-	if !season_save
+	//if !season_save
 	season_ranking_save();
 	
 	// save results
+	
+	screen_change(screenEnum.eventResults);
 	}
 
 function EventFinalResults() constructor {

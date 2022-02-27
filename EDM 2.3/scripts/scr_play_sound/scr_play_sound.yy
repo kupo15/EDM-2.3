@@ -3,10 +3,10 @@
   "isCompatibility": false,
   "parent": {
     "name": "Scripts",
-    "path": "folders/Objects/Main/Scripts.yy",
+    "path": "folders/Scripts/Scripts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_inputs",
+  "name": "scr_play_sound",
   "tags": [],
   "resourceType": "GMScript",
 }

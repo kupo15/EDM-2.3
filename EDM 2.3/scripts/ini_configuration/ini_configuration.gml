@@ -9,6 +9,7 @@
 #macro TEAM_LIST SAVE_FILE.activeEvent.teams
 #macro ENTRANT_COUNT SAVE_FILE.activeEvent.entrantCount
 #macro FINAL_EVENT_RESULTS SAVE_FILE.activeEvent.eventResults
+#macro EVENT_HISTORY SAVE_FILE.eventHistory
 
 #macro ENTRY_FEES SAVE_FILE.prizePool.entryFees
 #macro PAYOUT_TABLES SAVE_FILE.prizePool.payoutTable

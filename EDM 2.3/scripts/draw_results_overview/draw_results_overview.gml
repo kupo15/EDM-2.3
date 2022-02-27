@@ -247,7 +247,7 @@ function draw_results_final_buttons(page) {
 	var can_click = (close_enough_timer == -1) && (page == results_screen_end);
 	var rec_col = c_green;
 	
-	// start over
+	// new event
 	var xx = (page*room_width);
 	var xoff = 30;
 	var yy = 510;
@@ -257,7 +257,7 @@ function draw_results_final_buttons(page) {
 	var col = pick(c_black,c_red,!clear_all_safty);
 	
 	draw_text_centered(xx+xoff,yy,"(tap twice)",height*0.66,ww,hh*1.5);
-	draw_text_centered(xx+xoff,yy,"Start Over",height,ww,hh,col);
+	draw_text_centered(xx+xoff,yy,"New Event",height,ww,hh,col);
 	
 	if scr_mouse_position_room_released(xoff+screenOffset,yy,ww,hh,mb_left,true) {
 		

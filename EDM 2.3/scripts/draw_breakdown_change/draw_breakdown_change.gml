@@ -139,10 +139,11 @@ function draw_breakdown_change() {
 	draw_text(xx+sep,yy-80,str); // draw result
 
 	// Enter Keypad
-	if scr_mouse_position_room(xx+(2*sep),yy+(3*sep),sep,sep,noone,true) && mouse_check_button_released(mb_left)
-	   {
-	   var sfx = irandom(2);
-	   audio_play_sound(asset_get_index("snd_tap"+string(sfx)),0,false);
+	if scr_mouse_position_room(xx+(2*sep),yy+(3*sep),sep,sep,noone,true) && mouse_check_button_released(mb_left) {
+		
+	   var sfx = "snd_tap"+string(irandom(2));
+	   scr_play_sound(asset_get_index(sfx));
+	   
 	   submit = true;
 	   }
 

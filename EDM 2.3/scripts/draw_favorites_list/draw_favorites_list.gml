@@ -76,7 +76,7 @@ function draw_favorites_list(argument0) {
 	               ds_list_delete(favorites_list,list_slot); // delete from favorites list
 	               ds_list_delete(favorites_members_list,list_slot); // delete from favorites list
                
-	               audio_play_sound(snd_tap0,0,false);
+	               scr_play_sound(snd_tap0);
 	               }
 	           else if !deleting_member
 	               {
