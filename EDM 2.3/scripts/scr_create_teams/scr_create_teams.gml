@@ -24,7 +24,8 @@ function scr_create_teams() {
 				
 				eventDetails.teamAssigned = team_number;
 				eventDetails.entrantNumber = array_length(entrant_list);
-				eventDetails.courseHandicap = calculate_member_handicaps(memberDetails.handicapIndex,memberDetails.teeColor);
+				memberDetails.handicapIndex = calculate_member_handicap_index(member);
+				eventDetails.courseHandicap = calculate_member_course_handicap(memberDetails.handicapIndex,memberDetails.teeColor);
 				
 				array_push(entrant_list,member);
 				}

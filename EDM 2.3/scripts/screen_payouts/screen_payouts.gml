@@ -62,8 +62,8 @@ function draw_team_payout_table(ysep) {
 	yy += ysep;	
 	var arr = PAYOUT_TABLES.teamPayout[pref_team_num];
 	var size = array_length(arr);
-	for(var i=0;i<size;i++)
-	    {    
+	for(var i=0;i<size;i++) {
+		
 		var str = arr[i];	
 			
 	    // draw payout slot
@@ -109,8 +109,8 @@ function draw_entry_fee_table(ysep) {
 	var arrVal = [ENTRY_FEES.teamEntry,ENTRY_FEES.lowNetEntry,ENTRY_FEES.skinsEntry,ENTRY_FEES.blindFee];
 	var arrEnum = [entryType.teamEntry,entryType.lowNetEntry,entryType.skinsEntry,entryType.blindFee];
 	var size = array_length(arr);
-	for(var i=0;i<size;i++)
-	    {    
+	for(var i=0;i<size;i++) {
+		
 		var str = arrVal[i];
 			
 	    draw_set_halign(fa_right);
@@ -157,9 +157,9 @@ function draw_low_net_table(ysep) {
 	yy += ysep;	
 	var arr = PAYOUT_TABLES.lowNetPayout[pref_low_net_num];
 	var size = array_length(arr);
-	for(var i=0;i<size;i++)
-	    {    
-		var str = arr[i];	
+	for(var i=0;i<size;i++) {
+		
+		var str = arr[i];
 			
 	    // draw payout slot
 		draw_set_halign(fa_left);
