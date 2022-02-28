@@ -59,8 +59,11 @@ function scrollbar(xx,yy,ww,yy2,sep,arrList,scrollEnum,drawBar=true,canClick=tru
 	var size = array_length(arrList);
 
 	// no scrolling if size of list is less than what can be displayed
-	if (size-1 < displayCount) || !canClick
-	return arrList;
+	if (size-1 < displayCount) || !canClick {
+		
+		scrollbarActive = scrollbarIndex.none;
+		return arrList;
+		}
 	
 	var scrollStruct = scrollbarArray[scrollEnum];
 	var offset = scrollStruct.offset;
