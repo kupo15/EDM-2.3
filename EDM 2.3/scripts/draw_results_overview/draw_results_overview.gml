@@ -1,5 +1,7 @@
 function draw_results_overview(page) {
 
+	var can_click = (close_enough_timer == -1) && (page == results_screen_end);
+
 	var xx = 30+(page*room_width);
 	var yy = 60;
 	var ysep = 33;
@@ -7,7 +9,7 @@ function draw_results_overview(page) {
 	var ww = 970;
 	var hh = (ysep*row)+10;
 	
-	draw_results_final_content(xx,yy);
+	draw_results_final_content(xx,yy,can_click);
 	draw_results_final_headers(xx,yy);
 	draw_results_final_totals(xx,yy+hh);
 	draw_results_final_buttons(page);
@@ -23,11 +25,6 @@ function draw_results_overview(page) {
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
 
 	draw_close_enough_animation();
-	
-	var can_click = (close_enough_timer == -1) && (page == results_screen_end);
-
-	if can_click
-	scr_results_final_scrolling(xx,yy,ww,ysep,scrollbarIndex.resultsOverview);
 	}
 	
 function draw_close_enough_animation() {
@@ -117,13 +114,14 @@ function draw_results_final_headers(xx,yy) {
 	draw_text_centered(890,yy-height,"Net\nWinnings",height,70);
 	}
 
-function draw_results_final_content(xx,yy) {
+function draw_results_final_content(xx,yy,can_click) {
 	
+
 	var height = 35;
 	var sep = 40;
 	var prevTeamInd = 0;
-	
-	var arr = FINAL_EVENT_RESULTS.entrantResults;
+	var arr = scrollList(xx,yy,970,470,sep,FINAL_EVENT_RESULTS.entrantResults,scrollbarIndex.resultsOverview,,can_click);
+
 	for(var i=0;i<array_length(arr);i++) {
 		
 		var memberStruct = arr[i];
@@ -134,7 +132,7 @@ function draw_results_final_content(xx,yy) {
 		var teamInd = eventDetails.teamAssigned;
 		var newTeam = (teamInd != prevTeamInd);
 		
-		var ind = (i-results_final_offset);
+		var ind = (i-scrollbar_get_offset(scrollbarIndex.resultsOverview));
 		var yoff = (ind*sep);
 		var entryAlpha = pick(1,0.8,no_net_skins || no_gross_skins);
 
