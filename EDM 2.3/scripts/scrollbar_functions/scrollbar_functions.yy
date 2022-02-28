@@ -6,7 +6,7 @@
     "path": "folders/Scripts/Scripts/Results.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_results_final_scrolling",
+  "name": "scrollbar_functions",
   "tags": [],
   "resourceType": "GMScript",
 }

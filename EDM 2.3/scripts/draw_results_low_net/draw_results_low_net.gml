@@ -42,7 +42,7 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 	var size = array_length(arr);
 	for(var i=0;i<size;i++) {
 		
-		var ind = (i-results_low_net_offset);
+		var ind = (i-scrollbar_get_offset(scrollbarIndex.resultsLowNet));
 		var yoff = (ind*sep);
 
 		var memberStruct = arr[i];
@@ -141,7 +141,7 @@ function draw_low_net_result_tables(xx,sep,page) {
 		}
 	
 	// scrolling
-	scr_results_low_net_scrolling(xoff+screenOffset,yy,ww,hh,sep,rows,scrollbarIndex.resultsLowNet);
+	scrollbar(xoff+screenOffset,yy,ww,yy+hh,sep,FINAL_EVENT_RESULTS.entrantResults,scrollbarIndex.resultsLowNet);
 	}
 
 function draw_results_low_net_buttons(page,xx) {

@@ -66,7 +66,7 @@ function draw_member_list_content(xx,yy,ww,sep,height) {
 		}
 		
 	// scroll list
-	scrollList(xx,yy,ww,room_height,sep,list,scrollbarEnum,false);
+	scrollbar(xx,yy,ww,room_height,sep,list,scrollbarEnum,false);
 	}
 	
 function draw_member_list_member_details(height,sep) {

@@ -22,6 +22,7 @@ function ini_scrollbars() {
 	
 	scrollbarArray[scrollbarIndex.resultsOverview] = new Scrollbar(scrollbarIndex.resultsOverview);
 	scrollbarArray[scrollbarIndex.manageMemberList] = new Scrollbar(scrollbarIndex.manageMemberList);
+	scrollbarArray[scrollbarIndex.resultsLowNet] = new Scrollbar(scrollbarIndex.resultsLowNet);
 	}
 	
 function scrollbar_get_offset(_enum) {
@@ -31,7 +32,7 @@ function scrollbar_get_offset(_enum) {
 	return struct.offset;
 	}
 
-function scrollList(xx,yy,ww,yy2,sep,arrList,scrollEnum,drawBar=true,canClick=true) {
+function scrollbar(xx,yy,ww,yy2,sep,arrList,scrollEnum,drawBar=true,canClick=true) {
 	
 	var hh = yy2-yy;
 	var displayCount = hh/sep;
