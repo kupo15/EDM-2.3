@@ -4,12 +4,24 @@ function RoundHistory(_teeData,adjGross,_date=date_current_datetime()) construct
 	adjustedGross = adjGross;
 	includedIndex = false; // included in index calculation
 	
-	differential = 0;
-	differentialAdjusted = 0;
+	var diffs = round_calculate_differentials(adjGross,_teeData);
+	differential = diffs.differential;
+	differentialAdjusted = diffs.differentialAdj;
 	
 	teeData = deep_copy(_teeData);
 	
 	variable_struct_remove(teeData,"color");
+	}
+
+function round_calculate_differentials(adjGross,_teeData) {
+	
+	var course_rating = _teeData.rating;
+	var course_slope = _teeData.slope;
+	
+	var diff = adjGross-course_rating;
+	var diffAdj = diff*113/course_slope;
+	
+	return {differential: diff,differentialAdj: diffAdj};
 	}
 
 function debug_generate_round_history(arr) {
