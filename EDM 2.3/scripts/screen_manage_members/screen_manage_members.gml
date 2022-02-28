@@ -88,16 +88,19 @@ function draw_member_list_member_details(height,sep) {
 	yoff += sep;
 	draw_text_centered(xx+15,yy+yoff,"Favorite",height,,sep);
 	draw_icon(ico_checkbox,memberDetails.favorite,xx+380,yy+yoff,60,sep);
+	draw_line_pixel(xx,yy+sep,ww,1,,0.5);
 	
 	if draw_icon_click(,,xx,yy+yoff,ww,sep)
 	memberDetails.favorite = !memberDetails.favorite;
 
 	// tee marker
 	yoff += sep;
-	draw_text_centered(xx+15,yy+yoff,COURSE_DATA.courseData.courseName,height,,sep);
+	draw_text_centered(xx+15,yy+yoff,"Tee Marker",height,,sep);
+	draw_tee_marker(xx+190,yy+yoff,sep,memberDetails.teeColor);
+	draw_line_pixel(xx,yy+sep,ww,1,,0.5);
 
-	draw_icon_click(,,xx,yy+yoff,ww,sep)
-
+	if draw_icon_click(,,xx,yy+yoff,ww,sep)
+	tee_popover_init(memberStruct,room_width-300,room_height,,memberDetails.teeColor);
 	}
 		
 function add_member_button() {
