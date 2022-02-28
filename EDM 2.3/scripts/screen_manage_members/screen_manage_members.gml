@@ -19,7 +19,7 @@ function manage_members_members_list() {
 	draw_line_pixel(0,yy,ww,1);
 	
 	// header
-	draw_text_centered(0,yy-sep,"Members List",height,ww,sep,appblue);
+	draw_text_button(0,yy-sep,"Members List",height,ww,sep,appblue,,false);
 	
 	// components
 	draw_member_list_content(xx,yy,ww,sep,height,can_click);
@@ -33,9 +33,15 @@ function draw_member_list_content(xx,yy,ww,sep,height,can_click) {
 	var list = MEMBERS_LIST.list;
 	var size = array_length(list);
 	var yoff = 0;
-	for(var i=0;i<size;i++) {
+
+	var rows = (room_height-50)/sep;
+	var offset = scrollbar_get_offset(scrollbarEnum);
+	var pos_start = 0; // floor(offset);
+	var pos_end = size; // min(size,ceil(offset)+rows);
+	for(var i=pos_start;i<pos_end;i++) {
 		
-		var ypos = yoff-(scrollbar_get_offset(scrollbarEnum)*sep);
+		var ind = (i-offset);
+		var ypos = yoff-(offset*sep);
 		var selected = (manageMemberIndex == i);
 		
 		var memberStruct = list[i];
