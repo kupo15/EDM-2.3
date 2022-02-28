@@ -26,7 +26,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Tee Selection",
-    "path": "folders/Objects/Tee Selection.yy",
+    "path": "folders/Objects/Popovers/Tee Selection.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_tee_selector",

@@ -17,6 +17,8 @@ ini_styles();
 ini_resolution();
 
 manageMemberIndex = 0;
+manageMemberScrollOffset = 0;
+manageMemberScrollEnd = 0;
 
 season_breakdown_add_member = false;
 season_breakdown_date_x = noone; // select a date

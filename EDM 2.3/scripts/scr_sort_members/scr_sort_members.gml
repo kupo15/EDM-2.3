@@ -48,20 +48,3 @@ function scr_sort_members(arr,sortRecent=true) {
 	
 	return arr;
 	}
-	
-function member_add_recent(name) {
-	
-	var list = MEMBERS_LIST.list;
-	for(var i=0;i<array_length(list);i++) {
-		
-		var member = list[i];
-		var memberDetails = member.memberDetails;
-		
-		if !memberDetails.favorite {
-			
-			array_insert(list,i,new Member(name));
-			break;
-			}
-		}
-	
-	}

@@ -17,7 +17,7 @@ function draw_icon(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha=draw_
 	draw_set_alpha(1);
 	}
 	
-function draw_icon_click(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha=draw_get_alpha(),highlight=true,canEdit,isKeypad=undefined) {
+function draw_icon_click(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha=draw_get_alpha(),highlight=true,canEdit=undefined,isKeypad=undefined) {
 	
 	draw_icon(spr,ind,xx,yy,ww,hh,bgcolor,alpha);
 	

@@ -3,7 +3,28 @@ enum scrollbarIndex {
 none = -1,
 resultsOverview,
 resultsLowNet,
+manageMemberList,
 }
+
+function Scrollbar() constructor {
+	
+	
+	}
+
+function ini_scrollbars() {
+	
+	scrollbarStruct = {};
+	}
+
+function scroll_list(xx,yy,ww,displayCount,sep,arrList,scrollEnum,drawBar=true,canClick=true) {
+	
+	var hh = sep*displayCount;
+	var size = array_length(arrList);
+
+	// no scrolling if size of list is less than what can be displayed
+	if (size-1 < displayCount) || !canClick
+	exit;
+	}
 
 function scr_results_final_scrolling(xx,yy,ww,sep,scrollEnum) {
 

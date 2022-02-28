@@ -27,43 +27,56 @@ function manage_members_members_list() {
 	}
 	
 function draw_member_list_content(xx,yy,ww,sep,height) {
-	
+		
 	var list = MEMBERS_LIST.list;
 	var size = array_length(list);
+	var yoff = 0;
 	for(var i=0;i<size;i++) {
 		
+		var ypos = yoff-manageMemberScrollOffset;
 		var selected = (manageMemberIndex == i);
-		var yoff = (i*sep);
 		
 		var memberStruct = list[i];
 		var memberDetails = memberStruct.memberDetails;
 		
 		var favorite = memberDetails.favorite;
+		var archived = memberDetails.archived;
 		var bgCol = pick(c_black,FAVORITE_BUTTON_STYLE.bgColor,favorite);
 		
-		if draw_icon_click(,,xx,yy+yoff,ww,sep) {
+		if archived
+		continue;
+		
+		if draw_icon_click(,,xx,yy+ypos,ww,sep) {
 			
 			manageMemberIndex = i;
 			}
 		
 		// highlight
 		if selected
-		draw_icon(,,xx,yy+yoff,ww,sep,appblue,0.5);
+		draw_icon(,,xx,yy+ypos,ww,sep,appblue,0.5);
 		
 		// member name
-		draw_text_centered(xx+15,yy+yoff,memberDetails.fullName,height,,sep,bgCol);
+		draw_text_centered(xx+15,yy+ypos,memberDetails.fullName,height,,sep,bgCol);
 		
 		// separator
-		draw_line_pixel(xx,yy+yoff+sep,ww,1,c_black,0.3);
+		draw_line_pixel(xx,yy+ypos+sep,ww,1,c_black,0.3);
+		
+		yoff += sep;
 		}
 	}
 	
 function draw_member_list_member_details(height,sep) {
 	
+	var memberStruct = MEMBERS_LIST.list[manageMemberIndex];
+	var memberDetails = memberStruct.memberDetails;
+	
+	if memberDetails.archived
+	exit;
+	
 	var xx = 480;
 	var yy = 50;
 	var ww = 450;
-	var hh = 400;
+	var hh = sep*7;
 	var yoff = 0;
 	
 	// outline
@@ -73,13 +86,10 @@ function draw_member_list_member_details(height,sep) {
 	draw_text_centered(xx,yy-height,"Member Details",height,ww,height,appblue);
 	
 	// details
-	var memberStruct = MEMBERS_LIST.list[manageMemberIndex];
-	var memberDetails = memberStruct.memberDetails;
-
 	// name
 	draw_text_centered(xx+15,yy,memberDetails.fullName,height,,sep);
 	draw_icon(ico_edit,0,xx+380,yy+yoff,60,sep,,0.3);
-	draw_line_pixel(xx,yy+sep,ww,1,,0.5);
+	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
 
 	if draw_icon_click(,,xx,yy,ww,sep)
 	member_edit_name(memberStruct);
@@ -88,7 +98,7 @@ function draw_member_list_member_details(height,sep) {
 	yoff += sep;
 	draw_text_centered(xx+15,yy+yoff,"Favorite",height,,sep);
 	draw_icon(ico_checkbox,memberDetails.favorite,xx+380,yy+yoff,60,sep);
-	draw_line_pixel(xx,yy+sep,ww,1,,0.5);
+	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
 	
 	if draw_icon_click(,,xx,yy+yoff,ww,sep)
 	memberDetails.favorite = !memberDetails.favorite;
@@ -97,10 +107,20 @@ function draw_member_list_member_details(height,sep) {
 	yoff += sep;
 	draw_text_centered(xx+15,yy+yoff,"Tee Marker",height,,sep);
 	draw_tee_marker(xx+190,yy+yoff,sep,memberDetails.teeColor);
-	draw_line_pixel(xx,yy+sep,ww,1,,0.5);
+	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
 
 	if draw_icon_click(,,xx,yy+yoff,ww,sep)
 	tee_popover_init(memberStruct,room_width-300,room_height,,memberDetails.teeColor);
+	
+	// delete member
+	yoff = 6*sep;
+	
+	if draw_icon_click(,,xx,yy+yoff,ww,sep,appblue,0.7)
+	member_delete(memberStruct);
+	// popover_member_delete_init(memberStruct);
+	
+	draw_text_centered(xx+15,yy+yoff,"Delete Member",height,,sep,c_red);
+	draw_icon(ico_trash,0,xx+380,yy+yoff,60,sep);
 	}
 		
 function add_member_button() {
