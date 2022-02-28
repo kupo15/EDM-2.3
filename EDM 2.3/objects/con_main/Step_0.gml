@@ -1,3 +1,5 @@
+
+scrollbar_apply_friction();
 scr_inputs();
 scr_main_timer_beep();
 retrieve_keypad(); // handle key entries

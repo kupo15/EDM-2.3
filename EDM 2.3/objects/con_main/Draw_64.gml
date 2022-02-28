@@ -1,3 +1,9 @@
+global.mouse_xprev = mouse_x;
+global.mouse_yprev = mouse_y;
+
+if !dev_mode
+exit;
+
 var col = c_white;
 var mx = clamp(mouse_x,0,room_width);
 var my = clamp(mouse_y,0,room_height);

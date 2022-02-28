@@ -38,23 +38,24 @@ edit_event_time_offset = 8;
 edit_event_time_offset_start = 0;
 season_ranking_disp = 0;
 
-edit_member_tee = undefined;
-
 scrollbarActive = scrollbarIndex.none;
 scrollbar_disp = 0;
 scrollbar_disp_end = 0;
 
 eventType = eventEnum.team; // default to team event
 
-distribute_leftover_skins = noone;
-
 // pointer variables
-global.clicked = false;
 mouse_xstart = 0;
 mouse_ystart = 0;
+mouse_left = 0;
+
+global.clicked = false;
+
 global.mouse_xdist = 0
 global.mouse_ydist = 0;
-mouse_left = 0;
+
+global.mouse_xprev = 0;
+global.mouse_yprev = 0;
 
 scrolling = false;
 results_calculated = false;
@@ -62,7 +63,7 @@ results_screen = 0;
 results_screen_start = 0;
 results_screen_end = 0;
 results_screen_momentum = 0;
-fn_off = -14;
+
 clear_all_safty = true;
 default_payout_safty = true;
 global.save_loaded = false; // if you loaded previous results

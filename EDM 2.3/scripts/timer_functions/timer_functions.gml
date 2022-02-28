@@ -1,6 +1,7 @@
 enum mainTimers {
 	
 renameEntry,
+scrollFlick,
 enumcount
 }
 
