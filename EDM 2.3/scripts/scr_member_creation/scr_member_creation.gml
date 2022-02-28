@@ -1,5 +1,5 @@
 	
-function Member(_name,_teeColor=choose("white","gold","blue","silver","combo"),_favorite=false) constructor {
+function Member(_name,_teeColor="silver",_favorite=false) constructor {
 	
 	memberId = MEMBERS_LIST.nextMemberId;
 	

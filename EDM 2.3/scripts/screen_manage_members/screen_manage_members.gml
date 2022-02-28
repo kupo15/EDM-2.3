@@ -134,6 +134,14 @@ function draw_member_list_member_details(height,sep,can_click) {
 	if draw_icon_click(,,xx,yy+yoff,ww,sep,,,,can_click)
 	tee_popover_init(memberStruct,room_width-300,room_height,,memberDetails.teeColor);
 		
+	// event history
+	yoff += sep;
+	draw_text_centered(xx+15,yy+yoff,"View Event History",height,,sep);
+	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
+
+	if draw_icon_click(,,xx,yy+yoff,ww,sep,,,,can_click)
+	{}	
+		
 	// delete member
 	yoff = 6*sep;
 	
@@ -169,7 +177,7 @@ function sort_member_button(can_click) {
 	
 	draw_rectangle_color(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,true);
 	
-	if draw_text_button(xx,yy,"Sort Members",height,ww,hh,c_white,,,,can_click)
+	if draw_text_button(xx,yy,"Sort Members",height,ww,hh,,,,,can_click)
 	MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list,false);
 	}
 	
