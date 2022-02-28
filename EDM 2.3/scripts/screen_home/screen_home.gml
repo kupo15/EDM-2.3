@@ -21,7 +21,7 @@ function debug_fill_teams() {
 			
 			team_index = i;
 			
-			while (array_length(TEAM_LIST[i].members) < 5) {
+			while (array_length(TEAM_LIST[i].members) < teamMemberMax) {
 
 				var memberStruct = MEMBERS_LIST.list[0];
 				memberlist_add_to_team(0,memberStruct);

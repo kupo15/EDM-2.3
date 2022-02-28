@@ -3,7 +3,7 @@ function Member(_name,_teeColor=choose("white","gold","blue","silver","combo"),_
 	
 	memberId = MEMBERS_LIST.nextMemberId;
 	
-	memberDetails = new MemberInfo(_name,_favorite,_teeColor);	
+	memberDetails = new MemberDetails(_name,_favorite,_teeColor);	
 	eventDetails = new EventDetails();
 	eventScores = new EventScores();
 	eventResults = new EventResults();
@@ -23,7 +23,7 @@ function parse_name(name) {
 	return {first: _first, last: _last};
 	}
 		
-function MemberInfo(_name,_favorite,_teeColor) constructor {
+function MemberDetails(_name,_favorite,_teeColor) constructor {
 	
 	var parsedName = parse_name(_name);
 	

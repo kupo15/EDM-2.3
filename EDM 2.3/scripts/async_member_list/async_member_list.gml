@@ -29,7 +29,7 @@ function async_member_edit(name) {
 	
 	var parsedName = parse_name(name);
 
-	with edit_member_slot.memberDetails {
+	with edit_member_struct.memberDetails {
 		
 		fullName = name;
 		firstName = parsedName.first;

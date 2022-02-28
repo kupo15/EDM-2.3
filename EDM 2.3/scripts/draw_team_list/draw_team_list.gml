@@ -80,26 +80,3 @@ function draw_team_list_body(xx,yy,ysep) {
 			}
 	    }
 	}
-
-function remove_from_team(teamArr,ind,memberStruct) {
-	   
-	var eventDetails = memberStruct.eventDetails;	
-	eventDetails.teamAssigned = undefined;
-	
-	array_delete(teamArr,ind,1);
-	ENTRANT_COUNT--; // remove from entrant count
-         		 
-	// add back to member list
-	var list = MEMBERS_LIST.list;
-	for(var i=0;i<array_length(list);i++) {
-		
-		var listEntry = list[i];
-		var memberDetails = listEntry.memberDetails;
-		
-		if memberDetails.favorite
-		continue;
-		
-		array_insert(list,i,memberStruct);
-		break;
-		}    
-	}

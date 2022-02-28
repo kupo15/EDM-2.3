@@ -61,22 +61,40 @@ function memberlist_add_to_team(ind,entryStruct) {
 	
 	var eventDetails = entryStruct.eventDetails;
 	var teamGroup = TEAM_LIST[team_index].members;
+	var canAdd = (array_length(teamGroup) < teamMemberMax) || (eventType == eventEnum.individual)
 	
-	if (array_length(teamGroup) < teamMemberMax) {
-		// add to team
+	if !canAdd
+	exit;
+	
+	eventDetails.teamAssigned = team_index;
+	array_push(teamGroup,entryStruct); // add to group
+	ENTRANT_COUNT++; // add to entrant number
 		
-		eventDetails.teamAssigned = team_index;
-		array_push(teamGroup,entryStruct); // add to group
-		ENTRANT_COUNT++; // add to entrant number
-		
-		array_delete(MEMBERS_LIST.list,ind,1); // remove from members list
-		member_scroll_offset = clamp(member_scroll_offset,0,array_length(MEMBERS_LIST.list)-memberListDisplayCount);
+	array_delete(MEMBERS_LIST.list,ind,1); // remove from members list
+	member_scroll_offset = clamp(member_scroll_offset,0,array_length(MEMBERS_LIST.list)-memberListDisplayCount);
 
-		scr_play_sound(snd_tap0);
-		}
-	else {
+	scr_play_sound(snd_tap0);
+	}
+	
+function remove_from_team(teamArr,ind,memberStruct) {
+	   
+	var eventDetails = memberStruct.eventDetails;	
+	eventDetails.teamAssigned = undefined;
+	
+	array_delete(teamArr,ind,1);
+	ENTRANT_COUNT--; // remove from entrant count
+         		 
+	// add back to member list
+	var list = MEMBERS_LIST.list;
+	for(var i=0;i<array_length(list);i++) {
 		
-		eventDetails.teamAssigned = undefined;
-		scr_play_sound(snd_tap0);
-		}
+		var listEntry = list[i];
+		var memberDetails = listEntry.memberDetails;
+		
+		if memberDetails.favorite
+		continue;
+		
+		array_insert(list,i,memberStruct);
+		break;
+		}    
 	}

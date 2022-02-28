@@ -21,6 +21,14 @@ function ActiveEvent() constructor {
 	entrantCount= 0;
 	eventResults = undefined;
 
+	eventsRun = {
+		
+		teamLowNet: true,
+		skinsGross: true,
+		skinsNet: true,
+		individualLowNet: true,
+		}
+
 	teams = [
 			
 		new Team(0),

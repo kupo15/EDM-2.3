@@ -146,9 +146,9 @@ function draw_favorites_list(argument0) {
 
 	if timer = 0
 	    {
-	    edit_member_slot = list_slot+favorites_scroll_offset;
+	    edit_member_struct = list_slot+favorites_scroll_offset;
 	    list_slot = noone;
 	    edit_member = true;
-	    add_member = get_string_async("Edit Member Name",favorites_members_list[| edit_member_slot]);
+	    add_member = get_string_async("Edit Member Name",favorites_members_list[| edit_member_struct]);
 	    }
 	}

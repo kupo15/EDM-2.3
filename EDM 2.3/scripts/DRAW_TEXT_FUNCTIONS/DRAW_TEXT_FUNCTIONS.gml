@@ -356,9 +356,11 @@ return 0;
 return ll*scale;
 }
 
-function draw_text_button(xx,yy,str,height,region_ww,region_hh,col=draw_get_color(),alpha=draw_get_alpha(),highlight=true,isKeypad=false,can_click=true) {
+function draw_text_button(xx,yy,str,height,region_ww,region_hh,col=draw_get_color(),alpha=draw_get_alpha(),highlight=true,isKeypad=false,can_click=true,halignOverride=false) {
 	
-	draw_text_centered(xx,yy,str,height,region_ww,region_hh,col,alpha);
+	var text_region_ww = pick(region_ww,undefined,halignOverride);
+	
+	draw_text_centered(xx,yy,str,height,text_region_ww,region_hh,col,alpha);
 
 	return scr_mouse_position_room_released(xx,yy,region_ww,region_hh,mb_left,highlight,isKeypad,can_click);
 	}

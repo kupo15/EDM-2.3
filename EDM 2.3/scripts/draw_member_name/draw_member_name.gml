@@ -25,7 +25,6 @@ function draw_member_name(xx,yy,struct,height,ww=undefined,hh=undefined) {
 	var teeStruct = TEE_DATA[$ teeName];
 
 	draw_sprite_ext(ico_tee_marker,0,xx+str_ww+2,yy+(hh*0.5),1,1,0,teeStruct.color,1);
-	//draw_circle_color(xx+str_ww,yy+(hh*0.5),7,teeStruct.color,teeStruct.color,teeName=="white");
 	}
 	
 function get_entrant_by_id(ind) {

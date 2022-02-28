@@ -15,10 +15,13 @@ eventResults
 function ini_screens() {
 	
 	drawScreen[screenEnum.homeScreen] = screen_home;
+	
 	drawScreen[screenEnum.settingsHome] = screen_settings;
 	drawScreen[screenEnum.seasonRank] = screen_season_rankings;
 	drawScreen[screenEnum.preferences] = draw_preferences;
 	drawScreen[screenEnum.payoutSettings] = screen_payouts;
+	drawScreen[screenEnum.manageMembers] = screen_manage_members;
+	
 	drawScreen[screenEnum.eventRunning] = screen_score_entry;
 	drawScreen[screenEnum.eventResults] = screen_results;
 	

@@ -16,6 +16,8 @@ ini_screens();
 ini_styles();
 ini_resolution();
 
+manageMemberIndex = 0;
+
 season_breakdown_add_member = false;
 season_breakdown_date_x = noone; // select a date
 season_breakdown_edit_x = noone; // edit the breakdown
@@ -120,7 +122,7 @@ surface = surface_create(room_width,room_height);
 // logic variables
 add_member = false;
 edit_member = false;
-edit_member_slot = noone;
+edit_member_struct = undefined;
 edit_score = noone;
 edit_team_score = noone;
 
