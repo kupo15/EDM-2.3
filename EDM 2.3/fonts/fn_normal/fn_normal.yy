@@ -130,7 +130,7 @@
     "path": "folders/Fonts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "fn_name",
+  "name": "fn_normal",
   "tags": [],
   "resourceType": "GMFont",
 }

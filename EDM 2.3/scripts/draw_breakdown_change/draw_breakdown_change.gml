@@ -36,7 +36,7 @@ function draw_breakdown_change() {
 	// edit player's score
 	draw_text(xx+15,yy+30+30,season_ranking_grid[# 0,season_breakdown_edit_y]); // Draw player's name
 
-	draw_set_font(fn_name);
+	draw_set_font(fn_normal);
 	draw_text(xx+40,yy+30+80+20+fn_off,"Total Winnings"); // Front
 
 	draw_text(xx+40+30,yy+30+30+80+30+fn_off,tot_winnings); // Winnings

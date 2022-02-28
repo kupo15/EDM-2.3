@@ -60,9 +60,15 @@ draw_surface(surf,x,y);
 
 // draw entryString
 var str = pick(entryString,blankStringDisplay,entryString=="");
+var strCol = pick(ADD_MEMBER_BUTTON_STYLE.bgColor,c_gray,overwriteEntry);
+var font = pick(fn_normal,fn_italic,overwriteEntry);
 
 draw_set_halign(fa_left);
-draw_text_centered(x+25,y,str,keyHeight*0.6,,keyHeight,ADD_MEMBER_BUTTON_STYLE.bgColor);
+draw_set_font(font);
+
+draw_text_centered(x+25,y,str,keyHeight*0.6,,keyHeight,strCol);
+
+draw_set_font(fn_normal);
 
 // inputs
 if scr_mouse_position_room_released(x+(keyWidth*2),y,keyWidth,keyHeight,mb_left,true,true,!TEELIST_ACTIVE)
@@ -84,7 +90,7 @@ for(var j=0;j<3;j++) {
 			case "+/-": negate_entry(); break;
 			case "Done": submit_entry(); break;
 			
-			default: append_character(str[ind]); break;
+			default: select_input_entry(str[ind]); break;
 			}
 		}
 	}

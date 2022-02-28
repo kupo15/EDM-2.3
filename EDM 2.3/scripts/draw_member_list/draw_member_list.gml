@@ -81,7 +81,7 @@ function draw_member_list(ysep) {
 		var favorite = entrantDetails.favorite;
 		var assigned = is_real(eventDetails.teamAssigned);
 		
-		var nameFont = pick(fn_name,fn_name_it,assigned);
+		var nameFont = pick(fn_normal,fn_italic,assigned);
 	    var name_col = pick(BUTTON_STYLE.textColor,FAVORITE_BUTTON_STYLE.textColor,favorite);	
 	    var button_col = pick(BUTTON_STYLE.bgColor,FAVORITE_BUTTON_STYLE.bgColor,favorite);	
 		var alph = clamp((xx_mouse)/100,0,1);
@@ -107,7 +107,7 @@ function draw_member_list(ysep) {
 		
 		draw_set_font(nameFont);
 	    draw_text_centered(xx+15+xx_mouse,yy+(i*ysep),name,45,,button_hh,name_col); // draw member name
-		draw_set_font(fn_name);
+		draw_set_font(fn_normal);
 		
 		// assigned overlay
 		if assigned {

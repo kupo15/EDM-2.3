@@ -8,6 +8,7 @@ height = 4*keyHeight+displayHeight;
 
 surf = -1;
 
+overwriteEntry = true;
 maxCharacters = 3;
 entryString = "";
 startingString = "";

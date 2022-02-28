@@ -26,6 +26,7 @@ function init_keypad(entry_enum,initValue="",blankValue="-",_negate=false,xx=obj
 		
 		negate = _negate;
 		active = true;
+		overwriteEntry = true;
 		entryString = initValue;
 		startingString = initValue;
 		blankStringDisplay = blankValue;
@@ -43,5 +44,6 @@ function keypad_set_value(entry_enum,initValue="",blankValue="-",_negate=false) 
 		entryString = initValue;
 		startingString = initValue;
 		blankStringDisplay = blankValue;
+		overwriteEntry = true;
 		}
 	}

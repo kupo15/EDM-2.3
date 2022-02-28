@@ -130,7 +130,7 @@
     "path": "folders/Fonts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "fn_name_it",
+  "name": "fn_italic",
   "tags": [],
   "resourceType": "GMFont",
 }

@@ -35,6 +35,14 @@ function negate_entry() {
 	negate = !negate;
 	}
 	
+function select_input_entry(str) {
+	
+	if overwriteEntry
+	entryString = "";
+	
+	append_character(str);
+	}
+	
 function append_character(str) {
 		
 	var str_ll = string_length(entryString);
@@ -47,6 +55,7 @@ function append_character(str) {
 	
 	convert = abs(convert)*neg;
 
+	overwriteEntry = false;
 	entryString = string(convert);
 	}
 	
