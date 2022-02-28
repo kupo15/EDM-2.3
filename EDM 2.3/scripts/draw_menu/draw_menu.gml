@@ -51,11 +51,22 @@ function screen_change(ind,clear=false) {
 	
 function screen_back(clear=false) {
 	
+	screen_change_actions();
+	
 	if (array_length(prevScreenStack) > 0)
 	screen_index = array_pop(prevScreenStack);
 	
 	if clear
 	prevScreenStack = [];
+	}
+	
+function screen_change_actions() {
+	
+	switch screen_index
+		{
+		case screenEnum.eventResults: scr_calculate_results(); break;	
+		case screenEnum.manageMembers: members_archive_selected(); break;	
+		}
 	}
 	
 function draw_settings_icon() {
@@ -74,9 +85,6 @@ function draw_settings_icon() {
 			in_settings = false;
 			
 			screen_back();
-			
-			if (screen_index == screenEnum.eventResults)
-			scr_calculate_results();
 			}
 		else {
 			

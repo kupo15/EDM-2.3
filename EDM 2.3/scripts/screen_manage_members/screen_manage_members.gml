@@ -141,3 +141,28 @@ function add_member_button(can_click) {
 	if draw_text_button(xx,yy,"Create Member",height,ww,hh,c_white,,,,can_click && !add_member)
 	member_create_new();
 	}
+	
+function sort_member_button(can_click) {
+	
+	
+	}
+	
+function members_archive_selected() {
+	
+	var list = MEMBERS_LIST.list;
+	var size = array_length(list);
+	for(var i=0;i<size;i++) {
+		
+		var memberStruct = list[i];
+		var memberDetails = memberStruct.memberDetails;
+		
+		if memberDetails.archived {
+			
+			array_push(MEMBERS_LIST.archived,memberStruct);
+			array_delete(list,i,1);
+			
+			i--;
+			size--;
+			}	
+		}
+	}
