@@ -5,6 +5,7 @@ function screen_manage_members() {
 	
 function manage_members_members_list() {
 	
+	var can_click = !global.popoverActive;
 	var xx = 0;
 	var yy = 50;
 	var ww = 370;
@@ -21,12 +22,12 @@ function manage_members_members_list() {
 	draw_text_centered(0,yy-sep,"Members List",height,ww,sep,appblue);
 	
 	// components
-	draw_member_list_content(xx,yy,ww,sep,height);
-	draw_member_list_member_details(height,sep);
-	add_member_button();
+	draw_member_list_content(xx,yy,ww,sep,height,can_click);
+	draw_member_list_member_details(height,sep,can_click);
+	add_member_button(can_click);
 	}
 	
-function draw_member_list_content(xx,yy,ww,sep,height) {
+function draw_member_list_content(xx,yy,ww,sep,height,can_click) {
 		
 	var scrollbarEnum = scrollbarIndex.manageMemberList;
 	var list = MEMBERS_LIST.list;
@@ -47,7 +48,7 @@ function draw_member_list_content(xx,yy,ww,sep,height) {
 		if archived
 		continue;
 		
-		if draw_icon_click(,,xx,yy+ypos,ww,sep) {
+		if draw_icon_click(,,xx,yy+ypos,ww,sep,,,,can_click) {
 			
 			manageMemberIndex = i;
 			}
@@ -66,10 +67,10 @@ function draw_member_list_content(xx,yy,ww,sep,height) {
 		}
 		
 	// scroll list
-	scrollbar(xx,yy,ww,room_height,sep,list,scrollbarEnum,false);
+	scrollbar(xx,yy,ww,room_height,sep,list,scrollbarEnum,false,can_click);
 	}
 	
-function draw_member_list_member_details(height,sep) {
+function draw_member_list_member_details(height,sep,can_click) {
 	
 	var memberStruct = MEMBERS_LIST.list[manageMemberIndex];
 	var memberDetails = memberStruct.memberDetails;
@@ -95,7 +96,7 @@ function draw_member_list_member_details(height,sep) {
 	draw_icon(ico_edit,0,xx+380,yy+yoff,60,sep,,0.3);
 	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
 
-	if draw_icon_click(,,xx,yy,ww,sep)
+	if draw_icon_click(,,xx,yy,ww,sep,,,,can_click)
 	member_edit_name(memberStruct);
 	
 	// favorite
@@ -104,7 +105,7 @@ function draw_member_list_member_details(height,sep) {
 	draw_icon(ico_checkbox,memberDetails.favorite,xx+380,yy+yoff,60,sep);
 	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
 	
-	if draw_icon_click(,,xx,yy+yoff,ww,sep)
+	if draw_icon_click(,,xx,yy+yoff,ww,sep,,,,can_click)
 	memberDetails.favorite = !memberDetails.favorite;
 
 	// tee marker
@@ -113,13 +114,13 @@ function draw_member_list_member_details(height,sep) {
 	draw_tee_marker(xx+190,yy+yoff,sep,memberDetails.teeColor);
 	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
 
-	if draw_icon_click(,,xx,yy+yoff,ww,sep)
+	if draw_icon_click(,,xx,yy+yoff,ww,sep,,,,can_click)
 	tee_popover_init(memberStruct,room_width-300,room_height,,memberDetails.teeColor);
 	
 	// delete member
 	yoff = 6*sep;
 	
-	if draw_icon_click(,,xx,yy+yoff,ww,sep,appblue,0.7)
+	if draw_icon_click(,,xx,yy+yoff,ww,sep,appblue,0.7,,can_click)
 	member_delete(memberStruct);
 	// popover_member_delete_init(memberStruct);
 	
@@ -127,7 +128,7 @@ function draw_member_list_member_details(height,sep) {
 	draw_icon(ico_trash,0,xx+380,yy+yoff,60,sep);
 	}
 		
-function add_member_button() {
+function add_member_button(can_click) {
 	
 	var xx = 500;
 	var yy = 500;
@@ -137,6 +138,6 @@ function add_member_button() {
 	
 	draw_icon(,,xx,yy,ww,hh,c_green,2);
 	
-	if draw_text_button(xx,yy,"Create Member",height,ww,hh,c_white)
+	if draw_text_button(xx,yy,"Create Member",height,ww,hh,c_white,,,,can_click && !add_member)
 	member_create_new();
 	}

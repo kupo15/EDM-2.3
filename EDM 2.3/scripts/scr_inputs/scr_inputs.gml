@@ -1,3 +1,12 @@
+function check_active_popovers() {
+	
+	with popover_parent
+	if active
+	return true;
+	
+	return false;
+	}
+
 function scr_inputs() {
 	
 	mouse_left = mouse_check_button(mb_left);
