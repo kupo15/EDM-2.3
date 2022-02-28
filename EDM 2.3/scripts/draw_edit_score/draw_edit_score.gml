@@ -331,18 +331,6 @@ function draw_edit_score() {
 	exit;
 
 	draw_edit_score_all();
-	
-	exit;
-	
-	// underline highlight
-	if edit_score_highlight_pos != edit_score_pos
-	edit_score_highlight_pos = lerp(edit_score_highlight_pos,edit_score_pos,0.2);
-
-	if edit_team_add_member {
-		
-	   draw_edit_team_list();
-	   exit;
-	   }
 	}
 	
 function entry_scores_team_submit(entry) {
