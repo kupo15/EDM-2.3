@@ -51,6 +51,12 @@ function scrollbar_apply_friction() {
 		struct.scrollingSpeed = 0;
 		}
 	}
+	
+function scrollbar_set_value(scrollEnum,val) {
+	
+	var struct = scrollbarArray[scrollEnum];
+	struct.offset = val;
+	}
 
 function scrollbar(xx,yy,ww,yy2,sep,arrList,scrollEnum,drawBar=true,canClick=true) {
 	
