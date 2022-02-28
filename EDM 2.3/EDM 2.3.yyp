@@ -47,7 +47,6 @@
     {"id":{"name":"scr_calculate_member_handicaps","path":"scripts/scr_calculate_member_handicaps/scr_calculate_member_handicaps.yy",},"order":4,},
     {"id":{"name":"scrollbar_functions","path":"scripts/scrollbar_functions/scrollbar_functions.yy",},"order":0,},
     {"id":{"name":"scr_results_screen","path":"scripts/scr_results_screen/scr_results_screen.yy",},"order":2,},
-    {"id":{"name":"scr_teams_scrolling","path":"scripts/scr_teams_scrolling/scr_teams_scrolling.yy",},"order":3,},
     {"id":{"name":"scr_calculate_results_skins","path":"scripts/scr_calculate_results_skins/scr_calculate_results_skins.yy",},"order":7,},
     {"id":{"name":"funct_draw_rectangle","path":"scripts/funct_draw_rectangle/funct_draw_rectangle.yy",},"order":0,},
     {"id":{"name":"funct_draw_scrollbar","path":"scripts/funct_draw_scrollbar/funct_draw_scrollbar.yy",},"order":1,},

@@ -168,8 +168,7 @@ function draw_teams() {
    	var loop = team_number+1;
 	for(var i=0;i<loop;i++) {
 		
-	    var _team = i; //+floor(team_scroll_offset);
-	    var off_pos = i-team_scroll_offset;
+	    var off_pos = (i-scrollbar_get_offset(scrollbarIndex.eventRunning));
 		
 		var member_sep = 59;
 		var hh = member_sep*5;
@@ -183,8 +182,7 @@ function draw_teams() {
 		draw_team_content(xx,yy+team_yoff,member_sep,i,in_popover);
 	    }
 		
-	scr_teams_scrolling(xx,yy,ww,sep);
-		
+	scrollbar(xx,yy,ww,room_height,sep,TEAM_LIST,scrollbarIndex.eventRunning,,!in_popover);
 	draw_event_running_buttons(in_popover);
 
 	// draw popovers

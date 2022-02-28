@@ -1,6 +1,7 @@
 enum scrollbarIndex {
 	
 none = -1,
+eventRunning,
 resultsOverview,
 resultsLowNet,
 manageMemberList,
@@ -23,6 +24,7 @@ function ini_scrollbars() {
 	scrollbarArray[scrollbarIndex.resultsOverview] = new Scrollbar(scrollbarIndex.resultsOverview);
 	scrollbarArray[scrollbarIndex.manageMemberList] = new Scrollbar(scrollbarIndex.manageMemberList);
 	scrollbarArray[scrollbarIndex.resultsLowNet] = new Scrollbar(scrollbarIndex.resultsLowNet);
+	scrollbarArray[scrollbarIndex.eventRunning] = new Scrollbar(scrollbarIndex.eventRunning);
 	}
 	
 function scrollbar_get_offset(_enum) {
