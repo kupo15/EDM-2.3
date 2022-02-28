@@ -15,16 +15,18 @@ function manage_members_members_list() {
 	draw_set_halign(fa_left);
 	
 	// outline
-	draw_line_pixel(0,yy-sep,ww,room_height,c_white,0.7);
+	draw_line_pixel(0,yy,ww,room_height,c_white,0.7);
 	draw_line_pixel(0,yy,ww,1);
 	
 	// header
-	draw_text_button(0,yy-sep,"Members List",height,ww,sep,appblue,,false);
+	draw_text_button(0,yy-height,"Members List",height,ww,height,appblue,,false);
 	
 	// components
 	draw_member_list_content(xx,yy,ww,sep,height,can_click);
 	draw_member_list_member_details(height,sep,can_click);
+	
 	add_member_button(can_click);
+	sort_member_button(can_click);
 	}
 	
 function draw_member_list_content(xx,yy,ww,sep,height,can_click) {
@@ -105,6 +107,15 @@ function draw_member_list_member_details(height,sep,can_click) {
 	if draw_icon_click(,,xx,yy,ww,sep,,,,can_click)
 	member_edit_name(memberStruct);
 	
+	// handicap index
+	yoff += sep;
+	draw_text_centered(xx+15,yy+yoff,"Index: "+string(memberDetails.handicapIndex),height,,sep);
+	draw_icon(ico_edit,0,xx+380,yy+yoff,60,sep,,0.3);
+	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
+
+	if draw_icon_click(,,xx,yy+yoff,ww,sep,,,,can_click)
+	{}
+	
 	// favorite
 	yoff += sep;
 	draw_text_centered(xx+15,yy+yoff,"Favorite",height,,sep);
@@ -122,7 +133,7 @@ function draw_member_list_member_details(height,sep,can_click) {
 
 	if draw_icon_click(,,xx,yy+yoff,ww,sep,,,,can_click)
 	tee_popover_init(memberStruct,room_width-300,room_height,,memberDetails.teeColor);
-	
+		
 	// delete member
 	yoff = 6*sep;
 	
@@ -136,8 +147,8 @@ function draw_member_list_member_details(height,sep,can_click) {
 		
 function add_member_button(can_click) {
 	
-	var xx = 500;
-	var yy = 500;
+	var xx = 775;
+	var yy = 510;
 	var ww = 200;
 	var hh = 75;
 	var height = 30;
@@ -150,7 +161,16 @@ function add_member_button(can_click) {
 	
 function sort_member_button(can_click) {
 	
+	var xx = 440;
+	var yy = 510;
+	var ww = 200;
+	var hh = 75;
+	var height = 30;
 	
+	draw_rectangle_color(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,true);
+	
+	if draw_text_button(xx,yy,"Sort Members",height,ww,hh,c_white,,,,can_click)
+	MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list,false);
 	}
 	
 function members_archive_selected() {
