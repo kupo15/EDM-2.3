@@ -1,48 +1,28 @@
-function RoundHistory(_teeData,adjGross,_date=date_current_datetime()) constructor {
-	
-	roundDate = _date;
-	adjustedGross = adjGross;
-	includedIndex = false; // included in index calculation
-	
-	var diffs = round_calculate_differentials(adjGross,_teeData);
-	differential = diffs.differential;
-	differentialAdjusted = diffs.differentialAdj;
-	
-	teeData = deep_copy(_teeData);
-	
-	variable_struct_remove(teeData,"color");
-	}
-
-function round_calculate_differentials(adjGross,_teeData) {
-	
-	var course_rating = _teeData.rating;
-	var course_slope = _teeData.slope;
-	
-	var diff = adjGross-course_rating;
-	var diffAdj = diff*113/course_slope;
-	
-	return {differential: diff,differentialAdj: diffAdj};
-	}
-
 function debug_generate_round_history(arr) {
 
 	var historyStruct = debug_round_history();
 
+	// create the history
 	for(var i=0;i<array_length(arr);i++) {
 		
 		var memberStruct = arr[i];
-		var roundHistory = memberStruct.roundHistory;
 		var memberDetails = memberStruct.memberDetails;
 		var lastName = string_lower(memberDetails.lastName);
 		
 		if (historyStruct[$ lastName] == undefined)
 		continue;
 		
-		var scoreHistory = debug_create_score_history(memberStruct,historyStruct[$ lastName]);
-		array_push(roundHistory,scoreHistory);
+		memberStruct.roundHistory = debug_create_score_history(memberStruct,historyStruct[$ lastName]);
+		}
 		
-		cs(js(roundHistory));
-		sm("")
+	// decide which scores are included
+	for(var i=0;i<array_length(arr);i++) {
+		
+		var memberStruct = arr[i];
+		var roundHistory = memberStruct.roundHistory;
+		
+		if array_length(roundHistory) > 0
+		round_history_set_included_scores(roundHistory);
 		}
 	}
 

@@ -29,6 +29,7 @@
 // constants
 #macro teamMemberMax 5
 #macro teams_max 6
+#macro topScores 8
 
 // colors
 #macro appblue make_color_rgb(98,145,242)
