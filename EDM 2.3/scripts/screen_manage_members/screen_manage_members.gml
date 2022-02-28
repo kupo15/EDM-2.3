@@ -28,12 +28,13 @@ function manage_members_members_list() {
 	
 function draw_member_list_content(xx,yy,ww,sep,height) {
 		
+	var scrollbarEnum = scrollbarIndex.manageMemberList;
 	var list = MEMBERS_LIST.list;
 	var size = array_length(list);
 	var yoff = 0;
 	for(var i=0;i<size;i++) {
 		
-		var ypos = yoff-manageMemberScrollOffset;
+		var ypos = yoff-(scrollbar_get_offset(scrollbarEnum)*sep);
 		var selected = (manageMemberIndex == i);
 		
 		var memberStruct = list[i];
@@ -63,6 +64,9 @@ function draw_member_list_content(xx,yy,ww,sep,height) {
 		
 		yoff += sep;
 		}
+		
+	// scroll list
+	scrollList(xx,yy,ww,room_height,sep,list,scrollbarEnum,false);
 	}
 	
 function draw_member_list_member_details(height,sep) {

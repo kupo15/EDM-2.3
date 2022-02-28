@@ -15,10 +15,11 @@ debug = false;
 ini_screens();
 ini_styles();
 ini_resolution();
+ini_scrollbars();
 
 manageMemberIndex = 0;
 manageMemberScrollOffset = 0;
-manageMemberScrollEnd = 0;
+manageMemberScrollOffsetEnd = 0;
 
 season_breakdown_add_member = false;
 season_breakdown_date_x = noone; // select a date

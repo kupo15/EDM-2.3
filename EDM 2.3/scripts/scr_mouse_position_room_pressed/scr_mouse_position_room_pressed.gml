@@ -1,5 +1,5 @@
 
-function scr_mouse_position_room_pressed(x_left,y_top,ww,hh,button,highlight,sound,isKeypad=false) {
+function scr_mouse_position_room_pressed(x_left,y_top,ww,hh,button=mb_left,highlight=true,sound=true,isKeypad=false) {
 
 	if (!isKeypad && KEYPAD_ACTIVE)
 	exit;
