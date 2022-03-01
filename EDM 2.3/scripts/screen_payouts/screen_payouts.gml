@@ -64,6 +64,7 @@ function draw_team_payout_table(ysep) {
 	var size = array_length(arr);
 	for(var i=0;i<size;i++) {
 		
+		var selected = (i == settings_clicked_index) && (global.entryEnum == entryType.teamPayout);
 		var str = arr[i];	
 			
 	    // draw payout slot
@@ -85,6 +86,9 @@ function draw_team_payout_table(ysep) {
 			init_keypad(entryType.teamPayout,str);
 			settings_clicked_index = i;
 			}
+			
+		if selected
+		draw_icon(,,xx,yy+(i*ysep),ww,ysep,appblue,0.3);
 	    }
 		
 	pref_team_num = draw_slider(xx,yy+hh-(2.5*ysep),ww,sliderEnum.teamPayout,"Entrants Slider",pref_team_num,pref_team_num_min,pref_team_num_max);
@@ -111,6 +115,7 @@ function draw_entry_fee_table(ysep) {
 	var size = array_length(arr);
 	for(var i=0;i<size;i++) {
 		
+		var selected = (settings_clicked_index == i) && (global.entryEnum == arrEnum[i]);
 		var str = arrVal[i];
 			
 	    draw_set_halign(fa_right);
@@ -131,6 +136,9 @@ function draw_entry_fee_table(ysep) {
 			init_keypad(arrEnum[i],str);
 			settings_clicked_index = i;
 			}
+			
+		if selected
+		draw_icon(,,xx,yy+(i*ysep),ww,ysep,appblue,0.3);
 	    }	
 	}	
 	
@@ -159,6 +167,7 @@ function draw_low_net_table(ysep) {
 	var size = array_length(arr);
 	for(var i=0;i<size;i++) {
 		
+		var selected = (settings_clicked_index == i) && (global.entryEnum == entryType.lowNetPayout);
 		var str = arr[i];
 			
 	    // draw payout slot
@@ -180,6 +189,9 @@ function draw_low_net_table(ysep) {
 			init_keypad(entryType.lowNetPayout,str);
 			settings_clicked_index = i;
 			}
+			
+		if selected
+		draw_icon(,,xx,yy+(i*ysep),ww,ysep,appblue,0.3);
 	    }
     
 	pref_low_net_num = draw_slider(xx,yy+hh-(2.5*ysep),ww,sliderEnum.lowNetPayout,"Entrants Slider",pref_low_net_num,pref_low_net_num_min,pref_low_net_num_max);

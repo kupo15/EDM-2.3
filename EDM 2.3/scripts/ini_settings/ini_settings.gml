@@ -14,6 +14,8 @@ function ini_settings() {
 	pref_team_num_min = 1;
 	pref_team_num_max = 5;
 	
+	settings_clicked_index = undefined;
+	
 	preference_index = 0;
 	preference_type = 0;
 	

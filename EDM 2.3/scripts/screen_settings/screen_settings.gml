@@ -4,9 +4,10 @@ function screen_settings() {
 	draw_set_halign(fa_left);
 	
 	var xx = 40;
-	var yy = 150;
+	var yy = 120;
 	var ww = 300;
-	var hh = 100;
+	var hh = 150;
+	var height = 38;
 	
 	var arr = ["Settings","Payout Tables","Manage Members","Event History","Manage Courses"];
 	var arrEnum = [screenEnum.preferences,screenEnum.payoutSettings,screenEnum.manageMembers,screenEnum.seasonRank,screenEnum.manageCourses];
@@ -17,7 +18,7 @@ function screen_settings() {
 		var yoff = floor(i/3)*hh*1.25;
 		
 		draw_rectangle(xx+xoff,yy+yoff,xx+xoff+ww,yy+yoff+hh,true);
-		draw_text_centered(xx+xoff,yy+yoff,arr[i],35,ww,hh);
+		draw_text_centered(xx+xoff,yy+yoff,arr[i],height,ww,hh);
 	
 		if scr_mouse_position_room_released(xx+xoff,yy+yoff,ww,hh,mb_left,true)
 		screen_change(arrEnum[i]);

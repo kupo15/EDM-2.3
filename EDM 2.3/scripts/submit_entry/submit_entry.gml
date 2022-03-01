@@ -86,6 +86,7 @@ function retrieve_keypad() {
 			case entryType.lowNetEntry: ENTRY_FEES.lowNetEntry= entry; break;
 			case entryType.skinsEntry: ENTRY_FEES.skinsEntry = entry; break;
 			case entryType.blindFee: ENTRY_FEES.blindFee = entry; break;
+			
 			case entryType.teamPayout: PAYOUT_TABLES.teamPayout[pref_team_num][settings_clicked_index] = entry; break;
 			case entryType.lowNetPayout: PAYOUT_TABLES.lowNetPayout[pref_low_net_num][settings_clicked_index] = entry; break;
 			
