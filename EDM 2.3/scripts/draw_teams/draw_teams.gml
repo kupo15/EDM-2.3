@@ -208,11 +208,8 @@ function draw_event_running_buttons(in_popover) {
 	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,false);
 	draw_set_alpha(1);
 
-	if draw_text_button(xx,yy,"Results",40,ww,hh,c_white,alpha,true,,!in_popover && calc) {
-		
-		season_save = false;
-		scr_calculate_results();
-		}
+	if draw_text_button(xx,yy,"Results",40,ww,hh,c_white,alpha,true,,!in_popover && calc)
+	scr_calculate_results();
 	
 	// back button
 	draw_rectangle_colour(xx,yy-100,xx+ww,yy-100+hh,c_green,c_green,c_green,c_green,true);

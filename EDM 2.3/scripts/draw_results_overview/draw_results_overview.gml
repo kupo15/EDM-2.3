@@ -280,8 +280,11 @@ function draw_results_final_buttons(page) {
 		draw_rectangle_colour(xx+xoff,yy,xx+xoff+ww,yy+hh,rec_col,rec_col,rec_col,rec_col,true);
 		draw_text_centered(xx+xoff,yy,"Edit Scores",height,ww,hh);
 		
-		if !global.save_loaded && draw_text_button(xoff+screenOffset,yy,"",height,ww,hh,,,,,can_click)
-		screen_change(screenEnum.eventRunning);
+		if !global.save_loaded && draw_text_button(xoff+screenOffset,yy,"",height,ww,hh,,,,,can_click) {
+			
+			resultsEdited = true;
+			screen_change(screenEnum.eventRunning);
+			}
 	    }
 	
 	// team results

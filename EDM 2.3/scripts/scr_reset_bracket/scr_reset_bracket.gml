@@ -49,7 +49,9 @@ function event_create_new() {
 	SAVE_FILE.activeEvent = new ActiveEvent();
 	
 	// sort members list
-	MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list,false);
 	clear_all_safty = true;
+	resultsEdited = false;
+	
+	MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list,false);
 	screen_change(screenEnum.homeScreen,true);
 	}

@@ -47,8 +47,10 @@ function member_round_save() {
 	
 function member_round_history_add(memberStruct,newRoundStruct) {
 	
-	// add to handicap history
-	array_insert(memberStruct.roundHistory,0,newRoundStruct);
+	if resultsEdited
+	memberStruct.roundHistory[@ 0] = newRoundStruct; // modify current score
+	else
+	array_insert(memberStruct.roundHistory,0,newRoundStruct); // add to handicap history
 	
 	// knock out score 20
 	var arrSize = array_length(memberStruct.roundHistory);

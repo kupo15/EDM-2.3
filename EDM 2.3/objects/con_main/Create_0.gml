@@ -18,14 +18,13 @@ ini_resolution();
 ini_scrollbars();
 
 manageMemberIndex = 0;
-manageMemberScrollOffset = 0;
-manageMemberScrollOffsetEnd = 0;
+
+resultsEdited = false;
 
 season_breakdown_add_member = false;
 season_breakdown_date_x = noone; // select a date
 season_breakdown_edit_x = noone; // edit the breakdown
 season_breakdown_edit_y = noone; // edit the breakdown
-season_save = true;
 season_new_day = true;
 
 edit_event_scrolling = noone;
