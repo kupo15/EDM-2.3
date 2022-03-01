@@ -83,12 +83,12 @@ function retrieve_keypad() {
 		switch global.entryEnum
 			{
 			case entryType.teamEntry: ENTRY_FEES.teamEntry = entry; break;
-			case entryType.lowNetEntry: ENTRY_FEES.lowNetEntry= entry; break;
+			case entryType.lowNetEntry: ENTRY_FEES.lowNetEntry = entry; break;
 			case entryType.skinsEntry: ENTRY_FEES.skinsEntry = entry; break;
 			case entryType.blindFee: ENTRY_FEES.blindFee = entry; break;
 			
-			case entryType.teamPayout: PAYOUT_TABLES.teamPayout[pref_team_num][settings_clicked_index] = entry; break;
-			case entryType.lowNetPayout: PAYOUT_TABLES.lowNetPayout[pref_low_net_num][settings_clicked_index] = entry; break;
+			case entryType.teamPayout: reset = entry_payouts_submit(PAYOUT_TABLES.teamPayout[pref_team_num],settings_clicked_index,entry); break;
+			case entryType.lowNetPayout: reset = entry_payouts_submit(PAYOUT_TABLES.lowNetPayout[pref_low_net_num],settings_clicked_index,entry); break;
 			
 			case entryType.teamFront:
 			case entryType.teamBack: entry_scores_team_submit(entry);
@@ -109,4 +109,23 @@ function retrieve_keypad() {
 		if reset
 		global.entryEnum = entryType.none;
 		}
+	}
+	
+function entry_payouts_submit(arr,ind,entry) {
+	
+	arr[@ ind] = entry;
+	
+	ind++;
+	
+	if (ind == array_length(arr)) {
+		
+		settings_clicked_index = undefined;
+		obj_number_input.active = false;
+		return true;
+		}
+		
+	settings_clicked_index = ind;
+    keypad_set_value(global.entryEnum,arr[ind]);
+	
+	return false;
 	}

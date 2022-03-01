@@ -1,4 +1,3 @@
-	
 function Member(_name,_teeColor="silver",_favorite=false) constructor {
 	
 	memberId = MEMBERS_LIST.nextMemberId;
