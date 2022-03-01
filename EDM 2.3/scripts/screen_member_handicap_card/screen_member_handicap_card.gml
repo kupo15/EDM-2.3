@@ -62,7 +62,7 @@ function draw_handicap_card_contents(memberStruct) {
 	var row = 5;
 	
 	var hsep = room_width/col
-	var ysep = (room_height-yy)/row;
+	var ysep = (room_height-150)/row;
 	
 	for(var i=0;i<array_length(scoreHistory);i++) {
 		
@@ -86,11 +86,14 @@ function draw_handicap_card_contents(memberStruct) {
 		draw_set_halign(fa_left);
 		draw_text_centered(xx+xoff,yy+yoff,date_str,height);
 		
+		// draw adjDiff
+		draw_text_centered(xx+xoff,yy+yoff+35,"Adj. Diff: "+string(struct.differentialAdjusted),height*0.9);
+		
 		// draw score
 		var str = pick("","*",struct.includedIndex);
 		
 		draw_set_halign(fa_right);
-		draw_text_centered(xx+xoff+hsep-30,yy+yoff+35,str+string(grossAdj),height*1.3);
+		draw_text_centered(xx+xoff+hsep-30,yy+yoff+35,str+string(grossAdj),height*1.4);
 		
 		// vertical lines
 		if ((i mod row) == 0)
