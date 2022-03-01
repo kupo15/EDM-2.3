@@ -66,7 +66,7 @@ function draw_member_list_content(xx,yy,ww,sep,height,can_click) {
 		draw_icon(,,xx,yy+ypos,ww,sep,appblue,0.5);
 		
 		// member name
-		draw_text_centered(xx+15,yy+ypos,memberDetails.fullName,height,,sep,bgCol);
+		draw_text_centered(xx+15,yy+ypos,memberDetails.lastName+", "+memberDetails.firstName,height,,sep,bgCol);
 		
 		// separator
 		draw_line_pixel(xx,yy+ypos+sep,ww,1,c_black,0.3);

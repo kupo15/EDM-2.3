@@ -75,7 +75,7 @@ function draw_handicap_card_contents(memberStruct) {
 	
 		// horizontal lines
 		if (i < row) && (i mod 2 == 0)
-		draw_line_pixel(0,150+yoff,room_width,ysep,c_gray,0.3);
+		draw_line_pixel(0,150+yoff,room_width,ysep,appblue,0.3);
 	
 		// draw date
 		var month = date_get_month(date);

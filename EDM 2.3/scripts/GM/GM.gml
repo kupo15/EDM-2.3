@@ -116,6 +116,9 @@ function array_sort_struct(source_array,key,ascending,nestedFolder=[]) {
 			}
 		
 		var sort_value = pointer[$ key];
+		
+		if is_string(sort_value)
+		sort_value = string_lower(sort_value);
 
 		// debug
 		if (sort_value == undefined) {

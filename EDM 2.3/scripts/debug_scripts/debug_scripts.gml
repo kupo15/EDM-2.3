@@ -43,7 +43,7 @@ function debug_members_list_create() {
 		new Member("Jim Middlemiss"),
 		new Member("Ron VanVleet","white"),
 		new Member("Ken Clarence"),
-		new Member("Cliff duFresne",,true),
+		new Member("Cliff DuFresne",,true),
 		new Member("Dick McGuire",,true),
 		new Member("Bob Sanz",,true)
 		];
