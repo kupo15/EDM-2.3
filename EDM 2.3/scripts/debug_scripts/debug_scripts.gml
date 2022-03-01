@@ -36,7 +36,7 @@ function debug_members_list_create() {
 		new Member("Brent Cunliffe"),
 		new Member("Ron Ohmes"),
 		new Member("Ron Vagle"),
-		new Member("Giles P"),
+		new Member("Giles Paradis"),
 		new Member("John Watson"),
 		new Member("Jim Baillon",,true),
 		new Member("Dave Greiner"),
