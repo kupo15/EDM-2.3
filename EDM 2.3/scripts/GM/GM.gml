@@ -176,3 +176,12 @@ function add_string(str,value,_min=undefined,_max=undefined) {
 	
 	return string(str);
 	}
+	
+function round_tenth(n) {
+
+	n *= 10;
+	n = round(n);
+	n /= 10;
+
+	return n;
+	}

@@ -9,11 +9,6 @@ function calculate_member_course_handicap(current_index,_teeColor) {
 
 	return round(course_handicap);
 	}
-
-function calculate_member_handicap_index(memberStruct) {
-	
-	return 10;
-	}
 	
 function RoundHistory(_teeData,adjGross,_date=date_current_datetime()) constructor {
 	
@@ -36,24 +31,33 @@ function round_calculate_differential(adjGross,_teeData) {
 	var diffAdj = diff*113/course_slope;
 	
 	return diffAdj;
-	
-	return {differential: diff,differentialAdj: diffAdj};
 	}
 	
-function round_history_set_included_scores(historyArr) {
+function calculate_member_handicap_index(memberStruct) {
+		
+	var historyArr = memberStruct.roundHistory;
+	var historyCount = array_length(historyArr);
+	
+	// if no history
+	if (historyCount == 0)
+	return 0;
 		
 	// sort low to high
 	array_sort_struct(historyArr,"differentialAdjusted",true);
 	
 	// set the first 8 scores to active
-	var num = min(topScores,array_length(historyArr));
+	var ave = 0;
+	var num = min(topScores,historyCount);
 	for(var i=0;i<num;i++) {
 		
 		var struct = historyArr[i];
-		
 		struct.includedIndex = true; // index
+		
+		ave += struct.differentialAdjusted;
 		}
 
 	// sort by date
 	array_sort_struct(historyArr,"roundDate",false);
+	
+	return clamp(round_tenth(ave/num),-200,maxHCP);
 	}

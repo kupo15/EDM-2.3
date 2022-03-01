@@ -19,10 +19,9 @@ function debug_generate_round_history(arr) {
 	for(var i=0;i<array_length(arr);i++) {
 		
 		var memberStruct = arr[i];
-		var roundHistory = memberStruct.roundHistory;
+		var memberDetails = memberStruct.memberDetails;
 		
-		if array_length(roundHistory) > 0
-		round_history_set_included_scores(roundHistory);
+		memberDetails.handicapIndex = calculate_member_handicap_index(memberStruct);
 		}
 	}
 

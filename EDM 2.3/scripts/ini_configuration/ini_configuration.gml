@@ -30,6 +30,7 @@
 #macro teamMemberMax 5
 #macro teams_max 6
 #macro topScores 8
+#macro maxHCP 54
 
 // colors
 #macro appblue make_color_rgb(98,145,242)
