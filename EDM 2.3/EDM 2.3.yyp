@@ -64,6 +64,7 @@
     {"id":{"name":"DS_GRID_FUNCTIONS","path":"scripts/DS_GRID_FUNCTIONS/DS_GRID_FUNCTIONS.yy",},"order":13,},
     {"id":{"name":"obj_number_input","path":"objects/obj_number_input/obj_number_input.yy",},"order":0,},
     {"id":{"name":"json_functions","path":"scripts/json_functions/json_functions.yy",},"order":12,},
+    {"id":{"name":"screen_manage_courses","path":"scripts/screen_manage_courses/screen_manage_courses.yy",},"order":0,},
     {"id":{"name":"ico_edit","path":"sprites/ico_edit/ico_edit.yy",},"order":4,},
     {"id":{"name":"funct_convert_date","path":"scripts/funct_convert_date/funct_convert_date.yy",},"order":10,},
     {"id":{"name":"scr_entrant_scrolling","path":"scripts/scr_entrant_scrolling/scr_entrant_scrolling.yy",},"order":0,},
@@ -189,6 +190,7 @@
     {"folderPath":"folders/Objects/Popovers/Member Delete.yy","order":3,"resourceVersion":"1.0","name":"Member Delete","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Objects/Popovers/Member Delete/Scripts.yy","order":1,"resourceVersion":"1.0","name":"Scripts","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/UNUSED.yy","order":8,"resourceVersion":"1.0","name":"UNUSED","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Screens/Manage Courses.yy","order":5,"resourceVersion":"1.0","name":"Manage Courses","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

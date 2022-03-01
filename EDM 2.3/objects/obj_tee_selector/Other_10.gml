@@ -9,7 +9,7 @@ draw_set_alpha(animationValue);
 
 draw_line_pixel(x,yy,ww,hh,c_white);
 
-var color = draw_tee_data_list(x,yy,ww,highlightedTee,active);
+var color = draw_tee_data_list(x,yy,ww,,highlightedTee,active);
 
 if (color != undefined) {
 	

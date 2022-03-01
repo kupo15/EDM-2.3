@@ -116,6 +116,16 @@ function draw_member_list_member_details(height,sep,can_click) {
 	if draw_icon_click(,,xx,yy+yoff,ww,sep,,,,can_click)
 	{}
 	
+	// tee marker
+	yoff += sep;
+	draw_text_centered(xx+15,yy+yoff,"Tee",height,,sep);
+	draw_tee_marker(xx+80,yy+yoff,sep,memberDetails.teeColor);
+	draw_icon(ico_edit,0,xx+380,yy+yoff,60,sep,,0.3);
+	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
+
+	if draw_icon_click(,,xx,yy+yoff,ww,sep,,,,can_click)
+	tee_popover_init(memberStruct,room_width-300,room_height,,memberDetails.teeColor);
+	
 	// favorite
 	yoff += sep;
 	draw_text_centered(xx+15,yy+yoff,"Favorite",height,,sep);
@@ -124,15 +134,6 @@ function draw_member_list_member_details(height,sep,can_click) {
 	
 	if draw_icon_click(,,xx,yy+yoff,ww,sep,,,,can_click)
 	memberDetails.favorite = !memberDetails.favorite;
-
-	// tee marker
-	yoff += sep;
-	draw_text_centered(xx+15,yy+yoff,"Tee Marker",height,,sep);
-	draw_tee_marker(xx+190,yy+yoff,sep,memberDetails.teeColor);
-	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
-
-	if draw_icon_click(,,xx,yy+yoff,ww,sep,,,,can_click)
-	tee_popover_init(memberStruct,room_width-300,room_height,,memberDetails.teeColor);
 		
 	// event history
 	yoff += sep;
