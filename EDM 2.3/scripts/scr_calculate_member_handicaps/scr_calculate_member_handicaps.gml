@@ -15,18 +15,6 @@ function calculate_member_course_handicap(memberStruct) {
 	return round(course_handicap);
 	}
 	
-function RoundHistory(_teeData,adjGross,_date=date_current_datetime()) constructor {
-	
-	roundDate = _date;
-	adjustedGross = adjGross;
-	includedIndex = false; // included in index calculation
-	differentialAdjusted = 	round_calculate_differential(adjGross,_teeData);
-	
-	teeData = deep_copy(_teeData);
-	
-	variable_struct_remove(teeData,"color");
-	}
-
 function round_calculate_differential(adjGross,_teeData) {
 	
 	var course_rating = _teeData.rating;

@@ -1,6 +1,8 @@
 
 function scr_calculate_net_scores() {
 
+	entrantResultsList = create_entrant_list_results();
+
 	payout_low_net_winnings(entrantResultsList,"netFront","frontWinnings");
 	payout_low_net_winnings(entrantResultsList,"netBack","backWinnings");
 	payout_low_net_winnings(entrantResultsList,"netTotal","allHolesWinnings");

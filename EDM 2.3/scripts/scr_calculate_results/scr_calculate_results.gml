@@ -7,24 +7,24 @@ function scr_calculate_results() {
 	// calculate all
 	scr_calculate_missing_fields();
 	scr_calculate_results_teams();
-	
-	entrantResultsList = create_entrant_list_results();
-
 	scr_calculate_net_scores();
 	scr_calculate_results_skins();
 	scr_calculate_results_final();
-	//scr_save_round_history();
-
-	db("calculated");
 
 	// create event results struct to display
 	FINAL_EVENT_RESULTS = new EventFinalResults();
-
 	lowNetResults = deep_copy(FINAL_EVENT_RESULTS.entrantResults);
+	
+	// sort event results
 	low_net_rank_sort_results();
 	activate_results_animation();
 	
+	// save event history and round history
+	member_round_save();
 	season_ranking_save();
+	save_program;
+	
+	// go to event results screen
 	screen_change(screenEnum.eventResults);
 	}
 	
