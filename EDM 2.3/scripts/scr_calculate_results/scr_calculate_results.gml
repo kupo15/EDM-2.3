@@ -45,7 +45,7 @@ function EventFinalResults() constructor {
 	teamResults = TeamResults();
 	eventDate = date_current_datetime();
 	
-	array_sort_struct(entrantResults,"entrantNumber",true,["eventDetails"]);
+	array_sort_struct(entrantResults,"entrantNumber",true,["activeEvent","eventDetails"]);
 	}
 
 function TeamResults() {

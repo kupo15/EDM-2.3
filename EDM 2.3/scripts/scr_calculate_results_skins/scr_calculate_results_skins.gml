@@ -11,7 +11,7 @@ function scr_calculate_skins_count() {
 		for(var j=0;j<size;j++) {
 			
 			var memberStruct = teamStruct.members[j];
-			var eventScores = memberStruct.eventScores;
+			var eventScores = memberStruct.activeEvent.eventScores;
 			
 			grossCount += real(eventScores.skinsGross);
 			netCount += real(eventScores.skinsNet);
@@ -50,8 +50,8 @@ function scr_calculate_results_skins() {
 	for(var i=0;i<array_length(entrantResultsList);i++) {
 		
 	   var memberStruct = entrantResultsList[i];
-	   var eventScores = memberStruct.eventScores;
-	   var eventResults = memberStruct.eventResults;
+	   var eventScores = memberStruct.activeEvent.eventScores;
+	   var eventResults = memberStruct.activeEvent.eventResults;
 		
 	   var skins_gross_win = round(real(eventScores.skinsGross)/skins_gross_total*skins_gross_pot_collected);
 	   var skins_net_win = round(real(eventScores.skinsNet)/skins_net_total*skins_net_pot_collected);
@@ -94,7 +94,7 @@ function distribute_leftover_skin_payout(arr,sortKey,payoutPot) {
 	for(var i=array_length(arr)-1;i>0;i--) {
 		
 		var memberStruct = arr[i];
-		var eventResults = memberStruct.eventResults;
+		var eventResults = memberStruct.activeEvent.eventResults;
 		var payoutBreakdown = eventResults.payoutBreakdown;
 		
 		// if you had skins

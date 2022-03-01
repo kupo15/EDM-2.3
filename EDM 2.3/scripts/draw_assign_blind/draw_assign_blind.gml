@@ -4,7 +4,7 @@ function draw_assign_blind() {
 	exit;
 
 	var struct = select_blind_team;
-	var eventDetails = struct.eventDetails;
+	var eventDetails = struct.activeEvent.eventDetails;
 
 	var xx = 160;
 	var yy = 150;

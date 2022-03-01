@@ -51,7 +51,7 @@ function debug_members_list_create() {
 		new Member("Dick McGuire",,true),
 		new Member("Bob Sanz",,true)
 		]*/
-		
+
 	debug_generate_round_history(list);
 		
 	list = scr_sort_members(list);

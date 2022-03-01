@@ -4,8 +4,8 @@ function scr_calculate_results_final() {
 	for(var i=0;i<array_length(entrantResultsList);i++) {
 		
 		var memberStruct = entrantResultsList[i];
-		var payoutBreakdown = memberStruct.eventResults.payoutBreakdown;
-		var eventDetails = memberStruct.eventDetails;
+		var payoutBreakdown = memberStruct.activeEvent.eventResults.payoutBreakdown;
+		var eventDetails = memberStruct.activeEvent.eventDetails;
 		
 		var teamInd = eventDetails.teamAssigned;
 		var blind = (eventDetails.blindTeam != undefined);

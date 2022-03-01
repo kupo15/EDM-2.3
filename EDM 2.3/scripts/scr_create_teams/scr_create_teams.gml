@@ -20,7 +20,7 @@ function scr_create_teams() {
 			
 				var memberStruct = teamMemberList[j];
 				var memberDetails = memberStruct.memberDetails;
-				var eventDetails = memberStruct.eventDetails;
+				var eventDetails = memberStruct.activeEvent.eventDetails;
 				
 				eventDetails.teamAssigned = team_number;
 				eventDetails.entrantNumber = array_length(entrant_list);

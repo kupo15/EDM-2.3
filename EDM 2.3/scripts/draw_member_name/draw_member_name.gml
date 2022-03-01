@@ -1,8 +1,7 @@
-function draw_member_name(xx,yy,struct,height,col=c_black,ww=undefined,hh=undefined,showMarker=true,showHandicap=false,lastFirst=false) {
+function draw_member_name(xx,yy,memberStruct,height,col=c_black,ww=undefined,hh=undefined,showMarker=true,showHandicap=false,lastFirst=false) {
 
-	var eventDetails = struct.eventDetails;
-	var eventScores = struct.eventScores;
-	var memberDetails = struct.memberDetails;
+	var eventDetails = memberStruct.activeEvent.eventDetails;
+	var memberDetails = memberStruct.memberDetails;
 	
 	var name = pick(memberDetails.lastName+", "+memberDetails.firstName,memberDetails.fullName,!lastFirst);
 	

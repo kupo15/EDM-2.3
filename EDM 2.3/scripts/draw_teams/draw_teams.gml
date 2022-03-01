@@ -40,8 +40,8 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 	for(var i=0;i<size;i++) { // loop through team member list
 		
 		var struct = list[i];
-		var eventDetails = struct.eventDetails;
-		var eventScores = struct.eventScores;
+		var eventDetails = struct.activeEvent.eventDetails;
+		var eventScores = struct.activeEvent.eventScores;
 		var height = 50;
         
 		// draw name
@@ -248,11 +248,12 @@ function debug_randomize_scores() {
 		// loop through members
 		for(var j=0;j<array_length(teamStruct.members);j++)	{
 			
-			var memberStruct = teamStruct.members[j].eventScores;	
+			var memberStruct = teamStruct.members[j];
+			var eventScores = memberStruct.activeEvent.eventScores;	
 
-			memberStruct.grossFront = string(irandom_range(33,50));
-			memberStruct.grossBack = string(irandom_range(33,50));
-			memberStruct.grossAdj = string(real(memberStruct.grossFront)+real(memberStruct.grossBack)-15);
+			eventScores.grossFront = string(irandom_range(33,50));
+			eventScores.grossBack = string(irandom_range(33,50));
+			eventScores.grossAdj = string(real(eventScores.grossFront)+real(eventScores.grossBack)-15);
 			}
 		}
 	}
@@ -275,10 +276,12 @@ function activate_results_button() {
 		// loop through members
 		for(var j=0;j<array_length(teamStruct.members);j++)	{
 			
-			var memberStruct = teamStruct.members[j].eventScores;	
-			var grossFrontNull = (memberStruct.grossFront == "");
-			var grossBackNull = (memberStruct.grossBack == "");
-			var grossAdjNull = (memberStruct.grossAdj == "");
+			var memberStruct = teamStruct.members[j];
+			var eventScores = memberStruct.activeEvent.eventScores;
+			
+			var grossFrontNull = (eventScores.grossFront == "");
+			var grossBackNull = (eventScores.grossBack == "");
+			var grossAdjNull = (eventScores.grossAdj == "");
 				
 			if grossFrontNull || grossBackNull || grossAdjNull
 			return false;

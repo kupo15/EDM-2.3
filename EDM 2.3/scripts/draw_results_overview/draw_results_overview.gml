@@ -124,8 +124,8 @@ function draw_results_final_content(xx,yy,can_click) {
 	for(var i=0;i<array_length(arr);i++) {
 		
 		var memberStruct = arr[i];
-		var eventDetails = memberStruct.eventDetails;
-		var eventResults = memberStruct.eventResults;
+		var eventDetails = memberStruct.activeEvent.eventDetails;
+		var eventResults = memberStruct.activeEvent.eventResults;
 		var payoutBreakdown = eventResults.payoutBreakdown;
 
 		var teamInd = eventDetails.teamAssigned;
@@ -217,7 +217,7 @@ function draw_results_final_calculate_totals() {
 	for(var i=0;i<array_length(arr);i++) {
 		
 		var memberStruct = arr[i];
-		var payoutBreakdown = memberStruct.eventResults.payoutBreakdown;
+		var payoutBreakdown = memberStruct.activeEvent.eventResults.payoutBreakdown;
 			
 		teamTotal += payoutBreakdown.teamWinning;
 		lowNetTotal += payoutBreakdown.lowNetWinning;

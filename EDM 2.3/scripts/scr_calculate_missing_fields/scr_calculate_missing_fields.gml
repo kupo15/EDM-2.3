@@ -15,8 +15,8 @@ function scr_calculate_missing_fields() {
 		for(var j=0;j<size;j++) {
 			
 			var memberStruct = teamStruct.members[j];
-			var eventScores = memberStruct.eventScores;
-			var eventDetails = memberStruct.eventDetails;
+			var eventScores = memberStruct.activeEvent.eventScores;
+			var eventDetails = memberStruct.activeEvent.eventDetails;
 			
 			var courseHandicap = eventDetails.courseHandicap;
 			var frontAdj = ceil(courseHandicap*0.5);

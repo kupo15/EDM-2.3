@@ -59,7 +59,7 @@ function memberlist_swipe_right(ind,entryStruct) {
 	
 function memberlist_add_to_team(ind,entryStruct) {
 	
-	var eventDetails = entryStruct.eventDetails;
+	var eventDetails = entryStruct.activeEvent.eventDetails;
 	var teamGroup = TEAM_LIST[team_index].members;
 	var canAdd = (array_length(teamGroup) < teamMemberMax);
 	
@@ -78,7 +78,7 @@ function memberlist_add_to_team(ind,entryStruct) {
 	
 function remove_from_team(teamArr,ind,memberStruct) {
 	   
-	var eventDetails = memberStruct.eventDetails;	
+	var eventDetails = memberStruct.activeEvent.eventDetails;	
 	eventDetails.teamAssigned = undefined;
 	
 	array_delete(teamArr,ind,1);

@@ -10,20 +10,20 @@ function scr_calculate_net_scores() {
 
 function payout_low_net_winnings(tempArr,sortKey,winningKey) {
 		
-	array_sort_struct(tempArr,sortKey,true,["eventScores"]);
+	array_sort_struct(tempArr,sortKey,true,["activeEvent","eventScores"]);
 
 	// rank individuals
 	var rank = 1;
 	for(var i=0;i<array_length(tempArr);i++) {
 		
 		var tempMemberStruct = tempArr[i];
-		var eventScores = tempMemberStruct.eventScores;
-		var eventResults = tempMemberStruct.eventResults;
+		var eventScores = tempMemberStruct.activeEvent.eventScores;
+		var eventResults = tempMemberStruct.activeEvent.eventResults;
 		
 		// if score is worse than previous team
 		if (i > 0) {
 
-			var prevScore = tempArr[i-1].eventScores[$ sortKey];
+			var prevScore = tempArr[i-1].activeEvent.eventScores[$ sortKey];
 			var currScore = eventScores[$ sortKey];
 		
 			if (currScore > prevScore)
@@ -45,7 +45,7 @@ function payout_low_net_winnings(tempArr,sortKey,winningKey) {
 		for(var j=0;j<array_length(tempArr);j++) {
 			
 			var memberStruct = tempArr[j];
-			var eventResults = memberStruct.eventResults;
+			var eventResults = memberStruct.activeEvent.eventResults;
 			var payoutBreakdown = eventResults.payoutBreakdown;
 
 			// if rank equals payout index

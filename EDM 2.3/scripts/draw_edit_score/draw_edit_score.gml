@@ -114,7 +114,7 @@ function draw_selected_edit_score(xx,list,size) {
 		
 		var entrant = list[ind]; // get_entrant_by_id(ind);
 		var entrantDetails = entrant.memberDetails;
-		var eventDetails = entrant.eventDetails;
+		var eventDetails = entrant.activeEvent.eventDetails;
 			
 		// draw player's name
 	    draw_text_centered(xx+20+xoff,115-height,entrantDetails.fullName,height,);
@@ -145,7 +145,7 @@ function draw_edit_score_player_popup_buttons(entrant,can_click) {
 	if (eventType == eventEnum.individual)
 	exit;
 	
-	var eventDetails = entrant.eventDetails;
+	var eventDetails = entrant.activeEvent.eventDetails;
 	
 	// draw blind
 	var b_xx = 640;
@@ -212,7 +212,7 @@ function draw_edit_score_player_popup() {
 		
 		var memberData = list[i];
 		var entrantDetails = memberData.memberDetails;
-		var entrantRoundStats = memberData.eventScores;
+		var entrantRoundStats = memberData.activeEvent.eventScores;
 
 		var name = entrantDetails.fullName;
 					
@@ -361,7 +361,7 @@ function entry_scores_individual_submit(entry) {
 	var list = TEAM_LIST[ind].members;
 	var teamSize = array_length(list);
 	var entrantStruct = list[edit_score];
-	var entrantRoundStats = entrantStruct.eventScores;
+	var entrantRoundStats = entrantStruct.activeEvent.eventScores;
 
 	// save score
 	switch edit_score_pos
@@ -421,7 +421,7 @@ function entry_next_entrant(list,teamSize) {
 			
 	// advance to next position
 	var entrantStruct = list[edit_score];
-	var entrantRoundStats = entrantStruct.eventScores;
+	var entrantRoundStats = entrantStruct.activeEvent.eventScores;
 				
 	keypad_set_value(edit_score_pos,entrantRoundStats.grossFront);
 	}

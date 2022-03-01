@@ -49,7 +49,7 @@ function member_round_save() {
 function member_round_history_create(memberStruct) {
 	
 	var memberDetails = memberStruct.memberDetails;
-	var eventScores = memberStruct.eventScores;
+	var eventScores = memberStruct.activeEvent.eventScores;
 		
 	var teeCol = memberDetails.teeColor;
 	var teeData = TEE_DATA[$ teeCol];

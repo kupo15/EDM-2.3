@@ -75,7 +75,7 @@ function draw_member_list(ysep) {
 		var index = i+member_scroll_offset;
 		var entry = MEMBERS_LIST.list[index];
 		var entrantDetails = entry.memberDetails;
-		var eventDetails = entry.eventDetails;
+		var eventDetails = entry.activeEvent.eventDetails;
 		
 		var name = entrantDetails.fullName;
 		var favorite = entrantDetails.favorite;

@@ -3,12 +3,17 @@ function Member(_name,_teeColor="silver",_favorite=false) constructor {
 	memberId = MEMBERS_LIST.nextMemberId;
 	
 	memberDetails = new MemberDetails(_name,_favorite,_teeColor);	
-	eventDetails = new EventDetails();
-	eventScores = new EventScores();
-	eventResults = new EventResults();
+	activeEvent = new MemberEvent();
 	roundHistory = [];
 	
 	MEMBERS_LIST.nextMemberId++;
+	}
+	
+function MemberEvent() constructor {
+	
+	eventDetails = new EventDetails();
+	eventScores = new EventScores();
+	eventResults = new EventResults();
 	}
 	
 function parse_name(name) {
