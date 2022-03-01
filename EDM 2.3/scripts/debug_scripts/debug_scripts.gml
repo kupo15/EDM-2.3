@@ -5,6 +5,8 @@ function debug_members_list_create() {
 
 	var list = [
 	
+		new Member("Duane Kent"),
+		new Member("Bob Stenhouse"),
 		new Member("Ron Pogue",,true),
 		new Member("Gerry Young"),
 		new Member("Frank Enns","white"),
