@@ -1,10 +1,12 @@
 function screen_member_handicap_card() {
 
-	draw_handicap_card_header();
-	draw_handicap_card_contents();
+	var memberStruct = MEMBERS_LIST.list[manageMemberIndex];
+
+	draw_handicap_card_header(memberStruct);
+	draw_handicap_card_contents(memberStruct);
 	}
 	
-function draw_handicap_card_header() {
+function draw_handicap_card_header(memberStruct) {
 	
 	var xx = 0;
 	var yy = 150;
@@ -22,7 +24,6 @@ function draw_handicap_card_header() {
 	
 	draw_set_font(fn_normal);
 
-	var memberStruct = MEMBERS_LIST.list[manageMemberIndex];
 	var memberDetails = memberStruct.memberDetails;
 
 	// draw index
@@ -30,11 +31,11 @@ function draw_handicap_card_header() {
 	var height = 40;
 
 	draw_set_halign(fa_left);
-	draw_text_centered(xx+15,yy-height,"Index: "+string(memberDetails.handicapIndex),height);
+	draw_text_centered(xx+15,yy-height,"Handicap Index: "+string(memberDetails.handicapIndex),height);
 	
 	// draw name
 	var xx = room_width*0.5;
-	var yy = 105;
+	var yy = 60;
 	var height = 70;
 
 	draw_set_halign(fa_center);
@@ -50,7 +51,56 @@ function draw_handicap_card_header() {
 	draw_sprite_stretched(spr_logo,0,xx,yy,size,size);
 	}
 
-function draw_handicap_card_contents() {
+function draw_handicap_card_contents(memberStruct) {
 	
+	var scoreHistory = memberStruct.roundHistory;
 	
+	var xx = 15;
+	var yy = 160;
+	var height = 27;
+	var col = 4;
+	var row = 5;
+	
+	var hsep = room_width/col
+	var ysep = (room_height-yy)/row;
+	
+	for(var i=0;i<array_length(scoreHistory);i++) {
+		
+		var struct = scoreHistory[i];
+		var date = struct.roundDate;
+		var grossAdj = struct.adjustedGross;
+		
+		var xoff = (floor(i/row)*hsep);
+		var yoff = ((i mod row)*ysep);
+	
+		// horizontal lines
+		if (i < row) && (i mod 2 == 0)
+		draw_line_pixel(0,150+yoff,room_width,ysep,c_gray,0.3);
+	
+		// draw date
+		var month = date_get_month(date);
+		var day = date_get_day(date);
+		var year = date_get_year(date);
+		var date_str = string(month)+"/"+string(day)+"/"+string(year);
+	
+		draw_set_halign(fa_left);
+		draw_text_centered(xx+xoff,yy+yoff,date_str,height);
+		
+		// draw score
+		var str = pick("","*",struct.includedIndex);
+		
+		draw_set_halign(fa_right);
+		draw_text_centered(xx+xoff+hsep-30,yy+yoff+35,str+string(grossAdj),height*1.3);
+		
+		// vertical lines
+		if ((i mod row) == 0)
+		draw_line_pixel(hsep+xoff,yy,2,hsep*row,c_gray);
+		}
+		
+	draw_set_halign(fa_left);
 	}
+	/*
+	roundDate = _date;
+	adjustedGross = adjGross;
+	includedIndex = false; // included in index calculation
+	differentialAdjusted = 
