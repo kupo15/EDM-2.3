@@ -24,13 +24,14 @@ function screen_manage_courses() {
 	
 function course_manage_currency() {
 	
-	var xx = 50;
-	var yy = 130;
+	var yy = 110;
 	var ww = 350;
+	var xx = room_width*0.5-(ww*0.5);
 	var sep = 50;
 
 	draw_set_halign(fa_left);
 	draw_text_centered(xx+10,yy,"Currency: "+CURRENCY_SYMBOL,40,,50);
+	draw_icon(ico_edit,0,xx+ww-sep,yy,sep,sep,,0.5);
 		
 	draw_line_pixel(xx,yy+sep,ww,1,,0.3);	
 		
