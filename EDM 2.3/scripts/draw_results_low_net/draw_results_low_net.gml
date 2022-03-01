@@ -38,11 +38,12 @@ function draw_low_net_results_content(xx,sep,sortKey,scoreKey,payoutKey) {
 	var prevRank = 0;
 	var rankCount = 0;
 	
+	var offset = scrollbar_get_offset(scrollbarIndex.resultsLowNet);
 	var arr = lowNetResults;
 	var size = array_length(arr);
 	for(var i=0;i<size;i++) {
 		
-		var ind = (i-scrollbar_get_offset(scrollbarIndex.resultsLowNet));
+		var ind = (i-offset);
 		var yoff = (ind*sep);
 
 		var memberStruct = arr[i];

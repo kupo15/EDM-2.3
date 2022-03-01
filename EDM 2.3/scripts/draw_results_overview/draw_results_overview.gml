@@ -119,7 +119,7 @@ function draw_results_final_content(xx,yy,can_click) {
 	var height = 35;
 	var sep = 40;
 	var prevTeamInd = 0;
-	var arr = scrollbar(xx,yy,970,470,sep,FINAL_EVENT_RESULTS.entrantResults,scrollbarIndex.resultsOverview,,can_click);
+	var arr = scrollbar(xx,yy,970,470,sep,FINAL_EVENT_RESULTS.entrantResults,scrollbarIndex.resultsOverview,,close_enough_timer == -1);
 
 	for(var i=0;i<array_length(arr);i++) {
 		
