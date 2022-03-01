@@ -136,11 +136,11 @@ function draw_member_list_member_details(height,sep,can_click) {
 		
 	// event history
 	yoff += sep;
-	draw_text_centered(xx+15,yy+yoff,"View Event History",height,,sep);
+	draw_text_centered(xx+15,yy+yoff,"View Handicap Card",height,,sep);
 	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
 
 	if draw_icon_click(,,xx,yy+yoff,ww,sep,,,,can_click)
-	{}	
+	screen_change(screenEnum.memberHandicapCard);
 		
 	// delete member
 	yoff = 6*sep;

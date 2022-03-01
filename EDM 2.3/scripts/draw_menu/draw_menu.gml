@@ -7,6 +7,7 @@ preferences,
 payoutSettings,
 seasonRank,
 manageMembers,
+memberHandicapCard,
 
 eventRunning,
 eventResults
@@ -21,6 +22,7 @@ function ini_screens() {
 	drawScreen[screenEnum.preferences] = draw_preferences;
 	drawScreen[screenEnum.payoutSettings] = screen_payouts;
 	drawScreen[screenEnum.manageMembers] = screen_manage_members;
+	drawScreen[screenEnum.memberHandicapCard] = screen_member_handicap_card;
 	
 	drawScreen[screenEnum.eventRunning] = screen_score_entry;
 	drawScreen[screenEnum.eventResults] = screen_results;

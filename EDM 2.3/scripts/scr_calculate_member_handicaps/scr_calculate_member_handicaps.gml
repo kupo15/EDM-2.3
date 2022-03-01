@@ -51,8 +51,8 @@ function calculate_member_handicap_index(memberStruct) {
 	for(var i=0;i<num;i++) {
 		
 		var struct = historyArr[i];
-		struct.includedIndex = true; // index
 		
+		struct.includedIndex = true;
 		ave += struct.differentialAdjusted;
 		}
 
