@@ -8,7 +8,7 @@ function manage_members_members_list() {
 	var can_click = !global.popoverActive;
 	var xx = 0;
 	var yy = 50;
-	var ww = 370;
+	var ww = 440;
 	var sep = 60;
 	var height = 40;
 	
@@ -56,17 +56,18 @@ function draw_member_list_content(xx,yy,ww,sep,height,can_click) {
 		if archived
 		continue;
 		
-		if draw_icon_click(,,xx,yy+ypos,ww,sep,,,,can_click) {
-			
-			manageMemberIndex = i;
-			}
+		if draw_icon_click(ico_favorite,memberDetails.favorite,xx+370,yy+ypos,ww-370,sep,,,,can_click,,appblue)	
+		memberDetails.favorite = !memberDetails.favorite;
+		
+		if draw_icon_click(,,xx,yy+ypos,ww,sep,,,,can_click)
+		manageMemberIndex = i;
 		
 		// highlight
 		if selected
 		draw_icon(,,xx,yy+ypos,ww,sep,appblue,0.5);
 		
 		// member name
-		draw_text_centered(xx+15,yy+ypos,memberDetails.lastName+", "+memberDetails.firstName,height,,sep,bgCol);
+		draw_member_name(xx+15,yy+ypos,memberStruct,height,bgCol,,sep,false,,true);
 		
 		// separator
 		draw_line_pixel(xx,yy+ypos+sep,ww,1,c_black,0.3);
@@ -156,7 +157,7 @@ function draw_member_list_member_details(height,sep,can_click) {
 		
 function add_member_button(can_click) {
 	
-	var xx = 775;
+	var xx = 730;
 	var yy = 510;
 	var ww = 200;
 	var hh = 75;
@@ -170,7 +171,7 @@ function add_member_button(can_click) {
 	
 function sort_member_button(can_click) {
 	
-	var xx = 440;
+	var xx = 480;
 	var yy = 510;
 	var ww = 200;
 	var hh = 75;

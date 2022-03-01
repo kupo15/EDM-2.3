@@ -1,4 +1,4 @@
-function draw_icon(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha=draw_get_alpha()) {
+function draw_icon(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha=draw_get_alpha(),icoCol=c_white) {
 	
 	if (bgcolor != undefined) {
 		
@@ -11,15 +11,15 @@ function draw_icon(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha=draw_
 		var xoff = (ww-sprite_get_width(spr))*0.5;
 		var yoff = (hh-sprite_get_height(spr))*0.5;
 	
-		draw_sprite_ext(spr,ind,xx+xoff,yy+yoff,1,1,0,c_white,alpha);
+		draw_sprite_ext(spr,ind,xx+xoff,yy+yoff,1,1,0,icoCol,alpha);
 		}
 	
 	draw_set_alpha(1);
 	}
 	
-function draw_icon_click(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha=draw_get_alpha(),highlight=true,canEdit=undefined,isKeypad=undefined) {
+function draw_icon_click(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha=draw_get_alpha(),highlight=true,canEdit=undefined,isKeypad=undefined,icoCol) {
 	
-	draw_icon(spr,ind,xx,yy,ww,hh,bgcolor,alpha);
+	draw_icon(spr,ind,xx,yy,ww,hh,bgcolor,alpha,icoCol);
 	
 	return scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,highlight,isKeypad,canEdit);
 	}

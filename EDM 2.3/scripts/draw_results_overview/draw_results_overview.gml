@@ -140,7 +140,7 @@ function draw_results_final_content(xx,yy,can_click) {
 		scr_mouse_position_room(xx,yy+yoff,970,sep,noone,true);
 				
 		draw_set_halign(fa_left);
-		draw_member_name(xx+5,yy+yoff,memberStruct,height,,sep); // member name
+		draw_member_name(xx+5,yy+yoff,memberStruct,height,,,sep); // member name
 			
 		var xoff = 315;
 		xoff += draw_text_centered(xx+xoff,yy+yoff,payoutBreakdown.teamWinning,height,100,sep);
