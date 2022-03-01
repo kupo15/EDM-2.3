@@ -39,7 +39,7 @@ function course_manage_currency() {
 	COURSE_DATA.courseData.currencyIndex = !COURSE_DATA.courseData.currencyIndex;
 	}
 	
-function draw_tee_data_list(xx,yy,ww,sep=40,highlight=undefined,canPress=true) {
+function draw_tee_data_list(xx,yy,ww,sep=40,showPar=true,highlight=undefined,canPress=true) {
 		
 	var alpha = draw_get_alpha();
 	var result = undefined;
@@ -50,7 +50,7 @@ function draw_tee_data_list(xx,yy,ww,sep=40,highlight=undefined,canPress=true) {
 		var name = TEE_DATA.teeOrder[i];
 		var selected = (highlight == name);
 
-		draw_tee_marker(xx,yy+(i*sep),sep,name,alpha);		
+		draw_tee_marker(xx,yy+(i*sep),sep,name,showPar,alpha);		
 		draw_line_pixel(xx+line_gap,yy+sep+(i*sep),ww-line_gap,1,c_black,0.3*alpha);
 		
 		if selected
@@ -63,7 +63,7 @@ function draw_tee_data_list(xx,yy,ww,sep=40,highlight=undefined,canPress=true) {
 	return result;
 	}
 	
-function draw_tee_marker(xx,yy,sep,teeColor,alpha=draw_get_alpha()) {
+function draw_tee_marker(xx,yy,sep,teeColor,showPar=false,alpha=draw_get_alpha()) {
 	
 	var struct = TEE_DATA[$ teeColor];
 		
@@ -71,4 +71,9 @@ function draw_tee_marker(xx,yy,sep,teeColor,alpha=draw_get_alpha()) {
 		
 	draw_text_centered(xx+45,yy,teeColor,sep*0.6,,sep,,alpha); // tee color
 	draw_text_centered(xx+140,yy,struct.rating+" / "+struct.slope,sep*0.6,,sep,,alpha); // rating and slope
+	
+	var ww = string_width_height(struct.rating+" / "+struct.slope,sep*0.6);
+	
+	if showPar
+	draw_text_centered(xx+140+ww,yy," - par "+struct.par,sep*0.6,,sep,,alpha); // draw par
 	}

@@ -125,7 +125,7 @@ function draw_member_list_member_details(height,sep,can_click) {
 	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
 
 	if draw_icon_click(,,xx,yy+yoff,ww,sep,,,,can_click)
-	tee_popover_init(memberStruct,room_width-300,room_height,,memberDetails.teeColor);
+	tee_popover_init(memberStruct,room_width-350,room_height,,memberDetails.teeColor);
 	
 	// favorite
 	yoff += sep;
