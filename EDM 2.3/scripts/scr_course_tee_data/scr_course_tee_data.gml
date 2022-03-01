@@ -19,6 +19,7 @@ function course_information_estrella(_name) {
 		courseData: {
 			
 			courseName: _name,
+			currencyIndex: 1,
 			},
 		
 		teeMarker: {

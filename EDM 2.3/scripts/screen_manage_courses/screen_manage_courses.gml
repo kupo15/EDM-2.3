@@ -2,7 +2,7 @@ function screen_manage_courses() {
 
 	// course name
 	var xx  = room_width*0.5;
-	var yy = 80;
+	var yy = 70;
 	var height = 65;
 	
 	draw_set_halign(fa_center);
@@ -16,7 +16,26 @@ function screen_manage_courses() {
 
 	draw_set_halign(fa_left);
 	draw_text_centered(xx,yy,"Course Tees",40,ww,50);
-	draw_tee_data_list(xx,yy+50,ww,sep);
+	draw_tee_data_list(xx,yy+sep,ww,sep);
+	
+	// currency
+	course_manage_currency();
+	}
+	
+function course_manage_currency() {
+	
+	var xx = 50;
+	var yy = 130;
+	var ww = 350;
+	var sep = 50;
+
+	draw_set_halign(fa_left);
+	draw_text_centered(xx+10,yy,"Currency: "+CURRENCY_SYMBOL,40,,50);
+		
+	draw_line_pixel(xx,yy+sep,ww,1,,0.3);	
+		
+	if draw_icon_click(,,xx,yy,ww,sep)
+	COURSE_DATA.courseData.currencyIndex = !COURSE_DATA.courseData.currencyIndex;
 	}
 	
 function draw_tee_data_list(xx,yy,ww,sep=40,highlight=undefined,canPress=true) {

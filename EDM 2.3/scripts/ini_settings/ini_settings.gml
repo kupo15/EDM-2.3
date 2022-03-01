@@ -1,4 +1,4 @@
-#macro CURRENCY_SYMBOL con_main.currency[SETTINGS.currencyIndex]
+#macro CURRENCY_SYMBOL con_main.currency[COURSE_DATA.courseData.currencyIndex]
 
 function ini_settings() {
 
