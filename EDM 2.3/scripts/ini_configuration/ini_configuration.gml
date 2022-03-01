@@ -29,7 +29,9 @@
 // constants
 #macro teamMemberMax 5
 #macro teams_max 6
+
 #macro topScores 8
+#macro handicapHistoryMax 20
 #macro maxHCP 54
 
 // colors

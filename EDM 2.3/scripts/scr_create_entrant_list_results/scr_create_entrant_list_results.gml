@@ -37,13 +37,24 @@ function member_round_save() {
 	var list = FINAL_EVENT_RESULTS.entrantResults;
 	for(var i=0;i<array_length(list);i++) {
 		
-		var memberStruct = list[i];	
+		var memberStruct = list[i];
 		var roundStruct = member_round_history_create(memberStruct); // create new round data
 		
-		array_push(memberStruct.roundHistory,roundStruct); // add to handicap history
-		
-		// calculate index
+		member_round_history_add(memberStruct,roundStruct); // add round to handicap history
+		calculate_member_handicap_index(memberStruct); // calculate index
 		}
+	}
+	
+function member_round_history_add(memberStruct,newRoundStruct) {
+	
+	// add to handicap history
+	array_insert(memberStruct.roundHistory,0,newRoundStruct);
+	
+	// knock out score 20
+	var arrSize = array_length(memberStruct.roundHistory);
+	var lastInd = min(handicapHistoryMax,arrSize);
+	
+	array_resize(memberStruct.roundHistory,lastInd);
 	}
 	
 function member_round_history_create(memberStruct) {
