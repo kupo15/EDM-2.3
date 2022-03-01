@@ -38,5 +38,10 @@ function tee_popover_deactivate(animation=true) {
 	
 function tee_popover_select_tee(selectedColor) {
 	
-	editTeeStruct.memberDetails.teeColor = selectedColor;
+	var memberStruct = editTeeStruct;
+	var memberDetails = memberStruct.memberDetails;
+	var eventDetails = memberStruct.eventDetails;
+	
+	memberDetails.teeColor = selectedColor;
+	eventDetails.courseHandicap = calculate_member_course_handicap(memberStruct);
 	}

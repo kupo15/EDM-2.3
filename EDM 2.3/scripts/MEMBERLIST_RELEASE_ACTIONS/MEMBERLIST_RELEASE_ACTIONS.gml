@@ -61,7 +61,7 @@ function memberlist_add_to_team(ind,entryStruct) {
 	
 	var eventDetails = entryStruct.eventDetails;
 	var teamGroup = TEAM_LIST[team_index].members;
-	var canAdd = (array_length(teamGroup) < teamMemberMax) || (eventType == eventEnum.individual)
+	var canAdd = (array_length(teamGroup) < teamMemberMax);
 	
 	if !canAdd
 	exit;

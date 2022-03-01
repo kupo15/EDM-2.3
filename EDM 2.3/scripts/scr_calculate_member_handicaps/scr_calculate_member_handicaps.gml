@@ -1,5 +1,10 @@
-function calculate_member_course_handicap(current_index,_teeColor) {
+function calculate_member_course_handicap(memberStruct) {
 
+	var memberDetails = memberStruct.memberDetails;
+	
+	var current_index = memberDetails.handicapIndex;
+	var _teeColor = memberDetails.teeColor;
+	
 	var teeStruct = TEE_DATA[$ _teeColor];
 	var course_slope = teeStruct.slope;
 	var course_rating = teeStruct.rating;

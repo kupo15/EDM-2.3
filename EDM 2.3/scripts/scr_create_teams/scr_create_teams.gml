@@ -18,16 +18,16 @@ function scr_create_teams() {
 			// assign team number and add to entrant list
 			for(var j=0;j<teamSize;j++) {
 			
-				var member = teamMemberList[j];
-				var memberDetails = member.memberDetails;
-				var eventDetails = member.eventDetails;
+				var memberStruct = teamMemberList[j];
+				var memberDetails = memberStruct.memberDetails;
+				var eventDetails = memberStruct.eventDetails;
 				
 				eventDetails.teamAssigned = team_number;
 				eventDetails.entrantNumber = array_length(entrant_list);
-				memberDetails.handicapIndex = calculate_member_handicap_index(member);
-				eventDetails.courseHandicap = calculate_member_course_handicap(memberDetails.handicapIndex,memberDetails.teeColor);
+				memberDetails.handicapIndex = calculate_member_handicap_index(memberStruct);
+				eventDetails.courseHandicap = calculate_member_course_handicap(memberStruct);
 				
-				array_push(entrant_list,member);
+				array_push(entrant_list,memberStruct);
 				}
 			}
 		}
