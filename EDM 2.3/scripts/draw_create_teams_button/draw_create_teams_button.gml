@@ -21,7 +21,7 @@ function draw_clear_all_teams_button() {
 	if draw_text_button(xx,yy,"Clear Teams",35,ww,hh,col,alpha) {
 		
 	    if !clear_all_safty
-	    scr_reset_bracket();
+	    clear_all_teams();
 	    else
 	    clear_all_safty = false;
 	    }

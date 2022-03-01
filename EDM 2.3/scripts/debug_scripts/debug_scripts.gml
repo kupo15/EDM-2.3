@@ -16,6 +16,8 @@ function debug_members_list_create() {
 		new Member("Ron Crawford"),
 		new Member("Gene Lombardo",,true),
 		new Member("Rod Kaasa","white"),
+		]
+		/*
 		new Member("Steve Barrett"),
 		new Member("Norm Shaw"),
 		new Member("Fernando Compean"),
@@ -48,7 +50,7 @@ function debug_members_list_create() {
 		new Member("Cliff DuFresne",,true),
 		new Member("Dick McGuire",,true),
 		new Member("Bob Sanz",,true)
-		];
+		]*/
 		
 	debug_generate_round_history(list);
 		

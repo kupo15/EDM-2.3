@@ -259,7 +259,7 @@ function draw_results_final_buttons(page) {
 	if scr_mouse_position_room_released(xoff+screenOffset,yy,ww,hh,mb_left,true) {
 		
 	    if !clear_all_safty
-		scr_reset_bracket();
+		event_create_new();
 	    else
 	    clear_all_safty = false;
 	    }

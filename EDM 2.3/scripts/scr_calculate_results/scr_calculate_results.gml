@@ -22,7 +22,14 @@ function scr_calculate_results() {
 
 	lowNetResults = deep_copy(FINAL_EVENT_RESULTS.entrantResults);
 	low_net_rank_sort_results();
-
+	activate_results_animation();
+	
+	season_ranking_save();
+	screen_change(screenEnum.eventResults);
+	}
+	
+function activate_results_animation() {
+	
 	// do the close enough screen
 	if SETTINGS.closeEnough && !close_enough {
 		
@@ -30,19 +37,13 @@ function scr_calculate_results() {
 	    picture_timer_start = game_time;
 	    close_enough_timer = room_speed*5;
 	    }
-	
-	//if !season_save
-	season_ranking_save();
-	
-	// save results
-	
-	screen_change(screenEnum.eventResults);
 	}
 
 function EventFinalResults() constructor {
 	
 	entrantResults = deep_copy(con_main.entrantResultsList);
 	teamResults = TeamResults();
+	eventDate = date_current_datetime();
 	
 	array_sort_struct(entrantResults,"entrantNumber",true,["eventDetails"]);
 	}
