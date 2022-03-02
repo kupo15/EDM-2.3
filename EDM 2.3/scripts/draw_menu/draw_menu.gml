@@ -81,7 +81,7 @@ function draw_settings_icon() {
 	var curve = animcurve_get_channel(AnimationCurve1,"curve2");
 	var val = animcurve_channel_evaluate(curve,picture_timer_skip);
 	var alpha = 1-val;
-	
+
 	var yy = 0;
 	var ind = pick(0,1,in_settings);
 	var ww = sprite_get_width(ico_settings)*1.2;

@@ -74,7 +74,7 @@ restart = false;
 keypad_entry = false;
 deleting_member = false;
 
-picture_timer_skip = 0;
+picture_timer_skip = true;
 picture_timer_start = 0; // game time when you start the picture
 
 close_enough_timer = -1;

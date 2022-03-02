@@ -3,6 +3,8 @@ function scr_calculate_results() {
 	// reset scrollbars
 	results_final_offset = 0;
 	results_low_net_offset = 0;
+	
+	picture_timer_skip = false;
 
 	// calculate all
 	scr_calculate_missing_fields();

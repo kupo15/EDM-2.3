@@ -19,7 +19,38 @@ function screen_manage_courses() {
 	draw_tee_data_list(xx,yy+sep,ww,sep);
 	
 	// currency
-	course_manage_currency();
+	var yy = course_manage_currency();
+	
+	// handicap
+	course_manage_handicap_holes();
+	}
+	
+function course_manage_handicap_holes() {
+	
+	var yy = 250;
+	var ww = 250;
+	var xx = 500;
+	var height = 35;
+	var sep = 50;
+	var hh = 3*sep;
+
+	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
+	
+
+	draw_set_halign(fa_left);
+	draw_text_centered(xx+10,yy-sep,"Hole HCP's",height,ww,sep);
+	
+	// content
+	var courseData = COURSE_DATA.courseData;
+	var label = ["ODD","EVEN"];
+	
+	draw_text_centered(xx+10,yy,"Front 9: "+label[courseData.evenHandicapHoles],height,,sep);
+	draw_text_centered(xx+10,yy+sep,"Back 9: "+label[!courseData.evenHandicapHoles],height,,sep);
+	
+	if draw_text_button(xx,yy+sep+sep,"Flip Holes",height,ww,sep)
+	courseData.evenHandicapHoles = !courseData.evenHandicapHoles;
+
+	draw_line_pixel(xx,yy+sep+sep,ww,1,,0.3);
 	}
 	
 function course_manage_currency() {
@@ -37,6 +68,8 @@ function course_manage_currency() {
 		
 	if draw_icon_click(,,xx,yy,ww,sep)
 	COURSE_DATA.courseData.currencyIndex = !COURSE_DATA.courseData.currencyIndex;
+	
+	return yy+sep;
 	}
 	
 function draw_tee_data_list(xx,yy,ww,sep=40,showPar=true,highlight=undefined,canPress=true) {

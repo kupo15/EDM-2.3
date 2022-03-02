@@ -19,8 +19,11 @@ function scr_calculate_missing_fields() {
 			var eventDetails = memberStruct.activeEvent.eventDetails;
 			
 			var courseHandicap = eventDetails.courseHandicap;
-			var frontAdj = ceil(courseHandicap*0.5);
-			var backAdj = floor(courseHandicap*0.5);
+			var moreStrokes = ceil(courseHandicap*0.5);
+			var lessStrokes = floor(courseHandicap*0.5);
+			
+			var frontAdj = pick(moreStrokes,lessStrokes,COURSE_DATA.courseData.evenHandicapHoles);
+			var backAdj = pick(moreStrokes,lessStrokes,!COURSE_DATA.courseData.evenHandicapHoles);
 			
 			eventScores.netFront = eventScores.grossFront-frontAdj;
 			eventScores.netBack = eventScores.grossBack-backAdj;
