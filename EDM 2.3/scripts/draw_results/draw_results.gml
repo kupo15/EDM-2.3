@@ -22,6 +22,7 @@ function draw_results() {
 	
 	surface_reset_target();
 	
+	// draw surface
 	var xx = -results_screen*room_width;
-	draw_surface(results_surface,xx,0); // draw surface
+	draw_surface(results_surface,xx,0);
 	}

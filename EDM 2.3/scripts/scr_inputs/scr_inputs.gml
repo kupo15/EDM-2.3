@@ -36,13 +36,5 @@ function scr_inputs() {
 	global.mouse_xdist = mouse_x-mouse_xstart;
 	global.mouse_ydist = mouse_y-mouse_ystart;
 
-	game_time++;
-
 	scr_timer_countdown(mainTimers.enumcount);
-
-	if (close_enough_pause != 1) && (close_enough_timer > -1)
-	close_enough_timer -= 1+(5*close_enough_skip);
-
-	if (close_enough_timer < -1)
-	close_enough_timer = -1;
 	}

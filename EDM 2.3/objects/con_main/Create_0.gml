@@ -74,13 +74,12 @@ restart = false;
 keypad_entry = false;
 deleting_member = false;
 
-game_time = 0;
+picture_timer_skip = 0;
 picture_timer_start = 0; // game time when you start the picture
 
 close_enough_timer = -1;
 close_enough_skip = false;
-close_enough = false; // if already done once
-close_enough_pause = false;
+close_enough_shown = false; // if already done once
 
 list_slot = noone;
 

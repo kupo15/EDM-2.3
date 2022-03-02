@@ -47,6 +47,7 @@
     {"id":{"name":"ini_resolution","path":"scripts/ini_resolution/ini_resolution.yy",},"order":4,},
     {"id":{"name":"scr_calculate_member_handicaps","path":"scripts/scr_calculate_member_handicaps/scr_calculate_member_handicaps.yy",},"order":4,},
     {"id":{"name":"scrollbar_functions","path":"scripts/scrollbar_functions/scrollbar_functions.yy",},"order":0,},
+    {"id":{"name":"AnimationCurve1","path":"animcurves/AnimationCurve1/AnimationCurve1.yy",},"order":9,},
     {"id":{"name":"scr_results_screen","path":"scripts/scr_results_screen/scr_results_screen.yy",},"order":2,},
     {"id":{"name":"scr_calculate_results_skins","path":"scripts/scr_calculate_results_skins/scr_calculate_results_skins.yy",},"order":7,},
     {"id":{"name":"funct_draw_rectangle","path":"scripts/funct_draw_rectangle/funct_draw_rectangle.yy",},"order":0,},

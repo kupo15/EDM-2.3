@@ -26,6 +26,9 @@
 #macro silverColor make_color_rgb(190,190,190)
 #macro comboColor make_color_rgb(4,5,6)
 
+// other
+#macro GAME_TIME floor(current_time/1000*60)
+
 // constants
 #macro teamMemberMax 5
 #macro teams_max 6

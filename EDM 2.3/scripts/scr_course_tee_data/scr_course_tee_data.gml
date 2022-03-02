@@ -20,6 +20,7 @@ function course_information_estrella(_name) {
 			
 			courseName: _name,
 			currencyIndex: 1,
+			evenHandicapHoles: 0,
 			},
 		
 		teeMarker: {

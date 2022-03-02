@@ -51,6 +51,8 @@ function event_create_new() {
 	// sort members list
 	clear_all_safty = true;
 	resultsEdited = false;
+	close_enough_shown = false;
+	close_enough_skip = false;
 	
 	MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list,false);
 	screen_change(screenEnum.homeScreen,true);

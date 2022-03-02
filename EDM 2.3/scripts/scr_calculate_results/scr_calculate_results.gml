@@ -31,10 +31,10 @@ function scr_calculate_results() {
 function activate_results_animation() {
 	
 	// do the close enough screen
-	if SETTINGS.closeEnough && !close_enough {
+	if SETTINGS.closeEnough && !close_enough_shown {
 		
-		close_enough = true;
-	    picture_timer_start = game_time;
+		close_enough_shown = true;
+	    picture_timer_start = GAME_TIME;
 	    close_enough_timer = room_speed*5;
 	    }
 	}
