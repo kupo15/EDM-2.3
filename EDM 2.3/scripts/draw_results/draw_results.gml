@@ -48,10 +48,10 @@ function draw_close_enough_animation() {
 
 	// quote	
 	var curve = animcurve_get_channel(AnimationCurve1,"curve1");
-	var stop_point = pick(curve.points[1].posx+0.05,1,close_enough_skip);
+	var stop_point = pick(curve.points[1].posx+0.055,1,close_enough_skip);
 	var ind = clamp(time/200,0,stop_point);
 	var val = animcurve_channel_evaluate(curve,ind);
-	var alpha = clamp((1.0+val)*2,0,1);
+	var alpha = clamp((1.0+val)*1.5,0,1);
 	
 	var xx = 630;
 	var dist = (room_width-xx)*0.7;
