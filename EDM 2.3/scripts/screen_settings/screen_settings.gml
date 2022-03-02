@@ -9,8 +9,8 @@ function screen_settings() {
 	var hh = 150;
 	var height = 38;
 	
-	var arr = ["Settings","Payout Tables","Manage Members","Event History","Manage Courses"];
-	var arrEnum = [screenEnum.preferences,screenEnum.payoutSettings,screenEnum.manageMembers,screenEnum.seasonRank,screenEnum.manageCourses];
+	var arr = ["Settings","Payout Tables","Event History","Manage Courses","Manage Members","Season Breakdown"];
+	var arrEnum = [screenEnum.preferences,screenEnum.payoutSettings,screenEnum.eventHistory,screenEnum.manageCourses,screenEnum.manageMembers,screenEnum.seasonRank];
 	
 	for(var i=0;i<array_length(arr);i++) {
 		
