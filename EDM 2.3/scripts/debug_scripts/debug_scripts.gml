@@ -53,10 +53,9 @@ function debug_members_list_create() {
 		]
 		//*/
 
-	debug_generate_round_history(list);
-		
 	list = scr_sort_members(list);
-
+	
+	debug_generate_round_history(list);
 	MEMBERS_LIST.list = list;
 
 	return list;

@@ -38,10 +38,11 @@ function member_round_save() {
 	for(var i=0;i<array_length(list);i++) {
 		
 		var memberStruct = list[i];
+		var memberDetails = memberStruct.memberDetails;
 		var roundStruct = member_round_history_create(memberStruct); // create new round data
 		
 		member_round_history_add(memberStruct,roundStruct); // add round to handicap history
-		calculate_member_handicap_index(memberStruct); // calculate index
+		memberDetails.handicapIndex = calculate_member_handicap_index(memberStruct); // calculate index
 		}
 	}
 	
