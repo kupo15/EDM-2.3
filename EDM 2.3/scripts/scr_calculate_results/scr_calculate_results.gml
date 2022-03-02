@@ -19,7 +19,7 @@ function scr_calculate_results() {
 	
 	// sort event results
 	low_net_rank_sort_results();
-	activate_results_animation();
+	activate_results_animation(close_enough_shown);
 	
 	// save event history and round history
 	member_round_save();
@@ -30,10 +30,10 @@ function scr_calculate_results() {
 	screen_change(screenEnum.eventResults);
 	}
 	
-function activate_results_animation() {
+function activate_results_animation(shown=false) {
 	
 	// do the close enough screen
-	if SETTINGS.closeEnough && !close_enough_shown {
+	if SETTINGS.closeEnough && !shown {
 		
 		close_enough_shown = true;
 	    picture_timer_start = GAME_TIME;

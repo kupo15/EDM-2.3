@@ -36,7 +36,6 @@ function course_manage_handicap_holes() {
 
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
 	
-
 	draw_set_halign(fa_left);
 	draw_text_centered(xx+10,yy-sep,"Hole HCP's",height,ww,sep);
 	
