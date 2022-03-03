@@ -54,7 +54,7 @@ function draw_edit_team_list() {
 	        list_slot = i;
 	        timer = round(room_speed*0.65);
 	        }
-	    else if mouse_check_button_released(mb_left) || abs(global.mouse_ydist) > 5
+	    else if mouse_check_button_released(mb_left) || abs(global.mouse_ydist) > mouseCanClickDist
 	    timer = -1;
     
 	    if list_slot = i
@@ -145,7 +145,7 @@ function draw_edit_team_list() {
 	scr_sort_members();
     
 	// going to delete
-	if list_slot != noone && abs(global.mouse_xdist) > 5 
+	if list_slot != noone && abs(global.mouse_xdist) > mouseCanClickDist
 	    {
 	    deleting_member = true;
 	    timer = -1;

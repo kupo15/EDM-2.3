@@ -1,11 +1,10 @@
 
-function memberlist_release_actions() {
+function memberlist_release_actions(ind) {
 	
-	if (list_slot == undefined) || !mouse_check_button_released(mb_left) || !global.canClick
+	if (list_slot == undefined) || !mouse_check_button_released(mb_left) || !global.canClick || global.clicked
 	exit;
 	
 	// member
-	var ind = list_slot+scrollbar_get_offset(scrollbarIndex.homeMemberList);
 	var entryStruct = MEMBERS_LIST.list[ind];
 	
 	// release entry actions
@@ -19,8 +18,6 @@ function memberlist_release_actions() {
 		case swipeRight: memberlist_swipe_right(ind,entryStruct); break;
 		case addTeam: memberlist_add_to_team(ind,entryStruct); break;
 		}
-			
-	list_slot = undefined;
 	}
 
 function memberlist_swipe_left(ind,entryStruct) {
@@ -70,8 +67,10 @@ function memberlist_add_to_team(ind,entryStruct) {
 	array_delete(MEMBERS_LIST.list,ind,1); // remove from members list
 	
 	var arrSize = array_length(MEMBERS_LIST.list);
-	member_scroll_offset = clamp(member_scroll_offset,0,arrSize-memberListDisplayCount);
-
+	var offset = scrollbar_get_offset(scrollbarIndex.homeMemberList);
+	var newOffset = clamp(offset,0,arrSize-memberListDisplayCount);
+	
+	scrollbar_set_offset(scrollbarIndex.homeMemberList,newOffset);
 	scr_play_sound(snd_tap0);
 	}
 	

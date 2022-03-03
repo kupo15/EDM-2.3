@@ -41,7 +41,8 @@ function draw_home_member_list(yy,ww,sep) {
 		var ind = (i-offset);
 		var yoff = (ind*sep);
 		var selected = (list_slot == i);
-		var held = selected && mouse_check_button(mb_left);
+		var inBounds = (mouse_y > yy);
+		var held = selected && mouse_check_button(mb_left) && inBounds;
 		
 		var memberStruct = list[i];
 		var entrantDetails = memberStruct.memberDetails;
@@ -54,25 +55,32 @@ function draw_home_member_list(yy,ww,sep) {
 	    var button_col = pick(BUTTON_STYLE.bgColor,FAVORITE_BUTTON_STYLE.bgColor,favorite);	
 		
 		// set selected entry
-		select_member_in_list(xx,yy+yoff,ww,sep,i);
+		select_member_in_list(xx,yy+yoff,ww,sep,i,inBounds);
 	   		
 		draw_sprite_ext(spr_member_button,held,xx,yy+yoff,1,1,0,button_col,1); // draw button
 		draw_member_name(xx+15,yy+yoff,memberStruct,height,name_col,,sep,false,false,true);
 		}
 		
-	memberlist_release_actions();	
+	memberlist_release_actions(list_slot);	
 	scrollbar(xx,yy,ww,room_height,sep,list,scrollbarIndex.homeMemberList);
+	
+	if mouse_check_button_released(mb_left) || (abs(global.mouse_ydist) > mouseCanClickDist) {
+		
+		list_slot = undefined;
+		timer_reset(mainTimers.renameEntry);
+		}
 	}
 	
-function select_member_in_list(xx,yy,ww,hh,ind) {
+function select_member_in_list(xx,yy,ww,hh,ind,inBounds) {
+	
+	if !inBounds
+	exit;
 	
 	if scr_mouse_position_room_pressed(xx,yy,ww,hh,,,false) {
 			
 		list_slot = ind; // store clicked entry
 		timer[mainTimers.renameEntry] = round(room_speed*0.65);
 		}
-	else if mouse_check_button_released(mb_left) || (abs(global.mouse_ydist) > 5)
-	timer_reset(mainTimers.renameEntry);
 	}
 	
 function draw_home_entrants_list(yy,ww,sep) {

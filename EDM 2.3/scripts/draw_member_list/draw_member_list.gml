@@ -59,7 +59,7 @@ function draw_member_list(ysep) {
 	        list_slot = i; // store clicked entry
 	        timer[mainTimers.renameEntry] = round(room_speed*0.65);
 	        }
-	    else if mouse_check_button_released(mb_left) || (abs(global.mouse_ydist) > 5)
+	    else if mouse_check_button_released(mb_left) || (abs(global.mouse_ydist) > mouseCanClickDist)
 	    timer_reset(mainTimers.renameEntry);
     	 
 		// draw button and members
