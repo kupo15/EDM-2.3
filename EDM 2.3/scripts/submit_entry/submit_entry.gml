@@ -123,6 +123,8 @@ function entry_season_earnings_submit(entry) {
 	
 	memberStats.seasonEarnings = real(entry);
 	memberStats.seasonEarningsPrev = real(entry);
+	
+	obj_number_input.active = false;
 	}
 	
 function entry_payouts_submit(arr,ind,entry) {
