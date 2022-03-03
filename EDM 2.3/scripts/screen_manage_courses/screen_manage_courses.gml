@@ -27,7 +27,7 @@ function screen_manage_courses() {
 	
 function course_manage_handicap_holes() {
 	
-	var yy = 250;
+	var yy = 270;
 	var ww = 250;
 	var xx = 500;
 	var height = 35;
