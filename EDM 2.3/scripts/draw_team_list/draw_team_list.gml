@@ -48,7 +48,7 @@ function draw_team_list_header(xx,yy) {
 function draw_team_list_body(xx,yy,ysep) {
 	
 	var ww = button_ww;
-	var hh = button_sep*5-7;
+	var hh = (button_sep*5)-3;
 
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true); // draw outline
 	draw_text_centered(xx,yy-30,"Team "+string(team_index+1),35,ww); // draw team list number
@@ -68,7 +68,7 @@ function draw_team_list_body(xx,yy,ysep) {
 	    var spr_ind = scr_mouse_position_room(xx,yy+yoff,ww,button_sep,mb_left,true);
         var col = BUTTON_STYLE.bgColor;
 		
-	    draw_sprite_ext(spr_member_button,spr_ind,xx,yy+yoff,1,1,0,col,1); // draw button
+	    draw_sprite_stretched_ext(spr_member_button_9slice,spr_ind,xx,yy+yoff,ww,button_hh,col,1); // draw button
 	    draw_text_centered(xx,yy+yoff,name,45,button_ww,button_hh,BUTTON_STYLE.textColor); // draw player's name
                  
 	    // clicked on name

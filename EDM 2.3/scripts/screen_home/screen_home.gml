@@ -1,8 +1,8 @@
 function screen_home() {
 	
 	var yy = 160;
-	var ww = sprite_get_width(spr_member_button);
-	var sep = sprite_get_height(spr_member_button)+2;
+	var ww = button_ww;
+	var sep = button_sep;
 	
 	draw_set_halign(fa_left);
 	
@@ -57,7 +57,7 @@ function draw_home_member_list(yy,ww,sep) {
 		// set selected entry
 		select_member_in_list(xx,yy+yoff,ww,sep,i,inBounds);
 	   		
-		draw_sprite_ext(spr_member_button,held,xx,yy+yoff,1,1,0,button_col,1); // draw button
+		draw_sprite_stretched_ext(spr_member_button_9slice,held,xx,yy+yoff,ww,button_hh,button_col,1); // draw button
 		draw_member_name(xx+15,yy+yoff,memberStruct,height,name_col,,sep,false,false,true);
 		}
 		

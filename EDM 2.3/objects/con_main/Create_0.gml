@@ -85,8 +85,8 @@ close_enough_shown = false; // if already done once
 list_slot = 0;
 
 button_index = 0;
-button_ww = sprite_get_width(spr_member_button);
-button_hh = sprite_get_height(spr_member_button);
+button_ww = 450;
+button_hh = 70;
 button_sep = button_hh+3;
 
 last_entrant_number = 0; // number of entrants in the last game

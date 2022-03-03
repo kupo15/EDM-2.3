@@ -4,7 +4,7 @@ function draw_member_list(ysep) {
 		
 	var xx = 40;
 	var yy = 0;
-	var ww = sprite_get_width(spr_member_button);
+	var ww = button_width;
 	var hh = button_sep*memberListDisplayCount-12;
 	
 	// draw add member
