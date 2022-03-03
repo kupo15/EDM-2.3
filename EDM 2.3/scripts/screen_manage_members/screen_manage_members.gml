@@ -5,13 +5,13 @@ function screen_manage_members() {
 	
 function manage_members_members_list() {
 	
-	var can_click = !global.popoverActive;
+	var can_click = !global.popoverActive && !add_member;
 	var xx = 0;
 	var yy = 50;
 	var ww = 440;
 	var sep = 60;
 	var height = 40;
-	
+
 	draw_set_halign(fa_left);
 	
 	// outline
@@ -165,7 +165,7 @@ function add_member_button(can_click) {
 	
 	draw_icon(,,xx,yy,ww,hh,c_green,2);
 	
-	if draw_text_button(xx,yy,"Create Member",height,ww,hh,c_white,,,,can_click && !add_member)
+	if draw_text_button(xx,yy,"Create Member",height,ww,hh,c_white,,,,can_click)
 	member_create_new();
 	}
 	

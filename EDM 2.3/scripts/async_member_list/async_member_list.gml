@@ -3,8 +3,12 @@ function async_member_list() {
 	var i_d = ds_map_find_value(async_load, "id");
 	var name = ds_map_find_value(async_load, "result");
 
-	if (name == "")
-	exit;
+	if (name == "") {
+		
+		edit_member = false;
+		add_member = false;
+		exit;
+		}
 
 	if (i_d == add_member) {
 		
@@ -18,6 +22,10 @@ function async_member_list() {
 			async_member_edit(name);
 			}
 		}
+
+	// reset
+	add_member = false;
+	edit_member = false;
 	}
    
 function async_member_create(name) {
