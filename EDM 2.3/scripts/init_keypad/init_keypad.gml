@@ -1,6 +1,6 @@
 #macro KEYPAD_ACTIVE obj_number_input.active
 
-function init_keypad(entry_enum,initValue="",blankValue="-",_negate=false,xx=obj_number_input.x,yy=obj_number_input.y,clickout_x1=undefined,clickout_y1=undefined,clickout_x2=undefined,clickout_y2=undefined) {
+function init_keypad(entry_enum,initValue="",blankValue="-",_negate=false,xx=obj_number_input.x,yy=obj_number_input.y,clickout_x1=undefined,clickout_y1=undefined,clickout_x2=undefined,clickout_y2=undefined,clickedInd=undefined) {
 
 	with obj_number_input {
 		
@@ -26,9 +26,11 @@ function init_keypad(entry_enum,initValue="",blankValue="-",_negate=false,xx=obj
 		
 		negate = _negate;
 		active = true;
+		
+		entryIndex = clickedInd;
 		overwriteEntry = true;
-		entryString = initValue;
-		startingString = initValue;
+		entryString = string(initValue);
+		startingString = string(initValue);
 		blankStringDisplay = blankValue;
 	    global.entryEnum = entry_enum;
 		}

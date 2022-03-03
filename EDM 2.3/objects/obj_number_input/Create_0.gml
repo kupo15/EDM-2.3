@@ -10,7 +10,10 @@ surf = -1;
 
 overwriteEntry = true;
 maxCharacters = 3;
+
+entryIndex = undefined;
 entryString = "";
+
 startingString = "";
 blankStringDisplay = "-";
 active = false;

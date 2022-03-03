@@ -62,7 +62,7 @@ function draw_season_ranking_content(deleteSeason) {
 	var yy = 100;
 	var hh = room_height-yy;
 	var height = 35;
-	var sep = 40;
+	var sep = 50;
 	
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
 	draw_text_centered(xx,yy-50,"Season Ranking",50,ww,sep,appblue);
@@ -102,9 +102,10 @@ function draw_season_ranking_content(deleteSeason) {
 		draw_text_centered(xx+ww-15,yy+ypos,string(seasonTotals)+" "+CURRENCY_SYMBOL,height,,sep,col); // amount
 		
 		draw_line_pixel(xx+15,yy+ypos+sep,ww-15,1,,0.3);
-		
+
+		// licked on member
 		if draw_icon_click(,,xx,yy+ypos,ww,sep)
-		{}
+		init_keypad(entryType.seasonEarnings,seasonTotals,,,,,,,,,i);
 		
 		draw_set_halign(fa_left);
 		

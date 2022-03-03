@@ -39,7 +39,7 @@ function scr_calculate_results_final() {
 		var memberStats = memberStruct.memberStats;
 		var prevEarning = pick(memberStats.seasonEarningsPrev,0,memberStats.seasonEarningsPrev==undefined);
 		
-		memberStats.seasonEarnings = prevEarning+real(payoutBreakdown.winningGrandTotal);
+		memberStats.seasonEarnings = prevEarning+payoutBreakdown.winningGrandTotal;
 		}
 		
 	db("calculated");

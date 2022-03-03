@@ -13,6 +13,8 @@ enum entryType {
 	memberAdjGross,
 	memberEntryNext,
 	
+	seasonEarnings,
+	
 	teamFront,
 	teamBack,
 	teamReview,
@@ -94,6 +96,8 @@ function retrieve_keypad() {
 			case entryType.teamBack: entry_scores_team_submit(entry);
 									 reset = false;
 									 break;
+									 
+			case entryType.seasonEarnings: entry_season_earnings_submit(entry); break;									
 			
 			case entryType.memberFront:
 			case entryType.memberBack:
@@ -105,10 +109,20 @@ function retrieve_keypad() {
 			
 		// reset after applying
 		obj_number_input.submitedString = undefined;
+		entryIndex = undefined;
 		
 		if reset
 		global.entryEnum = entryType.none;
 		}
+	}
+	
+function entry_season_earnings_submit(entry) {
+	
+	var memberStruct = MEMBERS_LIST.list[obj_number_input.entryIndex];
+	var memberStats = memberStruct.memberStats;
+	
+	memberStats.seasonEarnings = real(entry);
+	memberStats.seasonEarningsPrev = real(entry);
 	}
 	
 function entry_payouts_submit(arr,ind,entry) {

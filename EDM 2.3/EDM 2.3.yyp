@@ -59,6 +59,7 @@
     {"id":{"name":"scr_mouse_position_room","path":"scripts/scr_mouse_position_room/scr_mouse_position_room.yy",},"order":4,},
     {"id":{"name":"scr_mouse_position_room_pressed","path":"scripts/scr_mouse_position_room_pressed/scr_mouse_position_room_pressed.yy",},"order":5,},
     {"id":{"name":"scr_mouse_position_room_released","path":"scripts/scr_mouse_position_room_released/scr_mouse_position_room_released.yy",},"order":6,},
+    {"id":{"name":"ico_add_member","path":"sprites/ico_add_member/ico_add_member.yy",},"order":8,},
     {"id":{"name":"scr_mouse_wheel","path":"scripts/scr_mouse_wheel/scr_mouse_wheel.yy",},"order":7,},
     {"id":{"name":"ico_trash","path":"sprites/ico_trash/ico_trash.yy",},"order":0,},
     {"id":{"name":"scr_remove_from_team","path":"scripts/scr_remove_from_team/scr_remove_from_team.yy",},"order":9,},
