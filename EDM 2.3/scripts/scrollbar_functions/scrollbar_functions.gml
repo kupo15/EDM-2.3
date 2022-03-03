@@ -10,6 +10,7 @@ eventRunning,
 resultsOverview,
 resultsLowNet,
 manageMemberList,
+seasonRanking,
 enumCount,
 }
 

@@ -35,6 +35,9 @@ function scr_calculate_results_final() {
 		
 		var noSkinsRefund = (no_net_skins+no_gross_skins)*real(ENTRY_FEES.skinsEntry)*0.5;
 		payoutBreakdown.winningGrandTotal = payoutBreakdown.winSubtotal+noSkinsRefund-payoutBreakdown.entryFee;
+		
+		var memberStats = memberStruct.memberStats;
+		memberStats.seasonEarnings = memberStats.seasonEarningsPrev+real(payoutBreakdown.winningGrandTotal);
 		}
 		
 	db("calculated");

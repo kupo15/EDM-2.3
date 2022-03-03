@@ -100,6 +100,8 @@ function draw_home_entrants_list(yy,ww,sep) {
 	
 function debug_fill_teams() {
 	
+	var memberList = MEMBERS_LIST.list;
+	
 	if dev_mode && keyboard_check_pressed(vk_space) {
 	
 		// loop through each team
@@ -109,7 +111,10 @@ function debug_fill_teams() {
 			
 			while (array_length(TEAM_LIST[i].members) < teamMemberMax) {
 
-				var memberStruct = MEMBERS_LIST.list[0];
+				if (array_length(memberList) == 0)
+				break;
+				
+				var memberStruct = memberList[0];
 				memberlist_add_to_team(0,memberStruct);
 				}
 			}

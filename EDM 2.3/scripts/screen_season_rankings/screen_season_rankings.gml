@@ -15,10 +15,12 @@ function draw_season_ranking_content() {
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
 	draw_text_centered(xx,yy-sep,"Season Ranking",height,ww,sep,appblue);
 	
+	var offset = scrollbar_get_offset(scrollbarIndex.seasonRanking);
 	var list = MEMBERS_LIST.list;
 	for(var i=0;i<array_length(list);i++) {
 		
-		var yoff = (i*sep);
+		var ind = (i-offset);
+		var yoff = (ind*sep);
 		
 		var memberStruct = list[i];
 		var memberDetails = memberStruct.memberDetails;
@@ -28,9 +30,17 @@ function draw_season_ranking_content() {
 		draw_text_centered(xx+15,yy+yoff,memberDetails.fullName,height,,sep); // name
 		
 		var col = pick(c_black,c_red,seasonTotals < 0);
+		
 		draw_set_halign(fa_right);
 		draw_text_centered(xx+ww-15,yy+yoff,string(seasonTotals)+" "+CURRENCY_SYMBOL,height,,sep,col); // amount
 		
+		draw_line_pixel(xx+15,yy+yoff+sep,ww-15,1,,0.3);
+		
+		if draw_icon_click(,,xx,yy+yoff,ww,sep)
+		{}
+		
 		draw_set_halign(fa_left);
 		}
+		
+	scrollbar(xx,yy,ww,room_height,sep,list,scrollbarIndex.seasonRanking);
 	}

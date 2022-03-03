@@ -59,11 +59,13 @@ function screen_change(ind,clear=false) {
 	
 	if clear
 	prevScreenStack = [];
+	
+	screen_change_actions();
 	}
 	
 function screen_back(clear=false) {
 	
-	screen_change_actions();
+	screen_back_actions();
 	
 	if (array_length(prevScreenStack) > 0)
 	screen_index = array_pop(prevScreenStack);
@@ -76,8 +78,19 @@ function screen_change_actions() {
 	
 	switch screen_index
 		{
+		case screenEnum.seasonRank: array_sort_struct(MEMBERS_LIST.list,"seasonEarnings",false,["memberStats"]);
+									scrollbar_set_value(scrollbarIndex.seasonRanking,0);
+									break;
+		}
+	}	
+	
+function screen_back_actions() {
+	
+	switch screen_index
+		{
 		case screenEnum.eventResults: scr_calculate_results(); break;	
-		case screenEnum.manageMembers: members_archive_selected(); break;	
+		case screenEnum.manageMembers: members_archive_selected(); break;
+		case screenEnum.seasonRank: MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list); break;
 		}
 	}
 	

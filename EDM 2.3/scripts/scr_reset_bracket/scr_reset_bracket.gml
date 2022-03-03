@@ -40,6 +40,8 @@ function event_create_new() {
 			eventDetails = new EventDetails();
 			eventScores = new EventScores();
 			eventResults = new EventResults();
+			
+			memberStats.seasonEarningsPrev = memberStats.seasonEarnings;
 			}
 		
 		array_push(MEMBERS_LIST.list,entrantStruct);

@@ -12,6 +12,7 @@ function Member(_name,_teeColor="silver",_favorite=false) constructor {
 	
 function MemberStats() constructor {
 	
+	seasonEarningsPrev = 0;
 	seasonEarnings = 0;
 	}
 	
