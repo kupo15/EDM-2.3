@@ -35,7 +35,7 @@ function scr_mouse_position_room_pressed(x_left,y_top,ww,hh,button=mb_left,highl
 
 function scr_mouse_position_room_released(x_left,y_top,ww,hh,button=mb_left,highlight=true,isKeypad=false,can_click=true) {
 
-	if global.clicked || (!isKeypad && KEYPAD_ACTIVE) || !can_click
+	if global.clicked || !global.canClick || (!isKeypad && KEYPAD_ACTIVE) || !can_click
 	return false;
 
 	var mx = mouse_x;
@@ -51,7 +51,7 @@ function scr_mouse_position_room_released(x_left,y_top,ww,hh,button=mb_left,high
 	        draw_set_alpha(1);
 	        }
            
-	    if (mouse_check_button_released(button) && (abs(global.mouse_ydist) < 15) && (abs(global.mouse_xdist) < 30) && !con_main.scrolling && !con_main.results_scrolling && !con_main.edit_score_scrolling) || (button == noone) {
+	    if (mouse_check_button_released(button) && !con_main.scrolling && !con_main.results_scrolling && !con_main.edit_score_scrolling) || (button == noone) {
 
 	        if (button != noone) {
 				

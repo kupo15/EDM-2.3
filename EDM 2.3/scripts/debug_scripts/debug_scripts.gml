@@ -15,8 +15,8 @@ function debug_members_list_create() {
 		new Member("Pat Krommendyk",,true),
 		new Member("Gene Lombardo",,true),
 		new Member("Rod Kaasa","white"),
-		]
-		/*
+		//]
+		
 		new Member("Steve Barrett"),
 		new Member("Fernando Compean"),
 		new Member("Hall Wilson",,true),

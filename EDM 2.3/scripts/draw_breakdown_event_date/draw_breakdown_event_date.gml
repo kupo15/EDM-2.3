@@ -27,7 +27,7 @@ function draw_breakdown_event_date() {
 	if edit_event
 		{	
 		// click out / cancel
-		if (android_back || ((abs(global.mouse_xdist) < 2) && abs(global.mouse_ydist) < 2 && !scr_mouse_position_room(xx,yy,ww,hh,noone,false) && mouse_check_button_released(mb_left)))
+		if (android_back || (!scr_mouse_position_room(xx,yy,ww,hh,noone,false) && mouse_check_button_released(mb_left)))
 		    {
 		    edit_event = false;
 		    exit;

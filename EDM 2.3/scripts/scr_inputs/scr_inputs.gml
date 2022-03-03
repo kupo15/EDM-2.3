@@ -25,6 +25,8 @@ function scr_inputs() {
 	   
 	   global.mouse_xdist = 0;
 	   global.mouse_ydist = 0;
+	   
+	   	global.canClick = true;
 	   }
 
 	if mouse_check_button_pressed(mb_middle) {
@@ -35,6 +37,9 @@ function scr_inputs() {
 
 	global.mouse_xdist = mouse_x-mouse_xstart;
 	global.mouse_ydist = mouse_y-mouse_ystart;
+
+	if (abs(global.mouse_xdist) > mouseCanClickDist) || (abs(global.mouse_ydist) > mouseCanClickDist)
+	global.canClick = false;
 
 	scr_timer_countdown(mainTimers.enumcount);
 	}

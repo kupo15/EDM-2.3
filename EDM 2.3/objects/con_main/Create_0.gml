@@ -48,6 +48,7 @@ mouse_xstart = 0;
 mouse_ystart = 0;
 mouse_left = 0;
 
+global.canClick = true;
 global.clicked = false;
 
 global.mouse_xdist = 0

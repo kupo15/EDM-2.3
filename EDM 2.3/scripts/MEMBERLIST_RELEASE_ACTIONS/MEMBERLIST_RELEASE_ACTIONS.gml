@@ -1,7 +1,7 @@
 
 function memberlist_release_actions() {
 	
-	if (list_slot == undefined) || !mouse_check_button_released(mb_left)
+	if (list_slot == undefined) || !mouse_check_button_released(mb_left) || !global.canClick
 	exit;
 	
 	// member
@@ -68,7 +68,9 @@ function memberlist_add_to_team(ind,entryStruct) {
 	ENTRANT_COUNT++; // add to entrant number
 		
 	array_delete(MEMBERS_LIST.list,ind,1); // remove from members list
-	member_scroll_offset = clamp(member_scroll_offset,0,array_length(MEMBERS_LIST.list)-memberListDisplayCount);
+	
+	var arrSize = array_length(MEMBERS_LIST.list);
+	member_scroll_offset = clamp(member_scroll_offset,0,arrSize-memberListDisplayCount);
 
 	scr_play_sound(snd_tap0);
 	}
