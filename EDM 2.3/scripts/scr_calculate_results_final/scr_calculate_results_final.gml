@@ -37,7 +37,9 @@ function scr_calculate_results_final() {
 		payoutBreakdown.winningGrandTotal = payoutBreakdown.winSubtotal+noSkinsRefund-payoutBreakdown.entryFee;
 		
 		var memberStats = memberStruct.memberStats;
-		memberStats.seasonEarnings = memberStats.seasonEarningsPrev+real(payoutBreakdown.winningGrandTotal);
+		var prevEarning = pick(memberStats.seasonEarningsPrev,0,memberStats.seasonEarningsPrev==undefined);
+		
+		memberStats.seasonEarnings = prevEarning+real(payoutBreakdown.winningGrandTotal);
 		}
 		
 	db("calculated");

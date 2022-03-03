@@ -64,11 +64,10 @@ function scrollbar_set_value(scrollEnum,val) {
 	struct.offset = val;
 	}
 
-function scrollbar(xx,yy,ww,yy2,sep,arrList,scrollEnum,drawBar=true,canClick=true) {
+function scrollbar(xx,yy,ww,yy2,sep,arrList,scrollEnum,drawBar=true,canClick=true,size=array_length(arrList)) {
 	
 	var hh = yy2-yy;
 	var displayCount = hh/sep;
-	var size = array_length(arrList);
 
 	// no scrolling if size of list is less than what can be displayed
 	if (size-1 < displayCount) || !canClick {

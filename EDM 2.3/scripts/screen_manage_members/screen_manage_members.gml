@@ -43,7 +43,7 @@ function draw_member_list_content(xx,yy,ww,sep,height,can_click) {
 	for(var i=pos_start;i<pos_end;i++) {
 		
 		var ind = (i-offset);
-		var ypos = yoff-(offset*sep);
+		var ypos = (yoff*sep)-(offset*sep);
 		var selected = (manageMemberIndex == i);
 		
 		var memberStruct = list[i];
@@ -72,11 +72,11 @@ function draw_member_list_content(xx,yy,ww,sep,height,can_click) {
 		// separator
 		draw_line_pixel(xx,yy+ypos+sep,ww,1,c_black,0.3);
 		
-		yoff += sep;
+		yoff++;
 		}
 		
 	// scroll list
-	scrollbar(xx,yy,ww,room_height,sep,list,scrollbarEnum,false,can_click);
+	scrollbar(xx,yy,ww,room_height,sep,list,scrollbarEnum,false,can_click,yoff);
 	}
 	
 function draw_member_list_member_details(height,sep,can_click) {
