@@ -93,6 +93,7 @@ function remove_from_team(teamArr,ind,memberStruct) {
 		continue;
 		
 		array_insert(list,i,memberStruct);
+		//scrollbar_set_offset(scrollbarIndex.homeMemberList,i);
 		break;
 		}    
 	}
