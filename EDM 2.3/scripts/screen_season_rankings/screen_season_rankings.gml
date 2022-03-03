@@ -1,19 +1,53 @@
 function screen_season_rankings() {
 
-	draw_season_ranking_content();
+	var deleteSeason = draw_season_ranking_delete_season();
+	draw_season_ranking_content(deleteSeason);
+	}
+	
+function draw_season_ranking_delete_season() {
+	
+	var xx = 20;
+	var yy = 500;
+	var ww = 200;
+	var hh = 80;
+
+	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,true);
+
+	var height = 35;
+	var _col = pick(c_black,c_red,!season_delete_safty);
+
+	draw_set_halign(fa_left);
+	draw_text_centered(xx,yy,"Delete Season",height,ww,hh,_col);
+	draw_text_centered(xx,yy,"(tap twice)",height*0.6,ww,hh*1.65);
+
+	// delete season data
+	if scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,true) {
+		
+	    if !season_delete_safty {
+			
+			scr_season_ranking_delete_data();
+			return true;
+			}
+	    else
+	    season_delete_safty = false;
+	    }
+	else if mouse_check_button_released(mb_left)
+	season_delete_safty = true;  
+	
+	return false;
 	}
 
-function draw_season_ranking_content() {
+function draw_season_ranking_content(deleteSeason) {
 	
 	var ww = 600;
-	var xx = (room_width-ww)*0.5;
+	var xx = (room_width-ww+250)*0.5;
 	var yy = 100;
 	var hh = room_height-yy;
 	var height = 35;
 	var sep = 40;
 	
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
-	draw_text_centered(xx,yy-sep,"Season Ranking",height,ww,sep,appblue);
+	draw_text_centered(xx,yy-50,"Season Ranking",50,ww,sep,appblue);
 	
 	var yoff = 0;
 	var offset = scrollbar_get_offset(scrollbarIndex.seasonRanking);
@@ -27,6 +61,12 @@ function draw_season_ranking_content() {
 		var memberDetails = memberStruct.memberDetails;
 		var memberStats = memberStruct.memberStats;
 		var seasonTotals = memberStats.seasonEarnings;
+		
+		if deleteSeason {
+			
+			memberStruct.memberStats = new MemberStats();
+			continue;
+			}
 		
 		if (memberStats.seasonEarningsPrev == undefined)
 		continue;
