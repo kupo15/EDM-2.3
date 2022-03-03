@@ -13,10 +13,33 @@ function screen_home() {
 	draw_team_list_home(sep);
 	
 	// buttons
-	draw_clear_all_teams_button();
+	draw_clear_all_teams_button(yy,sep);
 	draw_create_teams_button();
 	
 	debug_fill_teams();
+	}
+	
+function draw_home_member_list_buttons(yy,sep) {
+	
+	// new member
+	var ww = button_ww-120;
+	var xx = 10;
+	
+	if draw_icon_click(,,xx,yy-sep,ww,sep,appblue) {
+		
+		edit_member = false;
+	    add_member = get_string_async("Enter Member Name","");
+	    }
+	
+	draw_icon(ico_add_member,0,xx,yy-sep,120,sep);
+	
+	// draw sort
+	var ww = 120;
+	var xx = 10+button_ww-ww;
+	var col = c_yellow;
+	
+	if draw_icon_click(ico_sort,0,xx,yy-sep,ww,sep)
+	MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list,false);
 	}
 	
 function draw_home_member_list(yy,ww,sep) {
@@ -29,10 +52,7 @@ function draw_home_member_list(yy,ww,sep) {
 	draw_rectangle_color(xx,yy-sep,xx+ww,room_height,c_gray,c_gray,c_gray,c_gray,false);
 	draw_set_alpha(1);
 	
-	var col = make_colour_rgb(255,227,215);
-	
-	if draw_text_button(xx,yy-sep,"Sort Member List",height*1.1,ww,sep,col)
-	MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list,false);
+	draw_home_member_list_buttons(yy,sep);
 	
 	var offset = scrollbar_get_offset(scrollbarIndex.homeMemberList);
 	var list = MEMBERS_LIST.list;

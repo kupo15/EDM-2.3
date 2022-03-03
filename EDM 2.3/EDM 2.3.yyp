@@ -27,6 +27,7 @@
     {"id":{"name":"season_ranking_save","path":"scripts/season_ranking_save/season_ranking_save.yy",},"order":3,},
     {"id":{"name":"ini_season_ranking_save","path":"scripts/ini_season_ranking_save/ini_season_ranking_save.yy",},"order":4,},
     {"id":{"name":"MEMBERLIST_RELEASE_ACTIONS","path":"scripts/MEMBERLIST_RELEASE_ACTIONS/MEMBERLIST_RELEASE_ACTIONS.yy",},"order":0,},
+    {"id":{"name":"ico_sort","path":"sprites/ico_sort/ico_sort.yy",},"order":9,},
     {"id":{"name":"ini_configuration","path":"scripts/ini_configuration/ini_configuration.yy",},"order":2,},
     {"id":{"name":"ico_settings","path":"sprites/ico_settings/ico_settings.yy",},"order":5,},
     {"id":{"name":"ini_payout_table","path":"scripts/ini_payout_table/ini_payout_table.yy",},"order":3,},

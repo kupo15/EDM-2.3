@@ -27,6 +27,7 @@ function member_add_recent(name) {
 			array_insert(list,i,new Member(name));
 			manageMemberIndex = i;
 			scrollbar_set_value(scrollbarIndex.manageMemberList,i);
+			scrollbar_set_value(scrollbarIndex.homeMemberList,i);
 			break;
 			}
 		}
