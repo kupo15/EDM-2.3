@@ -1,4 +1,4 @@
-function draw_breakdown_change() {
+/*function draw_breakdown_change() {
 	var xx = 100;
 	var yy = 50;
 	var ww = 800;

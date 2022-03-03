@@ -1,4 +1,4 @@
-function draw_breakdown_event_date() {
+/*function draw_breakdown_event_date() {
 	var xx = 100;
 	var yy = 100;
 	var ww = 800;

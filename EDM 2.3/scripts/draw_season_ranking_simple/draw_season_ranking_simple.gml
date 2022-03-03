@@ -1,4 +1,4 @@
-function draw_season_ranking_simple() {
+/*function draw_season_ranking_simple() {
 	// draw date duplicate setting
 	var xx = 10;
 	var yy = 200;

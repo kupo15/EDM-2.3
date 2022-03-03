@@ -1,4 +1,4 @@
-function draw_breakdown_add_member(argument0) {
+/*function draw_breakdown_add_member(argument0) {
 	var xx = 400;
 	var yy = 0;
 	var disp_count = 6;

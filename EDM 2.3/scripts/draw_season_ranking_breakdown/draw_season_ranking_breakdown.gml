@@ -1,4 +1,4 @@
-function draw_season_ranking_breakdown() {
+/*function draw_season_ranking_breakdown() {
 	var not_in_menu = (season_breakdown_add_member == false && season_breakdown_date_x == noone && season_breakdown_edit_x == noone);
 
 	// draw add event

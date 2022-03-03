@@ -1,4 +1,4 @@
-function scr_sort_season_ranking() {
+/*function scr_sort_season_ranking() {
 	// sort season by best score
 
 	var grid_ww = ds_grid_width(season_ranking_grid);

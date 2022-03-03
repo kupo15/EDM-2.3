@@ -1,4 +1,4 @@
-function draw_edit_team_list() {
+/*function draw_edit_team_list() {
 	
 	var xx = 620;
 	var yy = 20;

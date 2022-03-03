@@ -2,6 +2,12 @@ function screen_season_rankings() {
 
 	var deleteSeason = draw_season_ranking_delete_season();
 	draw_season_ranking_content(deleteSeason);
+	draw_season_rank_buttons();
+	}
+	
+function draw_season_rank_buttons() {
+	
+	
 	}
 	
 function draw_season_ranking_delete_season() {
