@@ -7,6 +7,7 @@ function screen_season_rankings() {
 	
 function draw_season_rank_buttons() {
 	
+	// hide inactive
 	var xx = 30;
 	var yy = 310;
 	var ww = 300;
@@ -20,6 +21,19 @@ function draw_season_rank_buttons() {
 	
 	if draw_icon_click(,,xx-20,yy,ww,hh)
 	SETTINGS.seasonRankHideInactive = !hideMembers;
+	
+	// sort list
+	var xx = 20;
+	var yy = 100;
+	var ww = 250;
+	var hh = 80;
+	var height = 35;
+	var col = c_green;
+	
+	draw_rectangle_color(xx,yy,xx+ww,yy+hh,col,col,col,col,true);
+	
+	if draw_text_button(xx,yy,"Sort List",height,ww,hh)
+	array_sort_struct(MEMBERS_LIST.list,"seasonEarnings",false,["memberStats"]);
 	}
 	
 function draw_season_ranking_delete_season() {
