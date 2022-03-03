@@ -7,7 +7,19 @@ function screen_season_rankings() {
 	
 function draw_season_rank_buttons() {
 	
+	var xx = 30;
+	var yy = 310;
+	var ww = 300;
+	var hh = 50;
+	var height = 35;
 	
+	var hideMembers = SETTINGS.seasonRankHideInactive;	
+	draw_icon(ico_checkbox,hideMembers,xx,yy,36,hh);
+	
+	draw_text_centered(xx+50,yy,"Hide Inactive",height,,hh);
+	
+	if draw_icon_click(,,xx-20,yy,ww,hh)
+	SETTINGS.seasonRankHideInactive = !hideMembers;
 	}
 	
 function draw_season_ranking_delete_season() {
@@ -67,6 +79,7 @@ function draw_season_ranking_content(deleteSeason) {
 		var memberDetails = memberStruct.memberDetails;
 		var memberStats = memberStruct.memberStats;
 		var seasonTotals = memberStats.seasonEarnings;
+		var inactive = (memberStats.seasonEarningsPrev == undefined);
 		
 		if deleteSeason {
 			
@@ -74,12 +87,16 @@ function draw_season_ranking_content(deleteSeason) {
 			continue;
 			}
 		
-		if (memberStats.seasonEarningsPrev == undefined)
+		if inactive && SETTINGS.seasonRankHideInactive
 		continue;
 		
-		draw_text_centered(xx+15,yy+ypos,memberDetails.fullName,height,,sep); // name
+		var col = pick(c_black,c_gray,inactive);
+		var font = pick(fn_normal,fn_italic,inactive);
 		
-		var col = pick(c_black,c_red,seasonTotals < 0);
+		draw_set_font(font);
+		draw_text_centered(xx+15,yy+ypos,memberDetails.fullName,height,,sep,col); // name
+		
+		var col = pick(col,c_red,seasonTotals < 0);
 		
 		draw_set_halign(fa_right);
 		draw_text_centered(xx+ww-15,yy+ypos,string(seasonTotals)+" "+CURRENCY_SYMBOL,height,,sep,col); // amount
@@ -94,5 +111,6 @@ function draw_season_ranking_content(deleteSeason) {
 		yoff++;
 		}
 		
+	draw_set_font(fn_normal);
 	scrollbar(xx,yy,ww,room_height,sep,list,scrollbarIndex.seasonRanking,,,yoff);
 	}

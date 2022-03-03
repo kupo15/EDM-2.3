@@ -2,7 +2,7 @@ function ConfigurationSettings() constructor {
 
 	courseName = "estrella";
 
-	seasonRankHideInactive = true;
+	seasonRankHideInactive = false;
 	soundOn = true;
 	closeEnough = true;
 	keypadOverwrite = false;
