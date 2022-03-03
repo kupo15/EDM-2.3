@@ -84,7 +84,7 @@ function draw_edit_team_list() {
 	                  }
 	               }    
                
-	           list_slot = noone;
+	           list_slot = undefined;
 	           exit;
 	           }
 	       } 
@@ -104,7 +104,7 @@ function draw_edit_team_list() {
             
             
 	            if amt != 0
-	            list_slot = noone;
+	            list_slot = undefined;
 	            }
 	        }
             
@@ -154,7 +154,7 @@ function draw_edit_team_list() {
 	if timer = 0
 	    {
 	    edit_member_slot = list_slot+member_scroll_offset;
-	    list_slot = noone;
+	    list_slot = undefined;
 	    edit_member = true;
 	    add_member = get_string_async("Edit Member Name",member_list[| edit_member_slot]);
 	    }

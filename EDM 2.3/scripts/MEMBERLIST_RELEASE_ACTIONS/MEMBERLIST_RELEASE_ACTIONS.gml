@@ -1,11 +1,11 @@
 
 function memberlist_release_actions() {
 	
-	if (list_slot == noone)
+	if (list_slot == undefined) || !mouse_check_button_released(mb_left)
 	exit;
 	
 	// member
-	var ind = list_slot+member_scroll_offset;
+	var ind = list_slot+scrollbar_get_offset(scrollbarIndex.homeMemberList);
 	var entryStruct = MEMBERS_LIST.list[ind];
 	
 	// release entry actions
@@ -13,17 +13,14 @@ function memberlist_release_actions() {
 	var swipeRight = (global.mouse_xdist >= 200);
 	var addTeam = !deleting_member;
 		
-	if mouse_check_button_released(mb_left) {
-			
-		switch true
-		    {
-			case swipeLeft: memberlist_swipe_left(ind,entryStruct); break;
-			case swipeRight: memberlist_swipe_right(ind,entryStruct); break;
-			case addTeam: memberlist_add_to_team(ind,entryStruct); break;
-			}
-			
-		list_slot = noone;
+	switch true
+		{
+		case swipeLeft: memberlist_swipe_left(ind,entryStruct); break;
+		case swipeRight: memberlist_swipe_right(ind,entryStruct); break;
+		case addTeam: memberlist_add_to_team(ind,entryStruct); break;
 		}
+			
+	list_slot = undefined;
 	}
 
 function memberlist_swipe_left(ind,entryStruct) {

@@ -91,7 +91,6 @@
     {"id":{"name":"draw_create_teams_button","path":"scripts/draw_create_teams_button/draw_create_teams_button.yy",},"order":1,},
     {"id":{"name":"draw_edit_score","path":"scripts/draw_edit_score/draw_edit_score.yy",},"order":2,},
     {"id":{"name":"draw_edit_team_list","path":"scripts/draw_edit_team_list/draw_edit_team_list.yy",},"order":0,},
-    {"id":{"name":"draw_favorites_list","path":"scripts/draw_favorites_list/draw_favorites_list.yy",},"order":4,},
     {"id":{"name":"draw_member_list","path":"scripts/draw_member_list/draw_member_list.yy",},"order":0,},
     {"id":{"name":"draw_menu","path":"scripts/draw_menu/draw_menu.yy",},"order":6,},
     {"id":{"name":"screen_manage_members","path":"scripts/screen_manage_members/screen_manage_members.yy",},"order":5,},

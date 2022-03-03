@@ -3,7 +3,7 @@ function member_edit_name(struct) {
 	var memberDetails = struct.memberDetails;
 	
 	edit_member_struct = struct;
-	list_slot = noone;
+	list_slot = undefined;
 	edit_member = true;
 	add_member = get_string_async("Edit Member Name",memberDetails.fullName);
 	}

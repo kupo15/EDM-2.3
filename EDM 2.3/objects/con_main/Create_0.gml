@@ -81,7 +81,7 @@ close_enough_timer = -1;
 close_enough_skip = false;
 close_enough_shown = false; // if already done once
 
-list_slot = noone;
+list_slot = undefined;
 
 button_index = 0;
 button_ww = sprite_get_width(spr_member_button);

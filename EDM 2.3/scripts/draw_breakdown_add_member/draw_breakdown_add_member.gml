@@ -86,7 +86,7 @@ function draw_breakdown_add_member(argument0) {
 	           if i+member_scroll_offset < last_entrant_number // if moving last entrant number
 	           last_entrant_number = max(last_entrant_number-1,0);
            
-	           list_slot = noone;
+	           list_slot = undefined;
 	           exit;
 	           }
 	       } 
@@ -104,7 +104,7 @@ function draw_breakdown_add_member(argument0) {
         
         
 	        if amt != 0
-	        list_slot = noone;
+	        list_slot = undefined;
 	        }
             
 	    // draw members

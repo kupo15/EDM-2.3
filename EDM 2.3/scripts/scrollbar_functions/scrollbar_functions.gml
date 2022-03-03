@@ -5,6 +5,7 @@
 enum scrollbarIndex {
 	
 none = -1,
+homeMemberList,
 eventRunning,
 resultsOverview,
 resultsLowNet,
@@ -26,10 +27,14 @@ function Scrollbar(scrollEnum,_scrollWidth=20) constructor {
 
 function ini_scrollbars() {
 	
-	scrollbarArray[scrollbarIndex.resultsOverview] = new Scrollbar(scrollbarIndex.resultsOverview);
-	scrollbarArray[scrollbarIndex.manageMemberList] = new Scrollbar(scrollbarIndex.manageMemberList);
-	scrollbarArray[scrollbarIndex.resultsLowNet] = new Scrollbar(scrollbarIndex.resultsLowNet);
-	scrollbarArray[scrollbarIndex.eventRunning] = new Scrollbar(scrollbarIndex.eventRunning);
+	for(var i=0;i<scrollbarIndex.enumCount;i++)
+	scrollbarArray[i] = new Scrollbar(i);
+	}
+	
+function scrollbar_set_offset(_enum,value) {
+	
+	var struct = scrollbarArray[_enum];
+	struct.offset = value;
 	}
 	
 function scrollbar_get_offset(_enum) {

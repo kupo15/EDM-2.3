@@ -132,7 +132,7 @@ function draw_member_list(ysep) {
 	            member_scroll_offset = clamp(member_scroll_offset_start-amt,0,list_size-memberListDisplayCount);
        
 	            if (amt != 0)
-	            list_slot = noone;
+	            list_slot = undefined;
 			
 				if (global.mouse_ydist != 0)
 				scrollbar_disp_end = 1;
