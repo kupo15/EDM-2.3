@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Season Ranking",
-    "path": "folders/Scripts/Draw/Season Ranking.yy",
+    "name": "Event History",
+    "path": "folders/Screens/Event History.yy",
   },
   "resourceVersion": "1.0",
-  "name": "draw_season_ranking",
+  "name": "screen_event_history_edit",
   "tags": [],
   "resourceType": "GMScript",
 }

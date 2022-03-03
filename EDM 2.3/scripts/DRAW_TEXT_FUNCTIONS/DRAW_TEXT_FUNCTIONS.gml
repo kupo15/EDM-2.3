@@ -368,7 +368,7 @@ function draw_text_button(xx,yy,str,height,region_ww,region_hh,col=draw_get_colo
 function draw_text_centered(xx,yy,str,height,region_ww=0,region_hh=height,col=draw_get_color(),alpha=draw_get_alpha(),valignOverride=false) {
 	
 	var alp = draw_get_alpha();
-	var halign = draw_get_halign();
+	var halign = fa_left;
 	var xoff = region_ww*0.5;
 	var yoff = region_hh*0.5;
 	

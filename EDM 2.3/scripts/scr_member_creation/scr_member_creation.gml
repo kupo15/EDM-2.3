@@ -5,8 +5,14 @@ function Member(_name,_teeColor="silver",_favorite=false) constructor {
 	memberDetails = new MemberDetails(_name,_favorite,_teeColor);	
 	activeEvent = new MemberEvent();
 	roundHistory = [];
+	memberStats = new MemberStats();
 	
 	MEMBERS_LIST.nextMemberId++;
+	}
+	
+function MemberStats() constructor {
+	
+	seasonEarnings = 0;
 	}
 	
 function MemberEvent() constructor {

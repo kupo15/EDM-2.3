@@ -5,5 +5,5 @@ function season_ranking_save() {
 	else
 	array_push(EVENT_HISTORY,FINAL_EVENT_RESULTS); // add new entry
 	
-	cs(js(EVENT_HISTORY))
+	// cs(js(EVENT_HISTORY))
 	}

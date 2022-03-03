@@ -1,5 +1,6 @@
 {
   "resources": [
+    {"id":{"name":"screen_event_history_edit","path":"scripts/screen_event_history_edit/screen_event_history_edit.yy",},"order":2,},
     {"id":{"name":"debug_scripts","path":"scripts/debug_scripts/debug_scripts.yy",},"order":0,},
     {"id":{"name":"main_timer_beep","path":"scripts/main_timer_beep/main_timer_beep.yy",},"order":1,},
     {"id":{"name":"spr_pixel","path":"sprites/spr_pixel/spr_pixel.yy",},"order":0,},
@@ -106,7 +107,6 @@
     {"id":{"name":"draw_results_low_net","path":"scripts/draw_results_low_net/draw_results_low_net.yy",},"order":2,},
     {"id":{"name":"draw_results_overview","path":"scripts/draw_results_overview/draw_results_overview.yy",},"order":3,},
     {"id":{"name":"screen_results","path":"scripts/screen_results/screen_results.yy",},"order":3,},
-    {"id":{"name":"draw_season_ranking","path":"scripts/draw_season_ranking/draw_season_ranking.yy",},"order":0,},
     {"id":{"name":"draw_season_ranking_simple","path":"scripts/draw_season_ranking_simple/draw_season_ranking_simple.yy",},"order":1,},
     {"id":{"name":"draw_breakdown_change","path":"scripts/draw_breakdown_change/draw_breakdown_change.yy",},"order":2,},
     {"id":{"name":"draw_breakdown_add_member","path":"scripts/draw_breakdown_add_member/draw_breakdown_add_member.yy",},"order":3,},
@@ -122,6 +122,7 @@
     {"id":{"name":"DRAW_TEXT_FUNCTIONS","path":"scripts/DRAW_TEXT_FUNCTIONS/DRAW_TEXT_FUNCTIONS.yy",},"order":15,},
     {"id":{"name":"con_save","path":"objects/con_save/con_save.yy",},"order":0,},
     {"id":{"name":"con_main","path":"objects/con_main/con_main.yy",},"order":0,},
+    {"id":{"name":"screen_event_member_edit","path":"scripts/screen_event_member_edit/screen_event_member_edit.yy",},"order":1,},
     {"id":{"name":"room0","path":"rooms/room0/room0.yy",},"order":0,},
   ],
   "Options": [
@@ -176,8 +177,6 @@
     {"folderPath":"folders/Screens/Results/Scripts.yy","order":2,"resourceVersion":"1.0","name":"Scripts","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Screens/Score Entry/Draw.yy","order":1,"resourceVersion":"1.0","name":"Draw","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Screens/Score Entry/Scripts.yy","order":2,"resourceVersion":"1.0","name":"Scripts","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Screens/Settings/Draw.yy","order":1,"resourceVersion":"1.0","name":"Draw","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Screens/Settings/Scripts.yy","order":2,"resourceVersion":"1.0","name":"Scripts","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Screens/Season Ranking.yy","order":4,"resourceVersion":"1.0","name":"Season Ranking","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Objects/Popovers/Number Input.yy","order":1,"resourceVersion":"1.0","name":"Number Input","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Objects/Popovers/Number Input/Scripts.yy","order":1,"resourceVersion":"1.0","name":"Scripts","tags":[],"resourceType":"GMFolder",},

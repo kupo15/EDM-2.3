@@ -11,6 +11,9 @@ memberHandicapCard,
 manageCourses,
 eventHistory,
 
+eventMemberEdit,
+eventHistoryEdit,
+
 eventRunning,
 eventResults
 }
@@ -26,7 +29,10 @@ function ini_screens() {
 	drawScreen[screenEnum.manageMembers] = screen_manage_members;
 	drawScreen[screenEnum.memberHandicapCard] = screen_member_handicap_card;
 	drawScreen[screenEnum.manageCourses] = screen_manage_courses;
+	
 	drawScreen[screenEnum.eventHistory] = screen_event_history;
+	drawScreen[screenEnum.eventMemberEdit] = screen_event_member_edit;
+	drawScreen[screenEnum.eventHistoryEdit] = screen_event_history_edit;
 	
 	drawScreen[screenEnum.eventRunning] = screen_score_entry;
 	drawScreen[screenEnum.eventResults] = screen_results;
