@@ -31,7 +31,7 @@ function draw_clear_all_teams_button() {
 	clear_all_safty = true;
 	}
 
-function draw_create_teams_button() {
+function draw_create_teams_button(alphaOverride=false) {
 	
 	// Create Teams Button
 	var xx = 820;
@@ -40,7 +40,7 @@ function draw_create_teams_button() {
 	var hh = 90;
 	var height = 33;
 
-	var create = pick(ENTRANT_COUNT >= 4,1,debug);
+	var create = pick(ENTRANT_COUNT >= 4,1,debug)*!alphaOverride;
 	var alpha = (create*0.5)+0.5;
 
 	draw_set_alpha(alpha);
@@ -49,6 +49,6 @@ function draw_create_teams_button() {
 	
 	var str = pick("Teams","Groups",eventType);
 	
-	if draw_text_button(xx,yy,"Create "+str,height,ww,hh,c_white,alpha) || keyboard_check_pressed(vk_enter) && create
+	if (draw_text_button(xx,yy,"Create "+str,height,ww,hh,c_white,alpha,,,create) || keyboard_check_pressed(vk_enter)) && create
     scr_create_teams();
 	}

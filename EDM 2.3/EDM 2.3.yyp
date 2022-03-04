@@ -6,6 +6,7 @@
     {"id":{"name":"spr_pixel","path":"sprites/spr_pixel/spr_pixel.yy",},"order":0,},
     {"id":{"name":"spr_add_button","path":"sprites/spr_add_button/spr_add_button.yy",},"order":1,},
     {"id":{"name":"screen_payouts","path":"scripts/screen_payouts/screen_payouts.yy",},"order":4,},
+    {"id":{"name":"screen_missing_handicap_index","path":"scripts/screen_missing_handicap_index/screen_missing_handicap_index.yy",},"order":0,},
     {"id":{"name":"init_tee_popover","path":"scripts/init_tee_popover/init_tee_popover.yy",},"order":0,},
     {"id":{"name":"async_member_list","path":"scripts/async_member_list/async_member_list.yy",},"order":5,},
     {"id":{"name":"spr_close_enough","path":"sprites/spr_close_enough/spr_close_enough.yy",},"order":4,},
@@ -193,6 +194,7 @@
     {"folderPath":"folders/UNUSED.yy","order":8,"resourceVersion":"1.0","name":"UNUSED","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Screens/Manage Courses.yy","order":5,"resourceVersion":"1.0","name":"Manage Courses","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Screens/Event History.yy","order":6,"resourceVersion":"1.0","name":"Event History","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Screens/Missing Index.yy","order":7,"resourceVersion":"1.0","name":"Missing Index","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

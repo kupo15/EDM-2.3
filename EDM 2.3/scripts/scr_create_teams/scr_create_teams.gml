@@ -22,9 +22,14 @@ function scr_create_teams() {
 				var memberDetails = memberStruct.memberDetails;
 				var eventDetails = memberStruct.activeEvent.eventDetails;
 				
+				if memberDetails.handicapIndex == undefined {
+					
+					screen_change(screenEnum.missingIndex);
+					exit;
+					}
+				
 				eventDetails.teamAssigned = team_number;
 				eventDetails.entrantNumber = array_length(entrant_list);
-				memberDetails.handicapIndex = calculate_member_handicap_index(memberStruct);
 				eventDetails.courseHandicap = calculate_member_course_handicap(memberStruct);
 				
 				array_push(entrant_list,memberStruct);
