@@ -86,13 +86,17 @@ function draw_results_final_content(xx,yy,can_click) {
 		draw_set_halign(fa_left);
 		draw_member_name(xx+5,yy+yoff,memberStruct,height,,,sep); // member name
 			
+		var blind = (eventDetails.blindTeam != undefined) && (eventType == eventEnum.team);
 		var xoff = 315;
+			
+		draw_text_centered(xx+xoff+70,yy+yoff,"+"+string(payoutBreakdown.blindWinning),height*0.85,,sep,appblue,blind);
 		xoff += draw_text_centered(xx+xoff,yy+yoff,payoutBreakdown.teamWinning,height,100,sep);
 		xoff += draw_text_centered(xx+xoff,yy+yoff,payoutBreakdown.lowNetWinning,height,100,sep);
 		xoff += draw_text_centered(xx+xoff,yy+yoff,payoutBreakdown.skinsGross,height,60,sep);
 		xoff += draw_text_centered(xx+xoff,yy+yoff,payoutBreakdown.skinsNet,height,60,sep);
 		xoff += draw_text_centered(xx+xoff,yy+yoff,payoutBreakdown.winSubtotal,height,60,sep);
 		xoff += draw_text_centered(xx+xoff,yy+yoff,-payoutBreakdown.entryFee,height,60,sep,,entryAlpha);
+			
 			
 		if no_net_skins || no_gross_skins {
 

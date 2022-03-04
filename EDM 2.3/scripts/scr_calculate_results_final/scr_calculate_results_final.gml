@@ -8,8 +8,8 @@ function scr_calculate_results_final() {
 		var eventDetails = memberStruct.activeEvent.eventDetails;
 		
 		var teamInd = eventDetails.teamAssigned;
-		var blind = (eventDetails.blindTeam != undefined);
-		var noTeam = !eventDetails.noTeam || (team_number == 0);
+		var teamEntered = !eventDetails.noTeam && (eventType == eventEnum.team);
+		var blind = (eventDetails.blindTeam != undefined) && teamEntered;
 	
 		// apply team winnings
 		var teamFront = TEAM_LIST[teamInd].teamWinnings.frontWinnings;
@@ -18,7 +18,7 @@ function scr_calculate_results_final() {
 		
 		payoutBreakdown.lowNetWinning = payoutBreakdown.frontWinnings+payoutBreakdown.backWinnings+payoutBreakdown.allHolesWinnings;
 		payoutBreakdown.teamWinning = teamFront+teamBack+teamTotal;
-		payoutBreakdown.entryFee = real(ENTRY_FEES.lowNetEntry)+(noTeam*real(ENTRY_FEES.teamEntry))+real(ENTRY_FEES.skinsEntry)+(blind*real(ENTRY_FEES.blindFee));
+		payoutBreakdown.entryFee = real(ENTRY_FEES.lowNetEntry)+(teamEntered*real(ENTRY_FEES.teamEntry))+real(ENTRY_FEES.skinsEntry)+(blind*real(ENTRY_FEES.blindFee));
 		
 		// blind winning
 		if blind {

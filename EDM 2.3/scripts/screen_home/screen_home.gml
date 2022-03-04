@@ -6,6 +6,7 @@ function screen_home() {
 	
 	draw_set_halign(fa_left);
 	
+	draw_home_event_type(ww,sep);
 	draw_home_member_list(yy,ww,sep);
 	//draw_home_entrants_list(yy,ww,sep);
 	
@@ -17,6 +18,24 @@ function screen_home() {
 	draw_create_teams_button();
 	
 	debug_fill_teams();
+	}
+	
+function draw_home_event_type(ww,sep) {
+	
+	var xx = 10;
+	var yy = 10;
+	var height = 30;
+	
+	sep *= 0.7;
+	ww *= 0.7;
+	
+	var label = ["Team","Individual"];
+	draw_text_centered(xx+10,yy,"Event Type: "+label[eventType],height,,sep);
+	
+	draw_rectangle(xx,yy,xx+ww,yy+sep,true);
+	
+	if draw_icon_click(,,xx,yy,ww,sep)
+	eventType = !eventType;
 	}
 	
 function draw_home_member_list_buttons(yy,sep) {

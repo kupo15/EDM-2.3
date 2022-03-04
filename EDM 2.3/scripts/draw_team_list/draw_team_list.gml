@@ -49,9 +49,10 @@ function draw_team_list_body(xx,yy,ysep) {
 	
 	var ww = button_ww;
 	var hh = (button_sep*5)-3;
+	var str = pick("Team ","Group ",eventType);
 
 	draw_rectangle(xx,yy,xx+ww,yy+hh,true); // draw outline
-	draw_text_centered(xx,yy-30,"Team "+string(team_index+1),35,ww); // draw team list number
+	draw_text_centered(xx,yy-30,str+string(team_index+1),35,ww); // draw team list number
     
 	// draw team list
 	var teamGroup = TEAM_LIST[team_index].members;
