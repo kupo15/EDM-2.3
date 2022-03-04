@@ -1,7 +1,7 @@
 // file
 #macro config_file "data.config"
 #macro configversion "0.1"
-#macro save_program json_save_array(config_file,SAVE_FILE) cs(js(SAVE_FILE))
+#macro save_program json_save_array(config_file,SAVE_FILE)
 #macro SAVE_FILE con_main.CONFIGURATION_FILE
 
 // structure

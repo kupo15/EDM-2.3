@@ -2,6 +2,9 @@ function calculate_member_course_handicap(memberStruct) {
 
 	var memberDetails = memberStruct.memberDetails;
 	
+	if (memberDetails.handicapIndex == undefined)
+	return undefined;
+	
 	var current_index = memberDetails.handicapIndex;
 	var _teeColor = memberDetails.teeColor;
 	
