@@ -98,7 +98,7 @@ function screen_back_actions() {
 	
 function draw_settings_icon() {
 	
-	var can_click = (close_enough_timer == -1);
+	var can_click = (close_enough_timer == -1) && !TEELIST_ACTIVE && !KEYPAD_ACTIVE;
 	var curve = animcurve_get_channel(AnimationCurve1,"curve2");
 	var val = animcurve_channel_evaluate(curve,picture_timer_skip);
 	var alpha = 1-val;

@@ -4,7 +4,7 @@ function calculate_member_course_handicap(memberStruct) {
 	
 	if (memberDetails.handicapIndex == undefined)
 	return undefined;
-	
+		
 	var current_index = memberDetails.handicapIndex;
 	var _teeColor = memberDetails.teeColor;
 	
@@ -51,7 +51,7 @@ function calculate_member_handicap_index(memberStruct) {
 		struct.includedIndex = true;
 		ave += struct.differentialAdjusted;
 		}
-
+		
 	// sort by date
 	array_sort_struct(historyArr,"roundDate",false);
 	

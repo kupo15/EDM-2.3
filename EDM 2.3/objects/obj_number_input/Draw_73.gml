@@ -5,7 +5,7 @@ exit;
 if !surface_exists(surf) {
 	
 	// build surface
-	surf = surface_create(width,height);
+	surf = surface_create(width,height+keyHeight);
 	surface_set_target(surf);
 
 	// background

@@ -14,6 +14,7 @@ enum entryType {
 	memberEntryNext,
 	
 	seasonEarnings,
+	handicapOverride,
 	
 	teamFront,
 	teamBack,
@@ -49,7 +50,9 @@ function append_character(str) {
 		
 	var str_ll = string_length(entryString);
 	
-	if (str_ll >= maxCharacters)
+	var max_length = pick(maxCharacters,4,global.entryEnum==entryType.handicapOverride);
+	
+	if (str_ll >= max_length)
 	exit;
 	
 	var neg = pick(1,-1,negate);
@@ -97,7 +100,8 @@ function retrieve_keypad() {
 									 reset = false;
 									 break;
 									 
-			case entryType.seasonEarnings: entry_season_earnings_submit(entry); break;									
+			case entryType.handicapOverride: handicap_override_submit(entry); break;								
+			case entryType.seasonEarnings: entry_season_earnings_submit(entry); break;								
 			
 			case entryType.memberFront:
 			case entryType.memberBack:
@@ -114,6 +118,15 @@ function retrieve_keypad() {
 		if reset
 		global.entryEnum = entryType.none;
 		}
+	}
+	
+function handicap_override_submit(entry) {
+
+	var memberStruct = entrant_list[obj_number_input.entryIndex];
+	var memberDetails = memberStruct.memberDetails;
+	
+	memberDetails.handicapIndex = clamp(entry,-20,maxHCP);
+	obj_number_input.active = false;
 	}
 	
 function entry_season_earnings_submit(entry) {
