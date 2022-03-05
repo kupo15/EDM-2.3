@@ -29,9 +29,10 @@ function draw_handicap_card_header(memberStruct) {
 	// draw index
 	var xx = 0;
 	var height = 40;
+	var str = pick(memberDetails.handicapIndex,"N/A",memberDetails.handicapIndex==undefined);
 
 	draw_set_halign(fa_left);
-	draw_text_centered(xx+15,yy-height,"Handicap Index: "+string(memberDetails.handicapIndex),height);
+	draw_text_centered(xx+15,yy-height,"Handicap Index: "+string(str),height);
 	
 	// draw name
 	var xx = room_width*0.5;
