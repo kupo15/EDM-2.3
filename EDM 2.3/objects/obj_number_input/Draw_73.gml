@@ -51,6 +51,14 @@ if !surface_exists(surf) {
 
 	// backspace
 	draw_icon(ico_backspace,0,keyWidth*2,0,keyWidth,keyHeight);
+	
+	// decimal
+	if (global.entryEnum == entryType.handicapOverride) {
+		
+		draw_text_centered(keyWidth*1.2,20,".",50,keyWidth,keyHeight);
+		draw_line_pixel(keyWidth*1.3,keyHeight*0.1,1,keyHeight*0.9,,0.3);
+		draw_line_pixel(keyWidth*2,keyHeight*0.1,1,keyHeight*0.9,,0.3);		
+		}
 
 	surface_reset_target();
 	}
@@ -73,6 +81,11 @@ draw_set_font(fn_normal);
 // inputs
 if scr_mouse_position_room_released(x+(keyWidth*2),y,keyWidth,keyHeight,mb_left,true,true,!TEELIST_ACTIVE)
 delete_character();
+
+// decimal
+if (global.entryEnum == entryType.handicapOverride)
+&& scr_mouse_position_room_released(x+(keyWidth*1.3),y,keyWidth*0.7,keyHeight,mb_left,true,true,!TEELIST_ACTIVE)
+append_decimal();
 
 for(var i=0;i<4;i++)
 for(var j=0;j<3;j++) {

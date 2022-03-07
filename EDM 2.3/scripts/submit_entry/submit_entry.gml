@@ -46,11 +46,19 @@ function select_input_entry(str) {
 	append_character(str);
 	}
 	
+function append_decimal() {
+	
+	if (string_pos(".",entryString) > 0) || (string_length(entryString) > 2)
+	exit;
+	
+	entryString += ".";
+	}
+	
 function append_character(str) {
 		
 	var str_ll = string_length(entryString);
 	
-	var max_length = pick(maxCharacters,4,global.entryEnum==entryType.handicapOverride);
+	var max_length = pick(maxCharacters,3,global.entryEnum==entryType.handicapOverride);
 	
 	if (str_ll >= max_length)
 	exit;
@@ -60,7 +68,13 @@ function append_character(str) {
 	
 	convert = abs(convert)*neg;
 
+	var dec_pos = string_pos(".",string(convert));
+
 	overwriteEntry = false;
+	
+	if (dec_pos != 0)
+	entryString = string_format(convert,dec_pos-1,1);
+	else
 	entryString = string(convert);
 	}
 	
