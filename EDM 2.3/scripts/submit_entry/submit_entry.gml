@@ -51,39 +51,54 @@ function append_decimal() {
 	if (string_pos(".",entryString) > 0) || (string_length(entryString) > 2)
 	exit;
 	
-	entryString += ".";
+	entryString += pick("0.",".",string_length(entryString) > 0);
+	overwriteEntry = false;
 	}
 	
 function append_character(str) {
 		
+	var inHandicap = global.entryEnum==entryType.handicapOverride;
 	var str_ll = string_length(entryString);
 	
-	var max_length = pick(maxCharacters,3,global.entryEnum==entryType.handicapOverride);
+	var max_length = pick(maxCharacters,4,inHandicap);
 	
 	if (str_ll >= max_length)
 	exit;
-	
+		
 	var neg = pick(1,-1,negate);
-	var convert = real(entryString+str);
-	
+	var newString = entryString+str;
+		
+	// apply negative
+	var convert = real(newString);
 	convert = abs(convert)*neg;
-
-	var dec_pos = string_pos(".",string(convert));
-
-	overwriteEntry = false;
+	convert = string(convert);
 	
-	if (dec_pos != 0)
-	entryString = string_format(convert,dec_pos-1,1);
-	else
-	entryString = string(convert);
+	if inHandicap {
+		
+		// if there is a decimal
+		var dec_pos = string_pos(".",newString);
+
+		if (dec_pos != 0)
+		newString = string_delete(newString,dec_pos+2,1);
+		}
+
+	// result
+	entryString = newString;
+	overwriteEntry = false;
 	}
 	
 function delete_character() {
 	
 	var str_ll = string_length(entryString);
 
-	if (str_ll > 0)
+	if (str_ll == 0)
+	exit;
+	
 	entryString = string_delete(entryString,str_ll,1);
+	
+	// delete decimal as well
+	if (string_char_at(entryString,str_ll-1) == ".")
+	entryString = string_delete(entryString,str_ll-1,1);
 	}
 	
 function string_add(strNum1,strNum2) {
