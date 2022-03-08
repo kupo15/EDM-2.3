@@ -4,7 +4,6 @@ function scr_create_teams() {
 	team_number = -1; // reset
 
 	// shift members over to skip blank teams
-	var missingIndex = false;
 	var list = TEAM_LIST;
 	var maxTeams = array_length(list);
 	for(var i=0;i<maxTeams;i++) {
@@ -24,33 +23,19 @@ function scr_create_teams() {
 				var eventDetails = memberStruct.activeEvent.eventDetails;
 				
 				// if no handicap exists
-				if (memberDetails.handicapIndex == undefined)
-				missingIndex = true;
-				else
+				if (memberDetails.handicapIndex != undefined)
 				memberDetails.handicapSet = true;
 				
 				eventDetails.teamAssigned = team_number;
 				eventDetails.entrantNumber = array_length(entrant_list);
-				
-				if !missingIndex
 				eventDetails.courseHandicap = calculate_member_course_handicap(memberStruct);
 				
 				array_push(entrant_list,memberStruct);
 				}
 			}
 		}
-		
-	if missingIndex {
-		
-		screen_change(screenEnum.missingIndex);
-		exit;
-		}
-		
+				
 	// disable team scores and entry fees
 	if (team_number == 0)
 	eventType = eventEnum.individual;
-	
-	skins_input = true;
-	screen_change(screenEnum.eventRunning);
-	scr_sort_members(MEMBERS_LIST.list);
 	}

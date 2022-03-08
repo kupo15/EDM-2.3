@@ -11,7 +11,7 @@ memberHandicapCard,
 manageCourses,
 eventHistory,
 
-missingIndex,
+entrantDetails,
 eventMemberEdit,
 eventHistoryEdit,
 
@@ -35,7 +35,7 @@ function ini_screens() {
 	drawScreen[screenEnum.eventMemberEdit] = screen_event_member_edit;
 	drawScreen[screenEnum.eventHistoryEdit] = screen_event_history_edit;
 	
-	drawScreen[screenEnum.missingIndex] = screen_missing_handicap_index;
+	drawScreen[screenEnum.entrantDetails] = screen_entrant_details;
 	drawScreen[screenEnum.eventRunning] = screen_score_entry;
 	drawScreen[screenEnum.eventResults] = screen_results;
 	

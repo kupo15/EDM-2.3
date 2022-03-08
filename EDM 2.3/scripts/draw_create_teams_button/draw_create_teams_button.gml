@@ -49,6 +49,27 @@ function draw_create_teams_button(alphaOverride=false) {
 	
 	var str = pick("Teams","Groups",eventType);
 	
-	if (draw_text_button(xx,yy,"Create "+str,height,ww,hh,c_white,alpha,,,create) || keyboard_check_pressed(vk_enter)) && create
-    scr_create_teams();
+	if (draw_text_button(xx,yy,"Create "+str,height,ww,hh,c_white,alpha,,,create) || keyboard_check_pressed(vk_enter)) && create {
+		
+		scr_create_teams();
+		screen_change(screenEnum.entrantDetails);
+		}
+	}
+	
+function draw_button_start_event() {
+	
+	var xx = 820;
+	var yy = 500;
+	var ww = 190;
+	var hh = 90;
+	var height = 33;
+	
+	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,false); // draw outline
+	
+	if (draw_text_button(xx,yy,"Start Event",height,ww,hh,c_white) || keyboard_check_pressed(vk_enter)) {
+		
+		skins_input = true;
+		screen_change(screenEnum.eventRunning);
+		scr_sort_members(MEMBERS_LIST.list);
+		}
 	}

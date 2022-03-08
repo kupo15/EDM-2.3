@@ -36,7 +36,7 @@ function calculate_member_handicap_index(memberStruct) {
 	
 	// if no history
 	if (historyCount == 0)
-	return 0;
+	return undefined;
 		
 	// sort low to high
 	array_sort_struct(historyArr,"differentialAdjusted",true);

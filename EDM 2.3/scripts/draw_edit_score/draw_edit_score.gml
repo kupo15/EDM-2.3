@@ -134,7 +134,8 @@ function draw_selected_edit_score(xx,list,size) {
 		draw_icon(ico_chevron_down,0,xx+40+ww+xoff,yy,36,sep*1.3);
 		
 		// draw course handicap
-		draw_text_centered(xx+230+xoff,yy,"HCP: "+string(eventDetails.courseHandicap),sep*0.9,,sep*1.3);
+		var str = pick(string(eventDetails.courseHandicap),"N/A",eventDetails.courseHandicap == undefined);
+		draw_text_centered(xx+230+xoff,yy,"HCP: "+str,sep*0.9,,sep*1.3);
 		}
 		
 	return list[ind];

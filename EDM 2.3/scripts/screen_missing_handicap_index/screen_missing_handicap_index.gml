@@ -1,21 +1,21 @@
-function screen_missing_handicap_index() {
+function screen_entrant_details() {
 	
 	var xx = room_width*0.5;
 	var yy = 60;
 	var height = 60;
 	
 	draw_set_halign(fa_center);
-	draw_text_height(xx,yy,"Missing Handicap Index",height);
+	draw_text_height(xx,yy,"Entrant Details",height);
 	
 	draw_set_halign(fa_left);
 	
-	var can_create = screen_missing_handicap_index_content();
-	screen_missing_handicap_index_buttons(can_create);
+	screen_entrant_details_content();
+	screen_entrant_details_buttons();
 	}
 	
-function screen_missing_handicap_index_buttons(can_create) {
+function screen_entrant_details_buttons() {
 
-	draw_create_teams_button(can_create);
+	draw_button_start_event();
 	
 	// back
 	var xx = 820;
@@ -30,7 +30,7 @@ function screen_missing_handicap_index_buttons(can_create) {
     screen_back();
 	}
 	
-function screen_missing_handicap_index_content() {
+function screen_entrant_details_content() {
 	
 	var can_click = !TEELIST_ACTIVE && !KEYPAD_ACTIVE;
 	var can_create = true;
