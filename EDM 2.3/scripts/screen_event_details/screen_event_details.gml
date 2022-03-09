@@ -1,18 +1,18 @@
 function screen_entrant_details() {
 	
-	var xx = room_width*0.5;
+	var xx = 20;
 	var yy = 25;
 	var height = 60;
 	
 	draw_set_halign(fa_left);
-	draw_text_centered(20,yy,"Entrant Details",height,,height);
+	draw_text_centered(xx,yy,"Entrant Details",height,,height);
 		
-	draw_home_event_type(440,yy,height);
+	draw_event_type(440,yy,height);
 	screen_entrant_details_content();
 	screen_entrant_details_buttons();
 	}
 	
-function draw_home_event_type(xx,yy,sep) {
+function draw_event_type(xx,yy,sep) {
 	
 	var height = sep*0.6;
 	var col = appblue;
