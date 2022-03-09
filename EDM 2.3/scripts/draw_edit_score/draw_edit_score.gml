@@ -103,7 +103,7 @@ function draw_selected_edit_score(xx,list,size) {
 	
 	var can_click = !TEELIST_ACTIVE && (select_blind_team == undefined);
 	
-	var yy = 120;
+	var yy = 110;
 	var sep = 35;
 	var height = 70;
 	

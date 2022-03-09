@@ -6,7 +6,7 @@
     "path": "folders/Screens/Missing Index.yy",
   },
   "resourceVersion": "1.0",
-  "name": "screen_missing_handicap_index",
+  "name": "screen_event_details",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -6,6 +6,7 @@ enum scrollbarIndex {
 	
 none = -1,
 homeMemberList,
+eventDetailsList,
 eventRunning,
 resultsOverview,
 resultsLowNet,
