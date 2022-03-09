@@ -1,5 +1,7 @@
 function screen_entrant_details() {
 	
+	var can_click = !TEELIST_ACTIVE && !KEYPAD_ACTIVE;
+	
 	var xx = 20;
 	var yy = 25;
 	var height = 60;
@@ -8,8 +10,8 @@ function screen_entrant_details() {
 	draw_text_centered(xx,yy,"Entrant Details",height,,height);
 		
 	draw_event_type(440,yy,height);
-	screen_entrant_details_content();
-	screen_entrant_details_buttons();
+	screen_entrant_details_content(can_click);
+	screen_entrant_details_buttons(can_click);
 	}
 	
 function draw_event_type(xx,yy,sep) {
@@ -32,9 +34,27 @@ function draw_event_type(xx,yy,sep) {
 	eventType = !eventType;
 	}
 	
-function screen_entrant_details_buttons() {
+function draw_button_start_event(can_click) {
+	
+	var xx = 820;
+	var yy = 500;
+	var ww = 190;
+	var hh = 90;
+	var height = 33;
+	
+	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,false); // draw outline
+	
+	if (draw_text_button(xx,yy,"Start Event",height,ww,hh,c_white,,,,can_click) || keyboard_check_pressed(vk_enter)) {
+		
+		skins_input = true;
+		screen_change(screenEnum.eventRunning);
+		scr_sort_members(MEMBERS_LIST.list);
+		}
+	}
+	
+function screen_entrant_details_buttons(can_click) {
 
-	draw_button_start_event();
+	draw_button_start_event(can_click);
 	
 	// back
 	var xx = 820;
@@ -45,19 +65,17 @@ function screen_entrant_details_buttons() {
 
 	draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_green,c_green,c_green,c_green,true); // draw outline
 	
-	if draw_text_button(xx,yy,"Back",height,ww,hh)
+	if draw_text_button(xx,yy,"Back",height,ww,hh,,,,,can_click)
 	screen_back();
 	}
 	
-function screen_entrant_details_content() {
-	
-	var can_click = !TEELIST_ACTIVE && !KEYPAD_ACTIVE;
+function screen_entrant_details_content(can_click) {
 	
 	var xx = 10;
 	var yy = 110;
 	var ww = 780;
-	var height = 30;
-	var sep = 50;
+	var sep = 55;
+	var height = sep*0.6;
 	var yoff = 0;
 	
 	var list = entrant_list;
@@ -79,7 +97,7 @@ function screen_entrant_details_content() {
 		var str = pick("None",string(index),index!=undefined);
 		var col = pick(c_black,appblue,!memberDetails.handicapSet);
 				
-		draw_text_centered(xx+440,yy+ypos,"HCP: "+str,height,,sep,col);
+		draw_text_centered(xx+430,yy+ypos,"HCP: "+str,height,,sep,col);
 		
 		if draw_text_button(xx+430,yy+ypos,"",sep,150,sep,,,,true,can_click)
 		init_keypad(entryType.handicapOverride,index,,,,,,,,,i);
@@ -92,7 +110,7 @@ function screen_entrant_details_content() {
 		draw_text_centered(xx+ww-155,yy+ypos,teeStr,sep*0.7,,sep);
 		
 		if draw_text_button(xx+ww-205,yy+ypos,"",sep*0.7,220,sep,,,,,can_click)
-		tee_popover_init(memberStruct,,room_height,,memberDetails.teeColor);
+		tee_popover_init(memberStruct,380,room_height,,memberDetails.teeColor);
 		
 		// separator
 		draw_line_pixel(xx,yy+ypos+sep,ww,1,,0.3);

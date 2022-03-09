@@ -71,7 +71,7 @@ function course_manage_currency() {
 	return yy+sep;
 	}
 	
-function draw_tee_data_list(xx,yy,ww,sep=40,showPar=true,highlight=undefined,canPress=true) {
+function draw_tee_data_list(xx,yy,ww,sep=55,showPar=true,highlight=undefined,canPress=true) {
 		
 	var alpha = draw_get_alpha();
 	var result = undefined;

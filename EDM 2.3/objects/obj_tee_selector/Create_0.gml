@@ -1,8 +1,8 @@
 active = false;
 teeMarkerCount = array_length(TEE_DATA.teeOrder);
 
-var sep = 40;
-width = 350;
+sep = 55;
+width = 390;
 height = sep*teeMarkerCount;
 
 highlightedTee = undefined;

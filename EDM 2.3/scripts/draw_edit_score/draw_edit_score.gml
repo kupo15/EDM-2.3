@@ -127,7 +127,7 @@ function draw_selected_edit_score(xx,list,size) {
 		draw_text_centered(xx+40+xoff,yy,teeStr,sep,,sep*1.3);
 		
 		if draw_text_button(xx,yy,"",sep,220,sep*1.3,,,,true,can_click)	
-		tee_popover_init(entrant,,room_height,,entrantDetails.teeColor);
+		tee_popover_init(entrant,0,room_height,,entrantDetails.teeColor);
 		
 		// draw chevron
 		var ww = string_width_height(teeStr,sep);
