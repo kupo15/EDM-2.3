@@ -42,18 +42,87 @@ function calculate_member_handicap_index(memberStruct) {
 	array_sort_struct(historyArr,"differentialAdjusted",true);
 	
 	// set the first 8 scores to active
-	var ave = 0;
-	var num = min(topScores,historyCount);
+	var diffSum = 0;
+	var table = handicap_index_calculate_included_rounds(historyCount);
+	var num = table.scoreCount;
 	for(var i=0;i<num;i++) {
 		
 		var struct = historyArr[i];
 		
 		struct.includedIndex = true;
-		ave += struct.differentialAdjusted;
+		diffSum += struct.differentialAdjusted;
 		}
-		
+	
 	// sort by date
 	array_sort_struct(historyArr,"roundDate",false);
 	
-	return clamp(round_tenth(ave/num),-200,maxHCP);
+	var adjustment = table.adjustment;
+	var diffAveraged = round_tenth(diffSum/num);
+	var index = diffAveraged+adjustment;
+	
+	if (historyCount >= 20)
+	index = handicap_index_apply_caps(index);
+	
+	return handicap_index_format_string(clamp(index,-200,maxHCP));
+	}
+	
+function handicap_index_apply_caps(index) {
+	
+	return index;
+	
+	// soft cap
+	index = clamp(index,index,index+3);
+	
+	// hard cap
+	index = clamp(index,index,index+5);
+	
+	return index;
+	}
+
+function IndexAdjustment(count,adj=0) constructor {
+	
+	scoreCount = count;
+	adjustment = adj;
+	}
+	
+function handicap_index_calculate_included_rounds(scoreCount) {
+
+	var ind = clamp(scoreCount-1,0,19);
+
+	var table = [
+	
+		new IndexAdjustment(1,-2),
+		new IndexAdjustment(1,-2),
+		new IndexAdjustment(1,-2),
+		new IndexAdjustment(1,-1),
+		new IndexAdjustment(1,0),
+		new IndexAdjustment(2,-1),
+		new IndexAdjustment(2),
+		new IndexAdjustment(2),
+		new IndexAdjustment(3),
+		new IndexAdjustment(3),
+		new IndexAdjustment(3),
+		new IndexAdjustment(4),
+		new IndexAdjustment(4),
+		new IndexAdjustment(4),
+		new IndexAdjustment(5),
+		new IndexAdjustment(5),
+		new IndexAdjustment(6),
+		new IndexAdjustment(6),
+		new IndexAdjustment(7),
+		new IndexAdjustment(8),
+		];
+		
+	return table[ind];
+	}
+	
+function handicap_index_format_string(val) {
+	
+	var str = string(val);
+	var dec_pos = string_pos(".",str);
+	
+	if (dec_pos != 0)
+	str = string_delete(str,dec_pos+2,1);
+	
+	return str;
 	}

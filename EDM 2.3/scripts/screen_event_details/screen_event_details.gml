@@ -97,7 +97,7 @@ function screen_entrant_details_content(can_click) {
 		var str = pick("None",string(index),index!=undefined);
 		var col = pick(c_black,appblue,!memberDetails.handicapSet);
 				
-		draw_text_centered(xx+430,yy+ypos,"HCP: "+str,height,,sep,col);
+		draw_text_centered(xx+420,yy+ypos,"Index: "+str,height,,sep,col);
 		
 		if draw_text_button(xx+430,yy+ypos,"",sep,150,sep,,,,true,can_click)
 		init_keypad(entryType.handicapOverride,index,,,,,,,,,i);

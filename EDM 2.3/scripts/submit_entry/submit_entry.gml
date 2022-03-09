@@ -73,14 +73,8 @@ function append_character(str) {
 	convert = abs(convert)*neg;
 	convert = string(convert);
 	
-	if inHandicap {
-		
-		// if there is a decimal
-		var dec_pos = string_pos(".",newString);
-
-		if (dec_pos != 0)
-		newString = string_delete(newString,dec_pos+2,1);
-		}
+	if inHandicap
+	handicap_index_format_string(newString);
 
 	// result
 	entryString = newString;
@@ -154,7 +148,7 @@ function handicap_override_submit(entry) {
 	var memberStruct = entrant_list[obj_number_input.entryIndex];
 	var memberDetails = memberStruct.memberDetails;
 	
-	memberDetails.handicapIndex = clamp(entry,-20,maxHCP);
+	memberDetails.handicapIndex = handicap_index_format_string(clamp(entry,-20,maxHCP));
 	obj_number_input.active = false;
 	}
 	
