@@ -25,7 +25,7 @@ function round_calculate_differential(adjGross,_teeData) {
 	
 	var diff = adjGross-course_rating;
 	var diffAdj = diff*113/course_slope;
-	
+
 	return diffAdj;
 	}
 	
@@ -53,9 +53,6 @@ function calculate_member_handicap_index(memberStruct) {
 		diffSum += struct.differentialAdjusted;
 		}
 	
-	// sort by date
-	array_sort_struct(historyArr,"roundDate",false);
-	
 	var adjustment = table.adjustment;
 	var diffAveraged = round_tenth(diffSum/num);
 	var index = diffAveraged+adjustment;
@@ -65,6 +62,9 @@ function calculate_member_handicap_index(memberStruct) {
 		var lowIndex = handicap_calculate_low_index();
 		index = handicap_index_apply_caps(lowIndex,index);
 		}
+	
+	// sort by date
+	array_sort_struct(historyArr,"roundDate",false);
 	
 	return handicap_index_format_string(clamp(index,-200,maxHCP));
 	}
