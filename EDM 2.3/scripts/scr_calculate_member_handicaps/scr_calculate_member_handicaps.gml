@@ -110,21 +110,20 @@ function handicap_cap_adjustments(memberStruct) {
 	var historyCount = array_length(historyArr);
 	
 	var memberDetails = memberStruct.memberDetails;
+	var lowIndex = memberDetails.handicapLowIndex;
 	var index = memberDetails.handicapIndex;
 	
 	if (historyCount < 20)
 	return index;
 
 	// apply caps and ESR
-	//index = handicap_index_apply_caps(lowIndex,index);
+	index = handicap_index_apply_caps(real(lowIndex),index);
 		
-	return index; // handicap_index_format_string(index);
+	return handicap_index_format_string(index);
 	}
 		
 function handicap_index_apply_caps(low_index,currentIndex) {
-	
-	return currentIndex;
-	
+		
 	// soft cap
 	var diff = (currentIndex-low_index);
 	var softCap = clamp(diff,0,3);
