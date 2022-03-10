@@ -186,5 +186,5 @@ function round_tenth(n) {
 	n = round(n);
 	n /= 10;
 
-	return n;
+	return real(n);
 	}
