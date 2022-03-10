@@ -31,8 +31,6 @@ function round_calculate_differential(adjGross,_teeData) {
 	
 function calculate_member_handicap_index(memberStruct) {
 
-db(memberStruct.memberDetails.fullName);
-
 	var historyArr = memberStruct.roundHistory;
 	var historyCount = array_length(historyArr);
 	

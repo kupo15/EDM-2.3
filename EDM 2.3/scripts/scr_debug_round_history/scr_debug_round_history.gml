@@ -23,6 +23,12 @@ function debug_generate_round_history(arr) {
 		
 		memberDetails.handicapIndex = calculate_member_handicap_index(memberStruct);
 		memberDetails.handicapIndex = handicap_cap_adjustments(memberStruct);
+		
+		// limit to last 20 scores
+		var arrSize = array_length(memberStruct.roundHistory);
+		var lastInd = min(handicapHistoryMax,arrSize);
+	
+		array_resize(memberStruct.roundHistory,lastInd);
 		}
 	}
 
