@@ -1,5 +1,4 @@
-#macro memberListDisplayCount 6
-
+/*
 function draw_member_list(ysep) {
 		
 	var xx = 40;

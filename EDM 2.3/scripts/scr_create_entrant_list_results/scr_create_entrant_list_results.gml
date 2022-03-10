@@ -54,11 +54,14 @@ function member_round_history_add(memberStruct,newRoundStruct) {
 	else
 	array_insert(memberStruct.roundHistory,0,newRoundStruct); // add to handicap history
 	
-	// knock out score 20
-	var arrSize = array_length(memberStruct.roundHistory);
-	var lastInd = min(handicapHistoryMax,arrSize);
+	// knock out last round if more than a year old
+	var roundHistory = memberStruct.roundHistory;
+	var arrSize = array_length(roundHistory);
+	var lastRound = roundHistory[arrSize-1];
+	var day_span = date_day_span(lastRound.roundDate,date_current_datetime());
 	
-	array_resize(memberStruct.roundHistory,lastInd);
+	if (floor(day_span) > 365)	
+	array_pop(roundHistory);
 	}
 	
 function member_round_history_create(memberStruct) {

@@ -1,19 +1,18 @@
+#macro memberListDisplayCount 6
+
 function screen_home() {
 	
-	var yy = 160;
+	var yy = 90;
 	var ww = button_ww;
 	var sep = button_sep;
 	
 	draw_set_halign(fa_left);
 	
 	draw_home_member_list(yy,ww,sep);
-	//draw_home_entrants_list(yy,ww,sep);
-	
-	//draw_member_list(sep);
 	draw_team_list_home(sep);
 	
 	// buttons
-	draw_clear_all_teams_button(yy,sep);
+	draw_clear_all_teams_button();
 	draw_create_teams_button();
 	
 	debug_fill_teams();
@@ -101,21 +100,6 @@ function select_member_in_list(xx,yy,ww,hh,ind,inBounds) {
 		list_slot = ind; // store clicked entry
 		timer[mainTimers.renameEntry] = round(room_speed*0.65);
 		}
-	}
-	
-function draw_home_entrants_list(yy,ww,sep) {
-	
-	var xx = 530;
-	var height = 45;
-	
-	// outline
-	draw_set_alpha(0.7);
-	draw_rectangle_color(xx,yy-sep,xx+ww,room_height,c_gray,c_gray,c_gray,c_gray,false);
-	draw_set_alpha(1);
-	
-	var col = make_colour_rgb(255,227,215);
-	
-	draw_text_button(xx,yy-sep,"Entrant List",height*1.1,ww,sep,col)
 	}
 	
 function debug_fill_teams() {
