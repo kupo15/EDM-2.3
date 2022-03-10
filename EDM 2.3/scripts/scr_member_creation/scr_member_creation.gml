@@ -47,6 +47,7 @@ function MemberDetails(_name,_favorite,_teeColor) constructor {
 	archived = false;
 	
 	handicapSet = false;
+	handicapLowIndex = undefined;
 	handicapIndex = undefined;
 	teeColor = _teeColor;
 	}

@@ -60,23 +60,34 @@ function calculate_member_handicap_index(memberStruct) {
 	var diffAveraged = round_tenth(diffSum/num);
 	var index = diffAveraged+adjustment;
 	
-	if (historyCount >= 20)
-	index = handicap_index_apply_caps(index);
+	if (historyCount >= 20) {
+		
+		var lowIndex = handicap_calculate_low_index();
+		index = handicap_index_apply_caps(lowIndex,index);
+		}
 	
 	return handicap_index_format_string(clamp(index,-200,maxHCP));
 	}
 	
-function handicap_index_apply_caps(index) {
+function handicap_calculate_low_index() {
 	
-	return index;
+	
+	}
+	
+function handicap_index_apply_caps(low_index,currentIndex) {
+	
+	return currentIndex;
 	
 	// soft cap
-	index = clamp(index,index,index+3);
+	var diff = (currentIndex-low_index);
+	var softCap = clamp(diff,0,3);
+	var incBeyondThree = max(0,diff-3);
+	var softIndex = low_index+softCap+(incBeyondThree*0.5);
 	
 	// hard cap
-	index = clamp(index,index,index+5);
+	var hardIndex = low_index+5;
 	
-	return index;
+	return min(softIndex,hardIndex);
 	}
 
 function IndexAdjustment(count,adj=0) constructor {
