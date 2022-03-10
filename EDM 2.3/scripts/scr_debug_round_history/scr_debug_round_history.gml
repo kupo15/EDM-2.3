@@ -22,6 +22,7 @@ function debug_generate_round_history(arr) {
 		var memberDetails = memberStruct.memberDetails;
 		
 		memberDetails.handicapIndex = calculate_member_handicap_index(memberStruct);
+		memberDetails.handicapIndex = handicap_cap_adjustments(memberStruct);
 		}
 	}
 

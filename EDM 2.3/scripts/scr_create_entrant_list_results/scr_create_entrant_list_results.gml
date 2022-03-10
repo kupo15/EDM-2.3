@@ -43,6 +43,7 @@ function member_round_save() {
 		
 		member_round_history_add(memberStruct,roundStruct); // add round to handicap history
 		memberDetails.handicapIndex = calculate_member_handicap_index(memberStruct); // calculate index
+		memberDetails.handicapIndex = handicap_cap_adjustments(memberStruct); // adjust index
 		}
 	}
 	

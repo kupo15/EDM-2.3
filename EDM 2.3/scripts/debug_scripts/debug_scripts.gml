@@ -5,6 +5,7 @@ function debug_members_list_create() {
 
 	var list = [
 	
+		new Member("Jim Baillon",,true),
 		new Member("Test A",,true),
 		new Member("Duane Kent"),
 		new Member("Bob Stenhouse"),
@@ -29,7 +30,6 @@ function debug_members_list_create() {
 		new Member("Brent Cunliffe"),
 		new Member("Giles Paradis"),
 		new Member("John Watson"),
-		new Member("Jim Baillon",,true),
 		new Member("Dave Greiner"),
 		new Member("Ron VanVleet","white"),
 		new Member("Ken Clarence"),

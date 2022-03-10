@@ -26,54 +26,101 @@ function round_calculate_differential(adjGross,_teeData) {
 	var diff = adjGross-course_rating;
 	var diffAdj = diff*113/course_slope;
 
-	return diffAdj;
+	return round_tenth(diffAdj);
 	}
 	
 function calculate_member_handicap_index(memberStruct) {
-		
+
+db(memberStruct.memberDetails.fullName);
+
 	var historyArr = memberStruct.roundHistory;
 	var historyCount = array_length(historyArr);
 	
 	// if no history
 	if (historyCount == 0)
 	return undefined;
+			
+	// sort history oldest first
+	array_sort_struct(historyArr,"roundDate",true);
+
+	var lowIndex = maxHCP;
+	var reachedEnd = !(historyCount > 0);
+	var pos_start = 0;
+
+	while !reachedEnd {
 		
-	// sort low to high
-	array_sort_struct(historyArr,"differentialAdjusted",true);
-	
-	// set the first 8 scores to active
-	var diffSum = 0;
-	var table = handicap_index_calculate_included_rounds(historyCount);
-	var num = table.scoreCount;
-	for(var i=0;i<num;i++) {
+		// add to diffList
+		var diffList = [];
+		var pos_end = clamp(pos_start+20,0,historyCount);
+		for(var i=pos_start;i<pos_end;i++) {
 		
-		var struct = historyArr[i];
+			var roundStruct = historyArr[i];
+			array_push(diffList,roundStruct);
+			
+			// break out
+			if (i+1 == historyCount)
+			reachedEnd = true;
+			}
+				
+		var index = handicap_calculate(diffList);
 		
-		struct.includedIndex = true;
-		diffSum += struct.differentialAdjusted;
+		if (index < lowIndex)
+		lowIndex = index;
+		
+		pos_start++;
 		}
-	
-	var adjustment = table.adjustment;
-	var diffAveraged = round_tenth(diffSum/num);
-	var index = diffAveraged+adjustment;
-	
-	if (historyCount >= 20) {
 		
-		var lowIndex = handicap_calculate_low_index();
-		index = handicap_index_apply_caps(lowIndex,index);
-		}
+	// set low index
+	memberStruct.memberDetails.handicapLowIndex = handicap_index_format_string(lowIndex);
 	
-	// sort by date
+	// sort by date newest first
 	array_sort_struct(historyArr,"roundDate",false);
-	
+		
 	return handicap_index_format_string(clamp(index,-200,maxHCP));
 	}
 	
-function handicap_calculate_low_index() {
+function handicap_calculate(diffList) {
 	
+	// sort low to high
+	array_sort_struct(diffList,"differentialAdjusted",true);
 	
+	var diffSum = 0;
+	var table = handicap_index_calculate_included_rounds(diffList);
+	var num = table.scoreCount;
+	for(var i=0;i<num;i++) {
+		
+		var struct = diffList[i];
+		var diffAdj = struct.differentialAdjusted;
+		
+		struct.includedIndex = true;
+		diffSum += diffAdj;
+		}
+	
+	// calculate
+	var adjustment = table.adjustment;
+	var diffAveraged = round_tenth(diffSum/num);
+	var index = diffAveraged+adjustment;
+		
+	return index;
 	}
+		
+function handicap_cap_adjustments(memberStruct) {
+		
+	var historyArr = memberStruct.roundHistory;
+	var historyCount = array_length(historyArr);
 	
+	var memberDetails = memberStruct.memberDetails;
+	var index = memberDetails.handicapIndex;
+	
+	if (historyCount < 20)
+	return index;
+
+	// apply caps and ESR
+	//index = handicap_index_apply_caps(lowIndex,index);
+		
+	return index; // handicap_index_format_string(index);
+	}
+		
 function handicap_index_apply_caps(low_index,currentIndex) {
 	
 	return currentIndex;
@@ -96,8 +143,9 @@ function IndexAdjustment(count,adj=0) constructor {
 	adjustment = adj;
 	}
 	
-function handicap_index_calculate_included_rounds(scoreCount) {
+function handicap_index_calculate_included_rounds(diffList) {
 
+	var scoreCount = array_length(diffList);
 	var ind = clamp(scoreCount-1,0,19);
 
 	var table = [

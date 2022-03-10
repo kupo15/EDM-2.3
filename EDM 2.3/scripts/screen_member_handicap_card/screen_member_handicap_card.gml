@@ -14,7 +14,7 @@ function draw_handicap_card_header(memberStruct) {
 	draw_line_pixel(xx,yy,room_width,1);
 		
 	// draw date
-	var xx = 900;
+	var xx = 930;
 	var height = 35;
 	var month = funct_convert_month(current_month,false);
 	var date_str = month+" "+string(current_day)+", "+string(current_year);
@@ -26,13 +26,21 @@ function draw_handicap_card_header(memberStruct) {
 
 	var memberDetails = memberStruct.memberDetails;
 
+	// draw low index
+	var xx = 0;
+	var height = 40;
+	var str = pick(memberDetails.handicapLowIndex,"N/A",memberDetails.handicapLowIndex==undefined);
+
+	draw_set_halign(fa_left);
+	draw_text_centered(xx+15,yy-height-height,"Low Index: "+string(str),height);
+	
 	// draw index
 	var xx = 0;
 	var height = 40;
 	var str = pick(memberDetails.handicapIndex,"N/A",memberDetails.handicapIndex==undefined);
 
 	draw_set_halign(fa_left);
-	draw_text_centered(xx+15,yy-height,"Handicap Index: "+string(str),height);
+	draw_text_centered(xx+15,yy-height,"Index: "+string(str),height);
 	
 	// draw name
 	var xx = room_width*0.5;
@@ -49,7 +57,7 @@ function draw_handicap_card_header(memberStruct) {
 	var xx = 0;
 	var yy = 0;
 	
-	draw_sprite_stretched(spr_logo,0,xx,yy,size,size);
+	//draw_sprite_stretched(spr_logo,0,xx,yy,size,size);
 	}
 
 function draw_handicap_card_contents(memberStruct) {
@@ -88,7 +96,7 @@ function draw_handicap_card_contents(memberStruct) {
 		draw_text_centered(xx+xoff,yy+yoff,date_str,height);
 		
 		// draw adjDiff
-		draw_text_centered(xx+xoff,yy+yoff+35,"Adj. Diff: "+string(struct.differentialAdjusted),height*0.9);
+		draw_text_centered(xx+xoff,yy+yoff+35,"Adj. Diff: "+handicap_index_format_string(struct.differentialAdjusted),height*0.9);
 		
 		// draw score
 		var str = pick("","*",struct.includedIndex);
@@ -103,8 +111,3 @@ function draw_handicap_card_contents(memberStruct) {
 		
 	draw_set_halign(fa_left);
 	}
-	/*
-	roundDate = _date;
-	adjustedGross = adjGross;
-	includedIndex = false; // included in index calculation
-	differentialAdjusted = 
