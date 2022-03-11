@@ -10,7 +10,6 @@ function check_active_popovers() {
 function scr_inputs() {
 	
 	mouse_left = mouse_check_button(mb_left);
-	global.clicked = false;
 
 	switch os_type 
 		{

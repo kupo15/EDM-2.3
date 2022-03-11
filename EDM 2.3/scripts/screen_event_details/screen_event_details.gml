@@ -2,6 +2,9 @@ function screen_entrant_details() {
 	
 	var can_click = !TEELIST_ACTIVE && !KEYPAD_ACTIVE;
 	
+	if mouse_check_button_released(mb_left)
+	db([TEELIST_ACTIVE,KEYPAD_ACTIVE,global.clicked])
+	
 	var xx = 20;
 	var yy = 25;
 	var height = 60;
@@ -105,7 +108,6 @@ function screen_entrant_details_content(can_click) {
 		draw_text_centered(scroll_xx+420,scroll_yy+ypos,"Index: "+str,height,,sep,col);
 		
 		if draw_icon_click(,,xx+410,yy+ypos,170,sep,,,,can_click,true,,xx,yy)
-		//if draw_text_button(xx+430,yy+ypos,"",sep,150,sep,,,,true,can_click)
 		init_keypad(entryType.handicapOverride,index,,,,,,,,,i);
 		
 		// draw tee
@@ -116,7 +118,6 @@ function screen_entrant_details_content(can_click) {
 		draw_text_centered(scroll_xx+ww-155,scroll_yy+ypos,teeStr,sep*0.7,,sep);
 		
 		if draw_icon_click(,,xx+ww-205,yy+ypos,220,sep,,,,can_click,,,xx,yy)
-		//if draw_text_button(xx+ww-205,yy+ypos,"",sep*0.7,220,sep,,,,,can_click)
 		tee_popover_init(memberStruct,380,room_height,,memberDetails.teeColor);
 		
 		// separator
