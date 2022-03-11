@@ -39,6 +39,7 @@ function draw_member_list_content(xx,yy,ww,sep,height,can_click) {
 	var scroll_xx = 0;
 	var scroll_yy = 0;
 	scrollbar_set_surface(scrollbarEnum,ww,room_height-yy);
+	draw_clear(c_white);
 
 	var rows = (room_height-50)/sep;
 	var offset = scrollbar_get_offset(scrollbarEnum);

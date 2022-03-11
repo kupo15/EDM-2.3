@@ -105,7 +105,7 @@ function screen_entrant_details_content(can_click) {
 		draw_text_centered(scroll_xx+420,scroll_yy+ypos,"Index: "+str,height,,sep,col);
 		
 		if draw_icon_click(,,xx+410,yy+ypos,190,sep,,,,can_click,true,,xx,yy)
-		init_keypad(entryType.handicapOverride,index,,,,,,,,,i);
+		init_keypad(entryType.handicapOverride,index,,,room_width-360,,,,,,i);
 		
 		draw_icon(ico_chevron_down,0,scroll_xx+560,scroll_yy+ypos,50,sep);
 		
