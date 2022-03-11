@@ -1,10 +1,7 @@
 function screen_entrant_details() {
 	
 	var can_click = !TEELIST_ACTIVE && !KEYPAD_ACTIVE;
-	
-	if mouse_check_button_released(mb_left)
-	db([TEELIST_ACTIVE,KEYPAD_ACTIVE,global.clicked])
-	
+		
 	var xx = 20;
 	var yy = 25;
 	var height = 60;
@@ -60,8 +57,8 @@ function screen_entrant_details_buttons(can_click) {
 	draw_button_start_event(can_click);
 	
 	// back
-	var xx = 820;
-	var yy = 380;
+	var xx = 40;
+	var yy = 500;
 	var ww = 190;
 	var hh = 90;
 	var height = 33;
@@ -76,7 +73,7 @@ function screen_entrant_details_content(can_click) {
 	
 	var xx = 10;
 	var yy = 110;
-	var ww = 780;
+	var ww = room_width;
 	var sep = 55;
 	var height = sep*0.6;
 	var yoff = 0;
@@ -84,7 +81,7 @@ function screen_entrant_details_content(can_click) {
 	var scroll_xx = 0;
 	var scroll_yy = 0;
 	var scrollEnum = scrollbarIndex.eventDetailsList;
-	scrollbar_set_surface(scrollEnum,ww,room_height-yy);
+	scrollbar_set_surface(scrollEnum,ww,490-yy);
 	
 	var offset = scrollbar_get_offset(scrollEnum);
 	var list = entrant_list;
@@ -107,18 +104,20 @@ function screen_entrant_details_content(can_click) {
 				
 		draw_text_centered(scroll_xx+420,scroll_yy+ypos,"Index: "+str,height,,sep,col);
 		
-		if draw_icon_click(,,xx+410,yy+ypos,170,sep,,,,can_click,true,,xx,yy)
+		if draw_icon_click(,,xx+410,yy+ypos,190,sep,,,,can_click,true,,xx,yy)
 		init_keypad(entryType.handicapOverride,index,,,,,,,,,i);
+		
+		draw_icon(ico_chevron_down,0,scroll_xx+560,scroll_yy+ypos,50,sep);
 		
 		// draw tee
 		var struct = TEE_DATA[$ memberDetails.teeColor];
 		var teeStr = memberDetails.teeColor+" tees";
 		
-		draw_sprite_ext(ico_tee_marker,0,scroll_xx+ww-175,scroll_yy+ypos+(sep*0.5),1,1,0,struct.color,1);
-		draw_text_centered(scroll_xx+ww-155,scroll_yy+ypos,teeStr,sep*0.7,,sep);
+		draw_sprite_ext(ico_tee_marker,0,scroll_xx+615,scroll_yy+ypos+(sep*0.5),1,1,0,struct.color,1);
+		draw_text_centered(scroll_xx+635,scroll_yy+ypos,teeStr,sep*0.7,,sep);
 		
-		if draw_icon_click(,,xx+ww-205,yy+ypos,220,sep,,,,can_click,,,xx,yy)
-		tee_popover_init(memberStruct,380,room_height,,memberDetails.teeColor);
+		if draw_icon_click(,,610,yy+ypos,220,sep,,,,can_click,,,xx,yy)
+		tee_popover_init(memberStruct,400,room_height,,memberDetails.teeColor);
 		
 		// separator
 		draw_line_pixel(scroll_xx,scroll_yy+ypos+sep,ww,1,,0.3);

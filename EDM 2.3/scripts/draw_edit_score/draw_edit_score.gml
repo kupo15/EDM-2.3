@@ -64,8 +64,8 @@ function draw_edit_score_all() {
 	var c_col = appblue;
 
 	//draw_text_centered(30,yy-height*1.8,"Team "+string(team_index_entry+1),height*1.8,,height*2,c_col);
-	draw_text_centered(340,yy-height,"Front",height,70);
-	draw_text_centered(410,yy-height,"Back",height,70);
+	draw_text_centered(340,yy-(height*1.8),"Gross\nFront",height*1.8,70);
+	draw_text_centered(410,yy-(height*1.8),"Gross\nBack",height*1.8,70);
 	draw_text_centered(480,yy-height,"Adj. 18",height,70);
 
 	draw_line_pixel(xx,yy,560,1); // line
