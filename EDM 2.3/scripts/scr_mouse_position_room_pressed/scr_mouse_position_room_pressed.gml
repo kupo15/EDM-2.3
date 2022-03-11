@@ -33,7 +33,7 @@ function scr_mouse_position_room_pressed(x_left,y_top,ww,hh,button=mb_left,highl
 	}
 
 
-function scr_mouse_position_room_released(x_left,y_top,ww,hh,button=mb_left,highlight=true,isKeypad=false,can_click=true) {
+function scr_mouse_position_room_released(x_left,y_top,ww,hh,button=mb_left,highlight=true,isKeypad=false,can_click=true,surf_xx=0,surf_yy=0) {
 
 	if global.clicked || !global.canClick || (!isKeypad && KEYPAD_ACTIVE) || !can_click
 	return false;
@@ -46,8 +46,11 @@ function scr_mouse_position_room_released(x_left,y_top,ww,hh,button=mb_left,high
 		// highlight area
 	    if highlight && (os_type == os_windows) {
 			
+			var xx = x_left-surf_xx;
+			var yy = y_top-surf_yy;
+			
 	        draw_set_alpha(0.3);
-	        draw_rectangle_colour(x_left,y_top,x_left+ww,y_top+hh,c_yellow,c_yellow,c_yellow,c_yellow,false);
+	        draw_rectangle_colour(xx,yy,xx+ww,yy+hh,c_yellow,c_yellow,c_yellow,c_yellow,false);
 	        draw_set_alpha(1);
 	        }
            

@@ -45,15 +45,19 @@ function draw_home_member_list(yy,ww,sep) {
 	
 	var xx = 10;
 	var height = 45;
-	
+	var scrollEnum = scrollbarIndex.homeMemberList;
+
 	// outline
 	draw_set_alpha(0.7);
 	draw_rectangle_color(xx,yy-sep,xx+ww,room_height,c_gray,c_gray,c_gray,c_gray,false);
 	draw_set_alpha(1);
 	
 	draw_home_member_list_buttons(yy,sep);
+	scrollbar_set_surface(scrollEnum,ww,room_height-yy);
 	
-	var offset = scrollbar_get_offset(scrollbarIndex.homeMemberList);
+	var surf_xx = 0;
+	var surf_yy = 0;
+	var offset = scrollbar_get_offset(scrollEnum);
 	var list = MEMBERS_LIST.list;
 	for(var i=0;i<array_length(list);i++) {
 		
@@ -76,9 +80,11 @@ function draw_home_member_list(yy,ww,sep) {
 		// set selected entry
 		select_member_in_list(xx,yy+yoff,ww,sep,i,inBounds);
 	   		
-		draw_sprite_stretched_ext(spr_member_button_9slice,held,xx,yy+yoff,ww,button_hh,button_col,1); // draw button
-		draw_member_name(xx+15,yy+yoff,memberStruct,height,name_col,,sep,false,false,true);
+		draw_sprite_stretched_ext(spr_member_button_9slice,held,surf_xx,surf_yy+yoff,ww,button_hh,button_col,1); // draw button
+		draw_member_name(surf_xx+15,surf_yy+yoff,memberStruct,height,name_col,,sep,false,false,true);
 		}
+		
+	scrollbar_draw_surface(scrollEnum,xx,yy);
 		
 	memberlist_release_actions(list_slot);	
 	scrollbar(xx,yy,ww,room_height,sep,list,scrollbarIndex.homeMemberList);

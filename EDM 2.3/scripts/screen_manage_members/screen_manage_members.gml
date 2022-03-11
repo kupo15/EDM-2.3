@@ -36,6 +36,10 @@ function draw_member_list_content(xx,yy,ww,sep,height,can_click) {
 	var size = array_length(list);
 	var yoff = 0;
 
+	var scroll_xx = 0;
+	var scroll_yy = 0;
+	scrollbar_set_surface(scrollbarEnum,ww,room_height-yy);
+
 	var rows = (room_height-50)/sep;
 	var offset = scrollbar_get_offset(scrollbarEnum);
 	var pos_start = 0; // floor(offset);
@@ -56,26 +60,29 @@ function draw_member_list_content(xx,yy,ww,sep,height,can_click) {
 		if archived
 		continue;
 		
-		if draw_icon_click(ico_favorite,memberDetails.favorite,xx+370,yy+ypos,ww-370,sep,,,,can_click,,appblue)	
+		draw_icon(ico_favorite,memberDetails.favorite,scroll_xx+370,scroll_yy+ypos,ww-370,sep,,,appblue);
+		
+		if draw_icon_click(,,xx+370,yy+ypos,ww-370,sep,,,,can_click,,,xx,yy)
 		memberDetails.favorite = !memberDetails.favorite;
 		
-		if draw_icon_click(,,xx,yy+ypos,ww,sep,,,,can_click)
+		if draw_icon_click(,,xx,yy+ypos,ww,sep,,,,can_click,,,xx,yy)
 		manageMemberIndex = i;
 		
 		// highlight
 		if selected
-		draw_icon(,,xx,yy+ypos,ww,sep,appblue,0.5);
+		draw_icon(,,scroll_xx,scroll_yy+ypos,ww,sep,appblue,0.5);
 		
 		// member name
-		draw_member_name(xx+15,yy+ypos,memberStruct,height,bgCol,,sep,false,,true);
+		draw_member_name(scroll_xx+15,scroll_yy+ypos,memberStruct,height,bgCol,,sep,false,,true);
 		
 		// separator
-		draw_line_pixel(xx,yy+ypos+sep,ww,1,c_black,0.3);
+		draw_line_pixel(scroll_xx,scroll_yy+ypos+sep,ww,1,c_black,0.3);
 		
 		yoff++;
 		}
 		
 	// scroll list
+	scrollbar_draw_surface(scrollbarEnum,xx,yy);
 	scrollbar(xx,yy,ww,room_height,sep,list,scrollbarEnum,false,can_click,yoff);
 	}
 	

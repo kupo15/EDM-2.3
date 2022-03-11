@@ -82,7 +82,13 @@ function draw_season_ranking_content(deleteSeason) {
 	draw_text_centered(xx,yy-50,"Season Ranking",50,ww,sep,appblue);
 	
 	var yoff = 0;
-	var offset = scrollbar_get_offset(scrollbarIndex.seasonRanking);
+	var scroll_xx = 0;
+	var scroll_yy = 0;
+	var scrollEnum = scrollbarIndex.seasonRanking;
+	
+	scrollbar_set_surface(scrollEnum,ww,hh);
+	
+	var offset = scrollbar_get_offset(scrollEnum);
 	var list = MEMBERS_LIST.list;
 	var size = array_length(list);
 	for(var i=0;i<size;i++) {
@@ -108,24 +114,26 @@ function draw_season_ranking_content(deleteSeason) {
 		var font = pick(fn_normal,fn_italic,inactive);
 		
 		draw_set_font(font);
-		draw_text_centered(xx+15,yy+ypos,memberDetails.fullName,height,,sep,col); // name
+		draw_text_centered(scroll_xx+15,scroll_yy+ypos,memberDetails.fullName,height,,sep,col); // name
 		
 		var col = pick(col,c_red,seasonTotals < 0);
 		
 		draw_set_halign(fa_right);
-		draw_text_centered(xx+ww-15,yy+ypos,string(seasonTotals)+" "+CURRENCY_SYMBOL,height,,sep,col); // amount
+		draw_text_centered(scroll_xx+ww-15,scroll_yy+ypos,string(seasonTotals)+" "+CURRENCY_SYMBOL,height,,sep,col); // amount
 		
-		draw_line_pixel(xx+15,yy+ypos+sep,ww-15,1,,0.3);
+		draw_line_pixel(scroll_xx+15,scroll_yy+ypos+sep,ww-15,1,,0.3);
 
-		// licked on member
-		if draw_icon_click(,,xx,yy+ypos,ww,sep)
+		// clicked on member
+		if draw_icon_click(,,xx,yy+ypos,ww,sep,,,,,,,xx,yy)
 		init_keypad(entryType.seasonEarnings,seasonTotals,,,,,,,,,i);
-		
+				
 		draw_set_halign(fa_left);
 		
 		yoff++;
 		}
 		
 	draw_set_font(fn_normal);
+	
+	scrollbar_draw_surface(scrollEnum,xx,yy);
 	scrollbar(xx,yy,ww,room_height,sep,list,scrollbarIndex.seasonRanking,,,yoff);
 	}

@@ -22,6 +22,8 @@ function Scrollbar(scrollEnum,_scrollWidth=20) constructor {
 	scrolling = false;
 	scrollingSpeed = 0;
 	
+	surface = -1;
+	
 	offset = 0;
 	offsetStart = 0;
 	offsetEnd = 0;
@@ -44,6 +46,28 @@ function scrollbar_get_offset(_enum) {
 	var struct = scrollbarArray[_enum];
 	
 	return struct.offset;
+	}
+	
+function scrollbar_set_surface(_enum,ww,hh) {
+	
+	var struct = scrollbarArray[_enum];
+	
+	if !surface_exists(struct.surface)
+	struct.surface = surface_create(ww,hh);
+	
+	surface_set_target(struct.surface);
+	draw_clear_alpha(c_black,0);
+	
+	return _enum;
+	}
+	
+function scrollbar_draw_surface(_enum,xx,yy) {
+	
+	var struct = scrollbarArray[_enum];
+	var surf = struct.surface;
+	
+	surface_reset_target();
+	draw_surface(surf,xx,yy);
 	}
 	
 function scrollbar_apply_friction() {

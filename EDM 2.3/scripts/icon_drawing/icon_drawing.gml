@@ -17,11 +17,11 @@ function draw_icon(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha=draw_
 	draw_set_alpha(1);
 	}
 	
-function draw_icon_click(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha=draw_get_alpha(),highlight=true,canEdit=undefined,isKeypad=undefined,icoCol) {
+function draw_icon_click(spr=undefined,ind=0,xx,yy,ww,hh,bgcolor=undefined,alpha=draw_get_alpha(),highlight=true,canEdit=undefined,isKeypad=undefined,icoCol,surf_xx=0,surf_yy=0) {
 	
 	draw_icon(spr,ind,xx,yy,ww,hh,bgcolor,alpha,icoCol);
 	
-	return scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,highlight,isKeypad,canEdit);
+	return scr_mouse_position_room_released(xx,yy,ww,hh,mb_left,highlight,isKeypad,canEdit,surf_xx,surf_yy);
 	}
 	
 function draw_line_pixel(xx,yy,ww,hh,col=c_black,alpha=draw_get_alpha()) {
