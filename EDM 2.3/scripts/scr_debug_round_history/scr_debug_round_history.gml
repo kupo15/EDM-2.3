@@ -23,12 +23,6 @@ function debug_generate_round_history(arr) {
 		
 		memberDetails.handicapIndex = calculate_member_handicap_index(memberStruct);
 		memberDetails.handicapIndex = handicap_cap_adjustments(memberStruct);
-		
-		// limit to last 20 scores
-		var arrSize = array_length(memberStruct.roundHistory);
-		var lastInd = min(handicapHistoryMax,arrSize);
-	
-		array_resize(memberStruct.roundHistory,lastInd);
 		}
 	}
 
@@ -59,7 +53,7 @@ function debug_round_history() {
 	var history = {
 		
 		stratoti: [79,86,84,77,83,81,80,85,84,83,76,81,83,81,84,82,78,81,76,85],
-		baillon: [94,98,91,90,90,93,90,91,88,91,82,97,92,91,100,98,92,86,92,89],
+		baillon: [94,98,91,90,90,93,90,91,88,91,82,97,92,91,100,98,92,86,92,89,70],
 		barrett: [90,85,85,88,94,88,91,84,91,84,88,86,85,85,88,93,89,89,95,87],
 		clarence: [104,103,102,105,103,102,108,108,103,99,101,103,99,102,100,104,100,109,103,98],
 		cunliffe: [89,85,85,90,80,86,90,91,90,93,92,84,85,92,87,87,92,82,93,92],
