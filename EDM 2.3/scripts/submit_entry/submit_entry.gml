@@ -57,10 +57,12 @@ function append_decimal() {
 	
 function append_character(str) {
 		
-	var inHandicap = global.entryEnum==entryType.handicapOverride;
+	var inSeasonRank = (global.entryEnum==entryType.seasonEarnings);
+	var inHandicap = (global.entryEnum==entryType.handicapOverride);
 	var str_ll = string_length(entryString);
 	
-	var max_length = pick(maxCharacters,4,inHandicap);
+	var maxChars = pick(maxCharacters,5,inSeasonRank);
+	var max_length = pick(maxChars,4,inHandicap);
 	
 	if (str_ll >= max_length)
 	exit;

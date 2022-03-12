@@ -34,6 +34,19 @@ function draw_season_rank_buttons() {
 	
 	if draw_text_button(xx,yy,"Sort List",height,ww,hh)
 	array_sort_struct(MEMBERS_LIST.list,"seasonEarnings",false,["memberStats"]);
+	
+	// print season
+	var xx = 20;
+	var yy = 200;
+	var ww = 250;
+	var hh = 80;
+	var height = 35;
+	var col = c_green;
+	
+	draw_rectangle_color(xx,yy,xx+ww,yy+hh,col,col,col,col,true);
+	
+	if draw_text_button(xx,yy,"Print Season",height,ww,hh)
+	{}
 	}
 	
 function draw_season_ranking_delete_season() {
@@ -96,17 +109,15 @@ function draw_season_ranking_content(deleteSeason) {
 		var ypos = (yoff*sep)-(offset*sep);
 		
 		var memberStruct = list[i];
+		
+		if deleteSeason
+		memberStruct.memberStats = new MemberStats();
+		
 		var memberDetails = memberStruct.memberDetails;
 		var memberStats = memberStruct.memberStats;
 		var seasonTotals = memberStats.seasonEarnings;
 		var inactive = (memberStats.seasonEarningsPrev == undefined);
-		
-		if deleteSeason {
-			
-			memberStruct.memberStats = new MemberStats();
-			continue;
-			}
-		
+				
 		if inactive && SETTINGS.seasonRankHideInactive
 		continue;
 		
