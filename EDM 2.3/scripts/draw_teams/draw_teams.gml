@@ -45,7 +45,7 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 		var height = 50;
         
 		// draw name
-		draw_member_name(xx+5,team_yy+(i*ysep),struct,height,,,ysep);
+		draw_member_name(xx+5,team_yy+(i*ysep),struct,height*0.8,,,ysep,,true);
         
 		// gross front/back
 		var fr = pick("-",eventScores.grossFront,eventScores.grossFront != "");

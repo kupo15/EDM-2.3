@@ -68,7 +68,7 @@ function memberlist_add_to_team(ind,entryStruct) {
 	
 	var arrSize = array_length(MEMBERS_LIST.list);
 	var offset = scrollbar_get_offset(scrollbarIndex.homeMemberList);
-	var newOffset = clamp(offset,0,arrSize-memberListDisplayCount);
+	var newOffset = clamp(offset,0,max(0,arrSize-memberListDisplayCount));
 	
 	scrollbar_set_offset(scrollbarIndex.homeMemberList,newOffset);
 	scr_play_sound(snd_tap0);
@@ -94,6 +94,9 @@ function remove_from_team(teamArr,ind,memberStruct) {
 		
 		array_insert(list,i,memberStruct);
 		//scrollbar_set_offset(scrollbarIndex.homeMemberList,i);
-		break;
+		return -1;
 		}    
+		
+	// empty list
+	array_push(list,memberStruct);
 	}

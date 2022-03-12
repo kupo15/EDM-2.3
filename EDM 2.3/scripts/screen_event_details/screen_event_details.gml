@@ -111,12 +111,12 @@ function screen_entrant_details_content(can_click) {
 		
 		// draw tee
 		var struct = TEE_DATA[$ memberDetails.teeColor];
-		var teeStr = memberDetails.teeColor+" tees";
+		var teeStr = memberDetails.teeColor;
 		
 		draw_sprite_ext(ico_tee_marker,0,scroll_xx+615,scroll_yy+ypos+(sep*0.5),1,1,0,struct.color,1);
 		draw_text_centered(scroll_xx+635,scroll_yy+ypos,teeStr,sep*0.7,,sep);
 		
-		if draw_icon_click(,,610,yy+ypos,220,sep,,,,can_click,,,xx,yy)
+		if draw_icon_click(,,610,yy+ypos,160,sep,,,,can_click,,,xx,yy)
 		tee_popover_init(memberStruct,400,room_height,,memberDetails.teeColor);
 		
 		// separator
