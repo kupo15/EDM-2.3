@@ -125,7 +125,7 @@ function draw_member_list_member_details(height,sep,can_click) {
 	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
 
 	if draw_icon_click(,,xx,yy+yoff,ww,sep,,,,can_click)
-	{}
+	init_keypad(entryType.handicapOverride,memberDetails.handicapIndex,,,room_width-360,,,,,,manageMemberIndex);
 	
 	// tee marker
 	yoff += sep;
