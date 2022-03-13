@@ -150,8 +150,11 @@ function handicap_override_submit(entry) {
 	var list = pick(entrant_list,MEMBERS_LIST.list,screen_index == screenEnum.manageMembers);
 	var memberStruct = list[obj_number_input.entryIndex];
 	var memberDetails = memberStruct.memberDetails;
+	var eventDetails = memberStruct.activeEvent.eventDetails;
 	
 	memberDetails.handicapIndex = handicap_index_format_string(clamp(entry,-20,maxHCP));
+	eventDetails.courseHandicap = calculate_member_course_handicap(memberStruct);
+	
 	obj_number_input.active = false;
 	}
 	
