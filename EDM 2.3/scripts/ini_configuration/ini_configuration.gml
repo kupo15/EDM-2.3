@@ -41,12 +41,13 @@
 // colors
 #macro appblue make_color_rgb(98,145,242)
 
+
 function ini_save_file() {
 
 	if file_exists(config_file) {
 		
 		CONFIGURATION_FILE = json_load_array(config_file);
-		//return -1;
+		return -1;
 		}
 	
 	CONFIGURATION_FILE = create_default_save_file();

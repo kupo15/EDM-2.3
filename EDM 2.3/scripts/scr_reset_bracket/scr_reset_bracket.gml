@@ -44,6 +44,7 @@ function event_create_new() {
 			memberStats.seasonEarningsPrev = memberStats.seasonEarnings;
 			}
 		
+		// push back to the members list
 		array_push(MEMBERS_LIST.list,entrantStruct);
 		}
 	
