@@ -37,6 +37,7 @@
 #macro topScores 8
 #macro handicapHistoryMax 20
 #macro maxHCP 54
+#macro Undefined "null"
 
 // colors
 #macro appblue make_color_rgb(98,145,242)

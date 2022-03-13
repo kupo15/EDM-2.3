@@ -1,4 +1,4 @@
-function ini_season_ranking_save() {
+/*function ini_season_ranking_save() {
 	ini_open("season_ranking.ini");
 	var save = ds_grid_write(season_ranking_grid);
 	var save_header = ds_grid_write(season_ranking_header_grid);

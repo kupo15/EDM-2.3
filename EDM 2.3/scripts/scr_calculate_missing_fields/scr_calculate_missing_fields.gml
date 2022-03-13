@@ -18,7 +18,7 @@ function scr_calculate_missing_fields() {
 			var eventScores = memberStruct.activeEvent.eventScores;
 			var eventDetails = memberStruct.activeEvent.eventDetails;
 			
-			var courseHandicap = pick(0,eventDetails.courseHandicap,eventDetails.courseHandicap!= undefined);
+			var courseHandicap = pick(0,eventDetails.courseHandicap,eventDetails.courseHandicap!= Undefined);
 			var moreStrokes = ceil(courseHandicap*0.5);
 			var lessStrokes = floor(courseHandicap*0.5);
 			

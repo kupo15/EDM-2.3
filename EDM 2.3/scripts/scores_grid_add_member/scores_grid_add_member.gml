@@ -1,8 +1,4 @@
-/// @description  scores_grid_add_member(name,team_index,position);
-/// @param name
-/// @param team_index
-/// @param position
-function scores_grid_add_member(argument0, argument1, argument2) {
+/*function scores_grid_add_member(argument0, argument1, argument2) {
 
 	var name = argument0;
 	var _team = argument1;

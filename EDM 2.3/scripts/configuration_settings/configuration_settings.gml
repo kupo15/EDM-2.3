@@ -19,7 +19,7 @@ function ConfigurationMembersList() constructor {
 function ActiveEvent() constructor {
 	
 	entrantCount = 0;
-	eventResults = undefined;
+	eventResults = Undefined;
 
 	eventsRun = {
 		

@@ -9,7 +9,7 @@ function scr_calculate_results_final() {
 		
 		var teamInd = eventDetails.teamAssigned;
 		var teamEntered = !eventDetails.noTeam && (eventType == eventEnum.team);
-		var blind = (eventDetails.blindTeam != undefined) && teamEntered;
+		var blind = (eventDetails.blindTeam != Undefined) && teamEntered;
 	
 		// apply team winnings
 		var teamFront = TEAM_LIST[teamInd].teamWinnings.frontWinnings;
@@ -37,7 +37,7 @@ function scr_calculate_results_final() {
 		payoutBreakdown.winningGrandTotal = payoutBreakdown.winSubtotal+noSkinsRefund-payoutBreakdown.entryFee;
 		
 		var memberStats = memberStruct.memberStats;
-		var prevEarning = pick(memberStats.seasonEarningsPrev,0,memberStats.seasonEarningsPrev==undefined);
+		var prevEarning = pick(memberStats.seasonEarningsPrev,0,memberStats.seasonEarningsPrev==Undefined);
 		
 		memberStats.seasonEarnings = prevEarning+payoutBreakdown.winningGrandTotal;
 		}

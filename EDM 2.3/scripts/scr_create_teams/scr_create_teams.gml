@@ -23,7 +23,7 @@ function scr_create_teams() {
 				var eventDetails = memberStruct.activeEvent.eventDetails;
 				
 				// if no handicap exists
-				if (memberDetails.handicapIndex != undefined)
+				if (memberDetails.handicapIndex != Undefined)
 				memberDetails.handicapSet = true;
 				
 				eventDetails.teamAssigned = team_number;

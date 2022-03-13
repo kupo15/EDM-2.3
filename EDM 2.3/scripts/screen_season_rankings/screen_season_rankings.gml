@@ -116,7 +116,7 @@ function draw_season_ranking_content(deleteSeason) {
 		var memberDetails = memberStruct.memberDetails;
 		var memberStats = memberStruct.memberStats;
 		var seasonTotals = memberStats.seasonEarnings;
-		var inactive = (memberStats.seasonEarningsPrev == undefined);
+		var inactive = (memberStats.seasonEarningsPrev == Undefined);
 				
 		if inactive && SETTINGS.seasonRankHideInactive
 		continue;

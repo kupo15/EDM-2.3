@@ -2,8 +2,8 @@ function calculate_member_course_handicap(memberStruct) {
 
 	var memberDetails = memberStruct.memberDetails;
 	
-	if (memberDetails.handicapIndex == undefined)
-	return undefined;
+	if (memberDetails.handicapIndex == Undefined)
+	return Undefined;
 		
 	var current_index = memberDetails.handicapIndex;
 	var _teeColor = memberDetails.teeColor;
@@ -36,7 +36,7 @@ function calculate_member_handicap_index(memberStruct) {
 	
 	// if no history
 	if (historyCount == 0)
-	return undefined;
+	return Undefined;
 			
 	// sort history oldest first
 	array_sort_struct(historyArr,"roundDate",true);

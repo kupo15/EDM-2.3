@@ -1,6 +1,6 @@
 /// @description  scores_grid_delete_member(position);
 /// @param position
-function scores_grid_delete_member(argument0) {
+/*function scores_grid_delete_member(argument0) {
 
 	var pos = argument0;
 	var grid_ww = ds_grid_width(scores_grid);

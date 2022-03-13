@@ -134,7 +134,7 @@ function draw_selected_edit_score(xx,list,size) {
 		draw_icon(ico_chevron_down,0,xx+40+ww+xoff,yy,36,sep*1.3);
 		
 		// draw course handicap
-		var str = pick(string(eventDetails.courseHandicap),"N/A",eventDetails.courseHandicap == undefined);
+		var str = pick(string(eventDetails.courseHandicap),"N/A",eventDetails.courseHandicap == Undefined);
 		draw_text_centered(xx+230+xoff,yy,"HCP: "+str,sep*0.9,,sep*1.3);
 		}
 		
@@ -157,7 +157,7 @@ function draw_edit_score_player_popup_buttons(entrant,can_click) {
 			
 	draw_text_button(b_xx,b_yy-b_ww-15,"Blind",35,b_ww,65);	
 			
-	if (_blindInd == undefined)
+	if (_blindInd == Undefined)
 	draw_icon(ico_checkbox,0,b_xx,b_yy,b_ww,b_ww);
 	else
 	draw_text_centered(b_xx,b_yy,"T"+string(_blindInd+1),45,b_ww,36); // team the blind is assigned to
@@ -166,14 +166,14 @@ function draw_edit_score_player_popup_buttons(entrant,can_click) {
 	if scr_mouse_position_room_released(b_xx,b_yy,b_ww,b_ww,mb_left,true,true,can_click) {
 				
 		// assign blinds
-		if (_blindInd == undefined) {
+		if (_blindInd == Undefined) {
 					
 			select_blind_team = entrant;
 			}
 		else { // remove from blinds
 			
 			blind_struct_remove_member(entrant,_blindInd);
-			eventDetails.blindTeam = undefined;
+			eventDetails.blindTeam = Undefined;
 			}
 		}
 	

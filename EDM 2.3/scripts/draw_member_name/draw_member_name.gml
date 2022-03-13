@@ -6,7 +6,7 @@ function draw_member_name(xx,yy,memberStruct,height,col=c_black,ww=undefined,hh=
 	var name = pick(memberDetails.lastName+", "+memberDetails.firstName,memberDetails.fullName,!lastFirst);
 	
 	var str = "";
-	if (eventDetails.blindTeam != undefined) // if blind draw
+	if (eventDetails.blindTeam != Undefined) // if blind draw
 	str += "*";
 			
 	if eventDetails.noTeam // if no team
@@ -26,7 +26,7 @@ function draw_member_name(xx,yy,memberStruct,height,col=c_black,ww=undefined,hh=
 	draw_sprite_ext(ico_tee_marker,0,xx+str_ww+5,yy+(hh*0.5),1,1,0,teeStruct.color,1);
 	
 	// draw handicap
-	var str = pick(eventDetails.courseHandicap,"N/A",eventDetails.courseHandicap==undefined);
+	var str = pick(eventDetails.courseHandicap,"N/A",eventDetails.courseHandicap==Undefined);
 	
 	if showHandicap {
 		

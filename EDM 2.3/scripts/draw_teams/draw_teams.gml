@@ -101,7 +101,7 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 			// blind team
 	        var _blindInd = eventDetails.blindTeam;
 			
-	        if (_blindInd == undefined)
+	        if (_blindInd == Undefined)
 	        draw_icon(ico_checkbox,0,xx+585,team_yy+(i*ysep),55,ysep); // Blind
 	        else
 	        draw_text_centered(xx+585,team_yy+(i*ysep),"T"+string(_blindInd+1),45,55,ysep); // team the blind is assigned to
@@ -110,14 +110,14 @@ function draw_team_content(xx,team_yy,ysep,teamInd,can_edit) {
 			if scr_mouse_position_room_released(xx+570,team_yy+(i*ysep),90,ysep,mb_left,true,,can_edit) {
 				
 				// assign blinds
-				if (_blindInd == undefined) {
+				if (_blindInd == Undefined) {
 					
 					select_blind_team = struct;
 					}
 				else {// remove from blinds
 					
 					blind_struct_remove_member(struct,_blindInd);
-					eventDetails.blindTeam = undefined;
+					eventDetails.blindTeam = Undefined;
 					}
 				}
 						

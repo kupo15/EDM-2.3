@@ -29,7 +29,7 @@ function draw_handicap_card_header(memberStruct) {
 	// draw low index
 	var xx = 0;
 	var height = 40;
-	var str = pick(memberDetails.handicapLowIndex,"N/A",memberDetails.handicapLowIndex==undefined);
+	var str = pick(memberDetails.handicapLowIndex,"N/A",memberDetails.handicapLowIndex==Undefined);
 
 	draw_set_halign(fa_left);
 	draw_text_centered(xx+15,yy-height,"Low Index: "+string(str),height);
@@ -37,7 +37,7 @@ function draw_handicap_card_header(memberStruct) {
 	// draw index
 	var xx = 0;
 	var height = 40;
-	var str = pick(memberDetails.handicapIndex,"N/A",memberDetails.handicapIndex==undefined);
+	var str = pick(memberDetails.handicapIndex,"N/A",memberDetails.handicapIndex==Undefined);
 
 	draw_set_halign(fa_left);
 	draw_text_centered(xx+15,yy-height-height,"Index: "+string(str),height);

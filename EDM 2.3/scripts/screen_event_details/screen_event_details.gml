@@ -99,7 +99,7 @@ function screen_entrant_details_content(can_click) {
 
 		// index
 		var index = memberDetails.handicapIndex;
-		var str = pick("None",string(index),index!=undefined);
+		var str = pick("None",string(index),index!=Undefined);
 		var col = pick(c_black,appblue,!memberDetails.handicapSet);
 				
 		draw_text_centered(scroll_xx+420,scroll_yy+ypos,"Index: "+str,height,,sep,col);

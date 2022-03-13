@@ -1,4 +1,5 @@
-function scr_sort_season_breakdown() {
+/*function scr_sort_season_breakdown() {
+	
 	var header_ww = ds_grid_width(season_ranking_header_grid);
 	var header_hh = ds_grid_height(season_ranking_header_grid);
 

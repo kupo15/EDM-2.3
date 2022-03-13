@@ -77,7 +77,7 @@ function memberlist_add_to_team(ind,entryStruct) {
 function remove_from_team(teamArr,ind,memberStruct) {
 	   
 	var eventDetails = memberStruct.activeEvent.eventDetails;	
-	eventDetails.teamAssigned = undefined;
+	eventDetails.teamAssigned = Undefined;
 	
 	array_delete(teamArr,ind,1);
 	ENTRANT_COUNT--; // remove from entrant count

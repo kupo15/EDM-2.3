@@ -15,7 +15,7 @@ function draw_results(alpha) {
 	draw_set_halign(fa_left);
 	draw_results_overview(0);
 	
-	if (FINAL_EVENT_RESULTS != undefined) {
+	if (FINAL_EVENT_RESULTS != Undefined) {
 		
 		draw_results_teams(1);
 		draw_results_low_net(2);

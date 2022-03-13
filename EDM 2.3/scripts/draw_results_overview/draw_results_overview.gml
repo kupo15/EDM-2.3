@@ -86,7 +86,7 @@ function draw_results_final_content(xx,yy,can_click) {
 		draw_set_halign(fa_left);
 		draw_member_name(xx+5,yy+yoff,memberStruct,height,,,sep); // member name
 			
-		var blind = (eventDetails.blindTeam != undefined) && (eventType == eventEnum.team);
+		var blind = (eventDetails.blindTeam != Undefined) && (eventType == eventEnum.team);
 		var xoff = 315;
 			
 		draw_text_centered(xx+xoff+70,yy+yoff,"+"+string(payoutBreakdown.blindWinning),height*0.85,,sep,appblue,blind);

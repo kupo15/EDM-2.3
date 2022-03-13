@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Ini",
-    "path": "folders/Scripts/Ini.yy",
+    "name": "UNUSED",
+    "path": "folders/UNUSED.yy",
   },
   "resourceVersion": "1.0",
   "name": "season_ranking_load",

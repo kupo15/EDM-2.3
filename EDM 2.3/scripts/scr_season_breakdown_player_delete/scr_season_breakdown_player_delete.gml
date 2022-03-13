@@ -1,4 +1,4 @@
-function scr_season_breakdown_player_delete() {
+/*function scr_season_breakdown_player_delete() {
 	if season_ranking_grid[# 0,0] == undefined // if there is no data
 	exit;
 

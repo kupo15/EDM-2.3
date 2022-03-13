@@ -12,7 +12,7 @@ function Member(_name,_teeColor="silver",_favorite=false) constructor {
 	
 function MemberStats() constructor {
 	
-	seasonEarningsPrev = undefined;
+	seasonEarningsPrev = Undefined;
 	seasonEarnings = 0;
 	}
 	
@@ -47,20 +47,20 @@ function MemberDetails(_name,_favorite,_teeColor) constructor {
 	archived = false;
 	
 	handicapSet = false;
-	handicapLowIndex = undefined;
-	handicapIndex = undefined;
+	handicapLowIndex = Undefined;
+	handicapIndex = Undefined;
 	teeColor = _teeColor;
 	}
 	
 function EventDetails() constructor {
 	
-	entrantNumber = undefined;
-	teamAssigned = undefined;
+	entrantNumber = Undefined;
+	teamAssigned = Undefined;
 	
-	blindTeam = undefined;
+	blindTeam = Undefined;
 	noTeam = false;
 	
-	courseHandicap = undefined;
+	courseHandicap = Undefined;
 	}
 		
 function EventScores() constructor {

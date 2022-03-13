@@ -119,7 +119,7 @@ function draw_member_list_member_details(height,sep,can_click) {
 	// handicap index
 	yoff += sep;
 	
-	var str = pick(memberDetails.handicapIndex,"Not Set",memberDetails.handicapIndex==undefined);
+	var str = pick(memberDetails.handicapIndex,"Not Set",memberDetails.handicapIndex==Undefined);
 	draw_text_centered(xx+15,yy+yoff,"Index: "+string(str),height,,sep);
 	draw_icon(ico_edit,0,xx+380,yy+yoff,60,sep,,0.3);
 	draw_line_pixel(xx,yy+sep+yoff,ww,1,,0.5);
