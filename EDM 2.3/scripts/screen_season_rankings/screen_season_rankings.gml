@@ -1,6 +1,8 @@
 function screen_season_rankings() {
 
 	var deleteSeason = draw_season_ranking_delete_season();
+	
+	draw_season_ranking_header();
 	draw_season_ranking_content(deleteSeason);
 	draw_season_rank_buttons();
 	}
@@ -33,7 +35,7 @@ function draw_season_rank_buttons() {
 	draw_rectangle_color(xx,yy,xx+ww,yy+hh,col,col,col,col,true);
 	
 	if draw_text_button(xx,yy,"Sort List",height,ww,hh)
-	array_sort_struct(MEMBERS_LIST.list,"seasonEarnings",false,["memberStats"]);
+	season_rank_sort();
 	
 	// print season
 	var xx = 20;
@@ -51,7 +53,70 @@ function draw_season_rank_buttons() {
 	
 function season_rank_print() {
 	
-	screen_save("C:\Users\Matt\Desktop\test.png");
+	// store settings
+	var scrollEnum = scrollbarIndex.seasonRanking;
+	var offset = scrollbar_get_offset(scrollEnum);
+	var inactive = SETTINGS.seasonRankHideInactive;
+	
+	// set settings
+	scrollbar_set_offset(scrollEnum,0);
+	SETTINGS.seasonRankHideInactive = false;
+	season_rank_sort();
+
+	// create surface
+	var sep = 50;
+	var size = array_length(MEMBERS_LIST.list);
+	var surf_ww = 600;
+	var surf_hh = 100+(size*sep);
+	
+	var print_surf = surface_create(surf_ww,surf_hh);
+	surface_set_target(print_surf);
+			
+	var scale = surf_hh/sprite_get_height(background0);
+	draw_sprite_ext(background0,0,0,0,scale,scale,0,c_white,1);
+	
+	draw_season_ranking_content(,false);
+	draw_text_centered(0,surf_hh-70,"Season Ranking",80,surf_ww,sep,appblue);
+	
+	// save print
+	surface_save(print_surf,"Season Results.png");
+	
+	surface_reset_target();
+
+	// reset back settings
+	SETTINGS.seasonRankHideInactive = inactive;
+	scrollbar_set_offset(scrollEnum,offset);	
+	surface_free(print_surf);
+	}
+	
+function season_rank_sort() {
+	
+	var inactiveList = [];
+	
+	var list = MEMBERS_LIST.list;
+	var size = array_length(list);
+	for(var i=0;i<size;i++) {
+		
+		var memberStruct = list[i];
+		var memberStats = memberStruct.memberStats;
+		var inactive = (memberStats.seasonEarningsPrev == Undefined);
+
+		if inactive {
+			
+			array_push(inactiveList,memberStruct);
+			array_delete(list,i,1);
+			
+			size--;
+			i--;
+			}
+		}
+	
+	// sort active
+	array_sort_struct(list,"seasonEarnings",false,["memberStats"]);
+	
+	// re-add inactive
+	for(var i=0;i<array_length(inactiveList);i++)
+	array_push(list,inactiveList[i]);
 	}
 
 function draw_season_ranking_delete_season() {
@@ -86,26 +151,37 @@ function draw_season_ranking_delete_season() {
 	
 	return false;
 	}
+	
+function draw_season_ranking_header() {
+		
+	var ww = 600;
+	var xx = (room_width-ww+250)*0.5;
+	var yy = 100;
+	var hh = room_height-yy;
+	var sep = 50;	
+		
+	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
+	draw_text_centered(xx,yy-50,"Season Ranking",50,ww,sep,appblue);
+	}
 
-function draw_season_ranking_content(deleteSeason) {
+function draw_season_ranking_content(deleteSeason=false,drawSurf=true) {
 	
 	var ww = 600;
 	var xx = (room_width-ww+250)*0.5;
 	var yy = 100;
 	var hh = room_height-yy;
-	var height = 35;
 	var sep = 50;
-	
-	draw_rectangle(xx,yy,xx+ww,yy+hh,true);
-	draw_text_centered(xx,yy-50,"Season Ranking",50,ww,sep,appblue);
-	
+	var height = 35;
+		
 	var yoff = 0;
 	var scroll_xx = 0;
 	var scroll_yy = 0;
 	var scrollEnum = scrollbarIndex.seasonRanking;
 	
+	if drawSurf
 	scrollbar_set_surface(scrollEnum,ww,hh);
 	
+	var rank = 1;
 	var offset = scrollbar_get_offset(scrollEnum);
 	var list = MEMBERS_LIST.list;
 	var size = array_length(list);
@@ -130,7 +206,14 @@ function draw_season_ranking_content(deleteSeason) {
 		var font = pick(fn_normal,fn_italic,inactive);
 		
 		draw_set_font(font);
-		draw_text_centered(scroll_xx+15,scroll_yy+ypos,memberDetails.fullName,height,,sep,col); // name
+		
+		if !inactive {
+			
+			draw_text_centered(scroll_xx+10,scroll_yy+ypos,string(rank)+". ",height,,sep); // rank
+			rank++;
+			}
+		
+		draw_text_centered(scroll_xx+55,scroll_yy+ypos,memberDetails.fullName,height,,sep,col); // name
 		
 		var col = pick(col,c_red,seasonTotals < 0);
 		
@@ -150,6 +233,8 @@ function draw_season_ranking_content(deleteSeason) {
 		
 	draw_set_font(fn_normal);
 	
+	if drawSurf
 	scrollbar_draw_surface(scrollEnum,xx,yy);
+	
 	scrollbar(xx,yy,ww,room_height,sep,list,scrollbarIndex.seasonRanking,,,yoff);
 	}
