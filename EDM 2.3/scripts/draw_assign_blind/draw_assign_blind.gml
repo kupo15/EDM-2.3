@@ -36,11 +36,19 @@ function draw_assign_blind() {
 		
 		var blindTeamStruct = TEAM_LIST[i];
 	    var tot_size = array_length(blindTeamStruct.members)+array_length(variable_struct_get_names(blindTeamStruct.blindMembers));
-	    var gray_out = (get_team == i) || (tot_size == teamMemberMax) // team list size isn't maxed out
+		var team_maxed = (tot_size == teamMemberMax);
+	    var gray_out = (get_team == i) || team_maxed // team list size isn't maxed out
     
 	    var alph = 0.4+(!gray_out*0.6);
 	    draw_set_alpha(alph);
 	    draw_rectangle(xx+30+(i*sep),yy+120,xx+30+hsep+(i*sep),yy+120+vsep,true);
+		
+		if team_maxed {
+			
+			draw_set_font(fn_italic);
+			draw_text_centered(xx+30+(i*sep),yy+190,"maxed",25,hsep,,appblue,0.8);
+			draw_set_font(fn_normal);
+			}
     
 	    if draw_text_button(xx+30+(i*sep),yy+120,i+1,45,hsep,vsep,,alph,,true) && !gray_out {
 			

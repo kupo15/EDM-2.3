@@ -217,15 +217,25 @@ function draw_event_running_buttons(in_popover) {
 	if draw_text_button(xx,yy-100,"Go Back",40,ww,hh,,,,,!in_popover)
 	screen_back();
 	
-	if (eventType == eventEnum.individual)
-	exit;
+	if (eventType == eventEnum.individual) {
+		
+		// enable teams
+		//var str = "Switch to\nTeam Event";
+		//
+		//draw_rectangle_colour(xx,yy-400,xx+ww,yy-400+hh+hh,c_green,c_green,c_green,c_green,true);	
+		//
+		//if draw_text_button(xx,yy-400,str,65,ww,hh+hh,,,,,!in_popover)
+		//eventType = eventEnum.team;
+		}
+	else {
+		
+		// draw blind/no team toggle
+		var str = pick("Blind/\nNo Teams","Gross Skins/\n Net Skins",!skins_input);
 	
-	// draw blind/no team toggle
-	var str = pick("Blind/\nNo Teams","Gross Skins/\n Net Skins",!skins_input);
-	
-	draw_rectangle_colour(xx,yy-400,xx+ww,yy-400+hh+hh,c_green,c_green,c_green,c_green,true);	
-	if draw_text_button(xx,yy-400,str,60,ww,hh+hh,,,,,!in_popover)
-	skins_input = !skins_input;
+		draw_rectangle_colour(xx,yy-400,xx+ww,yy-400+hh+hh,c_green,c_green,c_green,c_green,true);	
+		if draw_text_button(xx,yy-400,str,60,ww,hh+hh,,,,,!in_popover)
+		skins_input = !skins_input;
+		}
 	}
 	
 function debug_randomize_scores() {
