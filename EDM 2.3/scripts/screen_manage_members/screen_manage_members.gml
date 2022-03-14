@@ -89,6 +89,9 @@ function draw_member_list_content(xx,yy,ww,sep,height,can_click) {
 	
 function draw_member_list_member_details(height,sep,can_click) {
 	
+	if (array_length(MEMBERS_LIST.list) == 0)
+	exit;
+	
 	var memberStruct = MEMBERS_LIST.list[manageMemberIndex];
 	var memberDetails = memberStruct.memberDetails;
 	

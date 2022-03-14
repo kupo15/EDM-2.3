@@ -37,9 +37,13 @@ function member_add_recent(name) {
 			manageMemberIndex = i;
 			scrollbar_set_value(scrollbarIndex.manageMemberList,i);
 			scrollbar_set_value(scrollbarIndex.homeMemberList,i);
-			break;
+			return -1;
 			}
 		}
+		
+	// if empty list
+	array_push(list,new Member(name)); // add member
+	array_push(WORKING_SAVE_FILE.membersList.list,new Member(name)); // add member to working
 	}
 	
 function member_delete(memberStruct) {
