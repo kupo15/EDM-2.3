@@ -38,11 +38,9 @@ function debug_members_list_create() {
 		new Member("Bob Sanz",,true)
 		]
 		//*/
-
-	list = scr_sort_members(list);
-	
+		
 	debug_generate_round_history(list);
+	
 	MEMBERS_LIST.list = list;
-
-	return list;
+	MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list);
 	}

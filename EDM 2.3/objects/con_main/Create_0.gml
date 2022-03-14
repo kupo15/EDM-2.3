@@ -158,12 +158,6 @@ season_ranking_load();
 ini_timer(mainTimers.enumcount);
 ini_save_file();
 
-enum listType {
-	
-	members,
-	favorites
-	}
-
 dev_mode = (os_type == os_windows);
 
 instance_create_layer(500,0,"Instances_1",obj_number_input);

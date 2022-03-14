@@ -1,8 +1,11 @@
 // file
 #macro config_file "data.config"
 #macro configversion "0.1"
-#macro save_program json_save_array(config_file,SAVE_FILE)
+#macro save_program save_save_file(false,true)
+#macro save_settings save_save_file(true)
+#macro save_members save_save_file(,,true)
 #macro SAVE_FILE con_main.CONFIGURATION_FILE
+#macro WORKING_SAVE_FILE con_main.WORKING_FILE
 
 // structure
 #macro MEMBERS_LIST SAVE_FILE.membersList
@@ -42,12 +45,68 @@
 // colors
 #macro appblue make_color_rgb(98,145,242)
 
+function save_save_file(settingSave=false,programSave=false,memberSave=false) {
+	
+	if programSave {
+	
+		json_save_array(config_file,SAVE_FILE);
+		db("program saved");
+		}
+		
+	if settingSave {
+		
+		with WORKING_SAVE_FILE {
+			
+			settings = SAVE_FILE.settings;
+			courseList = SAVE_FILE.courseList;
+			prizePool = SAVE_FILE.prizePool;
+			}
+		
+		json_save_array(config_file,WORKING_SAVE_FILE);
+		db("settings saved");
+		}
+		
+	if memberSave {
+		
+		scr_save_member_changes();
+		json_save_array(config_file,WORKING_SAVE_FILE);
+		db("members saved");
+		}
+	}
+	
+function scr_save_member_changes() {
+	
+	var list = MEMBERS_LIST.list;
+	for(var i=0;i<array_length(list);i++) {
+		
+		var memberStruct = list[i];
+		var fullname = memberStruct.memberDetails.fullName;
+		
+		var working_list = WORKING_SAVE_FILE.membersList.list;
+		for(var j=0;j<array_length(working_list);j++) {
+			
+			var workingMemberStruct = working_list[j];
+			var workingFullName = workingMemberStruct.memberDetails.fullName;
+			
+			// save over member details
+			if (fullname == workingFullName) {
+				
+				WORKING_SAVE_FILE.membersList.list[j].memberDetails = memberStruct.memberDetails;
+				WORKING_SAVE_FILE.membersList.list[j].memberStats = memberStruct.memberStats;
+				break;
+				}
+			}
+		}
+	}
 
 function ini_save_file() {
 
 	if file_exists(config_file) {
 		
 		CONFIGURATION_FILE = json_load_array(config_file);
+		WORKING_FILE = deep_copy(SAVE_FILE);
+		
+		MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list);
 		return -1;
 		}
 	

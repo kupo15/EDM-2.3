@@ -46,9 +46,14 @@ function draw_season_rank_buttons() {
 	draw_rectangle_color(xx,yy,xx+ww,yy+hh,col,col,col,col,true);
 	
 	if draw_text_button(xx,yy,"Print Season",height,ww,hh)
-	{}
+	season_rank_print();
 	}
 	
+function season_rank_print() {
+	
+	screen_save("C:\Users\Matt\Desktop\test.png");
+	}
+
 function draw_season_ranking_delete_season() {
 	
 	var xx = 20;

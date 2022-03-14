@@ -57,11 +57,8 @@ function draw_preferences() {
 	draw_line_pixel(xx,yy+hh,ww,1,,0.5);
 	
 	// clicked
-	if scr_mouse_position_room_released(xx,yy,ww,hh) {
-		
-		SETTINGS.soundOn = !SETTINGS.soundOn; // toggle
-		save_program;
-		}
+	if scr_mouse_position_room_released(xx,yy,ww,hh)
+	SETTINGS.soundOn = !SETTINGS.soundOn; // toggle
 	}
 	
 function close_enough_setting(xx,yy,ww,hh,height) {
@@ -80,11 +77,8 @@ function close_enough_setting(xx,yy,ww,hh,height) {
 	draw_line_pixel(xx,yy+hh,ww,1,,0.5);
 	
 	// clicked on close enough
-	if scr_mouse_position_room_released(xx,yy,ww,hh) {
-		
-		SETTINGS.closeEnough = !SETTINGS.closeEnough; // toggle
-		save_program;
-		}
+	if scr_mouse_position_room_released(xx,yy,ww,hh)
+	SETTINGS.closeEnough = !SETTINGS.closeEnough; // toggle
 		
 	return yy+hh;
 	}

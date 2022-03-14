@@ -33,19 +33,16 @@ function event_create_new() {
 	var arr = deep_copy(list[lastEventInd].entrantResults);
 	for(var i=0;i<array_length(arr);i++) {
 		
-		var entrantStruct = arr[i];
+		var memberStruct = arr[i];
 		
-		with entrantStruct {
-			
-			eventDetails = new EventDetails();
-			eventScores = new EventScores();
-			eventResults = new EventResults();
-			
+		with memberStruct {
+						
+			activeEvent = new MemberEvent();
 			memberStats.seasonEarningsPrev = memberStats.seasonEarnings;
 			}
 		
 		// push back to the members list
-		array_push(MEMBERS_LIST.list,entrantStruct);
+		array_push(MEMBERS_LIST.list,memberStruct);
 		}
 	
 	// reset
@@ -58,5 +55,6 @@ function event_create_new() {
 	close_enough_skip = false;
 	
 	MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list,false);
+	save_program;
 	screen_change(screenEnum.homeScreen,true);
 	}

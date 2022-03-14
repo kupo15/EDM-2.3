@@ -112,8 +112,12 @@ function draw_settings_icon() {
 		
 		if in_settings {
 			
-			if (screen_index == screenEnum.settingsHome)
-			in_settings = false;
+			if (screen_index == screenEnum.settingsHome) {
+				
+				in_settings = false;
+				save_members;
+				save_settings;
+				}
 			
 			screen_back();
 			}

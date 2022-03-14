@@ -24,7 +24,6 @@ function scr_calculate_results() {
 	// save event history and round history
 	member_round_save();
 	season_ranking_save();
-	save_program;
 	
 	// go to event results screen
 	screen_change(screenEnum.eventResults);
@@ -35,10 +34,11 @@ function activate_results_animation(shown=false) {
 	// do the close enough screen
 	if SETTINGS.closeEnough && !shown {
 		
-		close_enough_shown = true;
 	    picture_timer_start = GAME_TIME;
 	    close_enough_timer = room_speed*5;
 	    }
+		
+	close_enough_shown = true;
 	}
 
 function EventFinalResults() constructor {

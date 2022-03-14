@@ -202,7 +202,7 @@ function draw_results_final_buttons(page) {
 	var col = pick(c_black,c_red,!clear_all_safty);
 	
 	draw_text_centered(xx+xoff,yy,"(tap twice)",height*0.66,ww,hh*1.5);
-	draw_text_centered(xx+xoff,yy,"New Event",height,ww,hh,col);
+	draw_text_centered(xx+xoff,yy,"End Event",height,ww,hh,col);
 	
 	if scr_mouse_position_room_released(xoff+screenOffset,yy,ww,hh,mb_left,true) {
 		

@@ -35,6 +35,13 @@ function async_member_create(name) {
 
 function async_member_edit(name) {
 	
+	// if name exists
+	if check_member_name_exists(name) {
+	
+		add_member = get_string_async("Member Already Exists!! Enter a different name","");
+		exit;
+		}
+	
 	var parsedName = parse_name(name);
 
 	with edit_member_struct.memberDetails {
