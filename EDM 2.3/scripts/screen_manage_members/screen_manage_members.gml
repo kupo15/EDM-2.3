@@ -193,9 +193,9 @@ function sort_member_button(can_click) {
 	MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list,false);
 	}
 	
-function members_archive_selected() {
+function members_archive_selected(rootList) {
 	
-	var list = MEMBERS_LIST.list;
+	var list = rootList.list;
 	var size = array_length(list);
 	for(var i=0;i<size;i++) {
 		

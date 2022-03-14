@@ -75,7 +75,7 @@ function save_save_file(settingSave=false,programSave=false,memberSave=false) {
 	}
 	
 function scr_save_member_changes() {
-	
+
 	var list = MEMBERS_LIST.list;
 	for(var i=0;i<array_length(list);i++) {
 		
@@ -97,6 +97,9 @@ function scr_save_member_changes() {
 				}
 			}
 		}
+		
+	// archive members flagged for archiving
+	members_archive_selected(WORKING_SAVE_FILE.membersList);
 	}
 
 function ini_save_file() {

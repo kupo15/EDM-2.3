@@ -90,7 +90,7 @@ function screen_back_actions() {
 	switch screen_index
 		{
 		case screenEnum.eventResults: scr_calculate_results(); break;	
-		case screenEnum.manageMembers: members_archive_selected(); break;
+		case screenEnum.manageMembers: members_archive_selected(MEMBERS_LIST); break;
 		case screenEnum.seasonRank: MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list); break;
 		}
 	}
