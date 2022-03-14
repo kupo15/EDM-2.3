@@ -258,7 +258,7 @@ function debug_randomize_scores() {
 function activate_results_button() {
 	
 	var isTeamEvent = (noTeamCount != ENTRANT_COUNT) && (eventType == eventEnum.team);
-	var calc = (ENTRANT_COUNT > 3); // must have at least entrants 
+	var calc = (ENTRANT_COUNT >= 2); // must have at least entrants 
 	
 	// loop through teams
 	for(var i=0;i<team_number+1;i++) {

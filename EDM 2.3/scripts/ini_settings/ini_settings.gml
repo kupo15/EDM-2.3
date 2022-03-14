@@ -7,7 +7,7 @@ function ini_settings() {
 	in_settings = false;
 
 	pref_low_net_num = 11;
-	pref_low_net_num_min = 3;
+	pref_low_net_num_min = 1;
 	pref_low_net_num_max = 23;
 
 	pref_team_num = 2;

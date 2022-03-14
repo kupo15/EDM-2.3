@@ -8,7 +8,10 @@ function screen_entrant_details() {
 	
 	draw_set_halign(fa_left);
 	draw_text_centered(xx,yy,"Entrant Details",height,,height);
-		
+	
+	var count = array_length(entrant_list);
+	draw_text_centered(xx+15,yy+40,string(count)+" Entrants",30,,height,appblue);
+			
 	draw_event_type(440,yy,height);
 	screen_entrant_details_content(can_click);
 	screen_entrant_details_buttons(can_click);

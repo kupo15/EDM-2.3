@@ -40,7 +40,7 @@ function draw_create_teams_button(alphaOverride=false) {
 	var hh = 90;
 	var height = 33;
 
-	var create = pick(ENTRANT_COUNT >= 4,1,debug)*!alphaOverride;
+	var create = pick(ENTRANT_COUNT >= 2,true,debug)*!alphaOverride;
 	var alpha = (create*0.5)+0.5;
 
 	draw_set_alpha(alpha);

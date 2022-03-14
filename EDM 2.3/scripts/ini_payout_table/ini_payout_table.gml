@@ -12,9 +12,9 @@ function PayoutTables() constructor {
 		
 	lowNetPayout = [
 		
-			[],
-			[],
-			[],
+			[ENTRY_FEES.lowNetEntry],
+			[ENTRY_FEES.lowNetEntry],
+			[ENTRY_FEES.lowNetEntry],
 			["40"], // 4 players
 			["35","15"],
 			["40","20"],

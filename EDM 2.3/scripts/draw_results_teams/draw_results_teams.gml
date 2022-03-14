@@ -29,7 +29,7 @@ function draw_payout_table(xx,yy,arr) {
 	for(var i=0;i<size;i++) {
 		
 		var str = arr[i];	
-			
+			db(str)
 	    // draw payout slot
 		draw_set_halign(fa_left);
 	    draw_text_centered(xx+15,yy+(i*ysep),string(i+1)+")",height,,ysep);
