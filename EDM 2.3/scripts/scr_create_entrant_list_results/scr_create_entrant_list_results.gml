@@ -23,6 +23,7 @@ function RoundHistory(_teeData,adjGross,_date=date_current_datetime()) construct
 	
 	roundDate = _date;
 	adjustedGross = adjGross;
+	esrAdjustment = 0;
 	includedIndex = false; // included in index calculation
 	differentialAdjusted = 	round_calculate_differential(adjGross,_teeData);
 	

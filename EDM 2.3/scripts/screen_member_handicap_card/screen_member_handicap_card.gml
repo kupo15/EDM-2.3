@@ -97,6 +97,7 @@ function draw_handicap_card_contents(memberStruct) {
 		
 		// draw adjDiff
 		draw_text_centered(xx+xoff,yy+yoff+35,"Adj. Diff: "+handicap_index_format_string(struct.differentialAdjusted),height*0.9);
+		//draw_text_centered(xx+xoff,yy+yoff+50,"esr: "+string(struct.esrAdjustment),height*0.9);
 		
 		// draw score
 		var str = pick("","*",struct.includedIndex);

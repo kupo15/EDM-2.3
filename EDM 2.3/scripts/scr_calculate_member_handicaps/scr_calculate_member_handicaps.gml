@@ -114,10 +114,17 @@ function handicap_cap_adjustments(memberStruct) {
 	if (historyCount < 20)
 	return index;
 
-	// apply caps and ESR
+	// apply caps
 	index = handicap_index_apply_caps(real(lowIndex),index);
 		
 	return handicap_index_format_string(index);
+	}
+	
+function handicap_index_apply_esr(index) {
+	
+	//if (index > 7)
+	
+	return index;
 	}
 		
 function handicap_index_apply_caps(low_index,currentIndex) {

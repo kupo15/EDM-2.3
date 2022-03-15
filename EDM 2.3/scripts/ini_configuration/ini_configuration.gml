@@ -110,7 +110,7 @@ function ini_save_file() {
 		WORKING_FILE = deep_copy(SAVE_FILE);
 		
 		MEMBERS_LIST.list = scr_sort_members(MEMBERS_LIST.list);
-		return -1;
+		//return -1;
 		}
 	
 	CONFIGURATION_FILE = create_default_save_file();
