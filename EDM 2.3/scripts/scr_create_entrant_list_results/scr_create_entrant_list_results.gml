@@ -67,6 +67,8 @@ function member_round_history_add(memberStruct,newRoundStruct) {
 		array_pop(roundHistory);
 		
 		arrSize--;
+		
+		// test the next last round
 		lastRound = roundHistory[arrSize-1];
 		day_span = date_day_span(lastRound.roundDate,date_current_datetime());
 		}

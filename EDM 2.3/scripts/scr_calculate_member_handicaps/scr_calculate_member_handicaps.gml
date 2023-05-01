@@ -33,7 +33,7 @@ function calculate_member_handicap_index(memberStruct) {
 
 	var historyArr = memberStruct.roundHistory;
 	var historyCount = array_length(historyArr);
-	
+
 	// if no history
 	if (historyCount == 0)
 	return Undefined;
@@ -53,6 +53,8 @@ function calculate_member_handicap_index(memberStruct) {
 		for(var i=pos_start;i<pos_end;i++) {
 		
 			var roundStruct = historyArr[i];
+			
+			roundStruct.includedIndex = false; // reset the flag
 			array_push(diffList,roundStruct);
 			
 			// break out

@@ -124,7 +124,7 @@ function array_sort_struct(source_array,key,ascending,nestedFolder=[]) {
 		if (sort_value == undefined) {
 			
 			ds_grid_destroy(sorting_grid);
-			sm("score key "+key+" undefined >> not sorted");
+			sm("score key '"+key+"' undefined >> not sorted");
 			exit;
 			}
 

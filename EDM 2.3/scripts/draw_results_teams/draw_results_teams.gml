@@ -77,7 +77,7 @@ function draw_team_results_content(xx,yy,sep,sortKey,scoreKey,payoutKey) {
 		exit;
 		}
 	
-	var list = FINAL_EVENT_RESULTS.teamResults;	
+	var list = FINAL_EVENT_RESULTS.teamResults;
 	array_sort_struct(list,sortKey,true,["teamWinnings"]);
 
 	var payoutCutoffInd = array_length(PAYOUT_TABLES.teamPayout[team_number])+1;
